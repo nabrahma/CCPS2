@@ -53,6 +53,10 @@ jobs:
       - name: Unit, golden and property tests (TypeScript)
         run: pnpm test
 
+      # The Go app embeds app/frontend/dist, so it must exist before Go compiles.
+      - name: Build frontend
+        run: pnpm --filter @ps2cc/app-frontend run build
+
       - name: Go vet
         working-directory: app
         run: go vet ./...
