@@ -156,7 +156,7 @@ export class HairGenerator {
       const inside = [0, 1, 2, 3].every((k) => {
         const v = Q[q * 4 + k]!;
         const { theta, phi } = Scalp.angles([P[v * 3]!, P[v * 3 + 1]!, P[v * 3 + 2]!], this.neutralFrame);
-        return theta <= Scalp.maskLimit(style.hairline, phi);
+        return Scalp.allows(style.hairline, theta, phi);
       });
       if (inside) out.push(q);
     }

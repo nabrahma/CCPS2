@@ -20,4 +20,5 @@ PRD rule 2: nothing is faked. Each item below is either a placeholder or a gap t
 - [ ] **Optional, M8: PS2-budget teeth and a darker mouth interior.** MakeHuman's teeth are 7,120 triangles, so characters have none by default and an open mouth shows the skin texture's pink mouth interior. A low-poly teeth mesh (a few hundred triangles, CC0, fitted to hm08) would fix both.
 - [ ] ~~M8, expressions:~~ any default blendshape (`browsDown`, `FV` and so on) without a good MakeHuman pose-unit mapping will be listed here inst
 - [ ] **Cloth textures** for garments you import yourself (M10). The app exports a UV template per garment.
+- [ ] **Run Help → Measure slider speed once on your PC** (M1). It reports the frame rate while dragging sliders on your own GPU; the 60 fps target cannot be measured on the software GPU the tests use.
 - [ ] **Try one garment modelled by hand** (M10), in Blender or whatever you use, exported as FBX and as OBJ. The automated tests use generated garments, so this is the one path a person has to check.

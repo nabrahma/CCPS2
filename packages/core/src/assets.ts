@@ -15,6 +15,7 @@ import type { AtlasSpec } from './hair/atlas';
 import { FaceRig } from './expression/facerig';
 import { FacePoseUnits } from './expression/poseunits';
 import { EXPRESSION_MAP, validateExpressionMap } from './expression/map';
+import type { LicenceManifest } from './credits';
 
 export interface FaceAssets {
   rig: FaceRig;
@@ -140,6 +141,11 @@ export class CoreAssets {
       .then(validateLandmarkTable)
       .catch(() => null);
     return this.landmarks;
+  }
+
+  /** The manifest of every shipped file (Help → Credits). */
+  licenceManifest(): Promise<LicenceManifest> {
+    return readJson<LicenceManifest>(this.source, 'LICENSES.json');
   }
 
   proxyInfo(id: string): CatalogProxy {

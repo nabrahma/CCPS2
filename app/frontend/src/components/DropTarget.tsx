@@ -11,6 +11,7 @@ const KINDS: { id: string; label: string }[] = [
   { id: 'overlays', label: 'Skin overlay' },
   { id: 'hair-atlases', label: 'Hair card atlas' },
   { id: 'photos', label: 'Face photo' },
+  { id: 'backgrounds', label: 'Viewport background' },
 ];
 
 /**
@@ -36,6 +37,13 @@ export function DropTarget({ children }: { children: ReactNode }) {
       // PRD F7: find the face and project it onto the head.
       ui.setTab('skin');
       void placePhoto(studio, url);
+      return;
+    }
+    if (item.kind === 'backgrounds') {
+      studio.viewport
+        ?.setBackgroundImage(url)
+        .then(() => ui.setView({ background: 'image', backgroundImage: url }))
+        .catch((err: unknown) => ui.error('Could not use that background', err));
       return;
     }
     if (item.kind === 'overlays') {

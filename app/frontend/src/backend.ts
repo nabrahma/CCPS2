@@ -88,6 +88,7 @@ interface GoApp {
   SaveAtlas(imageFile: string, atlasJson: string): Promise<string>;
   LoadAtlas(imageFile: string): Promise<string>;
   SaveHairstyle(name: string, styleJson: string): Promise<LibraryItem>;
+  SavePreset(name: string, presetJson: string): Promise<LibraryItem>;
   ReadLibraryDocument(file: string): Promise<string>;
   PickGarmentFile(): Promise<string>;
   ReadGarment(path: string): Promise<GarmentFile>;
@@ -211,9 +212,9 @@ export const backend = {
   async listLibrary(kind: string): Promise<LibraryItem[]> {
     const g = go();
     if (g) return (await g.ListLibrary(kind)) ?? [];
-    if (kind === 'hairstyles') {
-      return Object.keys(browserDocs()).filter((k) => k.startsWith('hairstyles/')).map((file) => ({
-        id: `user:${file}`, kind, name: file.slice('hairstyles/'.length).replace(/\.ps2hair$/, ''), file, thumb: '', width: 0, height: 0, hasAlpha: false,
+    if (kind === 'hairstyles' || kind === 'presets') {
+      return Object.keys(browserDocs()).filter((k) => k.startsWith(`${kind}/`)).map((file) => ({
+        id: `user:${file}`, kind, name: file.slice(kind.length + 1).replace(/\.ps2(hair|preset)$/, ''), file, thumb: '', width: 0, height: 0, hasAlpha: false,
       }));
     }
     return [];
@@ -237,6 +238,13 @@ export const backend = {
     putBrowserDoc(file, styleJson);
     return { id: `user:${file}`, kind: 'hairstyles', name, file, thumb: '', width: 0, height: 0, hasAlpha: false };
   },
+  async savePreset(name: string, presetJson: string): Promise<LibraryItem> {
+    const g = go();
+    if (g) return g.SavePreset(name, presetJson);
+    const file = `presets/${name.replace(/[^\w -]/g, '_')}.ps2preset`;
+    putBrowserDoc(file, presetJson);
+    return { id: `user:${file}`, kind: 'presets', name, file, thumb: '', width: 0, height: 0, hasAlpha: false };
+  },
   async readLibraryDocument(file: string): Promise<string> {
     const g = go();
     if (g) return g.ReadLibraryDocument(file);
@@ -245,7 +253,9 @@ export const backend = {
     return doc;
   },
   async deleteLibraryItem(file: string): Promise<void> {
-    await go()?.DeleteLibraryItem(file);
+    const g = go();
+    if (g) await g.DeleteLibraryItem(file);
+    else removeBrowserDoc(file);
   },
   /** Ask for a garment mesh file ('' if cancelled). */
   async pickGarmentFile(): Promise<string> {
@@ -336,6 +346,12 @@ function browserDocs(): Record<string, string> {
 
 function putBrowserDoc(key: string, value: string): void {
   localStorage.setItem('ps2cc:docs', JSON.stringify({ ...browserDocs(), [key]: value }));
+}
+
+function removeBrowserDoc(key: string): void {
+  const docs = browserDocs();
+  delete docs[key];
+  localStorage.setItem('ps2cc:docs', JSON.stringify(docs));
 }
 
 function download(blob: Blob, fileName: string): string {

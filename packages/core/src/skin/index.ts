@@ -13,3 +13,4 @@ export * from './photo/colour';
 export * from './photo/pose';
 export * from './photo/project';
 export * from './guide';
+export * from './photo/fit';

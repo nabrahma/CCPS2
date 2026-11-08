@@ -2,6 +2,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 import {
   DEFAULT_HAIR_STYLE,
   HAIRLINE_PRESETS,
+  hairlineToPaint,
   hairStyleFile,
   parseHairStyleFile,
   STARTER_STYLES,
@@ -10,6 +11,7 @@ import {
   type HairStyleParams,
   type PartSide,
 } from '@ps2cc/core';
+import { HairlinePainter } from './HairlinePainter';
 import { backend, libraryUrl, type LibraryItem } from '../../backend';
 import { useStudio, useStudioVersion } from '../../state/hooks';
 import { useUi } from '../../state/ui';
@@ -233,7 +235,11 @@ function CardHair() {
             value={style.hairline.preset}
             onChange={(e) => {
               const preset = e.target.value as HairlinePreset;
-              edit('Hairline', (s) => void (s.hairline = preset === 'custom' ? { ...s.hairline, preset } : { preset, ...HAIRLINE_PRESETS[preset] }));
+              edit('Hairline', (s) => {
+                if (preset === 'painted') s.hairline = { ...s.hairline, preset, painted: hairlineToPaint(s.hairline) };
+                else if (preset === 'custom') s.hairline = { ...s.hairline, preset, painted: undefined };
+                else s.hairline = { preset, ...HAIRLINE_PRESETS[preset] };
+              });
             }}
           >
             <option value="full">Full</option>
@@ -241,10 +247,15 @@ function CardHair() {
             <option value="receding">Receding</option>
             <option value="high-nape">High nape</option>
             <option value="custom">Custom</option>
+            <option value="painted">Painted</option>
           </select>
         </div>
-        {(['front', 'temples', 'sides', 'nape'] as const).map((k) =>
-          n(k[0]!.toUpperCase() + k.slice(1), `hl-${k}`, style.hairline[k], 0, 150, 1, (s, v) => void (s.hairline = { ...s.hairline, preset: 'custom', [k]: v }), '°'),
+        {style.hairline.preset === 'painted' ? (
+          <HairlinePainter mask={style.hairline} onChange={(painted) => edit('Paint hairline', (s) => void (s.hairline = { ...s.hairline, painted }))} />
+        ) : (
+          (['front', 'temples', 'sides', 'nape'] as const).map((k) =>
+            n(k[0]!.toUpperCase() + k.slice(1), `hl-${k}`, style.hairline[k], 0, 150, 1, (s, v) => void (s.hairline = { ...s.hairline, preset: 'custom', [k]: v }), '°'),
+          )
         )}
         <label className="check">
           <input type="checkbox" checked={style.shell.enabled} onChange={(e) => edit('Scalp shell', (s) => void (s.shell.enabled = e.target.checked))} /> Scalp

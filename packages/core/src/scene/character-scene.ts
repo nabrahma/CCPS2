@@ -23,6 +23,8 @@ import { buildRenderTopology, gather3, type RenderTopology } from './render-mesh
 import type { ResolvedSkin } from '../skin/compose';
 import type { RgbaImage } from '../skin/image';
 import { projectPhoto, type LandmarkTable } from '../skin/photo/project';
+import { packHead, splitBody } from '../skin/headsplit';
+import { atlasCellTexels, EYES_ATLAS_SIZE, GARMENT_ATLAS_SIZE, HAIR_TEXTURE_LIMIT } from '../export/limits';
 
 export type PartKind = 'body' | 'eyes' | 'eyebrows' | 'eyelashes' | 'teeth' | 'garment' | 'hair';
 
@@ -378,6 +380,56 @@ export class CharacterScene {
    * picks hm08 weights through its vertex map, proxies transfer them through
    * their MHCLO binding (port of Proxy.getVertexWeights).
    */
+  /**
+   * Texels across this part's whole texture once exported (PRD F9: previews
+   * are no sharper than the export). `head` applies to head vertices, which
+   * get their own texture.
+   */
+  exportTexels(part: ScenePart): { texels: number; head: number } {
+    const doc = this.engine.doc;
+    const count = (...kinds: PartKind[]) => this.parts.filter((p) => kinds.includes(p.kind)).length;
+    switch (part.kind) {
+      case 'body':
+        return { texels: doc.export.bodyTexture, head: this.headDensity(doc.export.headTexture) };
+      case 'hair':
+        return { texels: HAIR_TEXTURE_LIMIT, head: HAIR_TEXTURE_LIMIT };
+      case 'garment': {
+        const t = atlasCellTexels(count('garment'), GARMENT_ATLAS_SIZE);
+        return { texels: t, head: t };
+      }
+      default: {
+        const t = atlasCellTexels(count('eyes', 'eyebrows', 'eyelashes', 'teeth'), EYES_ATLAS_SIZE);
+        return { texels: t, head: t };
+      }
+    }
+  }
+
+  private headDensityCache = new Map<number, number>();
+
+  /** The head texture holds the head islands at one uniform scale; texels per hm08 UV unit. */
+  private headDensity(size: number): number {
+    let d = this.headDensityCache.get(size);
+    if (d === undefined) {
+      d = packHead(this.engine.assets.skinComposer.layout, size).scale * size;
+      this.headDensityCache.set(size, d);
+    }
+    return d;
+  }
+
+  private headFlagCache: { indices: Uint32Array; flags: Float32Array } | null = null;
+
+  /** Per render vertex of the body: 1 on the head material, 0 on the body. Null before the PS2 body is loaded. */
+  bodyHeadFlags(): Float32Array | null {
+    const body = this.body;
+    if (!body?.mesh) return null;
+    if (this.headFlagCache?.indices !== body.fullIndices) {
+      const layout = this.engine.assets.skinComposer.layout;
+      const split = splitBody({ sourceVertex: this.bodySourceVertices!, uvs: body.part.uvs, indices: body.fullIndices }, layout, packHead(layout));
+      this.headFlagCache = { indices: body.fullIndices, flags: Float32Array.from(split.isHead) };
+    }
+    return this.headFlagCache.flags;
+  }
+
   influences(key: string): InfluenceTable | null {
     const cached = this.influenceCache.get(key);
     if (cached) return cached;

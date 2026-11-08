@@ -5,6 +5,7 @@
  * padded border, and its UVs are mapped into the cell's inner area.
  */
 import { blitResampled, createImage, type RgbaImage } from '../skin/image';
+import { ATLAS_PAD, atlasCellTexels } from './limits';
 
 export interface AtlasCell {
   /** Inner area in UV (u0, v0, u1, v1); part UVs 0..1 map onto it. */
@@ -17,16 +18,15 @@ export interface Atlas {
 }
 
 /** Pack images into a size x size atlas (grid of ceil(sqrt(n)) cells, `pad` pixels of edge bleed per cell). */
-export function packAtlas(images: RgbaImage[], size: number, pad = 4): Atlas {
-  const n = Math.max(1, images.length);
-  const grid = Math.ceil(Math.sqrt(n));
+export function packAtlas(images: RgbaImage[], size: number, pad = ATLAS_PAD): Atlas {
+  const grid = Math.ceil(Math.sqrt(Math.max(1, images.length)));
   const cell = Math.floor(size / grid);
   const out = createImage(size, size, [255, 255, 255, 255]);
   const cells: AtlasCell[] = [];
   images.forEach((img, i) => {
     const cx = (i % grid) * cell;
     const cy = Math.floor(i / grid) * cell;
-    const inner = cell - 2 * pad;
+    const inner = atlasCellTexels(images.length, size, pad);
     // Bleed: draw the image over the whole cell (edges clamp), the inner area holds the exact mapping.
     blitResampled(img, -pad * (img.width / inner), -pad * (img.height / inner), img.width * (cell / inner), img.height * (cell / inner), out, cx, cy, cell, cell);
     const u0 = (cx + pad) / size;

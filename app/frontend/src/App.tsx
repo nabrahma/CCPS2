@@ -4,6 +4,7 @@ import { backend } from './backend';
 import { AtlasEditor } from './components/AtlasEditor';
 import { DropTarget } from './components/DropTarget';
 import { CharacterBrowser } from './components/CharacterBrowser';
+import { CreditsDialog } from './components/CreditsDialog';
 import { FirstRunSetup } from './components/FirstRunSetup';
 import { GarmentImportDialog } from './components/GarmentImportDialog';
 import { RecoveryPrompt } from './components/RecoveryPrompt';
@@ -82,6 +83,8 @@ function Shell() {
   const browserOpen = useUi((s) => s.browserOpen);
   const setBrowserOpen = useUi((s) => s.setBrowserOpen);
   const collapsed = useUi((s) => s.sidebarCollapsed);
+  const creditsOpen = useUi((s) => s.creditsOpen);
+  const setCreditsOpen = useUi((s) => s.setCreditsOpen);
   return (
     <div className={collapsed ? 'shell sidebar-collapsed' : 'shell'}>
       <Sidebar />
@@ -93,6 +96,7 @@ function Shell() {
       <RecoveryPrompt />
       <FirstRunSetup />
       {browserOpen && <CharacterBrowser onClose={() => setBrowserOpen(false)} />}
+      {creditsOpen && <CreditsDialog onClose={() => setCreditsOpen(false)} />}
       <AtlasEditor />
       <GarmentImportDialog />
     </div>

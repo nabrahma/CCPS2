@@ -1638,3 +1638,101 @@ code {
   font-size: 12px;
   white-space: nowrap;
 }
+
+/* Help -> Credits */
+.modal.credits-modal {
+  display: flex;
+  flex-direction: column;
+  width: min(640px, 92vw);
+  max-height: 84vh;
+}
+
+.credits-body {
+  overflow-y: auto;
+  padding-right: 8px;
+  user-select: text;
+}
+
+.credits-body h3 {
+  margin: 16px 0 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.credits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.credits-url {
+  color: var(--muted);
+  font-size: 11px;
+  word-break: break-all;
+}
+
+/* A user preset with its delete button */
+.menu-row {
+  display: flex;
+  align-items: stretch;
+}
+
+.menu-row button:first-child {
+  flex: 1;
+  min-width: 0;
+}
+
+.menu-popup button.menu-row-delete {
+  justify-content: center;
+  width: 32px;
+  color: var(--muted);
+}
+
+/* Background choice in the Post popup */
+.post-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.post-link {
+  align-self: flex-start;
+  padding: 2px 0;
+  background: none;
+  color: var(--muted);
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+.post-popup hr {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #383838;
+}
+
+/* Hairline painter */
+.hairline-paint {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hairline-paint canvas {
+  align-self: center;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.hairline-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}

@@ -9,9 +9,9 @@ import {
   type PostSettings,
   type ShadingMode,
 } from '@ps2cc/viewport';
-import { backend } from '../backend';
+import { backend, libraryUrl } from '../backend';
 import { useStudio, useStudioVersion } from '../state/hooks';
-import { useUi } from '../state/ui';
+import { useUi, type BackgroundId } from '../state/ui';
 import { AppMenus } from './AppMenus';
 import { BoltIcon } from './icons';
 
@@ -81,8 +81,26 @@ export function ViewportPanel() {
     vp.postSettings = ui.post;
     vp.turntable = ui.turntable;
     vp.poseTest = ui.poseTest;
+    vp.background = ui.background;
     vp.refresh();
-  }, [studio, ui.shading, ui.wireOverlay, ui.lighting, ui.post, ui.turntable, ui.poseTest]);
+  }, [studio, ui.shading, ui.wireOverlay, ui.lighting, ui.post, ui.turntable, ui.poseTest, ui.background]);
+
+  const backgroundInput = useRef<HTMLInputElement>(null);
+  /** The library checks and copies the image; the viewport shows it once it has loaded. */
+  const chooseBackground = async (file: File) => {
+    try {
+      const item = await backend.importFile('backgrounds', file);
+      const url = libraryUrl(studio.info, item.file);
+      await studio.viewport?.setBackgroundImage(url);
+      ui.setView({ background: 'image', backgroundImage: url });
+    } catch (err) {
+      ui.error('Could not use that background', err);
+    }
+  };
+  const setBackground = (id: BackgroundId) => {
+    if (id === 'image' && !ui.backgroundImage) backgroundInput.current?.click();
+    else ui.setView({ background: id });
+  };
 
   const camera = (id: CameraPresetId) => {
     ui.setView({ camera: id });
@@ -147,6 +165,33 @@ export function ViewportPanel() {
         <details className="post-menu">
           <summary>Post…</summary>
           <div className="post-popup">
+            <label className="post-select">
+              Background
+              <select value={ui.background} onChange={(e) => setBackground(e.target.value as BackgroundId)} data-testid="background">
+                <option value="preset">Automatic</option>
+                <option value="black">Black</option>
+                <option value="grey">Grey</option>
+                <option value="image">{ui.backgroundImage ? 'Your image' : 'Your image…'}</option>
+              </select>
+            </label>
+            {ui.backgroundImage && (
+              <button className="post-link" onClick={() => backgroundInput.current?.click()}>
+                Choose another image…
+              </button>
+            )}
+            <input
+              ref={backgroundInput}
+              type="file"
+              accept="image/png,image/jpeg"
+              hidden
+              data-testid="background-file"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                e.target.value = ''; // so choosing the same file again still fires
+                if (file) void chooseBackground(file);
+              }}
+            />
+            <hr />
             {POST_TOGGLES.map((t) => (
               <label key={t.key}>
                 <input type="checkbox" checked={Boolean(ui.post[t.key])} onChange={() => togglePost(t.key, t.on)} /> {t.label}

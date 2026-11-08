@@ -4,115 +4,115 @@
   "photos": [
     {
       "photo": "synthetic_1_african_female",
-      "worstTexels": 1.565,
+      "worstTexels": 1.524,
       "errors": {
-        "rightEyeOuter": 0.06141121788798366,
-        "rightEyeInner": 0.5426559941352811,
-        "rightEyeTop": 1.179403649501652,
-        "rightEyeBottom": 0.5605721026034398,
-        "leftEyeInner": 0.07623276450123402,
-        "leftEyeOuter": 0.7904851270535631,
-        "leftEyeTop": 0.7025596645751654,
-        "leftEyeBottom": 0.639993694220428,
-        "mouthRight": 1.5648050119672952,
-        "mouthLeft": 0.9458687032467885,
-        "upperLip": 0.3466028420565897,
-        "lowerLip": 0.383335675712974
+        "rightEyeOuter": 0.34931256069277555,
+        "rightEyeInner": 0.2624353353699264,
+        "rightEyeTop": 1.1502044155539972,
+        "rightEyeBottom": 0.3398592326264871,
+        "leftEyeInner": 0.15028234742678465,
+        "leftEyeOuter": 0.7147619298752618,
+        "leftEyeTop": 0.705020066887557,
+        "leftEyeBottom": 0.5295842401831418,
+        "mouthRight": 1.5239409311172611,
+        "mouthLeft": 0.841552403243766,
+        "upperLip": 0.4404629096761652,
+        "lowerLip": 0.4535882468754325
       },
-      "yaw": 0.1542913299546086,
-      "pitch": 6.868859168826369,
+      "yaw": 0.29715044706393096,
+      "pitch": 6.769449174985152,
       "warnings": []
     },
     {
       "photo": "synthetic_2_asian_male_older",
-      "worstTexels": 1.572,
+      "worstTexels": 1.432,
       "errors": {
-        "rightEyeOuter": 0.5075723594143351,
-        "rightEyeInner": 0.8886539595782335,
-        "rightEyeTop": 1.1459356450043678,
-        "rightEyeBottom": 0.12172429471852121,
-        "leftEyeInner": 0.6069608480681641,
-        "leftEyeOuter": 0.3755390318709383,
-        "leftEyeTop": 0.3547852502304278,
-        "leftEyeBottom": 0.14093981812031164,
-        "mouthRight": 1.5722677637318956,
-        "mouthLeft": 0.5796473879342513,
-        "upperLip": 0.4955713673762791,
-        "lowerLip": 0.8215527073852625
+        "rightEyeOuter": 0.5301198470642133,
+        "rightEyeInner": 0.7380466041509011,
+        "rightEyeTop": 1.016211758261273,
+        "rightEyeBottom": 0.2235178746959286,
+        "leftEyeInner": 0.5333893641911667,
+        "leftEyeOuter": 0.15326816997382456,
+        "leftEyeTop": 0.6201921488562968,
+        "leftEyeBottom": 0.2448951112987308,
+        "mouthRight": 1.4318482670845332,
+        "mouthLeft": 0.6518835367167627,
+        "upperLip": 0.43509743626349806,
+        "lowerLip": 0.7800861602449911
       },
-      "yaw": 0.2228539258147494,
-      "pitch": 11.492396623438212,
+      "yaw": -0.0883430907186559,
+      "pitch": 11.751449706722786,
       "warnings": [
-        "The face is tilted 11° up or down; use a straight-on photo (under 10°)."
+        "The face is tilted 12° up or down; use a straight-on photo (under 10°)."
       ]
     },
     {
       "photo": "synthetic_3_caucasian_female",
-      "worstTexels": 1.833,
+      "worstTexels": 1.823,
       "errors": {
-        "rightEyeOuter": 0.6076799301306719,
-        "rightEyeInner": 0.27592475065656014,
-        "rightEyeTop": 1.1033378183489182,
-        "rightEyeBottom": 0.2793384471801585,
-        "leftEyeInner": 0.2582068661412736,
-        "leftEyeOuter": 0.7814946957619725,
-        "leftEyeTop": 0.5355118477499955,
-        "leftEyeBottom": 0.29453274213060476,
-        "mouthRight": 1.6786058721042998,
-        "mouthLeft": 1.0199705137151194,
-        "upperLip": 0.9397893810791126,
-        "lowerLip": 1.8325204537255366
+        "rightEyeOuter": 0.6514546622824212,
+        "rightEyeInner": 0.019265872873787827,
+        "rightEyeTop": 1.3170519225708561,
+        "rightEyeBottom": 0.14030194977694768,
+        "leftEyeInner": 0.18142309625738878,
+        "leftEyeOuter": 0.6372212934860434,
+        "leftEyeTop": 0.5249589460479406,
+        "leftEyeBottom": 0.23572499488471896,
+        "mouthRight": 1.754325508868519,
+        "mouthLeft": 0.959458710435098,
+        "upperLip": 0.9739323539060697,
+        "lowerLip": 1.822606873750908
       },
-      "yaw": -0.14887813995858262,
-      "pitch": 7.881141893663173,
+      "yaw": -0.029860294310177487,
+      "pitch": 7.773710479948358,
       "warnings": []
     },
     {
       "photo": "synthetic_4_heavy_male",
-      "worstTexels": 1.659,
+      "worstTexels": 1.445,
       "errors": {
-        "rightEyeOuter": 0.6746538171537217,
-        "rightEyeInner": 0.43241775548654177,
-        "rightEyeTop": 0.9824365571604948,
-        "rightEyeBottom": 0.38847530796004687,
-        "leftEyeInner": 0.31157612064982054,
-        "leftEyeOuter": 0.728582967944962,
-        "leftEyeTop": 0.8631995124741474,
-        "leftEyeBottom": 0.1700562978862064,
-        "mouthRight": 1.658710741816241,
-        "mouthLeft": 0.6682800257352758,
-        "upperLip": 0.3358938914883508,
-        "lowerLip": 0.9495692297061732
+        "rightEyeOuter": 0.6457397400339497,
+        "rightEyeInner": 0.35686010569652177,
+        "rightEyeTop": 1.1516373699265174,
+        "rightEyeBottom": 0.22289801588307834,
+        "leftEyeInner": 0.19073234829997,
+        "leftEyeOuter": 0.6687563001637796,
+        "leftEyeTop": 0.7326149966394054,
+        "leftEyeBottom": 0.1936128689739587,
+        "mouthRight": 1.4450945463467042,
+        "mouthLeft": 0.6088310122409543,
+        "upperLip": 0.39656934511822933,
+        "lowerLip": 0.873660701500799
       },
-      "yaw": 0.46666727299386185,
-      "pitch": 10.174618080871662,
+      "yaw": 0.474881492903165,
+      "pitch": 10.39309864849665,
       "warnings": [
         "The face is tilted 10° up or down; use a straight-on photo (under 10°)."
       ]
     },
     {
       "photo": "synthetic_5_african_male",
-      "worstTexels": 1.503,
+      "worstTexels": 1.774,
       "errors": {
-        "rightEyeOuter": 0.9877159381015853,
-        "rightEyeInner": 0.2804648260251368,
-        "rightEyeTop": 1.3916371845831312,
-        "rightEyeBottom": 0.4089863798321335,
-        "leftEyeInner": 0.489265545906151,
-        "leftEyeOuter": 0.5686452177745173,
-        "leftEyeTop": 0.6236275276012001,
-        "leftEyeBottom": 0.3613829335166596,
-        "mouthRight": 1.5031539973996193,
-        "mouthLeft": 0.8398005568726739,
-        "upperLip": 0.453651164698207,
-        "lowerLip": 0.6188677552394124
+        "rightEyeOuter": 0.7772022721078262,
+        "rightEyeInner": 0.3109286148885487,
+        "rightEyeTop": 1.7737419589032406,
+        "rightEyeBottom": 0.26006288038332015,
+        "leftEyeInner": 0.8132286512146112,
+        "leftEyeOuter": 0.9758035984320954,
+        "leftEyeTop": 0.7921164468707567,
+        "leftEyeBottom": 0.979219082757531,
+        "mouthRight": 1.488908902615078,
+        "mouthLeft": 0.8159409522793767,
+        "upperLip": 0.7080375767612894,
+        "lowerLip": 0.6045911715020282
       },
-      "yaw": 0.07438644013349432,
-      "pitch": 13.138243041105548,
+      "yaw": 0.11030391569480887,
+      "pitch": 13.266662345190094,
       "warnings": [
         "The face is tilted 13° up or down; use a straight-on photo (under 10°)."
       ]
     }
   ],
-  "controlMisregisteredWorstTexels": 6.17999800107838
+  "controlMisregisteredWorstTexels": 6.335897634969348
 }

@@ -100,6 +100,8 @@ export class Viewport {
   private posed = false;
   private compositor: SkinCompositor | null = null;
   private skinPending: Promise<void> = Promise.resolve();
+  /** Front views feed the photo tools, which want full detail. */
+  private renderingFront = false;
 
   shading: ShadingMode = 'ps2';
   wireOverlay = false;
@@ -107,7 +109,10 @@ export class Viewport {
   postSettings: PostSettings = { ...DEFAULT_POST };
   turntable = false;
   poseTest = false;
+  /** The lighting preset's own colour, black, grey, or the image from setBackgroundImage (PRD F9). */
   background: 'preset' | 'black' | 'grey' | 'image' = 'preset';
+  /** Show textures at their export size (PRD F9). Off only to compare in tests. */
+  exportSizePreview = true;
   stats: ViewportStats = { fps: 0, frameMs: 0, drawCalls: 0, triangles: 0 };
 
   constructor(
@@ -193,16 +198,19 @@ export class Viewport {
     this.controls.update();
   }
 
-  setBackgroundImage(url: string | null): void {
-    this.backgroundTexture?.dispose();
-    this.backgroundTexture = null;
-    if (url) {
-      this.loader.load(url, (tex) => {
-        tex.colorSpace = THREE.SRGBColorSpace;
-        this.backgroundTexture = tex;
-        this.background = 'image';
-      });
+  private backgroundRequest = 0;
+
+  /** Load the image used when `background` is 'image'. Resolves once it is showing; rejects if it cannot be read. */
+  async setBackgroundImage(url: string | null): Promise<void> {
+    const request = ++this.backgroundRequest;
+    const tex = url ? await this.loader.loadAsync(url) : null;
+    if (request !== this.backgroundRequest) {
+      tex?.dispose(); // a newer image was chosen while this one loaded
+      return;
     }
+    if (tex) tex.colorSpace = THREE.SRGBColorSpace;
+    this.backgroundTexture?.dispose();
+    this.backgroundTexture = tex;
   }
 
   start(): void {
@@ -316,6 +324,8 @@ export class Viewport {
         this.shading,
         { affine: post.affine, snap: post.vertexSnap },
       );
+      const limits = this.exportSizePreview && !this.renderingFront ? this.character?.exportTexels(obj.part) : undefined;
+      obj.material.uniforms.uExportTexels!.value.set(limits?.texels ?? 0, limits?.head ?? 0);
       this.syncWire(obj);
       if (obj.wire) obj.wire.visible = this.wireOverlay || this.shading === 'wire';
     }
@@ -365,7 +375,9 @@ export class Viewport {
     const clean: PostSettings = { ...DEFAULT_POST, lowRes: false };
     const prevShading = this.shading;
     if (shading) this.shading = shading;
+    this.renderingFront = true;
     this.renderScene(performance.now() / 1000, false, clean, cam, rt);
+    this.renderingFront = false;
     this.shading = prevShading;
     for (const o of hidden) o.visible = true;
     const buf = new Uint8Array(size * size * 4);
@@ -496,6 +508,10 @@ export class Viewport {
     const layer = g.getAttribute('layer') as THREE.BufferAttribute | undefined;
     if (p.layer && layer?.array !== p.layer) g.setAttribute('layer', new THREE.BufferAttribute(p.layer, 1));
     if (!g.index || g.index.array !== p.indices || obj.version === -1) g.setIndex(new THREE.BufferAttribute(p.indices, 1));
+    if (p.kind === 'body' && !g.getAttribute('headRegion')) {
+      const flags = this.character?.bodyHeadFlags();
+      if (flags?.length === p.uvs.length / 2) g.setAttribute('headRegion', new THREE.BufferAttribute(flags, 1));
+    }
     g.computeBoundingSphere();
     obj.version = p.version;
     this.syncWire(obj);

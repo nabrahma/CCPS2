@@ -11,7 +11,8 @@
  */
 import type { BaseMesh } from '../mesh/basemesh';
 import { Rng } from '../random';
-import type { HairlineMask } from './style';
+import { encodePaint, paintAllows, rasterPaint } from './hairline-paint';
+import { hairline, type HairlineMask } from './style';
 
 export interface ScalpRoot {
   /** hm08 vertices of the scalp triangle. */
@@ -83,6 +84,11 @@ export class Scalp {
     return (mask.nape * Math.PI) / 180;
   }
 
+  /** Does the mask grow hair at these angles (radians)? */
+  static allows(mask: HairlineMask, theta: number, phi: number): boolean {
+    return mask.preset === 'painted' && mask.painted ? paintAllows(mask.painted, theta, phi) : theta <= Scalp.maskLimit(mask, phi);
+  }
+
   /**
    * Up to `count` well-spread roots inside the mask, deterministic for a seed.
    * `neutral` are the base mesh rest positions; `frame` the neutral head frame.
@@ -115,7 +121,7 @@ export class Scalp {
       const p: [number, number, number] = [0, 0, 0];
       for (let k = 0; k < 3; k++) p[k] = wa * neutral[a * 3 + k]! + u * neutral[b * 3 + k]! + v * neutral[c * 3 + k]!;
       const { theta, phi } = Scalp.angles(p, frame);
-      if (theta > Scalp.maskLimit(mask, phi)) continue;
+      if (!Scalp.allows(mask, theta, phi)) continue;
       candidates.push({ root: { a, b, c, wa, wb: u, wc: v, theta, phi }, p });
     }
     if (candidates.length === 0) return [];
@@ -136,6 +142,18 @@ export class Scalp {
     return kept.slice(0, count).map((k) => k.root);
   }
 }
+
+/** The bitmap of any hairline, as the starting point for painting. */
+export function hairlineToPaint(mask: HairlineMask): string {
+  return encodePaint(rasterPaint((theta, phi) => Scalp.allows(mask, theta, phi)));
+}
+
+/** Largest polar angle (radians) at an azimuth with scalp under it: the 'low' preset, which bounds the scalp faces. */
+export function paintableLimit(phi: number): number {
+  return Scalp.maskLimit(PAINTABLE, phi);
+}
+
+const PAINTABLE = hairline('low');
 
 export function triangleArea(P: ArrayLike<number>, a: number, b: number, c: number): number {
   const ux = P[b * 3]! - P[a * 3]!;

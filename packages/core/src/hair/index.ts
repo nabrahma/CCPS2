@@ -23,3 +23,4 @@ export function starterStyle(id: string): HairStyleParams {
   if (!s) throw new Error(`unknown starter hairstyle ${id}`);
   return structuredClone(s.style);
 }
+export * from './hairline-paint';
