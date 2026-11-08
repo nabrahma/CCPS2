@@ -1,0 +1,7 @@
+packages:
+  - packages/*
+  - app/frontend
+  - tools/asset-tools
+# Only packages listed here may run install scripts (pnpm 11 default-deny).
+allowBuilds:
+  esbuild: true

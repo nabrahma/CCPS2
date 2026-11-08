@@ -1,0 +1,93 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/wolgade_female_panties_01",
+ "category": "clothes",
+ "name": "female_panties_01",
+ "uuid": "8550e7a3-5301-4007-8ecd-7d4776fe4cf7",
+ "tags": [
+  "female",
+  "underwear",
+  "panties"
+ ],
+ "zDepth": 39,
+ "vertexCount": 809,
+ "faceCount": 759,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27434
+  ],
+  [
+   1524,
+   4370,
+   0.57623
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.6395,
+   0.6395,
+   0.6395
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/wolgade_female_panties_01.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "wolgade_female_panties_01.bin",
+ "byteLength": 71216,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2427
+  },
+  "uvs": {
+   "offset": 9712,
+   "dtype": "f32",
+   "count": 1992
+  },
+  "faceVerts": {
+   "offset": 17680,
+   "dtype": "u32",
+   "count": 3036
+  },
+  "faceUvs": {
+   "offset": 29824,
+   "dtype": "u32",
+   "count": 3036
+  },
+  "refVerts": {
+   "offset": 41968,
+   "dtype": "u32",
+   "count": 2427
+  },
+  "refWeights": {
+   "offset": 51680,
+   "dtype": "f32",
+   "count": 2427
+  },
+  "refOffsets": {
+   "offset": 61392,
+   "dtype": "f32",
+   "count": 2427
+  },
+  "deleteVerts": {
+   "offset": 71104,
+   "dtype": "u32",
+   "count": 28
+  }
+ }
+}

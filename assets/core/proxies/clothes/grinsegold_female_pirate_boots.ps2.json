@@ -1,0 +1,99 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/grinsegold_female_pirate_boots",
+ "category": "clothes",
+ "name": "LeatherBoots_2cm",
+ "uuid": "d1189723-079e-48ce-9a53-da8a0cb6578e",
+ "tags": [
+  "shoes"
+ ],
+ "zDepth": 50,
+ "vertexCount": 985,
+ "faceCount": 1950,
+ "triangleFaces": 1950,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22048
+  ],
+  [
+   962,
+   5320,
+   0.18461000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/grinsegold_female_pirate_boots.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "decimatedFrom": 31862,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 63552,
+ "binary": "grinsegold_female_pirate_boots.ps2.bin",
+ "byteLength": 133188,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2955
+  },
+  "uvs": {
+   "offset": 11824,
+   "dtype": "f32",
+   "count": 2278
+  },
+  "faceVerts": {
+   "offset": 20944,
+   "dtype": "u32",
+   "count": 7800
+  },
+  "faceUvs": {
+   "offset": 52144,
+   "dtype": "u32",
+   "count": 7800
+  },
+  "refVerts": {
+   "offset": 83344,
+   "dtype": "u32",
+   "count": 2955
+  },
+  "refWeights": {
+   "offset": 95168,
+   "dtype": "f32",
+   "count": 2955
+  },
+  "refOffsets": {
+   "offset": 106992,
+   "dtype": "f32",
+   "count": 2955
+  },
+  "deleteVerts": {
+   "offset": 118816,
+   "dtype": "u32",
+   "count": 2606
+  },
+  "sourceProxyVertex": {
+   "offset": 129248,
+   "dtype": "u32",
+   "count": 985
+  }
+ }
+}

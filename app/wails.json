@@ -1,0 +1,20 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "PS2CC",
+  "outputfilename": "PS2CC",
+  "frontend:dir": "frontend",
+  "frontend:install": "pnpm install",
+  "frontend:build": "pnpm run build",
+  "frontend:dev:watcher": "pnpm run dev",
+  "frontend:dev:serverUrl": "auto",
+  "wailsjsdir": "./frontend/src",
+  "author": {
+    "name": "Nabaskar"
+  },
+  "info": {
+    "companyName": "PS2CC",
+    "productName": "PS2CC",
+    "productVersion": "0.10.0",
+    "comments": "PS2-era character creator for Unity"
+  }
+}

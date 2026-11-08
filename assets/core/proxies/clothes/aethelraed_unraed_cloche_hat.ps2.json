@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/aethelraed_unraed_cloche_hat",
+ "category": "clothes",
+ "name": "Cloche_Hat",
+ "uuid": "b41926bd-f04d-47d0-8727-1008a158abf7",
+ "tags": [
+  "female",
+  "hats",
+  "historical"
+ ],
+ "zDepth": 50,
+ "vertexCount": 405,
+ "faceCount": 699,
+ "triangleFaces": 699,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/aethelraed_unraed_cloche_hat.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "decimatedFrom": 441,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 771,
+ "binary": "aethelraed_unraed_cloche_hat.ps2.bin",
+ "byteLength": 48612,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1215
+  },
+  "uvs": {
+   "offset": 4864,
+   "dtype": "f32",
+   "count": 1014
+  },
+  "faceVerts": {
+   "offset": 8928,
+   "dtype": "u32",
+   "count": 2796
+  },
+  "faceUvs": {
+   "offset": 20112,
+   "dtype": "u32",
+   "count": 2796
+  },
+  "refVerts": {
+   "offset": 31296,
+   "dtype": "u32",
+   "count": 1215
+  },
+  "refWeights": {
+   "offset": 36160,
+   "dtype": "f32",
+   "count": 1215
+  },
+  "refOffsets": {
+   "offset": 41024,
+   "dtype": "f32",
+   "count": 1215
+  },
+  "deleteVerts": {
+   "offset": 45888,
+   "dtype": "u32",
+   "count": 273
+  },
+  "sourceProxyVertex": {
+   "offset": 46992,
+   "dtype": "u32",
+   "count": 405
+  }
+ }
+}

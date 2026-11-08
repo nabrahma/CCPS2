@@ -1,0 +1,118 @@
+{
+  "limitTexels": 4,
+  "syntheticPhotos": true,
+  "photos": [
+    {
+      "photo": "synthetic_1_african_female",
+      "worstTexels": 1.565,
+      "errors": {
+        "rightEyeOuter": 0.06141121788798366,
+        "rightEyeInner": 0.5426559941352811,
+        "rightEyeTop": 1.179403649501652,
+        "rightEyeBottom": 0.5605721026034398,
+        "leftEyeInner": 0.07623276450123402,
+        "leftEyeOuter": 0.7904851270535631,
+        "leftEyeTop": 0.7025596645751654,
+        "leftEyeBottom": 0.639993694220428,
+        "mouthRight": 1.5648050119672952,
+        "mouthLeft": 0.9458687032467885,
+        "upperLip": 0.3466028420565897,
+        "lowerLip": 0.383335675712974
+      },
+      "yaw": 0.1542913299546086,
+      "pitch": 6.868859168826369,
+      "warnings": []
+    },
+    {
+      "photo": "synthetic_2_asian_male_older",
+      "worstTexels": 1.572,
+      "errors": {
+        "rightEyeOuter": 0.5075723594143351,
+        "rightEyeInner": 0.8886539595782335,
+        "rightEyeTop": 1.1459356450043678,
+        "rightEyeBottom": 0.12172429471852121,
+        "leftEyeInner": 0.6069608480681641,
+        "leftEyeOuter": 0.3755390318709383,
+        "leftEyeTop": 0.3547852502304278,
+        "leftEyeBottom": 0.14093981812031164,
+        "mouthRight": 1.5722677637318956,
+        "mouthLeft": 0.5796473879342513,
+        "upperLip": 0.4955713673762791,
+        "lowerLip": 0.8215527073852625
+      },
+      "yaw": 0.2228539258147494,
+      "pitch": 11.492396623438212,
+      "warnings": [
+        "The face is tilted 11° up or down; use a straight-on photo (under 10°)."
+      ]
+    },
+    {
+      "photo": "synthetic_3_caucasian_female",
+      "worstTexels": 1.833,
+      "errors": {
+        "rightEyeOuter": 0.6076799301306719,
+        "rightEyeInner": 0.27592475065656014,
+        "rightEyeTop": 1.1033378183489182,
+        "rightEyeBottom": 0.2793384471801585,
+        "leftEyeInner": 0.2582068661412736,
+        "leftEyeOuter": 0.7814946957619725,
+        "leftEyeTop": 0.5355118477499955,
+        "leftEyeBottom": 0.29453274213060476,
+        "mouthRight": 1.6786058721042998,
+        "mouthLeft": 1.0199705137151194,
+        "upperLip": 0.9397893810791126,
+        "lowerLip": 1.8325204537255366
+      },
+      "yaw": -0.14887813995858262,
+      "pitch": 7.881141893663173,
+      "warnings": []
+    },
+    {
+      "photo": "synthetic_4_heavy_male",
+      "worstTexels": 1.659,
+      "errors": {
+        "rightEyeOuter": 0.6746538171537217,
+        "rightEyeInner": 0.43241775548654177,
+        "rightEyeTop": 0.9824365571604948,
+        "rightEyeBottom": 0.38847530796004687,
+        "leftEyeInner": 0.31157612064982054,
+        "leftEyeOuter": 0.728582967944962,
+        "leftEyeTop": 0.8631995124741474,
+        "leftEyeBottom": 0.1700562978862064,
+        "mouthRight": 1.658710741816241,
+        "mouthLeft": 0.6682800257352758,
+        "upperLip": 0.3358938914883508,
+        "lowerLip": 0.9495692297061732
+      },
+      "yaw": 0.46666727299386185,
+      "pitch": 10.174618080871662,
+      "warnings": [
+        "The face is tilted 10° up or down; use a straight-on photo (under 10°)."
+      ]
+    },
+    {
+      "photo": "synthetic_5_african_male",
+      "worstTexels": 1.503,
+      "errors": {
+        "rightEyeOuter": 0.9877159381015853,
+        "rightEyeInner": 0.2804648260251368,
+        "rightEyeTop": 1.3916371845831312,
+        "rightEyeBottom": 0.4089863798321335,
+        "leftEyeInner": 0.489265545906151,
+        "leftEyeOuter": 0.5686452177745173,
+        "leftEyeTop": 0.6236275276012001,
+        "leftEyeBottom": 0.3613829335166596,
+        "mouthRight": 1.5031539973996193,
+        "mouthLeft": 0.8398005568726739,
+        "upperLip": 0.453651164698207,
+        "lowerLip": 0.6188677552394124
+      },
+      "yaw": 0.07438644013349432,
+      "pitch": 13.138243041105548,
+      "warnings": [
+        "The face is tilted 13° up or down; use a straight-on photo (under 10°)."
+      ]
+    }
+  ],
+  "controlMisregisteredWorstTexels": 6.17999800107838
+}

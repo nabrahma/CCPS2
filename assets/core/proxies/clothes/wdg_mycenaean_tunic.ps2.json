@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/wdg_mycenaean_tunic",
+ "category": "clothes",
+ "name": "Mycenaean_Tunic",
+ "uuid": "abba331b-2a0b-4c22-ae4c-267b181c9f63",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 291,
+ "faceCount": 500,
+ "triangleFaces": 500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/wdg_mycenaean_tunic.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 1371,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 2660,
+ "binary": "wdg_mycenaean_tunic.ps2.bin",
+ "byteLength": 43324,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 873
+  },
+  "uvs": {
+   "offset": 3504,
+   "dtype": "f32",
+   "count": 636
+  },
+  "faceVerts": {
+   "offset": 6048,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "faceUvs": {
+   "offset": 14048,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "refVerts": {
+   "offset": 22048,
+   "dtype": "u32",
+   "count": 873
+  },
+  "refWeights": {
+   "offset": 25552,
+   "dtype": "f32",
+   "count": 873
+  },
+  "refOffsets": {
+   "offset": 29056,
+   "dtype": "f32",
+   "count": 873
+  },
+  "deleteVerts": {
+   "offset": 32560,
+   "dtype": "u32",
+   "count": 2399
+  },
+  "sourceProxyVertex": {
+   "offset": 42160,
+   "dtype": "u32",
+   "count": 291
+  }
+ }
+}

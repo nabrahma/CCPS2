@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/cortu_straight_bangs",
+ "category": "hair",
+ "name": "straight_bangs",
+ "uuid": "6e8a1df5-c412-44b5-b74f-b36f1e0d4f2e",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 848,
+ "faceCount": 1128,
+ "triangleFaces": 1128,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/hair/cortu_straight_bangs.png",
+  "textureSize": [
+   512,
+   512
+  ]
+ },
+ "decimatedFrom": 848,
+ "hiddenFaces": "none",
+ "originalTriangles": 1128,
+ "binary": "cortu_straight_bangs.ps2.bin",
+ "byteLength": 86912,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2544
+  },
+  "uvs": {
+   "offset": 10176,
+   "dtype": "f32",
+   "count": 1680
+  },
+  "faceVerts": {
+   "offset": 16896,
+   "dtype": "u32",
+   "count": 4512
+  },
+  "faceUvs": {
+   "offset": 34944,
+   "dtype": "u32",
+   "count": 4512
+  },
+  "refVerts": {
+   "offset": 52992,
+   "dtype": "u32",
+   "count": 2544
+  },
+  "refWeights": {
+   "offset": 63168,
+   "dtype": "f32",
+   "count": 2544
+  },
+  "refOffsets": {
+   "offset": 73344,
+   "dtype": "f32",
+   "count": 2544
+  },
+  "sourceProxyVertex": {
+   "offset": 83520,
+   "dtype": "u32",
+   "count": 848
+  }
+ }
+}

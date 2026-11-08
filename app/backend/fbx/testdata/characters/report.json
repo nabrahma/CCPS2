@@ -1,0 +1,198 @@
+[
+  {
+    "file": "01_Default_Male.ps2exp",
+    "name": "Default Male",
+    "meshes": [
+      "head:5456",
+      "body:2544",
+      "eyes:732"
+    ],
+    "triangles": 8732,
+    "budget": 8732,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "02_Default_Female.ps2exp",
+    "name": "Default Female",
+    "meshes": [
+      "head:5456",
+      "body:2544",
+      "hair:2432",
+      "eyes:732"
+    ],
+    "triangles": 11164,
+    "budget": 11164,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "03_Worker.ps2exp",
+    "name": "Worker",
+    "meshes": [
+      "head:5456",
+      "body:1938",
+      "hair:1052",
+      "garments:2500",
+      "eyes:732"
+    ],
+    "triangles": 11678,
+    "budget": 11678,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "04_Office.ps2exp",
+    "name": "Office",
+    "meshes": [
+      "head:5452",
+      "body:2253",
+      "garments:3399",
+      "eyes:732"
+    ],
+    "triangles": 11836,
+    "budget": 11836,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "05_Old_Man.ps2exp",
+    "name": "Old Man",
+    "meshes": [
+      "head:5456",
+      "body:1852",
+      "garments:2500",
+      "eyes:732"
+    ],
+    "triangles": 10540,
+    "budget": 10540,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "06_Heavy.ps2exp",
+    "name": "Heavy",
+    "meshes": [
+      "head:5456",
+      "body:1852",
+      "hair:552",
+      "garments:2500",
+      "eyes:732"
+    ],
+    "triangles": 11092,
+    "budget": 11092,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "07_Athlete.ps2exp",
+    "name": "Athlete",
+    "meshes": [
+      "head:5456",
+      "body:2544",
+      "hair:1820",
+      "eyes:732"
+    ],
+    "triangles": 10552,
+    "budget": 10552,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "08_Short.ps2exp",
+    "name": "Short",
+    "meshes": [
+      "head:5853",
+      "body:4147",
+      "eyes:732"
+    ],
+    "triangles": 10732,
+    "budget": 10732,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "09_Tall_T_pose.ps2exp",
+    "name": "Tall T-pose",
+    "meshes": [
+      "head:5456",
+      "body:1938",
+      "hair:552",
+      "garments:2500",
+      "eyes:732"
+    ],
+    "triangles": 11178,
+    "budget": 11178,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "10_Mesh_Hair.ps2exp",
+    "name": "Mesh Hair",
+    "meshes": [
+      "head:5456",
+      "body:2544",
+      "hair:2248",
+      "eyes:732"
+    ],
+    "triangles": 10980,
+    "budget": 10980,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "11_Custom_Shirt.ps2exp",
+    "name": "Custom Shirt",
+    "meshes": [
+      "head:5456",
+      "body:2532",
+      "garments:1800",
+      "eyes:732"
+    ],
+    "triangles": 10520,
+    "budget": 10520,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "12_Custom_Trousers.ps2exp",
+    "name": "Custom Trousers",
+    "meshes": [
+      "head:5456",
+      "body:2372",
+      "garments:1600",
+      "eyes:732"
+    ],
+    "triangles": 10160,
+    "budget": 10160,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "13_Custom_Skirt.ps2exp",
+    "name": "Custom Skirt",
+    "meshes": [
+      "head:5456",
+      "body:2540",
+      "garments:1600",
+      "eyes:732"
+    ],
+    "triangles": 10328,
+    "budget": 10328,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  }
+]

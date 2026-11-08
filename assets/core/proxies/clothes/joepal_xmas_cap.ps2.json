@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/joepal_xmas_cap",
+ "category": "clothes",
+ "name": "xmascap",
+ "uuid": "45b008fa-3a74-42fd-be14-f26cb530b875",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 384,
+ "faceCount": 700,
+ "triangleFaces": 700,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/joepal_xmas_cap.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "decimatedFrom": 1042,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 2016,
+ "binary": "joepal_xmas_cap.ps2.bin",
+ "byteLength": 46880,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1152
+  },
+  "uvs": {
+   "offset": 4608,
+   "dtype": "f32",
+   "count": 914
+  },
+  "faceVerts": {
+   "offset": 8272,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "faceUvs": {
+   "offset": 19472,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "refVerts": {
+   "offset": 30672,
+   "dtype": "u32",
+   "count": 1152
+  },
+  "refWeights": {
+   "offset": 35280,
+   "dtype": "f32",
+   "count": 1152
+  },
+  "refOffsets": {
+   "offset": 39888,
+   "dtype": "f32",
+   "count": 1152
+  },
+  "deleteVerts": {
+   "offset": 44496,
+   "dtype": "u32",
+   "count": 209
+  },
+  "sourceProxyVertex": {
+   "offset": 45344,
+   "dtype": "u32",
+   "count": 384
+  }
+ }
+}

@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_bodice-style_top",
+ "category": "clothes",
+ "name": "Bodice_style_top",
+ "uuid": "25e74bd5-a69d-4894-859a-4c5a932d29ec",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 945,
+ "faceCount": 1800,
+ "triangleFaces": 1800,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0,
+   0,
+   0
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/toigo_bodice-style_top.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 1017,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 1944,
+ "binary": "toigo_bodice-style_top.ps2.bin",
+ "byteLength": 118452,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2835
+  },
+  "uvs": {
+   "offset": 11344,
+   "dtype": "f32",
+   "count": 2108
+  },
+  "faceVerts": {
+   "offset": 19776,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "faceUvs": {
+   "offset": 48576,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "refVerts": {
+   "offset": 77376,
+   "dtype": "u32",
+   "count": 2835
+  },
+  "refWeights": {
+   "offset": 88720,
+   "dtype": "f32",
+   "count": 2835
+  },
+  "refOffsets": {
+   "offset": 100064,
+   "dtype": "f32",
+   "count": 2835
+  },
+  "deleteVerts": {
+   "offset": 111408,
+   "dtype": "u32",
+   "count": 813
+  },
+  "sourceProxyVertex": {
+   "offset": 114672,
+   "dtype": "u32",
+   "count": 945
+  }
+ }
+}

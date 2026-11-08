@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_cut_out_dress",
+ "category": "clothes",
+ "name": "Dress_Cut_Outs",
+ "uuid": "e21c6f61-01d8-4bc8-a612-fe32d898a5d5",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 3151,
+ "faceCount": 3078,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/toigo_cut_out_dress.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "toigo_cut_out_dress.bin",
+ "byteLength": 288152,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 9453
+  },
+  "uvs": {
+   "offset": 37824,
+   "dtype": "f32",
+   "count": 7324
+  },
+  "faceVerts": {
+   "offset": 67120,
+   "dtype": "u32",
+   "count": 12312
+  },
+  "faceUvs": {
+   "offset": 116368,
+   "dtype": "u32",
+   "count": 12312
+  },
+  "refVerts": {
+   "offset": 165616,
+   "dtype": "u32",
+   "count": 9453
+  },
+  "refWeights": {
+   "offset": 203440,
+   "dtype": "f32",
+   "count": 9453
+  },
+  "refOffsets": {
+   "offset": 241264,
+   "dtype": "f32",
+   "count": 9453
+  },
+  "deleteVerts": {
+   "offset": 279088,
+   "dtype": "u32",
+   "count": 2266
+  }
+ }
+}

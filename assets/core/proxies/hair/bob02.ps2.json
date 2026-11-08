@@ -1,0 +1,96 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/bob02",
+ "category": "hair",
+ "name": "bob02",
+ "uuid": "cd7840cf-b340-49e9-a505-8a5a22a86db2",
+ "tags": [
+  "makehuman™",
+  "short",
+  "bob",
+  "female"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1653,
+ "faceCount": 2248,
+ "triangleFaces": 2248,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22048
+  ],
+  [
+   962,
+   5320,
+   0.18461000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/hair/bob02.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "decimatedFrom": 1653,
+ "hiddenFaces": "none",
+ "originalTriangles": 2248,
+ "binary": "bob02.ps2.bin",
+ "byteLength": 171412,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4959
+  },
+  "uvs": {
+   "offset": 19840,
+   "dtype": "f32",
+   "count": 3374
+  },
+  "faceVerts": {
+   "offset": 33344,
+   "dtype": "u32",
+   "count": 8992
+  },
+  "faceUvs": {
+   "offset": 69312,
+   "dtype": "u32",
+   "count": 8992
+  },
+  "refVerts": {
+   "offset": 105280,
+   "dtype": "u32",
+   "count": 4959
+  },
+  "refWeights": {
+   "offset": 125120,
+   "dtype": "f32",
+   "count": 4959
+  },
+  "refOffsets": {
+   "offset": 144960,
+   "dtype": "f32",
+   "count": 4959
+  },
+  "sourceProxyVertex": {
+   "offset": 164800,
+   "dtype": "u32",
+   "count": 1653
+  }
+ }
+}

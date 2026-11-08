@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/v0rt3x_armsleeves_white_fishnet_medium",
+ "category": "clothes",
+ "name": "armsleeve_white_m",
+ "uuid": "3cb3c2d8-1017-47dc-baa0-8e955424cd7e",
+ "tags": [],
+ "zDepth": 39,
+ "vertexCount": 374,
+ "faceCount": 700,
+ "triangleFaces": 700,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22048
+  ],
+  [
+   962,
+   5320,
+   0.18461000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/v0rt3x_armsleeves_white_fishnet_medium.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "gloves",
+ "decimatedFrom": 384,
+ "hiddenFaces": "none",
+ "originalTriangles": 720,
+ "binary": "v0rt3x_armsleeves_white_fishnet_medium.ps2.bin",
+ "byteLength": 43976,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1122
+  },
+  "uvs": {
+   "offset": 4496,
+   "dtype": "f32",
+   "count": 522
+  },
+  "faceVerts": {
+   "offset": 6592,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "faceUvs": {
+   "offset": 17792,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "refVerts": {
+   "offset": 28992,
+   "dtype": "u32",
+   "count": 1122
+  },
+  "refWeights": {
+   "offset": 33488,
+   "dtype": "f32",
+   "count": 1122
+  },
+  "refOffsets": {
+   "offset": 37984,
+   "dtype": "f32",
+   "count": 1122
+  },
+  "sourceProxyVertex": {
+   "offset": 42480,
+   "dtype": "u32",
+   "count": 374
+  }
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_turtleneck_halter_top",
+ "category": "clothes",
+ "name": "Turtleneck_Halter",
+ "uuid": "9d2aef34-f4eb-486a-ac36-6f2b1b10be01",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 2875,
+ "faceCount": 2752,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/toigo_turtleneck_halter_top.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "toigo_turtleneck_halter_top.bin",
+ "byteLength": 257976,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 8625
+  },
+  "uvs": {
+   "offset": 34512,
+   "dtype": "f32",
+   "count": 7008
+  },
+  "faceVerts": {
+   "offset": 62544,
+   "dtype": "u32",
+   "count": 11008
+  },
+  "faceUvs": {
+   "offset": 106576,
+   "dtype": "u32",
+   "count": 11008
+  },
+  "refVerts": {
+   "offset": 150608,
+   "dtype": "u32",
+   "count": 8625
+  },
+  "refWeights": {
+   "offset": 185120,
+   "dtype": "f32",
+   "count": 8625
+  },
+  "refOffsets": {
+   "offset": 219632,
+   "dtype": "f32",
+   "count": 8625
+  },
+  "deleteVerts": {
+   "offset": 254144,
+   "dtype": "u32",
+   "count": 958
+  }
+ }
+}

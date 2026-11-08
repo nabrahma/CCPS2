@@ -1,0 +1,99 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_flats",
+ "category": "clothes",
+ "name": "Flats",
+ "uuid": "9fc4b77e-f301-40de-8a1c-36d362fe5ff0",
+ "tags": [
+  "shoes"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1217,
+ "faceCount": 2418,
+ "triangleFaces": 2418,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/toigo_flats.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "decimatedFrom": 28808,
+ "hiddenFaces": "computed",
+ "originalTriangles": 57600,
+ "binary": "toigo_flats.ps2.bin",
+ "byteLength": 156644,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3651
+  },
+  "uvs": {
+   "offset": 14608,
+   "dtype": "f32",
+   "count": 2760
+  },
+  "faceVerts": {
+   "offset": 25648,
+   "dtype": "u32",
+   "count": 9672
+  },
+  "faceUvs": {
+   "offset": 64336,
+   "dtype": "u32",
+   "count": 9672
+  },
+  "refVerts": {
+   "offset": 103024,
+   "dtype": "u32",
+   "count": 3651
+  },
+  "refWeights": {
+   "offset": 117632,
+   "dtype": "f32",
+   "count": 3651
+  },
+  "refOffsets": {
+   "offset": 132240,
+   "dtype": "f32",
+   "count": 3651
+  },
+  "coveredVerts": {
+   "offset": 146848,
+   "dtype": "u32",
+   "count": 1230
+  },
+  "sourceProxyVertex": {
+   "offset": 151776,
+   "dtype": "u32",
+   "count": 1217
+  }
+ }
+}

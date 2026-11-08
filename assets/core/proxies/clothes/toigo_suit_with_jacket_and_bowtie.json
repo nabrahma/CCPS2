@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_suit_with_jacket_and_bowtie",
+ "category": "clothes",
+ "name": "Jacket_bowtie_Pants",
+ "uuid": "cf3214d4-2ef1-4062-aee9-b6623ccf83fd",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 12849,
+ "faceCount": 12327,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/toigo_suit_with_jacket_and_bowtie.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "outer",
+ "binary": "toigo_suit_with_jacket_and_bowtie.bin",
+ "byteLength": 1138528,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 38547
+  },
+  "uvs": {
+   "offset": 154192,
+   "dtype": "f32",
+   "count": 28230
+  },
+  "faceVerts": {
+   "offset": 267120,
+   "dtype": "u32",
+   "count": 49308
+  },
+  "faceUvs": {
+   "offset": 464352,
+   "dtype": "u32",
+   "count": 49308
+  },
+  "refVerts": {
+   "offset": 661584,
+   "dtype": "u32",
+   "count": 38547
+  },
+  "refWeights": {
+   "offset": 815776,
+   "dtype": "f32",
+   "count": 38547
+  },
+  "refOffsets": {
+   "offset": 969968,
+   "dtype": "f32",
+   "count": 38547
+  },
+  "deleteVerts": {
+   "offset": 1124160,
+   "dtype": "u32",
+   "count": 3592
+  }
+ }
+}

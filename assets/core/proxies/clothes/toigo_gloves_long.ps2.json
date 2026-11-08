@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_gloves_long",
+ "category": "clothes",
+ "name": "Gloves_Long",
+ "uuid": "35dd5211-3c56-48cb-bfa6-924f4cb26074",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 361,
+ "faceCount": 699,
+ "triangleFaces": 699,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/toigo_gloves_long.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "gloves",
+ "decimatedFrom": 3454,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 6864,
+ "binary": "toigo_gloves_long.ps2.bin",
+ "byteLength": 62340,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1083
+  },
+  "uvs": {
+   "offset": 4336,
+   "dtype": "f32",
+   "count": 892
+  },
+  "faceVerts": {
+   "offset": 7904,
+   "dtype": "u32",
+   "count": 2796
+  },
+  "faceUvs": {
+   "offset": 19088,
+   "dtype": "u32",
+   "count": 2796
+  },
+  "refVerts": {
+   "offset": 30272,
+   "dtype": "u32",
+   "count": 1083
+  },
+  "refWeights": {
+   "offset": 34608,
+   "dtype": "f32",
+   "count": 1083
+  },
+  "refOffsets": {
+   "offset": 38944,
+   "dtype": "f32",
+   "count": 1083
+  },
+  "deleteVerts": {
+   "offset": 43280,
+   "dtype": "u32",
+   "count": 4402
+  },
+  "sourceProxyVertex": {
+   "offset": 60896,
+   "dtype": "u32",
+   "count": 361
+  }
+ }
+}

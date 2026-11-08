@@ -1,0 +1,373 @@
+{
+    "unity": "6000.6.8f1",
+    "pipeline": "UniversalRenderPipelineAsset",
+    "shaderErrors": [],
+    "characters": [
+        {
+            "name": "Athlete",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 10552,
+            "budget": 12000,
+            "height": 1.8400487899780273,
+            "feetY": -5.960464477539063e-8,
+            "facesPlusZ": true,
+            "maxPoseStretch": 1.9380532503128052,
+            "restSkinningError": 5.175338628760073e-7,
+            "blendshapes": 15,
+            "expressionsInfo": [
+                "Athlete_Head/blink_L: moves up to 13.6 mm",
+                "Athlete_Head/blink_R: moves up to 13.6 mm",
+                "Athlete_Head/jawOpen: moves up to 33.0 mm",
+                "Athlete_Eyes/blink_L: moves up to 17.9 mm",
+                "Athlete_Eyes/jawOpen: moves up to 0.9 mm"
+            ],
+            "renderersInfo": [
+                "Athlete_Body: y 0.000..1.649, rest skinning error 0.00 mm",
+                "Athlete_Eyes: y 1.701..1.733, rest skinning error 0.00 mm",
+                "Athlete_Hair: y 1.451..1.840, rest skinning error 0.00 mm",
+                "Athlete_Head: y 1.604..1.832, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Custom Shirt",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 10520,
+            "budget": 12000,
+            "height": 1.7292535305023193,
+            "feetY": -5.960464477539063e-8,
+            "facesPlusZ": true,
+            "maxPoseStretch": 3.7939558029174805,
+            "restSkinningError": 3.922714881809952e-7,
+            "blendshapes": 15,
+            "expressionsInfo": [
+                "Custom Shirt_Head/blink_L: moves up to 9.5 mm",
+                "Custom Shirt_Head/blink_R: moves up to 9.5 mm",
+                "Custom Shirt_Head/jawOpen: moves up to 35.4 mm",
+                "Custom Shirt_Eyes/blink_L: moves up to 12.4 mm",
+                "Custom Shirt_Eyes/jawOpen: moves up to 0.9 mm"
+            ],
+            "renderersInfo": [
+                "Custom Shirt_Body: y 0.000..1.548, rest skinning error 0.00 mm",
+                "Custom Shirt_Eyes: y 1.607..1.635, rest skinning error 0.00 mm",
+                "Custom Shirt_Garments: y 0.895..1.382, rest skinning error 0.00 mm",
+                "Custom Shirt_Head: y 1.500..1.729, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Custom Skirt",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 10328,
+            "budget": 12000,
+            "height": 1.7156238555908203,
+            "feetY": -2.384185791015625e-7,
+            "facesPlusZ": true,
+            "maxPoseStretch": 2.8007829189300537,
+            "restSkinningError": 4.995779363525799e-7,
+            "blendshapes": 15,
+            "expressionsInfo": [
+                "Custom Skirt_Head/blink_L: moves up to 13.0 mm",
+                "Custom Skirt_Head/blink_R: moves up to 13.0 mm",
+                "Custom Skirt_Head/jawOpen: moves up to 31.5 mm",
+                "Custom Skirt_Eyes/blink_L: moves up to 17.2 mm",
+                "Custom Skirt_Eyes/jawOpen: moves up to 0.9 mm"
+            ],
+            "renderersInfo": [
+                "Custom Skirt_Body: y 0.000..1.541, rest skinning error 0.00 mm",
+                "Custom Skirt_Eyes: y 1.590..1.620, rest skinning error 0.00 mm",
+                "Custom Skirt_Garments: y 0.525..0.939, rest skinning error 0.00 mm",
+                "Custom Skirt_Head: y 1.498..1.716, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Custom Trousers",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 10160,
+            "budget": 12000,
+            "height": 1.438744306564331,
+            "feetY": -1.1920928955078125e-7,
+            "facesPlusZ": true,
+            "maxPoseStretch": 2.6371068954467773,
+            "restSkinningError": 2.5506679435238766e-7,
+            "blendshapes": 15,
+            "expressionsInfo": [
+                "Custom Trousers_Head/blink_L: moves up to 10.7 mm",
+                "Custom Trousers_Head/blink_R: moves up to 10.7 mm",
+                "Custom Trousers_Head/jawOpen: moves up to 28.7 mm",
+                "Custom Trousers_Eyes/blink_L: moves up to 14.1 mm",
+                "Custom Trousers_Eyes/jawOpen: moves up to 0.8 mm"
+            ],
+            "renderersInfo": [
+                "Custom Trousers_Body: y 0.000..1.283, rest skinning error 0.00 mm",
+                "Custom Trousers_Eyes: y 1.327..1.355, rest skinning error 0.00 mm",
+                "Custom Trousers_Garments: y 0.124..0.661, rest skinning error 0.00 mm",
+                "Custom Trousers_Head: y 1.243..1.439, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Default Female",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 11164,
+            "budget": 12000,
+            "height": 1.5958774089813232,
+            "feetY": 5.960464477539063e-8,
+            "facesPlusZ": true,
+            "maxPoseStretch": 2.1878724098205566,
+            "restSkinningError": 3.955490512908e-7,
+            "blendshapes": 15,
+            "expressionsInfo": [
+                "Default Female_Head/blink_L: moves up to 11.6 mm",
+                "Default Female_Head/blink_R: moves up to 11.6 mm",
+                "Default Female_Head/jawOpen: moves up to 30.1 mm",
+                "Default Female_Eyes/blink_L: moves up to 15.2 mm",
+                "Default Female_Eyes/jawOpen: moves up to 0.8 mm"
+            ],
+            "renderersInfo": [
+                "Default Female_Body: y 0.000..1.424, rest skinning error 0.00 mm",
+                "Default Female_Eyes: y 1.471..1.500, rest skinning error 0.00 mm",
+                "Default Female_Hair: y 1.301..1.596, rest skinning error 0.00 mm",
+                "Default Female_Head: y 1.384..1.589, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Default Male",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 3,
+            "triangles": 8732,
+            "budget": 12000,
+            "height": 1.7292535305023193,
+            "feetY": -5.960464477539063e-8,
+            "facesPlusZ": true,
+            "maxPoseStretch": 3.411409378051758,
+            "restSkinningError": 3.922714881809952e-7,
+            "blendshapes": 15,
+            "expressionsInfo": [
+                "Default Male_Head/blink_L: moves up to 9.5 mm",
+                "Default Male_Head/blink_R: moves up to 9.5 mm",
+                "Default Male_Head/jawOpen: moves up to 35.4 mm",
+                "Default Male_Eyes/blink_L: moves up to 12.4 mm",
+                "Default Male_Eyes/jawOpen: moves up to 0.9 mm"
+            ],
+            "renderersInfo": [
+                "Default Male_Body: y 0.000..1.548, rest skinning error 0.00 mm",
+                "Default Male_Eyes: y 1.607..1.635, rest skinning error 0.00 mm",
+                "Default Male_Head: y 1.500..1.729, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Heavy",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 5,
+            "triangles": 11092,
+            "budget": 12000,
+            "height": 1.7299635410308838,
+            "feetY": -5.960464477539063e-8,
+            "facesPlusZ": true,
+            "maxPoseStretch": 6.004559516906738,
+            "restSkinningError": 5.298333576320147e-7,
+            "blendshapes": 15,
+            "expressionsInfo": [
+                "Heavy_Head/blink_L: moves up to 9.5 mm",
+                "Heavy_Head/blink_R: moves up to 9.5 mm",
+                "Heavy_Head/jawOpen: moves up to 35.2 mm",
+                "Heavy_Eyes/blink_L: moves up to 12.4 mm",
+                "Heavy_Eyes/jawOpen: moves up to 0.9 mm"
+            ],
+            "renderersInfo": [
+                "Heavy_Body: y 0.000..1.543, rest skinning error 0.00 mm",
+                "Heavy_Eyes: y 1.604..1.632, rest skinning error 0.00 mm",
+                "Heavy_Garments: y 0.072..1.528, rest skinning error 0.00 mm",
+                "Heavy_Hair: y 1.577..1.730, rest skinning error 0.00 mm",
+                "Heavy_Head: y 1.496..1.727, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Mesh Hair",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 10980,
+            "budget": 12000,
+            "height": 1.6766102313995361,
+            "feetY": -1.1920928955078125e-7,
+            "facesPlusZ": true,
+            "maxPoseStretch": 2.1915454864501953,
+            "restSkinningError": 6.35290348327544e-7,
+            "blendshapes": 15,
+            "expressionsInfo": [
+                "Mesh Hair_Head/blink_L: moves up to 11.1 mm",
+                "Mesh Hair_Head/blink_R: moves up to 11.1 mm",
+                "Mesh Hair_Head/jawOpen: moves up to 31.3 mm",
+                "Mesh Hair_Eyes/blink_L: moves up to 14.1 mm",
+                "Mesh Hair_Eyes/jawOpen: moves up to 0.8 mm"
+            ],
+            "renderersInfo": [
+                "Mesh Hair_Body: y 0.000..1.500, rest skinning error 0.00 mm",
+                "Mesh Hair_Eyes: y 1.548..1.580, rest skinning error 0.00 mm",
+                "Mesh Hair_Hair: y 1.451..1.677, rest skinning error 0.00 mm",
+                "Mesh Hair_Head: y 1.460..1.669, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Office",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 11836,
+            "budget": 12000,
+            "height": 1.5353329181671143,
+            "feetY": -5.960464477539063e-8,
+            "facesPlusZ": true,
+            "maxPoseStretch": 7.328682899475098,
+            "restSkinningError": 3.79413080509039e-7,
+            "blendshapes": 15,
+            "expressionsInfo": [
+                "Office_Head/blink_L: moves up to 12.0 mm",
+                "Office_Head/blink_R: moves up to 12.0 mm",
+                "Office_Head/jawOpen: moves up to 29.3 mm",
+                "Office_Eyes/blink_L: moves up to 15.8 mm",
+                "Office_Eyes/jawOpen: moves up to 0.8 mm"
+            ],
+            "renderersInfo": [
+                "Office_Body: y 0.000..1.374, rest skinning error 0.00 mm",
+                "Office_Eyes: y 1.419..1.448, rest skinning error 0.00 mm",
+                "Office_Garments: y 0.058..1.344, rest skinning error 0.00 mm",
+                "Office_Head: y 1.334..1.535, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Old Man",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 10540,
+            "budget": 12000,
+            "height": 1.6999363899230957,
+            "feetY": -5.960464477539063e-8,
+            "facesPlusZ": true,
+            "maxPoseStretch": 8.6171236038208,
+            "restSkinningError": 4.0350241192754766e-7,
+            "blendshapes": 15,
+            "expressionsInfo": [
+                "Old Man_Head/blink_L: moves up to 9.7 mm",
+                "Old Man_Head/blink_R: moves up to 9.7 mm",
+                "Old Man_Head/jawOpen: moves up to 33.9 mm",
+                "Old Man_Eyes/blink_L: moves up to 13.0 mm",
+                "Old Man_Eyes/jawOpen: moves up to 1.0 mm"
+            ],
+            "renderersInfo": [
+                "Old Man_Body: y 0.000..1.519, rest skinning error 0.00 mm",
+                "Old Man_Eyes: y 1.574..1.601, rest skinning error 0.00 mm",
+                "Old Man_Garments: y 0.066..1.510, rest skinning error 0.00 mm",
+                "Old Man_Head: y 1.465..1.700, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Short",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 3,
+            "triangles": 10732,
+            "budget": 12000,
+            "height": 1.2144618034362793,
+            "feetY": -5.960464477539063e-8,
+            "facesPlusZ": true,
+            "maxPoseStretch": 3.4332468509674072,
+            "restSkinningError": 3.5779396512225503e-7,
+            "blendshapes": 15,
+            "expressionsInfo": [
+                "Short_Head/blink_L: moves up to 9.9 mm",
+                "Short_Head/blink_R: moves up to 9.9 mm",
+                "Short_Head/jawOpen: moves up to 26.5 mm",
+                "Short_Eyes/blink_L: moves up to 13.1 mm",
+                "Short_Eyes/jawOpen: moves up to 0.7 mm"
+            ],
+            "renderersInfo": [
+                "Short_Body: y 0.000..1.072, rest skinning error 0.00 mm",
+                "Short_Eyes: y 1.112..1.137, rest skinning error 0.00 mm",
+                "Short_Head: y 1.034..1.214, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Tall T-pose",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 5,
+            "triangles": 11178,
+            "budget": 12000,
+            "height": 2.0781726837158203,
+            "feetY": -1.1920928955078125e-7,
+            "facesPlusZ": true,
+            "maxPoseStretch": 12.782573699951172,
+            "restSkinningError": 5.96791039697564e-7,
+            "blendshapes": 15,
+            "expressionsInfo": [
+                "Tall T-pose_Head/blink_L: moves up to 12.6 mm",
+                "Tall T-pose_Head/blink_R: moves up to 12.6 mm",
+                "Tall T-pose_Head/jawOpen: moves up to 38.8 mm",
+                "Tall T-pose_Eyes/blink_L: moves up to 16.6 mm",
+                "Tall T-pose_Eyes/jawOpen: moves up to 1.0 mm"
+            ],
+            "renderersInfo": [
+                "Tall T-pose_Body: y 0.000..1.867, rest skinning error 0.00 mm",
+                "Tall T-pose_Eyes: y 1.932..1.965, rest skinning error 0.00 mm",
+                "Tall T-pose_Garments: y 0.047..1.810, rest skinning error 0.00 mm",
+                "Tall T-pose_Hair: y 1.902..2.078, rest skinning error 0.00 mm",
+                "Tall T-pose_Head: y 1.815..2.075, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Worker",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 5,
+            "triangles": 11678,
+            "budget": 12000,
+            "height": 1.7280651330947876,
+            "feetY": -1.1920928955078125e-7,
+            "facesPlusZ": true,
+            "maxPoseStretch": 14.362475395202637,
+            "restSkinningError": 6.196788149281929e-7,
+            "blendshapes": 15,
+            "expressionsInfo": [
+                "Worker_Head/blink_L: moves up to 9.9 mm",
+                "Worker_Head/blink_R: moves up to 9.9 mm",
+                "Worker_Head/jawOpen: moves up to 35.0 mm",
+                "Worker_Eyes/blink_L: moves up to 13.0 mm",
+                "Worker_Eyes/jawOpen: moves up to 0.9 mm"
+            ],
+            "renderersInfo": [
+                "Worker_Body: y 0.000..1.541, rest skinning error 0.00 mm",
+                "Worker_Eyes: y 1.599..1.627, rest skinning error 0.00 mm",
+                "Worker_Garments: y 0.037..1.495, rest skinning error 0.00 mm",
+                "Worker_Hair: y 1.572..1.728, rest skinning error 0.00 mm",
+                "Worker_Head: y 1.492..1.722, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        }
+    ],
+    "failures": 0
+}

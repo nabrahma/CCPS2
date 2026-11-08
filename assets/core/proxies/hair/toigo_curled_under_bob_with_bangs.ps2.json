@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/toigo_curled_under_bob_with_bangs",
+ "category": "hair",
+ "name": "Bob_Curled_Under_Bangs",
+ "uuid": "2cfc5028-e852-4b2f-bbd5-ab29e57b706c",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1927,
+ "faceCount": 3500,
+ "triangleFaces": 3500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 0,
+  "diffuseTexture": "textures/hair/toigo_curled_under_bob_with_bangs.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "decimatedFrom": 2665,
+ "hiddenFaces": "none",
+ "originalTriangles": 4976,
+ "binary": "toigo_curled_under_bob_with_bangs.ps2.bin",
+ "byteLength": 220364,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 5781
+  },
+  "uvs": {
+   "offset": 23136,
+   "dtype": "f32",
+   "count": 2028
+  },
+  "faceVerts": {
+   "offset": 31248,
+   "dtype": "u32",
+   "count": 14000
+  },
+  "faceUvs": {
+   "offset": 87248,
+   "dtype": "u32",
+   "count": 14000
+  },
+  "refVerts": {
+   "offset": 143248,
+   "dtype": "u32",
+   "count": 5781
+  },
+  "refWeights": {
+   "offset": 166384,
+   "dtype": "f32",
+   "count": 5781
+  },
+  "refOffsets": {
+   "offset": 189520,
+   "dtype": "f32",
+   "count": 5781
+  },
+  "sourceProxyVertex": {
+   "offset": 212656,
+   "dtype": "u32",
+   "count": 1927
+  }
+ }
+}

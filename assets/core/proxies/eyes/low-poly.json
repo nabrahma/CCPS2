@@ -1,0 +1,85 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:eyes/low-poly",
+ "category": "eyes",
+ "name": "Low-Poly",
+ "uuid": "1cc97a30-85a1-42e6-a9f7-b3e753732baa",
+ "tags": [
+  "makehuman\u2122"
+ ],
+ "zDepth": 50,
+ "vertexCount": 96,
+ "faceCount": 86,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.17412000000000002
+  ],
+  [
+   791,
+   881,
+   0.27409
+  ],
+  [
+   962,
+   5320,
+   0.22613
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/eyes/low-poly.jpg",
+  "textureSize": [
+   512,
+   512
+  ]
+ },
+ "binary": "low-poly.bin",
+ "byteLength": 8128,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 288
+  },
+  "uvs": {
+   "offset": 1152,
+   "dtype": "f32",
+   "count": 192
+  },
+  "faceVerts": {
+   "offset": 1920,
+   "dtype": "u32",
+   "count": 344
+  },
+  "faceUvs": {
+   "offset": 3296,
+   "dtype": "u32",
+   "count": 344
+  },
+  "refVerts": {
+   "offset": 4672,
+   "dtype": "u32",
+   "count": 288
+  },
+  "refWeights": {
+   "offset": 5824,
+   "dtype": "f32",
+   "count": 288
+  },
+  "refOffsets": {
+   "offset": 6976,
+   "dtype": "f32",
+   "count": 288
+  }
+ }
+}

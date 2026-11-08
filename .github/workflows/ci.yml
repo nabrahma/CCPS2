@@ -1,0 +1,77 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      # assets/core and the test data are in Git LFS. The cache keeps repeat runs
+      # from using up the repository's monthly LFS download allowance.
+      - name: List LFS files
+        shell: bash
+        run: git lfs ls-files --long | cut -d ' ' -f1 | sort > .lfs-ids
+
+      - uses: actions/cache@v4
+        with:
+          path: .git/lfs
+          key: lfs-${{ hashFiles('.lfs-ids') }}
+          restore-keys: lfs-
+
+      - name: Fetch LFS files
+        run: git lfs pull
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.22.0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.22.0
+          cache: pnpm
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 1.26.4
+          cache-dependency-path: app/go.sum
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Type-check
+        run: pnpm typecheck
+
+      - name: Unit, golden and property tests (TypeScript)
+        run: pnpm test
+
+      - name: Go vet
+        working-directory: app
+        run: go vet ./...
+
+      - name: Go tests, with FBX read-back
+        run: pnpm test:go
+
+      - name: Screenshot tests
+        working-directory: app/frontend
+        run: |
+          pnpm exec playwright install chromium
+          pnpm exec playwright test
+
+      - name: Desktop build
+        run: |
+          go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.1
+          pnpm build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PS2CC-windows
+          path: app/build/bin/PS2CC.exe

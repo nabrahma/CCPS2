@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/joepal_crude_t-shirt_female",
+ "category": "clothes",
+ "name": "CrudeFemaleTshirt",
+ "uuid": "cb623353-fb17-4101-8d7e-9998cfcd1c49",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1095,
+ "faceCount": 1034,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22048
+  ],
+  [
+   962,
+   5320,
+   0.18461000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/joepal_crude_t-shirt_female.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "joepal_crude_t-shirt_female.bin",
+ "byteLength": 101152,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3285
+  },
+  "uvs": {
+   "offset": 13152,
+   "dtype": "f32",
+   "count": 2304
+  },
+  "faceVerts": {
+   "offset": 22368,
+   "dtype": "u32",
+   "count": 4136
+  },
+  "faceUvs": {
+   "offset": 38912,
+   "dtype": "u32",
+   "count": 4136
+  },
+  "refVerts": {
+   "offset": 55456,
+   "dtype": "u32",
+   "count": 3285
+  },
+  "refWeights": {
+   "offset": 68608,
+   "dtype": "f32",
+   "count": 3285
+  },
+  "refOffsets": {
+   "offset": 81760,
+   "dtype": "f32",
+   "count": 3285
+  },
+  "deleteVerts": {
+   "offset": 94912,
+   "dtype": "u32",
+   "count": 1560
+  }
+ }
+}

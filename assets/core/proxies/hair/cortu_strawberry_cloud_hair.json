@@ -1,0 +1,83 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/cortu_strawberry_cloud_hair",
+ "category": "hair",
+ "name": "strawberry_cloud",
+ "uuid": "6b7c2ab1-3225-4777-932b-9312a891eb55",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 479,
+ "faceCount": 288,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/cortu_strawberry_cloud_hair.png",
+  "textureSize": [
+   512,
+   512
+  ]
+ },
+ "binary": "cortu_strawberry_cloud_hair.bin",
+ "byteLength": 36084,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1437
+  },
+  "uvs": {
+   "offset": 5760,
+   "dtype": "f32",
+   "count": 960
+  },
+  "faceVerts": {
+   "offset": 9600,
+   "dtype": "u32",
+   "count": 1152
+  },
+  "faceUvs": {
+   "offset": 14208,
+   "dtype": "u32",
+   "count": 1152
+  },
+  "refVerts": {
+   "offset": 18816,
+   "dtype": "u32",
+   "count": 1437
+  },
+  "refWeights": {
+   "offset": 24576,
+   "dtype": "f32",
+   "count": 1437
+  },
+  "refOffsets": {
+   "offset": 30336,
+   "dtype": "f32",
+   "count": 1437
+  }
+ }
+}

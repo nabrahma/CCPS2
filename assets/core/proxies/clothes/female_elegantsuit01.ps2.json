@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/female_elegantsuit01",
+ "category": "clothes",
+ "name": "female_elegantsuit01",
+ "uuid": "8bb26477-c09f-4439-b05f-961516acf662",
+ "tags": [
+  "makehuman™",
+  "female",
+  "elegant"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1359,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22048
+  ],
+  [
+   962,
+   5320,
+   0.18461000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/female_elegantsuit01.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 2205,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 4192,
+ "binary": "female_elegantsuit01.ps2.bin",
+ "byteLength": 179500,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4077
+  },
+  "uvs": {
+   "offset": 16320,
+   "dtype": "f32",
+   "count": 3058
+  },
+  "faceVerts": {
+   "offset": 28560,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 68560,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 108560,
+   "dtype": "u32",
+   "count": 4077
+  },
+  "refWeights": {
+   "offset": 124880,
+   "dtype": "f32",
+   "count": 4077
+  },
+  "refOffsets": {
+   "offset": 141200,
+   "dtype": "f32",
+   "count": 4077
+  },
+  "deleteVerts": {
+   "offset": 157520,
+   "dtype": "u32",
+   "count": 4136
+  },
+  "sourceProxyVertex": {
+   "offset": 174064,
+   "dtype": "u32",
+   "count": 1359
+  }
+ }
+}

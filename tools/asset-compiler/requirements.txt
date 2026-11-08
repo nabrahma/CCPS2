@@ -1,0 +1,3 @@
+# PS2CC asset compiler (build time only). Pinned per PRD rule 4.
+numpy==2.2.6
+pillow==10.4.0

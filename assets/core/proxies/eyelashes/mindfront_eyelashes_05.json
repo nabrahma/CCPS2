@@ -1,0 +1,80 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:eyelashes/mindfront_eyelashes_05",
+ "category": "eyelashes",
+ "name": "Mind_Eyelashes_05",
+ "uuid": "7fcd6cf2-de2c-4077-9e4d-6d720d3799cf",
+ "tags": [
+  "eyelashes"
+ ],
+ "zDepth": 31,
+ "vertexCount": 19800,
+ "faceCount": 14850,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1.0
+ },
+ "binary": "mindfront_eyelashes_05.bin",
+ "byteLength": 1544400,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 59400
+  },
+  "uvs": {
+   "offset": 237600,
+   "dtype": "f32",
+   "count": 29700
+  },
+  "faceVerts": {
+   "offset": 356400,
+   "dtype": "u32",
+   "count": 59400
+  },
+  "faceUvs": {
+   "offset": 594000,
+   "dtype": "u32",
+   "count": 59400
+  },
+  "refVerts": {
+   "offset": 831600,
+   "dtype": "u32",
+   "count": 59400
+  },
+  "refWeights": {
+   "offset": 1069200,
+   "dtype": "f32",
+   "count": 59400
+  },
+  "refOffsets": {
+   "offset": 1306800,
+   "dtype": "f32",
+   "count": 59400
+  }
+ }
+}

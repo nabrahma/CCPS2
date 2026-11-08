@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/marco_105_armsleeve02",
+ "category": "clothes",
+ "name": "Armsleeve02",
+ "uuid": "631d8203-4532-45c9-b560-52a8adcde662",
+ "tags": [
+  "fgh_fashion",
+  "underwear"
+ ],
+ "zDepth": 40,
+ "vertexCount": 288,
+ "faceCount": 528,
+ "triangleFaces": 528,
+ "scale": [
+  [
+   11133,
+   11141,
+   0.11273
+  ],
+  [
+   11025,
+   11460,
+   0.6387100000000001
+  ],
+  [
+   11130,
+   11135,
+   0.13772
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.1063,
+   0,
+   0.001943
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 0,
+  "diffuseTexture": "textures/clothes/marco_105_armsleeve02.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "gloves",
+ "decimatedFrom": 288,
+ "hiddenFaces": "none",
+ "originalTriangles": 528,
+ "binary": "marco_105_armsleeve02.ps2.bin",
+ "byteLength": 33120,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 864
+  },
+  "uvs": {
+   "offset": 3456,
+   "dtype": "f32",
+   "count": 312
+  },
+  "faceVerts": {
+   "offset": 4704,
+   "dtype": "u32",
+   "count": 2112
+  },
+  "faceUvs": {
+   "offset": 13152,
+   "dtype": "u32",
+   "count": 2112
+  },
+  "refVerts": {
+   "offset": 21600,
+   "dtype": "u32",
+   "count": 864
+  },
+  "refWeights": {
+   "offset": 25056,
+   "dtype": "f32",
+   "count": 864
+  },
+  "refOffsets": {
+   "offset": 28512,
+   "dtype": "f32",
+   "count": 864
+  },
+  "sourceProxyVertex": {
+   "offset": 31968,
+   "dtype": "u32",
+   "count": 288
+  }
+ }
+}

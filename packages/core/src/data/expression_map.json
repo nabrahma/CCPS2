@@ -1,0 +1,21 @@
+{
+  "format": "ps2cc.expressionmap/1",
+  "note": "PRD F8: each exported blendshape is a blend of MakeHuman face pose units (assets/core/expressions/face_poseunits.json), applied in the listed order with the listed weights, as a .mhpose file would. 'L' and 'R' are the character's own left and right (MakeHuman's .L bones, +x). Mappings that need an artist's review are listed in TODO_ART.md. 'calibrate' (blinks): the weight of that unit is raised per character, from 1 in 'step' increments up to 'max', until the eyelids close (packages/core/src/expression/blink.ts).",
+  "expressions": [
+    { "name": "blink_L", "label": "Blink left", "group": "eyes", "units": [["LeftUpperLidClosed", 1.0], ["LeftLowerLidUp", 0.3]], "calibrate": { "unit": "LeftUpperLidClosed", "eye": "L", "max": 1.45, "step": 0.05 } },
+    { "name": "blink_R", "label": "Blink right", "group": "eyes", "units": [["RightUpperLidClosed", 1.0], ["RightLowerLidUp", 0.3]], "calibrate": { "unit": "RightUpperLidClosed", "eye": "R", "max": 1.45, "step": 0.05 } },
+    { "name": "squint", "label": "Squint", "group": "eyes", "units": [["LeftLowerLidUp", 1.0], ["RightLowerLidUp", 1.0], ["LeftCheekUp", 0.4], ["RightCheekUp", 0.4]] },
+    { "name": "browsUp", "label": "Brows up", "group": "brows", "units": [["LeftInnerBrowUp", 1.0], ["RightInnerBrowUp", 1.0], ["LeftOuterBrowUp", 1.0], ["RightOuterBrowUp", 1.0]] },
+    { "name": "browsDown", "label": "Brows down", "group": "brows", "units": [["LeftBrowDown", 1.0], ["RightBrowDown", 1.0]] },
+    { "name": "jawOpen", "label": "Jaw open", "group": "mouth", "units": [["JawDrop", 1.0]] },
+    { "name": "smile", "label": "Smile", "group": "mouth", "units": [["MouthLeftPullUp", 1.0], ["MouthRightPullUp", 1.0], ["LeftCheekUp", 0.5], ["RightCheekUp", 0.5]] },
+    { "name": "frown", "label": "Frown", "group": "mouth", "units": [["MouthLeftPullDown", 1.0], ["MouthRightPullDown", 1.0]] },
+    { "name": "AA", "label": "Viseme AA (father)", "group": "visemes", "units": [["JawDrop", 0.7], ["UpperLipUp", 0.2]] },
+    { "name": "EE", "label": "Viseme EE (see)", "group": "visemes", "units": [["JawDrop", 0.2], ["MouthLeftPullSide", 0.6], ["MouthRightPullSide", 0.6]] },
+    { "name": "IH", "label": "Viseme IH (sit)", "group": "visemes", "units": [["JawDrop", 0.35], ["MouthLeftPullSide", 0.3], ["MouthRightPullSide", 0.3]] },
+    { "name": "OH", "label": "Viseme OH (go)", "group": "visemes", "units": [["JawDrop", 0.5], ["LipsKiss", 0.5]] },
+    { "name": "OU", "label": "Viseme OU (you)", "group": "visemes", "units": [["JawDrop", 0.15], ["LipsKiss", 1.0]] },
+    { "name": "FV", "label": "Viseme FV (five)", "group": "visemes", "units": [["JawDrop", 0.1], ["lowerLipBackward", 0.8], ["lowerLipUp", 0.4]] },
+    { "name": "MBP", "label": "Viseme MBP (map)", "group": "visemes", "units": [["lowerLipUp", 0.6], ["UpperLipBackward", 0.3]] }
+  ]
+}

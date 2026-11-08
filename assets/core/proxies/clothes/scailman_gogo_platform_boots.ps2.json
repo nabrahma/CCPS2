@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/scailman_gogo_platform_boots",
+ "category": "clothes",
+ "name": "gogo_boots",
+ "uuid": "74f0b4e8-392a-4687-80ed-16156a1ae3b9",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 507,
+ "faceCount": 900,
+ "triangleFaces": 900,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/scailman_gogo_platform_boots.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "decimatedFrom": 5196,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 10068,
+ "binary": "scailman_gogo_platform_boots.ps2.bin",
+ "byteLength": 70428,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1521
+  },
+  "uvs": {
+   "offset": 6096,
+   "dtype": "f32",
+   "count": 856
+  },
+  "faceVerts": {
+   "offset": 9520,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "faceUvs": {
+   "offset": 23920,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "refVerts": {
+   "offset": 38320,
+   "dtype": "u32",
+   "count": 1521
+  },
+  "refWeights": {
+   "offset": 44416,
+   "dtype": "f32",
+   "count": 1521
+  },
+  "refOffsets": {
+   "offset": 50512,
+   "dtype": "f32",
+   "count": 1521
+  },
+  "deleteVerts": {
+   "offset": 56608,
+   "dtype": "u32",
+   "count": 2947
+  },
+  "sourceProxyVertex": {
+   "offset": 68400,
+   "dtype": "u32",
+   "count": 507
+  }
+ }
+}

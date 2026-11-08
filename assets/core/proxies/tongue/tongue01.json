@@ -1,0 +1,85 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:tongue/tongue01",
+ "category": "tongue",
+ "name": "tongue01",
+ "uuid": "52ad91a3-caad-4e50-8c38-67634e5e789c",
+ "tags": [
+  "makehuman\u2122"
+ ],
+ "zDepth": 50,
+ "vertexCount": 226,
+ "faceCount": 224,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/tongue/tongue01.jpg",
+  "textureSize": [
+   256,
+   256
+  ]
+ },
+ "binary": "tongue01.bin",
+ "byteLength": 20152,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 678
+  },
+  "uvs": {
+   "offset": 2720,
+   "dtype": "f32",
+   "count": 528
+  },
+  "faceVerts": {
+   "offset": 4832,
+   "dtype": "u32",
+   "count": 896
+  },
+  "faceUvs": {
+   "offset": 8416,
+   "dtype": "u32",
+   "count": 896
+  },
+  "refVerts": {
+   "offset": 12000,
+   "dtype": "u32",
+   "count": 678
+  },
+  "refWeights": {
+   "offset": 14720,
+   "dtype": "f32",
+   "count": 678
+  },
+  "refOffsets": {
+   "offset": 17440,
+   "dtype": "f32",
+   "count": 678
+  }
+ }
+}

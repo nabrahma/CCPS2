@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_long_full_skirt",
+ "category": "clothes",
+ "name": "Skirt_Full_Long",
+ "uuid": "32970377-f8af-4d67-a1a4-813f76c7fb52",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 2992,
+ "faceCount": 2924,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/toigo_long_full_skirt.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "toigo_long_full_skirt.bin",
+ "byteLength": 267376,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 8976
+  },
+  "uvs": {
+   "offset": 35904,
+   "dtype": "f32",
+   "count": 6272
+  },
+  "faceVerts": {
+   "offset": 60992,
+   "dtype": "u32",
+   "count": 11696
+  },
+  "faceUvs": {
+   "offset": 107776,
+   "dtype": "u32",
+   "count": 11696
+  },
+  "refVerts": {
+   "offset": 154560,
+   "dtype": "u32",
+   "count": 8976
+  },
+  "refWeights": {
+   "offset": 190464,
+   "dtype": "f32",
+   "count": 8976
+  },
+  "refOffsets": {
+   "offset": 226368,
+   "dtype": "f32",
+   "count": 8976
+  },
+  "deleteVerts": {
+   "offset": 262272,
+   "dtype": "u32",
+   "count": 1276
+  }
+ }
+}

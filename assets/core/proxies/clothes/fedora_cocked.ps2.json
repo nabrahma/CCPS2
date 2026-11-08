@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/fedora_cocked",
+ "category": "clothes",
+ "name": "fedora_cocked",
+ "uuid": "4cd07df0-831a-401f-86de-77a7d5e28142",
+ "tags": [
+  "makehuman™",
+  "hats"
+ ],
+ "zDepth": 50,
+ "vertexCount": 362,
+ "faceCount": 700,
+ "triangleFaces": 700,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.96862745098,
+   0.96862745098,
+   0.96862745098
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/fedora_cocked.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "decimatedFrom": 634,
+ "hiddenFaces": "computed",
+ "originalTriangles": 1244,
+ "binary": "fedora_cocked.ps2.bin",
+ "byteLength": 44952,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1086
+  },
+  "uvs": {
+   "offset": 4352,
+   "dtype": "f32",
+   "count": 798
+  },
+  "faceVerts": {
+   "offset": 7552,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "faceUvs": {
+   "offset": 18752,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "refVerts": {
+   "offset": 29952,
+   "dtype": "u32",
+   "count": 1086
+  },
+  "refWeights": {
+   "offset": 34304,
+   "dtype": "f32",
+   "count": 1086
+  },
+  "refOffsets": {
+   "offset": 38656,
+   "dtype": "f32",
+   "count": 1086
+  },
+  "coveredVerts": {
+   "offset": 43008,
+   "dtype": "u32",
+   "count": 124
+  },
+  "sourceProxyVertex": {
+   "offset": 43504,
+   "dtype": "u32",
+   "count": 362
+  }
+ }
+}

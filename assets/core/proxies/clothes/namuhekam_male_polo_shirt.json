@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/namuhekam_male_polo_shirt",
+ "category": "clothes",
+ "name": "Polo t-shirt",
+ "uuid": "9dfe1ee9-3083-4002-aa58-79b0fe795cd7",
+ "tags": [
+  "male",
+  "casual",
+  "profession",
+  "contemporary"
+ ],
+ "zDepth": 50,
+ "vertexCount": 2189,
+ "faceCount": 2053,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.31474
+  ],
+  [
+   1524,
+   4370,
+   0.5723600000000001
+  ],
+  [
+   1892,
+   3946,
+   0.19557000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/namuhekam_male_polo_shirt.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "namuhekam_male_polo_shirt.bin",
+ "byteLength": 191372,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 6567
+  },
+  "uvs": {
+   "offset": 26272,
+   "dtype": "f32",
+   "count": 5148
+  },
+  "faceVerts": {
+   "offset": 46864,
+   "dtype": "u32",
+   "count": 8212
+  },
+  "faceUvs": {
+   "offset": 79712,
+   "dtype": "u32",
+   "count": 8212
+  },
+  "refVerts": {
+   "offset": 112560,
+   "dtype": "u32",
+   "count": 6567
+  },
+  "refWeights": {
+   "offset": 138832,
+   "dtype": "f32",
+   "count": 6567
+  },
+  "refOffsets": {
+   "offset": 165104,
+   "dtype": "f32",
+   "count": 6567
+  }
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/aethelraed_flapper_dress",
+ "category": "clothes",
+ "name": "Flapper_Dress_1",
+ "uuid": "4e772809-81e1-498c-9b91-2c0da62cda4b",
+ "tags": [
+  "female",
+  "historical",
+  "dress"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1501,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/aethelraed_flapper_dress.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 6690,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 12846,
+ "binary": "aethelraed_flapper_dress.ps2.bin",
+ "byteLength": 188468,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4503
+  },
+  "uvs": {
+   "offset": 18016,
+   "dtype": "f32",
+   "count": 3088
+  },
+  "faceVerts": {
+   "offset": 30368,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 70368,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 110368,
+   "dtype": "u32",
+   "count": 4503
+  },
+  "refWeights": {
+   "offset": 128384,
+   "dtype": "f32",
+   "count": 4503
+  },
+  "refOffsets": {
+   "offset": 146400,
+   "dtype": "f32",
+   "count": 4503
+  },
+  "deleteVerts": {
+   "offset": 164416,
+   "dtype": "u32",
+   "count": 4510
+  },
+  "sourceProxyVertex": {
+   "offset": 182464,
+   "dtype": "u32",
+   "count": 1501
+  }
+ }
+}

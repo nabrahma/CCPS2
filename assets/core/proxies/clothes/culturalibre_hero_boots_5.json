@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_hero_boots_5",
+ "category": "clothes",
+ "name": "hero_boots_5",
+ "uuid": "83aea5b6-1f74-4c4c-a5db-d322888e60d9",
+ "tags": [],
+ "zDepth": 70,
+ "vertexCount": 5780,
+ "faceCount": 5776,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/culturalibre_hero_boots_5.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "binary": "culturalibre_hero_boots_5.bin",
+ "byteLength": 525080,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 17340
+  },
+  "uvs": {
+   "offset": 69360,
+   "dtype": "f32",
+   "count": 12902
+  },
+  "faceVerts": {
+   "offset": 120976,
+   "dtype": "u32",
+   "count": 23104
+  },
+  "faceUvs": {
+   "offset": 213392,
+   "dtype": "u32",
+   "count": 23104
+  },
+  "refVerts": {
+   "offset": 305808,
+   "dtype": "u32",
+   "count": 17340
+  },
+  "refWeights": {
+   "offset": 375168,
+   "dtype": "f32",
+   "count": 17340
+  },
+  "refOffsets": {
+   "offset": 444528,
+   "dtype": "f32",
+   "count": 17340
+  },
+  "deleteVerts": {
+   "offset": 513888,
+   "dtype": "u32",
+   "count": 2798
+  }
+ }
+}

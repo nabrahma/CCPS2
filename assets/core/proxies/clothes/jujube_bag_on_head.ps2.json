@@ -1,0 +1,83 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/jujube_bag_on_head",
+ "category": "clothes",
+ "name": "pillow_man",
+ "uuid": "c12ad7ff-71a0-4bf3-97eb-4a3a9ddfa7cf",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 288,
+ "faceCount": 499,
+ "triangleFaces": 499,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": null,
+ "slot": "accessory",
+ "decimatedFrom": 5665,
+ "hiddenFaces": "computed",
+ "originalTriangles": 11264,
+ "binary": "jujube_bag_on_head.ps2.bin",
+ "byteLength": 35616,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 864
+  },
+  "uvs": {
+   "offset": 3456,
+   "dtype": "f32",
+   "count": 568
+  },
+  "faceVerts": {
+   "offset": 5728,
+   "dtype": "u32",
+   "count": 1996
+  },
+  "faceUvs": {
+   "offset": 13712,
+   "dtype": "u32",
+   "count": 1996
+  },
+  "refVerts": {
+   "offset": 21696,
+   "dtype": "u32",
+   "count": 864
+  },
+  "refWeights": {
+   "offset": 25152,
+   "dtype": "f32",
+   "count": 864
+  },
+  "refOffsets": {
+   "offset": 28608,
+   "dtype": "f32",
+   "count": 864
+  },
+  "coveredVerts": {
+   "offset": 32064,
+   "dtype": "u32",
+   "count": 599
+  },
+  "sourceProxyVertex": {
+   "offset": 34464,
+   "dtype": "u32",
+   "count": 288
+  }
+ }
+}

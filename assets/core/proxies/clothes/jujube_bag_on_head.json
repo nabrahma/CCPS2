@@ -1,0 +1,70 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/jujube_bag_on_head",
+ "category": "clothes",
+ "name": "pillow_man",
+ "uuid": "c12ad7ff-71a0-4bf3-97eb-4a3a9ddfa7cf",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 5665,
+ "faceCount": 5632,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": null,
+ "slot": "accessory",
+ "binary": "jujube_bag_on_head.bin",
+ "byteLength": 499148,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 16995
+  },
+  "uvs": {
+   "offset": 67984,
+   "dtype": "f32",
+   "count": 11748
+  },
+  "faceVerts": {
+   "offset": 114976,
+   "dtype": "u32",
+   "count": 22528
+  },
+  "faceUvs": {
+   "offset": 205088,
+   "dtype": "u32",
+   "count": 22528
+  },
+  "refVerts": {
+   "offset": 295200,
+   "dtype": "u32",
+   "count": 16995
+  },
+  "refWeights": {
+   "offset": 363184,
+   "dtype": "f32",
+   "count": 16995
+  },
+  "refOffsets": {
+   "offset": 431168,
+   "dtype": "f32",
+   "count": 16995
+  }
+ }
+}

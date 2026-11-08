@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_halter_dress_knee_length",
+ "category": "clothes",
+ "name": "Dress_Knee_Halter",
+ "uuid": "3ce3aeac-d3e1-4930-8a47-6826e88fd7e0",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1313,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.08369,
+   0.005596,
+   0.005999
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/toigo_halter_dress_knee_length.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 2031,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 3936,
+ "binary": "toigo_halter_dress_knee_length.ps2.bin",
+ "byteLength": 164004,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3939
+  },
+  "uvs": {
+   "offset": 15760,
+   "dtype": "f32",
+   "count": 2802
+  },
+  "faceVerts": {
+   "offset": 26976,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 66976,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 106976,
+   "dtype": "u32",
+   "count": 3939
+  },
+  "refWeights": {
+   "offset": 122736,
+   "dtype": "f32",
+   "count": 3939
+  },
+  "refOffsets": {
+   "offset": 138496,
+   "dtype": "f32",
+   "count": 3939
+  },
+  "deleteVerts": {
+   "offset": 154256,
+   "dtype": "u32",
+   "count": 1123
+  },
+  "sourceProxyVertex": {
+   "offset": 158752,
+   "dtype": "u32",
+   "count": 1313
+  }
+ }
+}

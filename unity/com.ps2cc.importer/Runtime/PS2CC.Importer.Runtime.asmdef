@@ -1,0 +1,6 @@
+{
+  "name": "PS2CC.Importer.Runtime",
+  "rootNamespace": "PS2CC",
+  "references": [],
+  "autoReferenced": true
+}

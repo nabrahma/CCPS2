@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_halter_dress_with_fluted_skirt",
+ "category": "clothes",
+ "name": "Dress_Long_Fluted_Skirt",
+ "uuid": "5fdb1f05-bf96-46b2-bde5-570554f72c7b",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1313,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.06401,
+   0.002897,
+   0.002897
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/toigo_halter_dress_with_fluted_skirt.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 3279,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 6432,
+ "binary": "toigo_halter_dress_with_fluted_skirt.ps2.bin",
+ "byteLength": 167572,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3939
+  },
+  "uvs": {
+   "offset": 15760,
+   "dtype": "f32",
+   "count": 2934
+  },
+  "faceVerts": {
+   "offset": 27504,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 67504,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 107504,
+   "dtype": "u32",
+   "count": 3939
+  },
+  "refWeights": {
+   "offset": 123264,
+   "dtype": "f32",
+   "count": 3939
+  },
+  "refOffsets": {
+   "offset": 139024,
+   "dtype": "f32",
+   "count": 3939
+  },
+  "deleteVerts": {
+   "offset": 154784,
+   "dtype": "u32",
+   "count": 1883
+  },
+  "sourceProxyVertex": {
+   "offset": 162320,
+   "dtype": "u32",
+   "count": 1313
+  }
+ }
+}

@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/braid01",
+ "category": "hair",
+ "name": "Braid01",
+ "uuid": "eead6f99-d6c6-4f6b-b6c2-210459d7a62e",
+ "tags": [
+  "makehuman\u2122",
+  "long",
+  "female"
+ ],
+ "zDepth": 50,
+ "vertexCount": 4493,
+ "faceCount": 2759,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22048
+  ],
+  [
+   962,
+   5320,
+   0.18461000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/braid01.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "braid01.bin",
+ "byteLength": 342140,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 13479
+  },
+  "uvs": {
+   "offset": 53920,
+   "dtype": "f32",
+   "count": 9542
+  },
+  "faceVerts": {
+   "offset": 92096,
+   "dtype": "u32",
+   "count": 11036
+  },
+  "faceUvs": {
+   "offset": 136240,
+   "dtype": "u32",
+   "count": 11036
+  },
+  "refVerts": {
+   "offset": 180384,
+   "dtype": "u32",
+   "count": 13479
+  },
+  "refWeights": {
+   "offset": 234304,
+   "dtype": "f32",
+   "count": 13479
+  },
+  "refOffsets": {
+   "offset": 288224,
+   "dtype": "f32",
+   "count": 13479
+  }
+ }
+}

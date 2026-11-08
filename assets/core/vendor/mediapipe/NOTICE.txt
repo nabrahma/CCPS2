@@ -1,0 +1,6 @@
+MediaPipe Tasks Vision (Face Landmarker)
+WASM runtime: npm @mediapipe/tasks-vision 1.2.2
+Model: face_landmarker.task (float16, version 1)
+Copyright Google LLC. Licensed under the Apache License, Version 2.0:
+https://www.apache.org/licenses/LICENSE-2.0
+Source: https://developers.google.com/edge/mediapipe/solutions/vision/face_landmarker

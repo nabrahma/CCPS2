@@ -1,0 +1,301 @@
+{
+ "oracle": "makehuman@a8bc2d54ff0ac92e78ff71431b1023eda42bf482 (headless, unmodified core)",
+ "units": "m",
+ "vertexCount": 19158,
+ "sets": [
+  {
+   "index": 0,
+   "proxies": {
+    "mh:clothes/male_casualsuit01": {
+     "file": "proxy_00_clothes_male_casualsuit01.bin",
+     "vertexCount": 8426
+    },
+    "mh:clothes/female_casualsuit01": {
+     "file": "proxy_00_clothes_female_casualsuit01.bin",
+     "vertexCount": 2197
+    },
+    "mh:clothes/male_worksuit01": {
+     "file": "proxy_00_clothes_male_worksuit01.bin",
+     "vertexCount": 3763
+    },
+    "mh:clothes/shoes01": {
+     "file": "proxy_00_clothes_shoes01.bin",
+     "vertexCount": 1722
+    },
+    "mh:clothes/fedora01": {
+     "file": "proxy_00_clothes_fedora01.bin",
+     "vertexCount": 634
+    },
+    "mh:hair/bob01": {
+     "file": "proxy_00_hair_bob01.bin",
+     "vertexCount": 5203
+    },
+    "mh:hair/short02": {
+     "file": "proxy_00_hair_short02.bin",
+     "vertexCount": 1755
+    },
+    "mh:hair/ponytail01": {
+     "file": "proxy_00_hair_ponytail01.bin",
+     "vertexCount": 3718
+    },
+    "mh:eyebrows/eyebrow001": {
+     "file": "proxy_00_eyebrows_eyebrow001.bin",
+     "vertexCount": 124
+    },
+    "mh:eyelashes/eyelashes01": {
+     "file": "proxy_00_eyelashes_eyelashes01.bin",
+     "vertexCount": 250
+    },
+    "mh:eyes/low-poly": {
+     "file": "proxy_00_eyes_low-poly.bin",
+     "vertexCount": 96
+    }
+   }
+  },
+  {
+   "index": 1,
+   "proxies": {
+    "mh:clothes/male_casualsuit01": {
+     "file": "proxy_01_clothes_male_casualsuit01.bin",
+     "vertexCount": 8426
+    },
+    "mh:clothes/female_casualsuit01": {
+     "file": "proxy_01_clothes_female_casualsuit01.bin",
+     "vertexCount": 2197
+    },
+    "mh:clothes/male_worksuit01": {
+     "file": "proxy_01_clothes_male_worksuit01.bin",
+     "vertexCount": 3763
+    },
+    "mh:clothes/shoes01": {
+     "file": "proxy_01_clothes_shoes01.bin",
+     "vertexCount": 1722
+    },
+    "mh:clothes/fedora01": {
+     "file": "proxy_01_clothes_fedora01.bin",
+     "vertexCount": 634
+    },
+    "mh:hair/bob01": {
+     "file": "proxy_01_hair_bob01.bin",
+     "vertexCount": 5203
+    },
+    "mh:hair/short02": {
+     "file": "proxy_01_hair_short02.bin",
+     "vertexCount": 1755
+    },
+    "mh:hair/ponytail01": {
+     "file": "proxy_01_hair_ponytail01.bin",
+     "vertexCount": 3718
+    },
+    "mh:eyebrows/eyebrow001": {
+     "file": "proxy_01_eyebrows_eyebrow001.bin",
+     "vertexCount": 124
+    },
+    "mh:eyelashes/eyelashes01": {
+     "file": "proxy_01_eyelashes_eyelashes01.bin",
+     "vertexCount": 250
+    },
+    "mh:eyes/low-poly": {
+     "file": "proxy_01_eyes_low-poly.bin",
+     "vertexCount": 96
+    }
+   }
+  },
+  {
+   "index": 2,
+   "proxies": {
+    "mh:clothes/male_casualsuit01": {
+     "file": "proxy_02_clothes_male_casualsuit01.bin",
+     "vertexCount": 8426
+    },
+    "mh:clothes/female_casualsuit01": {
+     "file": "proxy_02_clothes_female_casualsuit01.bin",
+     "vertexCount": 2197
+    },
+    "mh:clothes/male_worksuit01": {
+     "file": "proxy_02_clothes_male_worksuit01.bin",
+     "vertexCount": 3763
+    },
+    "mh:clothes/shoes01": {
+     "file": "proxy_02_clothes_shoes01.bin",
+     "vertexCount": 1722
+    },
+    "mh:clothes/fedora01": {
+     "file": "proxy_02_clothes_fedora01.bin",
+     "vertexCount": 634
+    },
+    "mh:hair/bob01": {
+     "file": "proxy_02_hair_bob01.bin",
+     "vertexCount": 5203
+    },
+    "mh:hair/short02": {
+     "file": "proxy_02_hair_short02.bin",
+     "vertexCount": 1755
+    },
+    "mh:hair/ponytail01": {
+     "file": "proxy_02_hair_ponytail01.bin",
+     "vertexCount": 3718
+    },
+    "mh:eyebrows/eyebrow001": {
+     "file": "proxy_02_eyebrows_eyebrow001.bin",
+     "vertexCount": 124
+    },
+    "mh:eyelashes/eyelashes01": {
+     "file": "proxy_02_eyelashes_eyelashes01.bin",
+     "vertexCount": 250
+    },
+    "mh:eyes/low-poly": {
+     "file": "proxy_02_eyes_low-poly.bin",
+     "vertexCount": 96
+    }
+   }
+  },
+  {
+   "index": 3,
+   "proxies": {
+    "mh:clothes/male_casualsuit01": {
+     "file": "proxy_03_clothes_male_casualsuit01.bin",
+     "vertexCount": 8426
+    },
+    "mh:clothes/female_casualsuit01": {
+     "file": "proxy_03_clothes_female_casualsuit01.bin",
+     "vertexCount": 2197
+    },
+    "mh:clothes/male_worksuit01": {
+     "file": "proxy_03_clothes_male_worksuit01.bin",
+     "vertexCount": 3763
+    },
+    "mh:clothes/shoes01": {
+     "file": "proxy_03_clothes_shoes01.bin",
+     "vertexCount": 1722
+    },
+    "mh:clothes/fedora01": {
+     "file": "proxy_03_clothes_fedora01.bin",
+     "vertexCount": 634
+    },
+    "mh:hair/bob01": {
+     "file": "proxy_03_hair_bob01.bin",
+     "vertexCount": 5203
+    },
+    "mh:hair/short02": {
+     "file": "proxy_03_hair_short02.bin",
+     "vertexCount": 1755
+    },
+    "mh:hair/ponytail01": {
+     "file": "proxy_03_hair_ponytail01.bin",
+     "vertexCount": 3718
+    },
+    "mh:eyebrows/eyebrow001": {
+     "file": "proxy_03_eyebrows_eyebrow001.bin",
+     "vertexCount": 124
+    },
+    "mh:eyelashes/eyelashes01": {
+     "file": "proxy_03_eyelashes_eyelashes01.bin",
+     "vertexCount": 250
+    },
+    "mh:eyes/low-poly": {
+     "file": "proxy_03_eyes_low-poly.bin",
+     "vertexCount": 96
+    }
+   }
+  },
+  {
+   "index": 7,
+   "proxies": {
+    "mh:clothes/male_casualsuit01": {
+     "file": "proxy_07_clothes_male_casualsuit01.bin",
+     "vertexCount": 8426
+    },
+    "mh:clothes/female_casualsuit01": {
+     "file": "proxy_07_clothes_female_casualsuit01.bin",
+     "vertexCount": 2197
+    },
+    "mh:clothes/male_worksuit01": {
+     "file": "proxy_07_clothes_male_worksuit01.bin",
+     "vertexCount": 3763
+    },
+    "mh:clothes/shoes01": {
+     "file": "proxy_07_clothes_shoes01.bin",
+     "vertexCount": 1722
+    },
+    "mh:clothes/fedora01": {
+     "file": "proxy_07_clothes_fedora01.bin",
+     "vertexCount": 634
+    },
+    "mh:hair/bob01": {
+     "file": "proxy_07_hair_bob01.bin",
+     "vertexCount": 5203
+    },
+    "mh:hair/short02": {
+     "file": "proxy_07_hair_short02.bin",
+     "vertexCount": 1755
+    },
+    "mh:hair/ponytail01": {
+     "file": "proxy_07_hair_ponytail01.bin",
+     "vertexCount": 3718
+    },
+    "mh:eyebrows/eyebrow001": {
+     "file": "proxy_07_eyebrows_eyebrow001.bin",
+     "vertexCount": 124
+    },
+    "mh:eyelashes/eyelashes01": {
+     "file": "proxy_07_eyelashes_eyelashes01.bin",
+     "vertexCount": 250
+    },
+    "mh:eyes/low-poly": {
+     "file": "proxy_07_eyes_low-poly.bin",
+     "vertexCount": 96
+    }
+   }
+  },
+  {
+   "index": 13,
+   "proxies": {
+    "mh:clothes/male_casualsuit01": {
+     "file": "proxy_13_clothes_male_casualsuit01.bin",
+     "vertexCount": 8426
+    },
+    "mh:clothes/female_casualsuit01": {
+     "file": "proxy_13_clothes_female_casualsuit01.bin",
+     "vertexCount": 2197
+    },
+    "mh:clothes/male_worksuit01": {
+     "file": "proxy_13_clothes_male_worksuit01.bin",
+     "vertexCount": 3763
+    },
+    "mh:clothes/shoes01": {
+     "file": "proxy_13_clothes_shoes01.bin",
+     "vertexCount": 1722
+    },
+    "mh:clothes/fedora01": {
+     "file": "proxy_13_clothes_fedora01.bin",
+     "vertexCount": 634
+    },
+    "mh:hair/bob01": {
+     "file": "proxy_13_hair_bob01.bin",
+     "vertexCount": 5203
+    },
+    "mh:hair/short02": {
+     "file": "proxy_13_hair_short02.bin",
+     "vertexCount": 1755
+    },
+    "mh:hair/ponytail01": {
+     "file": "proxy_13_hair_ponytail01.bin",
+     "vertexCount": 3718
+    },
+    "mh:eyebrows/eyebrow001": {
+     "file": "proxy_13_eyebrows_eyebrow001.bin",
+     "vertexCount": 124
+    },
+    "mh:eyelashes/eyelashes01": {
+     "file": "proxy_13_eyelashes_eyelashes01.bin",
+     "vertexCount": 250
+    },
+    "mh:eyes/low-poly": {
+     "file": "proxy_13_eyes_low-poly.bin",
+     "vertexCount": 96
+    }
+   }
+  }
+ ]
+}

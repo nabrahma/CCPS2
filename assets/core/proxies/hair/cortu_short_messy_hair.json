@@ -1,0 +1,83 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/cortu_short_messy_hair",
+ "category": "hair",
+ "name": "short_messy",
+ "uuid": "fe0fc503-fc46-42b8-935b-08193e4177fd",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 832,
+ "faceCount": 546,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/cortu_short_messy_hair.png",
+  "textureSize": [
+   512,
+   512
+  ]
+ },
+ "binary": "cortu_short_messy_hair.bin",
+ "byteLength": 64064,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2496
+  },
+  "uvs": {
+   "offset": 9984,
+   "dtype": "f32",
+   "count": 1664
+  },
+  "faceVerts": {
+   "offset": 16640,
+   "dtype": "u32",
+   "count": 2184
+  },
+  "faceUvs": {
+   "offset": 25376,
+   "dtype": "u32",
+   "count": 2184
+  },
+  "refVerts": {
+   "offset": 34112,
+   "dtype": "u32",
+   "count": 2496
+  },
+  "refWeights": {
+   "offset": 44096,
+   "dtype": "f32",
+   "count": 2496
+  },
+  "refOffsets": {
+   "offset": 54080,
+   "dtype": "f32",
+   "count": 2496
+  }
+ }
+}

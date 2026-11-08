@@ -1,0 +1,285 @@
+{
+ "format": "ps2cc.weights/1",
+ "rig": "game_engine",
+ "bones": [
+  {
+   "bone": "Root",
+   "offset": 0,
+   "count": 0
+  },
+  {
+   "bone": "pelvis",
+   "offset": 0,
+   "count": 2322
+  },
+  {
+   "bone": "spine_01",
+   "offset": 2322,
+   "count": 1755
+  },
+  {
+   "bone": "spine_02",
+   "offset": 4077,
+   "count": 1716
+  },
+  {
+   "bone": "spine_03",
+   "offset": 5793,
+   "count": 2891
+  },
+  {
+   "bone": "thigh_l",
+   "offset": 8684,
+   "count": 1520
+  },
+  {
+   "bone": "thigh_r",
+   "offset": 10204,
+   "count": 1519
+  },
+  {
+   "bone": "calf_l",
+   "offset": 11723,
+   "count": 1018
+  },
+  {
+   "bone": "calf_r",
+   "offset": 12741,
+   "count": 1015
+  },
+  {
+   "bone": "clavicle_l",
+   "offset": 13756,
+   "count": 856
+  },
+  {
+   "bone": "clavicle_r",
+   "offset": 14612,
+   "count": 826
+  },
+  {
+   "bone": "foot_l",
+   "offset": 15438,
+   "count": 840
+  },
+  {
+   "bone": "foot_r",
+   "offset": 16278,
+   "count": 714
+  },
+  {
+   "bone": "neck_01",
+   "offset": 16992,
+   "count": 1160
+  },
+  {
+   "bone": "upperarm_l",
+   "offset": 18152,
+   "count": 1096
+  },
+  {
+   "bone": "upperarm_r",
+   "offset": 19248,
+   "count": 1076
+  },
+  {
+   "bone": "ball_l",
+   "offset": 20324,
+   "count": 1064
+  },
+  {
+   "bone": "ball_r",
+   "offset": 21388,
+   "count": 1064
+  },
+  {
+   "bone": "head",
+   "offset": 22452,
+   "count": 5757
+  },
+  {
+   "bone": "lowerarm_l",
+   "offset": 28209,
+   "count": 566
+  },
+  {
+   "bone": "lowerarm_r",
+   "offset": 28775,
+   "count": 570
+  },
+  {
+   "bone": "hand_l",
+   "offset": 29345,
+   "count": 592
+  },
+  {
+   "bone": "hand_r",
+   "offset": 29937,
+   "count": 595
+  },
+  {
+   "bone": "index_01_l",
+   "offset": 30532,
+   "count": 210
+  },
+  {
+   "bone": "index_01_r",
+   "offset": 30742,
+   "count": 210
+  },
+  {
+   "bone": "index_02_l",
+   "offset": 30952,
+   "count": 218
+  },
+  {
+   "bone": "index_02_r",
+   "offset": 31170,
+   "count": 218
+  },
+  {
+   "bone": "index_03_l",
+   "offset": 31388,
+   "count": 165
+  },
+  {
+   "bone": "index_03_r",
+   "offset": 31553,
+   "count": 165
+  },
+  {
+   "bone": "middle_01_l",
+   "offset": 31718,
+   "count": 246
+  },
+  {
+   "bone": "middle_01_r",
+   "offset": 31964,
+   "count": 240
+  },
+  {
+   "bone": "middle_02_l",
+   "offset": 32204,
+   "count": 213
+  },
+  {
+   "bone": "middle_02_r",
+   "offset": 32417,
+   "count": 213
+  },
+  {
+   "bone": "middle_03_l",
+   "offset": 32630,
+   "count": 166
+  },
+  {
+   "bone": "middle_03_r",
+   "offset": 32796,
+   "count": 166
+  },
+  {
+   "bone": "pinky_01_l",
+   "offset": 32962,
+   "count": 252
+  },
+  {
+   "bone": "pinky_01_r",
+   "offset": 33214,
+   "count": 252
+  },
+  {
+   "bone": "pinky_02_l",
+   "offset": 33466,
+   "count": 209
+  },
+  {
+   "bone": "pinky_02_r",
+   "offset": 33675,
+   "count": 209
+  },
+  {
+   "bone": "pinky_03_l",
+   "offset": 33884,
+   "count": 214
+  },
+  {
+   "bone": "pinky_03_r",
+   "offset": 34098,
+   "count": 214
+  },
+  {
+   "bone": "ring_01_l",
+   "offset": 34312,
+   "count": 245
+  },
+  {
+   "bone": "ring_01_r",
+   "offset": 34557,
+   "count": 245
+  },
+  {
+   "bone": "ring_02_l",
+   "offset": 34802,
+   "count": 194
+  },
+  {
+   "bone": "ring_02_r",
+   "offset": 34996,
+   "count": 194
+  },
+  {
+   "bone": "ring_03_l",
+   "offset": 35190,
+   "count": 161
+  },
+  {
+   "bone": "ring_03_r",
+   "offset": 35351,
+   "count": 161
+  },
+  {
+   "bone": "thumb_01_l",
+   "offset": 35512,
+   "count": 115
+  },
+  {
+   "bone": "thumb_01_r",
+   "offset": 35627,
+   "count": 115
+  },
+  {
+   "bone": "thumb_02_l",
+   "offset": 35742,
+   "count": 193
+  },
+  {
+   "bone": "thumb_02_r",
+   "offset": 35935,
+   "count": 193
+  },
+  {
+   "bone": "thumb_03_l",
+   "offset": 36128,
+   "count": 144
+  },
+  {
+   "bone": "thumb_03_r",
+   "offset": 36272,
+   "count": 144
+  }
+ ],
+ "binary": "game_engine.weights.bin",
+ "byteLength": 291328,
+ "buffers": {
+  "vertex": {
+   "offset": 0,
+   "dtype": "u32",
+   "count": 36416
+  },
+  "weight": {
+   "offset": 145664,
+   "dtype": "f32",
+   "count": 36416
+  }
+ }
+}

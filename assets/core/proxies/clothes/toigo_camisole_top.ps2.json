@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_camisole_top",
+ "category": "clothes",
+ "name": "Camisole_Top",
+ "uuid": "fc742b92-85d8-4ad1-9a3c-9a4db4b8e8e7",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1008,
+ "faceCount": 1800,
+ "triangleFaces": 1800,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/toigo_camisole_top.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 4224,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 8232,
+ "binary": "toigo_camisole_top.ps2.bin",
+ "byteLength": 122640,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3024
+  },
+  "uvs": {
+   "offset": 12096,
+   "dtype": "f32",
+   "count": 2236
+  },
+  "faceVerts": {
+   "offset": 21040,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "faceUvs": {
+   "offset": 49840,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "refVerts": {
+   "offset": 78640,
+   "dtype": "u32",
+   "count": 3024
+  },
+  "refWeights": {
+   "offset": 90736,
+   "dtype": "f32",
+   "count": 3024
+  },
+  "refOffsets": {
+   "offset": 102832,
+   "dtype": "f32",
+   "count": 3024
+  },
+  "deleteVerts": {
+   "offset": 114928,
+   "dtype": "u32",
+   "count": 917
+  },
+  "sourceProxyVertex": {
+   "offset": 118608,
+   "dtype": "u32",
+   "count": 1008
+  }
+ }
+}

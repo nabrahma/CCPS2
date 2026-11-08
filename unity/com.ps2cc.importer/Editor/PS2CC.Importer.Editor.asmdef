@@ -1,0 +1,7 @@
+{
+  "name": "PS2CC.Importer.Editor",
+  "rootNamespace": "PS2CC.Editor",
+  "references": ["PS2CC.Importer.Runtime"],
+  "includePlatforms": ["Editor"],
+  "autoReferenced": true
+}

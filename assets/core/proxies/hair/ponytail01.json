@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/ponytail01",
+ "category": "hair",
+ "name": "ponytail01",
+ "uuid": "44e0340e-c7a6-4d22-814c-0632968d2dde",
+ "tags": [
+  "makehuman\u2122",
+  "female",
+  "long"
+ ],
+ "zDepth": 50,
+ "vertexCount": 3718,
+ "faceCount": 2676,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22048
+  ],
+  [
+   962,
+   5320,
+   0.18461000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/ponytail01.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "ponytail01.bin",
+ "byteLength": 296520,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 11154
+  },
+  "uvs": {
+   "offset": 44624,
+   "dtype": "f32",
+   "count": 8098
+  },
+  "faceVerts": {
+   "offset": 77024,
+   "dtype": "u32",
+   "count": 10704
+  },
+  "faceUvs": {
+   "offset": 119840,
+   "dtype": "u32",
+   "count": 10704
+  },
+  "refVerts": {
+   "offset": 162656,
+   "dtype": "u32",
+   "count": 11154
+  },
+  "refWeights": {
+   "offset": 207280,
+   "dtype": "f32",
+   "count": 11154
+  },
+  "refOffsets": {
+   "offset": 251904,
+   "dtype": "f32",
+   "count": 11154
+  }
+ }
+}

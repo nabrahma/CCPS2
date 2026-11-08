@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_keyhole_neck_dress",
+ "category": "clothes",
+ "name": "Dress_Keyhole_Neck",
+ "uuid": "8ff1cc86-a389-4f7e-bf4d-f5c2905cdc1d",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 9067,
+ "faceCount": 8944,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 0.0,
+  "diffuseTexture": "textures/clothes/toigo_keyhole_neck_dress.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "toigo_keyhole_neck_dress.bin",
+ "byteLength": 804208,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 27201
+  },
+  "uvs": {
+   "offset": 108816,
+   "dtype": "f32",
+   "count": 19246
+  },
+  "faceVerts": {
+   "offset": 185808,
+   "dtype": "u32",
+   "count": 35776
+  },
+  "faceUvs": {
+   "offset": 328912,
+   "dtype": "u32",
+   "count": 35776
+  },
+  "refVerts": {
+   "offset": 472016,
+   "dtype": "u32",
+   "count": 27201
+  },
+  "refWeights": {
+   "offset": 580832,
+   "dtype": "f32",
+   "count": 27201
+  },
+  "refOffsets": {
+   "offset": 689648,
+   "dtype": "f32",
+   "count": 27201
+  },
+  "deleteVerts": {
+   "offset": 798464,
+   "dtype": "u32",
+   "count": 1436
+  }
+ }
+}

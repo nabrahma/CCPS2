@@ -1,0 +1,83 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/sonntag78_junglebook_hair",
+ "category": "hair",
+ "name": "junglebookhair",
+ "uuid": "70c2fe8d-31e7-46d3-8cde-0a895769fd28",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 4885,
+ "faceCount": 4288,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1394
+  ],
+  [
+   791,
+   881,
+   0.21678000000000003
+  ],
+  [
+   962,
+   5320,
+   0.18581000000000003
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 0.0,
+  "diffuseTexture": "textures/hair/sonntag78_junglebook_hair.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "sonntag78_junglebook_hair.bin",
+ "byteLength": 411436,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 14655
+  },
+  "uvs": {
+   "offset": 58624,
+   "dtype": "f32",
+   "count": 9932
+  },
+  "faceVerts": {
+   "offset": 98352,
+   "dtype": "u32",
+   "count": 17152
+  },
+  "faceUvs": {
+   "offset": 166960,
+   "dtype": "u32",
+   "count": 17152
+  },
+  "refVerts": {
+   "offset": 235568,
+   "dtype": "u32",
+   "count": 14655
+  },
+  "refWeights": {
+   "offset": 294192,
+   "dtype": "f32",
+   "count": 14655
+  },
+  "refOffsets": {
+   "offset": 352816,
+   "dtype": "f32",
+   "count": 14655
+  }
+ }
+}

@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/learning_mma_fighting_gloves",
+ "category": "clothes",
+ "name": "mma_gloves",
+ "uuid": "995c9193-db0b-42ea-83cc-92864ba0916d",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 479,
+ "faceCount": 700,
+ "triangleFaces": 700,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.3284,
+   0.3033,
+   0.3361
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/learning_mma_fighting_gloves.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "gloves",
+ "decimatedFrom": 2740,
+ "hiddenFaces": "computed",
+ "originalTriangles": 4392,
+ "binary": "learning_mma_fighting_gloves.ps2.bin",
+ "byteLength": 54844,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1437
+  },
+  "uvs": {
+   "offset": 5760,
+   "dtype": "f32",
+   "count": 748
+  },
+  "faceVerts": {
+   "offset": 8752,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "faceUvs": {
+   "offset": 19952,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "refVerts": {
+   "offset": 31152,
+   "dtype": "u32",
+   "count": 1437
+  },
+  "refWeights": {
+   "offset": 36912,
+   "dtype": "f32",
+   "count": 1437
+  },
+  "refOffsets": {
+   "offset": 42672,
+   "dtype": "f32",
+   "count": 1437
+  },
+  "coveredVerts": {
+   "offset": 48432,
+   "dtype": "u32",
+   "count": 1124
+  },
+  "sourceProxyVertex": {
+   "offset": 52928,
+   "dtype": "u32",
+   "count": 479
+  }
+ }
+}

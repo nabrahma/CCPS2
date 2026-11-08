@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ps2_body_8k",
+    "triangles": 8000,
+    "target": 8000,
+    "deviation": "0.00%",
+    "vertices": 4697,
+    "faceRetention": "95.8%",
+    "flipped": 0,
+    "stages": "body,hands,head,face-light,balance"
+  },
+  {
+    "id": "ps2_body_10k",
+    "triangles": 10000,
+    "target": 10000,
+    "deviation": "0.00%",
+    "vertices": 5759,
+    "faceRetention": "100.0%",
+    "flipped": 0,
+    "stages": "body,hands,head,balance"
+  },
+  {
+    "id": "ps2_body_12k",
+    "triangles": 12000,
+    "target": 12000,
+    "deviation": "0.00%",
+    "vertices": 6830,
+    "faceRetention": "100.0%",
+    "flipped": 0,
+    "stages": "body,hands,balance"
+  }
+]

@@ -1,0 +1,93 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/female_sportsuit01",
+ "category": "clothes",
+ "name": "female_sportsuit01",
+ "uuid": "e38d3a5b-718f-41d5-8404-299def30b43f",
+ "tags": [
+  "makehuman\u2122",
+  "female",
+  "sport"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1797,
+ "faceCount": 1718,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22048
+  ],
+  [
+   962,
+   5320,
+   0.18461000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/female_sportsuit01.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "female_sportsuit01.bin",
+ "byteLength": 175848,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 5391
+  },
+  "uvs": {
+   "offset": 21568,
+   "dtype": "f32",
+   "count": 3972
+  },
+  "faceVerts": {
+   "offset": 37456,
+   "dtype": "u32",
+   "count": 6872
+  },
+  "faceUvs": {
+   "offset": 64944,
+   "dtype": "u32",
+   "count": 6872
+  },
+  "refVerts": {
+   "offset": 92432,
+   "dtype": "u32",
+   "count": 5391
+  },
+  "refWeights": {
+   "offset": 114000,
+   "dtype": "f32",
+   "count": 5391
+  },
+  "refOffsets": {
+   "offset": 135568,
+   "dtype": "f32",
+   "count": 5391
+  },
+  "deleteVerts": {
+   "offset": 157136,
+   "dtype": "u32",
+   "count": 4678
+  }
+ }
+}

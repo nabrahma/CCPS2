@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/fedora01",
+ "category": "clothes",
+ "name": "fedora",
+ "uuid": "566dbd52-71d1-4d76-a799-0474a5a384db",
+ "tags": [
+  "makehuman\u2122",
+  "hats"
+ ],
+ "zDepth": 50,
+ "vertexCount": 634,
+ "faceCount": 622,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.96862745098,
+   0.96862745098,
+   0.96862745098
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/fedora01.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "binary": "fedora01.bin",
+ "byteLength": 55976,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1902
+  },
+  "uvs": {
+   "offset": 7616,
+   "dtype": "f32",
+   "count": 1404
+  },
+  "faceVerts": {
+   "offset": 13232,
+   "dtype": "u32",
+   "count": 2488
+  },
+  "faceUvs": {
+   "offset": 23184,
+   "dtype": "u32",
+   "count": 2488
+  },
+  "refVerts": {
+   "offset": 33136,
+   "dtype": "u32",
+   "count": 1902
+  },
+  "refWeights": {
+   "offset": 40752,
+   "dtype": "f32",
+   "count": 1902
+  },
+  "refOffsets": {
+   "offset": 48368,
+   "dtype": "f32",
+   "count": 1902
+  }
+ }
+}

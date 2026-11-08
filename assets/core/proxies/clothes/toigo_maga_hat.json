@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_maga_hat",
+ "category": "clothes",
+ "name": "MAGA-Hat",
+ "uuid": "2fb8e543-288e-4b9d-a6c9-4269e5dc9e0d",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 3102,
+ "faceCount": 3002,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/toigo_maga_hat.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "binary": "toigo_maga_hat.bin",
+ "byteLength": 271096,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 9306
+  },
+  "uvs": {
+   "offset": 37232,
+   "dtype": "f32",
+   "count": 6528
+  },
+  "faceVerts": {
+   "offset": 63344,
+   "dtype": "u32",
+   "count": 12008
+  },
+  "faceUvs": {
+   "offset": 111376,
+   "dtype": "u32",
+   "count": 12008
+  },
+  "refVerts": {
+   "offset": 159408,
+   "dtype": "u32",
+   "count": 9306
+  },
+  "refWeights": {
+   "offset": 196640,
+   "dtype": "f32",
+   "count": 9306
+  },
+  "refOffsets": {
+   "offset": 233872,
+   "dtype": "f32",
+   "count": 9306
+  }
+ }
+}

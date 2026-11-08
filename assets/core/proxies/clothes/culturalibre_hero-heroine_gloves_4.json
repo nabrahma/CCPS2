@@ -1,0 +1,93 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_hero-heroine_gloves_4",
+ "category": "clothes",
+ "name": "hero-heroine_gloves_4",
+ "uuid": "7e320844-4d35-4cec-ba66-a3b0182f9fee",
+ "tags": [
+  "hero",
+  "superhero",
+  "gloves"
+ ],
+ "zDepth": 50,
+ "vertexCount": 8276,
+ "faceCount": 8272,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/culturalibre_hero-heroine_gloves_4.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "gloves",
+ "binary": "culturalibre_hero-heroine_gloves_4.bin",
+ "byteLength": 756424,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 24828
+  },
+  "uvs": {
+   "offset": 99312,
+   "dtype": "f32",
+   "count": 19336
+  },
+  "faceVerts": {
+   "offset": 176656,
+   "dtype": "u32",
+   "count": 33088
+  },
+  "faceUvs": {
+   "offset": 309008,
+   "dtype": "u32",
+   "count": 33088
+  },
+  "refVerts": {
+   "offset": 441360,
+   "dtype": "u32",
+   "count": 24828
+  },
+  "refWeights": {
+   "offset": 540672,
+   "dtype": "f32",
+   "count": 24828
+  },
+  "refOffsets": {
+   "offset": 639984,
+   "dtype": "f32",
+   "count": 24828
+  },
+  "deleteVerts": {
+   "offset": 739296,
+   "dtype": "u32",
+   "count": 4282
+  }
+ }
+}

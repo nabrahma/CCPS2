@@ -1,0 +1,200 @@
+import { useEffect, useRef, useState } from 'react';
+import {
+  CAMERA_PRESETS,
+  DEFAULT_POST,
+  LIGHTING_PRESETS,
+  PS2_POST,
+  type CameraPresetId,
+  type LightingPresetId,
+  type PostSettings,
+  type ShadingMode,
+} from '@ps2cc/viewport';
+import { backend } from '../backend';
+import { useStudio, useStudioVersion } from '../state/hooks';
+import { useUi } from '../state/ui';
+import { AppMenus } from './AppMenus';
+import { BoltIcon } from './icons';
+
+const SHADING: { id: ShadingMode; label: string }[] = [
+  { id: 'ps2', label: 'PS2 Lit' },
+  { id: 'unlit', label: 'Unlit' },
+  { id: 'clay', label: 'Clay' },
+  { id: 'wire', label: 'Wire' },
+  { id: 'uv', label: 'UV' },
+];
+
+/** Short names for the toolbar; the full name is the button's tooltip. */
+const CAMERA_LABELS: Record<CameraPresetId, string> = { full: 'Full', bust: 'Bust', face: 'Face', threeQuarter: '3/4', profile: 'Profile' };
+
+const POST_TOGGLES: { key: keyof PostSettings; label: string; on: number | boolean }[] = [
+  { key: 'lowRes', label: '640×448', on: true },
+  { key: 'dither16', label: '16-bit dither', on: true },
+  { key: 'grain', label: 'Grain', on: PS2_POST.grain },
+  { key: 'vhs', label: 'VHS bleed', on: PS2_POST.vhs },
+  { key: 'interlace', label: 'Interlace', on: true },
+  { key: 'vignette', label: 'Vignette', on: PS2_POST.vignette },
+  { key: 'affine', label: 'PS1 affine UVs', on: true },
+  { key: 'vertexSnap', label: 'PS1 vertex snap', on: true },
+];
+
+/** The character's name as the panel's headline. The cursor turns orange and blinks while there are unsaved changes. */
+function CharacterName() {
+  const studio = useStudio();
+  useStudioVersion();
+  const engine = studio.engine;
+  return (
+    <div className="name-line">
+      <input
+        aria-label="Character name"
+        className="name-field"
+        spellCheck={false}
+        value={engine.doc.name}
+        onChange={(e) => engine.update('Rename', (d) => void (d.name = e.target.value), 'rename')}
+        onBlur={() => engine.endInteraction()}
+      />
+      <span className={studio.dirty ? 'name-cursor dirty' : 'name-cursor'} title={studio.dirty ? 'Unsaved changes' : 'Saved'}>
+        _
+      </span>
+    </div>
+  );
+}
+
+export function ViewportPanel() {
+  const studio = useStudio();
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const ui = useUi();
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    studio.attachViewport(canvas);
+    return () => studio.detachViewport();
+  }, [studio]);
+
+  // Push view settings into the viewport.
+  useEffect(() => {
+    const vp = studio.viewport;
+    if (!vp) return;
+    vp.shading = ui.shading;
+    vp.wireOverlay = ui.wireOverlay;
+    vp.lighting = ui.lighting;
+    vp.postSettings = ui.post;
+    vp.turntable = ui.turntable;
+    vp.poseTest = ui.poseTest;
+    vp.refresh();
+  }, [studio, ui.shading, ui.wireOverlay, ui.lighting, ui.post, ui.turntable, ui.poseTest]);
+
+  const camera = (id: CameraPresetId) => {
+    ui.setView({ camera: id });
+    studio.viewport?.setCameraPreset(id);
+  };
+
+  const [renderSize, setRenderSize] = useState(1024);
+  const [transparent, setTransparent] = useState(false);
+  const [rendering, setRendering] = useState(false);
+  /** PNG render (PRD F10): 1024 to 4096 px from the current camera, solid or transparent background. */
+  const render = async () => {
+    const vp = studio.viewport;
+    if (!vp) return;
+    setRendering(true);
+    try {
+      await studio.settled();
+      const png = await vp.screenshot(renderSize, renderSize, transparent);
+      const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+      const path = await backend.saveRender(studio.engine.doc.name, `render_${ui.camera}_${renderSize}${transparent ? '_alpha' : ''}_${stamp}`, png);
+      ui.info(`Render saved: ${path}`);
+    } catch (err) {
+      ui.error('Render failed', err);
+    } finally {
+      setRendering(false);
+    }
+  };
+
+  const togglePost = (key: keyof PostSettings, on: number | boolean) => {
+    const cur = ui.post[key];
+    const next = typeof cur === 'boolean' ? !cur : cur ? 0 : (on as number);
+    ui.setView({ post: { ...ui.post, [key]: next } });
+  };
+  const ps2LookOn = ui.post.lowRes && ui.post.dither16;
+
+  return (
+    <div className="viewport">
+      <canvas ref={canvasRef} className="viewport-canvas" data-testid="viewport" />
+      <div className="vp-toolbar top">
+        <AppMenus />
+        <span className="spacer" />
+        <div className="seg">
+          {SHADING.map((s) => (
+            <button key={s.id} className={ui.shading === s.id ? 'active' : ''} onClick={() => ui.setView({ shading: s.id })}>
+              {s.label}
+            </button>
+          ))}
+        </div>
+        <div className="vp-group">
+        <label>
+          Light{' '}
+          <select value={ui.lighting} onChange={(e) => ui.setView({ lighting: e.target.value as LightingPresetId })}>
+            {Object.values(LIGHTING_PRESETS).map((l) => (
+              <option key={l.id} value={l.id}>
+                {l.label}
+              </option>
+            ))}
+          </select>
+        </label>
+        <button className={ps2LookOn ? 'active' : ''} onClick={() => ui.setView({ post: ps2LookOn ? { ...DEFAULT_POST } : { ...PS2_POST } })} title="PS2 post look (P)">
+          PS2 post
+        </button>
+        <details className="post-menu">
+          <summary>Post…</summary>
+          <div className="post-popup">
+            {POST_TOGGLES.map((t) => (
+              <label key={t.key}>
+                <input type="checkbox" checked={Boolean(ui.post[t.key])} onChange={() => togglePost(t.key, t.on)} /> {t.label}
+              </label>
+            ))}
+          </div>
+        </details>
+        </div>
+      </div>
+      <div className="vp-foot">
+        <CharacterName />
+        <div className="vp-row">
+        <div className="seg">
+          {(Object.keys(CAMERA_PRESETS) as CameraPresetId[]).map((id, i) => (
+            <button key={id} className={ui.camera === id ? 'active' : ''} onClick={() => camera(id)} title={`${CAMERA_PRESETS[id].label} (${i + 1})`} aria-label={CAMERA_PRESETS[id].label}>
+              {CAMERA_LABELS[id]}
+            </button>
+          ))}
+        </div>
+        <div className="vp-group">
+        <label>
+          <input type="checkbox" checked={ui.turntable} onChange={(e) => ui.setView({ turntable: e.target.checked })} /> Turntable
+        </label>
+        <label title="Procedural walk cycle through the fitted GameEngine skeleton (M2 pose test)">
+          <input type="checkbox" checked={ui.poseTest} onChange={(e) => ui.setView({ poseTest: e.target.checked })} /> Pose test
+        </label>
+        </div>
+        <div className="vp-group">
+          <select value={renderSize} onChange={(e) => setRenderSize(Number(e.target.value))} aria-label="Render size" data-testid="render-size">
+            {[1024, 2048, 4096].map((s) => (
+              <option key={s} value={s}>
+                {s} px
+              </option>
+            ))}
+          </select>
+          <select value={transparent ? 'transparent' : 'solid'} onChange={(e) => setTransparent(e.target.value === 'transparent')} aria-label="Render background" data-testid="render-background">
+            <option value="solid">Solid</option>
+            <option value="transparent">Transparent</option>
+          </select>
+          <button onClick={() => void render()} disabled={rendering} data-testid="render-png">
+            {rendering ? 'Rendering…' : 'Render'}
+          </button>
+        </div>
+        </div>
+      </div>
+      <button className="fab" onClick={() => ui.setTab('export')} title="Export settings (Ctrl+E)" aria-label="Open export settings">
+        <BoltIcon size={18} />
+      </button>
+    </div>
+  );
+}

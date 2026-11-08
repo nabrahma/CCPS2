@@ -1,0 +1,3920 @@
+{
+ "format": "ps2cc.catalog/1",
+ "proxies": [
+  {
+   "id": "mh:eyes/high-poly",
+   "category": "eyes",
+   "name": "HighPolyEyes",
+   "file": "proxies/eyes/high-poly.json",
+   "thumbnail": null,
+   "triangles": 2040,
+   "slot": null,
+   "tags": [
+    "makehuman™"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyes/low-poly",
+   "category": "eyes",
+   "name": "Low-Poly",
+   "file": "proxies/eyes/low-poly.json",
+   "thumbnail": null,
+   "triangles": 172,
+   "slot": null,
+   "tags": [
+    "makehuman™"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/eyebrow001",
+   "category": "eyebrows",
+   "name": "eyebrow001",
+   "file": "proxies/eyebrows/eyebrow001.json",
+   "thumbnail": null,
+   "triangles": 192,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "young"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/eyebrow002",
+   "category": "eyebrows",
+   "name": "eyebrow002",
+   "file": "proxies/eyebrows/eyebrow002.json",
+   "thumbnail": null,
+   "triangles": 192,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "young"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/eyebrow003",
+   "category": "eyebrows",
+   "name": "eyebrow003",
+   "file": "proxies/eyebrows/eyebrow003.json",
+   "thumbnail": null,
+   "triangles": 192,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "young"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/eyebrow004",
+   "category": "eyebrows",
+   "name": "eyebrow004",
+   "file": "proxies/eyebrows/eyebrow004.json",
+   "thumbnail": null,
+   "triangles": 192,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "young"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/eyebrow005",
+   "category": "eyebrows",
+   "name": "eyebrow005",
+   "file": "proxies/eyebrows/eyebrow005.json",
+   "thumbnail": null,
+   "triangles": 192,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "young"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/eyebrow006",
+   "category": "eyebrows",
+   "name": "eyebrow006",
+   "file": "proxies/eyebrows/eyebrow006.json",
+   "thumbnail": null,
+   "triangles": 192,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "young"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/eyebrow007",
+   "category": "eyebrows",
+   "name": "eyebrow007",
+   "file": "proxies/eyebrows/eyebrow007.json",
+   "thumbnail": null,
+   "triangles": 192,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "young"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/eyebrow008",
+   "category": "eyebrows",
+   "name": "eyebrow008",
+   "file": "proxies/eyebrows/eyebrow008.json",
+   "thumbnail": null,
+   "triangles": 192,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "young"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/eyebrow009",
+   "category": "eyebrows",
+   "name": "eyebrow009",
+   "file": "proxies/eyebrows/eyebrow009.json",
+   "thumbnail": null,
+   "triangles": 192,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "young"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/eyebrow010",
+   "category": "eyebrows",
+   "name": "eyebrow010",
+   "file": "proxies/eyebrows/eyebrow010.json",
+   "thumbnail": null,
+   "triangles": 192,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "young"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/eyebrow011",
+   "category": "eyebrows",
+   "name": "eyebrow011",
+   "file": "proxies/eyebrows/eyebrow011.json",
+   "thumbnail": null,
+   "triangles": 192,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "young"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/eyebrow012",
+   "category": "eyebrows",
+   "name": "eyebrow012",
+   "file": "proxies/eyebrows/eyebrow012.json",
+   "thumbnail": null,
+   "triangles": 192,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "young"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyelashes/eyelashes01",
+   "category": "eyelashes",
+   "name": "Eyelashes01",
+   "file": "proxies/eyelashes/eyelashes01.json",
+   "thumbnail": null,
+   "triangles": 368,
+   "slot": null,
+   "tags": [
+    "makehuman™"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyelashes/eyelashes02",
+   "category": "eyelashes",
+   "name": "eyelashes02",
+   "file": "proxies/eyelashes/eyelashes02.json",
+   "thumbnail": null,
+   "triangles": 368,
+   "slot": null,
+   "tags": [
+    "makehuman™"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyelashes/eyelashes03",
+   "category": "eyelashes",
+   "name": "eyelashes03",
+   "file": "proxies/eyelashes/eyelashes03.json",
+   "thumbnail": null,
+   "triangles": 368,
+   "slot": null,
+   "tags": [
+    "makehuman™"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyelashes/eyelashes04",
+   "category": "eyelashes",
+   "name": "eyelashes04",
+   "file": "proxies/eyelashes/eyelashes04.json",
+   "thumbnail": null,
+   "triangles": 368,
+   "slot": null,
+   "tags": [
+    "makehuman™"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:teeth/teeth_base",
+   "category": "teeth",
+   "name": "Teeth_Base",
+   "file": "proxies/teeth/teeth_base.json",
+   "thumbnail": null,
+   "triangles": 7120,
+   "slot": null,
+   "tags": [
+    "makehuman™"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:teeth/teeth_shape01",
+   "category": "teeth",
+   "name": "Teeth_Shape01",
+   "file": "proxies/teeth/teeth_shape01.json",
+   "thumbnail": null,
+   "triangles": 7120,
+   "slot": null,
+   "tags": [
+    "makehuman™"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:teeth/teeth_shape02",
+   "category": "teeth",
+   "name": "Teeth_Shape02",
+   "file": "proxies/teeth/teeth_shape02.json",
+   "thumbnail": null,
+   "triangles": 7120,
+   "slot": null,
+   "tags": [
+    "makehuman™"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:teeth/teeth_shape03",
+   "category": "teeth",
+   "name": "Teeth_Shape03",
+   "file": "proxies/teeth/teeth_shape03.json",
+   "thumbnail": null,
+   "triangles": 7120,
+   "slot": null,
+   "tags": [
+    "makehuman™"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:teeth/teeth_shape04",
+   "category": "teeth",
+   "name": "Teeth_Shape04",
+   "file": "proxies/teeth/teeth_shape04.json",
+   "thumbnail": null,
+   "triangles": 7120,
+   "slot": null,
+   "tags": [
+    "makehuman™"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:teeth/teeth_shape05",
+   "category": "teeth",
+   "name": "Teeth_Shape05",
+   "file": "proxies/teeth/teeth_shape05.json",
+   "thumbnail": null,
+   "triangles": 7120,
+   "slot": null,
+   "tags": [
+    "makehuman™"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:tongue/tongue01",
+   "category": "tongue",
+   "name": "tongue01",
+   "file": "proxies/tongue/tongue01.json",
+   "thumbnail": null,
+   "triangles": 448,
+   "slot": null,
+   "tags": [
+    "makehuman™"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:hair/afro01",
+   "category": "hair",
+   "name": "afro01",
+   "file": "proxies/hair/afro01.ps2.json",
+   "thumbnail": null,
+   "triangles": 2192,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "afro"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/afro01.json",
+   "originalTriangles": 2192,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/bob01",
+   "category": "hair",
+   "name": "bob01",
+   "file": "proxies/hair/bob01.ps2.json",
+   "thumbnail": null,
+   "triangles": 3500,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "bob",
+    "short",
+    "female"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/bob01.json",
+   "originalTriangles": 8474,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/bob02",
+   "category": "hair",
+   "name": "bob02",
+   "file": "proxies/hair/bob02.ps2.json",
+   "thumbnail": null,
+   "triangles": 2248,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "short",
+    "bob",
+    "female"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/bob02.json",
+   "originalTriangles": 2248,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/braid01",
+   "category": "hair",
+   "name": "Braid01",
+   "file": "proxies/hair/braid01.ps2.json",
+   "thumbnail": null,
+   "triangles": 3500,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "long",
+    "female"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/braid01.json",
+   "originalTriangles": 5518,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/long01",
+   "category": "hair",
+   "name": "long01",
+   "file": "proxies/hair/long01.ps2.json",
+   "thumbnail": null,
+   "triangles": 3500,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "long",
+    "female"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/long01.json",
+   "originalTriangles": 4108,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/ponytail01",
+   "category": "hair",
+   "name": "ponytail01",
+   "file": "proxies/hair/ponytail01.ps2.json",
+   "thumbnail": null,
+   "triangles": 3500,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "female",
+    "long"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/ponytail01.json",
+   "originalTriangles": 5352,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/short01",
+   "category": "hair",
+   "name": "short01",
+   "file": "proxies/hair/short01.ps2.json",
+   "thumbnail": null,
+   "triangles": 3500,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "male",
+    "short"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/short01.json",
+   "originalTriangles": 3678,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/short02",
+   "category": "hair",
+   "name": "short02",
+   "file": "proxies/hair/short02.ps2.json",
+   "thumbnail": null,
+   "triangles": 3344,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "short",
+    "male"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/short02.json",
+   "originalTriangles": 3344,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/short03",
+   "category": "hair",
+   "name": "short03",
+   "file": "proxies/hair/short03.ps2.json",
+   "thumbnail": null,
+   "triangles": 1922,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "short",
+    "female"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/short03.json",
+   "originalTriangles": 1922,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/short04",
+   "category": "hair",
+   "name": "short04",
+   "file": "proxies/hair/short04.ps2.json",
+   "thumbnail": null,
+   "triangles": 1050,
+   "slot": null,
+   "tags": [
+    "makehuman™",
+    "male",
+    "short"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/short04.json",
+   "originalTriangles": 1050,
+   "overBudget": false
+  },
+  {
+   "id": "mh:clothes/fedora01",
+   "category": "clothes",
+   "name": "fedora",
+   "file": "proxies/clothes/fedora01.ps2.json",
+   "thumbnail": null,
+   "triangles": 700,
+   "slot": "hat",
+   "tags": [
+    "makehuman™",
+    "hats"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/fedora01.json",
+   "originalTriangles": 1244,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/fedora_cocked",
+   "category": "clothes",
+   "name": "fedora_cocked",
+   "file": "proxies/clothes/fedora_cocked.ps2.json",
+   "thumbnail": null,
+   "triangles": 700,
+   "slot": "hat",
+   "tags": [
+    "makehuman™",
+    "hats"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/fedora_cocked.json",
+   "originalTriangles": 1244,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/female_casualsuit01",
+   "category": "clothes",
+   "name": "female_casualsuit01",
+   "file": "proxies/clothes/female_casualsuit01.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [
+    "makehuman™",
+    "female",
+    "casual"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/female_casualsuit01.json",
+   "originalTriangles": 4236,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/female_casualsuit02",
+   "category": "clothes",
+   "name": "female_casualsuit02",
+   "file": "proxies/clothes/female_casualsuit02.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [
+    "makehuman™",
+    "female",
+    "casual"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/female_casualsuit02.json",
+   "originalTriangles": 5488,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/female_elegantsuit01",
+   "category": "clothes",
+   "name": "female_elegantsuit01",
+   "file": "proxies/clothes/female_elegantsuit01.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [
+    "makehuman™",
+    "female",
+    "elegant"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/female_elegantsuit01.json",
+   "originalTriangles": 4192,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/female_sportsuit01",
+   "category": "clothes",
+   "name": "female_sportsuit01",
+   "file": "proxies/clothes/female_sportsuit01.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [
+    "makehuman™",
+    "female",
+    "sport"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/female_sportsuit01.json",
+   "originalTriangles": 3436,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/male_casualsuit01",
+   "category": "clothes",
+   "name": "male_casualsuit01",
+   "file": "proxies/clothes/male_casualsuit01.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [
+    "makehuman™",
+    "casual",
+    "male"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/male_casualsuit01.json",
+   "originalTriangles": 16672,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/male_casualsuit02",
+   "category": "clothes",
+   "name": "male_casualsuit02",
+   "file": "proxies/clothes/male_casualsuit02.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [
+    "makehuman™",
+    "male",
+    "casual"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/male_casualsuit02.json",
+   "originalTriangles": 4120,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/male_casualsuit03",
+   "category": "clothes",
+   "name": "male_casualsuit03",
+   "file": "proxies/clothes/male_casualsuit03.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [
+    "makehuman™",
+    "male",
+    "casual"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/male_casualsuit03.json",
+   "originalTriangles": 4800,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/male_casualsuit04",
+   "category": "clothes",
+   "name": "male_casualsuit04",
+   "file": "proxies/clothes/male_casualsuit04.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [
+    "makehuman™",
+    "male",
+    "casual"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/male_casualsuit04.json",
+   "originalTriangles": 3240,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/male_casualsuit05",
+   "category": "clothes",
+   "name": "male_casualsuit05",
+   "file": "proxies/clothes/male_casualsuit05.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [
+    "makehuman™",
+    "male",
+    "casual"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/male_casualsuit05.json",
+   "originalTriangles": 5996,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/male_casualsuit06",
+   "category": "clothes",
+   "name": "male_casualsuit06",
+   "file": "proxies/clothes/male_casualsuit06.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [
+    "makehuman™",
+    "male",
+    "casual"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/male_casualsuit06.json",
+   "originalTriangles": 7168,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/male_elegantsuit01",
+   "category": "clothes",
+   "name": "male_elegantsuit01",
+   "file": "proxies/clothes/male_elegantsuit01.ps2.json",
+   "thumbnail": null,
+   "triangles": 2499,
+   "slot": "full",
+   "tags": [
+    "makehuman™",
+    "male",
+    "elegant"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/male_elegantsuit01.json",
+   "originalTriangles": 14956,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/male_worksuit01",
+   "category": "clothes",
+   "name": "male_worksuit01",
+   "file": "proxies/clothes/male_worksuit01.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [
+    "makehuman™"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/male_worksuit01.json",
+   "originalTriangles": 6986,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/shoes01",
+   "category": "clothes",
+   "name": "shoes01",
+   "file": "proxies/clothes/shoes01.ps2.json",
+   "thumbnail": null,
+   "triangles": 900,
+   "slot": "shoes",
+   "tags": [
+    "makehuman™",
+    "shoes"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/shoes01.json",
+   "originalTriangles": 3320,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/shoes02",
+   "category": "clothes",
+   "name": "shoes02",
+   "file": "proxies/clothes/shoes02.ps2.json",
+   "thumbnail": null,
+   "triangles": 900,
+   "slot": "shoes",
+   "tags": [
+    "makehuman™",
+    "shoes"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/shoes02.json",
+   "originalTriangles": 3064,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/shoes03",
+   "category": "clothes",
+   "name": "shoes03",
+   "file": "proxies/clothes/shoes03.ps2.json",
+   "thumbnail": null,
+   "triangles": 899,
+   "slot": "shoes",
+   "tags": [
+    "makehuman™",
+    "shoes"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/shoes03.json",
+   "originalTriangles": 4128,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/shoes04",
+   "category": "clothes",
+   "name": "shoes04",
+   "file": "proxies/clothes/shoes04.ps2.json",
+   "thumbnail": null,
+   "triangles": 900,
+   "slot": "shoes",
+   "tags": [
+    "makehuman™",
+    "shoes"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/shoes04.json",
+   "originalTriangles": 3320,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/shoes05",
+   "category": "clothes",
+   "name": "shoes05",
+   "file": "proxies/clothes/shoes05.ps2.json",
+   "thumbnail": null,
+   "triangles": 900,
+   "slot": "shoes",
+   "tags": [
+    "makehuman™",
+    "shoes"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/shoes05.json",
+   "originalTriangles": 3064,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/shoes06",
+   "category": "clothes",
+   "name": "shoes06",
+   "file": "proxies/clothes/shoes06.ps2.json",
+   "thumbnail": null,
+   "triangles": 900,
+   "slot": "shoes",
+   "tags": [
+    "makehuman™",
+    "shoes"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/shoes06.json",
+   "originalTriangles": 3064,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:eyebrows/mindfront_eyebrows_01",
+   "category": "eyebrows",
+   "name": "Mind_Eyebrows_01",
+   "file": "proxies/eyebrows/mindfront_eyebrows_01.json",
+   "thumbnail": null,
+   "triangles": 14202,
+   "slot": null,
+   "tags": [
+    "eyebrows"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/mindfront_eyebrows_02",
+   "category": "eyebrows",
+   "name": "Mind_Eyebrows_02",
+   "file": "proxies/eyebrows/mindfront_eyebrows_02.json",
+   "thumbnail": null,
+   "triangles": 17622,
+   "slot": null,
+   "tags": [
+    "eyebrows"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/mindfront_eyebrows_03",
+   "category": "eyebrows",
+   "name": "Mind_Eyebrows_03",
+   "file": "proxies/eyebrows/mindfront_eyebrows_03.json",
+   "thumbnail": null,
+   "triangles": 21816,
+   "slot": null,
+   "tags": [
+    "eyebrows"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/mindfront_eyebrows_04",
+   "category": "eyebrows",
+   "name": "Mind_Eyebrows_04",
+   "file": "proxies/eyebrows/mindfront_eyebrows_04.json",
+   "thumbnail": null,
+   "triangles": 29628,
+   "slot": null,
+   "tags": [
+    "eyebrows"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/mindfront_eyebrows_05",
+   "category": "eyebrows",
+   "name": "Mind_Eyebrows_05",
+   "file": "proxies/eyebrows/mindfront_eyebrows_05.json",
+   "thumbnail": null,
+   "triangles": 35334,
+   "slot": null,
+   "tags": [
+    "eyebrows"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/mindfront_eyebrows_06",
+   "category": "eyebrows",
+   "name": "Mind_Eyebrows_06",
+   "file": "proxies/eyebrows/mindfront_eyebrows_06.json",
+   "thumbnail": null,
+   "triangles": 31968,
+   "slot": null,
+   "tags": [
+    "eyebrows"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/mindfront_eyebrows_07",
+   "category": "eyebrows",
+   "name": "Mind_Eyebrows_07",
+   "file": "proxies/eyebrows/mindfront_eyebrows_07.json",
+   "thumbnail": null,
+   "triangles": 39600,
+   "slot": null,
+   "tags": [
+    "eyebrows"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/mindfront_eyebrows_08",
+   "category": "eyebrows",
+   "name": "Mind_Eyebrows_08",
+   "file": "proxies/eyebrows/mindfront_eyebrows_08.json",
+   "thumbnail": null,
+   "triangles": 28716,
+   "slot": null,
+   "tags": [
+    "eyebrows"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/mindfront_eyebrows_09",
+   "category": "eyebrows",
+   "name": "Mind_Eyebrows_09",
+   "file": "proxies/eyebrows/mindfront_eyebrows_09.json",
+   "thumbnail": null,
+   "triangles": 29652,
+   "slot": null,
+   "tags": [
+    "eyebrows"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/mindfront_eyebrows_10",
+   "category": "eyebrows",
+   "name": "Mind_Eyebrows_10",
+   "file": "proxies/eyebrows/mindfront_eyebrows_10.json",
+   "thumbnail": null,
+   "triangles": 35028,
+   "slot": null,
+   "tags": [
+    "eyebrows"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/mindfront_eyebrows_11",
+   "category": "eyebrows",
+   "name": "Mind_Eyebrows_11",
+   "file": "proxies/eyebrows/mindfront_eyebrows_11.json",
+   "thumbnail": null,
+   "triangles": 37134,
+   "slot": null,
+   "tags": [
+    "eyebrows"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/mindfront_eyebrows_12",
+   "category": "eyebrows",
+   "name": "Mind_Eyebrows_12",
+   "file": "proxies/eyebrows/mindfront_eyebrows_12.json",
+   "thumbnail": null,
+   "triangles": 31308,
+   "slot": null,
+   "tags": [
+    "eyebrows"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/mindfront_eyebrows_13",
+   "category": "eyebrows",
+   "name": "Mind_Eyebrows_13",
+   "file": "proxies/eyebrows/mindfront_eyebrows_13.json",
+   "thumbnail": null,
+   "triangles": 24480,
+   "slot": null,
+   "tags": [
+    "eyebrows"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyebrows/mindfront_eyebrows_14",
+   "category": "eyebrows",
+   "name": "Mind_Eyebrows_14",
+   "file": "proxies/eyebrows/mindfront_eyebrows_14.json",
+   "thumbnail": null,
+   "triangles": 42300,
+   "slot": null,
+   "tags": [
+    "eyebrows"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyelashes/mindfront_eyelashes_01",
+   "category": "eyelashes",
+   "name": "Mind_Eyelashes_01",
+   "file": "proxies/eyelashes/mindfront_eyelashes_01.json",
+   "thumbnail": null,
+   "triangles": 16632,
+   "slot": null,
+   "tags": [
+    "eyelashes"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyelashes/mindfront_eyelashes_02",
+   "category": "eyelashes",
+   "name": "Mind_Eyelashes_02",
+   "file": "proxies/eyelashes/mindfront_eyelashes_02.json",
+   "thumbnail": null,
+   "triangles": 25488,
+   "slot": null,
+   "tags": [
+    "eyelashes"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyelashes/mindfront_eyelashes_03",
+   "category": "eyelashes",
+   "name": "Mind_Eyelashes_03",
+   "file": "proxies/eyelashes/mindfront_eyelashes_03.json",
+   "thumbnail": null,
+   "triangles": 18792,
+   "slot": null,
+   "tags": [
+    "eyelashes"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyelashes/mindfront_eyelashes_04",
+   "category": "eyelashes",
+   "name": "Mind_Eyelashes_04",
+   "file": "proxies/eyelashes/mindfront_eyelashes_04.json",
+   "thumbnail": null,
+   "triangles": 24372,
+   "slot": null,
+   "tags": [
+    "eyelashes"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:eyelashes/mindfront_eyelashes_05",
+   "category": "eyelashes",
+   "name": "Mind_Eyelashes_05",
+   "file": "proxies/eyelashes/mindfront_eyelashes_05.json",
+   "thumbnail": null,
+   "triangles": 29700,
+   "slot": null,
+   "tags": [
+    "eyelashes"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:hair/cortu_shaggy_green_hair",
+   "category": "hair",
+   "name": "shaggy_green",
+   "file": "proxies/hair/cortu_shaggy_green_hair.ps2.json",
+   "thumbnail": null,
+   "triangles": 1284,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/cortu_shaggy_green_hair.json",
+   "originalTriangles": 1284,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/cortu_short_messy_hair",
+   "category": "hair",
+   "name": "short_messy",
+   "file": "proxies/hair/cortu_short_messy_hair.ps2.json",
+   "thumbnail": null,
+   "triangles": 1092,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/cortu_short_messy_hair.json",
+   "originalTriangles": 1092,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/cortu_straight_bangs",
+   "category": "hair",
+   "name": "straight_bangs",
+   "file": "proxies/hair/cortu_straight_bangs.ps2.json",
+   "thumbnail": null,
+   "triangles": 1128,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/cortu_straight_bangs.json",
+   "originalTriangles": 1128,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/cortu_strawberry_cloud_hair",
+   "category": "hair",
+   "name": "strawberry_cloud",
+   "file": "proxies/hair/cortu_strawberry_cloud_hair.ps2.json",
+   "thumbnail": null,
+   "triangles": 576,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/cortu_strawberry_cloud_hair.json",
+   "originalTriangles": 576,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/culturalibre_hair_01",
+   "category": "hair",
+   "name": "fhair01",
+   "file": "proxies/hair/culturalibre_hair_01.ps2.json",
+   "thumbnail": null,
+   "triangles": 3500,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/culturalibre_hair_01.json",
+   "originalTriangles": 4228,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/culturalibre_hair_02",
+   "category": "hair",
+   "name": "mhair02",
+   "file": "proxies/hair/culturalibre_hair_02.ps2.json",
+   "thumbnail": null,
+   "triangles": 3460,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/culturalibre_hair_02.json",
+   "originalTriangles": 3460,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/culturalibre_hair_05",
+   "category": "hair",
+   "name": "hair_05",
+   "file": "proxies/hair/culturalibre_hair_05.ps2.json",
+   "thumbnail": null,
+   "triangles": 3500,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/culturalibre_hair_05.json",
+   "originalTriangles": 4948,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/culturalibre_hair_06",
+   "category": "hair",
+   "name": "hair_06",
+   "file": "proxies/hair/culturalibre_hair_06.ps2.json",
+   "thumbnail": null,
+   "triangles": 6244,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/culturalibre_hair_06.json",
+   "originalTriangles": 14688,
+   "overBudget": true
+  },
+  {
+   "id": "mh:hair/elvs_double_mh_braid",
+   "category": "hair",
+   "name": "double_mhbraid",
+   "file": "proxies/hair/elvs_double_mh_braid.ps2.json",
+   "thumbnail": null,
+   "triangles": 3488,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/elvs_double_mh_braid.json",
+   "originalTriangles": 9866,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/elvs_french_braid_variation",
+   "category": "hair",
+   "name": "frenchbraid1mh01",
+   "file": "proxies/hair/elvs_french_braid_variation.ps2.json",
+   "thumbnail": null,
+   "triangles": 3488,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/elvs_french_braid_variation.json",
+   "originalTriangles": 8152,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/elvs_reverse_french_braid_bun",
+   "category": "hair",
+   "name": "rev_fr_braidbun1",
+   "file": "proxies/hair/elvs_reverse_french_braid_bun.ps2.json",
+   "thumbnail": null,
+   "triangles": 3491,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/elvs_reverse_french_braid_bun.json",
+   "originalTriangles": 7622,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/elvs_unkempt_french_braid",
+   "category": "hair",
+   "name": "unkempt_mhbraidfr",
+   "file": "proxies/hair/elvs_unkempt_french_braid.ps2.json",
+   "thumbnail": null,
+   "triangles": 3488,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/elvs_unkempt_french_braid.json",
+   "originalTriangles": 8200,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/faydaen_hair_1",
+   "category": "hair",
+   "name": "hair1",
+   "file": "proxies/hair/faydaen_hair_1.ps2.json",
+   "thumbnail": null,
+   "triangles": 836,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/faydaen_hair_1.json",
+   "originalTriangles": 836,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/learning_anime_hair",
+   "category": "hair",
+   "name": "animehair",
+   "file": "proxies/hair/learning_anime_hair.ps2.json",
+   "thumbnail": null,
+   "triangles": 17570,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/learning_anime_hair.json",
+   "originalTriangles": 91392,
+   "overBudget": true
+  },
+  {
+   "id": "mh:hair/littleright_bobcut_hair",
+   "category": "hair",
+   "name": "LITTLERIGHT_hair_BobCut",
+   "file": "proxies/hair/littleright_bobcut_hair.ps2.json",
+   "thumbnail": null,
+   "triangles": 2692,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/littleright_bobcut_hair.json",
+   "originalTriangles": 2692,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/o4saken_long01",
+   "category": "hair",
+   "name": "o4saken_long01",
+   "file": "proxies/hair/o4saken_long01.ps2.json",
+   "thumbnail": null,
+   "triangles": 3500,
+   "slot": null,
+   "tags": [
+    "female",
+    "long"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/o4saken_long01.json",
+   "originalTriangles": 13268,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/rehmanpolanski_hair_bun_brown",
+   "category": "hair",
+   "name": "Hair_bun_brown",
+   "file": "proxies/hair/rehmanpolanski_hair_bun_brown.ps2.json",
+   "thumbnail": null,
+   "triangles": 3500,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/rehmanpolanski_hair_bun_brown.json",
+   "originalTriangles": 4432,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/sonntag78_blond_with_headband",
+   "category": "hair",
+   "name": "blondwithheadband",
+   "file": "proxies/hair/sonntag78_blond_with_headband.ps2.json",
+   "thumbnail": null,
+   "triangles": 2054,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/sonntag78_blond_with_headband.json",
+   "originalTriangles": 2054,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/sonntag78_junglebook_hair",
+   "category": "hair",
+   "name": "junglebookhair",
+   "file": "proxies/hair/sonntag78_junglebook_hair.ps2.json",
+   "thumbnail": null,
+   "triangles": 3500,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/sonntag78_junglebook_hair.json",
+   "originalTriangles": 8576,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/toigo_blunt_bob",
+   "category": "hair",
+   "name": "Bob_Blunt",
+   "file": "proxies/hair/toigo_blunt_bob.ps2.json",
+   "thumbnail": null,
+   "triangles": 2858,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/toigo_blunt_bob.json",
+   "originalTriangles": 2858,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/toigo_blunt_bob_with_bangs",
+   "category": "hair",
+   "name": "Bob_Blunt_Bangs",
+   "file": "proxies/hair/toigo_blunt_bob_with_bangs.ps2.json",
+   "thumbnail": null,
+   "triangles": 3500,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/toigo_blunt_bob_with_bangs.json",
+   "originalTriangles": 4976,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/toigo_curled_under_bob",
+   "category": "hair",
+   "name": "Bob_Curled_Under",
+   "file": "proxies/hair/toigo_curled_under_bob.ps2.json",
+   "thumbnail": null,
+   "triangles": 2852,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/toigo_curled_under_bob.json",
+   "originalTriangles": 2852,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/toigo_curled_under_bob_with_bangs",
+   "category": "hair",
+   "name": "Bob_Curled_Under_Bangs",
+   "file": "proxies/hair/toigo_curled_under_bob_with_bangs.ps2.json",
+   "thumbnail": null,
+   "triangles": 3500,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/toigo_curled_under_bob_with_bangs.json",
+   "originalTriangles": 4976,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/toigo_inverted_bob",
+   "category": "hair",
+   "name": "Bob_Inverted",
+   "file": "proxies/hair/toigo_inverted_bob.ps2.json",
+   "thumbnail": null,
+   "triangles": 2856,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/toigo_inverted_bob.json",
+   "originalTriangles": 2856,
+   "overBudget": false
+  },
+  {
+   "id": "mh:hair/toigo_inverted_bob_with_bangs",
+   "category": "hair",
+   "name": "Bob_Inverted_bangs",
+   "file": "proxies/hair/toigo_inverted_bob_with_bangs.ps2.json",
+   "thumbnail": null,
+   "triangles": 3500,
+   "slot": null,
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/hair/toigo_inverted_bob_with_bangs.json",
+   "originalTriangles": 4996,
+   "overBudget": false
+  },
+  {
+   "id": "mh:clothes/elvs_crude_t-shirt_male",
+   "category": "clothes",
+   "name": "crude_male_shirt",
+   "file": "proxies/clothes/elvs_crude_t-shirt_male.ps2.json",
+   "thumbnail": null,
+   "triangles": 1800,
+   "slot": "top",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/elvs_crude_t-shirt_male.json",
+   "originalTriangles": 2068,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/joepal_crude_t-shirt_female",
+   "category": "clothes",
+   "name": "CrudeFemaleTshirt",
+   "file": "proxies/clothes/joepal_crude_t-shirt_female.ps2.json",
+   "thumbnail": null,
+   "triangles": 1800,
+   "slot": "top",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/joepal_crude_t-shirt_female.json",
+   "originalTriangles": 2068,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/namuhekam_male_polo_shirt",
+   "category": "clothes",
+   "name": "Polo t-shirt",
+   "file": "proxies/clothes/namuhekam_male_polo_shirt.ps2.json",
+   "thumbnail": null,
+   "triangles": 1800,
+   "slot": "top",
+   "tags": [
+    "male",
+    "casual",
+    "profession",
+    "contemporary"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/namuhekam_male_polo_shirt.json",
+   "originalTriangles": 4106,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/skalldyrssuppe_tube_top_funky_colors",
+   "category": "clothes",
+   "name": "tube_top",
+   "file": "proxies/clothes/skalldyrssuppe_tube_top_funky_colors.ps2.json",
+   "thumbnail": null,
+   "triangles": 1800,
+   "slot": "top",
+   "tags": [
+    "top",
+    "egen"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/skalldyrssuppe_tube_top_funky_colors.json",
+   "originalTriangles": 2912,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/toigo_basic_tucked_t-shirt",
+   "category": "clothes",
+   "name": "T-shirt_basic_tucked",
+   "file": "proxies/clothes/toigo_basic_tucked_t-shirt.ps2.json",
+   "thumbnail": null,
+   "triangles": 1800,
+   "slot": "top",
+   "tags": [
+    "t-shirt",
+    "shirt",
+    "top",
+    "knit",
+    "casual"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_basic_tucked_t-shirt.json",
+   "originalTriangles": 2700,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/toigo_bodice-style_top",
+   "category": "clothes",
+   "name": "Bodice_style_top",
+   "file": "proxies/clothes/toigo_bodice-style_top.ps2.json",
+   "thumbnail": null,
+   "triangles": 1800,
+   "slot": "top",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_bodice-style_top.json",
+   "originalTriangles": 1944,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_camisole_top",
+   "category": "clothes",
+   "name": "Camisole_Top",
+   "file": "proxies/clothes/toigo_camisole_top.ps2.json",
+   "thumbnail": null,
+   "triangles": 1800,
+   "slot": "top",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_camisole_top.json",
+   "originalTriangles": 8232,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_fisherman_sweater",
+   "category": "clothes",
+   "name": "Sweater_Fisherman",
+   "file": "proxies/clothes/toigo_fisherman_sweater.ps2.json",
+   "thumbnail": null,
+   "triangles": 2200,
+   "slot": "outer",
+   "tags": [
+    "sweater",
+    "shirt",
+    "top",
+    "knit"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_fisherman_sweater.json",
+   "originalTriangles": 4164,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/toigo_keyhole_tank_top",
+   "category": "clothes",
+   "name": "Tank_Keyhole_Neck",
+   "file": "proxies/clothes/toigo_keyhole_tank_top.ps2.json",
+   "thumbnail": null,
+   "triangles": 1352,
+   "slot": "top",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_keyhole_tank_top.json",
+   "originalTriangles": 1352,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_turtleneck_halter_top",
+   "category": "clothes",
+   "name": "Turtleneck_Halter",
+   "file": "proxies/clothes/toigo_turtleneck_halter_top.ps2.json",
+   "thumbnail": null,
+   "triangles": 1800,
+   "slot": "top",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_turtleneck_halter_top.json",
+   "originalTriangles": 5504,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/cortu_cargo_pants",
+   "category": "clothes",
+   "name": "cargo_pants",
+   "file": "proxies/clothes/cortu_cargo_pants.ps2.json",
+   "thumbnail": null,
+   "triangles": 392,
+   "slot": "bottom",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/cortu_cargo_pants.json",
+   "originalTriangles": 392,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/cortu_jeans_shorts",
+   "category": "clothes",
+   "name": "jean_shorts",
+   "file": "proxies/clothes/cortu_jeans_shorts.ps2.json",
+   "thumbnail": null,
+   "triangles": 500,
+   "slot": "bottom",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/cortu_jeans_shorts.json",
+   "originalTriangles": 500,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_harem_pants",
+   "category": "clothes",
+   "name": "Pants_Harem",
+   "file": "proxies/clothes/toigo_harem_pants.ps2.json",
+   "thumbnail": null,
+   "triangles": 1600,
+   "slot": "bottom",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_harem_pants.json",
+   "originalTriangles": 10912,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_wool_pants",
+   "category": "clothes",
+   "name": "Pants_Wool",
+   "file": "proxies/clothes/toigo_wool_pants.ps2.json",
+   "thumbnail": null,
+   "triangles": 1599,
+   "slot": "bottom",
+   "tags": [
+    "pants",
+    "male"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_wool_pants.json",
+   "originalTriangles": 2674,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/cortu_floppy_overknee_shoes",
+   "category": "clothes",
+   "name": "floppy_overknee_shoe",
+   "file": "proxies/clothes/cortu_floppy_overknee_shoes.ps2.json",
+   "thumbnail": null,
+   "triangles": 900,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/cortu_floppy_overknee_shoes.json",
+   "originalTriangles": 3128,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/cortu_t-bar",
+   "category": "clothes",
+   "name": "tbar",
+   "file": "proxies/clothes/cortu_t-bar.ps2.json",
+   "thumbnail": null,
+   "triangles": 500,
+   "slot": "accessory",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/cortu_t-bar.json",
+   "originalTriangles": 704,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/culturalibre_hero_boots_1",
+   "category": "clothes",
+   "name": "hero_boots_1",
+   "file": "proxies/clothes/culturalibre_hero_boots_1.ps2.json",
+   "thumbnail": null,
+   "triangles": 900,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/culturalibre_hero_boots_1.json",
+   "originalTriangles": 2888,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/culturalibre_hero_boots_2",
+   "category": "clothes",
+   "name": "hero_boots_2",
+   "file": "proxies/clothes/culturalibre_hero_boots_2.ps2.json",
+   "thumbnail": null,
+   "triangles": 900,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/culturalibre_hero_boots_2.json",
+   "originalTriangles": 2312,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/culturalibre_hero_boots_3",
+   "category": "clothes",
+   "name": "hero_boots_3",
+   "file": "proxies/clothes/culturalibre_hero_boots_3.ps2.json",
+   "thumbnail": null,
+   "triangles": 900,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/culturalibre_hero_boots_3.json",
+   "originalTriangles": 2312,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/culturalibre_hero_boots_4",
+   "category": "clothes",
+   "name": "hero_boots_4",
+   "file": "proxies/clothes/culturalibre_hero_boots_4.ps2.json",
+   "thumbnail": null,
+   "triangles": 900,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/culturalibre_hero_boots_4.json",
+   "originalTriangles": 2312,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/culturalibre_hero_boots_5",
+   "category": "clothes",
+   "name": "hero_boots_5",
+   "file": "proxies/clothes/culturalibre_hero_boots_5.ps2.json",
+   "thumbnail": null,
+   "triangles": 900,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/culturalibre_hero_boots_5.json",
+   "originalTriangles": 11552,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/culturalibre_heroine_boots_1",
+   "category": "clothes",
+   "name": "heroine_boots_1",
+   "file": "proxies/clothes/culturalibre_heroine_boots_1.ps2.json",
+   "thumbnail": null,
+   "triangles": 900,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/culturalibre_heroine_boots_1.json",
+   "originalTriangles": 4104,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/culturalibre_heroine_boots_2",
+   "category": "clothes",
+   "name": "heroine_boots_2",
+   "file": "proxies/clothes/culturalibre_heroine_boots_2.ps2.json",
+   "thumbnail": null,
+   "triangles": 900,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/culturalibre_heroine_boots_2.json",
+   "originalTriangles": 2720,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/culturalibre_heroine_boots_3",
+   "category": "clothes",
+   "name": "heroine_boots_3",
+   "file": "proxies/clothes/culturalibre_heroine_boots_3.ps2.json",
+   "thumbnail": null,
+   "triangles": 900,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/culturalibre_heroine_boots_3.json",
+   "originalTriangles": 2720,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/culturalibre_heroine_boots_4",
+   "category": "clothes",
+   "name": "heroine_boots_4",
+   "file": "proxies/clothes/culturalibre_heroine_boots_4.ps2.json",
+   "thumbnail": null,
+   "triangles": 900,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC-BY-4.0",
+   "fullFile": "proxies/clothes/culturalibre_heroine_boots_4.json",
+   "originalTriangles": 1712,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/culturalibre_male_boots",
+   "category": "clothes",
+   "name": "male_boots",
+   "file": "proxies/clothes/culturalibre_male_boots.ps2.json",
+   "thumbnail": null,
+   "triangles": 1396,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/culturalibre_male_boots.json",
+   "originalTriangles": 30768,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/grinsegold_female_pirate_boots",
+   "category": "clothes",
+   "name": "LeatherBoots_2cm",
+   "file": "proxies/clothes/grinsegold_female_pirate_boots.ps2.json",
+   "thumbnail": null,
+   "triangles": 1950,
+   "slot": "shoes",
+   "tags": [
+    "shoes"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/grinsegold_female_pirate_boots.json",
+   "originalTriangles": 63552,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/scailman_gogo_platform_boots",
+   "category": "clothes",
+   "name": "gogo_boots",
+   "file": "proxies/clothes/scailman_gogo_platform_boots.ps2.json",
+   "thumbnail": null,
+   "triangles": 900,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/scailman_gogo_platform_boots.json",
+   "originalTriangles": 10068,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/scailman_semitransparent_water_boots",
+   "category": "clothes",
+   "name": "Botas_102",
+   "file": "proxies/clothes/scailman_semitransparent_water_boots.ps2.json",
+   "thumbnail": null,
+   "triangles": 899,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/scailman_semitransparent_water_boots.json",
+   "originalTriangles": 10752,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/toigo_ankle_boots_female",
+   "category": "clothes",
+   "name": "Boots_Ankle",
+   "file": "proxies/clothes/toigo_ankle_boots_female.ps2.json",
+   "thumbnail": null,
+   "triangles": 900,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_ankle_boots_female.json",
+   "originalTriangles": 4120,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_ankle_boots_male",
+   "category": "clothes",
+   "name": "Boots_Ankle_Male",
+   "file": "proxies/clothes/toigo_ankle_boots_male.ps2.json",
+   "thumbnail": null,
+   "triangles": 900,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_ankle_boots_male.json",
+   "originalTriangles": 4120,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_ballet_flats",
+   "category": "clothes",
+   "name": "Flats_ballet",
+   "file": "proxies/clothes/toigo_ballet_flats.ps2.json",
+   "thumbnail": null,
+   "triangles": 938,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_ballet_flats.json",
+   "originalTriangles": 8960,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_ballet_flats_with_bows",
+   "category": "clothes",
+   "name": "Flats_ballet_bow",
+   "file": "proxies/clothes/toigo_ballet_flats_with_bows.ps2.json",
+   "thumbnail": null,
+   "triangles": 1362,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_ballet_flats_with_bows.json",
+   "originalTriangles": 14864,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_ballet_flats_with_flowers",
+   "category": "clothes",
+   "name": "Flats_ballet_flower",
+   "file": "proxies/clothes/toigo_ballet_flats_with_flowers.ps2.json",
+   "thumbnail": null,
+   "triangles": 1089,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_ballet_flats_with_flowers.json",
+   "originalTriangles": 10272,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_flats",
+   "category": "clothes",
+   "name": "Flats",
+   "file": "proxies/clothes/toigo_flats.ps2.json",
+   "thumbnail": null,
+   "triangles": 2418,
+   "slot": "shoes",
+   "tags": [
+    "shoes"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_flats.json",
+   "originalTriangles": 57600,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/toigo_mj_cloth_shoes",
+   "category": "clothes",
+   "name": "MJ-Shoes",
+   "file": "proxies/clothes/toigo_mj_cloth_shoes.ps2.json",
+   "thumbnail": null,
+   "triangles": 900,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_mj_cloth_shoes.json",
+   "originalTriangles": 1004,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_stiletto_booties",
+   "category": "clothes",
+   "name": "Booties_stiletto",
+   "file": "proxies/clothes/toigo_stiletto_booties.ps2.json",
+   "thumbnail": null,
+   "triangles": 4292,
+   "slot": "shoes",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_stiletto_booties.json",
+   "originalTriangles": 44664,
+   "overBudget": true,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_female_double-breasted_suit",
+   "category": "clothes",
+   "name": "Fem_Suit_Double_Breasted",
+   "file": "proxies/clothes/toigo_female_double-breasted_suit.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_female_double-breasted_suit.json",
+   "originalTriangles": 10062,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_female_suit_2",
+   "category": "clothes",
+   "name": "Fem_Suit2",
+   "file": "proxies/clothes/toigo_female_suit_2.ps2.json",
+   "thumbnail": null,
+   "triangles": 2499,
+   "slot": "full",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_female_suit_2.json",
+   "originalTriangles": 16214,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_male_double-breasted_suit",
+   "category": "clothes",
+   "name": "Suit_Double_Breasted",
+   "file": "proxies/clothes/toigo_male_double-breasted_suit.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_male_double-breasted_suit.json",
+   "originalTriangles": 10062,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_male_suit_3",
+   "category": "clothes",
+   "name": "Suit3",
+   "file": "proxies/clothes/toigo_male_suit_3.ps2.json",
+   "thumbnail": null,
+   "triangles": 2499,
+   "slot": "full",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_male_suit_3.json",
+   "originalTriangles": 16250,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_male_suit_tie_and_jacket",
+   "category": "clothes",
+   "name": "Jacket_Tie_Pants",
+   "file": "proxies/clothes/toigo_male_suit_tie_and_jacket.ps2.json",
+   "thumbnail": null,
+   "triangles": 2200,
+   "slot": "outer",
+   "tags": [
+    "pants"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_male_suit_tie_and_jacket.json",
+   "originalTriangles": 19202,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_suit_with_dinner_jacket",
+   "category": "clothes",
+   "name": "Suit_Dinner_Jacket",
+   "file": "proxies/clothes/toigo_suit_with_dinner_jacket.ps2.json",
+   "thumbnail": null,
+   "triangles": 2056,
+   "slot": "outer",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_suit_with_dinner_jacket.json",
+   "originalTriangles": 15300,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_suit_with_jacket_and_bowtie",
+   "category": "clothes",
+   "name": "Jacket_bowtie_Pants",
+   "file": "proxies/clothes/toigo_suit_with_jacket_and_bowtie.ps2.json",
+   "thumbnail": null,
+   "triangles": 2199,
+   "slot": "outer",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_suit_with_jacket_and_bowtie.json",
+   "originalTriangles": 24654,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/kwnet_at_pantyhose01",
+   "category": "clothes",
+   "name": "pantyhose01",
+   "file": "proxies/clothes/kwnet_at_pantyhose01.ps2.json",
+   "thumbnail": null,
+   "triangles": 1600,
+   "slot": "bottom",
+   "tags": [
+    "lingerie",
+    "female",
+    "underwear"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/kwnet_at_pantyhose01.json",
+   "originalTriangles": 4654,
+   "overBudget": false,
+   "hiddenFaces": "none"
+  },
+  {
+   "id": "mh:clothes/marco_105_armsleeve02",
+   "category": "clothes",
+   "name": "Armsleeve02",
+   "file": "proxies/clothes/marco_105_armsleeve02.ps2.json",
+   "thumbnail": null,
+   "triangles": 528,
+   "slot": "gloves",
+   "tags": [
+    "fgh_fashion",
+    "underwear"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/marco_105_armsleeve02.json",
+   "originalTriangles": 528,
+   "overBudget": false,
+   "hiddenFaces": "none"
+  },
+  {
+   "id": "mh:clothes/marco_105_stocking01",
+   "category": "clothes",
+   "name": "Stocking01",
+   "file": "proxies/clothes/marco_105_stocking01.ps2.json",
+   "thumbnail": null,
+   "triangles": 1600,
+   "slot": "bottom",
+   "tags": [
+    "fgh_fashion",
+    "underwear"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/marco_105_stocking01.json",
+   "originalTriangles": 1676,
+   "overBudget": false,
+   "hiddenFaces": "none"
+  },
+  {
+   "id": "mh:clothes/marco_105_stocking02",
+   "category": "clothes",
+   "name": "Stocking02",
+   "file": "proxies/clothes/marco_105_stocking02.ps2.json",
+   "thumbnail": null,
+   "triangles": 1600,
+   "slot": "bottom",
+   "tags": [
+    "fgh_fashion",
+    "underwear"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/marco_105_stocking02.json",
+   "originalTriangles": 1676,
+   "overBudget": false,
+   "hiddenFaces": "none"
+  },
+  {
+   "id": "mh:clothes/v0rt3x_armsleeves_black_fishnet_large",
+   "category": "clothes",
+   "name": "armsleeve_fishnet_large",
+   "file": "proxies/clothes/v0rt3x_armsleeves_black_fishnet_large.ps2.json",
+   "thumbnail": null,
+   "triangles": 700,
+   "slot": "gloves",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/v0rt3x_armsleeves_black_fishnet_large.json",
+   "originalTriangles": 720,
+   "overBudget": false,
+   "hiddenFaces": "none"
+  },
+  {
+   "id": "mh:clothes/v0rt3x_armsleeves_black_fishnet_medium",
+   "category": "clothes",
+   "name": "armsleeve_fishnet_medium",
+   "file": "proxies/clothes/v0rt3x_armsleeves_black_fishnet_medium.ps2.json",
+   "thumbnail": null,
+   "triangles": 700,
+   "slot": "gloves",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/v0rt3x_armsleeves_black_fishnet_medium.json",
+   "originalTriangles": 720,
+   "overBudget": false,
+   "hiddenFaces": "none"
+  },
+  {
+   "id": "mh:clothes/v0rt3x_armsleeves_black_fishnet_small",
+   "category": "clothes",
+   "name": "armsleeve_fishnet_small",
+   "file": "proxies/clothes/v0rt3x_armsleeves_black_fishnet_small.ps2.json",
+   "thumbnail": null,
+   "triangles": 700,
+   "slot": "gloves",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/v0rt3x_armsleeves_black_fishnet_small.json",
+   "originalTriangles": 720,
+   "overBudget": false,
+   "hiddenFaces": "none"
+  },
+  {
+   "id": "mh:clothes/v0rt3x_armsleeves_white_fishnet_large",
+   "category": "clothes",
+   "name": "armsleeve_white_l",
+   "file": "proxies/clothes/v0rt3x_armsleeves_white_fishnet_large.ps2.json",
+   "thumbnail": null,
+   "triangles": 700,
+   "slot": "gloves",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/v0rt3x_armsleeves_white_fishnet_large.json",
+   "originalTriangles": 720,
+   "overBudget": false,
+   "hiddenFaces": "none"
+  },
+  {
+   "id": "mh:clothes/v0rt3x_armsleeves_white_fishnet_medium",
+   "category": "clothes",
+   "name": "armsleeve_white_m",
+   "file": "proxies/clothes/v0rt3x_armsleeves_white_fishnet_medium.ps2.json",
+   "thumbnail": null,
+   "triangles": 700,
+   "slot": "gloves",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/v0rt3x_armsleeves_white_fishnet_medium.json",
+   "originalTriangles": 720,
+   "overBudget": false,
+   "hiddenFaces": "none"
+  },
+  {
+   "id": "mh:clothes/v0rt3x_armsleeves_white_fishnet_small",
+   "category": "clothes",
+   "name": "armsleeve_white_s",
+   "file": "proxies/clothes/v0rt3x_armsleeves_white_fishnet_small.ps2.json",
+   "thumbnail": null,
+   "triangles": 700,
+   "slot": "gloves",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/v0rt3x_armsleeves_white_fishnet_small.json",
+   "originalTriangles": 720,
+   "overBudget": false,
+   "hiddenFaces": "none"
+  },
+  {
+   "id": "mh:clothes/v0rt3x_stockings_black_fishnet_large",
+   "category": "clothes",
+   "name": "stockings_fishnet_large",
+   "file": "proxies/clothes/v0rt3x_stockings_black_fishnet_large.ps2.json",
+   "thumbnail": null,
+   "triangles": 1600,
+   "slot": "bottom",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/v0rt3x_stockings_black_fishnet_large.json",
+   "originalTriangles": 2088,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/v0rt3x_stockings_black_fishnet_medium",
+   "category": "clothes",
+   "name": "stockings_fishnet_medium",
+   "file": "proxies/clothes/v0rt3x_stockings_black_fishnet_medium.ps2.json",
+   "thumbnail": null,
+   "triangles": 1600,
+   "slot": "bottom",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/v0rt3x_stockings_black_fishnet_medium.json",
+   "originalTriangles": 2088,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/v0rt3x_stockings_black_fishnet_small",
+   "category": "clothes",
+   "name": "stockings_fishnet_small",
+   "file": "proxies/clothes/v0rt3x_stockings_black_fishnet_small.ps2.json",
+   "thumbnail": null,
+   "triangles": 1600,
+   "slot": "bottom",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/v0rt3x_stockings_black_fishnet_small.json",
+   "originalTriangles": 2088,
+   "overBudget": false,
+   "hiddenFaces": "none"
+  },
+  {
+   "id": "mh:clothes/v0rt3x_stockings_white_fishnet_large",
+   "category": "clothes",
+   "name": "stockings_white_l",
+   "file": "proxies/clothes/v0rt3x_stockings_white_fishnet_large.ps2.json",
+   "thumbnail": null,
+   "triangles": 1600,
+   "slot": "bottom",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/v0rt3x_stockings_white_fishnet_large.json",
+   "originalTriangles": 2088,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/v0rt3x_stockings_white_fishnet_medium",
+   "category": "clothes",
+   "name": "stockings_white_m",
+   "file": "proxies/clothes/v0rt3x_stockings_white_fishnet_medium.ps2.json",
+   "thumbnail": null,
+   "triangles": 1600,
+   "slot": "bottom",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/v0rt3x_stockings_white_fishnet_medium.json",
+   "originalTriangles": 2088,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/v0rt3x_stockings_white_fishnet_small",
+   "category": "clothes",
+   "name": "stockings_white_s",
+   "file": "proxies/clothes/v0rt3x_stockings_white_fishnet_small.ps2.json",
+   "thumbnail": null,
+   "triangles": 1600,
+   "slot": "bottom",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/v0rt3x_stockings_white_fishnet_small.json",
+   "originalTriangles": 2088,
+   "overBudget": false,
+   "hiddenFaces": "none"
+  },
+  {
+   "id": "mh:clothes/wolgade_female_panties_01",
+   "category": "clothes",
+   "name": "female_panties_01",
+   "file": "proxies/clothes/wolgade_female_panties_01.ps2.json",
+   "thumbnail": null,
+   "triangles": 1518,
+   "slot": "bottom",
+   "tags": [
+    "female",
+    "underwear",
+    "panties"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/wolgade_female_panties_01.json",
+   "originalTriangles": 1518,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/wolgade_female_top_01",
+   "category": "clothes",
+   "name": "female_top_01",
+   "file": "proxies/clothes/wolgade_female_top_01.ps2.json",
+   "thumbnail": null,
+   "triangles": 1800,
+   "slot": "top",
+   "tags": [
+    "female"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/wolgade_female_top_01.json",
+   "originalTriangles": 2156,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/aethelraed_unraed_cloche_hat",
+   "category": "clothes",
+   "name": "Cloche_Hat",
+   "file": "proxies/clothes/aethelraed_unraed_cloche_hat.ps2.json",
+   "thumbnail": null,
+   "triangles": 699,
+   "slot": "hat",
+   "tags": [
+    "female",
+    "hats",
+    "historical"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/aethelraed_unraed_cloche_hat.json",
+   "originalTriangles": 771,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/grinsegold_uncle_joshis_hat",
+   "category": "clothes",
+   "name": "Uncle_Joshi's_hat",
+   "file": "proxies/clothes/grinsegold_uncle_joshis_hat.ps2.json",
+   "thumbnail": null,
+   "triangles": 1794,
+   "slot": "hat",
+   "tags": [
+    "hats"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/grinsegold_uncle_joshis_hat.json",
+   "originalTriangles": 7168,
+   "overBudget": false,
+   "hiddenFaces": "none"
+  },
+  {
+   "id": "mh:clothes/joepal_xmas_cap",
+   "category": "clothes",
+   "name": "xmascap",
+   "file": "proxies/clothes/joepal_xmas_cap.ps2.json",
+   "thumbnail": null,
+   "triangles": 700,
+   "slot": "hat",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/joepal_xmas_cap.json",
+   "originalTriangles": 2016,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/jujube_bag_on_head",
+   "category": "clothes",
+   "name": "pillow_man",
+   "file": "proxies/clothes/jujube_bag_on_head.ps2.json",
+   "thumbnail": null,
+   "triangles": 499,
+   "slot": "accessory",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/jujube_bag_on_head.json",
+   "originalTriangles": 11264,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/jujube_newsboy_cap",
+   "category": "clothes",
+   "name": "newsboy_cap",
+   "file": "proxies/clothes/jujube_newsboy_cap.ps2.json",
+   "thumbnail": null,
+   "triangles": 700,
+   "slot": "hat",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/jujube_newsboy_cap.json",
+   "originalTriangles": 996,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/toigo_maga_hat",
+   "category": "clothes",
+   "name": "MAGA-Hat",
+   "file": "proxies/clothes/toigo_maga_hat.ps2.json",
+   "thumbnail": null,
+   "triangles": 699,
+   "slot": "hat",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_maga_hat.json",
+   "originalTriangles": 6004,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/culturalibre_hero-heroine_gloves_1",
+   "category": "clothes",
+   "name": "hero-heroine_gloves_1",
+   "file": "proxies/clothes/culturalibre_hero-heroine_gloves_1.ps2.json",
+   "thumbnail": null,
+   "triangles": 700,
+   "slot": "gloves",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/culturalibre_hero-heroine_gloves_1.json",
+   "originalTriangles": 4528,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/culturalibre_hero-heroine_gloves_2",
+   "category": "clothes",
+   "name": "hero-heroine_gloves_2",
+   "file": "proxies/clothes/culturalibre_hero-heroine_gloves_2.ps2.json",
+   "thumbnail": null,
+   "triangles": 1392,
+   "slot": "gloves",
+   "tags": [
+    "hero",
+    "superhero"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/culturalibre_hero-heroine_gloves_2.json",
+   "originalTriangles": 14464,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/culturalibre_hero-heroine_gloves_3",
+   "category": "clothes",
+   "name": "hero-heroine_gloves_3",
+   "file": "proxies/clothes/culturalibre_hero-heroine_gloves_3.ps2.json",
+   "thumbnail": null,
+   "triangles": 12658,
+   "slot": "gloves",
+   "tags": [
+    "superhero",
+    "hero"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/culturalibre_hero-heroine_gloves_3.json",
+   "originalTriangles": 14536,
+   "overBudget": true,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/culturalibre_hero-heroine_gloves_4",
+   "category": "clothes",
+   "name": "hero-heroine_gloves_4",
+   "file": "proxies/clothes/culturalibre_hero-heroine_gloves_4.ps2.json",
+   "thumbnail": null,
+   "triangles": 1188,
+   "slot": "gloves",
+   "tags": [
+    "hero",
+    "superhero",
+    "gloves"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/culturalibre_hero-heroine_gloves_4.json",
+   "originalTriangles": 16544,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/culturalibre_hero-heroine_gloves_5",
+   "category": "clothes",
+   "name": "hero-heroine_gloves_5",
+   "file": "proxies/clothes/culturalibre_hero-heroine_gloves_5.ps2.json",
+   "thumbnail": null,
+   "triangles": 700,
+   "slot": "gloves",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/culturalibre_hero-heroine_gloves_5.json",
+   "originalTriangles": 5212,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/learning_mma_fighting_gloves",
+   "category": "clothes",
+   "name": "mma_gloves",
+   "file": "proxies/clothes/learning_mma_fighting_gloves.ps2.json",
+   "thumbnail": null,
+   "triangles": 700,
+   "slot": "gloves",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/learning_mma_fighting_gloves.json",
+   "originalTriangles": 4392,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/toigo_gloves_long",
+   "category": "clothes",
+   "name": "Gloves_Long",
+   "file": "proxies/clothes/toigo_gloves_long.ps2.json",
+   "thumbnail": null,
+   "triangles": 699,
+   "slot": "gloves",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_gloves_long.json",
+   "originalTriangles": 6864,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_gloves_medium",
+   "category": "clothes",
+   "name": "Gloves_Medium",
+   "file": "proxies/clothes/toigo_gloves_medium.ps2.json",
+   "thumbnail": null,
+   "triangles": 699,
+   "slot": "gloves",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_gloves_medium.json",
+   "originalTriangles": 5744,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_gloves_short",
+   "category": "clothes",
+   "name": "Gloves_Hand",
+   "file": "proxies/clothes/toigo_gloves_short.ps2.json",
+   "thumbnail": null,
+   "triangles": 700,
+   "slot": "gloves",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_gloves_short.json",
+   "originalTriangles": 4544,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/aethelraed_flapper_dress",
+   "category": "clothes",
+   "name": "Flapper_Dress_1",
+   "file": "proxies/clothes/aethelraed_flapper_dress.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [
+    "female",
+    "historical",
+    "dress"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/aethelraed_flapper_dress.json",
+   "originalTriangles": 12846,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/mindfront_kimono",
+   "category": "clothes",
+   "name": "F_Kimono",
+   "file": "proxies/clothes/mindfront_kimono.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [
+    "female",
+    "robe",
+    "casual"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/mindfront_kimono.json",
+   "originalTriangles": 6922,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_bodice_dress_with_lace_ruffle_skirt",
+   "category": "clothes",
+   "name": "Dress_Bodice_Ruffle_Skirt",
+   "file": "proxies/clothes/toigo_bodice_dress_with_lace_ruffle_skirt.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_bodice_dress_with_lace_ruffle_skirt.json",
+   "originalTriangles": 8840,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_camisole_dress_with_full_skirt",
+   "category": "clothes",
+   "name": "Dress_Camisole_Full_Skirt",
+   "file": "proxies/clothes/toigo_camisole_dress_with_full_skirt.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_camisole_dress_with_full_skirt.json",
+   "originalTriangles": 10792,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_cut_out_dress",
+   "category": "clothes",
+   "name": "Dress_Cut_Outs",
+   "file": "proxies/clothes/toigo_cut_out_dress.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_cut_out_dress.json",
+   "originalTriangles": 6156,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_dress_with_tiered_skirt",
+   "category": "clothes",
+   "name": "DressTierSkirt",
+   "file": "proxies/clothes/toigo_dress_with_tiered_skirt.ps2.json",
+   "thumbnail": null,
+   "triangles": 3097,
+   "slot": "full",
+   "tags": [
+    "dress"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_dress_with_tiered_skirt.json",
+   "originalTriangles": 18896,
+   "overBudget": true,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_halter_dress_knee_length",
+   "category": "clothes",
+   "name": "Dress_Knee_Halter",
+   "file": "proxies/clothes/toigo_halter_dress_knee_length.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_halter_dress_knee_length.json",
+   "originalTriangles": 3936,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_halter_dress_midi",
+   "category": "clothes",
+   "name": "Dress_Midi_Halter",
+   "file": "proxies/clothes/toigo_halter_dress_midi.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_halter_dress_midi.json",
+   "originalTriangles": 5184,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_halter_dress_with_fluted_skirt",
+   "category": "clothes",
+   "name": "Dress_Long_Fluted_Skirt",
+   "file": "proxies/clothes/toigo_halter_dress_with_fluted_skirt.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_halter_dress_with_fluted_skirt.json",
+   "originalTriangles": 6432,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_keyhole_neck_dress",
+   "category": "clothes",
+   "name": "Dress_Keyhole_Neck",
+   "file": "proxies/clothes/toigo_keyhole_neck_dress.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_keyhole_neck_dress.json",
+   "originalTriangles": 17888,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_shift_dress",
+   "category": "clothes",
+   "name": "Dress_Shift",
+   "file": "proxies/clothes/toigo_shift_dress.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_shift_dress.json",
+   "originalTriangles": 13568,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_strapless_ruffle_top_dress",
+   "category": "clothes",
+   "name": "Dress_Strapless_Ruffle_Top",
+   "file": "proxies/clothes/toigo_strapless_ruffle_top_dress.ps2.json",
+   "thumbnail": null,
+   "triangles": 2500,
+   "slot": "full",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_strapless_ruffle_top_dress.json",
+   "originalTriangles": 10336,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/wdg_mycenaean_tunic",
+   "category": "clothes",
+   "name": "Mycenaean_Tunic",
+   "file": "proxies/clothes/wdg_mycenaean_tunic.ps2.json",
+   "thumbnail": null,
+   "triangles": 500,
+   "slot": "accessory",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/wdg_mycenaean_tunic.json",
+   "originalTriangles": 2660,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/frankyaye_mini_skirt_01",
+   "category": "clothes",
+   "name": "Mini_Skirt_01",
+   "file": "proxies/clothes/frankyaye_mini_skirt_01.ps2.json",
+   "thumbnail": null,
+   "triangles": 1600,
+   "slot": "bottom",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/frankyaye_mini_skirt_01.json",
+   "originalTriangles": 1720,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/frankyaye_mini_skirt_02",
+   "category": "clothes",
+   "name": "Mini_Skirt_02",
+   "file": "proxies/clothes/frankyaye_mini_skirt_02.ps2.json",
+   "thumbnail": null,
+   "triangles": 1600,
+   "slot": "bottom",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/frankyaye_mini_skirt_02.json",
+   "originalTriangles": 2600,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/toigo_long_full_skirt",
+   "category": "clothes",
+   "name": "Skirt_Full_Long",
+   "file": "proxies/clothes/toigo_long_full_skirt.ps2.json",
+   "thumbnail": null,
+   "triangles": 1600,
+   "slot": "bottom",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_long_full_skirt.json",
+   "originalTriangles": 5848,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_skirt_with_lace_ruffle",
+   "category": "clothes",
+   "name": "Skirt_Full_Lace_Ruffle",
+   "file": "proxies/clothes/toigo_skirt_with_lace_ruffle.ps2.json",
+   "thumbnail": null,
+   "triangles": 1600,
+   "slot": "bottom",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_skirt_with_lace_ruffle.json",
+   "originalTriangles": 5576,
+   "overBudget": false,
+   "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "mh:clothes/toigo_tiered_mini_skirt",
+   "category": "clothes",
+   "name": "Tier_Skirt_Mini",
+   "file": "proxies/clothes/toigo_tiered_mini_skirt.ps2.json",
+   "thumbnail": null,
+   "triangles": 2319,
+   "slot": "bottom",
+   "tags": [],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_tiered_mini_skirt.json",
+   "originalTriangles": 10656,
+   "overBudget": false,
+   "hiddenFaces": "computed"
+  },
+  {
+   "id": "mh:clothes/toigo_tiered_skirt",
+   "category": "clothes",
+   "name": "Tier_Skirt",
+   "file": "proxies/clothes/toigo_tiered_skirt.ps2.json",
+   "thumbnail": null,
+   "triangles": 2588,
+   "slot": "full",
+   "tags": [
+    "dress"
+   ],
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/clothes/toigo_tiered_skirt.json",
+   "originalTriangles": 12960,
+   "overBudget": true,
+   "hiddenFaces": "makehuman"
+  }
+ ],
+ "skins": [
+  {
+   "id": "mh:skins/middleage_african_female",
+   "category": "skins",
+   "name": "middleage_caucasian_female",
+   "texture": "textures/skins/middleage_african_female.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "middleage",
+    "male",
+    "female",
+    "african"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/middleage_african_male",
+   "category": "skins",
+   "name": "middleage_african_male",
+   "texture": "textures/skins/middleage_african_male.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "middleage",
+    "male",
+    "african"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/middleage_asian_female",
+   "category": "skins",
+   "name": "middleage_asian_female",
+   "texture": "textures/skins/middleage_asian_female.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "middleage",
+    "male",
+    "female",
+    "asian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/middleage_asian_male",
+   "category": "skins",
+   "name": "middleage_asian_male",
+   "texture": "textures/skins/middleage_asian_male.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "middleage",
+    "male",
+    "asian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/middleage_caucasian_female",
+   "category": "skins",
+   "name": "middleage_caucasian_female",
+   "texture": "textures/skins/middleage_caucasian_female.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "middleage",
+    "male",
+    "female",
+    "asian",
+    "caucasian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/middleage_caucasian_male",
+   "category": "skins",
+   "name": "middleage_cauasian_male",
+   "texture": "textures/skins/middleage_caucasian_male.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "middleage",
+    "male",
+    "asian",
+    "caucasian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/old_african_female",
+   "category": "skins",
+   "name": "old_african_female",
+   "texture": "textures/skins/old_african_female.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "old",
+    "male",
+    "female",
+    "african"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/old_african_male",
+   "category": "skins",
+   "name": "old_african_male",
+   "texture": "textures/skins/old_african_male.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "old",
+    "male",
+    "african"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/old_asian_female",
+   "category": "skins",
+   "name": "old_asian_female",
+   "texture": "textures/skins/old_asian_female.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "old",
+    "male",
+    "female",
+    "asian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/old_asian_male",
+   "category": "skins",
+   "name": "old_asian_male",
+   "texture": "textures/skins/old_asian_male.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "old",
+    "male",
+    "asian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/old_caucasian_female",
+   "category": "skins",
+   "name": "old_caucasian_female",
+   "texture": "textures/skins/old_caucasian_female.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "old",
+    "male",
+    "female",
+    "asian",
+    "caucasian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/old_caucasian_male",
+   "category": "skins",
+   "name": "old_caucasian_male",
+   "texture": "textures/skins/old_caucasian_male.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "old",
+    "male",
+    "asian",
+    "caucasian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/young_african_female",
+   "category": "skins",
+   "name": "young_african_female",
+   "texture": "textures/skins/young_african_female.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "young",
+    "male",
+    "female",
+    "african"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/young_african_male",
+   "category": "skins",
+   "name": "young_african_male",
+   "texture": "textures/skins/young_african_male.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "young",
+    "male",
+    "african"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/young_asian_female",
+   "category": "skins",
+   "name": "young_asian_female",
+   "texture": "textures/skins/young_asian_female.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "young",
+    "male",
+    "female",
+    "asian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/young_asian_male",
+   "category": "skins",
+   "name": "young_asian_male",
+   "texture": "textures/skins/young_asian_male.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "young",
+    "male",
+    "asian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/young_caucasian_female",
+   "category": "skins",
+   "name": "young_caucasian_female",
+   "texture": "textures/skins/young_caucasian_female.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "young",
+    "male",
+    "female",
+    "asian",
+    "caucasian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/young_caucasian_female2",
+   "category": "skins",
+   "name": "young_caucasian_female2",
+   "texture": "textures/skins/young_caucasian_female2.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "young",
+    "male",
+    "female",
+    "asian",
+    "caucasian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/young_caucasian_male",
+   "category": "skins",
+   "name": "old_caucasian_male_detailed",
+   "texture": "textures/skins/young_caucasian_male.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "young",
+    "male",
+    "asian",
+    "caucasian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/young_caucasian_male2",
+   "category": "skins",
+   "name": "old_caucasian_male_detailed",
+   "texture": "textures/skins/young_caucasian_male2.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "young",
+    "male",
+    "asian",
+    "caucasian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/blindsaypatten_uniform_skin_texture",
+   "category": "skins",
+   "name": "skin_texture",
+   "texture": "textures/skins/blindsaypatten_uniform_skin_texture.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/bobby_03_young_female_hairless",
+   "category": "skins",
+   "name": "Grey Skinned Person",
+   "texture": "textures/skins/bobby_03_young_female_hairless.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "young",
+    "male",
+    "female"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/callharvey3d_midtoned_female",
+   "category": "skins",
+   "name": "young_african_female",
+   "texture": "textures/skins/callharvey3d_midtoned_female.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male",
+    "female"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/cutoff3d_indian_female_enhanced",
+   "category": "skins",
+   "name": "summerglow",
+   "texture": "textures/skins/cutoff3d_indian_female_enhanced.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male",
+    "female"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/cutoff3d_indian_female_skin",
+   "category": "skins",
+   "name": "summerglow",
+   "texture": "textures/skins/cutoff3d_indian_female_skin.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male",
+    "female"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/darthfurby_caucasian_female",
+   "category": "skins",
+   "name": "darthfurby_caucasian_female",
+   "texture": "textures/skins/darthfurby_caucasian_female.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male",
+    "female",
+    "asian",
+    "caucasian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/flower-angel_red_head_skin",
+   "category": "skins",
+   "name": "RedHeadSkin",
+   "texture": "textures/skins/flower-angel_red_head_skin.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/nyloseth_zoeyskin",
+   "category": "skins",
+   "name": "Zoey Skin",
+   "texture": "textures/skins/nyloseth_zoeyskin.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/onlytheghosts_middle_aged_eurasian_female",
+   "category": "skins",
+   "name": "middleage_eurasian_female",
+   "texture": "textures/skins/onlytheghosts_middle_aged_eurasian_female.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male",
+    "female",
+    "asian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/onlytheghosts_old_eurasian_female",
+   "category": "skins",
+   "name": "old_eurasian_female",
+   "texture": "textures/skins/onlytheghosts_old_eurasian_female.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "old",
+    "male",
+    "female",
+    "asian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/onlytheghosts_young_eurasian_female",
+   "category": "skins",
+   "name": "young_eurasian_female",
+   "texture": "textures/skins/onlytheghosts_young_eurasian_female.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "young",
+    "male",
+    "female",
+    "asian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/skalldyrssuppe_creamy_female",
+   "category": "skins",
+   "name": "creamy_female",
+   "texture": "textures/skins/skalldyrssuppe_creamy_female.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male",
+    "female"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/toigo_light_skin_female_bronze",
+   "category": "skins",
+   "name": "lightfemaleskinMaterial",
+   "texture": "textures/skins/toigo_light_skin_female_bronze.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male",
+    "female"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/toigo_light_skin_female_bronze_with_makeup",
+   "category": "skins",
+   "name": "lightfemaleskinMaterial",
+   "texture": "textures/skins/toigo_light_skin_female_bronze_with_makeup.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male",
+    "female"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/toigo_light_skin_female_freckles",
+   "category": "skins",
+   "name": "lightfemaleskinMaterial",
+   "texture": "textures/skins/toigo_light_skin_female_freckles.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male",
+    "female"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/toigo_light_skin_female_ginger",
+   "category": "skins",
+   "name": "lightfemaleskinMaterial",
+   "texture": "textures/skins/toigo_light_skin_female_ginger.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male",
+    "female"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/toigo_light_skin_female_ginger_2",
+   "category": "skins",
+   "name": "lightfemaleskinMaterial",
+   "texture": "textures/skins/toigo_light_skin_female_ginger_2.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male",
+    "female"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/toigo_light_skin_female_ginger_with_makeup",
+   "category": "skins",
+   "name": "lightfemaleskinMaterial",
+   "texture": "textures/skins/toigo_light_skin_female_ginger_with_makeup.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male",
+    "female"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/toigo_light_skin_female_with_violet_makeup",
+   "category": "skins",
+   "name": "lightfemaleskinMaterial",
+   "texture": "textures/skins/toigo_light_skin_female_with_violet_makeup.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male",
+    "female"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/toigo_light_skin_with_makeup",
+   "category": "skins",
+   "name": "light_skin_makeupMaterial",
+   "texture": "textures/skins/toigo_light_skin_with_makeup.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/toigo_light_skin_with_natural_makeup",
+   "category": "skins",
+   "name": "lightfemaleskinMaterial",
+   "texture": "textures/skins/toigo_light_skin_with_natural_makeup.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/ken1138_caucasian_male_tattooed_skin",
+   "category": "skins",
+   "name": "Caucasion_TatooedMale_Skin_Diffuse",
+   "texture": "textures/skins/ken1138_caucasian_male_tattooed_skin.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male",
+    "asian",
+    "caucasian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/mindfront_aksel_skin",
+   "category": "skins",
+   "name": "aksel_skin",
+   "texture": "textures/skins/mindfront_aksel_skin.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/mindfront_skin_male_african_middleage",
+   "category": "skins",
+   "name": "skin_male_african_middleage",
+   "texture": "textures/skins/mindfront_skin_male_african_middleage.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "middleage",
+    "male",
+    "african"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/onlytheghosts_old_eurasian_male",
+   "category": "skins",
+   "name": "old_eurasian_male",
+   "texture": "textures/skins/onlytheghosts_old_eurasian_male.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "old",
+    "male",
+    "asian"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/rehmanpolanski_skin_viking_tattoos",
+   "category": "skins",
+   "name": "viking_male",
+   "texture": "textures/skins/rehmanpolanski_skin_viking_tattoos.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/toigo_light_skin_male_bronze",
+   "category": "skins",
+   "name": "lightskinmaleMaterial",
+   "texture": "textures/skins/toigo_light_skin_male_bronze.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/toigo_light_skin_male_freckles",
+   "category": "skins",
+   "name": "lightskinmaleMaterial",
+   "texture": "textures/skins/toigo_light_skin_male_freckles.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/toigo_light_skin_male_ginger",
+   "category": "skins",
+   "name": "lightskinmaleMaterial",
+   "texture": "textures/skins/toigo_light_skin_male_ginger.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/toigo_light_skin_male_with_emo_eyes",
+   "category": "skins",
+   "name": "lightskinmaleMaterial",
+   "texture": "textures/skins/toigo_light_skin_male_with_emo_eyes.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/toigo_light_skin_male_with_eyeliner",
+   "category": "skins",
+   "name": "lightskinmaleMaterial",
+   "texture": "textures/skins/toigo_light_skin_male_with_eyeliner.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male"
+   ],
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "mh:skins/toigo_light_skin_male_with_goth_makeup",
+   "category": "skins",
+   "name": "lightskinmaleMaterial",
+   "texture": "textures/skins/toigo_light_skin_male_with_goth_makeup.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "male"
+   ],
+   "licence": "CC0-1.0"
+  }
+ ],
+ "eyeColours": [
+  {
+   "id": "mh:eyecolour/blue",
+   "name": "blue",
+   "texture": "textures/eyes/colour_blue.jpg"
+  },
+  {
+   "id": "mh:eyecolour/bluegreen",
+   "name": "bluegreen",
+   "texture": "textures/eyes/colour_bluegreen.jpg"
+  },
+  {
+   "id": "mh:eyecolour/brown",
+   "name": "brown",
+   "texture": "textures/eyes/colour_brown.jpg"
+  },
+  {
+   "id": "mh:eyecolour/brownlight",
+   "name": "brownlight",
+   "texture": "textures/eyes/colour_brownlight.jpg"
+  },
+  {
+   "id": "mh:eyecolour/deepblue",
+   "name": "deepblue",
+   "texture": "textures/eyes/colour_deepblue.jpg"
+  },
+  {
+   "id": "mh:eyecolour/green",
+   "name": "green",
+   "texture": "textures/eyes/colour_green.jpg"
+  },
+  {
+   "id": "mh:eyecolour/grey",
+   "name": "grey",
+   "texture": "textures/eyes/colour_grey.jpg"
+  },
+  {
+   "id": "mh:eyecolour/ice",
+   "name": "ice",
+   "texture": "textures/eyes/colour_ice.jpg"
+  },
+  {
+   "id": "mh:eyecolour/lightblue",
+   "name": "lightblue",
+   "texture": "textures/eyes/colour_lightblue.jpg"
+  }
+ ],
+ "bodyMeshes": [
+  {
+   "id": "ps2_body_8k",
+   "triangles": 8000,
+   "vertices": 4697,
+   "file": "bodymesh/ps2_body_8k.json"
+  },
+  {
+   "id": "ps2_body_10k",
+   "triangles": 10000,
+   "vertices": 5759,
+   "file": "bodymesh/ps2_body_10k.json"
+  },
+  {
+   "id": "ps2_body_12k",
+   "triangles": 12000,
+   "vertices": 6830,
+   "file": "bodymesh/ps2_body_12k.json"
+  }
+ ],
+ "hairAtlases": [
+  {
+   "id": "ps2cc:atlas/long01",
+   "name": "Long hair strips (MakeHuman long01)",
+   "atlas": {
+    "format": "ps2cc.atlas/1",
+    "texture": "textures/hair/long01.png",
+    "regions": [
+     {
+      "x": 0,
+      "y": 0,
+      "w": 0.3154296875,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.3154296875,
+      "y": 0,
+      "w": 0.3154296875,
+      "h": 1,
+      "tag": "base"
+     },
+     {
+      "x": 0.642578125,
+      "y": 0.115234375,
+      "w": 0.1630859375,
+      "h": 0.6025390625,
+      "tag": "fringe"
+     },
+     {
+      "x": 0.8056640625,
+      "y": 0.115234375,
+      "w": 0.1630859375,
+      "h": 0.6025390625,
+      "tag": "flyaway"
+     }
+    ]
+   },
+   "licence": "CC0-1.0"
+  }
+ ]
+}

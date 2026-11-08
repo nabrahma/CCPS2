@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/short04",
+ "category": "hair",
+ "name": "short04",
+ "uuid": "e09bfd91-f83f-4f9a-ba8c-4635cd1ae0d8",
+ "tags": [
+  "makehuman™",
+  "male",
+  "short"
+ ],
+ "zDepth": 50,
+ "vertexCount": 865,
+ "faceCount": 1050,
+ "triangleFaces": 1050,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/hair/short04.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "decimatedFrom": 865,
+ "hiddenFaces": "none",
+ "originalTriangles": 1050,
+ "binary": "short04.ps2.bin",
+ "byteLength": 86452,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2595
+  },
+  "uvs": {
+   "offset": 10384,
+   "dtype": "f32",
+   "count": 1962
+  },
+  "faceVerts": {
+   "offset": 18240,
+   "dtype": "u32",
+   "count": 4200
+  },
+  "faceUvs": {
+   "offset": 35040,
+   "dtype": "u32",
+   "count": 4200
+  },
+  "refVerts": {
+   "offset": 51840,
+   "dtype": "u32",
+   "count": 2595
+  },
+  "refWeights": {
+   "offset": 62224,
+   "dtype": "f32",
+   "count": 2595
+  },
+  "refOffsets": {
+   "offset": 72608,
+   "dtype": "f32",
+   "count": 2595
+  },
+  "sourceProxyVertex": {
+   "offset": 82992,
+   "dtype": "u32",
+   "count": 865
+  }
+ }
+}

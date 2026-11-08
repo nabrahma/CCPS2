@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/faydaen_hair_1",
+ "category": "hair",
+ "name": "hair1",
+ "uuid": "7d1ccd6d-251c-4123-bbc4-a3b78b0905f2",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 541,
+ "faceCount": 836,
+ "triangleFaces": 836,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.29301
+  ],
+  [
+   1524,
+   4370,
+   0.5724
+  ],
+  [
+   1892,
+   3946,
+   0.18311
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.588,
+   0.588,
+   0.588
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/hair/faydaen_hair_1.jpg",
+  "textureSize": [
+   512,
+   1024
+  ]
+ },
+ "decimatedFrom": 541,
+ "hiddenFaces": "none",
+ "originalTriangles": 836,
+ "binary": "faydaen_hair_1.ps2.bin",
+ "byteLength": 59220,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1623
+  },
+  "uvs": {
+   "offset": 6496,
+   "dtype": "f32",
+   "count": 1078
+  },
+  "faceVerts": {
+   "offset": 10816,
+   "dtype": "u32",
+   "count": 3344
+  },
+  "faceUvs": {
+   "offset": 24192,
+   "dtype": "u32",
+   "count": 3344
+  },
+  "refVerts": {
+   "offset": 37568,
+   "dtype": "u32",
+   "count": 1623
+  },
+  "refWeights": {
+   "offset": 44064,
+   "dtype": "f32",
+   "count": 1623
+  },
+  "refOffsets": {
+   "offset": 50560,
+   "dtype": "f32",
+   "count": 1623
+  },
+  "sourceProxyVertex": {
+   "offset": 57056,
+   "dtype": "u32",
+   "count": 541
+  }
+ }
+}

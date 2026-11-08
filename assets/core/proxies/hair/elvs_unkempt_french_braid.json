@@ -1,0 +1,83 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/elvs_unkempt_french_braid",
+ "category": "hair",
+ "name": "unkempt_mhbraidfr",
+ "uuid": "39acf94b-4a4b-448b-b467-542df8a9b49b",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 6506,
+ "faceCount": 4100,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/elvs_unkempt_french_braid.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "elvs_unkempt_french_braid.bin",
+ "byteLength": 499160,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 19518
+  },
+  "uvs": {
+   "offset": 78080,
+   "dtype": "f32",
+   "count": 13912
+  },
+  "faceVerts": {
+   "offset": 133728,
+   "dtype": "u32",
+   "count": 16400
+  },
+  "faceUvs": {
+   "offset": 199328,
+   "dtype": "u32",
+   "count": 16400
+  },
+  "refVerts": {
+   "offset": 264928,
+   "dtype": "u32",
+   "count": 19518
+  },
+  "refWeights": {
+   "offset": 343008,
+   "dtype": "f32",
+   "count": 19518
+  },
+  "refOffsets": {
+   "offset": 421088,
+   "dtype": "f32",
+   "count": 19518
+  }
+ }
+}
