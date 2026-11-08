@@ -1,0 +1,70 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/jujube_newsboy_cap",
+ "category": "clothes",
+ "name": "newsboy_cap",
+ "uuid": "1d304cff-9874-40c6-b27f-e295dda2312e",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 517,
+ "faceCount": 498,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": null,
+ "slot": "hat",
+ "binary": "jujube_newsboy_cap.bin",
+ "byteLength": 45340,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1551
+  },
+  "uvs": {
+   "offset": 6208,
+   "dtype": "f32",
+   "count": 1144
+  },
+  "faceVerts": {
+   "offset": 10784,
+   "dtype": "u32",
+   "count": 1992
+  },
+  "faceUvs": {
+   "offset": 18752,
+   "dtype": "u32",
+   "count": 1992
+  },
+  "refVerts": {
+   "offset": 26720,
+   "dtype": "u32",
+   "count": 1551
+  },
+  "refWeights": {
+   "offset": 32928,
+   "dtype": "f32",
+   "count": 1551
+  },
+  "refOffsets": {
+   "offset": 39136,
+   "dtype": "f32",
+   "count": 1551
+  }
+ }
+}

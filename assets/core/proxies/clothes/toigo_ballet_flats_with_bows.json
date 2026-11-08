@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_ballet_flats_with_bows",
+ "category": "clothes",
+ "name": "Flats_ballet_bow",
+ "uuid": "c9fd381c-d10b-4c53-ba98-8c9cb88cb700",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 7756,
+ "faceCount": 7432,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/toigo_ballet_flats_with_bows.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "binary": "toigo_ballet_flats_with_bows.bin",
+ "byteLength": 688988,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 23268
+  },
+  "uvs": {
+   "offset": 93072,
+   "dtype": "f32",
+   "count": 17800
+  },
+  "faceVerts": {
+   "offset": 164272,
+   "dtype": "u32",
+   "count": 29728
+  },
+  "faceUvs": {
+   "offset": 283184,
+   "dtype": "u32",
+   "count": 29728
+  },
+  "refVerts": {
+   "offset": 402096,
+   "dtype": "u32",
+   "count": 23268
+  },
+  "refWeights": {
+   "offset": 495168,
+   "dtype": "f32",
+   "count": 23268
+  },
+  "refOffsets": {
+   "offset": 588240,
+   "dtype": "f32",
+   "count": 23268
+  },
+  "deleteVerts": {
+   "offset": 681312,
+   "dtype": "u32",
+   "count": 1919
+  }
+ }
+}

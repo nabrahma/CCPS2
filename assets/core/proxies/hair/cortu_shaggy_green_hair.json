@@ -1,0 +1,83 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/cortu_shaggy_green_hair",
+ "category": "hair",
+ "name": "shaggy_green",
+ "uuid": "35bcbed3-ede9-4133-92f0-39e993bcc4df",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 968,
+ "faceCount": 642,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/cortu_shaggy_green_hair.png",
+  "textureSize": [
+   512,
+   512
+  ]
+ },
+ "binary": "cortu_shaggy_green_hair.bin",
+ "byteLength": 74752,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2904
+  },
+  "uvs": {
+   "offset": 11616,
+   "dtype": "f32",
+   "count": 1936
+  },
+  "faceVerts": {
+   "offset": 19360,
+   "dtype": "u32",
+   "count": 2568
+  },
+  "faceUvs": {
+   "offset": 29632,
+   "dtype": "u32",
+   "count": 2568
+  },
+  "refVerts": {
+   "offset": 39904,
+   "dtype": "u32",
+   "count": 2904
+  },
+  "refWeights": {
+   "offset": 51520,
+   "dtype": "f32",
+   "count": 2904
+  },
+  "refOffsets": {
+   "offset": 63136,
+   "dtype": "f32",
+   "count": 2904
+  }
+ }
+}

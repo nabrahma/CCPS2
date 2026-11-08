@@ -1,0 +1,83 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/littleright_bobcut_hair",
+ "category": "hair",
+ "name": "LITTLERIGHT_hair_BobCut",
+ "uuid": "d606240d-ad5c-4ae8-bfec-4cfdf6a57af5",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1901,
+ "faceCount": 1346,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 0.0,
+  "diffuseTexture": "textures/hair/littleright_bobcut_hair.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "littleright_bobcut_hair.bin",
+ "byteLength": 149628,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 5703
+  },
+  "uvs": {
+   "offset": 22816,
+   "dtype": "f32",
+   "count": 3822
+  },
+  "faceVerts": {
+   "offset": 38112,
+   "dtype": "u32",
+   "count": 5384
+  },
+  "faceUvs": {
+   "offset": 59648,
+   "dtype": "u32",
+   "count": 5384
+  },
+  "refVerts": {
+   "offset": 81184,
+   "dtype": "u32",
+   "count": 5703
+  },
+  "refWeights": {
+   "offset": 104000,
+   "dtype": "f32",
+   "count": 5703
+  },
+  "refOffsets": {
+   "offset": 126816,
+   "dtype": "f32",
+   "count": 5703
+  }
+ }
+}

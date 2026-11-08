@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_shift_dress",
+ "category": "clothes",
+ "name": "Dress_Shift",
+ "uuid": "43c0280a-1e54-4851-acbd-e91cc1e04bae",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1358,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/toigo_shift_dress.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 6892,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 13568,
+ "binary": "toigo_shift_dress.ps2.bin",
+ "byteLength": 168520,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4074
+  },
+  "uvs": {
+   "offset": 16304,
+   "dtype": "f32",
+   "count": 2952
+  },
+  "faceVerts": {
+   "offset": 28112,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 68112,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 108112,
+   "dtype": "u32",
+   "count": 4074
+  },
+  "refWeights": {
+   "offset": 124416,
+   "dtype": "f32",
+   "count": 4074
+  },
+  "refOffsets": {
+   "offset": 140720,
+   "dtype": "f32",
+   "count": 4074
+  },
+  "deleteVerts": {
+   "offset": 157024,
+   "dtype": "u32",
+   "count": 1513
+  },
+  "sourceProxyVertex": {
+   "offset": 163088,
+   "dtype": "u32",
+   "count": 1358
+  }
+ }
+}

@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/cortu_t-bar",
+ "category": "clothes",
+ "name": "tbar",
+ "uuid": "259db21e-4ffb-4785-b29a-34b63f5295b1",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 290,
+ "faceCount": 500,
+ "triangleFaces": 500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/cortu_t-bar.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 392,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 704,
+ "binary": "cortu_t-bar.ps2.bin",
+ "byteLength": 41384,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 870
+  },
+  "uvs": {
+   "offset": 3488,
+   "dtype": "f32",
+   "count": 406
+  },
+  "faceVerts": {
+   "offset": 5120,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "faceUvs": {
+   "offset": 13120,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "refVerts": {
+   "offset": 21120,
+   "dtype": "u32",
+   "count": 870
+  },
+  "refWeights": {
+   "offset": 24608,
+   "dtype": "f32",
+   "count": 870
+  },
+  "refOffsets": {
+   "offset": 28096,
+   "dtype": "f32",
+   "count": 870
+  },
+  "deleteVerts": {
+   "offset": 31584,
+   "dtype": "u32",
+   "count": 2160
+  },
+  "sourceProxyVertex": {
+   "offset": 40224,
+   "dtype": "u32",
+   "count": 290
+  }
+ }
+}

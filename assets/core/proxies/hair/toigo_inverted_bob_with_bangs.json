@@ -1,0 +1,83 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/toigo_inverted_bob_with_bangs",
+ "category": "hair",
+ "name": "Bob_Inverted_bangs",
+ "uuid": "f038d1af-33d3-4c23-9ebd-8aaaf940374e",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 2670,
+ "faceCount": 2498,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 0.0,
+  "diffuseTexture": "textures/hair/toigo_inverted_bob_with_bangs.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "toigo_inverted_bob_with_bangs.bin",
+ "byteLength": 231576,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 8010
+  },
+  "uvs": {
+   "offset": 32048,
+   "dtype": "f32",
+   "count": 5864
+  },
+  "faceVerts": {
+   "offset": 55504,
+   "dtype": "u32",
+   "count": 9992
+  },
+  "faceUvs": {
+   "offset": 95472,
+   "dtype": "u32",
+   "count": 9992
+  },
+  "refVerts": {
+   "offset": 135440,
+   "dtype": "u32",
+   "count": 8010
+  },
+  "refWeights": {
+   "offset": 167488,
+   "dtype": "f32",
+   "count": 8010
+  },
+  "refOffsets": {
+   "offset": 199536,
+   "dtype": "f32",
+   "count": 8010
+  }
+ }
+}

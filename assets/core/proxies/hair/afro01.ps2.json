@@ -1,0 +1,94 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/afro01",
+ "category": "hair",
+ "name": "afro01",
+ "uuid": "59627022-32e9-4126-9cf1-036d4b9335fc",
+ "tags": [
+  "makehuman™",
+  "afro"
+ ],
+ "zDepth": 50,
+ "vertexCount": 2196,
+ "faceCount": 2192,
+ "triangleFaces": 2192,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.17412000000000002
+  ],
+  [
+   791,
+   881,
+   0.27409
+  ],
+  [
+   962,
+   5320,
+   0.22613
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/hair/afro01.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "decimatedFrom": 2196,
+ "hiddenFaces": "none",
+ "originalTriangles": 2192,
+ "binary": "afro01.ps2.bin",
+ "byteLength": 187920,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 6588
+  },
+  "uvs": {
+   "offset": 26352,
+   "dtype": "f32",
+   "count": 896
+  },
+  "faceVerts": {
+   "offset": 29936,
+   "dtype": "u32",
+   "count": 8768
+  },
+  "faceUvs": {
+   "offset": 65008,
+   "dtype": "u32",
+   "count": 8768
+  },
+  "refVerts": {
+   "offset": 100080,
+   "dtype": "u32",
+   "count": 6588
+  },
+  "refWeights": {
+   "offset": 126432,
+   "dtype": "f32",
+   "count": 6588
+  },
+  "refOffsets": {
+   "offset": 152784,
+   "dtype": "f32",
+   "count": 6588
+  },
+  "sourceProxyVertex": {
+   "offset": 179136,
+   "dtype": "u32",
+   "count": 2196
+  }
+ }
+}

@@ -1,0 +1,83 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/elvs_double_mh_braid",
+ "category": "hair",
+ "name": "double_mhbraid",
+ "uuid": "131838db-7c0a-43ed-86fa-d3be83420a7c",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 7969,
+ "faceCount": 4933,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/elvs_double_mh_braid.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "elvs_double_mh_braid.bin",
+ "byteLength": 608316,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 23907
+  },
+  "uvs": {
+   "offset": 95632,
+   "dtype": "f32",
+   "count": 16982
+  },
+  "faceVerts": {
+   "offset": 163568,
+   "dtype": "u32",
+   "count": 19732
+  },
+  "faceUvs": {
+   "offset": 242496,
+   "dtype": "u32",
+   "count": 19732
+  },
+  "refVerts": {
+   "offset": 321424,
+   "dtype": "u32",
+   "count": 23907
+  },
+  "refWeights": {
+   "offset": 417056,
+   "dtype": "f32",
+   "count": 23907
+  },
+  "refOffsets": {
+   "offset": 512688,
+   "dtype": "f32",
+   "count": 23907
+  }
+ }
+}

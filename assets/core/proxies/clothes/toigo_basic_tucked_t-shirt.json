@@ -1,0 +1,90 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_basic_tucked_t-shirt",
+ "category": "clothes",
+ "name": "T-shirt_basic_tucked",
+ "uuid": "8c04c19e-3cb3-4b25-91b7-46935e101a1f",
+ "tags": [
+  "t-shirt",
+  "shirt",
+  "top",
+  "knit",
+  "casual"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1391,
+ "faceCount": 1350,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/toigo_basic_tucked_t-shirt.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "toigo_basic_tucked_t-shirt.bin",
+ "byteLength": 123156,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4173
+  },
+  "uvs": {
+   "offset": 16704,
+   "dtype": "f32",
+   "count": 3288
+  },
+  "faceVerts": {
+   "offset": 29856,
+   "dtype": "u32",
+   "count": 5400
+  },
+  "faceUvs": {
+   "offset": 51456,
+   "dtype": "u32",
+   "count": 5400
+  },
+  "refVerts": {
+   "offset": 73056,
+   "dtype": "u32",
+   "count": 4173
+  },
+  "refWeights": {
+   "offset": 89760,
+   "dtype": "f32",
+   "count": 4173
+  },
+  "refOffsets": {
+   "offset": 106464,
+   "dtype": "f32",
+   "count": 4173
+  }
+ }
+}

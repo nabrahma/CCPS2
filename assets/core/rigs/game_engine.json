@@ -1,0 +1,1696 @@
+{
+ "format": "ps2cc.rig/1",
+ "name": "game_engine",
+ "bones": [
+  {
+   "name": "Root",
+   "parent": null,
+   "head": {
+    "vertices": [
+     19150,
+     19151,
+     19152,
+     19153,
+     19154,
+     19155,
+     19156,
+     19157
+    ],
+    "source": "joint-ground"
+   },
+   "tail": {
+    "vertices": [
+     19152,
+     19155
+    ],
+    "source": "mean"
+   },
+   "roll": 0.0,
+   "connected": false
+  },
+  {
+   "name": "pelvis",
+   "parent": "Root",
+   "head": {
+    "vertices": [
+     13622,
+     13623,
+     13624,
+     13625,
+     13626,
+     13627,
+     13628,
+     13629
+    ],
+    "source": "joint-pelvis"
+   },
+   "tail": {
+    "vertices": [
+     13630,
+     13631,
+     13632,
+     13633,
+     13634,
+     13635,
+     13636,
+     13637
+    ],
+    "source": "joint-spine-4"
+   },
+   "roll": 0.0,
+   "connected": false
+  },
+  {
+   "name": "spine_01",
+   "parent": "pelvis",
+   "head": {
+    "vertices": [
+     13630,
+     13631,
+     13632,
+     13633,
+     13634,
+     13635,
+     13636,
+     13637
+    ],
+    "source": "joint-spine-4"
+   },
+   "tail": {
+    "vertices": [
+     13638,
+     13639,
+     13640,
+     13641,
+     13642,
+     13643,
+     13644,
+     13645
+    ],
+    "source": "joint-spine-3"
+   },
+   "roll": 0.0,
+   "connected": false
+  },
+  {
+   "name": "spine_02",
+   "parent": "spine_01",
+   "head": {
+    "vertices": [
+     13638,
+     13639,
+     13640,
+     13641,
+     13642,
+     13643,
+     13644,
+     13645
+    ],
+    "source": "joint-spine-3"
+   },
+   "tail": {
+    "vertices": [
+     13646,
+     13647,
+     13648,
+     13649,
+     13650,
+     13651,
+     13652,
+     13653
+    ],
+    "source": "joint-spine-2"
+   },
+   "roll": 0.0,
+   "connected": false
+  },
+  {
+   "name": "spine_03",
+   "parent": "spine_02",
+   "head": {
+    "vertices": [
+     13646,
+     13647,
+     13648,
+     13649,
+     13650,
+     13651,
+     13652,
+     13653
+    ],
+    "source": "joint-spine-2"
+   },
+   "tail": {
+    "vertices": [
+     13654,
+     13655,
+     13656,
+     13657,
+     13658,
+     13659,
+     13660,
+     13661
+    ],
+    "source": "joint-spine-1"
+   },
+   "roll": 0.0,
+   "connected": false
+  },
+  {
+   "name": "thigh_l",
+   "parent": "pelvis",
+   "head": {
+    "vertices": [
+     13846,
+     13847,
+     13848,
+     13849,
+     13850,
+     13851,
+     13852,
+     13853
+    ],
+    "source": "joint-l-upper-leg"
+   },
+   "tail": {
+    "vertices": [
+     13838,
+     13839,
+     13840,
+     13841,
+     13842,
+     13843,
+     13844,
+     13845
+    ],
+    "source": "joint-l-knee"
+   },
+   "roll": -0.5723438858985901,
+   "connected": false
+  },
+  {
+   "name": "thigh_r",
+   "parent": "pelvis",
+   "head": {
+    "vertices": [
+     14286,
+     14287,
+     14288,
+     14289,
+     14290,
+     14291,
+     14292,
+     14293
+    ],
+    "source": "joint-r-upper-leg"
+   },
+   "tail": {
+    "vertices": [
+     14278,
+     14279,
+     14280,
+     14281,
+     14282,
+     14283,
+     14284,
+     14285
+    ],
+    "source": "joint-r-knee"
+   },
+   "roll": 0.5723438858985901,
+   "connected": false
+  },
+  {
+   "name": "calf_l",
+   "parent": "thigh_l",
+   "head": {
+    "vertices": [
+     13838,
+     13839,
+     13840,
+     13841,
+     13842,
+     13843,
+     13844,
+     13845
+    ],
+    "source": "joint-l-knee"
+   },
+   "tail": {
+    "vertices": [
+     13830,
+     13831,
+     13832,
+     13833,
+     13834,
+     13835,
+     13836,
+     13837
+    ],
+    "source": "joint-l-ankle"
+   },
+   "roll": -0.09209170937538147,
+   "connected": false
+  },
+  {
+   "name": "calf_r",
+   "parent": "thigh_r",
+   "head": {
+    "vertices": [
+     14278,
+     14279,
+     14280,
+     14281,
+     14282,
+     14283,
+     14284,
+     14285
+    ],
+    "source": "joint-r-knee"
+   },
+   "tail": {
+    "vertices": [
+     14270,
+     14271,
+     14272,
+     14273,
+     14274,
+     14275,
+     14276,
+     14277
+    ],
+    "source": "joint-r-ankle"
+   },
+   "roll": 0.09209170937538147,
+   "connected": false
+  },
+  {
+   "name": "clavicle_l",
+   "parent": "spine_03",
+   "head": {
+    "vertices": [
+     14054,
+     14055,
+     14056,
+     14057,
+     14058,
+     14059,
+     14060,
+     14061
+    ],
+    "source": "joint-l-clavicle"
+   },
+   "tail": {
+    "vertices": [
+     14046,
+     14047,
+     14048,
+     14049,
+     14050,
+     14051,
+     14052,
+     14053
+    ],
+    "source": "joint-l-shoulder"
+   },
+   "roll": 1.6565302610397339,
+   "connected": false
+  },
+  {
+   "name": "clavicle_r",
+   "parent": "spine_03",
+   "head": {
+    "vertices": [
+     14494,
+     14495,
+     14496,
+     14497,
+     14498,
+     14499,
+     14500,
+     14501
+    ],
+    "source": "joint-r-clavicle"
+   },
+   "tail": {
+    "vertices": [
+     14486,
+     14487,
+     14488,
+     14489,
+     14490,
+     14491,
+     14492,
+     14493
+    ],
+    "source": "joint-r-shoulder"
+   },
+   "roll": -1.6565302610397339,
+   "connected": false
+  },
+  {
+   "name": "foot_l",
+   "parent": "calf_l",
+   "head": {
+    "vertices": [
+     13830,
+     13831,
+     13832,
+     13833,
+     13834,
+     13835,
+     13836,
+     13837
+    ],
+    "source": "joint-l-ankle"
+   },
+   "tail": {
+    "vertices": [
+     13670,
+     13671,
+     13672,
+     13673,
+     13674,
+     13675,
+     13676,
+     13677
+    ],
+    "source": "joint-l-foot-1"
+   },
+   "roll": -0.08713865280151367,
+   "connected": false
+  },
+  {
+   "name": "foot_r",
+   "parent": "calf_r",
+   "head": {
+    "vertices": [
+     14270,
+     14271,
+     14272,
+     14273,
+     14274,
+     14275,
+     14276,
+     14277
+    ],
+    "source": "joint-r-ankle"
+   },
+   "tail": {
+    "vertices": [
+     14110,
+     14111,
+     14112,
+     14113,
+     14114,
+     14115,
+     14116,
+     14117
+    ],
+    "source": "joint-r-foot-1"
+   },
+   "roll": 0.08713865280151367,
+   "connected": false
+  },
+  {
+   "name": "neck_01",
+   "parent": "spine_03",
+   "head": {
+    "vertices": [
+     14534,
+     14535,
+     14536,
+     14537,
+     14538,
+     14539,
+     14540,
+     14541
+    ],
+    "source": "joint-neck"
+   },
+   "tail": {
+    "vertices": [
+     14070,
+     14071,
+     14072,
+     14073,
+     14074,
+     14075,
+     14076,
+     14077
+    ],
+    "source": "joint-head"
+   },
+   "roll": -0.0,
+   "connected": false
+  },
+  {
+   "name": "upperarm_l",
+   "parent": "clavicle_l",
+   "head": {
+    "vertices": [
+     14046,
+     14047,
+     14048,
+     14049,
+     14050,
+     14051,
+     14052,
+     14053
+    ],
+    "source": "joint-l-shoulder"
+   },
+   "tail": {
+    "vertices": [
+     14038,
+     14039,
+     14040,
+     14041,
+     14042,
+     14043,
+     14044,
+     14045
+    ],
+    "source": "joint-l-elbow"
+   },
+   "roll": 2.368039608001709,
+   "connected": false
+  },
+  {
+   "name": "upperarm_r",
+   "parent": "clavicle_r",
+   "head": {
+    "vertices": [
+     14486,
+     14487,
+     14488,
+     14489,
+     14490,
+     14491,
+     14492,
+     14493
+    ],
+    "source": "joint-r-shoulder"
+   },
+   "tail": {
+    "vertices": [
+     14478,
+     14479,
+     14480,
+     14481,
+     14482,
+     14483,
+     14484,
+     14485
+    ],
+    "source": "joint-r-elbow"
+   },
+   "roll": -2.368039608001709,
+   "connected": false
+  },
+  {
+   "name": "ball_l",
+   "parent": "foot_l",
+   "head": {
+    "vertices": [
+     13670,
+     13671,
+     13672,
+     13673,
+     13674,
+     13675,
+     13676,
+     13677
+    ],
+    "source": "joint-l-foot-1"
+   },
+   "tail": {
+    "vertices": [
+     13726,
+     13727,
+     13728,
+     13729,
+     13730,
+     13731,
+     13732,
+     13733
+    ],
+    "source": "joint-l-toe-2-4"
+   },
+   "roll": -1.8022286891937256,
+   "connected": false
+  },
+  {
+   "name": "ball_r",
+   "parent": "foot_r",
+   "head": {
+    "vertices": [
+     14110,
+     14111,
+     14112,
+     14113,
+     14114,
+     14115,
+     14116,
+     14117
+    ],
+    "source": "joint-r-foot-1"
+   },
+   "tail": {
+    "vertices": [
+     14166,
+     14167,
+     14168,
+     14169,
+     14170,
+     14171,
+     14172,
+     14173
+    ],
+    "source": "joint-r-toe-2-4"
+   },
+   "roll": 1.8022286891937256,
+   "connected": false
+  },
+  {
+   "name": "head",
+   "parent": "neck_01",
+   "head": {
+    "vertices": [
+     14070,
+     14071,
+     14072,
+     14073,
+     14074,
+     14075,
+     14076,
+     14077
+    ],
+    "source": "joint-head"
+   },
+   "tail": {
+    "vertices": [
+     14566,
+     14567,
+     14568,
+     14569,
+     14570,
+     14571,
+     14572,
+     14573
+    ],
+    "source": "joint-head-2"
+   },
+   "roll": 0.0,
+   "connected": false
+  },
+  {
+   "name": "lowerarm_l",
+   "parent": "upperarm_l",
+   "head": {
+    "vertices": [
+     14038,
+     14039,
+     14040,
+     14041,
+     14042,
+     14043,
+     14044,
+     14045
+    ],
+    "source": "joint-l-elbow"
+   },
+   "tail": {
+    "vertices": [
+     14030,
+     14031,
+     14032,
+     14033,
+     14034,
+     14035,
+     14036,
+     14037
+    ],
+    "source": "joint-l-hand"
+   },
+   "roll": 2.304720401763916,
+   "connected": false
+  },
+  {
+   "name": "lowerarm_r",
+   "parent": "upperarm_r",
+   "head": {
+    "vertices": [
+     14478,
+     14479,
+     14480,
+     14481,
+     14482,
+     14483,
+     14484,
+     14485
+    ],
+    "source": "joint-r-elbow"
+   },
+   "tail": {
+    "vertices": [
+     14470,
+     14471,
+     14472,
+     14473,
+     14474,
+     14475,
+     14476,
+     14477
+    ],
+    "source": "joint-r-hand"
+   },
+   "roll": -2.304720401763916,
+   "connected": false
+  },
+  {
+   "name": "hand_l",
+   "parent": "lowerarm_l",
+   "head": {
+    "vertices": [
+     14030,
+     14031,
+     14032,
+     14033,
+     14034,
+     14035,
+     14036,
+     14037
+    ],
+    "source": "joint-l-hand"
+   },
+   "tail": {
+    "vertices": [
+     14014,
+     14015,
+     14016,
+     14017,
+     14018,
+     14019,
+     14020,
+     14021
+    ],
+    "source": "joint-l-hand-3"
+   },
+   "roll": -2.801286458969116,
+   "connected": false
+  },
+  {
+   "name": "hand_r",
+   "parent": "lowerarm_r",
+   "head": {
+    "vertices": [
+     14470,
+     14471,
+     14472,
+     14473,
+     14474,
+     14475,
+     14476,
+     14477
+    ],
+    "source": "joint-r-hand"
+   },
+   "tail": {
+    "vertices": [
+     14454,
+     14455,
+     14456,
+     14457,
+     14458,
+     14459,
+     14460,
+     14461
+    ],
+    "source": "joint-r-hand-3"
+   },
+   "roll": 2.801286458969116,
+   "connected": false
+  },
+  {
+   "name": "index_01_l",
+   "parent": "hand_l",
+   "head": {
+    "vertices": [
+     13974,
+     13975,
+     13976,
+     13977,
+     13978,
+     13979,
+     13980,
+     13981
+    ],
+    "source": "joint-l-finger-2-1"
+   },
+   "tail": {
+    "vertices": [
+     13918,
+     13919,
+     13920,
+     13921,
+     13922,
+     13923,
+     13924,
+     13925
+    ],
+    "source": "joint-l-finger-2-2"
+   },
+   "roll": -1.1204230785369873,
+   "connected": false
+  },
+  {
+   "name": "index_01_r",
+   "parent": "hand_r",
+   "head": {
+    "vertices": [
+     14414,
+     14415,
+     14416,
+     14417,
+     14418,
+     14419,
+     14420,
+     14421
+    ],
+    "source": "joint-r-finger-2-1"
+   },
+   "tail": {
+    "vertices": [
+     14358,
+     14359,
+     14360,
+     14361,
+     14362,
+     14363,
+     14364,
+     14365
+    ],
+    "source": "joint-r-finger-2-2"
+   },
+   "roll": 1.1204230785369873,
+   "connected": false
+  },
+  {
+   "name": "index_02_l",
+   "parent": "index_01_l",
+   "head": {
+    "vertices": [
+     13918,
+     13919,
+     13920,
+     13921,
+     13922,
+     13923,
+     13924,
+     13925
+    ],
+    "source": "joint-l-finger-2-2"
+   },
+   "tail": {
+    "vertices": [
+     13910,
+     13911,
+     13912,
+     13913,
+     13914,
+     13915,
+     13916,
+     13917
+    ],
+    "source": "joint-l-finger-2-3"
+   },
+   "roll": -0.6691515445709229,
+   "connected": false
+  },
+  {
+   "name": "index_02_r",
+   "parent": "index_01_r",
+   "head": {
+    "vertices": [
+     14358,
+     14359,
+     14360,
+     14361,
+     14362,
+     14363,
+     14364,
+     14365
+    ],
+    "source": "joint-r-finger-2-2"
+   },
+   "tail": {
+    "vertices": [
+     14350,
+     14351,
+     14352,
+     14353,
+     14354,
+     14355,
+     14356,
+     14357
+    ],
+    "source": "joint-r-finger-2-3"
+   },
+   "roll": 0.6691515445709229,
+   "connected": false
+  },
+  {
+   "name": "index_03_l",
+   "parent": "index_02_l",
+   "head": {
+    "vertices": [
+     13910,
+     13911,
+     13912,
+     13913,
+     13914,
+     13915,
+     13916,
+     13917
+    ],
+    "source": "joint-l-finger-2-3"
+   },
+   "tail": {
+    "vertices": [
+     13854,
+     13855,
+     13856,
+     13857,
+     13858,
+     13859,
+     13860,
+     13861
+    ],
+    "source": "joint-l-finger-2-4"
+   },
+   "roll": -0.4245651364326477,
+   "connected": false
+  },
+  {
+   "name": "index_03_r",
+   "parent": "index_02_r",
+   "head": {
+    "vertices": [
+     14350,
+     14351,
+     14352,
+     14353,
+     14354,
+     14355,
+     14356,
+     14357
+    ],
+    "source": "joint-r-finger-2-3"
+   },
+   "tail": {
+    "vertices": [
+     14294,
+     14295,
+     14296,
+     14297,
+     14298,
+     14299,
+     14300,
+     14301
+    ],
+    "source": "joint-r-finger-2-4"
+   },
+   "roll": 0.4245651364326477,
+   "connected": false
+  },
+  {
+   "name": "middle_01_l",
+   "parent": "hand_l",
+   "head": {
+    "vertices": [
+     13966,
+     13967,
+     13968,
+     13969,
+     13970,
+     13971,
+     13972,
+     13973
+    ],
+    "source": "joint-l-finger-3-1"
+   },
+   "tail": {
+    "vertices": [
+     13926,
+     13927,
+     13928,
+     13929,
+     13930,
+     13931,
+     13932,
+     13933
+    ],
+    "source": "joint-l-finger-3-2"
+   },
+   "roll": -1.3829948902130127,
+   "connected": false
+  },
+  {
+   "name": "middle_01_r",
+   "parent": "hand_r",
+   "head": {
+    "vertices": [
+     14406,
+     14407,
+     14408,
+     14409,
+     14410,
+     14411,
+     14412,
+     14413
+    ],
+    "source": "joint-r-finger-3-1"
+   },
+   "tail": {
+    "vertices": [
+     14366,
+     14367,
+     14368,
+     14369,
+     14370,
+     14371,
+     14372,
+     14373
+    ],
+    "source": "joint-r-finger-3-2"
+   },
+   "roll": 1.3829948902130127,
+   "connected": false
+  },
+  {
+   "name": "middle_02_l",
+   "parent": "middle_01_l",
+   "head": {
+    "vertices": [
+     13926,
+     13927,
+     13928,
+     13929,
+     13930,
+     13931,
+     13932,
+     13933
+    ],
+    "source": "joint-l-finger-3-2"
+   },
+   "tail": {
+    "vertices": [
+     13902,
+     13903,
+     13904,
+     13905,
+     13906,
+     13907,
+     13908,
+     13909
+    ],
+    "source": "joint-l-finger-3-3"
+   },
+   "roll": -1.1418589353561401,
+   "connected": false
+  },
+  {
+   "name": "middle_02_r",
+   "parent": "middle_01_r",
+   "head": {
+    "vertices": [
+     14366,
+     14367,
+     14368,
+     14369,
+     14370,
+     14371,
+     14372,
+     14373
+    ],
+    "source": "joint-r-finger-3-2"
+   },
+   "tail": {
+    "vertices": [
+     14342,
+     14343,
+     14344,
+     14345,
+     14346,
+     14347,
+     14348,
+     14349
+    ],
+    "source": "joint-r-finger-3-3"
+   },
+   "roll": 1.1418589353561401,
+   "connected": false
+  },
+  {
+   "name": "middle_03_l",
+   "parent": "middle_02_l",
+   "head": {
+    "vertices": [
+     13902,
+     13903,
+     13904,
+     13905,
+     13906,
+     13907,
+     13908,
+     13909
+    ],
+    "source": "joint-l-finger-3-3"
+   },
+   "tail": {
+    "vertices": [
+     13862,
+     13863,
+     13864,
+     13865,
+     13866,
+     13867,
+     13868,
+     13869
+    ],
+    "source": "joint-l-finger-3-4"
+   },
+   "roll": -0.9326174259185791,
+   "connected": false
+  },
+  {
+   "name": "middle_03_r",
+   "parent": "middle_02_r",
+   "head": {
+    "vertices": [
+     14342,
+     14343,
+     14344,
+     14345,
+     14346,
+     14347,
+     14348,
+     14349
+    ],
+    "source": "joint-r-finger-3-3"
+   },
+   "tail": {
+    "vertices": [
+     14302,
+     14303,
+     14304,
+     14305,
+     14306,
+     14307,
+     14308,
+     14309
+    ],
+    "source": "joint-r-finger-3-4"
+   },
+   "roll": 0.9326174259185791,
+   "connected": false
+  },
+  {
+   "name": "pinky_01_l",
+   "parent": "hand_l",
+   "head": {
+    "vertices": [
+     13950,
+     13951,
+     13952,
+     13953,
+     13954,
+     13955,
+     13956,
+     13957
+    ],
+    "source": "joint-l-finger-5-1"
+   },
+   "tail": {
+    "vertices": [
+     13942,
+     13943,
+     13944,
+     13945,
+     13946,
+     13947,
+     13948,
+     13949
+    ],
+    "source": "joint-l-finger-5-2"
+   },
+   "roll": -1.7005133628845215,
+   "connected": false
+  },
+  {
+   "name": "pinky_01_r",
+   "parent": "hand_r",
+   "head": {
+    "vertices": [
+     14390,
+     14391,
+     14392,
+     14393,
+     14394,
+     14395,
+     14396,
+     14397
+    ],
+    "source": "joint-r-finger-5-1"
+   },
+   "tail": {
+    "vertices": [
+     14382,
+     14383,
+     14384,
+     14385,
+     14386,
+     14387,
+     14388,
+     14389
+    ],
+    "source": "joint-r-finger-5-2"
+   },
+   "roll": 1.7005133628845215,
+   "connected": false
+  },
+  {
+   "name": "pinky_02_l",
+   "parent": "pinky_01_l",
+   "head": {
+    "vertices": [
+     13942,
+     13943,
+     13944,
+     13945,
+     13946,
+     13947,
+     13948,
+     13949
+    ],
+    "source": "joint-l-finger-5-2"
+   },
+   "tail": {
+    "vertices": [
+     13886,
+     13887,
+     13888,
+     13889,
+     13890,
+     13891,
+     13892,
+     13893
+    ],
+    "source": "joint-l-finger-5-3"
+   },
+   "roll": -1.4528404474258423,
+   "connected": false
+  },
+  {
+   "name": "pinky_02_r",
+   "parent": "pinky_01_r",
+   "head": {
+    "vertices": [
+     14382,
+     14383,
+     14384,
+     14385,
+     14386,
+     14387,
+     14388,
+     14389
+    ],
+    "source": "joint-r-finger-5-2"
+   },
+   "tail": {
+    "vertices": [
+     14326,
+     14327,
+     14328,
+     14329,
+     14330,
+     14331,
+     14332,
+     14333
+    ],
+    "source": "joint-r-finger-5-3"
+   },
+   "roll": 1.4528404474258423,
+   "connected": false
+  },
+  {
+   "name": "pinky_03_l",
+   "parent": "pinky_02_l",
+   "head": {
+    "vertices": [
+     13886,
+     13887,
+     13888,
+     13889,
+     13890,
+     13891,
+     13892,
+     13893
+    ],
+    "source": "joint-l-finger-5-3"
+   },
+   "tail": {
+    "vertices": [
+     13878,
+     13879,
+     13880,
+     13881,
+     13882,
+     13883,
+     13884,
+     13885
+    ],
+    "source": "joint-l-finger-5-4"
+   },
+   "roll": -1.4855616092681885,
+   "connected": false
+  },
+  {
+   "name": "pinky_03_r",
+   "parent": "pinky_02_r",
+   "head": {
+    "vertices": [
+     14326,
+     14327,
+     14328,
+     14329,
+     14330,
+     14331,
+     14332,
+     14333
+    ],
+    "source": "joint-r-finger-5-3"
+   },
+   "tail": {
+    "vertices": [
+     14318,
+     14319,
+     14320,
+     14321,
+     14322,
+     14323,
+     14324,
+     14325
+    ],
+    "source": "joint-r-finger-5-4"
+   },
+   "roll": 1.4855616092681885,
+   "connected": false
+  },
+  {
+   "name": "ring_01_l",
+   "parent": "hand_l",
+   "head": {
+    "vertices": [
+     13958,
+     13959,
+     13960,
+     13961,
+     13962,
+     13963,
+     13964,
+     13965
+    ],
+    "source": "joint-l-finger-4-1"
+   },
+   "tail": {
+    "vertices": [
+     13934,
+     13935,
+     13936,
+     13937,
+     13938,
+     13939,
+     13940,
+     13941
+    ],
+    "source": "joint-l-finger-4-2"
+   },
+   "roll": -1.593974232673645,
+   "connected": false
+  },
+  {
+   "name": "ring_01_r",
+   "parent": "hand_r",
+   "head": {
+    "vertices": [
+     14398,
+     14399,
+     14400,
+     14401,
+     14402,
+     14403,
+     14404,
+     14405
+    ],
+    "source": "joint-r-finger-4-1"
+   },
+   "tail": {
+    "vertices": [
+     14374,
+     14375,
+     14376,
+     14377,
+     14378,
+     14379,
+     14380,
+     14381
+    ],
+    "source": "joint-r-finger-4-2"
+   },
+   "roll": 1.593974232673645,
+   "connected": false
+  },
+  {
+   "name": "ring_02_l",
+   "parent": "ring_01_l",
+   "head": {
+    "vertices": [
+     13934,
+     13935,
+     13936,
+     13937,
+     13938,
+     13939,
+     13940,
+     13941
+    ],
+    "source": "joint-l-finger-4-2"
+   },
+   "tail": {
+    "vertices": [
+     13894,
+     13895,
+     13896,
+     13897,
+     13898,
+     13899,
+     13900,
+     13901
+    ],
+    "source": "joint-l-finger-4-3"
+   },
+   "roll": -1.3491926193237305,
+   "connected": false
+  },
+  {
+   "name": "ring_02_r",
+   "parent": "ring_01_r",
+   "head": {
+    "vertices": [
+     14374,
+     14375,
+     14376,
+     14377,
+     14378,
+     14379,
+     14380,
+     14381
+    ],
+    "source": "joint-r-finger-4-2"
+   },
+   "tail": {
+    "vertices": [
+     14334,
+     14335,
+     14336,
+     14337,
+     14338,
+     14339,
+     14340,
+     14341
+    ],
+    "source": "joint-r-finger-4-3"
+   },
+   "roll": 1.3491926193237305,
+   "connected": false
+  },
+  {
+   "name": "ring_03_l",
+   "parent": "ring_02_l",
+   "head": {
+    "vertices": [
+     13894,
+     13895,
+     13896,
+     13897,
+     13898,
+     13899,
+     13900,
+     13901
+    ],
+    "source": "joint-l-finger-4-3"
+   },
+   "tail": {
+    "vertices": [
+     13870,
+     13871,
+     13872,
+     13873,
+     13874,
+     13875,
+     13876,
+     13877
+    ],
+    "source": "joint-l-finger-4-4"
+   },
+   "roll": -1.2047885656356812,
+   "connected": false
+  },
+  {
+   "name": "ring_03_r",
+   "parent": "ring_02_r",
+   "head": {
+    "vertices": [
+     14334,
+     14335,
+     14336,
+     14337,
+     14338,
+     14339,
+     14340,
+     14341
+    ],
+    "source": "joint-r-finger-4-3"
+   },
+   "tail": {
+    "vertices": [
+     14310,
+     14311,
+     14312,
+     14313,
+     14314,
+     14315,
+     14316,
+     14317
+    ],
+    "source": "joint-r-finger-4-4"
+   },
+   "roll": 1.2047885656356812,
+   "connected": false
+  },
+  {
+   "name": "thumb_01_l",
+   "parent": "hand_l",
+   "head": {
+    "vertices": [
+     14006,
+     14007,
+     14008,
+     14009,
+     14010,
+     14011,
+     14012,
+     14013
+    ],
+    "source": "joint-l-finger-1-1"
+   },
+   "tail": {
+    "vertices": [
+     13998,
+     13999,
+     14000,
+     14001,
+     14002,
+     14003,
+     14004,
+     14005
+    ],
+    "source": "joint-l-finger-1-2"
+   },
+   "roll": 2.4994399547576904,
+   "connected": false
+  },
+  {
+   "name": "thumb_01_r",
+   "parent": "hand_r",
+   "head": {
+    "vertices": [
+     14446,
+     14447,
+     14448,
+     14449,
+     14450,
+     14451,
+     14452,
+     14453
+    ],
+    "source": "joint-r-finger-1-1"
+   },
+   "tail": {
+    "vertices": [
+     14438,
+     14439,
+     14440,
+     14441,
+     14442,
+     14443,
+     14444,
+     14445
+    ],
+    "source": "joint-r-finger-1-2"
+   },
+   "roll": -2.4994399547576904,
+   "connected": false
+  },
+  {
+   "name": "thumb_02_l",
+   "parent": "thumb_01_l",
+   "head": {
+    "vertices": [
+     13998,
+     13999,
+     14000,
+     14001,
+     14002,
+     14003,
+     14004,
+     14005
+    ],
+    "source": "joint-l-finger-1-2"
+   },
+   "tail": {
+    "vertices": [
+     13990,
+     13991,
+     13992,
+     13993,
+     13994,
+     13995,
+     13996,
+     13997
+    ],
+    "source": "joint-l-finger-1-3"
+   },
+   "roll": 1.656487226486206,
+   "connected": false
+  },
+  {
+   "name": "thumb_02_r",
+   "parent": "thumb_01_r",
+   "head": {
+    "vertices": [
+     14438,
+     14439,
+     14440,
+     14441,
+     14442,
+     14443,
+     14444,
+     14445
+    ],
+    "source": "joint-r-finger-1-2"
+   },
+   "tail": {
+    "vertices": [
+     14430,
+     14431,
+     14432,
+     14433,
+     14434,
+     14435,
+     14436,
+     14437
+    ],
+    "source": "joint-r-finger-1-3"
+   },
+   "roll": -1.656487226486206,
+   "connected": false
+  },
+  {
+   "name": "thumb_03_l",
+   "parent": "thumb_02_l",
+   "head": {
+    "vertices": [
+     13990,
+     13991,
+     13992,
+     13993,
+     13994,
+     13995,
+     13996,
+     13997
+    ],
+    "source": "joint-l-finger-1-3"
+   },
+   "tail": {
+    "vertices": [
+     13982,
+     13983,
+     13984,
+     13985,
+     13986,
+     13987,
+     13988,
+     13989
+    ],
+    "source": "joint-l-finger-1-4"
+   },
+   "roll": 0.8834595680236816,
+   "connected": false
+  },
+  {
+   "name": "thumb_03_r",
+   "parent": "thumb_02_r",
+   "head": {
+    "vertices": [
+     14430,
+     14431,
+     14432,
+     14433,
+     14434,
+     14435,
+     14436,
+     14437
+    ],
+    "source": "joint-r-finger-1-3"
+   },
+   "tail": {
+    "vertices": [
+     14422,
+     14423,
+     14424,
+     14425,
+     14426,
+     14427,
+     14428,
+     14429
+    ],
+    "source": "joint-r-finger-1-4"
+   },
+   "roll": -0.8834595680236816,
+   "connected": false
+  }
+ ]
+}

@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/cortu_jeans_shorts",
+ "category": "clothes",
+ "name": "jean_shorts",
+ "uuid": "b9e2b8c1-cd02-42dd-ac56-cbca25e6ad4c",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 285,
+ "faceCount": 250,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/cortu_jeans_shorts.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "cortu_jeans_shorts.bin",
+ "byteLength": 25412,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 855
+  },
+  "uvs": {
+   "offset": 3424,
+   "dtype": "f32",
+   "count": 650
+  },
+  "faceVerts": {
+   "offset": 6032,
+   "dtype": "u32",
+   "count": 1000
+  },
+  "faceUvs": {
+   "offset": 10032,
+   "dtype": "u32",
+   "count": 1000
+  },
+  "refVerts": {
+   "offset": 14032,
+   "dtype": "u32",
+   "count": 855
+  },
+  "refWeights": {
+   "offset": 17456,
+   "dtype": "f32",
+   "count": 855
+  },
+  "refOffsets": {
+   "offset": 20880,
+   "dtype": "f32",
+   "count": 855
+  },
+  "deleteVerts": {
+   "offset": 24304,
+   "dtype": "u32",
+   "count": 277
+  }
+ }
+}

@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/skalldyrssuppe_tube_top_funky_colors",
+ "category": "clothes",
+ "name": "tube_top",
+ "uuid": "0e6b4cfe-3f66-4ad4-8a99-af1f49c1090b",
+ "tags": [
+  "top",
+  "egen"
+ ],
+ "zDepth": 50,
+ "vertexCount": 900,
+ "faceCount": 1800,
+ "triangleFaces": 1800,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1394
+  ],
+  [
+   791,
+   881,
+   0.21438000000000001
+  ],
+  [
+   962,
+   5320,
+   0.18581000000000003
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/skalldyrssuppe_tube_top_funky_colors.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 1456,
+ "hiddenFaces": "computed",
+ "originalTriangles": 2912,
+ "binary": "skalldyrssuppe_tube_top_funky_colors.ps2.bin",
+ "byteLength": 115552,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2700
+  },
+  "uvs": {
+   "offset": 10800,
+   "dtype": "f32",
+   "count": 2236
+  },
+  "faceVerts": {
+   "offset": 19744,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "faceUvs": {
+   "offset": 48544,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "refVerts": {
+   "offset": 77344,
+   "dtype": "u32",
+   "count": 2700
+  },
+  "refWeights": {
+   "offset": 88144,
+   "dtype": "f32",
+   "count": 2700
+  },
+  "refOffsets": {
+   "offset": 98944,
+   "dtype": "f32",
+   "count": 2700
+  },
+  "coveredVerts": {
+   "offset": 109744,
+   "dtype": "u32",
+   "count": 552
+  },
+  "sourceProxyVertex": {
+   "offset": 111952,
+   "dtype": "u32",
+   "count": 900
+  }
+ }
+}

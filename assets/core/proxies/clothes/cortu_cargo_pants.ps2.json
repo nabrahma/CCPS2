@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/cortu_cargo_pants",
+ "category": "clothes",
+ "name": "cargo_pants",
+ "uuid": "dd9913f2-a440-41c3-9f20-05e4eebc500a",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 211,
+ "faceCount": 392,
+ "triangleFaces": 392,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/cortu_cargo_pants.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 211,
+ "hiddenFaces": "computed",
+ "originalTriangles": 392,
+ "binary": "cortu_cargo_pants.ps2.bin",
+ "byteLength": 28588,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 633
+  },
+  "uvs": {
+   "offset": 2544,
+   "dtype": "f32",
+   "count": 224
+  },
+  "faceVerts": {
+   "offset": 3440,
+   "dtype": "u32",
+   "count": 1568
+  },
+  "faceUvs": {
+   "offset": 9712,
+   "dtype": "u32",
+   "count": 1568
+  },
+  "refVerts": {
+   "offset": 15984,
+   "dtype": "u32",
+   "count": 633
+  },
+  "refWeights": {
+   "offset": 18528,
+   "dtype": "f32",
+   "count": 633
+  },
+  "refOffsets": {
+   "offset": 21072,
+   "dtype": "f32",
+   "count": 633
+  },
+  "coveredVerts": {
+   "offset": 23616,
+   "dtype": "u32",
+   "count": 1031
+  },
+  "sourceProxyVertex": {
+   "offset": 27744,
+   "dtype": "u32",
+   "count": 211
+  }
+ }
+}

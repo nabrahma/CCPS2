@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_male_suit_3",
+ "category": "clothes",
+ "name": "Suit3",
+ "uuid": "9c398af4-7859-42e2-ab83-96ac50f45966",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1390,
+ "faceCount": 2499,
+ "triangleFaces": 2499,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.6403,
+   0.6403,
+   0.6403
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/toigo_male_suit_3.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 8527,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 16250,
+ "binary": "toigo_male_suit_3.ps2.bin",
+ "byteLength": 181256,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4170
+  },
+  "uvs": {
+   "offset": 16688,
+   "dtype": "f32",
+   "count": 3394
+  },
+  "faceVerts": {
+   "offset": 30272,
+   "dtype": "u32",
+   "count": 9996
+  },
+  "faceUvs": {
+   "offset": 70256,
+   "dtype": "u32",
+   "count": 9996
+  },
+  "refVerts": {
+   "offset": 110240,
+   "dtype": "u32",
+   "count": 4170
+  },
+  "refWeights": {
+   "offset": 126928,
+   "dtype": "f32",
+   "count": 4170
+  },
+  "refOffsets": {
+   "offset": 143616,
+   "dtype": "f32",
+   "count": 4170
+  },
+  "deleteVerts": {
+   "offset": 160304,
+   "dtype": "u32",
+   "count": 3848
+  },
+  "sourceProxyVertex": {
+   "offset": 175696,
+   "dtype": "u32",
+   "count": 1390
+  }
+ }
+}

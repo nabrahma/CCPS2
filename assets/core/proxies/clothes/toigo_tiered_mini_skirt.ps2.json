@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_tiered_mini_skirt",
+ "category": "clothes",
+ "name": "Tier_Skirt_Mini",
+ "uuid": "321df833-6348-43c7-a756-4d33355f9127",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1143,
+ "faceCount": 2319,
+ "triangleFaces": 2319,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0,
+   0,
+   0
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/toigo_tiered_mini_skirt.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 5472,
+ "hiddenFaces": "computed",
+ "originalTriangles": 10656,
+ "binary": "toigo_tiered_mini_skirt.ps2.bin",
+ "byteLength": 145516,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3429
+  },
+  "uvs": {
+   "offset": 13728,
+   "dtype": "f32",
+   "count": 2832
+  },
+  "faceVerts": {
+   "offset": 25056,
+   "dtype": "u32",
+   "count": 9276
+  },
+  "faceUvs": {
+   "offset": 62160,
+   "dtype": "u32",
+   "count": 9276
+  },
+  "refVerts": {
+   "offset": 99264,
+   "dtype": "u32",
+   "count": 3429
+  },
+  "refWeights": {
+   "offset": 112992,
+   "dtype": "f32",
+   "count": 3429
+  },
+  "refOffsets": {
+   "offset": 126720,
+   "dtype": "f32",
+   "count": 3429
+  },
+  "coveredVerts": {
+   "offset": 140448,
+   "dtype": "u32",
+   "count": 123
+  },
+  "sourceProxyVertex": {
+   "offset": 140944,
+   "dtype": "u32",
+   "count": 1143
+  }
+ }
+}

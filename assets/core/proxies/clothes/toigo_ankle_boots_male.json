@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_ankle_boots_male",
+ "category": "clothes",
+ "name": "Boots_Ankle_Male",
+ "uuid": "5cd298f0-acf3-4b1d-9356-d5bb699cb1f9",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 2084,
+ "faceCount": 2060,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/toigo_ankle_boots_male.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "binary": "toigo_ankle_boots_male.bin",
+ "byteLength": 194424,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 6252
+  },
+  "uvs": {
+   "offset": 25008,
+   "dtype": "f32",
+   "count": 4872
+  },
+  "faceVerts": {
+   "offset": 44496,
+   "dtype": "u32",
+   "count": 8240
+  },
+  "faceUvs": {
+   "offset": 77456,
+   "dtype": "u32",
+   "count": 8240
+  },
+  "refVerts": {
+   "offset": 110416,
+   "dtype": "u32",
+   "count": 6252
+  },
+  "refWeights": {
+   "offset": 135424,
+   "dtype": "f32",
+   "count": 6252
+  },
+  "refOffsets": {
+   "offset": 160432,
+   "dtype": "f32",
+   "count": 6252
+  },
+  "deleteVerts": {
+   "offset": 185440,
+   "dtype": "u32",
+   "count": 2246
+  }
+ }
+}

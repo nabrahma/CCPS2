@@ -1,0 +1,94 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/grinsegold_uncle_joshis_hat",
+ "category": "clothes",
+ "name": "Uncle_Joshi's_hat",
+ "uuid": "52fdb203-5492-45a0-a59d-3bdb7a829f45",
+ "tags": [
+  "hats"
+ ],
+ "zDepth": 50,
+ "vertexCount": 901,
+ "faceCount": 1794,
+ "triangleFaces": 1794,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 0,
+  "diffuseTexture": "textures/clothes/grinsegold_uncle_joshis_hat.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "decimatedFrom": 3588,
+ "hiddenFaces": "none",
+ "originalTriangles": 7168,
+ "binary": "grinsegold_uncle_joshis_hat.ps2.bin",
+ "byteLength": 123700,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2703
+  },
+  "uvs": {
+   "offset": 10816,
+   "dtype": "f32",
+   "count": 4856
+  },
+  "faceVerts": {
+   "offset": 30240,
+   "dtype": "u32",
+   "count": 7176
+  },
+  "faceUvs": {
+   "offset": 58944,
+   "dtype": "u32",
+   "count": 7176
+  },
+  "refVerts": {
+   "offset": 87648,
+   "dtype": "u32",
+   "count": 2703
+  },
+  "refWeights": {
+   "offset": 98464,
+   "dtype": "f32",
+   "count": 2703
+  },
+  "refOffsets": {
+   "offset": 109280,
+   "dtype": "f32",
+   "count": 2703
+  },
+  "sourceProxyVertex": {
+   "offset": 120096,
+   "dtype": "u32",
+   "count": 901
+  }
+ }
+}

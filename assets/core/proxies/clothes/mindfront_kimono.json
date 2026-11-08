@@ -1,0 +1,93 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_kimono",
+ "category": "clothes",
+ "name": "F_Kimono",
+ "uuid": "59e640a9-07f3-4fac-aef5-e0f9a046ed99",
+ "tags": [
+  "female",
+  "robe",
+  "casual"
+ ],
+ "zDepth": 61,
+ "vertexCount": 3546,
+ "faceCount": 3461,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   13868,
+   14308,
+   0.95666
+  ],
+  [
+   881,
+   13137,
+   1.6005099999999999
+  ],
+  [
+   10854,
+   10981,
+   0.22246000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/mindfront_kimono.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "mindfront_kimono.bin",
+ "byteLength": 324996,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 10638
+  },
+  "uvs": {
+   "offset": 42560,
+   "dtype": "f32",
+   "count": 8184
+  },
+  "faceVerts": {
+   "offset": 75296,
+   "dtype": "u32",
+   "count": 13844
+  },
+  "faceUvs": {
+   "offset": 130672,
+   "dtype": "u32",
+   "count": 13844
+  },
+  "refVerts": {
+   "offset": 186048,
+   "dtype": "u32",
+   "count": 10638
+  },
+  "refWeights": {
+   "offset": 228608,
+   "dtype": "f32",
+   "count": 10638
+  },
+  "refOffsets": {
+   "offset": 271168,
+   "dtype": "f32",
+   "count": 10638
+  },
+  "deleteVerts": {
+   "offset": 313728,
+   "dtype": "u32",
+   "count": 2817
+  }
+ }
+}

@@ -1,0 +1,126 @@
+import { Component, useEffect, useState, type ReactNode } from 'react';
+import type { CharacterDoc } from '@ps2cc/core';
+import { backend } from './backend';
+import { AtlasEditor } from './components/AtlasEditor';
+import { DropTarget } from './components/DropTarget';
+import { CharacterBrowser } from './components/CharacterBrowser';
+import { FirstRunSetup } from './components/FirstRunSetup';
+import { GarmentImportDialog } from './components/GarmentImportDialog';
+import { RecoveryPrompt } from './components/RecoveryPrompt';
+import { RightRail } from './components/RightRail';
+import { Sidebar } from './components/Sidebar';
+import { Toasts } from './components/Toasts';
+import { ViewportPanel } from './components/ViewportPanel';
+import { useShortcuts } from './shortcuts';
+import { StudioContext } from './state/hooks';
+import { Studio } from './state/studio';
+import { useUi } from './state/ui';
+
+/** One studio per page load, even if React mounts the app twice (StrictMode, fast refresh). */
+let studioPromise: Promise<Studio> | null = null;
+const createStudioOnce = (onProgress: (s: string) => void) => (studioPromise ??= Studio.create(onProgress));
+
+export function App() {
+  const [studio, setStudio] = useState<Studio | null>(null);
+  const [step, setStep] = useState('starting');
+  const [fatal, setFatal] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    createStudioOnce((s) => !cancelled && setStep(s))
+      .then(async (s) => {
+        if (cancelled) return;
+        const settings = await backend.settings();
+        useUi.setState({ curated: settings.curatedView, symmetry: settings.symmetry });
+        s.settings = settings;
+        s.loadText(JSON.stringify(s.newDocument((s.engine.doc as CharacterDoc).name)));
+        s.startAutosave(settings.autosaveMinutes);
+        // Test hook for Playwright screenshot tests: dev server, or any build opened with ?e2e (the desktop app never is).
+        if (import.meta.env.DEV || new URLSearchParams(window.location.search).has('e2e')) {
+          (window as unknown as { __ps2cc?: Studio }).__ps2cc = s;
+          void import('./testHooks').then((m) => ((window as unknown as { __ps2ccTest?: unknown }).__ps2ccTest = m.testHooks));
+        }
+        setStudio(s);
+      })
+      .catch((err: unknown) => {
+        backend.log('error', `startup failed: ${String(err)}`);
+        setFatal(err instanceof Error ? err.message : String(err));
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  if (fatal) {
+    return (
+      <div className="splash">
+        <h1>PS2CC could not start</h1>
+        <p className="error-text">{fatal}</p>
+        <p>Compiled assets are created with <code>pnpm build:assets</code> and <code>pnpm build:meshes</code>.</p>
+      </div>
+    );
+  }
+  if (!studio) {
+    return (
+      <div className="splash">
+        <h1>PS2CC</h1>
+        <p>Loading {step}…</p>
+      </div>
+    );
+  }
+  return (
+    <StudioContext.Provider value={studio}>
+      <ErrorBoundary>
+        <Shell />
+      </ErrorBoundary>
+    </StudioContext.Provider>
+  );
+}
+
+function Shell() {
+  useShortcuts();
+  const browserOpen = useUi((s) => s.browserOpen);
+  const setBrowserOpen = useUi((s) => s.setBrowserOpen);
+  const collapsed = useUi((s) => s.sidebarCollapsed);
+  return (
+    <div className={collapsed ? 'shell sidebar-collapsed' : 'shell'}>
+      <Sidebar />
+      <DropTarget>
+        <ViewportPanel />
+      </DropTarget>
+      <RightRail />
+      <Toasts />
+      <RecoveryPrompt />
+      <FirstRunSetup />
+      {browserOpen && <CharacterBrowser onClose={() => setBrowserOpen(false)} />}
+      <AtlasEditor />
+      <GarmentImportDialog />
+    </div>
+  );
+}
+
+class ErrorBoundary extends Component<{ children: ReactNode }, { error: Error | null }> {
+  override state = { error: null as Error | null };
+
+  static getDerivedStateFromError(error: Error) {
+    return { error };
+  }
+
+  override componentDidCatch(error: Error) {
+    backend.log('error', `UI crash: ${error.stack ?? error.message}`);
+  }
+
+  override render() {
+    if (this.state.error) {
+      return (
+        <div className="splash">
+          <h1>Something went wrong</h1>
+          <p className="error-text">{this.state.error.message}</p>
+          <button onClick={() => navigator.clipboard.writeText(this.state.error?.stack ?? '')}>Copy details</button>
+          <button onClick={() => this.setState({ error: null })}>Try again</button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}

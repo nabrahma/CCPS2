@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_halter_dress_midi",
+ "category": "clothes",
+ "name": "Dress_Midi_Halter",
+ "uuid": "ea0d71bd-c940-44e6-be6b-7ccc2d4e6e21",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 2655,
+ "faceCount": 2592,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.52,
+   0.0125,
+   0.01819
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/toigo_halter_dress_midi.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "toigo_halter_dress_midi.bin",
+ "byteLength": 239340,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 7965
+  },
+  "uvs": {
+   "offset": 31872,
+   "dtype": "f32",
+   "count": 5682
+  },
+  "faceVerts": {
+   "offset": 54608,
+   "dtype": "u32",
+   "count": 10368
+  },
+  "faceUvs": {
+   "offset": 96080,
+   "dtype": "u32",
+   "count": 10368
+  },
+  "refVerts": {
+   "offset": 137552,
+   "dtype": "u32",
+   "count": 7965
+  },
+  "refWeights": {
+   "offset": 169424,
+   "dtype": "f32",
+   "count": 7965
+  },
+  "refOffsets": {
+   "offset": 201296,
+   "dtype": "f32",
+   "count": 7965
+  },
+  "deleteVerts": {
+   "offset": 233168,
+   "dtype": "u32",
+   "count": 1543
+  }
+ }
+}

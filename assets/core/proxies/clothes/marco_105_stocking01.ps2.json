@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/marco_105_stocking01",
+ "category": "clothes",
+ "name": "Stocking01",
+ "uuid": "7872e65a-f0a6-4073-bf11-74234ebd5162",
+ "tags": [
+  "fgh_fashion",
+  "underwear"
+ ],
+ "zDepth": 39,
+ "vertexCount": 818,
+ "faceCount": 1600,
+ "triangleFaces": 1600,
+ "scale": [
+  [
+   11133,
+   11141,
+   0.11273
+  ],
+  [
+   11025,
+   11460,
+   0.6387100000000001
+  ],
+  [
+   11130,
+   11135,
+   0.13772
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.1063,
+   0,
+   0.001934
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 0.2,
+  "diffuseTexture": "textures/clothes/marco_105_stocking01.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 856,
+ "hiddenFaces": "none",
+ "originalTriangles": 1676,
+ "binary": "marco_105_stocking01.ps2.bin",
+ "byteLength": 97368,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2454
+  },
+  "uvs": {
+   "offset": 9824,
+   "dtype": "f32",
+   "count": 898
+  },
+  "faceVerts": {
+   "offset": 13424,
+   "dtype": "u32",
+   "count": 6400
+  },
+  "faceUvs": {
+   "offset": 39024,
+   "dtype": "u32",
+   "count": 6400
+  },
+  "refVerts": {
+   "offset": 64624,
+   "dtype": "u32",
+   "count": 2454
+  },
+  "refWeights": {
+   "offset": 74448,
+   "dtype": "f32",
+   "count": 2454
+  },
+  "refOffsets": {
+   "offset": 84272,
+   "dtype": "f32",
+   "count": 2454
+  },
+  "sourceProxyVertex": {
+   "offset": 94096,
+   "dtype": "u32",
+   "count": 818
+  }
+ }
+}

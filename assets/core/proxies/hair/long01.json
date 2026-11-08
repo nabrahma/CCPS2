@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/long01",
+ "category": "hair",
+ "name": "long01",
+ "uuid": "6c6b0bb1-3608-40b8-9108-4bfd8fa71e39",
+ "tags": [
+  "makehuman\u2122",
+  "long",
+  "female"
+ ],
+ "zDepth": 50,
+ "vertexCount": 3239,
+ "faceCount": 2054,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22048
+  ],
+  [
+   962,
+   5320,
+   0.18461000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/long01.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "long01.bin",
+ "byteLength": 247748,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 9717
+  },
+  "uvs": {
+   "offset": 38880,
+   "dtype": "f32",
+   "count": 6628
+  },
+  "faceVerts": {
+   "offset": 65392,
+   "dtype": "u32",
+   "count": 8216
+  },
+  "faceUvs": {
+   "offset": 98256,
+   "dtype": "u32",
+   "count": 8216
+  },
+  "refVerts": {
+   "offset": 131120,
+   "dtype": "u32",
+   "count": 9717
+  },
+  "refWeights": {
+   "offset": 170000,
+   "dtype": "f32",
+   "count": 9717
+  },
+  "refOffsets": {
+   "offset": 208880,
+   "dtype": "f32",
+   "count": 9717
+  }
+ }
+}

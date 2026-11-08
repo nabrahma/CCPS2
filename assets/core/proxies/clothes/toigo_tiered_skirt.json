@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_tiered_skirt",
+ "category": "clothes",
+ "name": "Tier_Skirt",
+ "uuid": "e7d99ba8-0383-4943-b7e2-43de6eb6a6c1",
+ "tags": [
+  "dress"
+ ],
+ "zDepth": 50,
+ "vertexCount": 6552,
+ "faceCount": 6480,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/toigo_tiered_skirt.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "toigo_tiered_skirt.bin",
+ "byteLength": 595808,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 19656
+  },
+  "uvs": {
+   "offset": 78624,
+   "dtype": "f32",
+   "count": 17372
+  },
+  "faceVerts": {
+   "offset": 148112,
+   "dtype": "u32",
+   "count": 25920
+  },
+  "faceUvs": {
+   "offset": 251792,
+   "dtype": "u32",
+   "count": 25920
+  },
+  "refVerts": {
+   "offset": 355472,
+   "dtype": "u32",
+   "count": 19656
+  },
+  "refWeights": {
+   "offset": 434096,
+   "dtype": "f32",
+   "count": 19656
+  },
+  "refOffsets": {
+   "offset": 512720,
+   "dtype": "f32",
+   "count": 19656
+  },
+  "deleteVerts": {
+   "offset": 591344,
+   "dtype": "u32",
+   "count": 1116
+  }
+ }
+}

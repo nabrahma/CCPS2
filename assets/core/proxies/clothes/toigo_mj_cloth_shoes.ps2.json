@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_mj_cloth_shoes",
+ "category": "clothes",
+ "name": "MJ-Shoes",
+ "uuid": "c8c9445a-6b8f-47cc-8a59-c4926e0d221e",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 504,
+ "faceCount": 900,
+ "triangleFaces": 900,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/toigo_mj_cloth_shoes.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "decimatedFrom": 556,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 1004,
+ "binary": "toigo_mj_cloth_shoes.ps2.bin",
+ "byteLength": 64944,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1512
+  },
+  "uvs": {
+   "offset": 6048,
+   "dtype": "f32",
+   "count": 752
+  },
+  "faceVerts": {
+   "offset": 9056,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "faceUvs": {
+   "offset": 23456,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "refVerts": {
+   "offset": 37856,
+   "dtype": "u32",
+   "count": 1512
+  },
+  "refWeights": {
+   "offset": 43904,
+   "dtype": "f32",
+   "count": 1512
+  },
+  "refOffsets": {
+   "offset": 49952,
+   "dtype": "f32",
+   "count": 1512
+  },
+  "deleteVerts": {
+   "offset": 56000,
+   "dtype": "u32",
+   "count": 1730
+  },
+  "sourceProxyVertex": {
+   "offset": 62928,
+   "dtype": "u32",
+   "count": 504
+  }
+ }
+}

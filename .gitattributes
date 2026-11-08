@@ -1,0 +1,15 @@
+* text=auto eol=lf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+# Compiled engine assets and committed binaries live in Git LFS (PRD 8.3).
+assets/core/**/*.bin filter=lfs diff=lfs merge=lfs -text
+assets/core/**/*.png filter=lfs diff=lfs merge=lfs -text
+assets/core/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+assets/core/**/*.task filter=lfs diff=lfs merge=lfs -text
+assets/core/**/*.wasm filter=lfs diff=lfs merge=lfs -text
+packages/core/test/fixtures/**/*.bin filter=lfs diff=lfs merge=lfs -text
+docs/**/*.png filter=lfs diff=lfs merge=lfs -text
+app/backend/fbx/testdata/**/*.ps2exp filter=lfs diff=lfs merge=lfs -text
+tests/UnityHarness/**/*.fbx filter=lfs diff=lfs merge=lfs -text
+tests/UnityHarness/**/*.png filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,80 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:eyebrows/mindfront_eyebrows_07",
+ "category": "eyebrows",
+ "name": "Mind_Eyebrows_07",
+ "uuid": "5c803e35-ed41-4206-b7c4-537427f3ece2",
+ "tags": [
+  "eyebrows"
+ ],
+ "zDepth": 31,
+ "vertexCount": 26400,
+ "faceCount": 19800,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1.0
+ },
+ "binary": "mindfront_eyebrows_07.bin",
+ "byteLength": 2111936,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 79200
+  },
+  "uvs": {
+   "offset": 316800,
+   "dtype": "f32",
+   "count": 52784
+  },
+  "faceVerts": {
+   "offset": 527936,
+   "dtype": "u32",
+   "count": 79200
+  },
+  "faceUvs": {
+   "offset": 844736,
+   "dtype": "u32",
+   "count": 79200
+  },
+  "refVerts": {
+   "offset": 1161536,
+   "dtype": "u32",
+   "count": 79200
+  },
+  "refWeights": {
+   "offset": 1478336,
+   "dtype": "f32",
+   "count": 79200
+  },
+  "refOffsets": {
+   "offset": 1795136,
+   "dtype": "f32",
+   "count": 79200
+  }
+ }
+}

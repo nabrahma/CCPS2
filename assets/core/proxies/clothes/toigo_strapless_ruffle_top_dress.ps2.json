@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_strapless_ruffle_top_dress",
+ "category": "clothes",
+ "name": "Dress_Strapless_Ruffle_Top",
+ "uuid": "0394701a-6655-4488-85c7-9f05e45e54c2",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1383,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 0,
+  "diffuseTexture": "textures/clothes/toigo_strapless_ruffle_top_dress.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 5301,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 10336,
+ "binary": "toigo_strapless_ruffle_top_dress.ps2.bin",
+ "byteLength": 169580,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4149
+  },
+  "uvs": {
+   "offset": 16608,
+   "dtype": "f32",
+   "count": 3086
+  },
+  "faceVerts": {
+   "offset": 28960,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 68960,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 108960,
+   "dtype": "u32",
+   "count": 4149
+  },
+  "refWeights": {
+   "offset": 125568,
+   "dtype": "f32",
+   "count": 4149
+  },
+  "refOffsets": {
+   "offset": 142176,
+   "dtype": "f32",
+   "count": 4149
+  },
+  "deleteVerts": {
+   "offset": 158784,
+   "dtype": "u32",
+   "count": 1313
+  },
+  "sourceProxyVertex": {
+   "offset": 164048,
+   "dtype": "u32",
+   "count": 1383
+  }
+ }
+}

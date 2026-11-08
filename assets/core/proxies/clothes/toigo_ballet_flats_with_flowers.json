@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_ballet_flats_with_flowers",
+ "category": "clothes",
+ "name": "Flats_ballet_flower",
+ "uuid": "562e25c8-bbbf-4479-a921-af4cbf5cda9a",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 5340,
+ "faceCount": 5136,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/toigo_ballet_flats_with_flowers.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "binary": "toigo_ballet_flats_with_flowers.bin",
+ "byteLength": 480156,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 16020
+  },
+  "uvs": {
+   "offset": 64080,
+   "dtype": "f32",
+   "count": 12952
+  },
+  "faceVerts": {
+   "offset": 115888,
+   "dtype": "u32",
+   "count": 20544
+  },
+  "faceUvs": {
+   "offset": 198064,
+   "dtype": "u32",
+   "count": 20544
+  },
+  "refVerts": {
+   "offset": 280240,
+   "dtype": "u32",
+   "count": 16020
+  },
+  "refWeights": {
+   "offset": 344320,
+   "dtype": "f32",
+   "count": 16020
+  },
+  "refOffsets": {
+   "offset": 408400,
+   "dtype": "f32",
+   "count": 16020
+  },
+  "deleteVerts": {
+   "offset": 472480,
+   "dtype": "u32",
+   "count": 1919
+  }
+ }
+}

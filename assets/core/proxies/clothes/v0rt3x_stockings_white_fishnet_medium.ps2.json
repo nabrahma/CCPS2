@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/v0rt3x_stockings_white_fishnet_medium",
+ "category": "clothes",
+ "name": "stockings_white_m",
+ "uuid": "f41c43c0-6b5e-4a39-a3f7-6d9619bedb2f",
+ "tags": [],
+ "zDepth": 43,
+ "vertexCount": 820,
+ "faceCount": 1600,
+ "triangleFaces": 1600,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22048
+  ],
+  [
+   962,
+   5320,
+   0.18461000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.7879,
+   0.7879,
+   0.7879
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/v0rt3x_stockings_white_fishnet_medium.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 1064,
+ "hiddenFaces": "computed",
+ "originalTriangles": 2088,
+ "binary": "v0rt3x_stockings_white_fishnet_medium.ps2.bin",
+ "byteLength": 98528,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2460
+  },
+  "uvs": {
+   "offset": 9840,
+   "dtype": "f32",
+   "count": 1162
+  },
+  "faceVerts": {
+   "offset": 14496,
+   "dtype": "u32",
+   "count": 6400
+  },
+  "faceUvs": {
+   "offset": 40096,
+   "dtype": "u32",
+   "count": 6400
+  },
+  "refVerts": {
+   "offset": 65696,
+   "dtype": "u32",
+   "count": 2460
+  },
+  "refWeights": {
+   "offset": 75536,
+   "dtype": "f32",
+   "count": 2460
+  },
+  "refOffsets": {
+   "offset": 85376,
+   "dtype": "f32",
+   "count": 2460
+  },
+  "coveredVerts": {
+   "offset": 95216,
+   "dtype": "u32",
+   "count": 6
+  },
+  "sourceProxyVertex": {
+   "offset": 95248,
+   "dtype": "u32",
+   "count": 820
+  }
+ }
+}

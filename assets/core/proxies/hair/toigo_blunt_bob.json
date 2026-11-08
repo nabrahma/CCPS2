@@ -1,0 +1,83 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/toigo_blunt_bob",
+ "category": "hair",
+ "name": "Bob_Blunt",
+ "uuid": "c71f76ff-8add-4e74-a4d9-bf58b064285d",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1510,
+ "faceCount": 1429,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 0.0,
+  "diffuseTexture": "textures/hair/toigo_blunt_bob.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "toigo_blunt_bob.bin",
+ "byteLength": 132152,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4530
+  },
+  "uvs": {
+   "offset": 18128,
+   "dtype": "f32",
+   "count": 3480
+  },
+  "faceVerts": {
+   "offset": 32048,
+   "dtype": "u32",
+   "count": 5716
+  },
+  "faceUvs": {
+   "offset": 54912,
+   "dtype": "u32",
+   "count": 5716
+  },
+  "refVerts": {
+   "offset": 77776,
+   "dtype": "u32",
+   "count": 4530
+  },
+  "refWeights": {
+   "offset": 95904,
+   "dtype": "f32",
+   "count": 4530
+  },
+  "refOffsets": {
+   "offset": 114032,
+   "dtype": "f32",
+   "count": 4530
+  }
+ }
+}

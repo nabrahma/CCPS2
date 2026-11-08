@@ -1,0 +1,31 @@
+name: Bug report
+description: Something does not work as it should
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: PS2CC version or commit
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: Windows version and GPU
+  - type: input
+    id: unity
+    attributes:
+      label: Unity version
+      description: If this is about an export.
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log and screenshots
+      description: The log is in `%LOCALAPPDATA%\PS2CC\logs\`. For a garment problem, please attach the file if you can share it.

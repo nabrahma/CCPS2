@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_keyhole_tank_top",
+ "category": "clothes",
+ "name": "Tank_Keyhole_Neck",
+ "uuid": "c0e81f78-a845-4772-a7e1-1caa652ecea2",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 726,
+ "faceCount": 676,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 0.0,
+  "diffuseTexture": "textures/clothes/toigo_keyhole_tank_top.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "toigo_keyhole_tank_top.bin",
+ "byteLength": 66628,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2178
+  },
+  "uvs": {
+   "offset": 8720,
+   "dtype": "f32",
+   "count": 1646
+  },
+  "faceVerts": {
+   "offset": 15312,
+   "dtype": "u32",
+   "count": 2704
+  },
+  "faceUvs": {
+   "offset": 26128,
+   "dtype": "u32",
+   "count": 2704
+  },
+  "refVerts": {
+   "offset": 36944,
+   "dtype": "u32",
+   "count": 2178
+  },
+  "refWeights": {
+   "offset": 45664,
+   "dtype": "f32",
+   "count": 2178
+  },
+  "refOffsets": {
+   "offset": 54384,
+   "dtype": "f32",
+   "count": 2178
+  },
+  "deleteVerts": {
+   "offset": 63104,
+   "dtype": "u32",
+   "count": 881
+  }
+ }
+}

@@ -1,0 +1,97 @@
+{
+  "dress01": {
+    "sha256": "f49ba54a3c93acd3c3307cc5a96cfc65daf8abfed9212a7e580791d821c9e93a",
+    "size": 46598791,
+    "url": "https://files.makehumancommunity.org/asset_packs/dress01/dress01_cc0.zip"
+  },
+  "eyebrows01": {
+    "sha256": "5425891dce613bef85c7117f7843cd49d57d1fb28127e76d77d2a2eaccb4fe78",
+    "size": 11477790,
+    "url": "https://files.makehumancommunity.org/asset_packs/eyebrows01/eyebrows01_cc0.zip"
+  },
+  "eyelashes01": {
+    "sha256": "b7b5eb97cfb930d93e8c067885801443bcab2dcbbe6c2c2cfff7ad87992077e8",
+    "size": 3493692,
+    "url": "https://files.makehumancommunity.org/asset_packs/eyelashes01/eyelashes01_cc0.zip"
+  },
+  "gloves01": {
+    "sha256": "ecdaee1d02749d17352791d415cb622a883350cc8a4b90eda3725aef35d9afb2",
+    "size": 3192691,
+    "url": "https://files.makehumancommunity.org/asset_packs/gloves01/gloves01_cc0.zip"
+  },
+  "hair01": {
+    "sha256": "49445d69848a313ec41a9970f6a0fe4bcf925c9f1c6ef40a76f119c2e07940c9",
+    "size": 227775853,
+    "url": "https://files.makehumancommunity.org/asset_packs/hair01/hair01_cc0.zip"
+  },
+  "hats01": {
+    "sha256": "97b70d7bd90e74ee87a49faeb7c4a1b2762b311902974db575851daaae05b50e",
+    "size": 6636192,
+    "url": "https://files.makehumancommunity.org/asset_packs/hats01/hats01_cc0.zip"
+  },
+  "makehuman": {
+    "sha256": "f3b7c08a02a0780db1ca06e1a39e32aa375b469371f89c6d735c84e07ba4c33c",
+    "size": 44253762,
+    "url": "https://codeload.github.com/makehumancommunity/makehuman/tar.gz/a8bc2d54ff0ac92e78ff71431b1023eda42bf482"
+  },
+  "makehuman_system_assets": {
+    "sha256": "b542127a8e25547c7c29c19f2d1d2adb9a664c80396ecd694095dbc8028a0107",
+    "size": 280737770,
+    "url": "https://files.makehumancommunity.org/asset_packs/makehuman_system_assets/makehuman_system_assets_cc0.zip"
+  },
+  "makehuman_system_poses": {
+    "sha256": "c4675523714854d86b2fc1315bae152646254b0badfce8e9ad0cf624d9ef5689",
+    "size": 820410,
+    "url": "https://files.makehumancommunity.org/asset_packs/makehuman_system_poses/makehuman_system_poses_cc0.zip"
+  },
+  "mediapipe_face_landmarker": {
+    "sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff",
+    "size": 3758596,
+    "url": "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task"
+  },
+  "mpfb2": {
+    "sha256": "aef0a8860e1a0bf0dac68a61ab5384f8a466cafdfd8ab1dcf9de904b77cd33cd",
+    "size": 44629660,
+    "url": "https://codeload.github.com/makehumancommunity/mpfb2/tar.gz/6ff1eb358f6c1959ced77e79e6dd2406d9a71f49"
+  },
+  "pants01": {
+    "sha256": "e4e0ec60db34f279be291a83cfd7b342a7c5cf09bb7676682a5f39f4f6ac4ad9",
+    "size": 21908723,
+    "url": "https://files.makehumancommunity.org/asset_packs/pants01/pants01_cc0.zip"
+  },
+  "shirts01": {
+    "sha256": "a5a723b0e84a109bb190fcfeac7f1de4138d875da3e30fe5b3340eac9f38bcd3",
+    "size": 24479483,
+    "url": "https://files.makehumancommunity.org/asset_packs/shirts01/shirts01_cc0.zip"
+  },
+  "shoes01": {
+    "sha256": "ded3f70428505eabbf1f6d7b5f61196a7366ef20757103d276ad0ed336c35ada",
+    "size": 82953569,
+    "url": "https://files.makehumancommunity.org/asset_packs/shoes01/shoes01_cc0.zip"
+  },
+  "skins01": {
+    "sha256": "7495ab99287053bd19ff1636114e64b608994d9f7437fea6cc75ea387f96dba9",
+    "size": 104227958,
+    "url": "https://files.makehumancommunity.org/asset_packs/skins01/skins01_cc0.zip"
+  },
+  "skins02": {
+    "sha256": "1613f1ef3afca53094511d26620ed7cf1d2dedc29ed3d384d60bdebe250698ae",
+    "size": 76112708,
+    "url": "https://files.makehumancommunity.org/asset_packs/skins02/skins02_cc0.zip"
+  },
+  "skirts01": {
+    "sha256": "293fa0c15e28e8dcea8dfff20cae31aa4b0d1268a6e6ba0a53a92ebb0f36c882",
+    "size": 29554534,
+    "url": "https://files.makehumancommunity.org/asset_packs/skirts01/skirts01_cc0.zip"
+  },
+  "suits01": {
+    "sha256": "2b1d8676f3863b188e9eea98c1d8f234543d54c440e791d92b819f8ee1861f19",
+    "size": 42624017,
+    "url": "https://files.makehumancommunity.org/asset_packs/suits01/suits01_cc0.zip"
+  },
+  "underwear01": {
+    "sha256": "8c3b51cf18d26ea096cb92b79a7a379d1a00273ef029b5779715486180fd47d5",
+    "size": 60561755,
+    "url": "https://files.makehumancommunity.org/asset_packs/underwear01/underwear01_cc0.zip"
+  }
+}

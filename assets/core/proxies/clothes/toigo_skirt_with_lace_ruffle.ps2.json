@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_skirt_with_lace_ruffle",
+ "category": "clothes",
+ "name": "Skirt_Full_Lace_Ruffle",
+ "uuid": "4e52a6d5-420b-455b-ab04-21c6c43b8a3d",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 868,
+ "faceCount": 1600,
+ "triangleFaces": 1600,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 0,
+  "diffuseTexture": "textures/clothes/toigo_skirt_with_lace_ruffle.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 2856,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 5576,
+ "binary": "toigo_skirt_with_lace_ruffle.ps2.bin",
+ "byteLength": 106464,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2604
+  },
+  "uvs": {
+   "offset": 10416,
+   "dtype": "f32",
+   "count": 1974
+  },
+  "faceVerts": {
+   "offset": 18320,
+   "dtype": "u32",
+   "count": 6400
+  },
+  "faceUvs": {
+   "offset": 43920,
+   "dtype": "u32",
+   "count": 6400
+  },
+  "refVerts": {
+   "offset": 69520,
+   "dtype": "u32",
+   "count": 2604
+  },
+  "refWeights": {
+   "offset": 79936,
+   "dtype": "f32",
+   "count": 2604
+  },
+  "refOffsets": {
+   "offset": 90352,
+   "dtype": "f32",
+   "count": 2604
+  },
+  "deleteVerts": {
+   "offset": 100768,
+   "dtype": "u32",
+   "count": 554
+  },
+  "sourceProxyVertex": {
+   "offset": 102992,
+   "dtype": "u32",
+   "count": 868
+  }
+ }
+}

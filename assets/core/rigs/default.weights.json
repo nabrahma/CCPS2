@@ -1,0 +1,835 @@
+{
+ "format": "ps2cc.weights/1",
+ "rig": "default",
+ "bones": [
+  {
+   "bone": "root",
+   "offset": 0,
+   "count": 16
+  },
+  {
+   "bone": "pelvis.L",
+   "offset": 16,
+   "count": 853
+  },
+  {
+   "bone": "pelvis.R",
+   "offset": 869,
+   "count": 853
+  },
+  {
+   "bone": "spine05",
+   "offset": 1722,
+   "count": 1847
+  },
+  {
+   "bone": "upperleg01.L",
+   "offset": 3569,
+   "count": 1084
+  },
+  {
+   "bone": "upperleg01.R",
+   "offset": 4653,
+   "count": 1084
+  },
+  {
+   "bone": "spine04",
+   "offset": 5737,
+   "count": 1605
+  },
+  {
+   "bone": "upperleg02.L",
+   "offset": 7342,
+   "count": 1021
+  },
+  {
+   "bone": "upperleg02.R",
+   "offset": 8363,
+   "count": 1021
+  },
+  {
+   "bone": "spine03",
+   "offset": 9384,
+   "count": 1687
+  },
+  {
+   "bone": "lowerleg01.L",
+   "offset": 11071,
+   "count": 931
+  },
+  {
+   "bone": "lowerleg01.R",
+   "offset": 12002,
+   "count": 931
+  },
+  {
+   "bone": "spine02",
+   "offset": 12933,
+   "count": 1872
+  },
+  {
+   "bone": "lowerleg02.L",
+   "offset": 14805,
+   "count": 667
+  },
+  {
+   "bone": "lowerleg02.R",
+   "offset": 15472,
+   "count": 667
+  },
+  {
+   "bone": "breast.L",
+   "offset": 16139,
+   "count": 432
+  },
+  {
+   "bone": "breast.R",
+   "offset": 16571,
+   "count": 432
+  },
+  {
+   "bone": "spine01",
+   "offset": 17003,
+   "count": 2330
+  },
+  {
+   "bone": "foot.L",
+   "offset": 19333,
+   "count": 835
+  },
+  {
+   "bone": "foot.R",
+   "offset": 20168,
+   "count": 835
+  },
+  {
+   "bone": "clavicle.L",
+   "offset": 21003,
+   "count": 648
+  },
+  {
+   "bone": "clavicle.R",
+   "offset": 21651,
+   "count": 648
+  },
+  {
+   "bone": "neck01",
+   "offset": 22299,
+   "count": 1075
+  },
+  {
+   "bone": "toe1-1.L",
+   "offset": 23374,
+   "count": 209
+  },
+  {
+   "bone": "toe2-1.L",
+   "offset": 23583,
+   "count": 208
+  },
+  {
+   "bone": "toe3-1.L",
+   "offset": 23791,
+   "count": 241
+  },
+  {
+   "bone": "toe4-1.L",
+   "offset": 24032,
+   "count": 180
+  },
+  {
+   "bone": "toe5-1.L",
+   "offset": 24212,
+   "count": 204
+  },
+  {
+   "bone": "toe1-1.R",
+   "offset": 24416,
+   "count": 209
+  },
+  {
+   "bone": "toe2-1.R",
+   "offset": 24625,
+   "count": 208
+  },
+  {
+   "bone": "toe3-1.R",
+   "offset": 24833,
+   "count": 241
+  },
+  {
+   "bone": "toe4-1.R",
+   "offset": 25074,
+   "count": 180
+  },
+  {
+   "bone": "toe5-1.R",
+   "offset": 25254,
+   "count": 204
+  },
+  {
+   "bone": "shoulder01.L",
+   "offset": 25458,
+   "count": 569
+  },
+  {
+   "bone": "shoulder01.R",
+   "offset": 26027,
+   "count": 569
+  },
+  {
+   "bone": "neck02",
+   "offset": 26596,
+   "count": 911
+  },
+  {
+   "bone": "toe1-2.L",
+   "offset": 27507,
+   "count": 167
+  },
+  {
+   "bone": "toe2-2.L",
+   "offset": 27674,
+   "count": 133
+  },
+  {
+   "bone": "toe3-2.L",
+   "offset": 27807,
+   "count": 160
+  },
+  {
+   "bone": "toe4-2.L",
+   "offset": 27967,
+   "count": 182
+  },
+  {
+   "bone": "toe5-2.L",
+   "offset": 28149,
+   "count": 155
+  },
+  {
+   "bone": "toe1-2.R",
+   "offset": 28304,
+   "count": 167
+  },
+  {
+   "bone": "toe2-2.R",
+   "offset": 28471,
+   "count": 133
+  },
+  {
+   "bone": "toe3-2.R",
+   "offset": 28604,
+   "count": 160
+  },
+  {
+   "bone": "toe4-2.R",
+   "offset": 28764,
+   "count": 182
+  },
+  {
+   "bone": "toe5-2.R",
+   "offset": 28946,
+   "count": 155
+  },
+  {
+   "bone": "upperarm01.L",
+   "offset": 29101,
+   "count": 898
+  },
+  {
+   "bone": "upperarm01.R",
+   "offset": 29999,
+   "count": 898
+  },
+  {
+   "bone": "neck03",
+   "offset": 30897,
+   "count": 334
+  },
+  {
+   "bone": "toe2-3.L",
+   "offset": 31231,
+   "count": 140
+  },
+  {
+   "bone": "toe3-3.L",
+   "offset": 31371,
+   "count": 157
+  },
+  {
+   "bone": "toe4-3.L",
+   "offset": 31528,
+   "count": 144
+  },
+  {
+   "bone": "toe5-3.L",
+   "offset": 31672,
+   "count": 182
+  },
+  {
+   "bone": "toe2-3.R",
+   "offset": 31854,
+   "count": 140
+  },
+  {
+   "bone": "toe3-3.R",
+   "offset": 31994,
+   "count": 157
+  },
+  {
+   "bone": "toe4-3.R",
+   "offset": 32151,
+   "count": 144
+  },
+  {
+   "bone": "toe5-3.R",
+   "offset": 32295,
+   "count": 182
+  },
+  {
+   "bone": "upperarm02.L",
+   "offset": 32477,
+   "count": 683
+  },
+  {
+   "bone": "upperarm02.R",
+   "offset": 33160,
+   "count": 683
+  },
+  {
+   "bone": "head",
+   "offset": 33843,
+   "count": 4876
+  },
+  {
+   "bone": "lowerarm01.L",
+   "offset": 38719,
+   "count": 542
+  },
+  {
+   "bone": "lowerarm01.R",
+   "offset": 39261,
+   "count": 542
+  },
+  {
+   "bone": "jaw",
+   "offset": 39803,
+   "count": 888
+  },
+  {
+   "bone": "levator02.L",
+   "offset": 40691,
+   "count": 0
+  },
+  {
+   "bone": "levator02.R",
+   "offset": 40691,
+   "count": 0
+  },
+  {
+   "bone": "special01",
+   "offset": 40691,
+   "count": 0
+  },
+  {
+   "bone": "special03",
+   "offset": 40691,
+   "count": 0
+  },
+  {
+   "bone": "special06.L",
+   "offset": 40691,
+   "count": 0
+  },
+  {
+   "bone": "special06.R",
+   "offset": 40691,
+   "count": 0
+  },
+  {
+   "bone": "temporalis01.L",
+   "offset": 40691,
+   "count": 0
+  },
+  {
+   "bone": "temporalis01.R",
+   "offset": 40691,
+   "count": 0
+  },
+  {
+   "bone": "temporalis02.L",
+   "offset": 40691,
+   "count": 0
+  },
+  {
+   "bone": "temporalis02.R",
+   "offset": 40691,
+   "count": 0
+  },
+  {
+   "bone": "lowerarm02.L",
+   "offset": 40691,
+   "count": 311
+  },
+  {
+   "bone": "lowerarm02.R",
+   "offset": 41002,
+   "count": 311
+  },
+  {
+   "bone": "special04",
+   "offset": 41313,
+   "count": 8
+  },
+  {
+   "bone": "tongue00",
+   "offset": 41321,
+   "count": 8
+  },
+  {
+   "bone": "levator03.L",
+   "offset": 41329,
+   "count": 0
+  },
+  {
+   "bone": "levator03.R",
+   "offset": 41329,
+   "count": 0
+  },
+  {
+   "bone": "oris04.L",
+   "offset": 41329,
+   "count": 0
+  },
+  {
+   "bone": "oris04.R",
+   "offset": 41329,
+   "count": 0
+  },
+  {
+   "bone": "oris06",
+   "offset": 41329,
+   "count": 0
+  },
+  {
+   "bone": "levator06.L",
+   "offset": 41329,
+   "count": 315
+  },
+  {
+   "bone": "levator06.R",
+   "offset": 41644,
+   "count": 315
+  },
+  {
+   "bone": "special05.L",
+   "offset": 41959,
+   "count": 8
+  },
+  {
+   "bone": "special05.R",
+   "offset": 41967,
+   "count": 8
+  },
+  {
+   "bone": "oculi02.L",
+   "offset": 41975,
+   "count": 0
+  },
+  {
+   "bone": "oculi02.R",
+   "offset": 41975,
+   "count": 0
+  },
+  {
+   "bone": "risorius02.L",
+   "offset": 41975,
+   "count": 0
+  },
+  {
+   "bone": "risorius02.R",
+   "offset": 41975,
+   "count": 0
+  },
+  {
+   "bone": "wrist.L",
+   "offset": 41975,
+   "count": 248
+  },
+  {
+   "bone": "wrist.R",
+   "offset": 42223,
+   "count": 248
+  },
+  {
+   "bone": "oris02",
+   "offset": 42471,
+   "count": 0
+  },
+  {
+   "bone": "oris06.L",
+   "offset": 42471,
+   "count": 0
+  },
+  {
+   "bone": "oris06.R",
+   "offset": 42471,
+   "count": 0
+  },
+  {
+   "bone": "tongue01",
+   "offset": 42471,
+   "count": 164
+  },
+  {
+   "bone": "levator04.L",
+   "offset": 42635,
+   "count": 0
+  },
+  {
+   "bone": "levator04.R",
+   "offset": 42635,
+   "count": 0
+  },
+  {
+   "bone": "oris03.L",
+   "offset": 42635,
+   "count": 367
+  },
+  {
+   "bone": "oris03.R",
+   "offset": 43002,
+   "count": 367
+  },
+  {
+   "bone": "oris05",
+   "offset": 43369,
+   "count": 514
+  },
+  {
+   "bone": "eye.L",
+   "offset": 43883,
+   "count": 141
+  },
+  {
+   "bone": "orbicularis03.L",
+   "offset": 44024,
+   "count": 259
+  },
+  {
+   "bone": "orbicularis04.L",
+   "offset": 44283,
+   "count": 282
+  },
+  {
+   "bone": "eye.R",
+   "offset": 44565,
+   "count": 141
+  },
+  {
+   "bone": "orbicularis03.R",
+   "offset": 44706,
+   "count": 259
+  },
+  {
+   "bone": "orbicularis04.R",
+   "offset": 44965,
+   "count": 282
+  },
+  {
+   "bone": "oculi01.L",
+   "offset": 45247,
+   "count": 275
+  },
+  {
+   "bone": "oculi01.R",
+   "offset": 45522,
+   "count": 275
+  },
+  {
+   "bone": "risorius03.L",
+   "offset": 45797,
+   "count": 465
+  },
+  {
+   "bone": "risorius03.R",
+   "offset": 46262,
+   "count": 465
+  },
+  {
+   "bone": "finger1-1.L",
+   "offset": 46727,
+   "count": 114
+  },
+  {
+   "bone": "metacarpal1.L",
+   "offset": 46841,
+   "count": 248
+  },
+  {
+   "bone": "metacarpal2.L",
+   "offset": 47089,
+   "count": 204
+  },
+  {
+   "bone": "metacarpal3.L",
+   "offset": 47293,
+   "count": 208
+  },
+  {
+   "bone": "metacarpal4.L",
+   "offset": 47501,
+   "count": 192
+  },
+  {
+   "bone": "finger1-1.R",
+   "offset": 47693,
+   "count": 114
+  },
+  {
+   "bone": "metacarpal1.R",
+   "offset": 47807,
+   "count": 248
+  },
+  {
+   "bone": "metacarpal2.R",
+   "offset": 48055,
+   "count": 204
+  },
+  {
+   "bone": "metacarpal3.R",
+   "offset": 48259,
+   "count": 208
+  },
+  {
+   "bone": "metacarpal4.R",
+   "offset": 48467,
+   "count": 192
+  },
+  {
+   "bone": "oris01",
+   "offset": 48659,
+   "count": 301
+  },
+  {
+   "bone": "oris07.L",
+   "offset": 48960,
+   "count": 330
+  },
+  {
+   "bone": "oris07.R",
+   "offset": 49290,
+   "count": 330
+  },
+  {
+   "bone": "tongue02",
+   "offset": 49620,
+   "count": 134
+  },
+  {
+   "bone": "tongue05.L",
+   "offset": 49754,
+   "count": 93
+  },
+  {
+   "bone": "tongue05.R",
+   "offset": 49847,
+   "count": 93
+  },
+  {
+   "bone": "levator05.L",
+   "offset": 49940,
+   "count": 421
+  },
+  {
+   "bone": "levator05.R",
+   "offset": 50361,
+   "count": 421
+  },
+  {
+   "bone": "finger1-2.L",
+   "offset": 50782,
+   "count": 193
+  },
+  {
+   "bone": "finger2-1.L",
+   "offset": 50975,
+   "count": 210
+  },
+  {
+   "bone": "finger3-1.L",
+   "offset": 51185,
+   "count": 245
+  },
+  {
+   "bone": "finger4-1.L",
+   "offset": 51430,
+   "count": 244
+  },
+  {
+   "bone": "finger5-1.L",
+   "offset": 51674,
+   "count": 251
+  },
+  {
+   "bone": "finger1-2.R",
+   "offset": 51925,
+   "count": 193
+  },
+  {
+   "bone": "finger2-1.R",
+   "offset": 52118,
+   "count": 210
+  },
+  {
+   "bone": "finger3-1.R",
+   "offset": 52328,
+   "count": 245
+  },
+  {
+   "bone": "finger4-1.R",
+   "offset": 52573,
+   "count": 244
+  },
+  {
+   "bone": "finger5-1.R",
+   "offset": 52817,
+   "count": 251
+  },
+  {
+   "bone": "tongue03",
+   "offset": 53068,
+   "count": 117
+  },
+  {
+   "bone": "tongue06.L",
+   "offset": 53185,
+   "count": 92
+  },
+  {
+   "bone": "tongue06.R",
+   "offset": 53277,
+   "count": 92
+  },
+  {
+   "bone": "finger1-3.L",
+   "offset": 53369,
+   "count": 144
+  },
+  {
+   "bone": "finger2-2.L",
+   "offset": 53513,
+   "count": 218
+  },
+  {
+   "bone": "finger3-2.L",
+   "offset": 53731,
+   "count": 213
+  },
+  {
+   "bone": "finger4-2.L",
+   "offset": 53944,
+   "count": 194
+  },
+  {
+   "bone": "finger5-2.L",
+   "offset": 54138,
+   "count": 209
+  },
+  {
+   "bone": "finger1-3.R",
+   "offset": 54347,
+   "count": 144
+  },
+  {
+   "bone": "finger2-2.R",
+   "offset": 54491,
+   "count": 218
+  },
+  {
+   "bone": "finger3-2.R",
+   "offset": 54709,
+   "count": 213
+  },
+  {
+   "bone": "finger4-2.R",
+   "offset": 54922,
+   "count": 194
+  },
+  {
+   "bone": "finger5-2.R",
+   "offset": 55116,
+   "count": 209
+  },
+  {
+   "bone": "tongue04",
+   "offset": 55325,
+   "count": 154
+  },
+  {
+   "bone": "tongue07.L",
+   "offset": 55479,
+   "count": 108
+  },
+  {
+   "bone": "tongue07.R",
+   "offset": 55587,
+   "count": 108
+  },
+  {
+   "bone": "finger2-3.L",
+   "offset": 55695,
+   "count": 165
+  },
+  {
+   "bone": "finger3-3.L",
+   "offset": 55860,
+   "count": 166
+  },
+  {
+   "bone": "finger4-3.L",
+   "offset": 56026,
+   "count": 161
+  },
+  {
+   "bone": "finger5-3.L",
+   "offset": 56187,
+   "count": 214
+  },
+  {
+   "bone": "finger2-3.R",
+   "offset": 56401,
+   "count": 165
+  },
+  {
+   "bone": "finger3-3.R",
+   "offset": 56566,
+   "count": 166
+  },
+  {
+   "bone": "finger4-3.R",
+   "offset": 56732,
+   "count": 161
+  },
+  {
+   "bone": "finger5-3.R",
+   "offset": 56893,
+   "count": 214
+  }
+ ],
+ "binary": "default.weights.bin",
+ "byteLength": 456860,
+ "buffers": {
+  "vertex": {
+   "offset": 0,
+   "dtype": "u32",
+   "count": 57107
+  },
+  "weight": {
+   "offset": 228432,
+   "dtype": "f32",
+   "count": 57107
+  }
+ }
+}

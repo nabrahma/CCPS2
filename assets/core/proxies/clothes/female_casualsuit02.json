@@ -1,0 +1,93 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/female_casualsuit02",
+ "category": "clothes",
+ "name": "female_casualsuit02",
+ "uuid": "9896f4a4-a718-4bdd-8482-52e1855160f6",
+ "tags": [
+  "makehuman\u2122",
+  "female",
+  "casual"
+ ],
+ "zDepth": 50,
+ "vertexCount": 2876,
+ "faceCount": 2744,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22048
+  ],
+  [
+   962,
+   5320,
+   0.18461000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/female_casualsuit02.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "female_casualsuit02.bin",
+ "byteLength": 262352,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 8628
+  },
+  "uvs": {
+   "offset": 34512,
+   "dtype": "f32",
+   "count": 6408
+  },
+  "faceVerts": {
+   "offset": 60144,
+   "dtype": "u32",
+   "count": 10976
+  },
+  "faceUvs": {
+   "offset": 104048,
+   "dtype": "u32",
+   "count": 10976
+  },
+  "refVerts": {
+   "offset": 147952,
+   "dtype": "u32",
+   "count": 8628
+  },
+  "refWeights": {
+   "offset": 182464,
+   "dtype": "f32",
+   "count": 8628
+  },
+  "refOffsets": {
+   "offset": 216976,
+   "dtype": "f32",
+   "count": 8628
+  },
+  "deleteVerts": {
+   "offset": 251488,
+   "dtype": "u32",
+   "count": 2716
+  }
+ }
+}

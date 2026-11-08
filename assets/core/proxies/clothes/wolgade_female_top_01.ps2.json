@@ -1,0 +1,99 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/wolgade_female_top_01",
+ "category": "clothes",
+ "name": "female_top_01",
+ "uuid": "81c9f0d5-848e-40ec-b5d7-0b26990227be",
+ "tags": [
+  "female"
+ ],
+ "zDepth": 39,
+ "vertexCount": 989,
+ "faceCount": 1800,
+ "triangleFaces": 1800,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27434
+  ],
+  [
+   1524,
+   4370,
+   0.57623
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/wolgade_female_top_01.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 1167,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 2156,
+ "binary": "wolgade_female_top_01.ps2.bin",
+ "byteLength": 118708,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2967
+  },
+  "uvs": {
+   "offset": 11872,
+   "dtype": "f32",
+   "count": 2054
+  },
+  "faceVerts": {
+   "offset": 20096,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "faceUvs": {
+   "offset": 48896,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "refVerts": {
+   "offset": 77696,
+   "dtype": "u32",
+   "count": 2967
+  },
+  "refWeights": {
+   "offset": 89568,
+   "dtype": "f32",
+   "count": 2967
+  },
+  "refOffsets": {
+   "offset": 101440,
+   "dtype": "f32",
+   "count": 2967
+  },
+  "deleteVerts": {
+   "offset": 113312,
+   "dtype": "u32",
+   "count": 358
+  },
+  "sourceProxyVertex": {
+   "offset": 114752,
+   "dtype": "u32",
+   "count": 989
+  }
+ }
+}

@@ -1,0 +1,83 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/rehmanpolanski_hair_bun_brown",
+ "category": "hair",
+ "name": "Hair_bun_brown",
+ "uuid": "9bf96086-aaa0-4a13-9d83-71b6c4b4732a",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 2524,
+ "faceCount": 2216,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/rehmanpolanski_hair_bun_brown.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "rehmanpolanski_hair_bun_brown.bin",
+ "byteLength": 214112,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 7572
+  },
+  "uvs": {
+   "offset": 30288,
+   "dtype": "f32",
+   "count": 5512
+  },
+  "faceVerts": {
+   "offset": 52336,
+   "dtype": "u32",
+   "count": 8864
+  },
+  "faceUvs": {
+   "offset": 87792,
+   "dtype": "u32",
+   "count": 8864
+  },
+  "refVerts": {
+   "offset": 123248,
+   "dtype": "u32",
+   "count": 7572
+  },
+  "refWeights": {
+   "offset": 153536,
+   "dtype": "f32",
+   "count": 7572
+  },
+  "refOffsets": {
+   "offset": 183824,
+   "dtype": "f32",
+   "count": 7572
+  }
+ }
+}

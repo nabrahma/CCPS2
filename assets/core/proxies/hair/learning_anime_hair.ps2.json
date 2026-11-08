@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/learning_anime_hair",
+ "category": "hair",
+ "name": "animehair",
+ "uuid": "57aa0020-36a6-4e0a-8175-f56f0256b171",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 8949,
+ "faceCount": 17570,
+ "triangleFaces": 17570,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0,
+   0.4835
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/hair/learning_anime_hair.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "decimatedFrom": 45860,
+ "hiddenFaces": "none",
+ "originalTriangles": 91392,
+ "binary": "learning_anime_hair.ps2.bin",
+ "byteLength": 1030116,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 26847
+  },
+  "uvs": {
+   "offset": 107392,
+   "dtype": "f32",
+   "count": 628
+  },
+  "faceVerts": {
+   "offset": 109904,
+   "dtype": "u32",
+   "count": 70280
+  },
+  "faceUvs": {
+   "offset": 391024,
+   "dtype": "u32",
+   "count": 70280
+  },
+  "refVerts": {
+   "offset": 672144,
+   "dtype": "u32",
+   "count": 26847
+  },
+  "refWeights": {
+   "offset": 779536,
+   "dtype": "f32",
+   "count": 26847
+  },
+  "refOffsets": {
+   "offset": 886928,
+   "dtype": "f32",
+   "count": 26847
+  },
+  "sourceProxyVertex": {
+   "offset": 994320,
+   "dtype": "u32",
+   "count": 8949
+  }
+ }
+}

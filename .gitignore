@@ -1,0 +1,48 @@
+# Dependencies and build output
+node_modules/
+dist/
+*.tsbuildinfo
+coverage/
+playwright-report/
+test-results/
+
+# Wails
+app/build/bin/
+app/frontend/dist/
+app/frontend/src/wailsjs/
+
+# Asset compiler caches (downloads are pinned by sha256 in sources.lock.json)
+tools/asset-compiler/.cache/
+tools/asset-compiler/.venv/
+__pycache__/
+*.pyc
+
+app/frontend/package.json.md5
+
+# Unity harness (more in tests/UnityHarness/.gitignore)
+tests/UnityHarness/Library/
+tests/UnityHarness/Temp/
+tests/UnityHarness/Logs/
+tests/UnityHarness/UserSettings/
+tests/UnityHarness/Reports/
+tests/UnityHarness/.vs/
+
+# Your own face photos for the M6 test: never publish these
+docs/milestones/M6/test_photos/
+
+# Local settings, logs and secrets
+.env
+.env.*
+*.log
+.claude/
+.idea/
+.vs/
+
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
+# Wails writes the WebView2 bootstrapper here for the NSIS build
+app/build/windows/installer/tmp/
+# Build tools downloaded for the installer (NSIS, TOOLCHAIN.md)
+tools/.toolcache/

@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/scailman_semitransparent_water_boots",
+ "category": "clothes",
+ "name": "Botas_102",
+ "uuid": "62e38b67-c6b5-4099-951a-90d8dca9271f",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 469,
+ "faceCount": 899,
+ "triangleFaces": 899,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/scailman_semitransparent_water_boots.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "decimatedFrom": 5468,
+ "hiddenFaces": "computed",
+ "originalTriangles": 10752,
+ "binary": "scailman_semitransparent_water_boots.ps2.bin",
+ "byteLength": 57508,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1407
+  },
+  "uvs": {
+   "offset": 5632,
+   "dtype": "f32",
+   "count": 964
+  },
+  "faceVerts": {
+   "offset": 9488,
+   "dtype": "u32",
+   "count": 3596
+  },
+  "faceUvs": {
+   "offset": 23872,
+   "dtype": "u32",
+   "count": 3596
+  },
+  "refVerts": {
+   "offset": 38256,
+   "dtype": "u32",
+   "count": 1407
+  },
+  "refWeights": {
+   "offset": 43888,
+   "dtype": "f32",
+   "count": 1407
+  },
+  "refOffsets": {
+   "offset": 49520,
+   "dtype": "f32",
+   "count": 1407
+  },
+  "coveredVerts": {
+   "offset": 55152,
+   "dtype": "u32",
+   "count": 120
+  },
+  "sourceProxyVertex": {
+   "offset": 55632,
+   "dtype": "u32",
+   "count": 469
+  }
+ }
+}

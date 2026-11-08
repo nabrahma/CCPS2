@@ -1,0 +1,1209 @@
+[
+  {
+    "id": "mh:hair/afro01",
+    "slot": null,
+    "from": 2192,
+    "to": 2192,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/bob01",
+    "slot": null,
+    "from": 8474,
+    "to": 3500,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/bob02",
+    "slot": null,
+    "from": 2248,
+    "to": 2248,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/braid01",
+    "slot": null,
+    "from": 5518,
+    "to": 3500,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/long01",
+    "slot": null,
+    "from": 4108,
+    "to": 3500,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/ponytail01",
+    "slot": null,
+    "from": 5352,
+    "to": 3500,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/short01",
+    "slot": null,
+    "from": 3678,
+    "to": 3500,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/short02",
+    "slot": null,
+    "from": 3344,
+    "to": 3344,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/short03",
+    "slot": null,
+    "from": 1922,
+    "to": 1922,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/short04",
+    "slot": null,
+    "from": 1050,
+    "to": 1050,
+    "flipped": 0
+  },
+  {
+    "id": "mh:clothes/fedora01",
+    "slot": "hat",
+    "from": 1244,
+    "to": 700,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 122
+  },
+  {
+    "id": "mh:clothes/fedora_cocked",
+    "slot": "hat",
+    "from": 1244,
+    "to": 700,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 124
+  },
+  {
+    "id": "mh:clothes/female_casualsuit01",
+    "slot": "full",
+    "from": 4236,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/female_casualsuit02",
+    "slot": "full",
+    "from": 5488,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/female_elegantsuit01",
+    "slot": "full",
+    "from": 4192,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/female_sportsuit01",
+    "slot": "full",
+    "from": 3436,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/male_casualsuit01",
+    "slot": "full",
+    "from": 16672,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/male_casualsuit02",
+    "slot": "full",
+    "from": 4120,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/male_casualsuit03",
+    "slot": "full",
+    "from": 4800,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/male_casualsuit04",
+    "slot": "full",
+    "from": 3240,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/male_casualsuit05",
+    "slot": "full",
+    "from": 5996,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/male_casualsuit06",
+    "slot": "full",
+    "from": 7168,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/male_elegantsuit01",
+    "slot": "full",
+    "from": 14956,
+    "to": 2499,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/male_worksuit01",
+    "slot": "full",
+    "from": 6986,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/shoes01",
+    "slot": "shoes",
+    "from": 3320,
+    "to": 900,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/shoes02",
+    "slot": "shoes",
+    "from": 3064,
+    "to": 900,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/shoes03",
+    "slot": "shoes",
+    "from": 4128,
+    "to": 899,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/shoes04",
+    "slot": "shoes",
+    "from": 3320,
+    "to": 900,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/shoes05",
+    "slot": "shoes",
+    "from": 3064,
+    "to": 900,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/shoes06",
+    "slot": "shoes",
+    "from": 3064,
+    "to": 900,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:hair/cortu_shaggy_green_hair",
+    "slot": null,
+    "from": 1284,
+    "to": 1284,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/cortu_short_messy_hair",
+    "slot": null,
+    "from": 1092,
+    "to": 1092,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/cortu_straight_bangs",
+    "slot": null,
+    "from": 1128,
+    "to": 1128,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/cortu_strawberry_cloud_hair",
+    "slot": null,
+    "from": 576,
+    "to": 576,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/culturalibre_hair_01",
+    "slot": null,
+    "from": 4228,
+    "to": 3500,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/culturalibre_hair_02",
+    "slot": null,
+    "from": 3460,
+    "to": 3460,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/culturalibre_hair_05",
+    "slot": null,
+    "from": 4948,
+    "to": 3500,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/culturalibre_hair_06",
+    "slot": null,
+    "from": 14688,
+    "to": 6244,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/elvs_double_mh_braid",
+    "slot": null,
+    "from": 9866,
+    "to": 3488,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/elvs_french_braid_variation",
+    "slot": null,
+    "from": 8152,
+    "to": 3488,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/elvs_reverse_french_braid_bun",
+    "slot": null,
+    "from": 7622,
+    "to": 3491,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/elvs_unkempt_french_braid",
+    "slot": null,
+    "from": 8200,
+    "to": 3488,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/faydaen_hair_1",
+    "slot": null,
+    "from": 836,
+    "to": 836,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/learning_anime_hair",
+    "slot": null,
+    "from": 91392,
+    "to": 17570,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/littleright_bobcut_hair",
+    "slot": null,
+    "from": 2692,
+    "to": 2692,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/o4saken_long01",
+    "slot": null,
+    "from": 13268,
+    "to": 3500,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/rehmanpolanski_hair_bun_brown",
+    "slot": null,
+    "from": 4432,
+    "to": 3500,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/sonntag78_blond_with_headband",
+    "slot": null,
+    "from": 2054,
+    "to": 2054,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/sonntag78_junglebook_hair",
+    "slot": null,
+    "from": 8576,
+    "to": 3500,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/toigo_blunt_bob",
+    "slot": null,
+    "from": 2858,
+    "to": 2858,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/toigo_blunt_bob_with_bangs",
+    "slot": null,
+    "from": 4976,
+    "to": 3500,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/toigo_curled_under_bob",
+    "slot": null,
+    "from": 2852,
+    "to": 2852,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/toigo_curled_under_bob_with_bangs",
+    "slot": null,
+    "from": 4976,
+    "to": 3500,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/toigo_inverted_bob",
+    "slot": null,
+    "from": 2856,
+    "to": 2856,
+    "flipped": 0
+  },
+  {
+    "id": "mh:hair/toigo_inverted_bob_with_bangs",
+    "slot": null,
+    "from": 4996,
+    "to": 3500,
+    "flipped": 0
+  },
+  {
+    "id": "mh:clothes/elvs_crude_t-shirt_male",
+    "slot": "top",
+    "from": 2068,
+    "to": 1800,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/joepal_crude_t-shirt_female",
+    "slot": "top",
+    "from": 2068,
+    "to": 1800,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/namuhekam_male_polo_shirt",
+    "slot": "top",
+    "from": 4106,
+    "to": 1800,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 1596
+  },
+  {
+    "id": "mh:clothes/skalldyrssuppe_tube_top_funky_colors",
+    "slot": "top",
+    "from": 2912,
+    "to": 1800,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 552
+  },
+  {
+    "id": "mh:clothes/toigo_basic_tucked_t-shirt",
+    "slot": "top",
+    "from": 2700,
+    "to": 1800,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 1437
+  },
+  {
+    "id": "mh:clothes/toigo_bodice-style_top",
+    "slot": "top",
+    "from": 1944,
+    "to": 1800,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_camisole_top",
+    "slot": "top",
+    "from": 8232,
+    "to": 1800,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_fisherman_sweater",
+    "slot": "outer",
+    "from": 4164,
+    "to": 2200,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 2150
+  },
+  {
+    "id": "mh:clothes/toigo_keyhole_tank_top",
+    "slot": "top",
+    "from": 1352,
+    "to": 1352,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_turtleneck_halter_top",
+    "slot": "top",
+    "from": 5504,
+    "to": 1800,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/cortu_cargo_pants",
+    "slot": "bottom",
+    "from": 392,
+    "to": 392,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 1031
+  },
+  {
+    "id": "mh:clothes/cortu_jeans_shorts",
+    "slot": "bottom",
+    "from": 500,
+    "to": 500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_harem_pants",
+    "slot": "bottom",
+    "from": 10912,
+    "to": 1600,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_wool_pants",
+    "slot": "bottom",
+    "from": 2674,
+    "to": 1599,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 969
+  },
+  {
+    "id": "mh:clothes/cortu_floppy_overknee_shoes",
+    "slot": "shoes",
+    "from": 3128,
+    "to": 900,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/cortu_t-bar",
+    "slot": "accessory",
+    "from": 704,
+    "to": 500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/culturalibre_hero_boots_1",
+    "slot": "shoes",
+    "from": 2888,
+    "to": 900,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/culturalibre_hero_boots_2",
+    "slot": "shoes",
+    "from": 2312,
+    "to": 900,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/culturalibre_hero_boots_3",
+    "slot": "shoes",
+    "from": 2312,
+    "to": 900,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/culturalibre_hero_boots_4",
+    "slot": "shoes",
+    "from": 2312,
+    "to": 900,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/culturalibre_hero_boots_5",
+    "slot": "shoes",
+    "from": 11552,
+    "to": 900,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/culturalibre_heroine_boots_1",
+    "slot": "shoes",
+    "from": 4104,
+    "to": 900,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/culturalibre_heroine_boots_2",
+    "slot": "shoes",
+    "from": 2720,
+    "to": 900,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/culturalibre_heroine_boots_3",
+    "slot": "shoes",
+    "from": 2720,
+    "to": 900,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/culturalibre_heroine_boots_4",
+    "slot": "shoes",
+    "from": 1712,
+    "to": 900,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/culturalibre_male_boots",
+    "slot": "shoes",
+    "from": 30768,
+    "to": 1396,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/grinsegold_female_pirate_boots",
+    "slot": "shoes",
+    "from": 63552,
+    "to": 1950,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/scailman_gogo_platform_boots",
+    "slot": "shoes",
+    "from": 10068,
+    "to": 900,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/scailman_semitransparent_water_boots",
+    "slot": "shoes",
+    "from": 10752,
+    "to": 899,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 120
+  },
+  {
+    "id": "mh:clothes/toigo_ankle_boots_female",
+    "slot": "shoes",
+    "from": 4120,
+    "to": 900,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_ankle_boots_male",
+    "slot": "shoes",
+    "from": 4120,
+    "to": 900,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_ballet_flats",
+    "slot": "shoes",
+    "from": 8960,
+    "to": 938,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_ballet_flats_with_bows",
+    "slot": "shoes",
+    "from": 14864,
+    "to": 1362,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_ballet_flats_with_flowers",
+    "slot": "shoes",
+    "from": 10272,
+    "to": 1089,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_flats",
+    "slot": "shoes",
+    "from": 57600,
+    "to": 2418,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 1230
+  },
+  {
+    "id": "mh:clothes/toigo_mj_cloth_shoes",
+    "slot": "shoes",
+    "from": 1004,
+    "to": 900,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_stiletto_booties",
+    "slot": "shoes",
+    "from": 44664,
+    "to": 4292,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_female_double-breasted_suit",
+    "slot": "full",
+    "from": 10062,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_female_suit_2",
+    "slot": "full",
+    "from": 16214,
+    "to": 2499,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_male_double-breasted_suit",
+    "slot": "full",
+    "from": 10062,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_male_suit_3",
+    "slot": "full",
+    "from": 16250,
+    "to": 2499,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_male_suit_tie_and_jacket",
+    "slot": "outer",
+    "from": 19202,
+    "to": 2200,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_suit_with_dinner_jacket",
+    "slot": "outer",
+    "from": 15300,
+    "to": 2056,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_suit_with_jacket_and_bowtie",
+    "slot": "outer",
+    "from": 24654,
+    "to": 2199,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/kwnet_at_pantyhose01",
+    "slot": "bottom",
+    "from": 4654,
+    "to": 1600,
+    "flipped": 0,
+    "hiddenFaces": "none",
+    "coveredVertices": 0
+  },
+  {
+    "id": "mh:clothes/marco_105_armsleeve02",
+    "slot": "gloves",
+    "from": 528,
+    "to": 528,
+    "flipped": 0,
+    "hiddenFaces": "none",
+    "coveredVertices": 0
+  },
+  {
+    "id": "mh:clothes/marco_105_stocking01",
+    "slot": "bottom",
+    "from": 1676,
+    "to": 1600,
+    "flipped": 0,
+    "hiddenFaces": "none",
+    "coveredVertices": 0
+  },
+  {
+    "id": "mh:clothes/marco_105_stocking02",
+    "slot": "bottom",
+    "from": 1676,
+    "to": 1600,
+    "flipped": 0,
+    "hiddenFaces": "none",
+    "coveredVertices": 0
+  },
+  {
+    "id": "mh:clothes/v0rt3x_armsleeves_black_fishnet_large",
+    "slot": "gloves",
+    "from": 720,
+    "to": 700,
+    "flipped": 0,
+    "hiddenFaces": "none",
+    "coveredVertices": 0
+  },
+  {
+    "id": "mh:clothes/v0rt3x_armsleeves_black_fishnet_medium",
+    "slot": "gloves",
+    "from": 720,
+    "to": 700,
+    "flipped": 0,
+    "hiddenFaces": "none",
+    "coveredVertices": 0
+  },
+  {
+    "id": "mh:clothes/v0rt3x_armsleeves_black_fishnet_small",
+    "slot": "gloves",
+    "from": 720,
+    "to": 700,
+    "flipped": 0,
+    "hiddenFaces": "none",
+    "coveredVertices": 0
+  },
+  {
+    "id": "mh:clothes/v0rt3x_armsleeves_white_fishnet_large",
+    "slot": "gloves",
+    "from": 720,
+    "to": 700,
+    "flipped": 0,
+    "hiddenFaces": "none",
+    "coveredVertices": 0
+  },
+  {
+    "id": "mh:clothes/v0rt3x_armsleeves_white_fishnet_medium",
+    "slot": "gloves",
+    "from": 720,
+    "to": 700,
+    "flipped": 0,
+    "hiddenFaces": "none",
+    "coveredVertices": 0
+  },
+  {
+    "id": "mh:clothes/v0rt3x_armsleeves_white_fishnet_small",
+    "slot": "gloves",
+    "from": 720,
+    "to": 700,
+    "flipped": 0,
+    "hiddenFaces": "none",
+    "coveredVertices": 0
+  },
+  {
+    "id": "mh:clothes/v0rt3x_stockings_black_fishnet_large",
+    "slot": "bottom",
+    "from": 2088,
+    "to": 1600,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 14
+  },
+  {
+    "id": "mh:clothes/v0rt3x_stockings_black_fishnet_medium",
+    "slot": "bottom",
+    "from": 2088,
+    "to": 1600,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 6
+  },
+  {
+    "id": "mh:clothes/v0rt3x_stockings_black_fishnet_small",
+    "slot": "bottom",
+    "from": 2088,
+    "to": 1600,
+    "flipped": 0,
+    "hiddenFaces": "none",
+    "coveredVertices": 0
+  },
+  {
+    "id": "mh:clothes/v0rt3x_stockings_white_fishnet_large",
+    "slot": "bottom",
+    "from": 2088,
+    "to": 1600,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 14
+  },
+  {
+    "id": "mh:clothes/v0rt3x_stockings_white_fishnet_medium",
+    "slot": "bottom",
+    "from": 2088,
+    "to": 1600,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 6
+  },
+  {
+    "id": "mh:clothes/v0rt3x_stockings_white_fishnet_small",
+    "slot": "bottom",
+    "from": 2088,
+    "to": 1600,
+    "flipped": 0,
+    "hiddenFaces": "none",
+    "coveredVertices": 0
+  },
+  {
+    "id": "mh:clothes/wolgade_female_panties_01",
+    "slot": "bottom",
+    "from": 1518,
+    "to": 1518,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/wolgade_female_top_01",
+    "slot": "top",
+    "from": 2156,
+    "to": 1800,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/aethelraed_unraed_cloche_hat",
+    "slot": "hat",
+    "from": 771,
+    "to": 699,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/grinsegold_uncle_joshis_hat",
+    "slot": "hat",
+    "from": 7168,
+    "to": 1794,
+    "flipped": 0,
+    "hiddenFaces": "none",
+    "coveredVertices": 0
+  },
+  {
+    "id": "mh:clothes/joepal_xmas_cap",
+    "slot": "hat",
+    "from": 2016,
+    "to": 700,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/jujube_bag_on_head",
+    "slot": "accessory",
+    "from": 11264,
+    "to": 499,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 599
+  },
+  {
+    "id": "mh:clothes/jujube_newsboy_cap",
+    "slot": "hat",
+    "from": 996,
+    "to": 700,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 64
+  },
+  {
+    "id": "mh:clothes/toigo_maga_hat",
+    "slot": "hat",
+    "from": 6004,
+    "to": 699,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 180
+  },
+  {
+    "id": "mh:clothes/culturalibre_hero-heroine_gloves_1",
+    "slot": "gloves",
+    "from": 4528,
+    "to": 700,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/culturalibre_hero-heroine_gloves_2",
+    "slot": "gloves",
+    "from": 14464,
+    "to": 1392,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/culturalibre_hero-heroine_gloves_3",
+    "slot": "gloves",
+    "from": 14536,
+    "to": 12658,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/culturalibre_hero-heroine_gloves_4",
+    "slot": "gloves",
+    "from": 16544,
+    "to": 1188,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/culturalibre_hero-heroine_gloves_5",
+    "slot": "gloves",
+    "from": 5212,
+    "to": 700,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/learning_mma_fighting_gloves",
+    "slot": "gloves",
+    "from": 4392,
+    "to": 700,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 1124
+  },
+  {
+    "id": "mh:clothes/toigo_gloves_long",
+    "slot": "gloves",
+    "from": 6864,
+    "to": 699,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_gloves_medium",
+    "slot": "gloves",
+    "from": 5744,
+    "to": 699,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_gloves_short",
+    "slot": "gloves",
+    "from": 4544,
+    "to": 700,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/aethelraed_flapper_dress",
+    "slot": "full",
+    "from": 12846,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/mindfront_kimono",
+    "slot": "full",
+    "from": 6922,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_bodice_dress_with_lace_ruffle_skirt",
+    "slot": "full",
+    "from": 8840,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_camisole_dress_with_full_skirt",
+    "slot": "full",
+    "from": 10792,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_cut_out_dress",
+    "slot": "full",
+    "from": 6156,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_dress_with_tiered_skirt",
+    "slot": "full",
+    "from": 18896,
+    "to": 3097,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_halter_dress_knee_length",
+    "slot": "full",
+    "from": 3936,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_halter_dress_midi",
+    "slot": "full",
+    "from": 5184,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_halter_dress_with_fluted_skirt",
+    "slot": "full",
+    "from": 6432,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_keyhole_neck_dress",
+    "slot": "full",
+    "from": 17888,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_shift_dress",
+    "slot": "full",
+    "from": 13568,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_strapless_ruffle_top_dress",
+    "slot": "full",
+    "from": 10336,
+    "to": 2500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/wdg_mycenaean_tunic",
+    "slot": "accessory",
+    "from": 2660,
+    "to": 500,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/frankyaye_mini_skirt_01",
+    "slot": "bottom",
+    "from": 1720,
+    "to": 1600,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 138
+  },
+  {
+    "id": "mh:clothes/frankyaye_mini_skirt_02",
+    "slot": "bottom",
+    "from": 2600,
+    "to": 1600,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 203
+  },
+  {
+    "id": "mh:clothes/toigo_long_full_skirt",
+    "slot": "bottom",
+    "from": 5848,
+    "to": 1600,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_skirt_with_lace_ruffle",
+    "slot": "bottom",
+    "from": 5576,
+    "to": 1600,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  },
+  {
+    "id": "mh:clothes/toigo_tiered_mini_skirt",
+    "slot": "bottom",
+    "from": 10656,
+    "to": 2319,
+    "flipped": 0,
+    "hiddenFaces": "computed",
+    "coveredVertices": 123
+  },
+  {
+    "id": "mh:clothes/toigo_tiered_skirt",
+    "slot": "full",
+    "from": 12960,
+    "to": 2588,
+    "flipped": 0,
+    "hiddenFaces": "makehuman"
+  }
+]

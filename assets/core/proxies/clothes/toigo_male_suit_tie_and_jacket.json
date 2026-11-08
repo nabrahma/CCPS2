@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_male_suit_tie_and_jacket",
+ "category": "clothes",
+ "name": "Jacket_Tie_Pants",
+ "uuid": "b53397df-d864-437e-a77c-8d9e774efee9",
+ "tags": [
+  "pants"
+ ],
+ "zDepth": 50,
+ "vertexCount": 9980,
+ "faceCount": 9601,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   13868,
+   14308,
+   1.1086600000000002
+  ],
+  [
+   881,
+   13137,
+   1.74451
+  ],
+  [
+   10854,
+   10981,
+   0.23046000000000003
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/toigo_male_suit_tie_and_jacket.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "outer",
+ "binary": "toigo_male_suit_tie_and_jacket.bin",
+ "byteLength": 888336,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 29940
+  },
+  "uvs": {
+   "offset": 119760,
+   "dtype": "f32",
+   "count": 21964
+  },
+  "faceVerts": {
+   "offset": 207616,
+   "dtype": "u32",
+   "count": 38404
+  },
+  "faceUvs": {
+   "offset": 361232,
+   "dtype": "u32",
+   "count": 38404
+  },
+  "refVerts": {
+   "offset": 514848,
+   "dtype": "u32",
+   "count": 29940
+  },
+  "refWeights": {
+   "offset": 634608,
+   "dtype": "f32",
+   "count": 29940
+  },
+  "refOffsets": {
+   "offset": 754368,
+   "dtype": "f32",
+   "count": 29940
+  },
+  "deleteVerts": {
+   "offset": 874128,
+   "dtype": "u32",
+   "count": 3552
+  }
+ }
+}

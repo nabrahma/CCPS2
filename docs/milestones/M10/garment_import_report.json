@@ -1,0 +1,45 @@
+{
+ "bodies": 50,
+ "seed": 9000,
+ "limitMm": 2,
+ "sampledVertices": 99100,
+ "verticesWithin3cmOfSkin": 64019,
+ "closestToSkinMm": 0.9198522847084557,
+ "deepestWithoutColliderMm": 4.3285164757989625,
+ "failures": [],
+ "garments": [
+  {
+   "garment": "shirt",
+   "originalTriangles": 10944,
+   "triangles": 1800,
+   "vertices": 1060,
+   "coveredBodyVertices": 512,
+   "medianGap": 0.007443370655390297,
+   "correction": "",
+   "warnings": [],
+   "worstDepthMm": 0
+  },
+  {
+   "garment": "trousers",
+   "originalTriangles": 8800,
+   "triangles": 1600,
+   "vertices": 880,
+   "coveredBodyVertices": 852,
+   "medianGap": 0.007674365090948345,
+   "correction": "",
+   "warnings": [],
+   "worstDepthMm": 0
+  },
+  {
+   "garment": "skirt",
+   "originalTriangles": 3888,
+   "triangles": 1600,
+   "vertices": 872,
+   "coveredBodyVertices": 100,
+   "medianGap": 0.03876282496614086,
+   "correction": "",
+   "warnings": [],
+   "worstDepthMm": 0
+  }
+ ]
+}

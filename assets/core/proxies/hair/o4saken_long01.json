@@ -1,0 +1,86 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/o4saken_long01",
+ "category": "hair",
+ "name": "o4saken_long01",
+ "uuid": "1d8535a9-e177-4e9d-b93d-5491841cc39e",
+ "tags": [
+  "female",
+  "long"
+ ],
+ "zDepth": 50,
+ "vertexCount": 15007,
+ "faceCount": 6634,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/o4saken_long01.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "o4saken_long01.bin",
+ "byteLength": 1052932,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 45021
+  },
+  "uvs": {
+   "offset": 180096,
+   "dtype": "f32",
+   "count": 30066
+  },
+  "faceVerts": {
+   "offset": 300368,
+   "dtype": "u32",
+   "count": 26536
+  },
+  "faceUvs": {
+   "offset": 406512,
+   "dtype": "u32",
+   "count": 26536
+  },
+  "refVerts": {
+   "offset": 512656,
+   "dtype": "u32",
+   "count": 45021
+  },
+  "refWeights": {
+   "offset": 692752,
+   "dtype": "f32",
+   "count": 45021
+  },
+  "refOffsets": {
+   "offset": 872848,
+   "dtype": "f32",
+   "count": 45021
+  }
+ }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "ps2cc",
+  "private": true,
+  "license": "AGPL-3.0-or-later",
+  "repository": "github:nabrahma/CCPS2",
+  "version": "0.1.0",
+  "description": "PS2CC: PS2-era character creator that exports Humanoid-ready FBX for Unity",
+  "packageManager": "pnpm@11.22.0",
+  "engines": {
+    "node": ">=22.22.0 <23"
+  },
+  "type": "module",
+  "scripts": {
+    "build:assets": "python -I tools/asset-compiler/compile.py all && pnpm build:meshes",
+    "build:assets:fetch": "python -I tools/asset-compiler/compile.py fetch",
+    "build:meshes": "pnpm --filter @ps2cc/asset-tools run build:meshes",
+    "build:landmarks": "pnpm --filter @ps2cc/app-frontend exec playwright test -c playwright.tools.config.ts build-landmarks",
+    "export:testchars": "pnpm --filter @ps2cc/app-frontend exec playwright test -c playwright.tools.config.ts export-testchars",
+    "test:desktop": "pnpm --filter @ps2cc/app-frontend exec playwright test -c playwright.tools.config.ts desktop",
+    "build:installer": "node scripts/build-installer.mjs",
+    "test:installer": "node scripts/test-installer.mjs",
+    "golden": "python -I tools/asset-compiler/compile.py golden",
+    "golden:expressions": "python -I tools/asset-compiler/compile.py golden-expressions",
+    "lint": "eslint .",
+    "typecheck": "pnpm -r --if-present run typecheck",
+    "test": "pnpm -r --if-present run test",
+    "test:go": "node scripts/go-test.mjs",
+    "test:unity": "node scripts/unity-harness.mjs",
+    "dev": "cd app && wails dev",
+    "build": "node scripts/build-app.mjs",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "22.20.5",
+    "eslint": "10.14.0",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "prettier": "3.9.10",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.72.1"
+  }
+}

@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/cortu_floppy_overknee_shoes",
+ "category": "clothes",
+ "name": "floppy_overknee_shoe",
+ "uuid": "3fdc4a2c-22a0-4b9c-9182-44140326be0e",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 472,
+ "faceCount": 900,
+ "triangleFaces": 900,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/cortu_floppy_overknee_shoes.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "decimatedFrom": 1586,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 3128,
+ "binary": "cortu_floppy_overknee_shoes.ps2.bin",
+ "byteLength": 68224,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1416
+  },
+  "uvs": {
+   "offset": 5664,
+   "dtype": "f32",
+   "count": 598
+  },
+  "faceVerts": {
+   "offset": 8064,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "faceUvs": {
+   "offset": 22464,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "refVerts": {
+   "offset": 36864,
+   "dtype": "u32",
+   "count": 1416
+  },
+  "refWeights": {
+   "offset": 42528,
+   "dtype": "f32",
+   "count": 1416
+  },
+  "refOffsets": {
+   "offset": 48192,
+   "dtype": "f32",
+   "count": 1416
+  },
+  "deleteVerts": {
+   "offset": 53856,
+   "dtype": "u32",
+   "count": 3118
+  },
+  "sourceProxyVertex": {
+   "offset": 66336,
+   "dtype": "u32",
+   "count": 472
+  }
+ }
+}

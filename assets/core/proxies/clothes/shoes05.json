@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/shoes05",
+ "category": "clothes",
+ "name": "shoes05",
+ "uuid": "8ef14ff4-8547-419c-a495-17bab919568b",
+ "tags": [
+  "makehuman\u2122",
+  "shoes"
+ ],
+ "zDepth": 5,
+ "vertexCount": 1594,
+ "faceCount": 1532,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   12839,
+   12860,
+   0.07045
+  ],
+  [
+   12828,
+   12888,
+   0.058750000000000004
+  ],
+  [
+   11609,
+   12442,
+   0.2539
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/shoes05.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "binary": "shoes05.bin",
+ "byteLength": 152344,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4782
+  },
+  "uvs": {
+   "offset": 19136,
+   "dtype": "f32",
+   "count": 3488
+  },
+  "faceVerts": {
+   "offset": 33088,
+   "dtype": "u32",
+   "count": 6128
+  },
+  "faceUvs": {
+   "offset": 57600,
+   "dtype": "u32",
+   "count": 6128
+  },
+  "refVerts": {
+   "offset": 82112,
+   "dtype": "u32",
+   "count": 4782
+  },
+  "refWeights": {
+   "offset": 101248,
+   "dtype": "f32",
+   "count": 4782
+  },
+  "refOffsets": {
+   "offset": 120384,
+   "dtype": "f32",
+   "count": 4782
+  },
+  "deleteVerts": {
+   "offset": 139520,
+   "dtype": "u32",
+   "count": 3206
+  }
+ }
+}

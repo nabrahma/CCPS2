@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_fisherman_sweater",
+ "category": "clothes",
+ "name": "Sweater_Fisherman",
+ "uuid": "0ce727a1-8422-4cbc-bc08-e336dce8e037",
+ "tags": [
+  "sweater",
+  "shirt",
+  "top",
+  "knit"
+ ],
+ "zDepth": 50,
+ "vertexCount": 2126,
+ "faceCount": 2082,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/toigo_fisherman_sweater.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "outer",
+ "binary": "toigo_fisherman_sweater.bin",
+ "byteLength": 188792,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 6378
+  },
+  "uvs": {
+   "offset": 25520,
+   "dtype": "f32",
+   "count": 5022
+  },
+  "faceVerts": {
+   "offset": 45616,
+   "dtype": "u32",
+   "count": 8328
+  },
+  "faceUvs": {
+   "offset": 78928,
+   "dtype": "u32",
+   "count": 8328
+  },
+  "refVerts": {
+   "offset": 112240,
+   "dtype": "u32",
+   "count": 6378
+  },
+  "refWeights": {
+   "offset": 137760,
+   "dtype": "f32",
+   "count": 6378
+  },
+  "refOffsets": {
+   "offset": 163280,
+   "dtype": "f32",
+   "count": 6378
+  }
+ }
+}

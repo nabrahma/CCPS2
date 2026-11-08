@@ -1,0 +1,83 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/jujube_newsboy_cap",
+ "category": "clothes",
+ "name": "newsboy_cap",
+ "uuid": "1d304cff-9874-40c6-b27f-e295dda2312e",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 369,
+ "faceCount": 700,
+ "triangleFaces": 700,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": null,
+ "slot": "hat",
+ "decimatedFrom": 517,
+ "hiddenFaces": "computed",
+ "originalTriangles": 996,
+ "binary": "jujube_newsboy_cap.ps2.bin",
+ "byteLength": 45092,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1107
+  },
+  "uvs": {
+   "offset": 4432,
+   "dtype": "f32",
+   "count": 808
+  },
+  "faceVerts": {
+   "offset": 7664,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "faceUvs": {
+   "offset": 18864,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "refVerts": {
+   "offset": 30064,
+   "dtype": "u32",
+   "count": 1107
+  },
+  "refWeights": {
+   "offset": 34496,
+   "dtype": "f32",
+   "count": 1107
+  },
+  "refOffsets": {
+   "offset": 38928,
+   "dtype": "f32",
+   "count": 1107
+  },
+  "coveredVerts": {
+   "offset": 43360,
+   "dtype": "u32",
+   "count": 64
+  },
+  "sourceProxyVertex": {
+   "offset": 43616,
+   "dtype": "u32",
+   "count": 369
+  }
+ }
+}

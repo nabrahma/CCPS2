@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_camisole_dress_with_full_skirt",
+ "category": "clothes",
+ "name": "Dress_Camisole_Full_Skirt",
+ "uuid": "918ccf52-5edc-4acc-9d1c-53ba8dc9932b",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 5504,
+ "faceCount": 5396,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/toigo_camisole_dress_with_full_skirt.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "toigo_camisole_dress_with_full_skirt.bin",
+ "byteLength": 493840,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 16512
+  },
+  "uvs": {
+   "offset": 66048,
+   "dtype": "f32",
+   "count": 12474
+  },
+  "faceVerts": {
+   "offset": 115952,
+   "dtype": "u32",
+   "count": 21584
+  },
+  "faceUvs": {
+   "offset": 202288,
+   "dtype": "u32",
+   "count": 21584
+  },
+  "refVerts": {
+   "offset": 288624,
+   "dtype": "u32",
+   "count": 16512
+  },
+  "refWeights": {
+   "offset": 354672,
+   "dtype": "f32",
+   "count": 16512
+  },
+  "refOffsets": {
+   "offset": 420720,
+   "dtype": "f32",
+   "count": 16512
+  },
+  "deleteVerts": {
+   "offset": 486768,
+   "dtype": "u32",
+   "count": 1768
+  }
+ }
+}

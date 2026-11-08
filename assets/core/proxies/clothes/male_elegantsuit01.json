@@ -1,0 +1,93 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/male_elegantsuit01",
+ "category": "clothes",
+ "name": "male_elegantsuit01",
+ "uuid": "1d2e3843-dda5-40a8-84a0-96666aa681bb",
+ "tags": [
+  "makehuman\u2122",
+  "male",
+  "elegant"
+ ],
+ "zDepth": 50,
+ "vertexCount": 7613,
+ "faceCount": 7478,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/male_elegantsuit01.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "male_elegantsuit01.bin",
+ "byteLength": 698552,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 22839
+  },
+  "uvs": {
+   "offset": 91360,
+   "dtype": "f32",
+   "count": 17044
+  },
+  "faceVerts": {
+   "offset": 159536,
+   "dtype": "u32",
+   "count": 29912
+  },
+  "faceUvs": {
+   "offset": 279184,
+   "dtype": "u32",
+   "count": 29912
+  },
+  "refVerts": {
+   "offset": 398832,
+   "dtype": "u32",
+   "count": 22839
+  },
+  "refWeights": {
+   "offset": 490192,
+   "dtype": "f32",
+   "count": 22839
+  },
+  "refOffsets": {
+   "offset": 581552,
+   "dtype": "f32",
+   "count": 22839
+  },
+  "deleteVerts": {
+   "offset": 672912,
+   "dtype": "u32",
+   "count": 6410
+  }
+ }
+}

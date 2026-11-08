@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_stiletto_booties",
+ "category": "clothes",
+ "name": "Booties_stiletto",
+ "uuid": "6b8ad957-2812-44e3-a9a0-ddc9cf0d2704",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 22414,
+ "faceCount": 22332,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/toigo_stiletto_booties.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "binary": "toigo_stiletto_booties.bin",
+ "byteLength": 2022312,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 67242
+  },
+  "uvs": {
+   "offset": 268976,
+   "dtype": "f32",
+   "count": 55740
+  },
+  "faceVerts": {
+   "offset": 491936,
+   "dtype": "u32",
+   "count": 89328
+  },
+  "faceUvs": {
+   "offset": 849248,
+   "dtype": "u32",
+   "count": 89328
+  },
+  "refVerts": {
+   "offset": 1206560,
+   "dtype": "u32",
+   "count": 67242
+  },
+  "refWeights": {
+   "offset": 1475536,
+   "dtype": "f32",
+   "count": 67242
+  },
+  "refOffsets": {
+   "offset": 1744512,
+   "dtype": "f32",
+   "count": 67242
+  },
+  "deleteVerts": {
+   "offset": 2013488,
+   "dtype": "u32",
+   "count": 2206
+  }
+ }
+}

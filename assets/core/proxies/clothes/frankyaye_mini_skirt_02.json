@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/frankyaye_mini_skirt_02",
+ "category": "clothes",
+ "name": "Mini_Skirt_02",
+ "uuid": "70ec2a0a-5cdd-4d68-a067-12e86e29880a",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1385,
+ "faceCount": 1300,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   11133,
+   11141,
+   0.11273
+  ],
+  [
+   11025,
+   11460,
+   0.6387100000000001
+  ],
+  [
+   11130,
+   11135,
+   0.13772
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.409,
+   0.409,
+   0.409
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/frankyaye_mini_skirt_02.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "frankyaye_mini_skirt_02.bin",
+ "byteLength": 123340,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4155
+  },
+  "uvs": {
+   "offset": 16624,
+   "dtype": "f32",
+   "count": 3810
+  },
+  "faceVerts": {
+   "offset": 31872,
+   "dtype": "u32",
+   "count": 5200
+  },
+  "faceUvs": {
+   "offset": 52672,
+   "dtype": "u32",
+   "count": 5200
+  },
+  "refVerts": {
+   "offset": 73472,
+   "dtype": "u32",
+   "count": 4155
+  },
+  "refWeights": {
+   "offset": 90096,
+   "dtype": "f32",
+   "count": 4155
+  },
+  "refOffsets": {
+   "offset": 106720,
+   "dtype": "f32",
+   "count": 4155
+  }
+ }
+}
