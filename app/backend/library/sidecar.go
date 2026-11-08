@@ -24,6 +24,9 @@ const AtlasSuffix = ".atlas.json"
 // HairstyleExt is the extension of saved hairstyles (PRD F5 step 8).
 const HairstyleExt = ".ps2hair"
 
+// PresetExt is the extension of saved user presets (PRD F1).
+const PresetExt = ".ps2preset"
+
 // SaveGarment stores an imported garment (PRD F4): its proxy document and
 // binary, under the file names the document gives. The document goes last, so
 // a garment is never listed before its data is on disk.
@@ -118,26 +121,35 @@ func (l *Library) LoadAtlas(imageRel string) ([]byte, error) {
 
 // SaveHairstyle stores a .ps2hair document under hairstyles/ and returns its item.
 func (l *Library) SaveHairstyle(name string, data []byte) (*Item, error) {
-	if err := checkDocument(data, "ps2cc.hair/1"); err != nil {
+	return l.saveDocument("hairstyles", HairstyleExt, "ps2cc.hair/1", "hairstyle", name, data)
+}
+
+// SavePreset stores a .ps2preset document under presets/ and returns its item.
+func (l *Library) SavePreset(name string, data []byte) (*Item, error) {
+	return l.saveDocument("presets", PresetExt, "ps2cc.preset/1", "preset", name, data)
+}
+
+func (l *Library) saveDocument(kind, ext, format, noun, name string, data []byte) (*Item, error) {
+	if err := checkDocument(data, format); err != nil {
 		return nil, err
 	}
-	stem := paths.SafeName(strings.TrimSuffix(name, HairstyleExt))
+	stem := paths.SafeName(strings.TrimSuffix(name, ext))
 	if stem == "" {
-		return nil, &ImportError{"the hairstyle needs a name"}
+		return nil, &ImportError{"the " + noun + " needs a name"}
 	}
-	dir := filepath.Join(l.Root, "hairstyles")
+	dir := filepath.Join(l.Root, kind)
 	if err := os.MkdirAll(dir, 0o755); err != nil {
 		return nil, err
 	}
-	if err := os.WriteFile(filepath.Join(dir, stem+HairstyleExt), data, 0o644); err != nil {
+	if err := os.WriteFile(filepath.Join(dir, stem+ext), data, 0o644); err != nil {
 		return nil, err
 	}
-	return &Item{ID: "user:hairstyles/" + stem, Kind: "hairstyles", Name: stem, File: "hairstyles/" + stem + HairstyleExt, Imported: now()}, nil
+	return &Item{ID: "user:" + kind + "/" + stem, Kind: kind, Name: stem, File: kind + "/" + stem + ext, Imported: now()}, nil
 }
 
-// ReadDocument returns a JSON document stored in the library (a .ps2hair or atlas sidecar).
+// ReadDocument returns a JSON document stored in the library (a .ps2hair, .ps2preset or atlas sidecar).
 func (l *Library) ReadDocument(rel string) ([]byte, error) {
-	if !strings.HasSuffix(rel, HairstyleExt) && !strings.HasSuffix(rel, AtlasSuffix) {
+	if !strings.HasSuffix(rel, HairstyleExt) && !strings.HasSuffix(rel, PresetExt) && !strings.HasSuffix(rel, AtlasSuffix) {
 		return nil, &ImportError{"not a library document"}
 	}
 	p, err := paths.SafeJoin(l.Root, rel)

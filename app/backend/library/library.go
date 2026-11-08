@@ -65,7 +65,7 @@ func validKind(kind string) bool {
 }
 
 // imageKinds are the library kinds that hold images (the rest hold meshes or JSON).
-var imageKinds = map[string]bool{"skins": true, "overlays": true, "garment-textures": true, "hair-atlases": true, "photos": true}
+var imageKinds = map[string]bool{"skins": true, "overlays": true, "garment-textures": true, "hair-atlases": true, "photos": true, "backgrounds": true}
 
 // ImportImage copies an image into the library as PNG and returns its entry.
 func (l *Library) ImportImage(kind, src string) (*Item, error) {

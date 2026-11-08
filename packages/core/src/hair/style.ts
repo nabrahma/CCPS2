@@ -3,9 +3,10 @@
  * `.ps2hair`; generation from it is deterministic for a given seed and body.
  * Lengths and offsets are in metres.
  */
+import { isPaintString } from './hairline-paint';
 
 export type PartSide = 'none' | 'left' | 'right' | 'center';
-export type HairlinePreset = 'full' | 'low' | 'receding' | 'high-nape' | 'custom';
+export type HairlinePreset = 'full' | 'low' | 'receding' | 'high-nape' | 'custom' | 'painted';
 
 /**
  * Where hair grows, as the largest polar angle from the crown (degrees) at
@@ -18,6 +19,8 @@ export interface HairlineMask {
   temples: number;
   sides: number;
   nape: number;
+  /** Only with preset 'painted': the bitmap from the hairline painter (hairline-paint.ts). The angles above are then ignored. */
+  painted?: string;
 }
 
 export interface HairStyleParams {
@@ -45,14 +48,14 @@ export interface HairStyleParams {
   budget: [number, number];
 }
 
-export const HAIRLINE_PRESETS: Record<Exclude<HairlinePreset, 'custom'>, Omit<HairlineMask, 'preset'>> = {
+export const HAIRLINE_PRESETS: Record<Exclude<HairlinePreset, 'custom' | 'painted'>, Omit<HairlineMask, 'preset'>> = {
   full: { front: 56, temples: 64, sides: 95, nape: 132 },
   low: { front: 62, temples: 70, sides: 100, nape: 140 },
   receding: { front: 40, temples: 46, sides: 92, nape: 130 },
   'high-nape': { front: 56, temples: 64, sides: 92, nape: 116 },
 };
 
-export function hairline(preset: Exclude<HairlinePreset, 'custom'>): HairlineMask {
+export function hairline(preset: Exclude<HairlinePreset, 'custom' | 'painted'>): HairlineMask {
   return { preset, ...HAIRLINE_PRESETS[preset] };
 }
 
@@ -84,7 +87,8 @@ export function sanitiseStyle(raw: unknown): HairStyleParams {
   const int = (v: unknown, def: number, lo: number, hi: number) => Math.round(num(v, def, lo, hi));
   const len = { ...d.length, ...(r.length ?? {}) };
   const sides: PartSide[] = ['none', 'left', 'right', 'center'];
-  const presets: HairlinePreset[] = ['full', 'low', 'receding', 'high-nape', 'custom'];
+  const presets: HairlinePreset[] = ['full', 'low', 'receding', 'high-nape', 'custom', 'painted'];
+  const painted = isPaintString((r.hairline as HairlineMask | undefined)?.painted) ? (r.hairline as HairlineMask).painted : undefined;
   const hl = { ...d.hairline, ...(r.hairline ?? {}) };
   const budget = Array.isArray(r.budget) && r.budget.length === 2 ? r.budget : d.budget;
   return {
@@ -117,7 +121,9 @@ export function sanitiseStyle(raw: unknown): HairStyleParams {
     },
     shell: { enabled: Boolean(r.shell?.enabled ?? d.shell.enabled), offset: num(r.shell?.offset, d.shell.offset, 0, 0.02) },
     hairline: {
-      preset: presets.includes(hl.preset) ? hl.preset : 'full',
+      // A painted mask needs its bitmap; without one the angles below describe the hairline.
+      preset: hl.preset === 'painted' && !painted ? 'custom' : presets.includes(hl.preset) ? hl.preset : 'full',
+      ...(hl.preset === 'painted' && painted ? { painted } : {}),
       front: num(hl.front, 56, 0, 140),
       temples: num(hl.temples, 64, 0, 140),
       sides: num(hl.sides, 95, 0, 150),

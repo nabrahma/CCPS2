@@ -28,11 +28,13 @@ uniform float uSnap;
 uniform vec2 uSnapRes;
 
 attribute float layer;
+attribute float headRegion;
 
 varying vec2 vUv;
 varying vec3 vLight;
 varying float vAffineW;
 varying float vLayer;
+varying float vHead;
 
 float lambert(vec3 n, vec3 l) {
   float d = dot(n, l);
@@ -55,6 +57,7 @@ void main() {
   light += uRimColor * uRimStrength * rim;
   vLight = light;
   vLayer = layer;
+  vHead = headRegion;
 
   vec4 clip = projectionMatrix * viewMatrix * world;
   if (uSnap > 0.5) {
@@ -77,11 +80,26 @@ uniform float uAlphaTest;
 uniform float uMode; // 0 PS2 lit, 1 unlit, 2 clay, 3 UV checker
 uniform float uDirt;
 uniform float uDitherOuter;
+uniform vec2 uExportTexels; // texels across the map after export: x most of the part, y its head; 0 = no limit
 
 varying vec2 vUv;
 varying vec3 vLight;
 varying float vAffineW;
 varying float vLayer;
+varying float vHead;
+
+// Read the map no sharper than the export (PRD F9). The mip chain stands in for the
+// exported size; when the camera is far enough away, normal mip selection wins.
+vec4 sampleMap(vec2 uv) {
+  float limit = vHead > 0.5 ? uExportTexels.y : uExportTexels.x;
+  vec2 size = vec2(textureSize(uMap, 0));
+  float side = max(size.x, size.y);
+  if (limit <= 0.0 || limit >= side) return texture2D(uMap, uv);
+  vec2 dx = dFdx(uv * size);
+  vec2 dy = dFdy(uv * size);
+  float lod = 0.5 * log2(max(max(dot(dx, dx), dot(dy, dy)), 1e-8));
+  return textureLod(uMap, uv, max(lod, log2(side / limit)));
+}
 
 // 4x4 ordered-dither threshold in (0, 1).
 float bayer4(vec2 p) {
@@ -98,7 +116,7 @@ vec3 srgbToLinear(vec3 c) {
 
 void main() {
   vec2 uv = vUv / vAffineW;
-  vec4 tex = uHasMap > 0.5 ? texture2D(uMap, uv) : vec4(1.0);
+  vec4 tex = uHasMap > 0.5 ? sampleMap(uv) : vec4(1.0);
   if (uMapRaw > 0.5) tex.rgb = srgbToLinear(tex.rgb);
   // Card hair (PRD F5): the outer layer can use dithered transparency instead of a hard cutout.
   float threshold = uDitherOuter > 0.5 && vLayer > 0.75 ? mix(0.1, 0.95, bayer4(gl_FragCoord.xy)) : uAlphaTest;
@@ -145,6 +163,7 @@ export function createPs2Material(opts: Ps2MaterialOptions): THREE.ShaderMateria
       uMode: { value: 0 },
       uDirt: { value: opts.dirt },
       uDitherOuter: { value: 0 },
+      uExportTexels: { value: new THREE.Vector2(0, 0) },
       uTwoSided: { value: opts.doubleSided ? 1 : 0 },
       uAmbient: { value: new THREE.Vector3() },
       uKeyDir: { value: new THREE.Vector3(0, 1, 1) },

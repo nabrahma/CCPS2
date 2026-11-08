@@ -9,7 +9,8 @@ import { applyPhoto, currentSkin, faceView, placePhoto } from './skin';
 import { prepareExport } from './export/exportCharacter';
 import { buildGlb } from './export/glb';
 import { useUi } from './state/ui';
+import { runSliderSweep } from './perf';
 
-export const testHooks = { core, detectLandmarks, imageToCanvas, imageToPng, canvasToPng, decodeImage, faceView, applyPhoto, placePhoto, currentSkin, prepareExport, buildGlb, useUi };
+export const testHooks = { runSliderSweep, core, detectLandmarks, imageToCanvas, imageToPng, canvasToPng, decodeImage, faceView, applyPhoto, placePhoto, currentSkin, prepareExport, buildGlb, useUi };
 
 export type TestHooks = typeof testHooks;

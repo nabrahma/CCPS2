@@ -4,6 +4,8 @@ import type { AtlasRegion, PhotoCheck } from '@ps2cc/core';
 import type { GarmentFile } from '../backend';
 import { DEFAULT_POST, type CameraPresetId, type LightingPresetId, type PostSettings, type ShadingMode } from '@ps2cc/viewport';
 
+export type BackgroundId = 'preset' | 'black' | 'grey' | 'image';
+
 export type TabId = 'body' | 'face' | 'skin' | 'hair' | 'wardrobe' | 'expressions' | 'export';
 
 /** An open atlas editor (PRD F5 step 1): the image, its library file (for atlas.json) and starting regions. */
@@ -49,6 +51,9 @@ export interface UiState {
   camera: CameraPresetId;
   turntable: boolean;
   poseTest: boolean;
+  background: BackgroundId;
+  /** URL of the user's background image, once one is chosen. */
+  backgroundImage: string | null;
   toasts: Toast[];
   dropDialog: { files: File[]; paths: string[] } | null;
   atlasEditor: AtlasEditorRequest | null;
@@ -57,6 +62,9 @@ export interface UiState {
   /** Character browser (File → Characters…, Ctrl+O). */
   browserOpen: boolean;
   setBrowserOpen(v: boolean): void;
+  /** Help → Credits. */
+  creditsOpen: boolean;
+  setCreditsOpen(v: boolean): void;
   setTab(tab: TabId): void;
   setRailMode(mode: 'controls' | 'inspect'): void;
   toggleSidebar(): void;
@@ -65,7 +73,7 @@ export interface UiState {
   setSearch(v: string): void;
   toggleLock(id: string): void;
   select(key: string | null): void;
-  setView(patch: Partial<Pick<UiState, 'shading' | 'wireOverlay' | 'lighting' | 'post' | 'camera' | 'turntable' | 'poseTest'>>): void;
+  setView(patch: Partial<Pick<UiState, 'shading' | 'wireOverlay' | 'lighting' | 'post' | 'camera' | 'turntable' | 'poseTest' | 'background' | 'backgroundImage'>>): void;
   info(message: string): void;
   error(message: string, err?: unknown): void;
   dismiss(id: number): void;
@@ -93,12 +101,16 @@ export const useUi = create<UiState>((set) => ({
   camera: 'full',
   turntable: false,
   poseTest: false,
+  background: 'preset',
+  backgroundImage: null,
   toasts: [],
   dropDialog: null,
   atlasEditor: null,
   garmentImport: null,
   browserOpen: false,
   setBrowserOpen: (browserOpen) => set({ browserOpen }),
+  creditsOpen: false,
+  setCreditsOpen: (creditsOpen) => set({ creditsOpen }),
   photo: null,
   setTab: (tab) => set({ tab, search: '', railMode: 'controls' }),
   setRailMode: (railMode) => set({ railMode }),

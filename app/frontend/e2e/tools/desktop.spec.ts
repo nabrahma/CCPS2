@@ -156,6 +156,25 @@ test('desktop: first run, save, character browser, round trip and crash recovery
     await page.screenshot({ path: resolve(APP, '../docs/milestones/M9/ui_character_browser.png') });
     await page.getByTestId('character-browser').getByRole('button', { name: 'Close', exact: true }).click();
 
+    // ---------------------------------------------------------------- user preset and background (Go side)
+    const preset = await page.evaluate(async () => {
+      const g = window.go!.main!.App!;
+      const item = await g.SavePreset('Desk preset', JSON.stringify({ format: 'ps2cc.preset/1', preset: { label: 'Desk preset', macros: { gender: 0.3 } } }));
+      const listed = (await g.ListLibrary('presets')) ?? [];
+      return { file: item.file, listed: listed.map((i) => i.file), text: await g.ReadLibraryDocument(item.file) };
+    });
+    expect(preset.listed).toContain(preset.file);
+    expect(preset.text).toContain('Desk preset');
+    await page.evaluate((f) => window.go!.main!.App!.DeleteLibraryItem(f), preset.file);
+    expect((await page.evaluate(() => window.go!.main!.App!.ListLibrary('presets'))) ?? []).toHaveLength(0);
+    const background = await page.evaluate(async () => {
+      const c = new OffscreenCanvas(4, 4);
+      c.getContext('2d')!.fillRect(0, 0, 4, 4);
+      const bytes = new Uint8Array(await (await c.convertToBlob({ type: 'image/png' })).arrayBuffer());
+      return window.go!.main!.App!.ImportBytes('backgrounds', 'room.png', btoa(String.fromCharCode(...bytes)));
+    });
+    expect(background.file).toMatch(/^backgrounds\/room_.*\.png$/);
+
     // ---------------------------------------------------------------- custom garment (M10)
     await page.evaluate(async (p) => (window as unknown as TestWindow).__ps2cc.openPath(p), docPath); // the duplicate is open now
     await page.getByRole('tab', { name: 'Wardrobe' }).click();

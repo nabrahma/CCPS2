@@ -10,14 +10,14 @@ It needs no Blender, no Python and no network connection to run.
 
 ## What it does
 
-- **Body and face:** MakeHuman's morph system, with curated sliders, symmetry, locks, randomize, and undo.
+- **Body and face:** MakeHuman's morph system, with curated sliders, symmetry, locks, randomize, undo, and your own presets.
 - **PS2-sized meshes:** 8k, 10k and 12k triangle bodies, with a live budget meter for triangles, texture memory, bones and blendshapes.
 - **Wardrobe:** CC0 garments reduced to PS2 budgets, which refit to every body shape and hide the skin underneath. Drop a PNG on a garment to retexture it.
 - **Your own garments:** export the base body, model around it, then import OBJ, FBX or GLB. PS2CC binds, weights and decimates it for you.
-- **Card hair:** generate hair-card styles from your own atlas textures, or use MakeHuman hair meshes.
-- **Skin:** layered skin with overlays, and projection of a face photo onto the head.
+- **Card hair:** generate hair-card styles from your own atlas textures, paint the hairline, or use MakeHuman hair meshes.
+- **Skin:** layered skin with overlays, projection of a face photo onto the head, and an optional fit of the face's shape to the photo.
 - **Expressions:** 15 blendshapes, including blinks and visemes, baked at export.
-- **PS2 preview:** per-vertex lighting, lighting presets, and low resolution, 16-bit dither and interlace post effects.
+- **PS2 preview:** per-vertex lighting, lighting presets, low resolution, 16-bit dither and interlace post effects, and textures shown at their export size.
 - **Unity export:** one FBX per character, with textures. The included Unity package sets up the Humanoid avatar, PS2 URP shaders, materials and a prefab.
 
 ## Status

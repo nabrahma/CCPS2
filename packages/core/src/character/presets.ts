@@ -11,6 +11,8 @@ export interface Preset {
   macros: Partial<MacroValues>;
   modifiers?: Record<string, number>;
   skin?: string;
+  /** User presets store the ethnic blend too; the built-in ones leave it alone. */
+  includesEthnic?: boolean;
 }
 
 export const BUILTIN_PRESETS: readonly Preset[] = [
@@ -53,11 +55,49 @@ export const BUILTIN_PRESETS: readonly Preset[] = [
 export function applyPreset(doc: CharacterDoc, preset: Preset): CharacterDoc {
   const out = cloneCharacter(doc);
   out.macros = { ...DEFAULT_MACROS, ...out.macros, ...preset.macros };
-  // Ethnic blend stays as it was.
-  out.macros.african = doc.macros.african;
-  out.macros.asian = doc.macros.asian;
-  out.macros.caucasian = doc.macros.caucasian;
+  if (!preset.includesEthnic) {
+    out.macros.african = doc.macros.african;
+    out.macros.asian = doc.macros.asian;
+    out.macros.caucasian = doc.macros.caucasian;
+  }
   out.modifiers = { ...(preset.modifiers ?? {}) };
   if (preset.skin) out.skin = { ...out.skin, base: preset.skin };
   return out;
+}
+
+/** `.ps2preset` file contents (PRD F1 user presets). */
+export interface PresetFile {
+  format: 'ps2cc.preset/1';
+  preset: Preset;
+}
+
+/** A user preset from the current character: its body and face sliders and base skin. */
+export function presetFromCharacter(doc: Readonly<CharacterDoc>, label: string): PresetFile {
+  return {
+    format: 'ps2cc.preset/1',
+    preset: { id: `user:${label}`, label, macros: { ...doc.macros }, modifiers: { ...doc.modifiers }, skin: doc.skin.base, includesEthnic: true },
+  };
+}
+
+/**
+ * Read a `.ps2preset`. Anything not a finite number is dropped, and so are
+ * sliders `known` does not recognise (a preset can outlive an asset update).
+ */
+export function parsePresetFile(raw: unknown, known: (modifier: string) => boolean = () => true): Preset {
+  const file = raw as Partial<PresetFile> | null;
+  if (!file || file.format !== 'ps2cc.preset/1' || typeof file.preset !== 'object' || file.preset === null) throw new Error('not a PS2CC preset');
+  const p = file.preset;
+  if (typeof p.label !== 'string' || !p.label.trim()) throw new Error('the preset has no name');
+  const macros: Partial<MacroValues> = {};
+  for (const k of Object.keys(DEFAULT_MACROS) as (keyof MacroValues)[]) {
+    const v = (p.macros as Record<string, unknown> | undefined)?.[k];
+    if (typeof v === 'number' && Number.isFinite(v)) macros[k] = Math.min(1, Math.max(0, v));
+  }
+  const modifiers: Record<string, number> = {};
+  for (const [k, v] of Object.entries(p.modifiers ?? {})) {
+    if (typeof v === 'number' && Number.isFinite(v) && known(k)) modifiers[k] = v;
+  }
+  const label = p.label.slice(0, 64);
+  const hasEthnic = macros.african !== undefined && macros.asian !== undefined && macros.caucasian !== undefined;
+  return { id: `user:${label}`, label, macros, modifiers, ...(typeof p.skin === 'string' && p.skin ? { skin: p.skin } : {}), includesEthnic: hasEthnic };
 }

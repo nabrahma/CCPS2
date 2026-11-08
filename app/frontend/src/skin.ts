@@ -8,6 +8,7 @@ import {
   checkPhoto,
   cropHeadTexture,
   faceFeatures,
+  fitFaceToPhoto,
   packHead,
   regionGuide,
   renderUvTemplate,
@@ -79,6 +80,31 @@ export function cancelPhoto(studio: Studio): void {
   photoRun++;
   useUi.getState().setPhoto(null);
   if (status && studio.engine.doc.skin.photo?.image === status.image) studio.engine.update('Remove face photo', (d) => void (d.skin.photo = null));
+}
+
+/**
+ * Optional "Fit face shape to photo" (PRD F7 step 6): move the face sliders
+ * towards the photo's proportions, as one undo step. The projection follows
+ * by itself because it depends on the head's shape.
+ */
+export async function fitFaceShape(studio: Studio): Promise<{ before: number; after: number }> {
+  const engine = studio.engine;
+  const photo = engine.doc.skin.photo;
+  if (!photo?.landmarks || !photo.width || !photo.height) throw new Error('Place a face photo first.');
+  const table = await studio.assets.landmarkTable();
+  if (!table) throw new Error('The landmark table is missing from this build.');
+  const fit = fitFaceToPhoto({
+    assets: studio.assets,
+    macros: engine.doc.macros,
+    modifiers: engine.doc.modifiers,
+    table,
+    landmarks: photo.landmarks,
+    width: photo.width,
+    height: photo.height,
+  });
+  engine.update('Fit face to photo', (d) => void Object.assign(d.modifiers, fit.modifiers));
+  await studio.settled();
+  return { before: fit.errorBefore, after: fit.errorAfter };
 }
 
 /** A square front view around the current head (eyes to chin, with margin), in character space. */

@@ -1,7 +1,7 @@
 import { useEffect, useId, useMemo, useState, type ReactNode } from 'react';
 import { BLEND_MODES, LAYER_KINDS, layerKind, layerParam, newLayer, type BlendMode, type LayerKind, type RegionMask, type SkinLayer } from '@ps2cc/core';
 import { backend, libraryUrl, type LibraryItem } from '../../backend';
-import { cancelPhoto, exportRegionGuide, exportSkinTextures, exportSkinUvTemplate, placePhoto } from '../../skin';
+import { cancelPhoto, exportRegionGuide, exportSkinTextures, exportSkinUvTemplate, fitFaceShape, placePhoto } from '../../skin';
 import { useStudio, useStudioVersion } from '../../state/hooks';
 import { useUi } from '../../state/ui';
 
@@ -96,6 +96,7 @@ function PhotoSection() {
   useStudioVersion();
   const ui = useUi();
   const status = useUi((s) => s.photo);
+  const [fitting, setFitting] = useState(false);
   const photo = studio.engine.doc.skin.photo;
   const choose = async () => {
     try {
@@ -146,6 +147,23 @@ function PhotoSection() {
           <div className="photo-preview">
             <img src={photo.image} alt="Face photo" />
           </div>
+          <button
+            disabled={fitting || Boolean(status?.busy)}
+            title="Adjust eye spacing, nose, jaw and similar sliders towards the photo. Undo puts them back."
+            data-testid="fit-face"
+            onClick={() => {
+              setFitting(true);
+              // A frame for the button to show its state; the fit itself takes about a second.
+              requestAnimationFrame(() => {
+                fitFaceShape(studio)
+                  .then(({ before, after }) => ui.info(`Face fitted: landmark error ${(before * 100).toFixed(1)}% → ${(after * 100).toFixed(1)}%`))
+                  .catch((err: unknown) => ui.error('Could not fit the face', err))
+                  .finally(() => setFitting(false));
+              });
+            }}
+          >
+            {fitting ? 'Fitting…' : 'Fit face shape to photo'}
+          </button>
           <Slider
             label="Strength"
             value={photo.strength}

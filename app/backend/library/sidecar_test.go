@@ -90,6 +90,32 @@ func TestHairstyle(t *testing.T) {
 	}
 }
 
+func TestPreset(t *testing.T) {
+	lib := &Library{Root: t.TempDir()}
+	doc := []byte(`{"format":"ps2cc.preset/1","preset":{"label":"Mine"}}`)
+	item, err := lib.SavePreset("Mine", doc)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if item.File != "presets/Mine.ps2preset" {
+		t.Fatalf("file %q", item.File)
+	}
+	got, err := lib.ReadDocument(item.File)
+	if err != nil || string(got) != string(doc) {
+		t.Fatalf("round trip %q %v", got, err)
+	}
+	items, err := lib.List("presets")
+	if err != nil || len(items) != 1 {
+		t.Fatalf("list %v %v", items, err)
+	}
+	if err := lib.Delete(item.File); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := lib.SavePreset("x", []byte(`{"format":"ps2cc.hair/1"}`)); err == nil {
+		t.Fatal("wrong format must be rejected")
+	}
+}
+
 func TestSaveGarmentStoresDocumentAndData(t *testing.T) {
 	lib := &Library{Root: t.TempDir()}
 	bin := []byte{1, 2, 3, 4}

@@ -26,6 +26,8 @@ export * from './expression';
 export * from './character/doc';
 export * from './character/sliders';
 export * from './character/presets';
+export * from './credits';
+export * from './export/limits';
 export * from './character/randomize';
 export * from './character/engine';
 export * from './assets';

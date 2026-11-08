@@ -50,7 +50,7 @@ type AppInfo struct {
 	Pid int `json:"pid"`
 }
 
-const appVersion = "0.10.0-m10"
+const appVersion = "0.11.0"
 
 func newApp(layout *paths.Layout, log *logging.Logger) *App {
 	return &App{
@@ -400,7 +400,16 @@ func (a *App) SaveHairstyle(name, styleJSON string) (*library.Item, error) {
 	return item, err
 }
 
-// ReadLibraryDocument returns a .ps2hair or atlas document from the library.
+// SavePreset stores a .ps2preset document in the library.
+func (a *App) SavePreset(name, presetJSON string) (*library.Item, error) {
+	item, err := a.lib.SavePreset(name, []byte(presetJSON))
+	if err == nil {
+		a.log.Infof("preset saved %s", item.File)
+	}
+	return item, err
+}
+
+// ReadLibraryDocument returns a .ps2hair, .ps2preset or atlas document from the library.
 func (a *App) ReadLibraryDocument(file string) (string, error) {
 	data, err := a.lib.ReadDocument(file)
 	return string(data), err

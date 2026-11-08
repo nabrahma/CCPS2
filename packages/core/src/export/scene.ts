@@ -24,6 +24,7 @@ import { poseWorldMatrices, skinningMatrices } from '../skeleton/rig';
 import { skinPositions } from '../skeleton/skinning';
 import { MAX_INFLUENCES, type InfluenceTable } from '../skeleton/weights';
 import { bodyTexture, cropHeadTexture, packHead, splitBody } from '../skin/headsplit';
+import { EYES_ATLAS_SIZE, GARMENT_ATLAS_SIZE, HAIR_TEXTURE_LIMIT } from './limits';
 import { createImage, resizeImage, type RgbaImage } from '../skin/image';
 import { atlasUv, packAtlas } from './atlas';
 import { expressionDef } from '../expression/map';
@@ -205,7 +206,7 @@ export async function buildExportScene(scene: CharacterScene, opts: ExportOption
   const hair = scene.parts.find((p) => p.kind === 'hair');
   if (hair) {
     const tex = hair.material.texture ? await opts.loadImage(hair.material.texture) : createImage(4, 4, [255, 255, 255, 255]);
-    const img = limit(tint(tex, hair.material.tint), 1024);
+    const img = limit(tint(tex, hair.material.tint), HAIR_TEXTURE_LIMIT);
     const mat = addMaterial('hair', 'PS2/Cutout', img, Math.max(img.width, img.height), true, hair.material.alphaThreshold, true);
     meshes.push(compact(`${name}_Hair`, 'hair', source(hair), hair.indices, mat));
   }
@@ -233,9 +234,9 @@ export async function buildExportScene(scene: CharacterScene, opts: ExportOption
     meshes.push(concat(`${name}_${role[0]!.toUpperCase()}${role.slice(1)}`, role, pieces, mat));
   };
   const garments = scene.parts.filter((p) => p.kind === 'garment');
-  await merged('garments', garments, opts.garmentAtlas ?? 1024, 'PS2/Cloth', (p, img) => dirt(tint(img, p.material.tint), p.material.dirt));
+  await merged('garments', garments, opts.garmentAtlas ?? GARMENT_ATLAS_SIZE, 'PS2/Cloth', (p, img) => dirt(tint(img, p.material.tint), p.material.dirt));
   const eyes = scene.parts.filter((p) => p.kind === 'eyes' || p.kind === 'eyebrows' || p.kind === 'eyelashes' || p.kind === 'teeth');
-  await merged('eyes', eyes, opts.eyesAtlas ?? 512, 'PS2/Cutout', (p, img) => remapAlpha(tint(img, p.material.tint), p.material.alphaCutout ? p.material.alphaThreshold : 0, 0.5));
+  await merged('eyes', eyes, opts.eyesAtlas ?? EYES_ATLAS_SIZE, 'PS2/Cutout', (p, img) => remapAlpha(tint(img, p.material.tint), p.material.alphaCutout ? p.material.alphaThreshold : 0, 0.5));
 
   const tWorld = opts.tPose ? world : tPoseWorld(scene);
   const tBones: ExportBone[] = rig.bones.map((b, i) => {
