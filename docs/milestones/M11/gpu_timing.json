@@ -1,0 +1,22 @@
+{
+ "generated": "app/frontend/e2e/tools/gpu-timing.spec.ts",
+ "date": "2026-11-12",
+ "gpu": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+ "bakeMs": 17131,
+ "bakeTargets": {
+  "body": 7797,
+  "garment:top:mh:clothes/namuhekam_male_polo_shirt": 5779,
+  "garment:bottom:mh:clothes/cortu_cargo_pants": 3437
+ },
+ "state": "done",
+ "fps": [
+  60.00774293457238,
+  59.99612928198172,
+  60.00774293457238,
+  59.99612928198172,
+  60.00774293457238,
+  59.999999999999986
+ ],
+ "frameMs": 0.19999999552965164,
+ "triangles": 16586
+}

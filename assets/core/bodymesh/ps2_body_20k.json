@@ -1,0 +1,47 @@
+{
+ "format": "ps2cc.ps2body/1",
+ "id": "ps2_body_20k",
+ "targetTriangles": 20000,
+ "triangleCount": 20000,
+ "vertexCount": 11011,
+ "regions": [
+  "body",
+  "head",
+  "face",
+  "hands",
+  "opening",
+  "loop"
+ ],
+ "faceRetention": 1,
+ "stages": [
+  "body",
+  "hands"
+ ],
+ "simplifierError": 0.0005309043917804956,
+ "flippedTriangles": 0,
+ "seed": "meshoptimizer@1.3.0 simplifyWithAttributes, deterministic",
+ "binary": "ps2_body_20k.bin",
+ "byteLength": 383155,
+ "buffers": {
+  "sourceVertex": {
+   "offset": 0,
+   "dtype": "u32",
+   "count": 11011
+  },
+  "uvs": {
+   "offset": 44048,
+   "dtype": "f32",
+   "count": 22022
+  },
+  "indices": {
+   "offset": 132144,
+   "dtype": "u32",
+   "count": 60000
+  },
+  "vertexRegion": {
+   "offset": 372144,
+   "dtype": "u8",
+   "count": 11011
+  }
+ }
+}

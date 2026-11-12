@@ -14,6 +14,13 @@ Shader "PS2/Cloth"
         _RimStrength ("Rim strength", Range(0, 1)) = 0
         _ColorDepth ("Colour depth levels (0 = off, 32 = 15-bit)", Float) = 0
         [Toggle] _TwoSided ("Two-sided lighting", Float) = 1
+        [Toggle(_PS2_PER_PIXEL)] _PerPixel ("Per-pixel lighting (Enhanced, Hero)", Float) = 0
+        _Wrap ("Wrap diffuse (skin)", Range(0, 1)) = 0
+        _ScatterColor ("Terminator tint (skin)", Color) = (1, 0.42, 0.3, 1)
+        _Gloss ("Gloss", Range(0, 1)) = 0
+        _Shininess ("Shininess", Range(1, 256)) = 24
+        [Toggle] _Aniso ("Strand highlight (hair)", Float) = 0
+        [Toggle] _ReceiveShadows ("Receive shadows (Hero self-shadowing)", Float) = 0
         [Enum(UnityEngine.Rendering.CullMode)] _Cull ("Cull", Float) = 0
     }
     SubShader
@@ -35,6 +42,9 @@ Shader "PS2/Cloth"
             #pragma target 3.0
             #pragma vertex PS2Vert
             #pragma fragment PS2Frag
+            #pragma shader_feature_local _PS2_PER_PIXEL
+            #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
+            #pragma multi_compile_fragment _ _SHADOWS_SOFT
             #pragma multi_compile_fog
             #pragma multi_compile_instancing
             ENDHLSL

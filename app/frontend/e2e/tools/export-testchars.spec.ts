@@ -85,7 +85,11 @@ test('export the test characters', async ({ page }) => {
         const w = window as unknown as TestWindow;
         const s = w.__ps2cc;
         const { core } = w.__ps2ccTest;
-        s.engine.update('layers', (d) => void (d.skin.layers = (layers ?? []).map((k) => core.newLayer(k as never))));
+        s.engine.update('layers', (d) => {
+          // The test characters keep the settings they were made with before quality profiles (Part 2 F13).
+          d.export = { ...d.export, ...core.LEGACY_EXPORT };
+          d.skin.layers = (layers ?? []).map((k) => core.newLayer(k as never));
+        });
         await s.settled();
         // The GLB is validated here; the saved message leaves it out (the FBX tests do not need it).
         const { scene, message } = await w.__ps2ccTest.prepareExport(s, { glb: false, tPose: Boolean(tPose) }, '2026-11-08 12:00:00:000');

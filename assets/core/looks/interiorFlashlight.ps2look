@@ -1,0 +1,70 @@
+{
+  "format": "ps2cc.look/1",
+  "id": "interiorFlashlight",
+  "label": "Interior flashlight",
+  "lights": {
+    "sky": [
+      0.018,
+      0.02,
+      0.026
+    ],
+    "ground": [
+      0.008,
+      0.008,
+      0.01
+    ],
+    "key": null,
+    "fill": null,
+    "spot": {
+      "color": [
+        2.4,
+        2.25,
+        1.95
+      ],
+      "cosOuter": 0.882947592858927,
+      "cosInner": 0.9781476007338057,
+      "range": 7,
+      "offset": [
+        0.22,
+        -0.18,
+        0
+      ]
+    },
+    "rim": {
+      "color": [
+        0.12,
+        0.14,
+        0.2
+      ],
+      "strength": 0.05
+    }
+  },
+  "fog": {
+    "color": [
+      0.004,
+      0.004,
+      0.005
+    ],
+    "near": 3,
+    "far": 9
+  },
+  "grade": {
+    "exposure": 0,
+    "tonemap": "filmic",
+    "lut": "looks/interior_flashlight.cube",
+    "lutStrength": 1,
+    "bloom": {
+      "strength": 0.18,
+      "threshold": 0.7,
+      "radius": 0.55
+    },
+    "grain": 0.55,
+    "vignette": 0.55,
+    "chromatic": 0.5
+  },
+  "background": [
+    0.003,
+    0.003,
+    0.003
+  ]
+}

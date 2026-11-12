@@ -1,58 +1,16 @@
-/** Lighting and camera presets (PRD F9). */
+/**
+ * Looks, cameras and post toggles (PRD F9; Part 2 F14). A look (lights,
+ * ambient, fog and grade) comes from @ps2cc/core, shared with the exporter and
+ * the Unity package; the post toggles here are the user's PS2 effects on top.
+ */
+import { LOOKS, type Look, type LookId } from '@ps2cc/core';
 
-export type LightingPresetId = 'studio' | 'flashlight' | 'overcast' | 'night';
-export type CameraPresetId = 'full' | 'bust' | 'face' | 'threeQuarter' | 'profile';
+export type LightingPresetId = LookId;
+export type CameraPresetId = 'full' | 'bust' | 'face' | 'threeQuarter' | 'profile' | 'back';
 export type ShadingMode = 'ps2' | 'unlit' | 'clay' | 'wire' | 'uv';
 
-export interface LightingPreset {
-  id: LightingPresetId;
-  label: string;
-  ambient: [number, number, number];
-  key: { direction: [number, number, number]; color: [number, number, number] } | null;
-  /** Spot light from the camera (flashlight). */
-  spot: { color: [number, number, number]; cosOuter: number; cosInner: number; range: number } | null;
-  rim: { color: [number, number, number]; strength: number };
-  background: [number, number, number];
-}
-
-export const LIGHTING_PRESETS: Record<LightingPresetId, LightingPreset> = {
-  studio: {
-    id: 'studio',
-    label: 'Studio',
-    ambient: [0.36, 0.35, 0.36],
-    key: { direction: [-0.45, 0.55, 0.7], color: [1.0, 0.96, 0.9] },
-    spot: null,
-    rim: { color: [0.6, 0.65, 0.75], strength: 0.25 },
-    background: [0.011, 0.011, 0.011], // the app's panel colour, #1b1b1b
-  },
-  flashlight: {
-    id: 'flashlight',
-    label: 'Flashlight',
-    ambient: [0.035, 0.038, 0.05],
-    key: null,
-    spot: { color: [1.45, 1.38, 1.22], cosOuter: Math.cos((26 * Math.PI) / 180), cosInner: Math.cos((12 * Math.PI) / 180), range: 9 },
-    rim: { color: [0.25, 0.28, 0.4], strength: 0.08 },
-    background: [0.0, 0.0, 0.0],
-  },
-  overcast: {
-    id: 'overcast',
-    label: 'Overcast exterior',
-    ambient: [0.5, 0.53, 0.58],
-    key: { direction: [0.1, 1.0, 0.25], color: [0.55, 0.57, 0.6] },
-    spot: null,
-    rim: { color: [0.5, 0.52, 0.55], strength: 0.12 },
-    background: [0.52, 0.55, 0.58],
-  },
-  night: {
-    id: 'night',
-    label: 'Night street',
-    ambient: [0.05, 0.06, 0.1],
-    key: { direction: [0.6, 0.9, 0.35], color: [1.05, 0.62, 0.28] },
-    spot: null,
-    rim: { color: [0.25, 0.35, 0.7], strength: 0.3 },
-    background: [0.02, 0.025, 0.045],
-  },
-};
+/** The looks the viewport offers, by id (Part 1's lighting presets are the first four). */
+export const LIGHTING_PRESETS: Record<LightingPresetId, Look> = LOOKS;
 
 export interface CameraFrame {
   /** Point the camera looks at, as a fraction of character height. */
@@ -70,6 +28,7 @@ export const CAMERA_PRESETS: Record<CameraPresetId, CameraFrame & { label: strin
   face: { label: 'Face close-up', targetHeight: 0.925, span: 0.17, yaw: 0, pitch: 0 },
   threeQuarter: { label: 'Three-quarter', targetHeight: 0.86, span: 0.34, yaw: Math.PI / 5, pitch: 0.03 },
   profile: { label: 'Profile', targetHeight: 0.9, span: 0.22, yaw: Math.PI / 2, pitch: 0 },
+  back: { label: 'Back', targetHeight: 0.55, span: 1.2, yaw: Math.PI, pitch: 0.06 },
 };
 
 export interface PostSettings {
@@ -82,6 +41,8 @@ export interface PostSettings {
   /** PS1 effects, off by default (PRD F9). */
   affine: boolean;
   vertexSnap: boolean;
+  /** Depth of field for renders (F14): blur away from the focus distance (metres; 0 = the camera target). */
+  dof: { enabled: boolean; focus: number; aperture: number };
 }
 
 export const DEFAULT_POST: PostSettings = {
@@ -93,6 +54,7 @@ export const DEFAULT_POST: PostSettings = {
   vignette: 0,
   affine: false,
   vertexSnap: false,
+  dof: { enabled: false, focus: 0, aperture: 0.5 },
 };
 
 export const PS2_POST: PostSettings = {
@@ -104,4 +66,5 @@ export const PS2_POST: PostSettings = {
   vignette: 0.45,
   affine: false,
   vertexSnap: false,
+  dof: { enabled: false, focus: 0, aperture: 0.5 },
 };

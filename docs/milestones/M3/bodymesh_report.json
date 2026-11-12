@@ -24,9 +24,39 @@
     "triangles": 12000,
     "target": 12000,
     "deviation": "0.00%",
-    "vertices": 6830,
+    "vertices": 6807,
     "faceRetention": "100.0%",
     "flipped": 0,
     "stages": "body,hands,balance"
+  },
+  {
+    "id": "ps2_body_16k",
+    "triangles": 16000,
+    "target": 16000,
+    "deviation": "0.00%",
+    "vertices": 8919,
+    "faceRetention": "100.0%",
+    "flipped": 0,
+    "stages": "body,hands,balance"
+  },
+  {
+    "id": "ps2_body_20k",
+    "triangles": 20000,
+    "target": 20000,
+    "deviation": "0.00%",
+    "vertices": 11011,
+    "faceRetention": "100.0%",
+    "flipped": 0,
+    "stages": "body,hands"
+  },
+  {
+    "id": "ps2_body_full",
+    "triangles": 26756,
+    "target": 26756,
+    "deviation": "0.00%",
+    "vertices": 14517,
+    "faceRetention": "100.0%",
+    "flipped": 0,
+    "stages": ""
   }
 ]

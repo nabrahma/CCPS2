@@ -1,0 +1,4 @@
+{
+ "about": "Benchmark scores (PRD Part 2 section 4): one entry per accepted board, 1-5 per criterion. Copy docs/bench/latest/score_template.json here and fill it in.",
+ "boards": []
+}

@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/base64"
 	"encoding/binary"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"math"
@@ -50,7 +51,7 @@ type AppInfo struct {
 	Pid int `json:"pid"`
 }
 
-const appVersion = "0.12.0"
+const appVersion = "0.13.0"
 
 func newApp(layout *paths.Layout, log *logging.Logger) *App {
 	return &App{
@@ -212,6 +213,31 @@ func (a *App) SaveImageAs(suggestedName, pngBase64 string) (string, error) {
 		return "", err
 	}
 	a.log.Infof("image saved %s", p)
+	return p, nil
+}
+
+// SaveLookAs asks where to save a look (.ps2look JSON, PRD Part 2 F14) and
+// writes it there. It returns the path, or "" when the user cancels.
+func (a *App) SaveLookAs(suggestedName, lookJSON string) (string, error) {
+	if !json.Valid([]byte(lookJSON)) {
+		return "", errors.New("the look is not valid JSON")
+	}
+	p, err := runtime.SaveFileDialog(a.ctx, runtime.SaveDialogOptions{
+		Title:            "Save look",
+		DefaultDirectory: a.layout.Root,
+		DefaultFilename:  paths.SafeName(strings.TrimSuffix(suggestedName, ".ps2look")) + ".ps2look",
+		Filters:          []runtime.FileFilter{{DisplayName: "PS2CC look (*.ps2look)", Pattern: "*.ps2look"}},
+	})
+	if err != nil || p == "" {
+		return "", err
+	}
+	if !strings.EqualFold(filepath.Ext(p), ".ps2look") {
+		p += ".ps2look"
+	}
+	if err := os.WriteFile(p, []byte(lookJSON), 0o644); err != nil {
+		return "", err
+	}
+	a.log.Infof("look saved %s", p)
 	return p, nil
 }
 

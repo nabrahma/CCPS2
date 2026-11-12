@@ -12,6 +12,7 @@ import { FaceRig, normaliseWeights, skinDeltas } from '../expression/facerig';
 import { expressionDef, type ExpressionDef } from '../expression/map';
 import { closureSteps, eyeVisibility, eyeballOf } from '../expression/blink';
 import { addDelta, difference, transferBound } from '../expression/transfer';
+import { mergeUntangleMeshes, untangleDeltas, untangleMesh, untangleMeshFromTriangles, type UntangleMesh } from '../expression/untangle';
 import type { Ps2BodyMesh } from '../mesh/ps2body';
 import { atlasTemplate, type AtlasRegion, type AtlasSpec } from '../hair/atlas';
 import { sanitiseStyle, type HairStyleParams } from '../hair/style';
@@ -25,7 +26,8 @@ import type { RgbaImage } from '../skin/image';
 import { projectPhoto, type LandmarkTable } from '../skin/photo/project';
 import { packHead, splitBody } from '../skin/headsplit';
 import { blendVolumeNormals } from '../hair/cards-from-curves';
-import { atlasCellTexels, EYES_ATLAS_SIZE, GARMENT_ATLAS_SIZE, HAIR_TEXTURE_LIMIT } from '../export/limits';
+import { atlasCellTexels } from '../export/limits';
+import { scaledHairBudget, STYLE_HAIR_BUDGET } from '../quality/profiles';
 
 export type PartKind = 'body' | 'eyes' | 'eyebrows' | 'eyelashes' | 'teeth' | 'garment' | 'hair';
 
@@ -124,10 +126,6 @@ export interface Budget {
 
 /** Bytes of a square RGBA8 texture with a full mip chain. */
 const texBytes = (size: number) => Math.round(size * size * 4 * (4 / 3));
-/** Export texture sizes (export/scene.ts): hair is limited to 1024, the atlases are fixed. */
-const HAIR_MAX = 1024;
-const GARMENT_ATLAS = 1024;
-const EYES_ATLAS = 512;
 
 interface ProxyPart {
   part: ScenePart;
@@ -164,6 +162,8 @@ export class CharacterScene {
 
   private photo: PhotoState | null = null;
   private skinSynced: string | null = null;
+  /** The body's baked map from the bake engine (F16), for the baked skin layers. */
+  private bakedBody: { image: RgbaImage; key: string } | null = null;
 
   private face: FaceAssets | null = null;
   /** Baked shapes per expression name, for the current geometry and parts. */
@@ -200,7 +200,7 @@ export class CharacterScene {
       ...w,
       material: { ...w.material, texture: this.engine.assets.textureFor(w.material.texture) },
     }));
-    const cardHair = doc.hair.mode === 'cards' ? { style: doc.hair.style, atlas: doc.hair.atlas ?? null } : null;
+    const cardHair = doc.hair.mode === 'cards' ? { style: doc.hair.style, atlas: doc.hair.atlas ?? null, hairBudget: doc.export.hairBudget } : null;
     const signature = JSON.stringify({
       body: doc.bodyMesh,
       wanted,
@@ -314,7 +314,7 @@ export class CharacterScene {
   /** Load photo inputs when the skin settings change, then resolve the layer stack. */
   private async syncSkin(doc: Readonly<CharacterDoc>): Promise<void> {
     if (!this.body) return;
-    const signature = JSON.stringify([doc.skin, this.baseSkinTexture(doc)]);
+    const signature = JSON.stringify([doc.skin, this.baseSkinTexture(doc), this.bakedBody?.key ?? null]);
     if (signature === this.skinSynced) return;
     const p = doc.skin.photo;
     const load = this.options.loadImage;
@@ -377,8 +377,22 @@ export class CharacterScene {
     const photo = this.photo?.layer && (doc.skin.photo?.strength ?? 0) > 0 ? { image: this.photo.layer, key: String(this.photo.key) } : null;
     const hasLayers = photo !== null || doc.skin.layers.some((l) => l.enabled && l.opacity > 0);
     material.skin = hasLayers
-      ? this.engine.assets.skinComposer.resolve(doc.skin, (ref) => (ref === doc.skin.base ? base : this.engine.assets.textureFor(ref)), photo)
+      ? this.engine.assets.skinComposer.resolve(doc.skin, (ref) => (ref === doc.skin.base ? base : this.engine.assets.textureFor(ref)), photo, this.bakedBody)
       : null;
+  }
+
+  /**
+   * Give the body its baked map (r occlusion, g cavity, b thickness, a light;
+   * rows top first, hm08 UV space) for the baked skin layers; null removes it.
+   * `key` must change whenever the pixels do.
+   */
+  async setBakedBody(baked: { image: RgbaImage; key: string } | null): Promise<void> {
+    this.bakedBody = baked;
+    await this.syncSkin(this.engine.doc);
+  }
+
+  get bakedBodyKey(): string | null {
+    return this.bakedBody?.key ?? null;
   }
 
   /**
@@ -398,13 +412,13 @@ export class CharacterScene {
       case 'body':
         return { texels: doc.export.bodyTexture, head: this.headDensity(doc.export.headTexture) };
       case 'hair':
-        return { texels: HAIR_TEXTURE_LIMIT, head: HAIR_TEXTURE_LIMIT };
+        return { texels: doc.export.hairTexture, head: doc.export.hairTexture };
       case 'garment': {
-        const t = atlasCellTexels(count('garment'), GARMENT_ATLAS_SIZE);
+        const t = atlasCellTexels(count('garment'), doc.export.garmentAtlas);
         return { texels: t, head: t };
       }
       default: {
-        const t = atlasCellTexels(count('eyes', 'eyebrows', 'eyelashes', 'teeth'), EYES_ATLAS_SIZE);
+        const t = atlasCellTexels(count('eyes', 'eyebrows', 'eyelashes', 'teeth'), doc.export.eyesAtlas);
         return { texels: t, head: t };
       }
     }
@@ -484,6 +498,34 @@ export class CharacterScene {
     const moving = FaceRig.moving(skin);
     const delta = skinDeltas(base, rig.weights, skin, moving);
     const b = engine.assets.base;
+    // Below the eyes, smooth out any fold the rig makes (expression/untangle.ts); the lids are left alone.
+    this.untangle ??= untangleMesh(b.faceVerts, b.facesWhere((g) => g === 'body'), b.vertexCount);
+    const eyeY = this.eyeHeight(base);
+    // Together with the body tier's own, larger triangles (in base vertex ids, so UV seams stay shut).
+    // The lips part on purpose: the tier's mouth and eye openings and the ring around them keep their deltas.
+    let mesh = this.untangle;
+    let keep: Uint8Array | null = null;
+    if (this.body?.mesh) {
+      if (this.tierUntangle?.indices !== this.body.part.indices) {
+        const tierMesh = this.body.mesh;
+        const map = tierMesh.sourceVertex;
+        const idx = this.body.part.indices;
+        const tier = untangleMeshFromTriangles(Uint32Array.from(idx, (i) => map[i]!), b.vertexCount);
+        const merged = mergeUntangleMeshes(this.untangle, tier);
+        const opening = tierMesh.meta.regions.indexOf('opening');
+        const fixed = new Uint8Array(b.vertexCount);
+        for (let i = 0; i < map.length; i++) if (tierMesh.vertexRegion[i] === opening) fixed[map[i]!] = 1;
+        const ring = fixed.slice();
+        for (let v = 0; v < b.vertexCount; v++) {
+          if (!fixed[v]) continue;
+          for (let k = merged.start[v]!; k < merged.start[v + 1]!; k++) ring[merged.next[k]!] = 1;
+        }
+        this.tierUntangle = { indices: idx, mesh: merged, keep: ring };
+      }
+      mesh = this.tierUntangle.mesh;
+      keep = this.tierUntangle.keep;
+    }
+    untangleDeltas(base, delta, mesh, (v) => v < b.bodyVertexCount && !keep?.[v] && base[v * 3 + 1]! < eyeY - 0.03, 80);
     const baseNormals = difference(computeQuadNormals(addDelta(base, delta), b.faceVerts, b.vertexCount), engine.normals);
     const out = new Map<string, PartShape>();
 
@@ -524,6 +566,17 @@ export class CharacterScene {
     }
     this.shapeCache.set(name, out);
     return out;
+  }
+
+  private untangle: UntangleMesh | null = null;
+  private tierUntangle: { indices: Uint32Array; mesh: UntangleMesh; keep: Uint8Array } | null = null;
+
+  /** Height of the eyes (the left eye joint) on the morphed base mesh. */
+  private eyeHeight(base: Float32Array): number {
+    const verts = this.engine.assets.base.vertexGroup('joint-l-eye');
+    let y = 0;
+    for (const v of verts) y += base[v * 3 + 1]!;
+    return y / Math.max(1, verts.length);
   }
 
   /**
@@ -651,9 +704,9 @@ export class CharacterScene {
     // PRD F11: amber from 90% of the budget, red above it; export is blocked above the hard max.
     const state: Budget['state'] = total > target ? 'over' : total >= target * 0.9 ? 'warn' : 'ok';
     let textureBytes = texBytes(doc.export.headTexture) + texBytes(doc.export.bodyTexture);
-    if (hair > 0) textureBytes += texBytes(HAIR_MAX);
-    if (garments > 0) textureBytes += texBytes(GARMENT_ATLAS);
-    if (eyes > 0) textureBytes += texBytes(EYES_ATLAS);
+    if (hair > 0) textureBytes += texBytes(doc.export.hairTexture);
+    if (garments > 0) textureBytes += texBytes(doc.export.garmentAtlas);
+    if (eyes > 0) textureBytes += texBytes(doc.export.eyesAtlas);
     return { body: body - head, head, hair, garments, eyesAndBrows: eyes, total, target, hardMax, state, exportBlocked: total > hardMax, textureBytes };
   }
 
@@ -732,7 +785,11 @@ export class CharacterScene {
     }
     const atlas = this.cardAtlas(doc);
     // A style put into the document by hand (or from before the groom existed) may lack newer settings.
-    const style = sanitiseStyle(doc.hair.style);
+    const own = sanitiseStyle(doc.hair.style);
+    // The style's budget was written for 3,500 triangles; the quality profile scales it and the
+    // number of cards with it (F13), so a bigger budget buys denser hair, not just room for it.
+    const f = doc.export.hairBudget / STYLE_HAIR_BUDGET;
+    const style = Math.abs(f - 1) < 1e-9 ? own : { ...own, guides: Math.max(1, Math.round(own.guides * f)), budget: scaledHairBudget(own.budget, doc.export.hairBudget) };
     const material: PartMaterial = {
       texture: atlas.texture || null,
       tint: doc.hair.tint,

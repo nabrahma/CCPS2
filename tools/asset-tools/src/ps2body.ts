@@ -7,14 +7,17 @@
  *    attributes): each region (body, hands, back of head) is reduced in turn to its
  *    share of the budget while everything else is locked. The face, eye/mouth rims,
  *    joint edge loops and mesh borders stay locked; only the 8k tier may thin the
- *    face, and never below 92% of its vertices.
+ *    face, and never below 92% of its vertices. Tiers built with `fullHead`
+ *    (16k and up, PRD Part 2 F13) lock the whole head, so it keeps every hm08
+ *    vertex while the body is reduced. `lockLowerFace` (12k and up) keeps the
+ *    lips, chin front and mouth interior, which would otherwise count as body.
  * 3. Flip repair: if any output triangle faces against the hm08 surface, its
  *    corners are locked and the simplification is rerun from scratch.
  * 4. Unused vertices are dropped; each output vertex keeps its hm08 index.
  */
 import { computeQuadNormals, type BaseMesh } from '@ps2cc/core';
 import { MeshoptSimplifier } from 'meshoptimizer';
-import { classifyBody, REGION_ID } from './regions';
+import { classifyBody, lowerFaceVertices, REGION_ID } from './regions';
 
 export interface Ps2BodyResult {
   id: string;
@@ -104,19 +107,22 @@ interface Stage {
   regionTarget: number;
 }
 
-export async function buildPs2Body(base: BaseMesh, id: string, targetTriangles: number): Promise<Ps2BodyResult> {
+export async function buildPs2Body(base: BaseMesh, id: string, targetTriangles: number, opts: { fullHead?: boolean; lockLowerFace?: boolean } = {}): Promise<Ps2BodyResult> {
   await MeshoptSimplifier.ready;
   const rm = buildRenderMesh(base);
   const n = rm.sourceVertex.length;
   const R = REGION_ID;
   // Vertices locked because an earlier pass produced a flipped triangle around them.
   const flipLock = new Uint8Array(n);
+  const lowerFace = opts.lockLowerFace ? lowerFaceVertices(base) : new Set<number>();
   // UV seams: meshoptimizer never collapses across a seam and keeps it watertight on its own; we
   // hard-lock seam vertices only where texture detail matters most (head, face, hands). DECISIONS.md D-007.
   const always = (i: number) =>
     (rm.seam[i] === 1 && rm.region[i] !== R.body) ||
     rm.region[i] === R.opening ||
     rm.region[i] === R.loop ||
+    (opts.fullHead === true && rm.region[i] === R.head) ||
+    lowerFace.has(rm.sourceVertex[i]!) ||
     flipLock[i] === 1;
   const sourceOf = Uint32Array.from(rm.sourceVertex);
   const neighbours = oneRing(rm.indices, n);
@@ -136,7 +142,7 @@ export async function buildPs2Body(base: BaseMesh, id: string, targetTriangles: 
   };
 
   // Budget: the face (with eye/mouth rims and joint loops) is fixed; the rest is shared out.
-  const fixedRegions = [R.face, R.opening, R.loop];
+  const fixedRegions = opts.fullHead ? [R.face, R.opening, R.loop, R.head] : [R.face, R.opening, R.loop];
   let faceTris = regionTris(rm.indices, fixedRegions);
   const faceOnlyTris = regionTris(rm.indices, [R.face]);
   const maxFaceCut = Math.floor(faceOnlyTris * (1 - FACE_MIN_RETENTION));
@@ -147,14 +153,15 @@ export async function buildPs2Body(base: BaseMesh, id: string, targetTriangles: 
     faceTris -= faceCut;
   }
   const rest = Math.max(0, targetTriangles - faceTris);
+  const share = opts.fullHead ? { body: BUDGET_SHARE.body / (1 - BUDGET_SHARE.head), hands: BUDGET_SHARE.hands / (1 - BUDGET_SHARE.head) } : BUDGET_SHARE;
   const stages: Stage[] = [
-    { name: 'body', regions: [R.body], regionTarget: Math.round(rest * BUDGET_SHARE.body) },
-    { name: 'hands', regions: [R.hands], regionTarget: Math.round(rest * BUDGET_SHARE.hands) },
-    { name: 'head', regions: [R.head], regionTarget: Math.round(rest * BUDGET_SHARE.head) },
+    { name: 'body', regions: [R.body], regionTarget: Math.round(rest * share.body) },
+    { name: 'hands', regions: [R.hands], regionTarget: Math.round(rest * share.hands) },
   ];
+  if (!opts.fullHead) stages.push({ name: 'head', regions: [R.head], regionTarget: Math.round(rest * BUDGET_SHARE.head) });
   if (faceCut > 0) stages.push({ name: 'face-light', regions: [R.face], regionTarget: faceOnlyTris - faceCut });
   // Balance: whatever is left over (locks, flip repair) comes off body/hands/head together.
-  stages.push({ name: 'balance', regions: [R.body, R.hands, R.head], regionTarget: -1 });
+  stages.push({ name: 'balance', regions: opts.fullHead ? [R.body, R.hands] : [R.body, R.hands, R.head], regionTarget: -1 });
 
   let indices = rm.indices;
   let error = 0;

@@ -3,8 +3,8 @@
  "seed": 9000,
  "limitMm": 2,
  "sampledVertices": 99100,
- "verticesWithin3cmOfSkin": 64019,
- "closestToSkinMm": 0.9198522847084557,
+ "verticesWithin3cmOfSkin": 65985,
+ "closestToSkinMm": 0.273614757000192,
  "deepestWithoutColliderMm": 4.3285164757989625,
  "failures": [],
  "garments": [

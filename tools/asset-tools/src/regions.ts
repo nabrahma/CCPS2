@@ -121,6 +121,27 @@ export function openingCorners(base: BaseMesh): [number, number, number, number]
 }
 
 /**
+ * hm08 vertices of the lower face: lips and chin front, and the inside of the
+ * mouth. They lie below joint-head, so classifyBody calls them 'body' and the
+ * tiers reduce them like the torso; tiers that lock them (12k and up, Part 2
+ * F13) keep the lower lip from folding when the jaw opens.
+ */
+export function lowerFaceVertices(base: BaseMesh): Set<number> {
+  const head = jointPosition(base, 'joint-head');
+  const jaw = jointPosition(base, 'joint-jaw');
+  const eye = jointPosition(base, 'joint-l-eye');
+  const earX = Math.abs(eye[0]) + 0.045;
+  const out = new Set<number>();
+  for (let v = 0; v < base.bodyVertexCount; v++) {
+    const x = base.positions[v * 3]!;
+    const y = base.positions[v * 3 + 1]!;
+    const z = base.positions[v * 3 + 2]!;
+    if (Math.abs(x) < earX && y > jaw[1] - 0.03 && y <= head[1] && z > head[2] - 0.03) out.add(v);
+  }
+  return out;
+}
+
+/**
  * Rim vertices of the eye and mouth openings: hm08 vertices shared between the
  * face UV island and the small head islands (eye sockets, mouth interior).
  * Measured on the pinned mesh: two eye rims of 28 vertices and a lip line of 38.

@@ -108,6 +108,15 @@ button.wide {
   margin: 8px 0;
 }
 
+button.link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--accent, #7fd4ff);
+  text-decoration: underline;
+  font-size: inherit;
+}
+
 select,
 input[type='number'],
 input[type='search'],
@@ -1735,4 +1744,25 @@ code {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+}
+
+.bake-status {
+  align-self: flex-end;
+  margin-bottom: 10px;
+  font-family: var(--font-body, 'Segoe UI', sans-serif);
+  letter-spacing: 0;
+  text-shadow: none;
+  font-size: 11px;
+  color: var(--muted, #9a9a9a);
+  padding: 0 8px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.bake-status.bake-baking {
+  color: var(--accent, #7fd4ff);
+}
+
+.bake-status.bake-failed {
+  color: #ff9478;
 }

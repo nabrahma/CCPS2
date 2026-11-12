@@ -1,0 +1,59 @@
+{
+  "format": "ps2cc.look/1",
+  "id": "night",
+  "label": "Night street",
+  "lights": {
+    "sky": [
+      0.05,
+      0.06,
+      0.1
+    ],
+    "ground": [
+      0.05,
+      0.06,
+      0.1
+    ],
+    "key": {
+      "direction": [
+        0.6,
+        0.9,
+        0.35
+      ],
+      "color": [
+        1.05,
+        0.62,
+        0.28
+      ]
+    },
+    "fill": null,
+    "spot": null,
+    "rim": {
+      "color": [
+        0.25,
+        0.35,
+        0.7
+      ],
+      "strength": 0.3
+    }
+  },
+  "fog": null,
+  "grade": {
+    "exposure": 0,
+    "tonemap": "none",
+    "lut": null,
+    "lutStrength": 1,
+    "bloom": {
+      "strength": 0,
+      "threshold": 1,
+      "radius": 0.5
+    },
+    "grain": 0,
+    "vignette": 0,
+    "chromatic": 0
+  },
+  "background": [
+    0.02,
+    0.025,
+    0.045
+  ]
+}

@@ -131,6 +131,20 @@ export class TriangleBVH {
     return best;
   }
 
+  /**
+   * The hierarchy as flat arrays, for a GPU traversal (the bake engine, F16):
+   * node bounds (min xyz, max xyz), links (inner: left, right; leaf: first,
+   * -count) and the triangle order the leaves index into.
+   */
+  exportNodes(): { nodeCount: number; bounds: Float32Array; links: Int32Array; order: Uint32Array } {
+    return {
+      nodeCount: this.nodeCount,
+      bounds: this.bounds.subarray(0, this.nodeCount * 6),
+      links: this.links.subarray(0, this.nodeCount * 2),
+      order: this.order,
+    };
+  }
+
   // ------------------------------------------------------------ internals
 
   private build(first: number, count: number, centroids: Float32Array): number {

@@ -34,6 +34,12 @@ export function App() {
         const settings = await backend.settings();
         useUi.setState({ curated: settings.curatedView, symmetry: settings.symmetry });
         s.settings = settings;
+        if (new URLSearchParams(window.location.search).has('e2e') || navigator.webdriver) {
+          // Under test automation the GPU is SwiftShader (a CPU): tests start bakes themselves (studio.runBake) at small sizes,
+          // and exports, which must bake, bake 128 px maps with 8 rays unless a test asks for more.
+          s.autoBake = false;
+          s.bakeOverride = { size: 128, rays: 8 };
+        }
         s.loadText(JSON.stringify(s.newDocument((s.engine.doc as CharacterDoc).name)));
         s.startAutosave(settings.autosaveMinutes);
         // Test hook for Playwright screenshot tests: dev server, or any build opened with ?e2e (the desktop app never is).

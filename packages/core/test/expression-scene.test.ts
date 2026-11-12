@@ -21,7 +21,8 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { beforeAll, describe, expect, it } from 'vitest';
 import type { CoreAssets } from '../src/assets';
-import { DEFAULT_EXPRESSIONS, defaultCharacter, type BodyMeshId, type CharacterDoc } from '../src/character/doc';
+import { DEFAULT_EXPRESSIONS, type BodyMeshId, type CharacterDoc } from '../src/character/doc';
+import { legacyCharacter as defaultCharacter } from './legacy';
 import { CharacterEngine } from '../src/character/engine';
 import { randomizeCharacter } from '../src/character/randomize';
 import { buildExportScene, type ExportMesh } from '../src/export';
@@ -51,6 +52,8 @@ function cases(assets: CoreAssets): Case[] {
   female.macros.gender = 0;
   female.hair = { mode: 'cards', style: starterStyle('long-straight'), atlas: null, tint: { color: [1, 1, 1], brightness: 1 }, alphaThreshold: 0.5 };
   out.push({ label: 'male-8k', doc: male }, { label: 'female-cards-10k', doc: { ...female, bodyMesh: 'ps2_body_10k' } });
+  // The tiers quality profiles start with or offer (F13): Enhanced 12k, Hero 16k, and the full body.
+  for (const tier of ['ps2_body_12k', 'ps2_body_16k', 'ps2_body_full'] as const) out.push({ label: `male-${tier.replace('ps2_body_', '')}`, doc: { ...structuredClone(male), bodyMesh: tier } });
   for (let i = 0; i < 4; i++) {
     const doc = randomizeCharacter(defaultCharacter(`Random ${i}`), assets.sliders, { seed: 8800 + i, amount: 1 });
     doc.bodyMesh = tiers[i % 3]!;

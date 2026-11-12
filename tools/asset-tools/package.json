@@ -8,6 +8,7 @@
   "scripts": {
     "build:meshes": "tsx src/build-meshes.ts",
     "build:hair": "tsx src/hair-atlases.ts",
+    "build:looks": "tsx src/looks.ts",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "vitest run"
   },

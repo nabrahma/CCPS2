@@ -1,0 +1,70 @@
+{
+  "format": "ps2cc.look/1",
+  "id": "studioPortrait",
+  "label": "Studio portrait",
+  "lights": {
+    "sky": [
+      0.3,
+      0.3,
+      0.31
+    ],
+    "ground": [
+      0.14,
+      0.13,
+      0.12
+    ],
+    "key": {
+      "direction": [
+        -0.5,
+        0.6,
+        0.65
+      ],
+      "color": [
+        1.05,
+        1,
+        0.95
+      ]
+    },
+    "fill": {
+      "direction": [
+        0.7,
+        0.15,
+        0.6
+      ],
+      "color": [
+        0.22,
+        0.23,
+        0.25
+      ]
+    },
+    "spot": null,
+    "rim": {
+      "color": [
+        0.55,
+        0.58,
+        0.65
+      ],
+      "strength": 0.22
+    }
+  },
+  "fog": null,
+  "grade": {
+    "exposure": 0,
+    "tonemap": "filmic",
+    "lut": null,
+    "lutStrength": 1,
+    "bloom": {
+      "strength": 0,
+      "threshold": 1,
+      "radius": 0.5
+    },
+    "grain": 0,
+    "vignette": 0.15,
+    "chromatic": 0
+  },
+  "background": [
+    0.04,
+    0.04,
+    0.04
+  ]
+}

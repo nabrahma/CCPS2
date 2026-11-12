@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { LookError, parseLook, serializeLook, type LightingModel, type ShadowMode } from '@ps2cc/core';
 import {
   CAMERA_PRESETS,
   DEFAULT_POST,
@@ -24,7 +25,10 @@ const SHADING: { id: ShadingMode; label: string }[] = [
 ];
 
 /** Short names for the toolbar; the full name is the button's tooltip. */
-const CAMERA_LABELS: Record<CameraPresetId, string> = { full: 'Full', bust: 'Bust', face: 'Face', threeQuarter: '3/4', profile: 'Profile' };
+const CAMERA_LABELS: Record<CameraPresetId, string> = { full: 'Full', bust: 'Bust', face: 'Face', threeQuarter: '3/4', profile: 'Profile', back: 'Back' };
+
+/** Part 1's lighting presets, then the graded Part 2 looks (F14). */
+const PART1_LOOKS: LightingPresetId[] = ['studio', 'flashlight', 'overcast', 'night'];
 
 const POST_TOGGLES: { key: keyof PostSettings; label: string; on: number | boolean }[] = [
   { key: 'lowRes', label: '640×448', on: true },
@@ -55,7 +59,29 @@ function CharacterName() {
       <span className={studio.dirty ? 'name-cursor dirty' : 'name-cursor'} title={studio.dirty ? 'Unsaved changes' : 'Saved'}>
         _
       </span>
+      <BakeStatus />
     </div>
+  );
+}
+
+/** The bake engine's state (F16): waiting, progress, or how long the last bake took. */
+function BakeStatus() {
+  const studio = useStudio();
+  useStudioVersion();
+  const s = studio.bakeStatus;
+  if (s.state === 'off') return null;
+  const text =
+    s.state === 'baking'
+      ? `Baking ${Math.round(s.progress * 100)}%`
+      : s.state === 'waiting'
+        ? 'Bake waiting'
+        : s.state === 'failed'
+          ? 'Bake failed'
+          : `Baked in ${(s.ms / 1000).toFixed(1)} s`;
+  return (
+    <span className={`bake-status bake-${s.state}`} data-testid="bake-status" title="Occlusion, cavity and thickness from the whole character (Export → bake options)">
+      {text}
+    </span>
   );
 }
 
@@ -78,12 +104,38 @@ export function ViewportPanel() {
     vp.shading = ui.shading;
     vp.wireOverlay = ui.wireOverlay;
     vp.lighting = ui.lighting;
+    vp.customLook = ui.customLook;
+    vp.lightingModel = ui.lightingModel;
+    vp.shadowMode = ui.shadowMode;
     vp.postSettings = ui.post;
     vp.turntable = ui.turntable;
     vp.poseTest = ui.poseTest;
     vp.background = ui.background;
     vp.refresh();
-  }, [studio, ui.shading, ui.wireOverlay, ui.lighting, ui.post, ui.turntable, ui.poseTest, ui.background]);
+  }, [studio, ui.shading, ui.wireOverlay, ui.lighting, ui.customLook, ui.lightingModel, ui.shadowMode, ui.post, ui.turntable, ui.poseTest, ui.background]);
+
+  const lookInput = useRef<HTMLInputElement>(null);
+  /** Load a .ps2look (F14): lights, fog and grade together. */
+  const loadLook = async (file: File) => {
+    try {
+      const look = parseLook(JSON.parse(await file.text()));
+      ui.setView({ customLook: look });
+      ui.info(`Look: ${look.label}`);
+    } catch (err) {
+      ui.error(err instanceof LookError || err instanceof SyntaxError ? `Not a PS2CC look: ${err.message}` : 'Could not read that look', err);
+    }
+  };
+  /** Save the current look as a .ps2look, for Unity's PS2Look component or another character. */
+  const saveLook = async () => {
+    const look = studio.viewport?.look;
+    if (!look) return;
+    try {
+      const path = await backend.saveLookAs(`${look.id}.ps2look`, serializeLook(look));
+      if (path) ui.info(`Look saved: ${path}`);
+    } catch (err) {
+      ui.error('Could not save the look', err);
+    }
+  };
 
   const backgroundInput = useRef<HTMLInputElement>(null);
   /** The library checks and copies the image; the viewport shows it once it has loaded. */
@@ -151,12 +203,27 @@ export function ViewportPanel() {
         <div className="vp-group">
         <label>
           Light{' '}
-          <select value={ui.lighting} onChange={(e) => ui.setView({ lighting: e.target.value as LightingPresetId })}>
-            {Object.values(LIGHTING_PRESETS).map((l) => (
-              <option key={l.id} value={l.id}>
-                {l.label}
-              </option>
-            ))}
+          <select
+            value={ui.customLook ? 'custom' : ui.lighting}
+            onChange={(e) => (e.target.value === 'custom' ? undefined : ui.setView({ lighting: e.target.value as LightingPresetId, customLook: null }))}
+          >
+            <optgroup label="Lighting">
+              {PART1_LOOKS.map((id) => (
+                <option key={id} value={id}>
+                  {LIGHTING_PRESETS[id].label}
+                </option>
+              ))}
+            </optgroup>
+            <optgroup label="Looks">
+              {Object.values(LIGHTING_PRESETS)
+                .filter((l) => !PART1_LOOKS.includes(l.id as LightingPresetId))
+                .map((l) => (
+                  <option key={l.id} value={l.id}>
+                    {l.label}
+                  </option>
+                ))}
+            </optgroup>
+            {ui.customLook && <option value="custom">{ui.customLook.label}</option>}
           </select>
         </label>
         <button className={ps2LookOn ? 'active' : ''} onClick={() => ui.setView({ post: ps2LookOn ? { ...DEFAULT_POST } : { ...PS2_POST } })} title="PS2 post look (P)">
@@ -191,6 +258,41 @@ export function ViewportPanel() {
                 if (file) void chooseBackground(file);
               }}
             />
+            <label className="post-select">
+              Shading model
+              <select value={ui.lightingModel} onChange={(e) => ui.setView({ lightingModel: e.target.value as 'auto' | LightingModel })} data-testid="lighting-model">
+                <option value="auto">From quality profile</option>
+                <option value="vertex">Per vertex</option>
+                <option value="pixel">Per pixel</option>
+              </select>
+            </label>
+            <label className="post-select">
+              Shadows
+              <select value={ui.shadowMode} onChange={(e) => ui.setView({ shadowMode: e.target.value as 'auto' | ShadowMode })} data-testid="shadow-mode">
+                <option value="auto">From quality profile</option>
+                <option value="off">Off</option>
+                <option value="key">On the ground</option>
+                <option value="self">On the character too</option>
+              </select>
+            </label>
+            <button className="post-link" onClick={() => lookInput.current?.click()}>
+              Load look…
+            </button>
+            <button className="post-link" onClick={() => void saveLook()}>
+              Save look…
+            </button>
+            <input
+              ref={lookInput}
+              type="file"
+              accept=".ps2look,application/json"
+              hidden
+              data-testid="look-file"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                e.target.value = '';
+                if (file) void loadLook(file);
+              }}
+            />
             <hr />
             {POST_TOGGLES.map((t) => (
               <label key={t.key}>
@@ -205,7 +307,8 @@ export function ViewportPanel() {
         <CharacterName />
         <div className="vp-row">
         <div className="seg">
-          {(Object.keys(CAMERA_PRESETS) as CameraPresetId[]).map((id, i) => (
+          {/* The back view is for the benchmark board (and orbiting gets there); the toolbar keeps one row. */}
+          {(Object.keys(CAMERA_PRESETS) as CameraPresetId[]).filter((id) => id !== 'back').map((id, i) => (
             <button key={id} className={ui.camera === id ? 'active' : ''} onClick={() => camera(id)} title={`${CAMERA_PRESETS[id].label} (${i + 1})`} aria-label={CAMERA_PRESETS[id].label}>
               {CAMERA_LABELS[id]}
             </button>

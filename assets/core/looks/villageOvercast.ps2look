@@ -1,0 +1,78 @@
+{
+  "format": "ps2cc.look/1",
+  "id": "villageOvercast",
+  "label": "Village overcast",
+  "lights": {
+    "sky": [
+      0.46,
+      0.47,
+      0.44
+    ],
+    "ground": [
+      0.2,
+      0.18,
+      0.13
+    ],
+    "key": {
+      "direction": [
+        -0.35,
+        1,
+        0.35
+      ],
+      "color": [
+        0.62,
+        0.6,
+        0.53
+      ]
+    },
+    "fill": {
+      "direction": [
+        0.6,
+        0.25,
+        0.45
+      ],
+      "color": [
+        0.1,
+        0.11,
+        0.1
+      ]
+    },
+    "spot": null,
+    "rim": {
+      "color": [
+        0.45,
+        0.47,
+        0.42
+      ],
+      "strength": 0.12
+    }
+  },
+  "fog": {
+    "color": [
+      0.42,
+      0.42,
+      0.37
+    ],
+    "near": 5,
+    "far": 30
+  },
+  "grade": {
+    "exposure": 0.1,
+    "tonemap": "filmic",
+    "lut": "looks/village_overcast.cube",
+    "lutStrength": 1,
+    "bloom": {
+      "strength": 0.08,
+      "threshold": 0.9,
+      "radius": 0.5
+    },
+    "grain": 0.25,
+    "vignette": 0.3,
+    "chromatic": 0.3
+  },
+  "background": [
+    0.4,
+    0.41,
+    0.36
+  ]
+}

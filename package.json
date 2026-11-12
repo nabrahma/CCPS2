@@ -15,6 +15,7 @@
     "build:assets:fetch": "python -I tools/asset-compiler/compile.py fetch",
     "build:meshes": "pnpm --filter @ps2cc/asset-tools run build:meshes",
     "build:hair": "pnpm --filter @ps2cc/asset-tools run build:hair",
+    "build:looks": "pnpm --filter @ps2cc/asset-tools run build:looks",
     "build:landmarks": "pnpm --filter @ps2cc/app-frontend exec playwright test -c playwright.tools.config.ts build-landmarks",
     "export:testchars": "pnpm --filter @ps2cc/app-frontend exec playwright test -c playwright.tools.config.ts export-testchars",
     "test:desktop": "pnpm --filter @ps2cc/app-frontend exec playwright test -c playwright.tools.config.ts desktop",
@@ -27,6 +28,7 @@
     "test": "pnpm -r --if-present run test",
     "test:go": "node scripts/go-test.mjs",
     "test:unity": "node scripts/unity-harness.mjs",
+    "bench": "node scripts/bench.mjs",
     "dev": "cd app && wails dev",
     "build": "node scripts/build-app.mjs",
     "format": "prettier --write ."

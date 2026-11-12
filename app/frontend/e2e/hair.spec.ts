@@ -42,11 +42,12 @@ test('hair review: the styles made for the reference images', async ({ page }) =
       const s = (window as unknown as TestWindow).__ps2cc;
       await s.settled();
       const hair = s.scene.parts.find((p) => p.kind === 'hair')!;
-      return { triangles: hair.triangleCount, total: s.scene.budget().total, volume: Boolean(hair.material.volumeNormals) };
+      return { triangles: hair.triangleCount, total: s.scene.budget().total, volume: Boolean(hair.material.volumeNormals), hairBudget: s.engine.doc.export.hairBudget };
     });
-    // Each is inside the hair budget and uses the soft volume shading.
-    expect(info.triangles, id).toBeGreaterThanOrEqual(1500);
-    expect(info.triangles, id).toBeLessThanOrEqual(3500);
+    // Each is inside the hair budget (the style's 1,500 to 3,500, scaled to the profile's hair budget) and uses the soft volume shading.
+    const f = info.hairBudget / 3500;
+    expect(info.triangles, id).toBeGreaterThanOrEqual(Math.round(1500 * f));
+    expect(info.triangles, id).toBeLessThanOrEqual(info.hairBudget);
     expect(info.volume, id).toBe(true);
     for (const cam of ['bust', 'threeQuarter', 'profile'] as const) {
       await setCamera(page, cam);
@@ -92,7 +93,6 @@ test('hair panel: card texture picker, groom and card build controls', async ({ 
   const set = (fn: string) =>
     page.evaluate((body) => {
       const s = (window as unknown as TestWindow).__ps2cc;
-      // eslint-disable-next-line @typescript-eslint/no-implied-eval
       s.engine.update('e2e hair', new Function('d', body) as (d: unknown) => void);
     }, fn);
   await set('d.hair.style.groom.clump = 0.95; d.hair.style.groom.clumpShape = 0.3;');

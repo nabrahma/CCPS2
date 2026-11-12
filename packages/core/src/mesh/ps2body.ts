@@ -8,7 +8,7 @@ import type { Container, ContainerMeta } from '../io/container';
 import { readContainer, type AssetSource } from '../io/source';
 
 export interface BodyMeshInfo {
-  id: 'ps2_body_8k' | 'ps2_body_10k' | 'ps2_body_12k';
+  id: 'ps2_body_8k' | 'ps2_body_10k' | 'ps2_body_12k' | 'ps2_body_16k' | 'ps2_body_20k' | 'ps2_body_full';
   triangles: number;
   vertices: number;
   file: string;

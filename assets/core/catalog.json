@@ -3872,8 +3872,26 @@
   {
    "id": "ps2_body_12k",
    "triangles": 12000,
-   "vertices": 6830,
+   "vertices": 6807,
    "file": "bodymesh/ps2_body_12k.json"
+  },
+  {
+   "id": "ps2_body_16k",
+   "triangles": 16000,
+   "vertices": 8919,
+   "file": "bodymesh/ps2_body_16k.json"
+  },
+  {
+   "id": "ps2_body_20k",
+   "triangles": 20000,
+   "vertices": 11011,
+   "file": "bodymesh/ps2_body_20k.json"
+  },
+  {
+   "id": "ps2_body_full",
+   "triangles": 26756,
+   "vertices": 14517,
+   "file": "bodymesh/ps2_body_full.json"
   }
  ],
  "hairAtlases": [

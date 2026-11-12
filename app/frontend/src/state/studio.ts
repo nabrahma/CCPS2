@@ -6,7 +6,13 @@ import {
   CharacterEngine,
   CharacterScene,
   CoreAssets,
+  bakeInputs,
+  bakeSignature,
+  DEFAULT_BAKE,
   defaultCharacter,
+  DEFAULT_PROFILE,
+  garmentBakeStrength,
+  type BakeSettings,
   baseBodyObj,
   FetchAssetSource,
   importGarment,
@@ -24,7 +30,7 @@ import {
   type RawGarmentMesh,
   type ReferenceBody,
 } from '@ps2cc/core';
-import { resolveAssetUrl, Viewport } from '@ps2cc/viewport';
+import { BakeCancelled, resolveAssetUrl, Viewport, type BakedMap } from '@ps2cc/viewport';
 import { backend, isDesktop, type AppInfo, type GarmentFile, type Settings } from '../backend';
 import { decodeImage } from '../images';
 import { useUi } from './ui';
@@ -77,6 +83,20 @@ export class Studio {
   settings: Settings | null = null;
   /** The body garments are bound to (built on first import). */
   private garmentBody: ReferenceBody | null = null;
+  /** Bake engine (F16): what is shown, what is running, and its status for the UI. */
+  private baked: { signature: string; maps: Map<string, BakedMap> } | null = null;
+  private bakeRun: { signature: string; cancel: boolean; done: Promise<void> } | null = null;
+  private bakeTimer: number | null = null;
+  /** Bake in the background after changes (off in e2e runs, which bake on request). */
+  autoBake = true;
+  /** Override the bake settings (tests bake small maps). */
+  bakeOverride: Partial<BakeSettings> | null = null;
+  bakeStatus: { state: 'off' | 'waiting' | 'baking' | 'done' | 'failed'; progress: number; ms: number; timings: Record<string, number> } = {
+    state: 'off',
+    progress: 0,
+    ms: 0,
+    timings: {},
+  };
 
   private constructor(
     readonly info: AppInfo,
@@ -89,6 +109,7 @@ export class Studio {
       if (kind === 'geometry') {
         this.scene.update();
         this.viewport?.refresh();
+        this.scheduleBake();
       }
       if (kind === 'doc') this.queueSync();
       this.bump();
@@ -150,10 +171,15 @@ export class Studio {
     vp.setCameraPreset('full');
     vp.start();
     this.viewport = vp;
+    this.scheduleBake(0);
     return vp;
   }
 
   detachViewport(): void {
+    // Baked maps live on the viewport's renderer: bake again on the next one.
+    if (this.bakeRun) this.bakeRun.cancel = true;
+    if (this.baked) for (const m of this.baked.maps.values()) m.release();
+    this.baked = null;
     this.viewport?.dispose();
     this.viewport = null;
   }
@@ -163,6 +189,7 @@ export class Studio {
       .then(() => this.scene.sync())
       .then(() => {
         this.viewport?.refresh();
+        this.scheduleBake();
         this.bump();
       })
       .catch((err: unknown) => useUi.getState().error('Could not update the character', err));
@@ -172,6 +199,130 @@ export class Studio {
   async settled(): Promise<void> {
     await this.syncing;
     await this.viewport?.skinSettled();
+  }
+
+  // ------------------------------------------------------------ bake engine (Part 2 F16)
+
+  /** Bake settings for the current document: the map size follows the body texture. */
+  bakeSettings(): BakeSettings {
+    const ex = this.engine.doc.export;
+    return { ...DEFAULT_BAKE, size: Math.min(1024, Math.max(512, ex.bodyTexture)), ...(this.bakeOverride ?? {}) };
+  }
+
+  /** Rebake shortly after the character stops changing (bakes run in the background, F16). */
+  scheduleBake(delayMs = 800): void {
+    if (!this.autoBake) return;
+    if (this.bakeTimer !== null) window.clearTimeout(this.bakeTimer);
+    this.bakeTimer = window.setTimeout(() => {
+      this.bakeTimer = null;
+      void this.runBake();
+    }, delayMs);
+    if (this.wantsBake() && this.bakeStatus.state !== 'baking') this.setBakeStatus({ state: 'waiting', progress: 0 });
+  }
+
+  private wantsBake(): boolean {
+    const ex = this.engine.doc.export;
+    return ex.bakeAO || ex.bakeLight;
+  }
+
+  private setBakeStatus(patch: Partial<Studio['bakeStatus']>): void {
+    this.bakeStatus = { ...this.bakeStatus, ...patch };
+    this.bump();
+  }
+
+  /** Bake now if the character changed since the last bake. Resolves when the maps are on the character. */
+  async runBake(): Promise<void> {
+    const vp = this.viewport;
+    if (!vp) return;
+    if (this.engine.interacting) {
+      if (this.autoBake) this.scheduleBake();
+      return;
+    }
+    await this.syncing;
+    if (!this.wantsBake()) {
+      if (this.bakeRun) this.bakeRun.cancel = true;
+      if (this.baked) {
+        for (const m of this.baked.maps.values()) m.release();
+        this.baked = null;
+        vp.setBakeMaps(new Map());
+        await this.scene.setBakedBody(null);
+        vp.refresh();
+      }
+      this.setBakeStatus({ state: 'off', progress: 0 });
+      return;
+    }
+    const settings = this.bakeSettings();
+    const signature = bakeSignature(this.scene, settings);
+    if (this.baked?.signature === signature) {
+      this.applyBakeStrengths();
+      if (this.bakeStatus.state !== 'done') this.setBakeStatus({ state: 'done', progress: 1 });
+      return;
+    }
+    if (this.bakeRun?.signature === signature) return this.bakeRun.done;
+    if (this.bakeRun) this.bakeRun.cancel = true;
+    const run = { signature, cancel: false, done: Promise.resolve() };
+    run.done = (async () => {
+      const t0 = performance.now();
+      this.setBakeStatus({ state: 'baking', progress: 0 });
+      try {
+        const inputs = bakeInputs(this.scene, settings);
+        const result = await vp.baker.bake(
+          inputs,
+          settings,
+          (done, total) => {
+            this.bakeStatus = { ...this.bakeStatus, progress: done / total };
+            if (done % 4 === 0) this.bump();
+          },
+          () => run.cancel,
+        );
+        if (run.cancel) {
+          for (const m of result.maps.values()) m.release();
+          return;
+        }
+        if (this.baked) for (const m of this.baked.maps.values()) m.release();
+        this.baked = { signature, maps: result.maps };
+        this.applyBakeStrengths();
+        const body = result.maps.get('body');
+        await this.scene.setBakedBody(body ? { image: body.image, key: signature } : null);
+        vp.refresh();
+        const ms = Math.round(performance.now() - t0);
+        backend.log('info', `bake ${settings.size}px x ${settings.rays} rays: ${ms} ms (${JSON.stringify(result.timings)})`);
+        this.setBakeStatus({ state: 'done', progress: 1, ms, timings: result.timings });
+      } catch (err) {
+        if (err instanceof BakeCancelled) return;
+        this.setBakeStatus({ state: 'failed', progress: 0 });
+        backend.log('warn', `bake failed: ${String(err)}`);
+      } finally {
+        if (this.bakeRun === run) this.bakeRun = null;
+      }
+    })();
+    this.bakeRun = run;
+    return run.done;
+  }
+
+  /** Garments show their baked maps in the viewport at the strengths the export will use. */
+  private applyBakeStrengths(): void {
+    const vp = this.viewport;
+    if (!vp || !this.baked) return;
+    const s = garmentBakeStrength(this.engine.doc.export.bakeLight);
+    const shown = new Map<string, { texture: BakedMap['texture']; ao: number; cavity: number; light: number }>();
+    for (const [key, m] of this.baked.maps) if (key !== 'body') shown.set(key, { texture: m.texture, ...s });
+    vp.setBakeMaps(shown);
+  }
+
+  /** Resolves when the baked maps match the character (export waits for this). */
+  async bakeSettled(): Promise<void> {
+    if (!this.wantsBake()) return;
+    if (this.bakeTimer !== null) {
+      window.clearTimeout(this.bakeTimer);
+      this.bakeTimer = null;
+    }
+    await this.runBake();
+  }
+
+  /** The baked map of a part (rows top first), if the current bake has one. */
+  bakedImage(partKey: string): BakedMap['image'] | null {
+    return this.baked?.maps.get(partKey)?.image ?? null;
   }
 
   // ------------------------------------------------------------ custom garments (PRD F4)
@@ -213,20 +364,11 @@ export class Studio {
     return this.savedText;
   }
 
-  /** A new character with the app settings applied (budgets, texture sizes, Unity project). */
+  /** A new character with the app settings applied (quality profile, Unity project). */
   newDocument(name = 'Untitled'): CharacterDoc {
-    const doc = defaultCharacter(name);
     const s = this.settings;
-    if (s) {
-      doc.export = {
-        ...doc.export,
-        triangleBudget: s.triangleBudget,
-        hardMax: s.hardMax,
-        headTexture: s.headTexture as 512 | 1024,
-        bodyTexture: s.bodyTexture as 512 | 1024,
-        unityProject: s.unityProject || doc.export.unityProject,
-      };
-    }
+    const doc = defaultCharacter(name, s?.qualityProfile ?? DEFAULT_PROFILE);
+    if (s?.unityProject) doc.export.unityProject = s.unityProject;
     return doc;
   }
 

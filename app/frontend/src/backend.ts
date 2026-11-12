@@ -4,6 +4,7 @@
  * localStorage so the UI stays testable. Generated wailsjs bindings are not
  * imported on purpose: they only exist after `wails build`.
  */
+import type { QualityProfileId } from '@ps2cc/core';
 
 export interface AppInfo {
   version: string;
@@ -48,6 +49,8 @@ export interface Settings {
   firstRunCompleted: boolean;
   curatedView: boolean;
   symmetry: boolean;
+  /** The quality profile new characters start with (F13). */
+  qualityProfile: QualityProfileId;
 }
 
 /** What an export wrote (app/backend/exporter.Result). */
@@ -80,6 +83,7 @@ interface GoApp {
   SaveRender(name: string, file: string, pngBase64: string): Promise<string>;
   SaveTexture(name: string, file: string, pngBase64: string): Promise<string>;
   SaveImageAs(suggestedName: string, pngBase64: string): Promise<string>;
+  SaveLookAs(suggestedName: string, lookJson: string): Promise<string>;
   PickAndImport(kind: string): Promise<LibraryItem[] | null>;
   ImportPath(kind: string, path: string): Promise<LibraryItem>;
   ImportBytes(kind: string, fileName: string, base64: string): Promise<LibraryItem>;
@@ -130,6 +134,7 @@ const DEFAULT_SETTINGS: Settings = {
   firstRunCompleted: false,
   curatedView: true,
   symmetry: true,
+  qualityProfile: 'enhanced',
 };
 
 function browserOnly(feature: string): never {
@@ -193,6 +198,12 @@ export const backend = {
     const g = go();
     if (!g) return download(png, suggestedName);
     return g.SaveImageAs(suggestedName, await blobToBase64(png));
+  },
+  /** Ask where to save a .ps2look. Returns the path, or '' if cancelled. */
+  async saveLookAs(suggestedName: string, lookJson: string): Promise<string> {
+    const g = go();
+    if (!g) return download(new Blob([lookJson], { type: 'application/json' }), suggestedName);
+    return g.SaveLookAs(suggestedName, lookJson);
   },
   async pickAndImport(kind: string): Promise<LibraryItem[]> {
     const g = go();
