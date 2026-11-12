@@ -40,6 +40,10 @@ export async function prepareExport(studio: Studio, opts: Pick<ExportOptions, 'g
     if (opts.cancelled?.()) throw new ExportCancelled();
     opts.onProgress?.(s);
   };
+  if (studio.engine.doc.export.bakeAO || studio.engine.doc.export.bakeLight) {
+    step('Baking occlusion');
+    await studio.bakeSettled();
+  }
   step('Compositing the skin');
   const skin = await currentSkin(studio);
   step('Building meshes and skeleton');
@@ -48,6 +52,7 @@ export async function prepareExport(studio: Studio, opts: Pick<ExportOptions, 'g
     skin,
     tPose: opts.tPose,
     appVersion: studio.info.version,
+    baked: (key) => studio.bakedImage(key),
   });
   step('Encoding textures');
   const pngs: Uint8Array[] = [];

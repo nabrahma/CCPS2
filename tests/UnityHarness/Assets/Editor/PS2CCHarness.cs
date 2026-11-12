@@ -22,7 +22,7 @@ namespace PS2CC.Tests
     public static class Harness
     {
         const string Root = "Assets/PS2CC";
-        static readonly string[] Shaders = { "PS2/Skin", "PS2/Cutout", "PS2/Cloth", "PS2/LookFullscreen" };
+        static readonly string[] Shaders = { "PS2/Skin", "PS2/Cutout", "PS2/Cloth", "PS2/LookFullscreen", "PS2/Grade" };
 
         [Serializable]
         class CharacterReport
@@ -531,7 +531,7 @@ namespace PS2CC.Tests
         }
 
         /// <summary>The harness project uses URP (PRD target); create the pipeline asset if the project has none.</summary>
-        static void EnsureUrp()
+        internal static void EnsureUrp()
         {
             if (GraphicsSettings.defaultRenderPipeline is UniversalRenderPipelineAsset) return;
             const string dir = "Assets/HarnessSettings";

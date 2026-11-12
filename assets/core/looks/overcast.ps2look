@@ -1,0 +1,59 @@
+{
+  "format": "ps2cc.look/1",
+  "id": "overcast",
+  "label": "Overcast exterior",
+  "lights": {
+    "sky": [
+      0.5,
+      0.53,
+      0.58
+    ],
+    "ground": [
+      0.5,
+      0.53,
+      0.58
+    ],
+    "key": {
+      "direction": [
+        0.1,
+        1,
+        0.25
+      ],
+      "color": [
+        0.55,
+        0.57,
+        0.6
+      ]
+    },
+    "fill": null,
+    "spot": null,
+    "rim": {
+      "color": [
+        0.5,
+        0.52,
+        0.55
+      ],
+      "strength": 0.12
+    }
+  },
+  "fog": null,
+  "grade": {
+    "exposure": 0,
+    "tonemap": "none",
+    "lut": null,
+    "lutStrength": 1,
+    "bloom": {
+      "strength": 0,
+      "threshold": 1,
+      "radius": 0.5
+    },
+    "grain": 0,
+    "vignette": 0,
+    "chromatic": 0
+  },
+  "background": [
+    0.52,
+    0.55,
+    0.58
+  ]
+}

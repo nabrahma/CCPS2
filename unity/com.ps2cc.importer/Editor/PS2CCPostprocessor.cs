@@ -16,7 +16,7 @@ namespace PS2CC.Editor
     public sealed class PS2CCPostprocessor : AssetPostprocessor
     {
         // Bump to reimport existing exports when the import rules change.
-        public override uint GetVersion() => 4;
+        public override uint GetVersion() => 6;
 
         void OnPreprocessModel()
         {
@@ -95,7 +95,7 @@ namespace PS2CC.Editor
             ti.alphaSource = TextureImporterAlphaSource.FromInput;
             ti.alphaIsTransparency = mat.alphaIsTransparency;
             ti.maxTextureSize = Mathf.ClosestPowerOfTwo(Mathf.Clamp(mat.maxSize, 32, 8192));
-            ti.filterMode = FilterMode.Bilinear;
+            ti.filterMode = FilterMode.Trilinear; // as the app samples (LinearMipmapLinear), so both show the same detail
             ti.mipmapEnabled = true;
             ti.textureCompression = TextureImporterCompression.CompressedHQ;
             // Atlases and the head/body textures clamp; hair textures may tile.
@@ -147,6 +147,7 @@ namespace PS2CC.Editor
                 if (mat.HasProperty("_Cutoff")) mat.SetFloat("_Cutoff", info.alphaClip > 0 ? info.alphaClip : 0.5f);
                 mat.SetFloat("_Cull", info.doubleSided ? 0f : 2f);
                 mat.SetFloat("_TwoSided", info.doubleSided && !info.volumeNormals ? 1f : 0f);
+                ApplyQuality(mat, info, sidecar.quality);
                 if (created) AssetDatabase.CreateAsset(mat, matPath);
                 else EditorUtility.SetDirty(mat);
                 materials[info.role] = mat;
@@ -164,6 +165,14 @@ namespace PS2CC.Editor
                     MeshInfo info = sidecar.MeshNamed(r.name);
                     if (info != null && materials.TryGetValue(info.role, out Material m)) r.sharedMaterials = new[] { m };
                     else Debug.LogError($"PS2CC: no material for mesh {r.name}");
+                    // Shadows (F13): cast in Enhanced and Hero; received on the character only in Hero.
+                    // Exports from before quality profiles keep Unity's defaults.
+                    if (sidecar.quality != null)
+                    {
+                        string shadows = sidecar.quality.shadows ?? "off";
+                        r.shadowCastingMode = shadows == "off" ? UnityEngine.Rendering.ShadowCastingMode.Off : UnityEngine.Rendering.ShadowCastingMode.On;
+                        r.receiveShadows = shadows == "self";
+                    }
                 }
                 Animator animator = instance.GetComponent<Animator>();
                 if (animator == null) animator = instance.AddComponent<Animator>();
@@ -190,6 +199,30 @@ namespace PS2CC.Editor
             {
                 Object.DestroyImmediate(instance);
             }
+        }
+
+        /// <summary>
+        /// Per-vertex or per-pixel light, and the surface's wrap, gloss and highlight
+        /// (the app's viewport SURFACES table, packages/viewport/src/materials.ts).
+        /// </summary>
+        public static void ApplyQuality(Material mat, MaterialInfo info, QualityInfo quality)
+        {
+            bool perPixel = quality != null && quality.lighting == "pixel";
+            mat.SetFloat("_PerPixel", perPixel ? 1f : 0f);
+            if (perPixel) mat.EnableKeyword("_PS2_PER_PIXEL");
+            else mat.DisableKeyword("_PS2_PER_PIXEL");
+            float wrap = 0, gloss = 0.02f, shininess = 10, aniso = 0;
+            switch (info.surface)
+            {
+                case "skin": wrap = 0.45f; gloss = 0.06f; shininess = 18; break;
+                case "hair": wrap = 0.2f; gloss = 0.08f; shininess = 80; aniso = 1; break;
+                case "eyes": gloss = 0.7f; shininess = 90; break;
+            }
+            if (mat.HasProperty("_Wrap")) mat.SetFloat("_Wrap", wrap);
+            if (mat.HasProperty("_Gloss")) mat.SetFloat("_Gloss", gloss);
+            if (mat.HasProperty("_Shininess")) mat.SetFloat("_Shininess", shininess);
+            if (mat.HasProperty("_Aniso")) mat.SetFloat("_Aniso", aniso);
+            if (mat.HasProperty("_ReceiveShadows")) mat.SetFloat("_ReceiveShadows", quality != null && quality.shadows == "self" ? 1f : 0f);
         }
 
         public static IEnumerable<string> MissingHumanBones(Sidecar sidecar)

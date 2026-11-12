@@ -7,7 +7,8 @@
  */
 import { beforeAll, describe, expect, it } from 'vitest';
 import type { CoreAssets } from '../src/assets';
-import { defaultCharacter, type CharacterDoc } from '../src/character/doc';
+import type { CharacterDoc } from '../src/character/doc';
+import { legacyCharacter as defaultCharacter } from './legacy';
 import { CharacterEngine } from '../src/character/engine';
 import { buildExportScene, encodeExportMessage, exportName, EXPORT_MAGIC, type ExportScene } from '../src/export';
 import { CharacterScene } from '../src/scene/character-scene';

@@ -7,6 +7,8 @@ Sets up PS2CC character exports in Unity 6 (URP) with no manual steps.
 Package Manager → **+** → **Add package from disk…** → choose `unity/com.ps2cc.importer/package.json` in the PS2CC folder.
 (Or add `"com.ps2cc.importer": "file:<path to>/unity/com.ps2cc.importer"` to `Packages/manifest.json`.)
 
+The project must use **Linear** colour space (Project Settings → Player → Other Settings → Colour Space; URP projects start in Linear). The PS2 shaders light in linear space, as the app does; in Gamma space textures are not decoded and characters look washed out.
+
 ## What happens on import
 
 PS2CC writes `Assets/PS2CC/<Name>/` with `<Name>.fbx`, `<Name>.ps2cc.json`, `Textures/` and optionally `<Name>.glb`. For every FBX that has a matching `.ps2cc.json`:
@@ -32,12 +34,15 @@ Re-exporting the same character updates the FBX, textures, materials and prefab 
 
 | Shader | Use |
 | --- | --- |
-| `PS2/Skin` | Head and body. Vertex-lit Lambert from the main light, ambient (spherical harmonics), optional rim, optional colour-depth reduction (`Colour depth levels`, 32 = 15-bit). |
-| `PS2/Cutout` | Hair cards, eyes, brows, lashes. The same lighting with an alpha clip, double-sided. |
+| `PS2/Skin` | Head and body. The PS2CC light model: per vertex (Classic) or per pixel (Enhanced, Hero) with wrap diffuse and a warm terminator; optional colour-depth reduction (`Colour depth levels`, 32 = 15-bit). |
+| `PS2/Cutout` | Hair cards, eyes, brows, lashes. The same lighting with an alpha clip, double-sided; hair gets a strand highlight. |
 | `PS2/Cloth` | Garments. The same with an alpha clip and a dirt mask slot. |
-| `PS2/LookFullscreen` | Optional PS2 look: low internal resolution, 16-bit dither, grain, VHS bleed. Add URP's **Full Screen Pass Renderer Feature** to your renderer and give it a material with this shader. |
+| `PS2/Grade` | The look's grade: exposure, filmic curve, LUT, vignette, grain, chromatic aberration. Add URP's **Full Screen Pass Renderer Feature** and give it a material with this shader. |
+| `PS2/LookFullscreen` | Optional PS2 look: low internal resolution, 16-bit dither, grain, VHS bleed. Also a Full Screen Pass. |
 
-All respond to the URP main light and ambient light, have shadow caster, depth and depth-normals passes, and work in Forward and Forward+.
+The importer picks per vertex or per pixel, the surface's gloss and whether the character casts and receives shadows from the export's quality profile.
+
+**PS2 Look** (Add Component → PS2CC → PS2 Look): give it a `.ps2look` saved from PS2CC (Post… → Save look…) and its `.cube` LUT (both import automatically), your camera and your main directional light. The shaders then take every light, the ambient and the fog from the look, with the same numbers as the app, and the main light is turned so its shadow map matches the look's key light. Without a PS2 Look the shaders use URP's main light and ambient. All shaders have shadow caster, depth and depth-normals passes, and work in Forward and Forward+.
 
 ## Test harness
 

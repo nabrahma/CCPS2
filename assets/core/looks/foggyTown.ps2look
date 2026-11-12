@@ -1,0 +1,78 @@
+{
+  "format": "ps2cc.look/1",
+  "id": "foggyTown",
+  "label": "Foggy town",
+  "lights": {
+    "sky": [
+      0.42,
+      0.45,
+      0.5
+    ],
+    "ground": [
+      0.16,
+      0.16,
+      0.17
+    ],
+    "key": {
+      "direction": [
+        0.25,
+        1,
+        0.45
+      ],
+      "color": [
+        0.34,
+        0.36,
+        0.4
+      ]
+    },
+    "fill": {
+      "direction": [
+        -0.6,
+        0.2,
+        0.5
+      ],
+      "color": [
+        0.08,
+        0.09,
+        0.1
+      ]
+    },
+    "spot": null,
+    "rim": {
+      "color": [
+        0.5,
+        0.54,
+        0.6
+      ],
+      "strength": 0.18
+    }
+  },
+  "fog": {
+    "color": [
+      0.36,
+      0.38,
+      0.41
+    ],
+    "near": 2.5,
+    "far": 14
+  },
+  "grade": {
+    "exposure": 0.15,
+    "tonemap": "filmic",
+    "lut": "looks/foggy_town.cube",
+    "lutStrength": 1,
+    "bloom": {
+      "strength": 0.12,
+      "threshold": 0.8,
+      "radius": 0.6
+    },
+    "grain": 0.45,
+    "vignette": 0.35,
+    "chromatic": 0.6
+  },
+  "background": [
+    0.36,
+    0.38,
+    0.41
+  ]
+}

@@ -1,17 +1,17 @@
 {
   "frames": 240,
-  "fps": 15.3,
+  "fps": 9.6,
   "frameMs": {
-    "p50": 50.1,
-    "p95": 150,
-    "max": 383.4
+    "p50": 100,
+    "p95": 133.4,
+    "max": 166.7
   },
   "updateMs": {
-    "p50": 3.7,
-    "p95": 4.8,
-    "max": 27.9
+    "p50": 5.1,
+    "p95": 21.2,
+    "max": 31.8
   },
-  "triangles": 10626,
+  "triangles": 13998,
   "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
   "meets60fps": false
 }

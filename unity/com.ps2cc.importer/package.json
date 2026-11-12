@@ -1,8 +1,8 @@
 {
   "name": "com.ps2cc.importer",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "displayName": "PS2CC Importer",
-  "description": "Imports PS2CC character exports: Humanoid avatar from humanoid_map.json, PS2 URP shaders (PS2/Skin, PS2/Cutout, PS2/Cloth), materials from the .ps2cc.json sidecar, texture import settings and a prefab with an Animator and PS2Expressions (blendshapes by name).",
+  "description": "Imports PS2CC character exports: Humanoid avatar from humanoid_map.json, PS2 URP shaders (PS2/Skin, PS2/Cutout, PS2/Cloth, PS2/Grade) with the app's light model, the PS2Look component for .ps2look files, materials from the .ps2cc.json sidecar, texture import settings and a prefab with an Animator and PS2Expressions (blendshapes by name).",
   "unity": "6000.0",
   "license": "MIT",
   "dependencies": {

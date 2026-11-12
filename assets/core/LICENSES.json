@@ -54,8 +54,8 @@
    "sourceUrl": "https://github.com/makehumancommunity/makehuman",
    "upstream": "makehuman",
    "attributionRequired": false,
-   "sha256": "74813dfb4e48f5fcd311f7130e832b0a4922dabfbde0a2e1d9e176785670dad7",
-   "bytes": 232798
+   "sha256": "e5d178a73df16e37076fe839e5d7beb5bda548bc6d9dd9011c9b1b15dd64c3f2",
+   "bytes": 232503
   },
   {
    "file": "bodymesh/ps2_body_12k.json",
@@ -65,8 +65,52 @@
    "sourceUrl": "https://github.com/makehumancommunity/makehuman",
    "upstream": "makehuman",
    "attributionRequired": false,
-   "sha256": "27fee2f1220ea1132235030cdb00f130b9a18ac38fb696599c27a4a1b66173e0",
-   "bytes": 798
+   "sha256": "30b4c5b73231da5bc6814336b3b65476fb9678c8b09ee05b31d9352bdda04089",
+   "bytes": 797
+  },
+  {
+   "file": "bodymesh/ps2_body_16k.bin",
+   "asset": "ps2cc:bodymesh/ps2_body_16k",
+   "licence": "CC0-1.0",
+   "author": "MakeHuman team / Data Collection AB (derived by PS2CC)",
+   "sourceUrl": "https://github.com/makehumancommunity/makehuman",
+   "upstream": "makehuman",
+   "attributionRequired": false,
+   "sha256": "16edf2280625e358b7dbbdcbb370b7d159313920e858b531ce959fc7ca32c991",
+   "bytes": 307959
+  },
+  {
+   "file": "bodymesh/ps2_body_16k.json",
+   "asset": "ps2cc:bodymesh/ps2_body_16k",
+   "licence": "CC0-1.0",
+   "author": "MakeHuman team / Data Collection AB (derived by PS2CC)",
+   "sourceUrl": "https://github.com/makehumancommunity/makehuman",
+   "upstream": "makehuman",
+   "attributionRequired": false,
+   "sha256": "440a301f5cae15a5e11b587e2f79bf5d4f349bb3bb38f121a719907a276d86a5",
+   "bytes": 799
+  },
+  {
+   "file": "bodymesh/ps2_body_20k.bin",
+   "asset": "ps2cc:bodymesh/ps2_body_20k",
+   "licence": "CC0-1.0",
+   "author": "MakeHuman team / Data Collection AB (derived by PS2CC)",
+   "sourceUrl": "https://github.com/makehumancommunity/makehuman",
+   "upstream": "makehuman",
+   "attributionRequired": false,
+   "sha256": "943ede5b7b537052f3b344ce4ae69da8876b16cf315e51b07a900c6be73500a7",
+   "bytes": 383155
+  },
+  {
+   "file": "bodymesh/ps2_body_20k.json",
+   "asset": "ps2cc:bodymesh/ps2_body_20k",
+   "licence": "CC0-1.0",
+   "author": "MakeHuman team / Data Collection AB (derived by PS2CC)",
+   "sourceUrl": "https://github.com/makehumancommunity/makehuman",
+   "upstream": "makehuman",
+   "attributionRequired": false,
+   "sha256": "ec7803feb924f437d6850044eed746d90b540aee967ec79fa2491a4065bbd64e",
+   "bytes": 789
   },
   {
    "file": "bodymesh/ps2_body_8k.bin",
@@ -91,6 +135,28 @@
    "bytes": 834
   },
   {
+   "file": "bodymesh/ps2_body_full.bin",
+   "asset": "ps2cc:bodymesh/ps2_body_full",
+   "licence": "CC0-1.0",
+   "author": "MakeHuman team / Data Collection AB (derived by PS2CC)",
+   "sourceUrl": "https://github.com/makehumancommunity/makehuman",
+   "upstream": "makehuman",
+   "attributionRequired": false,
+   "sha256": "32a09eed028ce41dfc9c29026aee011d00850959731160101d8c16ab39aeeff1",
+   "bytes": 509813
+  },
+  {
+   "file": "bodymesh/ps2_body_full.json",
+   "asset": "ps2cc:bodymesh/ps2_body_full",
+   "licence": "CC0-1.0",
+   "author": "MakeHuman team / Data Collection AB (derived by PS2CC)",
+   "sourceUrl": "https://github.com/makehumancommunity/makehuman",
+   "upstream": "makehuman",
+   "attributionRequired": false,
+   "sha256": "5ed7544f7c3430c8199b25dd04748dbcf35e7d8226539a6aa0de1b70c3f441fe",
+   "bytes": 749
+  },
+  {
    "file": "catalog.json",
    "asset": "ps2cc:generated",
    "licence": "CC0-1.0",
@@ -111,6 +177,127 @@
    "attributionRequired": false,
    "sha256": "2263e56c678666239c3f44423fefb124e96ea72391d4a95ec565fb9b4676d47c",
    "bytes": 44848
+  },
+  {
+   "file": "looks/flashlight.ps2look",
+   "asset": "ps2cc:look/flashlight",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "bf2f57ffb2932202b7c8724fc86f915dfad7edb020d6022dc31dfed0ab6dabd4",
+   "bytes": 892
+  },
+  {
+   "file": "looks/foggyTown.ps2look",
+   "asset": "ps2cc:look/foggyTown",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "b8c9d4bd4b1de4d0d7b585f13aa1a9d3a7de7e6d7e4dabdd8f657b699344bedc",
+   "bytes": 1072
+  },
+  {
+   "file": "looks/foggy_town.cube",
+   "asset": "ps2cc:look/foggyTown",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "adf3563365d107125fe9b615b296be6c59a21ae151bea62ad11891591ca871a7",
+   "bytes": 884810
+  },
+  {
+   "file": "looks/interiorFlashlight.ps2look",
+   "asset": "ps2cc:look/interiorFlashlight",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "db1d1b8fd6ca3f976e8397e3bcea8489cc5666c1c973eba414c327c4939276c0",
+   "bytes": 1060
+  },
+  {
+   "file": "looks/interior_flashlight.cube",
+   "asset": "ps2cc:look/interiorFlashlight",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "acf0e17830954ff1e1c214059150bf9aaae39b336c1eae20b5ed0a62762b81f4",
+   "bytes": 884819
+  },
+  {
+   "file": "looks/night.ps2look",
+   "asset": "ps2cc:look/night",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "afec20873864740a8697dbde4abbe9320b7d6572cb89fe0d9ddadf05bbaf4649",
+   "bytes": 810
+  },
+  {
+   "file": "looks/overcast.ps2look",
+   "asset": "ps2cc:look/overcast",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "69f544c1d5d92a137b2c970038e18b07e2a6bd58e6fba9374516ba4eab20767d",
+   "bytes": 814
+  },
+  {
+   "file": "looks/studio.ps2look",
+   "asset": "ps2cc:look/studio",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "55f1e08d1005ffed0772b59fbe5df2b9b35d156478ce7a688a6763b04e1fa6c0",
+   "bytes": 807
+  },
+  {
+   "file": "looks/studioPortrait.ps2look",
+   "asset": "ps2cc:look/studioPortrait",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "271df1a886bf9fb97bfbeb9cf2e9ec43acfbf2da0d1a274a64fdbb1970527cb7",
+   "bytes": 963
+  },
+  {
+   "file": "looks/villageOvercast.ps2look",
+   "asset": "ps2cc:look/villageOvercast",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "372ac02f428d06b3e8c026af9eb9658f84d525516ca0c0bc4987d047c12fa999",
+   "bytes": 1088
+  },
+  {
+   "file": "looks/village_overcast.cube",
+   "asset": "ps2cc:look/villageOvercast",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "1e7d4c3a87910bb4d7f8337ce9bee94e11c3531c7fc5949ab7b4949b6ff7eccb",
+   "bytes": 884816
   },
   {
    "file": "modifiers/modifiers.json",

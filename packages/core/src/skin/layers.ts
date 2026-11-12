@@ -154,7 +154,37 @@ export const LAYER_KINDS: readonly LayerKindSpec[] = [
     procedural: false,
     params: [],
   },
+  {
+    kind: 'occlusion',
+    label: 'Baked occlusion',
+    blend: 'multiply',
+    opacity: 0.75,
+    mask: 'none',
+    procedural: false,
+    params: [num('contrast', 'Contrast', 0.5, 2, 0.01, 1)],
+  },
+  {
+    kind: 'cavity',
+    label: 'Baked cavity',
+    blend: 'multiply',
+    opacity: 0.5,
+    mask: 'none',
+    procedural: false,
+    params: [num('contrast', 'Contrast', 0.5, 2, 0.01, 1)],
+  },
+  {
+    kind: 'lightBake',
+    label: 'Baked light',
+    blend: 'multiply',
+    opacity: 1,
+    mask: 'none',
+    procedural: false,
+    params: [num('contrast', 'Contrast', 0.5, 2, 0.01, 1)],
+  },
 ];
+
+/** Layer kinds the bake engine fills in, and which channel of its map each uses (r occlusion, g cavity, a light). */
+export const BAKED_LAYER_CHANNEL: Partial<Record<LayerKind, 0 | 1 | 3>> = { occlusion: 0, cavity: 1, lightBake: 3 };
 
 export function layerKind(kind: LayerKind): LayerKindSpec {
   const spec = LAYER_KINDS.find((k) => k.kind === kind);

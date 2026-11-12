@@ -49,3 +49,21 @@ Card hair was rebuilt as a port of Daniel Bystedt's Blender setup *Geometry node
 
 **Known limits.** There is no comb: guides come from sliders, so a style is as specific as the sliders allow. The generated textures are plain next to photo-sourced ones. Short styles still show blocky card ends at the temples. A centre parting shows the forehead in a V below it, as real hair does; lower the hairline's Front or raise Frame the face to close it. No vertex colour or second UV set from the scalp (the Blender setup has both).
 
+
+## M11: Look foundation (0.13.0, Part 2)
+
+The first milestone of `PRD-Part2-Visual-Fidelity.md`. Overview: `docs/look-foundation.md`. Decisions D-083 to D-099. Review images: `docs/milestones/M11/`; the benchmark board: `pnpm bench` (writes `docs/bench/latest/`).
+
+| Acceptance (Part 2 M11) | State | Evidence |
+| --- | --- | --- |
+| Board renders all three profiles in the app and in Unity | Done | `pnpm bench`: Mara and Cole, 3 profiles x 2 looks x 4 cameras, 48 views in each engine |
+| App-to-Unity SSIM at least 0.9 per view | **Not met** | 28 of 48 views pass (all full-body and back views, 0.92 to 0.99); close-ups 0.79 to 0.89, limited by card hair at strand level (D-099). Fixed on the way: export ground height with boots (D-096), alpha-weighted texture shrinking (D-097), the harness's Gamma colour space and forced anisotropy (D-098) |
+| Baked AO within 0.03 of a 1,024-ray CPU reference | Passing | Mean absolute error 0.0045 (body, 122 points) and 0.0176 (shirt, 405 points): `e2e/m11-bake.spec.ts`, `bake_report.json` |
+| No background texels bleed into seams | Passing | Every texel bilinear filtering and the first mip read next to a UV border is filled (13,680 border samples, 0 empty) |
+| 1024 AO bake time logged (target under 20 s) | Logged | 17.1 s for the body and two garments, 64 rays, on this machine's AMD Radeon integrated GPU (`gpu_timing.json`; the PRD's reference GPU is a GTX 1060) |
+| Enhanced viewport frame time logged (target 60 fps) | Logged | 60 fps with per-pixel light and self-shadowing, same machine |
+| User scores for lighting and mood, and skin, rise | Yours | Score the boards in `docs/bench/scores.json` |
+
+Also in M11: quality profiles with the 16k, 20k and full body tiers; the per-pixel renderer with shadows; four graded looks saved as `.ps2look`; the bake engine feeding the skin stack and garment textures; Unity's PS2 shaders, PS2 Look component and PS2/Grade; expression shapes untangled below the eyes (D-088).
+
+**Known limits.** Close-up parity (above). Gloss is a constant per surface until materials get gloss maps (F17, F18). The thickness map is baked but only the app's preview could use it, and nothing does yet. Flashlight shadows are app-only. Mara and Cole wear the closest library items; their own outfits are M15's.

@@ -6,17 +6,25 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import {
   eulerXYZ,
+  NEUTRAL_GRADE,
+  parseCube,
   poseWorldMatrices,
   skinningMatrices,
   skinPositions,
   type CharacterScene,
+  type LightingModel,
+  type Look,
+  type Lut3D,
   type Mat3,
   type RgbaImage,
   type ScenePart,
+  type ShadowMode,
 } from '@ps2cc/core';
-import { applyLighting, createPs2Material, setMaterialTexture } from './materials';
+import { applyLighting, createPs2Material, setMaterialTexture, spotDirection, spotPosition, type LightState, type SurfaceKind } from './materials';
 import { SkinCompositor } from './skin-compositor';
 import { PostPass } from './post';
+import { createGroundShadow, ShadowMaps } from './shadows';
+import { GpuBaker } from './bake';
 import {
   CAMERA_PRESETS,
   DEFAULT_POST,
@@ -50,6 +58,15 @@ interface PartObject {
   wireVersion: number;
   /** Body: signature of the composited skin stack shown (null: plain texture). */
   skinSig: string | null;
+  surface: SurfaceKind;
+}
+
+/** What each part is made of, for the per-pixel model. */
+function surfaceOf(part: ScenePart): SurfaceKind {
+  if (part.kind === 'body') return 'skin';
+  if (part.kind === 'hair') return 'hair';
+  if (part.kind === 'eyes') return 'eyes';
+  return 'cloth';
 }
 
 /** An orthographic view straight down -Z, in character space (feet on y = 0 is not applied). */
@@ -102,10 +119,21 @@ export class Viewport {
   private skinPending: Promise<void> = Promise.resolve();
   /** Front views feed the photo tools, which want full detail. */
   private renderingFront = false;
+  private readonly shadowMaps = new ShadowMaps(2048);
+  private readonly ground: THREE.Mesh;
+  private readonly luts = new Map<string, Promise<Lut3D | null>>();
+  private lutWanted: string | null = null;
+  private bakeMaps = new Map<string, { texture: THREE.Texture; ao: number; cavity: number; light: number }>();
 
   shading: ShadingMode = 'ps2';
   wireOverlay = false;
   lighting: LightingPresetId = 'studio';
+  /** A look loaded from a .ps2look file; used instead of `lighting` while set. */
+  customLook: Look | null = null;
+  /** Per-vertex or per-pixel light; 'auto' follows the character's quality profile (F13). */
+  lightingModel: 'auto' | LightingModel = 'auto';
+  /** Shadows; 'auto' follows the character's quality profile. */
+  shadowMode: 'auto' | ShadowMode = 'auto';
   postSettings: PostSettings = { ...DEFAULT_POST };
   turntable = false;
   poseTest = false;
@@ -113,6 +141,8 @@ export class Viewport {
   background: 'preset' | 'black' | 'grey' | 'image' = 'preset';
   /** Show textures at their export size (PRD F9). Off only to compare in tests. */
   exportSizePreview = true;
+  /** The disc that catches the character's shadow (off for app-to-Unity parity renders, F22). */
+  groundShadow = true;
   stats: ViewportStats = { fps: 0, frameMs: 0, drawCalls: 0, triangles: 0 };
 
   constructor(
@@ -132,6 +162,9 @@ export class Viewport {
     this.controls.maxDistance = 12;
     this.controls.update();
     this.scene3d.add(this.root);
+    this.ground = createGroundShadow(this.shadowMaps);
+    this.ground.visible = false;
+    this.scene3d.add(this.ground);
     this.resizeObserver = new ResizeObserver(() => this.resize());
     this.resizeObserver.observe(canvas);
     canvas.addEventListener('pointerdown', this.onPointerDown);
@@ -180,6 +213,13 @@ export class Viewport {
     this.camera.position.copy(target).addScaledVector(dir, dist);
     this.controls.target.copy(target);
     this.controls.update();
+  }
+
+  /** The camera in world space (feet on y = 0, the character facing +Z), for matching renders elsewhere (Unity, F22). */
+  cameraState(): { position: [number, number, number]; target: [number, number, number]; fov: number; near: number; far: number } {
+    const p = this.camera.position;
+    const t = this.controls.target;
+    return { position: [p.x, p.y, p.z], target: [t.x, t.y, t.z], fov: this.camera.fov, near: this.camera.near, far: this.camera.far };
   }
 
   /** Frame the selected part, or the whole character. */
@@ -272,6 +312,8 @@ export class Viewport {
     for (const obj of this.objects.values()) this.disposeObject(obj);
     for (const t of this.loadedTextures.values()) t.dispose();
     this.compositor?.dispose();
+    this.shadowMaps.dispose();
+    this.gpuBaker?.dispose();
     this.post.dispose();
     this.controls.dispose();
     this.renderer.dispose();
@@ -314,31 +356,137 @@ export class Viewport {
     camera: THREE.Camera = this.camera,
     output: THREE.WebGLRenderTarget | null = null,
   ): void {
-    const preset = LIGHTING_PRESETS[this.lighting];
+    const look = this.look;
     const camDir = camera.getWorldDirection(new THREE.Vector3());
+    camera.updateMatrixWorld();
+    const right = new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, 0).normalize();
+    const up = new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, 1).normalize();
+    const perPixel = this.perPixel && !this.renderingFront;
+    // Front views look straight down -Z; the orbit camera at the orbit target.
+    const target = camera === this.camera ? this.controls.target.clone() : camera.position.clone().addScaledVector(camDir, 5);
+    const light: LightState = { look, cameraPosition: camera.position, cameraDirection: camDir, cameraTarget: target, cameraRight: right, cameraUp: up, perPixel };
+    const shadows = this.renderingFront || this.shading !== 'ps2' ? 'off' : this.shadows;
+    this.renderShadows(light, shadows);
     // Spot light lives in world space; the character root is offset, so feed world positions.
     for (const obj of this.objects.values()) {
-      applyLighting(
-        obj.material,
-        { preset, cameraPosition: camera.position, cameraDirection: camDir },
-        this.shading,
-        { affine: post.affine, snap: post.vertexSnap },
-      );
+      applyLighting(obj.material, light, this.shading, { affine: post.affine, snap: post.vertexSnap }, obj.surface);
+      const u = obj.material.uniforms;
+      const self = shadows === 'self';
+      u.uKeyShadowOn!.value = self && look.lights.key ? 1 : 0;
+      u.uSpotShadowOn!.value = self && look.lights.spot ? 1 : 0;
+      const bake = this.renderingFront ? undefined : this.bakeMaps.get(obj.part.key);
+      u.uBake!.value = bake?.texture ?? null;
+      u.uHasBake!.value = bake ? 1 : 0;
+      u.uAoStrength!.value = bake?.ao ?? 0;
+      u.uCavityStrength!.value = bake?.cavity ?? 0;
+      u.uLightBake!.value = bake?.light ?? 0;
       const limits = this.exportSizePreview && !this.renderingFront ? this.character?.exportTexels(obj.part) : undefined;
-      obj.material.uniforms.uExportTexels!.value.set(limits?.texels ?? 0, limits?.head ?? 0);
+      u.uExportTexels!.value.set(limits?.texels ?? 0, limits?.head ?? 0);
       this.syncWire(obj);
       if (obj.wire) obj.wire.visible = this.wireOverlay || this.shading === 'wire';
     }
-    const bg = this.backgroundColour(preset.background);
+    const gu = (this.ground.material as THREE.ShaderMaterial).uniforms;
+    gu.uKeyOn!.value = shadows !== 'off' && look.lights.key ? 1 : 0;
+    gu.uSpotOn!.value = shadows !== 'off' && look.lights.spot ? 1 : 0;
+    this.ground.visible = this.groundShadow && shadows !== 'off' && !transparent;
+    const bg = this.backgroundColour(look.background);
     this.scene3d.background = transparent ? null : this.background === 'image' ? this.backgroundTexture : null;
     const size = output ? new THREE.Vector2(output.width, output.height) : this.renderer.getDrawingBufferSize(new THREE.Vector2());
     this.post.resize(size.x, size.y, post);
-    this.post.apply(post, time);
+    // Renders made for the photo tools and the bake engine stay ungraded.
+    this.post.grade = this.renderingFront ? NEUTRAL_GRADE : look.grade;
+    this.syncLut(this.renderingFront ? null : look.grade.lut);
+    this.post.apply(post, time, camera);
     this.renderer.setRenderTarget(this.post.target);
     this.renderer.setClearColor(new THREE.Color(...bg), transparent ? 0 : 1);
     this.renderer.clear();
     this.renderer.render(this.scene3d, camera);
     this.post.render(this.renderer, output);
+  }
+
+  /** The look being rendered: a loaded .ps2look, or one of the shipped looks. */
+  get look(): Look {
+    return this.customLook ?? LIGHTING_PRESETS[this.lighting] ?? LIGHTING_PRESETS.studio;
+  }
+
+  /** Whether lighting runs per pixel (the profile's lighting model unless overridden). */
+  get perPixel(): boolean {
+    const model = this.lightingModel === 'auto' ? (this.character?.engine.doc.export.lighting ?? 'vertex') : this.lightingModel;
+    return model === 'pixel';
+  }
+
+  /** The shadow mode in use (the profile's unless overridden). */
+  get shadows(): ShadowMode {
+    return this.shadowMode === 'auto' ? (this.character?.engine.doc.export.shadows ?? 'off') : this.shadowMode;
+  }
+
+  /**
+   * Baked maps per part (F16): r occlusion, g cavity, b thickness, a light
+   * occlusion, in the part's own UVs, with how strongly each darkens the diffuse.
+   */
+  setBakeMaps(maps: Map<string, { texture: THREE.Texture; ao: number; cavity: number; light: number }>): void {
+    this.bakeMaps = maps;
+  }
+
+  /** Load (once) and show the look's LUT; until it arrives the frame is ungraded by it. */
+  private syncLut(path: string | null): void {
+    this.lutWanted = path;
+    if (!path) {
+      this.post.setLut(null);
+      return;
+    }
+    let p = this.luts.get(path);
+    if (!p) {
+      p = fetch(resolveAssetUrl(this.options.assetBaseUrl, path))
+        .then((r) => (r.ok ? r.text() : Promise.reject(new Error(`${r.status}`))))
+        .then((t) => parseCube(t))
+        .catch((err: unknown) => {
+          console.warn(`LUT ${path} failed to load`, err);
+          return null;
+        });
+      this.luts.set(path, p);
+    }
+    void p.then((lut) => {
+      if (this.lutWanted === path) this.post.setLut(lut);
+    });
+  }
+
+  /** Resolves once the current look's LUT is loaded (renders for review wait for it). */
+  async lookReady(): Promise<void> {
+    const path = this.look.grade.lut;
+    this.syncLut(path);
+    if (path) {
+      const lut = await this.luts.get(path);
+      if (this.lutWanted === path) this.post.setLut(lut ?? null);
+    }
+  }
+
+  /** Key-light and flashlight shadow maps for this frame. */
+  private renderShadows(light: LightState, mode: ShadowMode): void {
+    if (mode === 'off') return;
+    const look = light.look;
+    const casters = [...this.objects.values()].filter((o) => o.mesh.visible).map((o) => ({ mesh: o.mesh, material: o.material }));
+    if (casters.length === 0) return;
+    const box = new THREE.Box3().setFromObject(this.root);
+    if (box.isEmpty()) return;
+    const bounds = box.getBoundingSphere(new THREE.Sphere());
+    const texel = 1 / this.shadowMaps.size;
+    for (const obj of this.objects.values()) {
+      const u = obj.material.uniforms;
+      u.uKeyShadow!.value = this.shadowMaps.key.target.depthTexture;
+      u.uKeyShadowMatrix!.value = this.shadowMaps.key.matrix;
+      u.uSpotShadow!.value = this.shadowMaps.spot.target.depthTexture;
+      u.uSpotShadowMatrix!.value = this.shadowMaps.spot.matrix;
+      (u.uShadowTexel!.value as THREE.Vector2).set(texel, texel);
+    }
+    if (look.lights.key) {
+      this.shadowMaps.placeKey(new THREE.Vector3(...look.lights.key.direction), bounds);
+      this.shadowMaps.render(this.renderer, this.scene3d, this.shadowMaps.key, casters);
+    }
+    if (look.lights.spot) {
+      this.shadowMaps.placeSpot(spotPosition(light), spotDirection(light), look.lights.spot.cosOuter, look.lights.spot.range);
+      this.shadowMaps.render(this.renderer, this.scene3d, this.shadowMaps.spot, casters);
+    }
   }
 
   // ------------------------------------------------------------ front views (PRD F7)
@@ -456,7 +604,7 @@ export class Viewport {
     mesh.frustumCulled = false;
     this.root.add(mesh);
     // The wireframe overlay is built lazily once the geometry has data (see syncWire).
-    return { part, mesh, wire: null, material, geometry, version: -1, texture: null, wireVersion: -1, skinSig: null };
+    return { part, mesh, wire: null, material, geometry, version: -1, texture: null, wireVersion: -1, skinSig: null, surface: surfaceOf(part) };
   }
 
   private updateObject(obj: PartObject): void {
@@ -552,6 +700,14 @@ export class Viewport {
         obj.material.uniforms.uMapRaw!.value = 1;
       })
       .catch((err: unknown) => console.warn('skin composite failed', err));
+  }
+
+  private gpuBaker: GpuBaker | null = null;
+
+  /** The GPU bake engine (F16), on this viewport's renderer (created on first use). */
+  get baker(): GpuBaker {
+    this.gpuBaker ??= new GpuBaker(this.renderer);
+    return this.gpuBaker;
   }
 
   /** The GPU skin compositor (created on first use). */

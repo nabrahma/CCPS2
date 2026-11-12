@@ -22,12 +22,14 @@ type Settings struct {
 	FirstRunCompleted bool   `json:"firstRunCompleted"`
 	CuratedView       bool   `json:"curatedView"`
 	Symmetry          bool   `json:"symmetry"`
+	// QualityProfile is the profile new characters start with (PRD Part 2 F13): classic, enhanced or hero.
+	QualityProfile string `json:"qualityProfile"`
 }
 
 // Defaults follow the PRD (12k target / 15k max, 1024 textures, 2 min autosave).
 func Defaults() Settings {
 	return Settings{TriangleBudget: 12000, HardMax: 15000, HeadTexture: 1024, BodyTexture: 1024, AutosaveMinutes: 2,
-		CuratedView: true, Symmetry: true}
+		CuratedView: true, Symmetry: true, QualityProfile: "enhanced"}
 }
 
 // Store reads and writes one settings file.
@@ -87,6 +89,9 @@ func (v *Settings) sanitise() {
 	}
 	if v.BodyTexture != 512 && v.BodyTexture != 1024 {
 		v.BodyTexture = d.BodyTexture
+	}
+	if v.QualityProfile != "classic" && v.QualityProfile != "enhanced" && v.QualityProfile != "hero" {
+		v.QualityProfile = d.QualityProfile
 	}
 	if v.AutosaveMinutes < 1 || v.AutosaveMinutes > 60 {
 		v.AutosaveMinutes = d.AutosaveMinutes

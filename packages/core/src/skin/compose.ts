@@ -13,7 +13,7 @@ import type { SparseWeights } from '../skeleton/weights';
 import type { HsvAdjust } from './blend';
 import { faceFeatures, type FaceFeatures } from './features';
 import type { RgbaImage } from './image';
-import { numParam } from './layers';
+import { BAKED_LAYER_CHANNEL, numParam } from './layers';
 import { SkinLayout, type SurfaceMap } from './layout';
 import { generateLayer, isProcedural } from './procedural';
 
@@ -73,6 +73,17 @@ export class SkinComposer {
     return this.maskImage;
   }
 
+  /** One channel of a baked map as a grey layer, with a contrast curve (cached by key). */
+  bakedChannel(image: RgbaImage, channel: number, contrast: number, key: string): RgbaImage {
+    let img = this.cache.get(key);
+    if (!img) {
+      img = bakedChannelImage(image, channel, contrast);
+      this.cache.set(key, img);
+      while (this.cache.size > 24) this.cache.delete(this.cache.keys().next().value!);
+    }
+    return img;
+  }
+
   /** Pixels of a procedural layer (cached by kind and parameters). */
   layerImage(layer: SkinLayer): RgbaImage {
     const key = proceduralKey(layer);
@@ -96,7 +107,12 @@ export class SkinComposer {
    * URL/path (null when unknown, and then the layer is skipped); `photo` is
    * the projected face layer, if any, with a key that changes with its pixels.
    */
-  resolve(skin: SkinStack, texture: (ref: string) => string | null, photo: { image: RgbaImage; key: string } | null): ResolvedSkin {
+  resolve(
+    skin: SkinStack,
+    texture: (ref: string) => string | null,
+    photo: { image: RgbaImage; key: string } | null,
+    baked: { image: RgbaImage; key: string } | null = null,
+  ): ResolvedSkin {
     const layers: ResolvedSkinLayer[] = [];
     if (photo && skin.photo && skin.photo.strength > 0) {
       layers.push({ key: `photo:${photo.key}`, label: 'Photo', blend: 'normal', opacity: skin.photo.strength, mask: 'none', source: { kind: 'pixels', image: photo.image } });
@@ -117,6 +133,12 @@ export class SkinComposer {
       } else if (isProcedural(l.kind)) {
         source = { kind: 'pixels', image: this.layerImage(l) };
         key = proceduralKey(l);
+      } else if (BAKED_LAYER_CHANNEL[l.kind] !== undefined) {
+        // Baked maps arrive from the bake engine; until then the layer is skipped.
+        if (!baked) continue;
+        const contrast = numParam(l, 'contrast');
+        key = `bake:${baked.key}:${l.kind}:${contrast}`;
+        source = { kind: 'pixels', image: this.bakedChannel(baked.image, BAKED_LAYER_CHANNEL[l.kind]!, contrast, key) };
       } else continue;
       layers.push({ key, label: l.kind, blend: l.blend, opacity: l.opacity, mask: l.mask, source });
     }
@@ -124,6 +146,16 @@ export class SkinComposer {
     const signature = JSON.stringify([base, layers.map((l) => [l.key, l.blend, l.opacity, l.mask])]);
     return { signature, size: SKIN_COMPOSITE_SIZE, base, masks: this.masks, layers };
   }
+}
+
+function bakedChannelImage(src: RgbaImage, channel: number, contrast: number): RgbaImage {
+  const data = new Uint8ClampedArray(src.data.length);
+  for (let i = 0; i < src.data.length; i += 4) {
+    const v = Math.round(255 * Math.pow(src.data[i + channel]! / 255, contrast));
+    data[i] = data[i + 1] = data[i + 2] = v;
+    data[i + 3] = 255;
+  }
+  return { width: src.width, height: src.height, data };
 }
 
 function proceduralKey(layer: SkinLayer): string {

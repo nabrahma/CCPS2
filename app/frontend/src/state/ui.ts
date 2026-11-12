@@ -1,6 +1,6 @@
 /** UI-only state (no character data): tabs, view options, selection, toasts. */
 import { create } from 'zustand';
-import type { AtlasRegion, PhotoCheck } from '@ps2cc/core';
+import type { AtlasRegion, LightingModel, Look, PhotoCheck, ShadowMode } from '@ps2cc/core';
 import type { GarmentFile } from '../backend';
 import { DEFAULT_POST, type CameraPresetId, type LightingPresetId, type PostSettings, type ShadingMode } from '@ps2cc/viewport';
 
@@ -47,6 +47,11 @@ export interface UiState {
   shading: ShadingMode;
   wireOverlay: boolean;
   lighting: LightingPresetId;
+  /** A look loaded from a .ps2look file (shown instead of `lighting`). */
+  customLook: Look | null;
+  /** 'auto': the character's quality profile decides (F13). */
+  lightingModel: 'auto' | LightingModel;
+  shadowMode: 'auto' | ShadowMode;
   post: PostSettings;
   camera: CameraPresetId;
   turntable: boolean;
@@ -73,7 +78,11 @@ export interface UiState {
   setSearch(v: string): void;
   toggleLock(id: string): void;
   select(key: string | null): void;
-  setView(patch: Partial<Pick<UiState, 'shading' | 'wireOverlay' | 'lighting' | 'post' | 'camera' | 'turntable' | 'poseTest' | 'background' | 'backgroundImage'>>): void;
+  setView(
+    patch: Partial<
+      Pick<UiState, 'shading' | 'wireOverlay' | 'lighting' | 'customLook' | 'lightingModel' | 'shadowMode' | 'post' | 'camera' | 'turntable' | 'poseTest' | 'background' | 'backgroundImage'>
+    >,
+  ): void;
   info(message: string): void;
   error(message: string, err?: unknown): void;
   dismiss(id: number): void;
@@ -97,6 +106,9 @@ export const useUi = create<UiState>((set) => ({
   shading: 'ps2',
   wireOverlay: false,
   lighting: 'studio',
+  customLook: null,
+  lightingModel: 'auto',
+  shadowMode: 'auto',
   post: { ...DEFAULT_POST },
   camera: 'full',
   turntable: false,

@@ -136,7 +136,11 @@ test('a texture finer than its export is shown as the export will look', async (
   });
   await page.evaluate(async (u) => {
     const s = (window as unknown as TestWindow).__ps2cc;
-    s.engine.update('fine', (d) => void (d.garments[0]!.texture = u));
+    s.engine.update('fine', (d) => {
+      d.garments[0]!.texture = u;
+      // A 1024 px garment atlas (Classic's): the test texture is twice what export keeps.
+      d.export.garmentAtlas = 1024;
+    });
     await s.settled();
   }, url);
   // Right up against the cloth, where the mip chain alone would still show the full texture.

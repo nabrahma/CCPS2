@@ -20,6 +20,8 @@ namespace PS2CC.Editor
         public BudgetInfo budget;
         public string[] blendshapes;
         public SourceInfo source;
+        /// <summary>Quality profile (Part 2 F13): per-vertex or per-pixel light, shadows. Null in exports before 0.13.</summary>
+        public QualityInfo quality;
 
         [NonSerialized] public string json;
         [NonSerialized] public string path;
@@ -94,6 +96,20 @@ namespace PS2CC.Editor
         public bool volumeNormals;
         public int maxSize;
         public bool alphaIsTransparency;
+        /// <summary>skin, cloth, hair or eyes: the per-pixel model's wrap, gloss and highlight (PS2Common.hlsl).</summary>
+        public string surface;
+    }
+
+    [Serializable]
+    public sealed class QualityInfo
+    {
+        public string profile;
+        /// <summary>vertex or pixel.</summary>
+        public string lighting;
+        /// <summary>off, key or self.</summary>
+        public string shadows;
+        public bool bakedOcclusion;
+        public bool bakedLight;
     }
 
     [Serializable] public sealed class Trs { public float[] position; public float[] rotation; public float[] scale; }

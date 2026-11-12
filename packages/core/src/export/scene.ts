@@ -25,6 +25,7 @@ import { skinPositions } from '../skeleton/skinning';
 import { MAX_INFLUENCES, type InfluenceTable } from '../skeleton/weights';
 import { bodyTexture, cropHeadTexture, packHead, splitBody } from '../skin/headsplit';
 import { EYES_ATLAS_SIZE, GARMENT_ATLAS_SIZE, HAIR_TEXTURE_LIMIT } from './limits';
+import { garmentBakeStrength, multiplyBaked } from '../bake/apply';
 import { createImage, resizeImage, type RgbaImage } from '../skin/image';
 import { atlasUv, packAtlas } from './atlas';
 import { expressionDef } from '../expression/map';
@@ -99,9 +100,14 @@ export interface ExportOptions {
   /** Rotate the arms to a T-pose and re-bake the meshes (PRD 6.2 option). */
   tPose?: boolean;
   appVersion?: string;
-  /** Garment and eyes atlas sizes. */
+  /** Garment and eyes atlas sizes (default: the document's export settings). */
   garmentAtlas?: number;
   eyesAtlas?: number;
+  /**
+   * Baked maps per garment part key (F16; r occlusion, g cavity, a light, in the
+   * garment's UVs), multiplied into its texture. The body's are in the skin.
+   */
+  baked?: (partKey: string) => RgbaImage | null;
 }
 
 /** Names that are safe in files, FBX and Unity: letters, digits, space, _ . - ( ), at most 48 characters. */
@@ -140,7 +146,9 @@ export async function buildExportScene(scene: CharacterScene, opts: ExportOption
   {
     const inf = scene.influences('body')!;
     const posed = skinMats ? skinPositions(bodyPart.positions, inf, skinMats) : bodyPart.positions;
-    for (const i of bodyPart.indices) lowest = Math.min(lowest, posed[i * 3 + 1]!);
+    // Every body vertex, hidden ones too: boots hide the feet, and the soles still belong on the ground
+    // (the viewport does the same, so app and Unity frame the character alike).
+    for (let i = 1; i < posed.length; i += 3) lowest = Math.min(lowest, posed[i]!);
   }
   const lift = -lowest;
   // Blendshapes to bake: the document's list, in its order, as far as the expression map knows them.
@@ -208,7 +216,7 @@ export async function buildExportScene(scene: CharacterScene, opts: ExportOption
   const hair = scene.parts.find((p) => p.kind === 'hair');
   if (hair) {
     const tex = hair.material.texture ? await opts.loadImage(hair.material.texture) : createImage(4, 4, [255, 255, 255, 255]);
-    const img = limit(tint(tex, hair.material.tint), HAIR_TEXTURE_LIMIT);
+    const img = limit(tint(tex, hair.material.tint), doc.export.hairTexture ?? HAIR_TEXTURE_LIMIT);
     const mat = addMaterial('hair', 'PS2/Cutout', img, Math.max(img.width, img.height), true, hair.material.alphaThreshold, true);
     materials[mat]!.volumeNormals = Boolean(hair.material.volumeNormals);
     meshes.push(compact(`${name}_Hair`, 'hair', source(hair), hair.indices, mat));
@@ -237,9 +245,14 @@ export async function buildExportScene(scene: CharacterScene, opts: ExportOption
     meshes.push(concat(`${name}_${role[0]!.toUpperCase()}${role.slice(1)}`, role, pieces, mat));
   };
   const garments = scene.parts.filter((p) => p.kind === 'garment');
-  await merged('garments', garments, opts.garmentAtlas ?? GARMENT_ATLAS_SIZE, 'PS2/Cloth', (p, img) => dirt(tint(img, p.material.tint), p.material.dirt));
+  const bakeStrength = garmentBakeStrength(doc.export.bakeLight);
+  await merged('garments', garments, opts.garmentAtlas ?? doc.export.garmentAtlas ?? GARMENT_ATLAS_SIZE, 'PS2/Cloth', (p, img) => {
+    const out = dirt(tint(img, p.material.tint), p.material.dirt);
+    const map = doc.export.bakeAO || doc.export.bakeLight ? opts.baked?.(p.key) : null;
+    return map ? multiplyBaked(out, map, bakeStrength) : out;
+  });
   const eyes = scene.parts.filter((p) => p.kind === 'eyes' || p.kind === 'eyebrows' || p.kind === 'eyelashes' || p.kind === 'teeth');
-  await merged('eyes', eyes, opts.eyesAtlas ?? EYES_ATLAS_SIZE, 'PS2/Cutout', (p, img) => remapAlpha(tint(img, p.material.tint), p.material.alphaCutout ? p.material.alphaThreshold : 0, 0.5));
+  await merged('eyes', eyes, opts.eyesAtlas ?? doc.export.eyesAtlas ?? EYES_ATLAS_SIZE, 'PS2/Cutout', (p, img) => remapAlpha(tint(img, p.material.tint), p.material.alphaCutout ? p.material.alphaThreshold : 0, 0.5));
 
   const tWorld = opts.tPose ? world : tPoseWorld(scene);
   const tBones: ExportBone[] = rig.bones.map((b, i) => {
@@ -260,8 +273,27 @@ export async function buildExportScene(scene: CharacterScene, opts: ExportOption
     meshes: meshes.map((m) => ({ name: m.name, role: m.role, vertices: m.positions.length / 3, triangles: m.indices.length / 3, blendshapes: m.shapes.map((s) => s.name) })),
     materials: materials.map((m) => {
       const t = textures.find((x) => x.file === m.texture)!;
-      return { name: m.name, shader: m.shader, role: m.role, texture: m.texture, alphaClip: m.alphaClip, doubleSided: m.doubleSided, volumeNormals: Boolean(m.volumeNormals), maxSize: t.maxSize, alphaIsTransparency: t.alpha };
+      return {
+        name: m.name,
+        shader: m.shader,
+        role: m.role,
+        texture: m.texture,
+        alphaClip: m.alphaClip,
+        doubleSided: m.doubleSided,
+        volumeNormals: Boolean(m.volumeNormals),
+        maxSize: t.maxSize,
+        alphaIsTransparency: t.alpha,
+        surface: surfaceOfRole(m.role),
+      };
     }),
+    // Quality profile (Part 2 F13, F22): how the PS2 shaders light this character in Unity.
+    quality: {
+      profile: doc.export.profile,
+      lighting: doc.export.lighting,
+      shadows: doc.export.shadows,
+      bakedOcclusion: doc.export.bakeAO,
+      bakedLight: doc.export.bakeLight,
+    },
     // Rest transforms, plus the T-pose the Unity importer uses as the Humanoid reference pose
     // (Unity's "Enforce T-Pose"), so retargeted animations keep the arms where they belong.
     skeleton: bones.map((b, i) => ({ name: b.name, parent: b.parent, ...localTrs(bones, b), tPose: localTrs(tBones, tBones[i]!) })),
@@ -283,6 +315,13 @@ export async function buildExportScene(scene: CharacterScene, opts: ExportOption
     },
   };
   return { name, bones, meshes, materials, textures, sidecar };
+}
+
+/** The per-pixel model's surface for each exported material (viewport materials.ts SURFACES, PS2Common.hlsl). */
+function surfaceOfRole(role: MaterialRole): 'skin' | 'cloth' | 'hair' | 'eyes' {
+  if (role === 'head' || role === 'body') return 'skin';
+  if (role === 'hair') return 'hair';
+  return 'cloth';
 }
 
 /** Keep only the vertices a triangle list uses, in first-use order. */

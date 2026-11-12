@@ -97,8 +97,12 @@ export function resizeImage(src: RgbaImage, width: number, height: number): Rgba
     for (let x = 0; x < width; x++) {
       const x0 = x * sx;
       const x1 = x0 + sx;
+      // Colour is weighted by alpha, so transparent texels (often black) do not darken the edges
+      // of cutouts such as hair strands; alpha itself is a plain average. Opaque images are unaffected.
       const acc = [0, 0, 0, 0];
+      const accA = [0, 0, 0];
       let wsum = 0;
+      let asum = 0;
       for (let py = Math.floor(y0); py < Math.ceil(y1); py++) {
         const wy = Math.min(y1, py + 1) - Math.max(y0, py);
         if (wy <= 0 || py >= src.height) continue;
@@ -107,11 +111,16 @@ export function resizeImage(src: RgbaImage, width: number, height: number): Rgba
           if (wx <= 0 || px >= src.width) continue;
           const w = wx * wy;
           const i = (py * src.width + px) * 4;
+          const wa = w * src.data[i + 3]!;
           for (let k = 0; k < 4; k++) acc[k]! += src.data[i + k]! * w;
+          for (let k = 0; k < 3; k++) accA[k]! += src.data[i + k]! * wa;
           wsum += w;
+          asum += wa;
         }
       }
-      for (let k = 0; k < 4; k++) out.data[(y * width + x) * 4 + k] = acc[k]! / wsum;
+      const o = (y * width + x) * 4;
+      for (let k = 0; k < 3; k++) out.data[o + k] = asum > 0 ? accA[k]! / asum : acc[k]! / wsum;
+      out.data[o + 3] = acc[3]! / wsum;
     }
   }
   return out;

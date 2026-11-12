@@ -146,10 +146,10 @@ suite('with the shipped assets', () => {
       engine.update('one', (d) => void d.garments.push(wear('mh:clothes/male_casualsuit01')));
       await scene.sync();
       const garment = () => scene.parts.find((p) => p.kind === 'garment')!;
-      expect(scene.exportTexels(garment()).texels).toBe(atlasCellTexels(1, GARMENT_ATLAS_SIZE));
+      expect(scene.exportTexels(garment()).texels).toBe(atlasCellTexels(1, engine.doc.export.garmentAtlas));
       engine.update('two', (d) => void d.garments.push(wear('mh:clothes/male_worksuit01')));
       await scene.sync();
-      expect(scene.exportTexels(garment()).texels).toBe(atlasCellTexels(2, GARMENT_ATLAS_SIZE));
+      expect(scene.exportTexels(garment()).texels).toBe(atlasCellTexels(2, engine.doc.export.garmentAtlas));
     });
 
     it('marks head vertices, and only those', async () => {

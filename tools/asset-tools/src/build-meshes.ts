@@ -20,11 +20,18 @@ const here = dirname(fileURLToPath(import.meta.url));
 const REPO = resolve(here, '../../..');
 const ASSETS = join(REPO, 'assets', 'core');
 
-export const BODY_TARGETS = [
+/**
+ * Body tiers (PRD F2). From Part 2 F13: 12k and up keep the lower face (lips, chin, mouth
+ * interior), 16k and up the whole head at full density. 0 triangles: no reduction.
+ */
+export const BODY_TARGETS: readonly { id: string; triangles: number; fullHead?: boolean; lockLowerFace?: boolean }[] = [
   { id: 'ps2_body_8k', triangles: 8000 },
   { id: 'ps2_body_10k', triangles: 10000 },
-  { id: 'ps2_body_12k', triangles: 12000 },
-] as const;
+  { id: 'ps2_body_12k', triangles: 12000, lockLowerFace: true },
+  { id: 'ps2_body_16k', triangles: 16000, fullHead: true, lockLowerFace: true },
+  { id: 'ps2_body_20k', triangles: 20000, fullHead: true, lockLowerFace: true },
+  { id: 'ps2_body_full', triangles: 0, fullHead: true },
+];
 
 function wireframe(base: BaseMesh, r: Ps2BodyResult, view: 'front' | 'side', size = 1024): Uint8Array {
   const c = new Canvas(size, size);
@@ -100,8 +107,9 @@ async function main(): Promise<void> {
   mkdirSync(join(REPO, 'docs', 'milestones', 'M4'), { recursive: true });
 
   for (const t of BODY_TARGETS) {
-    const r = await buildPs2Body(base, t.id, t.triangles);
+    const r = await buildPs2Body(base, t.id, t.triangles || Number.MAX_SAFE_INTEGER, { fullHead: t.fullHead, lockLowerFace: t.lockLowerFace });
     const tris = r.indices.length / 3;
+    const target = t.triangles || tris;
     const w = new ContainerWriter();
     w.add('sourceVertex', r.sourceVertex, 'u32');
     w.add('uvs', r.uvs, 'f32');
@@ -110,7 +118,7 @@ async function main(): Promise<void> {
     w.write(join(ASSETS, 'bodymesh', t.id), {
       format: 'ps2cc.ps2body/1',
       id: t.id,
-      targetTriangles: t.triangles,
+      targetTriangles: target,
       triangleCount: tris,
       vertexCount: r.sourceVertex.length,
       regions: REGIONS,
@@ -127,8 +135,8 @@ async function main(): Promise<void> {
     const row = {
       id: t.id,
       triangles: tris,
-      target: t.triangles,
-      deviation: `${(((tris - t.triangles) / t.triangles) * 100).toFixed(2)}%`,
+      target,
+      deviation: `${(((tris - target) / target) * 100).toFixed(2)}%`,
       vertices: r.sourceVertex.length,
       faceRetention: `${(r.faceRetention * 100).toFixed(1)}%`,
       flipped: r.flippedTriangles,

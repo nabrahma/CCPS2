@@ -112,6 +112,171 @@
    }
   },
   {
+   "character": "male-12k",
+   "blink_L": {
+    "upperLidWeight": 1,
+    "restVisibleRays": 1136,
+    "closedVisibleRays": 0,
+    "otherEyeVisibleRays": 1136,
+    "raysOnEyeball": 7107,
+    "lashCrossingsAtRest": 37,
+    "lashCrossingsAddedByWeight": {
+     "1": {
+      "added": 7,
+      "visible": 0
+     },
+     "0.25": {
+      "added": 1,
+      "visible": 1
+     },
+     "0.5": {
+      "added": 5,
+      "visible": 5
+     },
+     "0.75": {
+      "added": 7,
+      "visible": 3
+     }
+    }
+   },
+   "blink_R": {
+    "upperLidWeight": 1,
+    "restVisibleRays": 1136,
+    "closedVisibleRays": 0,
+    "otherEyeVisibleRays": 1136,
+    "raysOnEyeball": 7107,
+    "lashCrossingsAtRest": 37,
+    "lashCrossingsAddedByWeight": {
+     "1": {
+      "added": 7,
+      "visible": 0
+     },
+     "0.25": {
+      "added": 1,
+      "visible": 1
+     },
+     "0.5": {
+      "added": 5,
+      "visible": 5
+     },
+     "0.75": {
+      "added": 7,
+      "visible": 3
+     }
+    }
+   }
+  },
+  {
+   "character": "male-16k",
+   "blink_L": {
+    "upperLidWeight": 1,
+    "restVisibleRays": 1136,
+    "closedVisibleRays": 0,
+    "otherEyeVisibleRays": 1136,
+    "raysOnEyeball": 7107,
+    "lashCrossingsAtRest": 37,
+    "lashCrossingsAddedByWeight": {
+     "1": {
+      "added": 7,
+      "visible": 0
+     },
+     "0.25": {
+      "added": 1,
+      "visible": 1
+     },
+     "0.5": {
+      "added": 5,
+      "visible": 5
+     },
+     "0.75": {
+      "added": 7,
+      "visible": 3
+     }
+    }
+   },
+   "blink_R": {
+    "upperLidWeight": 1,
+    "restVisibleRays": 1136,
+    "closedVisibleRays": 0,
+    "otherEyeVisibleRays": 1136,
+    "raysOnEyeball": 7107,
+    "lashCrossingsAtRest": 37,
+    "lashCrossingsAddedByWeight": {
+     "1": {
+      "added": 7,
+      "visible": 0
+     },
+     "0.25": {
+      "added": 1,
+      "visible": 1
+     },
+     "0.5": {
+      "added": 5,
+      "visible": 5
+     },
+     "0.75": {
+      "added": 7,
+      "visible": 3
+     }
+    }
+   }
+  },
+  {
+   "character": "male-full",
+   "blink_L": {
+    "upperLidWeight": 1,
+    "restVisibleRays": 1136,
+    "closedVisibleRays": 0,
+    "otherEyeVisibleRays": 1136,
+    "raysOnEyeball": 7107,
+    "lashCrossingsAtRest": 37,
+    "lashCrossingsAddedByWeight": {
+     "1": {
+      "added": 7,
+      "visible": 0
+     },
+     "0.25": {
+      "added": 1,
+      "visible": 1
+     },
+     "0.5": {
+      "added": 5,
+      "visible": 5
+     },
+     "0.75": {
+      "added": 7,
+      "visible": 3
+     }
+    }
+   },
+   "blink_R": {
+    "upperLidWeight": 1,
+    "restVisibleRays": 1136,
+    "closedVisibleRays": 0,
+    "otherEyeVisibleRays": 1136,
+    "raysOnEyeball": 7107,
+    "lashCrossingsAtRest": 37,
+    "lashCrossingsAddedByWeight": {
+     "1": {
+      "added": 7,
+      "visible": 0
+     },
+     "0.25": {
+      "added": 1,
+      "visible": 1
+     },
+     "0.5": {
+      "added": 5,
+      "visible": 5
+     },
+     "0.75": {
+      "added": 7,
+      "visible": 3
+     }
+    }
+   }
+  },
+  {
    "character": "random-0-8k",
    "blink_L": {
     "upperLidWeight": 1.25,
@@ -360,6 +525,48 @@
    }
   },
   {
+   "character": "male-12k",
+   "jawOpen": {
+    "seamMismatchMm": 0,
+    "worstEdgeStretch": 3.347,
+    "worstEdgeStretchAcrossLipCorners": 4.233,
+    "foldedTriangles": 20,
+    "foldedAreaMm2": 34.21,
+    "farthestFoldFromMouthRimMm": 9.64,
+    "makehumanFullMeshFolds": 22,
+    "chinDropMm": 26.78,
+    "lowerTeethDropMm": 26.4
+   }
+  },
+  {
+   "character": "male-16k",
+   "jawOpen": {
+    "seamMismatchMm": 0,
+    "worstEdgeStretch": 3.347,
+    "worstEdgeStretchAcrossLipCorners": 4.233,
+    "foldedTriangles": 20,
+    "foldedAreaMm2": 34.21,
+    "farthestFoldFromMouthRimMm": 9.64,
+    "makehumanFullMeshFolds": 22,
+    "chinDropMm": 26.78,
+    "lowerTeethDropMm": 26.4
+   }
+  },
+  {
+   "character": "male-full",
+   "jawOpen": {
+    "seamMismatchMm": 0,
+    "worstEdgeStretch": 3.347,
+    "worstEdgeStretchAcrossLipCorners": 4.233,
+    "foldedTriangles": 20,
+    "foldedAreaMm2": 34.21,
+    "farthestFoldFromMouthRimMm": 9.64,
+    "makehumanFullMeshFolds": 22,
+    "chinDropMm": 26.78,
+    "lowerTeethDropMm": 26.4
+   }
+  },
+  {
    "character": "random-0-8k",
    "jawOpen": {
     "seamMismatchMm": 0,
@@ -391,11 +598,11 @@
    "character": "random-2-12k",
    "jawOpen": {
     "seamMismatchMm": 0,
-    "worstEdgeStretch": 2.376,
-    "worstEdgeStretchAcrossLipCorners": 2.766,
-    "foldedTriangles": 3,
-    "foldedAreaMm2": 1.26,
-    "farthestFoldFromMouthRimMm": 0.6,
+    "worstEdgeStretch": 2.841,
+    "worstEdgeStretchAcrossLipCorners": 2.841,
+    "foldedTriangles": 8,
+    "foldedAreaMm2": 10.24,
+    "farthestFoldFromMouthRimMm": 4.18,
     "makehumanFullMeshFolds": 4,
     "chinDropMm": 23.26,
     "lowerTeethDropMm": 22.36

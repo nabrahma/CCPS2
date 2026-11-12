@@ -137,23 +137,23 @@ test('round trip: save, reload, load gives a byte-identical export', async ({ pa
   }
 });
 
-test('first-run setup: Unity project and budget, shown once', async ({ page }) => {
+test('first-run setup: Unity project and quality profile, shown once', async ({ page }) => {
   await boot(page, { firstRun: true });
   await expect(page.getByTestId('first-run')).toBeVisible();
   await page.getByTestId('firstrun-project').fill('C:\\Projects\\MyGame');
-  await page.getByLabel('Triangle budget').selectOption('10000');
+  await page.getByTestId('firstrun-profile').selectOption('hero');
   await page.getByTestId('firstrun-done').click();
   await expect(page.getByTestId('first-run')).toBeHidden();
   const state = await page.evaluate(() => {
     const s = (window as unknown as TestWindow).__ps2cc;
     return { settings: JSON.parse(localStorage.getItem('ps2cc:settings') ?? '{}'), exportSettings: s.engine.doc.export, dirty: s.dirty };
   });
-  expect(state.settings).toMatchObject({ firstRunCompleted: true, unityProject: 'C:\\Projects\\MyGame', triangleBudget: 10000 });
-  expect(state.exportSettings).toMatchObject({ unityProject: 'C:\\Projects\\MyGame', triangleBudget: 10000 });
+  expect(state.settings).toMatchObject({ firstRunCompleted: true, unityProject: 'C:\\Projects\\MyGame', qualityProfile: 'hero' });
+  expect(state.exportSettings).toMatchObject({ unityProject: 'C:\\Projects\\MyGame', profile: 'hero', triangleBudget: 30000 });
   expect(state.dirty).toBe(false);
   // New characters start from the settings too, and the setup does not come back.
   await page.evaluate(() => (window as unknown as TestWindow).__ps2cc.newCharacter());
-  expect(await page.evaluate(() => (window as unknown as TestWindow).__ps2cc.engine.doc.export.triangleBudget)).toBe(10000);
+  expect(await page.evaluate(() => (window as unknown as TestWindow).__ps2cc.engine.doc.export.profile)).toBe('hero');
   await page.reload();
   await page.waitForFunction(() => Boolean((window as unknown as TestWindow).__ps2cc), undefined, { timeout: 120_000 });
   await expect(page.getByTestId('budget')).toBeVisible();

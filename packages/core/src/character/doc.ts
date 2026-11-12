@@ -7,12 +7,21 @@
  */
 import { validateAtlas, type AtlasSpec } from '../hair/atlas';
 import { sanitiseStyle, type HairStyleParams } from '../hair/style';
-import { sanitiseSkin } from '../skin/layers';
+import { newLayer, sanitiseSkin } from '../skin/layers';
 import { DEFAULT_MACROS, normaliseEthnic, type MacroValues } from '../morph/macros';
+import {
+  DEFAULT_PROFILE,
+  profileSettings,
+  sanitiseExport,
+  type LightingModel,
+  type QualityProfileId,
+  type ShadowMode,
+  type TextureSize,
+} from '../quality/profiles';
 
 export const CHARACTER_SCHEMA = 1;
 
-export type BodyMeshId = 'ps2_body_8k' | 'ps2_body_10k' | 'ps2_body_12k';
+export type BodyMeshId = 'ps2_body_8k' | 'ps2_body_10k' | 'ps2_body_12k' | 'ps2_body_16k' | 'ps2_body_20k' | 'ps2_body_full';
 export type GarmentSlotName = 'top' | 'bottom' | 'full' | 'outer' | 'shoes' | 'hat' | 'gloves' | 'accessory';
 export type BlendMode = 'normal' | 'multiply' | 'overlay' | 'screen';
 export type RegionMask = 'none' | 'face' | 'body' | 'hands';
@@ -37,7 +46,11 @@ export interface SkinLayer {
     | 'dirt'
     | 'bruises'
     | 'sweat'
-    | 'image';
+    | 'image'
+    // Baked from the assembled character by the bake engine (Part 2 F16).
+    | 'occlusion'
+    | 'cavity'
+    | 'lightBake';
   enabled: boolean;
   opacity: number;
   blend: BlendMode;
@@ -104,10 +117,24 @@ export interface AssetRef {
 }
 
 export interface ExportSettings {
-  triangleBudget: number; // default 12000
-  hardMax: number; // 15000
-  headTexture: 512 | 1024;
-  bodyTexture: 512 | 1024;
+  /** The quality profile these settings came from (F13); the fields below may override it. */
+  profile: QualityProfileId;
+  triangleBudget: number;
+  hardMax: number;
+  /** Most triangles for card hair; each style's budget is scaled to it. */
+  hairBudget: number;
+  headTexture: TextureSize;
+  bodyTexture: TextureSize;
+  hairTexture: TextureSize;
+  garmentAtlas: TextureSize;
+  eyesAtlas: TextureSize;
+  /** How Unity lights the character: per vertex (Classic) or per pixel. */
+  lighting: LightingModel;
+  shadows: ShadowMode;
+  /** Bake ambient occlusion from the whole character into the diffuse textures. */
+  bakeAO: boolean;
+  /** Bake sky and key light occlusion into the diffuse (for per-vertex lighting). */
+  bakeLight: boolean;
   writeGlb: boolean;
   tPose: boolean;
   unityProject?: string | null;
@@ -161,14 +188,14 @@ export function newId(): string {
   });
 }
 
-export function defaultCharacter(name = 'New character'): CharacterDoc {
-  return {
+export function defaultCharacter(name = 'New character', profileId: QualityProfileId = DEFAULT_PROFILE): CharacterDoc {
+  return withBakeLayers({
     schema: CHARACTER_SCHEMA,
     id: newId(),
     name,
     macros: { ...DEFAULT_MACROS },
     modifiers: {},
-    bodyMesh: 'ps2_body_8k', // leaves room for hair and clothes in the 12k default budget (D-031)
+    bodyMesh: bodyMeshFor(profileId), // leaves room for hair and clothes in the profile's budget (D-031, F13)
     skin: { base: 'mh:skins/young_caucasian_male', layers: [], photo: null },
     eyes: { asset: 'mh:eyes/low-poly' },
     eyebrows: { asset: 'mh:eyebrows/eyebrow001', tint: { ...NEUTRAL_TINT, color: [1, 1, 1] }, opacity: 1 },
@@ -178,15 +205,32 @@ export function defaultCharacter(name = 'New character'): CharacterDoc {
     hair: { mode: 'none', tint: { ...NEUTRAL_TINT, color: [1, 1, 1] }, alphaThreshold: 0.5 },
     expressionsToBake: [...DEFAULT_EXPRESSIONS],
     export: {
-      triangleBudget: 12000,
-      hardMax: 15000,
-      headTexture: 1024,
-      bodyTexture: 1024,
+      ...profileSettings(profileId),
       writeGlb: false,
       tPose: false,
       unityProject: null,
     },
-  };
+  });
+}
+
+/**
+ * Make sure the skin stack has the baked layers the export settings ask for
+ * (F16): occlusion and cavity when baking occlusion, light when baking light.
+ * They go at the bottom of the stack, right above the base skin. Layers the
+ * user already has are left alone. Returns the document (changed in place).
+ */
+export function withBakeLayers(doc: CharacterDoc): CharacterDoc {
+  const has = (k: SkinLayer['kind']) => doc.skin.layers.some((l) => l.kind === k);
+  const add: SkinLayer[] = [];
+  if (doc.export.bakeAO && !has('occlusion')) add.push(newLayer('occlusion'), newLayer('cavity'));
+  if (doc.export.bakeLight && !has('lightBake')) add.push(newLayer('lightBake'));
+  if (add.length) doc.skin.layers = [...add, ...doc.skin.layers];
+  return doc;
+}
+
+/** The body tier a profile starts with. */
+export function bodyMeshFor(id: QualityProfileId): BodyMeshId {
+  return id === 'classic' ? 'ps2_body_8k' : id === 'enhanced' ? 'ps2_body_12k' : 'ps2_body_16k';
 }
 
 export class CharacterDocError extends Error {}
@@ -235,7 +279,8 @@ export function parseCharacter(json: unknown): CharacterDoc {
     skin: sanitiseSkin(raw.skin, base.skin.base),
     garments: Array.isArray(raw.garments) ? raw.garments : [],
     hair: sanitiseHair({ ...base.hair, ...(raw.hair ?? {}) }),
-    export: { ...base.export, ...(raw.export ?? {}) },
+    // Old documents (no profile) keep the settings they were made with (LEGACY_EXPORT).
+    export: sanitiseExport(raw.export, base.export),
     expressionsToBake: Array.isArray(raw.expressionsToBake) ? raw.expressionsToBake : base.expressionsToBake,
   };
 }

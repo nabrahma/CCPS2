@@ -47,7 +47,7 @@
             "expressionsInfo": [
                 "Custom Shirt_Head/blink_L: moves up to 9.5 mm",
                 "Custom Shirt_Head/blink_R: moves up to 9.5 mm",
-                "Custom Shirt_Head/jawOpen: moves up to 35.4 mm",
+                "Custom Shirt_Head/jawOpen: moves up to 33.4 mm",
                 "Custom Shirt_Eyes/blink_L: moves up to 12.4 mm",
                 "Custom Shirt_Eyes/jawOpen: moves up to 0.9 mm"
             ],
@@ -159,7 +159,7 @@
             "expressionsInfo": [
                 "Default Male_Head/blink_L: moves up to 9.5 mm",
                 "Default Male_Head/blink_R: moves up to 9.5 mm",
-                "Default Male_Head/jawOpen: moves up to 35.4 mm",
+                "Default Male_Head/jawOpen: moves up to 33.4 mm",
                 "Default Male_Eyes/blink_L: moves up to 12.4 mm",
                 "Default Male_Eyes/jawOpen: moves up to 0.9 mm"
             ],
@@ -271,7 +271,7 @@
             "expressionsInfo": [
                 "Old Man_Head/blink_L: moves up to 9.7 mm",
                 "Old Man_Head/blink_R: moves up to 9.7 mm",
-                "Old Man_Head/jawOpen: moves up to 33.9 mm",
+                "Old Man_Head/jawOpen: moves up to 32.7 mm",
                 "Old Man_Eyes/blink_L: moves up to 13.0 mm",
                 "Old Man_Eyes/jawOpen: moves up to 1.0 mm"
             ],
@@ -355,7 +355,7 @@
             "expressionsInfo": [
                 "Worker_Head/blink_L: moves up to 9.9 mm",
                 "Worker_Head/blink_R: moves up to 9.9 mm",
-                "Worker_Head/jawOpen: moves up to 35.0 mm",
+                "Worker_Head/jawOpen: moves up to 33.2 mm",
                 "Worker_Eyes/blink_L: moves up to 13.0 mm",
                 "Worker_Eyes/jawOpen: moves up to 0.9 mm"
             ],

@@ -11,14 +11,15 @@ It needs no Blender, no Python and no network connection to run.
 ## What it does
 
 - **Body and face:** MakeHuman's morph system, with curated sliders, symmetry, locks, randomize, undo, and your own presets.
-- **PS2-sized meshes:** 8k, 10k and 12k triangle bodies, with a live budget meter for triangles, texture memory, bones and blendshapes.
+- **Quality profiles:** Classic, Enhanced and Hero set every budget at once (12k to 30k triangles, 512 to 2048 textures), with bodies from 8k triangles to the full MakeHuman mesh and a live budget meter for triangles, texture memory, bones and blendshapes.
 - **Wardrobe:** CC0 garments reduced to PS2 budgets, which refit to every body shape and hide the skin underneath. Drop a PNG on a garment to retexture it.
 - **Your own garments:** export the base body, model around it, then import OBJ, FBX or GLB. PS2CC binds, weights and decimates it for you.
 - **Card hair:** a groom of guide curves with cards built along them, controlled by sliders. Built-in card textures in five colours, or drop in your own. Paint the hairline, or use MakeHuman hair meshes. See [docs/hair-system.md](docs/hair-system.md).
 - **Skin:** layered skin with overlays, projection of a face photo onto the head, and an optional fit of the face's shape to the photo.
 - **Expressions:** 15 blendshapes, including blinks and visemes, baked at export.
-- **PS2 preview:** per-vertex lighting, lighting presets, low resolution, 16-bit dither and interlace post effects, and textures shown at their export size.
-- **Unity export:** one FBX per character, with textures. The included Unity package sets up the Humanoid avatar, PS2 URP shaders, materials and a prefab.
+- **PS2 preview:** per-vertex or per-pixel lighting with shadows, graded looks (fog, filmic curve, LUT, bloom, grain), low resolution, 16-bit dither and interlace effects, and textures shown at their export size. Looks save as `.ps2look` files for Unity.
+- **Baking:** a GPU ray tracer bakes occlusion, cavity and thickness from the whole character into its textures, the way the era's games baked shading. See [docs/look-foundation.md](docs/look-foundation.md).
+- **Unity export:** one FBX per character, with textures. The included Unity package sets up the Humanoid avatar, PS2 URP shaders that light the same way as the app, materials and a prefab. A PS2 Look component applies a saved look in your scene.
 
 ## Status
 

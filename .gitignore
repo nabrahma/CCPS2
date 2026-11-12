@@ -33,6 +33,10 @@ docs/milestones/M6/test_photos/
 # Reference files you download yourself (not ours to publish)
 *.blend
 *.blend1
+# Private reference images for the benchmark board (PRD Part 2 principle 8): never committed.
+refs/
+# The benchmark board's working folder; accepted boards are copied to docs/bench/accepted.
+docs/bench/latest/
 
 # Local settings, logs and secrets
 .env
@@ -50,3 +54,6 @@ Thumbs.db
 app/build/windows/installer/tmp/
 # Build tools downloaded for the installer (NSIS, TOOLCHAIN.md)
 tools/.toolcache/
+
+# Part 2 PRD stays local
+/PRD-Part2-Visual-Fidelity.md

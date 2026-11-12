@@ -1,5 +1,16 @@
 import { useRef, useState } from 'react';
-import type { BodyMeshId } from '@ps2cc/core';
+import {
+  bodyMeshFor,
+  profileOverrides,
+  profileSettings,
+  QUALITY_PROFILE_IDS,
+  QUALITY_PROFILES,
+  type BodyMeshId,
+  type ExportSettings,
+  type QualityProfileId,
+  type TextureSize,
+  withBakeLayers,
+} from '@ps2cc/core';
 import { backend, type ExportResult } from '../../backend';
 import { ExportCancelled, exportCharacter } from '../../export/exportCharacter';
 import { useStudio, useStudioVersion } from '../../state/hooks';
@@ -9,7 +20,42 @@ const BODY_MESHES: { id: BodyMeshId; label: string }[] = [
   { id: 'ps2_body_8k', label: '8k triangles' },
   { id: 'ps2_body_10k', label: '10k triangles' },
   { id: 'ps2_body_12k', label: '12k triangles' },
+  { id: 'ps2_body_16k', label: '16k triangles, full head' },
+  { id: 'ps2_body_20k', label: '20k triangles, full head' },
+  { id: 'ps2_body_full', label: 'Full MakeHuman body (27k)' },
 ];
+
+const SIZES: TextureSize[] = [512, 1024, 2048];
+
+const OVERRIDE_LABEL: Record<string, string> = {
+  triangleBudget: 'triangle budget',
+  hardMax: 'hard max',
+  hairBudget: 'hair triangles',
+  headTexture: 'head texture',
+  bodyTexture: 'body texture',
+  hairTexture: 'hair texture',
+  garmentAtlas: 'garment atlas',
+  eyesAtlas: 'eyes atlas',
+  lighting: 'lighting',
+  shadows: 'shadows',
+  bakeAO: 'occlusion bake',
+  bakeLight: 'light bake',
+};
+
+function SizeSelect(props: { id: string; label: string; value: TextureSize; onChange: (v: TextureSize) => void }) {
+  return (
+    <div className="picker-row">
+      <label htmlFor={props.id}>{props.label}</label>
+      <select id={props.id} value={props.value} onChange={(e) => props.onChange(Number(e.target.value) as TextureSize)}>
+        {SIZES.map((s) => (
+          <option key={s} value={s}>
+            {s}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
 
 /**
  * Export (PRD 6): FBX (native writer in the backend), textures, the sidecar
@@ -28,6 +74,17 @@ export function ExportPanel() {
   const [last, setLast] = useState<ExportResult | null>(null);
   const cancel = useRef(false);
   const set = (label: string, fn: (d: typeof doc.export) => void) => studio.engine.update(label, (d) => fn(d.export));
+  const overrides = profileOverrides(ex);
+  const size = (key: 'headTexture' | 'bodyTexture' | 'hairTexture' | 'garmentAtlas' | 'eyesAtlas', label: string) => (
+    <SizeSelect id={`export-${key}`} label={label} value={ex[key]} onChange={(v) => set(label, (x) => void (x[key] = v))} />
+  );
+  // Choosing a profile sets every budget at once and the body tier it starts with (F13).
+  const chooseProfile = (id: QualityProfileId) =>
+    studio.engine.update(`${QUALITY_PROFILES[id].label} profile`, (d) => {
+      d.export = { ...d.export, ...profileSettings(id) } as ExportSettings;
+      d.bodyMesh = bodyMeshFor(id);
+      withBakeLayers(d);
+    });
 
   const run = async (target: string) => {
     cancel.current = false;
@@ -70,6 +127,28 @@ export function ExportPanel() {
   return (
     <div className="slider-panel" data-testid="export-panel">
       <div className="picker-row">
+        <label htmlFor="export-profile">Quality profile</label>
+        <select id="export-profile" value={ex.profile} onChange={(e) => chooseProfile(e.target.value as QualityProfileId)} data-testid="export-profile">
+          {QUALITY_PROFILE_IDS.map((id) => (
+            <option key={id} value={id}>
+              {QUALITY_PROFILES[id].label}
+            </option>
+          ))}
+        </select>
+      </div>
+      <p className="hint" data-testid="profile-description">
+        {QUALITY_PROFILES[ex.profile].description}
+        {overrides.length > 0 && (
+          <>
+            {' '}
+            Changed here: {overrides.map((k) => OVERRIDE_LABEL[k] ?? k).join(', ')}.{' '}
+            <button className="link" onClick={() => chooseProfile(ex.profile)} data-testid="profile-reset">
+              Reset to profile
+            </button>
+          </>
+        )}
+      </p>
+      <div className="picker-row">
         <label htmlFor="export-body">Body mesh</label>
         <select id="export-body" value={doc.bodyMesh} onChange={(e) => studio.engine.update('Body mesh', (d) => void (d.bodyMesh = e.target.value as BodyMeshId))}>
           {BODY_MESHES.map((b) => (
@@ -92,19 +171,53 @@ export function ExportPanel() {
         />
       </div>
       <div className="picker-row">
-        <label htmlFor="export-head">Head texture</label>
-        <select id="export-head" value={ex.headTexture} onChange={(e) => set('Head texture', (x) => void (x.headTexture = Number(e.target.value) as 512 | 1024))}>
-          <option value={1024}>1024</option>
-          <option value={512}>512</option>
+        <label htmlFor="export-hairbudget">Hair triangles</label>
+        <input
+          id="export-hairbudget"
+          type="number"
+          min={500}
+          max={20000}
+          step={500}
+          value={ex.hairBudget}
+          onChange={(e) => set('Hair triangles', (x) => void (x.hairBudget = Math.min(20000, Math.max(500, Number(e.target.value) || 3500))))}
+        />
+      </div>
+      {size('headTexture', 'Head texture')}
+      {size('bodyTexture', 'Body texture')}
+      {size('hairTexture', 'Hair texture')}
+      {size('garmentAtlas', 'Garment atlas')}
+      {size('eyesAtlas', 'Eyes atlas')}
+      <div className="picker-row">
+        <label htmlFor="export-lighting">Unity lighting</label>
+        <select id="export-lighting" value={ex.lighting} onChange={(e) => set('Unity lighting', (x) => void (x.lighting = e.target.value as ExportSettings['lighting']))}>
+          <option value="vertex">Per vertex</option>
+          <option value="pixel">Per pixel</option>
         </select>
       </div>
       <div className="picker-row">
-        <label htmlFor="export-bodytex">Body texture</label>
-        <select id="export-bodytex" value={ex.bodyTexture} onChange={(e) => set('Body texture', (x) => void (x.bodyTexture = Number(e.target.value) as 512 | 1024))}>
-          <option value={1024}>1024</option>
-          <option value={512}>512</option>
+        <label htmlFor="export-shadows">Shadows</label>
+        <select id="export-shadows" value={ex.shadows} onChange={(e) => set('Shadows', (x) => void (x.shadows = e.target.value as ExportSettings['shadows']))}>
+          <option value="off">Off</option>
+          <option value="key">Key light and flashlight</option>
+          <option value="self">Self-shadowing</option>
         </select>
       </div>
+      <label className="check">
+        <input type="checkbox" checked={ex.bakeAO} onChange={(e) =>
+            studio.engine.update('Occlusion bake', (d) => {
+              d.export.bakeAO = e.target.checked;
+              withBakeLayers(d);
+            })
+          } /> Bake occlusion into the textures
+      </label>
+      <label className="check">
+        <input type="checkbox" checked={ex.bakeLight} onChange={(e) =>
+            studio.engine.update('Light bake', (d) => {
+              d.export.bakeLight = e.target.checked;
+              withBakeLayers(d);
+            })
+          } /> Bake sky and key light shadowing into the textures
+      </label>
       <label className="check">
         <input type="checkbox" checked={ex.tPose} onChange={(e) => set('T-pose export', (x) => void (x.tPose = e.target.checked))} /> Export in T-pose
         (arms straight out; default is MakeHuman's A-pose)

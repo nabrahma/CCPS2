@@ -7,13 +7,14 @@
 import { readFileSync } from 'node:fs';
 import { expect, test } from '@playwright/test';
 import { boot, garment, setCharacter } from './helpers';
-import { waitForTestHooks } from './skin-helpers';
+import { waitForTestHooks, type TestWindow } from './skin-helpers';
 
 test('Export panel: export to Unity produces the message with FBX data, textures and a validated GLB', async ({ page }) => {
   await boot(page);
   await waitForTestHooks(page);
+  const legacy = await page.evaluate(() => (window as unknown as TestWindow).__ps2ccTest.core.LEGACY_EXPORT);
   await setCharacter(page, { gender: 1 }, { name: 'Panel Test', garments: [garment('mh:clothes/male_worksuit01', 'full')], export: {
-    triangleBudget: 12000, hardMax: 15000, headTexture: 1024, bodyTexture: 1024, writeGlb: true, tPose: false, unityProject: 'C:/UnityProject',
+    ...legacy, triangleBudget: 12000, hardMax: 15000, headTexture: 1024, bodyTexture: 1024, writeGlb: true, tPose: false, unityProject: 'C:/UnityProject',
   } });
   await page.getByRole('tab', { name: /export/i }).click();
   await expect(page.getByTestId('export-panel')).toBeVisible();
