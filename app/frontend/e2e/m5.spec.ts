@@ -14,6 +14,8 @@ const STYLES = (JSON.parse(readFileSync(resolve(MILESTONES, '../../packages/core
 const ONLY = process.env.PS2CC_STYLES?.split(',');
 
 test('M5 review set: starter card hairstyles', async ({ page }) => {
+  // About 20 s a style on CI's software renderer; the default 180 s fits only 8.
+  test.setTimeout(60_000 + STYLES.length * 45_000);
   mkdirSync(OUT, { recursive: true });
   await boot(page);
   await page.getByLabel('Light').selectOption('studio');
