@@ -1,4 +1,6 @@
 // PS2/Cutout (PRD 6.4): PS2/Skin lighting with an alpha clip, double-sided. Hair cards, eyes, brows and lashes.
+// Hair v2 (Part 2 F14, F15) adds a second, blended pass for the texels under the cutoff ("SoftAlpha"):
+// the importer turns it on only for materials the sidecar marks softAlpha.
 Shader "PS2/Cutout"
 {
     Properties
@@ -38,6 +40,26 @@ Shader "PS2/Cutout"
             #pragma target 3.0
             #pragma vertex PS2Vert
             #pragma fragment PS2Frag
+            #pragma shader_feature_local _PS2_PER_PIXEL
+            #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
+            #pragma multi_compile_fragment _ _SHADOWS_SOFT
+            #pragma multi_compile_fog
+            #pragma multi_compile_instancing
+            ENDHLSL
+        }
+
+        // After ForwardLit for each object (URP draws UniversalForwardOnly after UniversalForward), so strand
+        // tips blend over the opaque hair drawn first, as in the app.
+        Pass
+        {
+            Name "SoftAlpha"
+            Tags { "LightMode" = "UniversalForwardOnly" }
+            Blend SrcAlpha OneMinusSrcAlpha
+            ZWrite Off
+            HLSLPROGRAM
+            #pragma target 3.0
+            #pragma vertex PS2Vert
+            #pragma fragment PS2SoftFrag
             #pragma shader_feature_local _PS2_PER_PIXEL
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
             #pragma multi_compile_fragment _ _SHADOWS_SOFT

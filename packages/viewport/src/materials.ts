@@ -91,6 +91,7 @@ uniform vec2 uSnapRes;
 
 attribute float layer;
 attribute float headRegion;
+attribute float hairLayer;
 
 varying vec2 vUv;
 varying vec3 vBase;
@@ -101,6 +102,7 @@ varying vec3 vNormal;
 varying float vAffineW;
 varying float vLayer;
 varying float vHead;
+varying float vHairLayer;
 
 void main() {
   vec4 world = modelMatrix * vec4(position, 1.0);
@@ -117,6 +119,7 @@ void main() {
   }
   vLayer = layer;
   vHead = headRegion;
+  vHairLayer = hairLayer;
 
   vec4 clip = projectionMatrix * viewMatrix * world;
   if (uSnap > 0.5) {
@@ -137,7 +140,14 @@ uniform float uMapRaw; // 1: uMap holds sRGB-encoded values in a plain texture (
 uniform vec3 uTint;
 uniform float uBrightness;
 uniform float uAlphaTest;
-uniform float uMode; // 0 PS2 lit, 1 unlit, 2 clay, 3 UV checker
+uniform float uMode; // 0 PS2 lit, 1 unlit, 2 clay, 3 UV checker, 4 ID (flat uIdColor)
+uniform vec3 uIdColor;
+// Hair v2 two-pass alpha (F14, F15): the opaque pass keeps texels >= uAlphaTest; the soft pass
+// (uSoft 1) draws the ones below uAlphaMax, blended, without writing depth.
+uniform float uSoft;
+uniform float uAlphaMax;
+// Hair Studio's layer view: shell, locks, detail cards (1 shown, 0 hidden).
+uniform vec3 uLayerMask;
 uniform float uDirt;
 uniform float uDitherOuter;
 uniform vec2 uExportTexels; // texels across the map after export: x most of the part, y its head; 0 = no limit
@@ -172,6 +182,7 @@ varying vec3 vNormal;
 varying float vAffineW;
 varying float vLayer;
 varying float vHead;
+varying float vHairLayer;
 
 // Read the map no sharper than the export (PRD F9). The mip chain stands in for the
 // exported size; when the camera is far enough away, normal mip selection wins.
@@ -223,6 +234,14 @@ void main() {
   // Card hair (PRD F5): the outer layer can use dithered transparency instead of a hard cutout.
   float threshold = uDitherOuter > 0.5 && vLayer > 0.75 ? mix(0.1, 0.95, bayer4(gl_FragCoord.xy)) : uAlphaTest;
   if (tex.a < threshold) discard;
+  if (tex.a >= uAlphaMax) discard;
+  float hl = floor(vHairLayer + 0.5);
+  if ((hl < 0.5 && uLayerMask.x < 0.5) || (hl > 0.5 && hl < 1.5 && uLayerMask.y < 0.5) || (hl > 1.5 && uLayerMask.z < 0.5)) discard;
+  if (uMode > 3.5) {
+    gl_FragColor = vec4(uIdColor, 1.0);
+    return;
+  }
+  float outAlpha = uSoft > 0.5 ? tex.a : 1.0;
   vec3 base = tex.rgb * uTint * uBrightness;
   if (uDirt > 0.0) {
     // Cheap procedural grime until the user paints a dirt mask (PRD F4 dirt layer).
@@ -245,7 +264,7 @@ void main() {
     base = vec3(0.7);
   }
   if (uMode > 0.5 && uMode < 1.5) {
-    gl_FragColor = vec4(base, 1.0);
+    gl_FragColor = vec4(base, outAlpha);
     return;
   }
 
@@ -296,14 +315,16 @@ void main() {
       }
       // Hair highlights take the hair's colour (Kajiya-Kay's secondary band); skin and eyes stay white.
       vec3 tintS = uAniso > 0.5 ? mix(vec3(1.0), base / max(max(base.r, base.g), max(base.b, 1e-3)), 0.7) : vec3(1.0);
-      color += spec * uGloss * tintS;
+      // Dark hair keeps a soft sheen: the strand highlight scales with the hair's lightness (M12, D-112).
+      float hairK = uAniso > 0.5 ? 0.25 + 0.75 * min(1.0, dot(base, vec3(0.2126, 0.7152, 0.0722)) / 0.35) : 1.0;
+      color += spec * uGloss * tintS * hairK;
     }
   }
   if (uFogRange.y > uFogRange.x) {
     float f = clamp((length(cameraPosition - vWorld) - uFogRange.x) / (uFogRange.y - uFogRange.x), 0.0, 1.0);
     color = mix(color, uFogColor, f);
   }
-  gl_FragColor = vec4(color, 1.0);
+  gl_FragColor = vec4(color, outAlpha);
 }
 `;
 
@@ -328,6 +349,10 @@ export function createPs2Material(opts: Ps2MaterialOptions): THREE.ShaderMateria
       uTint: { value: new THREE.Color(...opts.tint) },
       uBrightness: { value: opts.brightness },
       uAlphaTest: { value: opts.alphaTest },
+      uAlphaMax: { value: 2 },
+      uSoft: { value: 0 },
+      uLayerMask: { value: new THREE.Vector3(1, 1, 1) },
+      uIdColor: { value: new THREE.Vector3() },
       uMode: { value: 0 },
       uDirt: { value: opts.dirt },
       uDitherOuter: { value: 0 },

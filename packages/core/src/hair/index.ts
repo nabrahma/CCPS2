@@ -4,11 +4,15 @@ import { sanitiseStyle, type HairStyleParams } from './style';
 export * from './atlas';
 export * from './binding';
 export * from './card-texture';
+export * from './strand-atlas';
 export * from './cards-from-curves';
 export { arcLengths, closestOnPolyline, curveLength, resample, shapeRange, transportNormals, trim, worldNormal } from './curves';
 export * from './generate';
+export * from './groom';
 export * from './headproxy';
 export * from './scalp';
+export * from './scalp-layer';
+export * from './surface-cards';
 export * from './style';
 
 export interface StarterStyle {

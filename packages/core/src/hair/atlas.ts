@@ -8,7 +8,7 @@
  * y down. Hair roots are at the top of each region.
  */
 
-export const ATLAS_TAGS = ['clump', 'strand', 'fringe', 'flyaway', 'base'] as const;
+export const ATLAS_TAGS = ['clump', 'strand', 'fringe', 'flyaway', 'base', 'lock'] as const;
 export type AtlasTag = (typeof ATLAS_TAGS)[number];
 
 export interface AtlasRegion {
@@ -24,6 +24,13 @@ export interface AtlasSpec {
   /** Texture path (relative to assets/core) or library URL. */
   texture: string;
   regions: AtlasRegion[];
+  /**
+   * Hair v2 (PRD F15): the texture is greyscale shading, coloured through the
+   * hair's gradient map (colourizeHair) instead of tinted.
+   */
+  greyscale?: boolean;
+  /** Hair v2: the strand flow map beside the texture (RG direction, B root to tip). */
+  flow?: string;
 }
 
 export type AtlasTemplateId = 'strips4' | 'strips8' | 'grid4x2';
@@ -150,11 +157,13 @@ export function autoTag(regions: AtlasRegion[], rgba: ArrayLike<number>, width: 
 /** Regions for a tag, falling back to related tags so every atlas works with every style. */
 export function regionsFor(atlas: readonly AtlasRegion[], tag: AtlasTag): AtlasRegion[] {
   const fallback: Record<AtlasTag, AtlasTag[]> = {
-    clump: ['clump', 'strand', 'base', 'fringe', 'flyaway'],
-    strand: ['strand', 'clump', 'flyaway', 'fringe', 'base'],
-    fringe: ['fringe', 'strand', 'clump', 'flyaway', 'base'],
-    flyaway: ['flyaway', 'strand', 'clump', 'fringe', 'base'],
-    base: ['base', 'clump', 'strand', 'fringe', 'flyaway'],
+    clump: ['clump', 'strand', 'lock', 'base', 'fringe', 'flyaway'],
+    strand: ['strand', 'clump', 'flyaway', 'fringe', 'lock', 'base'],
+    fringe: ['fringe', 'strand', 'clump', 'flyaway', 'lock', 'base'],
+    flyaway: ['flyaway', 'strand', 'clump', 'fringe', 'lock', 'base'],
+    base: ['base', 'clump', 'lock', 'strand', 'fringe', 'flyaway'],
+    // Atlases from before locks have none: the widest clumps stand in.
+    lock: ['lock', 'clump', 'base', 'strand', 'fringe', 'flyaway'],
   };
   for (const t of fallback[tag]) {
     const hits = atlas.filter((r) => r.tag === t);
@@ -168,6 +177,8 @@ export function validateAtlas(raw: unknown): AtlasSpec {
   const a = raw as Partial<AtlasSpec>;
   if (!a || a.format !== 'ps2cc.atlas/1') throw new Error('not a PS2CC atlas (format ps2cc.atlas/1)');
   if (typeof a.texture !== 'string' || !a.texture) throw new Error('atlas has no texture');
+  if (a.greyscale !== undefined && typeof a.greyscale !== 'boolean') throw new Error('atlas greyscale must be true or false');
+  if (a.flow !== undefined && typeof a.flow !== 'string') throw new Error('atlas flow must be a path');
   if (!Array.isArray(a.regions) || a.regions.length === 0) throw new Error('atlas has no regions');
   for (const r of a.regions) {
     const ok = [r.x, r.y, r.w, r.h].every((v) => typeof v === 'number' && Number.isFinite(v)) && r.w > 0 && r.h > 0 &&

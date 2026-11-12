@@ -27,13 +27,14 @@ import { bodyTexture, cropHeadTexture, packHead, splitBody } from '../skin/heads
 import { EYES_ATLAS_SIZE, GARMENT_ATLAS_SIZE, HAIR_TEXTURE_LIMIT } from './limits';
 import { garmentBakeStrength, multiplyBaked } from '../bake/apply';
 import { createImage, resizeImage, type RgbaImage } from '../skin/image';
+import { colourizeHair } from '../hair/strand-atlas';
 import { atlasUv, packAtlas } from './atlas';
 import { expressionDef } from '../expression/map';
 
 /** Vertices that move less than this in a blendshape are left out of it (metres). */
 export const SHAPE_EPSILON = 1e-6;
 
-export type MaterialRole = 'head' | 'body' | 'hair' | 'garments' | 'eyes';
+export type MaterialRole = 'head' | 'body' | 'hair' | 'garments' | 'eyes' | 'fur';
 
 export interface ExportBone {
   name: string;
@@ -71,6 +72,8 @@ export interface ExportMaterial {
   doubleSided: boolean;
   /** Hair whose normals describe its volume: lit one-sided even though both faces are drawn. */
   volumeNormals?: boolean;
+  /** Hair v2 two-pass alpha: Unity draws texels under alphaClip a second time, blended (PS2Cutout's soft pass). */
+  softAlpha?: boolean;
   role: MaterialRole;
 }
 
@@ -215,10 +218,14 @@ export async function buildExportScene(scene: CharacterScene, opts: ExportOption
   // Hair (card hair or a hair mesh), its texture tinted.
   const hair = scene.parts.find((p) => p.kind === 'hair');
   if (hair) {
-    const tex = hair.material.texture ? await opts.loadImage(hair.material.texture) : createImage(4, 4, [255, 255, 255, 255]);
+    let tex = hair.material.texture ? await opts.loadImage(hair.material.texture) : createImage(4, 4, [255, 255, 255, 255]);
+    // Hair v2: the greyscale strand atlas through the hair's gradient map, as the viewport shows it.
+    const g = hair.material.gradient;
+    if (g) tex = colourizeHair(tex, g.regions, g.colour);
     const img = limit(tint(tex, hair.material.tint), doc.export.hairTexture ?? HAIR_TEXTURE_LIMIT);
     const mat = addMaterial('hair', 'PS2/Cutout', img, Math.max(img.width, img.height), true, hair.material.alphaThreshold, true);
     materials[mat]!.volumeNormals = Boolean(hair.material.volumeNormals);
+    if (hair.material.softAlpha) materials[mat]!.softAlpha = true;
     meshes.push(compact(`${name}_Hair`, 'hair', source(hair), hair.indices, mat));
   }
 
@@ -227,11 +234,15 @@ export async function buildExportScene(scene: CharacterScene, opts: ExportOption
     if (parts.length === 0) return;
     const images: RgbaImage[] = [];
     for (const p of parts) {
-      const tex = p.material.texture ? await opts.loadImage(p.material.texture) : createImage(4, 4, [255, 255, 255, 255]);
+      let tex = p.material.texture ? await opts.loadImage(p.material.texture) : createImage(4, 4, [255, 255, 255, 255]);
+      // Hair v2 cards (fur, card brows): the greyscale strand atlas through their gradient map.
+      const g = p.material.gradient;
+      if (g) tex = colourizeHair(tex, g.regions, g.colour);
       images.push(bake(p, limit(tex, size)));
     }
     const atlas = packAtlas(images, size);
     const mat = addMaterial(role, shader, atlas.image, size, true, 0.5, true);
+    if (parts.every((p) => p.material.softAlpha)) materials[mat]!.softAlpha = true;
     const pieces = parts.map((p, i) => {
       const src = source(p);
       const uvs = new Float32Array(src.uvs.length);
@@ -251,6 +262,9 @@ export async function buildExportScene(scene: CharacterScene, opts: ExportOption
     const map = doc.export.bakeAO || doc.export.bakeLight ? opts.baked?.(p.key) : null;
     return map ? multiplyBaked(out, map, bakeStrength) : out;
   });
+  // Fur trims (Hair v2): their own atlas and two-pass alpha material.
+  const fur = scene.parts.filter((p) => p.kind === 'fur');
+  await merged('fur', fur, opts.garmentAtlas ?? doc.export.garmentAtlas ?? GARMENT_ATLAS_SIZE, 'PS2/Cutout', (p, img) => tint(img, p.material.tint));
   const eyes = scene.parts.filter((p) => p.kind === 'eyes' || p.kind === 'eyebrows' || p.kind === 'eyelashes' || p.kind === 'teeth');
   await merged('eyes', eyes, opts.eyesAtlas ?? doc.export.eyesAtlas ?? EYES_ATLAS_SIZE, 'PS2/Cutout', (p, img) => remapAlpha(tint(img, p.material.tint), p.material.alphaCutout ? p.material.alphaThreshold : 0, 0.5));
 
@@ -281,6 +295,8 @@ export async function buildExportScene(scene: CharacterScene, opts: ExportOption
         alphaClip: m.alphaClip,
         doubleSided: m.doubleSided,
         volumeNormals: Boolean(m.volumeNormals),
+        // Only on Hair v2 materials, so exports of older characters keep the same sidecar.
+        ...(m.softAlpha ? { softAlpha: true } : {}),
         maxSize: t.maxSize,
         alphaIsTransparency: t.alpha,
         surface: surfaceOfRole(m.role),
@@ -319,6 +335,7 @@ export async function buildExportScene(scene: CharacterScene, opts: ExportOption
 
 /** The per-pixel model's surface for each exported material (viewport materials.ts SURFACES, PS2Common.hlsl). */
 function surfaceOfRole(role: MaterialRole): 'skin' | 'cloth' | 'hair' | 'eyes' {
+  if (role === 'fur') return 'hair';
   if (role === 'head' || role === 'body') return 'skin';
   if (role === 'hair') return 'hair';
   return 'cloth';

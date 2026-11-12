@@ -16,7 +16,7 @@ namespace PS2CC.Editor
     public sealed class PS2CCPostprocessor : AssetPostprocessor
     {
         // Bump to reimport existing exports when the import rules change.
-        public override uint GetVersion() => 6;
+        public override uint GetVersion() => 7;
 
         void OnPreprocessModel()
         {
@@ -147,6 +147,8 @@ namespace PS2CC.Editor
                 if (mat.HasProperty("_Cutoff")) mat.SetFloat("_Cutoff", info.alphaClip > 0 ? info.alphaClip : 0.5f);
                 mat.SetFloat("_Cull", info.doubleSided ? 0f : 2f);
                 mat.SetFloat("_TwoSided", info.doubleSided && !info.volumeNormals ? 1f : 0f);
+                // Hair v2 two-pass alpha: the blended pass only where the sidecar asks for it.
+                mat.SetShaderPassEnabled("UniversalForwardOnly", info.softAlpha);
                 ApplyQuality(mat, info, sidecar.quality);
                 if (created) AssetDatabase.CreateAsset(mat, matPath);
                 else EditorUtility.SetDirty(mat);

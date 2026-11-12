@@ -1,12 +1,22 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import {
+  DEFAULT_HAIR_COLOUR,
   DEFAULT_HAIR_STYLE,
+  HAIR_COLOUR_PRESETS,
   HAIRLINE_PRESETS,
+  NEUTRAL_ADJUST,
+  STRAND_PRESET_PARAMS,
+  STRAND_PRESETS,
+  withScalpLayer,
+  type HairAdjust,
+  type HairColour,
+  type StrandPreset,
   hairlineToPaint,
   hairStyleFile,
   parseHairStyleFile,
   STARTER_STYLES,
   starterStyle,
+  styleForBudget,
   type HairlinePreset,
   type HairStyleParams,
   type PartSide,
@@ -28,11 +38,13 @@ export function HairPanel() {
   const hair = studio.engine.doc.hair;
   const setMode = (mode: Mode) =>
     studio.engine.update('Hair mode', (d) => {
-      if (mode === 'cards') d.hair = { ...d.hair, mode, style: d.hair.style ?? starterStyle('short-messy'), atlas: d.hair.atlas ?? null };
+      // New card hair is Hair v2: a starter style with locks, a colour and the scalp layer.
+      if (mode === 'cards') d.hair = { ...d.hair, mode, style: d.hair.style ?? starterStyle('short-messy'), atlas: d.hair.atlas ?? null, colour: d.hair.colour ?? structuredClone(DEFAULT_HAIR_COLOUR) };
       else if (mode === 'mesh') {
         const first = studio.assets.catalog.proxies.find((p) => p.category === 'hair');
         d.hair = { ...d.hair, mode, asset: d.hair.asset ?? first?.id };
       } else d.hair = { ...d.hair, mode };
+      withScalpLayer(d);
     });
   return (
     <div className="slider-panel">
@@ -97,15 +109,35 @@ function CardHair() {
         const s = structuredClone(d.hair.style ?? DEFAULT_HAIR_STYLE);
         fn(s);
         d.hair.style = s;
+        withScalpLayer(d);
       },
       merge,
     );
+  const editHair = (label: string, fn: (h: { colour: HairColour; adjust: HairAdjust }) => void, merge?: string) =>
+    studio.engine.update(
+      label,
+      (d) => {
+        const h = { colour: structuredClone(d.hair.colour ?? DEFAULT_HAIR_COLOUR), adjust: { ...(d.hair.adjust ?? NEUTRAL_ADJUST) } };
+        fn(h);
+        d.hair.colour = h.colour;
+        d.hair.adjust = h.adjust;
+        withScalpLayer(d);
+      },
+      merge,
+    );
+  const colour = studio.engine.doc.hair.colour;
+  const adjust = studio.engine.doc.hair.adjust ?? NEUTRAL_ADJUST;
   const pickStyle = async (value: string) => {
     try {
       const next = value.startsWith('starter:')
         ? starterStyle(value.slice('starter:'.length))
         : parseHairStyleFile(JSON.parse(await backend.readLibraryDocument(value)));
-      studio.engine.update('Hairstyle', (d) => void (d.hair.style = next));
+      studio.engine.update('Hairstyle', (d) => {
+        d.hair.style = next;
+        // Hair v2 styles come with their colour gradient (kept if one is set) and the scalp layer.
+        if (next.locks.enabled) d.hair.colour ??= structuredClone(DEFAULT_HAIR_COLOUR);
+        withScalpLayer(d);
+      });
     } catch (err) {
       ui.error('Could not load the hairstyle', err);
     }
@@ -133,9 +165,14 @@ function CardHair() {
     }
   };
   const builtIns = studio.assets.catalog.hairAtlases ?? [];
-  const builtIn = builtIns[0];
+  // The atlas used when the hair has none of its own (as the scene picks it): Hair v2 hair the
+  // strand atlas of its style, older hair the brown card atlas it was made with.
+  const builtIn = studio.engine.doc.hair.colour
+    ? (builtIns.find((b) => b.strands === style.strands) ?? builtIns.find((b) => b.strands))
+    : (builtIns.find((b) => b.id === 'ps2cc:atlas/cards_brown') ?? builtIns.find((b) => !b.atlas.greyscale));
   const current = atlas ?? builtIn?.atlas ?? null;
-  const [lo, hi] = style.budget;
+  // The budget the hair is generated to: the style's, scaled by the quality profile (F13).
+  const [lo, hi] = styleForBudget(style, studio.engine.doc.export.hairBudget).budget;
   const n = (label: string, path: string, v: number, min: number, max: number, step: number, set: (s: HairStyleParams, v: number) => void, unit = '') => (
     <Slider key={path} label={label} value={v} min={min} max={max} step={step} unit={unit}
       onChange={(x) => edit(label, (s) => set(s, x), `hair:${path}`)} onDone={() => studio.engine.endInteraction()} />
@@ -168,7 +205,57 @@ function CardHair() {
           New seed ({style.seed})
         </button>
         <button onClick={() => void saveStyle()}>Save style…</button>
+        <button onClick={() => ui.setView({ hairStudio: true })} data-testid="open-hair-studio" title="Comb the guides, draw the parting, shape locks">
+          Open Hair Studio
+        </button>
       </div>
+
+      <Section title="Colour">
+        <div className="picker-row">
+          <label htmlFor="hair-colour-preset">Preset</label>
+          <select
+            id="hair-colour-preset"
+            data-testid="hair-colour-preset"
+            value=""
+            onChange={(e) => {
+              const pick = HAIR_COLOUR_PRESETS[e.target.value];
+              if (pick) editHair('Hair colour', (h) => void (h.colour = structuredClone(pick.colour)));
+            }}
+          >
+            <option value="">{colour ? 'Choose…' : 'Part 1 card colours (tint)'}</option>
+            {Object.entries(HAIR_COLOUR_PRESETS).map(([id, c]) => (
+              <option key={id} value={id}>{c.name}</option>
+            ))}
+          </select>
+        </div>
+        {colour && (
+          <>
+            <TintRow label="Colour" color={colour.base} onChange={(c) => editHair('Hair colour', (h) => void (h.colour.base = c), 'hair-colour')} />
+            <Slider label="Darker roots" value={colour.rootDarken} min={0} max={1} step={0.01} onChange={(v) => editHair('Darker roots', (h) => void (h.colour.rootDarken = v), 'hair-roots')} onDone={() => studio.engine.endInteraction()} />
+            <Slider label="Lighter tips" value={colour.tipLighten} min={0} max={1} step={0.01} onChange={(v) => editHair('Lighter tips', (h) => void (h.colour.tipLighten = v), 'hair-tips')} onDone={() => studio.engine.endInteraction()} />
+            <Slider label="Streaks" value={colour.streaks} min={0} max={1} step={0.01} onChange={(v) => editHair('Streaks', (h) => void (h.colour.streaks = v), 'hair-streaks')} onDone={() => studio.engine.endInteraction()} />
+            {colour.streaks > 0 && <TintRow label="Streak colour" color={colour.streakColour} onChange={(c) => editHair('Streak colour', (h) => void (h.colour.streakColour = c), 'hair-streak-colour')} />}
+            <Slider label="Grey" value={colour.grey} min={0} max={1} step={0.01} onChange={(v) => editHair('Grey hair', (h) => void (h.colour.grey = v), 'hair-grey')} onDone={() => studio.engine.endInteraction()} />
+          </>
+        )}
+      </Section>
+
+      <Section title="Adjust">
+        <p className="hint">On top of the style, which stays as it was made.</p>
+        <Slider label="Length" value={adjust.length} min={0.5} max={1.6} step={0.01} onChange={(v) => editHair('Hair length', (h) => void (h.adjust.length = v), 'hair-adj-len')} onDone={() => studio.engine.endInteraction()} />
+        <Slider label="Volume" value={adjust.volume} min={0.3} max={2} step={0.01} onChange={(v) => editHair('Hair volume', (h) => void (h.adjust.volume = v), 'hair-adj-vol')} onDone={() => studio.engine.endInteraction()} />
+        <Slider label="Fringe" value={adjust.fringe} min={0.5} max={1.6} step={0.01} onChange={(v) => editHair('Fringe length', (h) => void (h.adjust.fringe = v), 'hair-adj-fringe')} onDone={() => studio.engine.endInteraction()} />
+      </Section>
+
+      <Section title="Locks">
+        <label className="check">
+          <input type="checkbox" checked={style.locks.enabled} onChange={(e) => edit('Locks', (s) => void (s.locks.enabled = e.target.checked))} data-testid="hair-locks" /> Hair mass from locks (wide ribbons under the cards)
+        </label>
+        {style.locks.enabled && n('Locks', 'lk-count', style.locks.count, 0, 300, 1, (s, v) => void (s.locks.count = Math.round(v)))}
+        {style.locks.enabled && n('Lock width', 'lk-width', style.locks.width, 0.02, 0.16, 0.001, (s, v) => void (s.locks.width = v), 'm')}
+        {style.locks.enabled && n('Bow', 'lk-bow', style.locks.bow, 0, 1, 0.01, (s, v) => void (s.locks.bow = v))}
+        {style.locks.enabled && n('Share of budget', 'lk-share', style.locks.share, 0, 1, 0.01, (s, v) => void (s.locks.share = v))}
+      </Section>
 
       <Section title="Card texture">
         <div className="picker-row">
@@ -179,7 +266,7 @@ function CardHair() {
             value={atlas ? (builtIns.find((b) => b.atlas.texture === atlas.texture)?.id ?? 'own') : (builtIn?.id ?? '')}
             onChange={(e) => {
               const pick = builtIns.find((b) => b.id === e.target.value);
-              // The first built-in is the default, stored as "no atlas of its own".
+              // The default built-in is stored as "no atlas of its own".
               if (pick) studio.engine.update('Hair card texture', (d) => void (d.hair.atlas = pick === builtIn ? null : structuredClone(pick.atlas)));
             }}
           >
@@ -187,6 +274,14 @@ function CardHair() {
               <option key={b.id} value={b.id}>{b.name}</option>
             ))}
             {atlas && !builtIns.some((b) => b.atlas.texture === atlas.texture) && <option value="own">Your texture ({atlas.regions.length} regions)</option>}
+          </select>
+        </div>
+        <div className="picker-row">
+          <label htmlFor="hair-strands">Strands</label>
+          <select id="hair-strands" data-testid="hair-strands" value={style.strands} onChange={(e) => edit('Hair strands', (s) => void (s.strands = e.target.value as StrandPreset))}>
+            {STRAND_PRESETS.map((p) => (
+              <option key={p} value={p}>{STRAND_PRESET_PARAMS[p].name}</option>
+            ))}
           </select>
         </div>
         <p className="hint">Drop your own card texture (PNG with alpha) on the hair, or load one. Strips are found automatically.</p>
@@ -308,6 +403,13 @@ function CardHair() {
           <input type="checkbox" checked={style.shell.enabled} onChange={(e) => edit('Scalp shell', (s) => void (s.shell.enabled = e.target.checked))} /> Scalp
           shell (base layer for short hair)
         </label>
+        <label className="check">
+          <input type="checkbox" checked={style.scalpLayer.enabled} onChange={(e) => edit('Scalp layer', (s) => void (s.scalpLayer.enabled = e.target.checked))} data-testid="hair-scalp-layer" /> Short
+          hair painted on the scalp (a skin layer)
+        </label>
+        {style.scalpLayer.enabled && n('Hairline softness', 'sl-soft', style.scalpLayer.softness, 0, 1, 0.01, (s, v) => void (s.scalpLayer.softness = v))}
+        {style.scalpLayer.enabled && n('Strand contrast', 'sl-density', style.scalpLayer.density, 0, 1, 0.01, (s, v) => void (s.scalpLayer.density = v))}
+        {style.scalpLayer.enabled && !colour && <p className="hint warn">The scalp layer needs a hair colour (Colour above).</p>}
       </Section>
     </>
   );

@@ -3896,6 +3896,391 @@
  ],
  "hairAtlases": [
   {
+   "id": "ps2cc:atlas/strands_straightFine",
+   "name": "Strands: Straight, fine",
+   "atlas": {
+    "format": "ps2cc.atlas/1",
+    "texture": "textures/hair/strands_straightFine.png",
+    "regions": [
+     {
+      "x": 0,
+      "y": 0,
+      "w": 0.1708984375,
+      "h": 1,
+      "tag": "lock"
+     },
+     {
+      "x": 0.1708984375,
+      "y": 0,
+      "w": 0.1708984375,
+      "h": 1,
+      "tag": "lock"
+     },
+     {
+      "x": 0.341796875,
+      "y": 0,
+      "w": 0.1005859375,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.4423828125,
+      "y": 0,
+      "w": 0.1005859375,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.54296875,
+      "y": 0,
+      "w": 0.0849609375,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.6279296875,
+      "y": 0,
+      "w": 0.0859375,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.7138671875,
+      "y": 0,
+      "w": 0.1005859375,
+      "h": 1,
+      "tag": "fringe"
+     },
+     {
+      "x": 0.814453125,
+      "y": 0,
+      "w": 0.0595703125,
+      "h": 1,
+      "tag": "flyaway"
+     },
+     {
+      "x": 0.8740234375,
+      "y": 0,
+      "w": 0.1259765625,
+      "h": 1,
+      "tag": "base"
+     }
+    ],
+    "greyscale": true,
+    "flow": "textures/hair/strands_straightFine_flow.png"
+   },
+   "licence": "CC0-1.0",
+   "strands": "straightFine"
+  },
+  {
+   "id": "ps2cc:atlas/strands_straightCoarse",
+   "name": "Strands: Straight, coarse",
+   "atlas": {
+    "format": "ps2cc.atlas/1",
+    "texture": "textures/hair/strands_straightCoarse.png",
+    "regions": [
+     {
+      "x": 0,
+      "y": 0,
+      "w": 0.1708984375,
+      "h": 1,
+      "tag": "lock"
+     },
+     {
+      "x": 0.1708984375,
+      "y": 0,
+      "w": 0.1708984375,
+      "h": 1,
+      "tag": "lock"
+     },
+     {
+      "x": 0.341796875,
+      "y": 0,
+      "w": 0.1005859375,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.4423828125,
+      "y": 0,
+      "w": 0.1005859375,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.54296875,
+      "y": 0,
+      "w": 0.0849609375,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.6279296875,
+      "y": 0,
+      "w": 0.0859375,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.7138671875,
+      "y": 0,
+      "w": 0.1005859375,
+      "h": 1,
+      "tag": "fringe"
+     },
+     {
+      "x": 0.814453125,
+      "y": 0,
+      "w": 0.0595703125,
+      "h": 1,
+      "tag": "flyaway"
+     },
+     {
+      "x": 0.8740234375,
+      "y": 0,
+      "w": 0.1259765625,
+      "h": 1,
+      "tag": "base"
+     }
+    ],
+    "greyscale": true,
+    "flow": "textures/hair/strands_straightCoarse_flow.png"
+   },
+   "licence": "CC0-1.0",
+   "strands": "straightCoarse"
+  },
+  {
+   "id": "ps2cc:atlas/strands_wavy",
+   "name": "Strands: Wavy",
+   "atlas": {
+    "format": "ps2cc.atlas/1",
+    "texture": "textures/hair/strands_wavy.png",
+    "regions": [
+     {
+      "x": 0,
+      "y": 0,
+      "w": 0.1708984375,
+      "h": 1,
+      "tag": "lock"
+     },
+     {
+      "x": 0.1708984375,
+      "y": 0,
+      "w": 0.1708984375,
+      "h": 1,
+      "tag": "lock"
+     },
+     {
+      "x": 0.341796875,
+      "y": 0,
+      "w": 0.1005859375,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.4423828125,
+      "y": 0,
+      "w": 0.1005859375,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.54296875,
+      "y": 0,
+      "w": 0.0849609375,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.6279296875,
+      "y": 0,
+      "w": 0.0859375,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.7138671875,
+      "y": 0,
+      "w": 0.1005859375,
+      "h": 1,
+      "tag": "fringe"
+     },
+     {
+      "x": 0.814453125,
+      "y": 0,
+      "w": 0.0595703125,
+      "h": 1,
+      "tag": "flyaway"
+     },
+     {
+      "x": 0.8740234375,
+      "y": 0,
+      "w": 0.1259765625,
+      "h": 1,
+      "tag": "base"
+     }
+    ],
+    "greyscale": true,
+    "flow": "textures/hair/strands_wavy_flow.png"
+   },
+   "licence": "CC0-1.0",
+   "strands": "wavy"
+  },
+  {
+   "id": "ps2cc:atlas/strands_curly",
+   "name": "Strands: Curly",
+   "atlas": {
+    "format": "ps2cc.atlas/1",
+    "texture": "textures/hair/strands_curly.png",
+    "regions": [
+     {
+      "x": 0,
+      "y": 0,
+      "w": 0.1708984375,
+      "h": 1,
+      "tag": "lock"
+     },
+     {
+      "x": 0.1708984375,
+      "y": 0,
+      "w": 0.1708984375,
+      "h": 1,
+      "tag": "lock"
+     },
+     {
+      "x": 0.341796875,
+      "y": 0,
+      "w": 0.1005859375,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.4423828125,
+      "y": 0,
+      "w": 0.1005859375,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.54296875,
+      "y": 0,
+      "w": 0.0849609375,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.6279296875,
+      "y": 0,
+      "w": 0.0859375,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.7138671875,
+      "y": 0,
+      "w": 0.1005859375,
+      "h": 1,
+      "tag": "fringe"
+     },
+     {
+      "x": 0.814453125,
+      "y": 0,
+      "w": 0.0595703125,
+      "h": 1,
+      "tag": "flyaway"
+     },
+     {
+      "x": 0.8740234375,
+      "y": 0,
+      "w": 0.1259765625,
+      "h": 1,
+      "tag": "base"
+     }
+    ],
+    "greyscale": true,
+    "flow": "textures/hair/strands_curly_flow.png"
+   },
+   "licence": "CC0-1.0",
+   "strands": "curly"
+  },
+  {
+   "id": "ps2cc:atlas/strands_stubble",
+   "name": "Strands: Short stubble",
+   "atlas": {
+    "format": "ps2cc.atlas/1",
+    "texture": "textures/hair/strands_stubble.png",
+    "regions": [
+     {
+      "x": 0,
+      "y": 0,
+      "w": 0.1708984375,
+      "h": 1,
+      "tag": "lock"
+     },
+     {
+      "x": 0.1708984375,
+      "y": 0,
+      "w": 0.1708984375,
+      "h": 1,
+      "tag": "lock"
+     },
+     {
+      "x": 0.341796875,
+      "y": 0,
+      "w": 0.1005859375,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.4423828125,
+      "y": 0,
+      "w": 0.1005859375,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.54296875,
+      "y": 0,
+      "w": 0.0849609375,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.6279296875,
+      "y": 0,
+      "w": 0.0859375,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.7138671875,
+      "y": 0,
+      "w": 0.1005859375,
+      "h": 1,
+      "tag": "fringe"
+     },
+     {
+      "x": 0.814453125,
+      "y": 0,
+      "w": 0.0595703125,
+      "h": 1,
+      "tag": "flyaway"
+     },
+     {
+      "x": 0.8740234375,
+      "y": 0,
+      "w": 0.1259765625,
+      "h": 1,
+      "tag": "base"
+     }
+    ],
+    "greyscale": true,
+    "flow": "textures/hair/strands_stubble_flow.png"
+   },
+   "licence": "CC0-1.0",
+   "strands": "stubble"
+  },
+  {
    "id": "ps2cc:atlas/cards_brown",
    "name": "Hair cards: Brown",
    "atlas": {

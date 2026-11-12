@@ -56,6 +56,8 @@ export interface UiState {
   camera: CameraPresetId;
   turntable: boolean;
   poseTest: boolean;
+  /** Hair Studio (PRD F15): grooming brushes over the viewport. */
+  hairStudio: boolean;
   background: BackgroundId;
   /** URL of the user's background image, once one is chosen. */
   backgroundImage: string | null;
@@ -80,7 +82,7 @@ export interface UiState {
   select(key: string | null): void;
   setView(
     patch: Partial<
-      Pick<UiState, 'shading' | 'wireOverlay' | 'lighting' | 'customLook' | 'lightingModel' | 'shadowMode' | 'post' | 'camera' | 'turntable' | 'poseTest' | 'background' | 'backgroundImage'>
+      Pick<UiState, 'shading' | 'wireOverlay' | 'lighting' | 'customLook' | 'lightingModel' | 'shadowMode' | 'post' | 'camera' | 'turntable' | 'poseTest' | 'background' | 'backgroundImage' | 'hairStudio'>
     >,
   ): void;
   info(message: string): void;
@@ -113,6 +115,7 @@ export const useUi = create<UiState>((set) => ({
   camera: 'full',
   turntable: false,
   poseTest: false,
+  hairStudio: false,
   background: 'preset',
   backgroundImage: null,
   toasts: [],

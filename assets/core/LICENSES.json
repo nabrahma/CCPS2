@@ -9936,6 +9936,116 @@
    "bytes": 1286865
   },
   {
+   "file": "textures/hair/strands_curly.png",
+   "asset": "ps2cc:atlas/strands_curly",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "608e0d84cd87e230a1972ff4cb169efed5d7271baf3c7e880a116e28e722c36e",
+   "bytes": 1577280
+  },
+  {
+   "file": "textures/hair/strands_curly_flow.png",
+   "asset": "ps2cc:atlas/strands_curly",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "eef75979974f231317847d03d599a2569ede8d8320f42f65819351232a9a3912",
+   "bytes": 2062847
+  },
+  {
+   "file": "textures/hair/strands_straightCoarse.png",
+   "asset": "ps2cc:atlas/strands_straightCoarse",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "9ad01ebb7396332fec41b81d6ed499203e5b8f6c78c29336b1e9b1b044d2bc57",
+   "bytes": 1039042
+  },
+  {
+   "file": "textures/hair/strands_straightCoarse_flow.png",
+   "asset": "ps2cc:atlas/strands_straightCoarse",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "e025b74365848fbbeda09ae75f82686dbfeafe2baa31bbaa8e8c6c4a697b6b1b",
+   "bytes": 671479
+  },
+  {
+   "file": "textures/hair/strands_straightFine.png",
+   "asset": "ps2cc:atlas/strands_straightFine",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "58cc3b9aeee98b5dc523986ac8fb2ea56ad16bbc90170043406919d024a94776",
+   "bytes": 1416418
+  },
+  {
+   "file": "textures/hair/strands_straightFine_flow.png",
+   "asset": "ps2cc:atlas/strands_straightFine",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "063b7ce72d8949d67eb5c0cf99c6bdc9adcf3100a7a3bd0e2fdf39abc037f8b5",
+   "bytes": 949034
+  },
+  {
+   "file": "textures/hair/strands_stubble.png",
+   "asset": "ps2cc:atlas/strands_stubble",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "16c0428f629f54fb079777dc467a88d1edc95beb020ed4ea1854c467218c5c12",
+   "bytes": 615374
+  },
+  {
+   "file": "textures/hair/strands_stubble_flow.png",
+   "asset": "ps2cc:atlas/strands_stubble",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "e180644ca11db6143e50926519ba3f515266562a2782d44288a48d6ba581c866",
+   "bytes": 512266
+  },
+  {
+   "file": "textures/hair/strands_wavy.png",
+   "asset": "ps2cc:atlas/strands_wavy",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "ad17ca1898470928b331af3d1bce0e8096532706e3629c1e12359f938d2ec068",
+   "bytes": 1619535
+  },
+  {
+   "file": "textures/hair/strands_wavy_flow.png",
+   "asset": "ps2cc:atlas/strands_wavy",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "a0757227cc58011ee6761e4dfdfb82205f4d130c20641d65b5dbf2fb5b3d1748",
+   "bytes": 1594319
+  },
+  {
    "file": "textures/hair/toigo_blunt_bob.png",
    "asset": "mh:hair/toigo_blunt_bob",
    "licence": "CC0-1.0",

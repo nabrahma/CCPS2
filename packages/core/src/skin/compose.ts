@@ -112,6 +112,7 @@ export class SkinComposer {
     texture: (ref: string) => string | null,
     photo: { image: RgbaImage; key: string } | null,
     baked: { image: RgbaImage; key: string } | null = null,
+    scalp: { image: RgbaImage; key: string } | null = null,
   ): ResolvedSkin {
     const layers: ResolvedSkinLayer[] = [];
     if (photo && skin.photo && skin.photo.strength > 0) {
@@ -133,6 +134,11 @@ export class SkinComposer {
       } else if (isProcedural(l.kind)) {
         source = { kind: 'pixels', image: this.layerImage(l) };
         key = proceduralKey(l);
+      } else if (l.kind === 'scalpHair') {
+        // Drawn from the hairstyle by the scene (hair/scalp-layer.ts); skipped without card hair.
+        if (!scalp) continue;
+        key = `scalp:${scalp.key}`;
+        source = { kind: 'pixels', image: scalp.image };
       } else if (BAKED_LAYER_CHANNEL[l.kind] !== undefined) {
         // Baked maps arrive from the bake engine; until then the layer is skipped.
         if (!baked) continue;

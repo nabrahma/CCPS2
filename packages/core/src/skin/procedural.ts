@@ -67,7 +67,7 @@ export function generateLayer(layer: SkinLayer, ctx: ProceduralContext): RgbaIma
 
 /** True for procedural kinds (generated from the surface). */
 export function isProcedural(kind: SkinLayer['kind']): boolean {
-  return kind !== 'tone' && kind !== 'image' && kind !== 'occlusion' && kind !== 'cavity' && kind !== 'lightBake';
+  return kind !== 'tone' && kind !== 'image' && kind !== 'occlusion' && kind !== 'cavity' && kind !== 'lightBake' && kind !== 'scalpHair';
 }
 
 function gauss(dx: number, dy: number, dz: number, rx: number, ry: number, rz: number): number {

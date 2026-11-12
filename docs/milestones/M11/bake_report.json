@@ -1,10 +1,10 @@
 {
  "generated": "app/frontend/e2e/m11-bake.spec.ts",
  "gpu": "SwiftShader (CPU)",
- "ms": 16964.30000000447,
+ "ms": 15671,
  "timings": {
-  "body": 9380,
-  "garment:top:mh:clothes/namuhekam_male_polo_shirt": 7473
+  "body": 9143,
+  "garment:top:mh:clothes/namuhekam_male_polo_shirt": 6435
  },
  "settings": {
   "size": 256,
@@ -16,14 +16,14 @@
  "results": {
   "body": {
    "points": 122,
-   "mae": 0.0038487311778834152,
-   "worst": 0.052405738801968416,
+   "mae": 0.004064862167620716,
+   "worst": 0.057482149334478816,
    "uncoveredBorderTexels": 0,
    "borderSamples": 11330
   },
   "garment:top:mh:clothes/namuhekam_male_polo_shirt": {
    "points": 405,
-   "mae": 0.017468415474320004,
+   "mae": 0.017447519052511316,
    "worst": 0.3022587196499692,
    "uncoveredBorderTexels": 0,
    "borderSamples": 2350

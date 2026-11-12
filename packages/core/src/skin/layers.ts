@@ -181,6 +181,15 @@ export const LAYER_KINDS: readonly LayerKindSpec[] = [
     procedural: false,
     params: [num('contrast', 'Contrast', 0.5, 2, 0.01, 1)],
   },
+  {
+    kind: 'scalpHair',
+    label: 'Hair on the scalp',
+    blend: 'normal',
+    opacity: 0.9,
+    mask: 'none',
+    procedural: false,
+    params: [],
+  },
 ];
 
 /** Layer kinds the bake engine fills in, and which channel of its map each uses (r occlusion, g cavity, a light). */

@@ -35,7 +35,7 @@ Re-exporting the same character updates the FBX, textures, materials and prefab 
 | Shader | Use |
 | --- | --- |
 | `PS2/Skin` | Head and body. The PS2CC light model: per vertex (Classic) or per pixel (Enhanced, Hero) with wrap diffuse and a warm terminator; optional colour-depth reduction (`Colour depth levels`, 32 = 15-bit). |
-| `PS2/Cutout` | Hair cards, eyes, brows, lashes. The same lighting with an alpha clip, double-sided; hair gets a strand highlight. |
+| `PS2/Cutout` | Hair cards, fur, eyes, brows, lashes. The same lighting with an alpha clip, double-sided; hair gets a strand highlight. Hair v2 materials (sidecar `softAlpha`) also draw a second, blended pass, `SoftAlpha`, for the strand tips under the cutoff; the importer turns it off everywhere else. |
 | `PS2/Cloth` | Garments. The same with an alpha clip and a dirt mask slot. |
 | `PS2/Grade` | The look's grade: exposure, filmic curve, LUT, vignette, grain, chromatic aberration. Add URP's **Full Screen Pass Renderer Feature** and give it a material with this shader. |
 | `PS2/LookFullscreen` | Optional PS2 look: low internal resolution, 16-bit dither, grain, VHS bleed. Also a Full Screen Pass. |

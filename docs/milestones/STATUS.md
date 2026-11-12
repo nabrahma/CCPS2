@@ -67,3 +67,21 @@ The first milestone of `PRD-Part2-Visual-Fidelity.md`. Overview: `docs/look-foun
 Also in M11: quality profiles with the 16k, 20k and full body tiers; the per-pixel renderer with shadows; four graded looks saved as `.ps2look`; the bake engine feeding the skin stack and garment textures; Unity's PS2 shaders, PS2 Look component and PS2/Grade; expression shapes untangled below the eyes (D-088).
 
 **Known limits.** Close-up parity (above). Gloss is a constant per surface until materials get gloss maps (F17, F18). The thickness map is baked but only the app's preview could use it, and nothing does yet. Flashlight shadows are app-only. Mara and Cole wear the closest library items; their own outfits are M15's.
+
+## M12: Hair v2 and Hair Studio (0.14.0, Part 2)
+
+Overview: `docs/hair-v2.md`. Decisions D-100 to D-114. Review images: `docs/milestones/M12/` (each of the eight styles from the front, side, back, top and three-quarter; Hair Studio; a fur collar; card brows).
+
+| Acceptance (Part 2 M12) | State | Evidence |
+| --- | --- | --- |
+| Front, side, back and top renders of all eight styles: skin inside the hair silhouette under 1% (ID buffer) | Passing | `e2e/m12.spec.ts`; worst view 0.96% (shoulder-length, front), most under 0.1%; every number in `docs/milestones/M12/coverage.json` |
+| The scalp layer's hairline steps by no more than 10% alpha between neighbouring texels | Passing | `test/m12.test.ts`, all eight styles, on the 1024 px neutral surface map |
+| A unit test per brush: Comb moves points along the stroke and keeps roots; Puff lifts; Smooth straightens; undo restores exactly | Passing | `test/m12.test.ts` (every brush, plus selection, front-facing only and X symmetry); in the app, a comb stroke is one undo step (`e2e/m12.spec.ts`) |
+| Every style deterministic and inside its profile budget | Passing | Hash test for all 13 starter styles; the eight Hair v2 styles in Classic, Enhanced and Hero |
+| Atlas baker output deterministic | Passing | `test/m12.test.ts` |
+| Unity renders match the app (parity test) | **Not met** | `pnpm bench`: 30 of 48 views at SSIM 0.9 (28 in M11): every full-body and back view (0.97 to 0.99); close-ups 0.80 to 0.96. Colour, light, soft alpha and the hair's mass match; strand-scale detail differs (D-113). Fixed on the way: dark hair's flashlight highlight (D-112) |
+| User score for hair rises by at least one point | Yours | Score the boards in `docs/bench/scores.json` |
+
+Also in M12: the 3D strand atlas baker and five strand looks; hair colour as a gradient map; the Creator's length, volume and fringe adjustments; `.ps2hair` version 2; Hair Studio (brushes, parting, lock tool, layer view, and card mode: one curve is one card, D-114); two-pass alpha in the app and Unity (PS2/Cutout's SoftAlpha pass); fur trims on garment edges and card eyebrows.
+
+**Known limits.** In guide mode, locks and cards are regenerated from the guides; card mode (D-114) places them one by one instead, and a quality profile with a smaller budget leaves some hand-placed detail cards out. Fur trims grow on whole edge loops (collar, cuffs, hem) picked by the nearest joint; a garment whose collar is not an open edge gets none. Five Part 1 styles (buzz, crew, long centre part, bob with fringe, short with sideburns) are unchanged and have no locks.

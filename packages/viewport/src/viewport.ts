@@ -5,7 +5,9 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import {
+  colourizeHair,
   eulerXYZ,
+  hairColourKey,
   NEUTRAL_GRADE,
   parseCube,
   poseWorldMatrices,
@@ -29,6 +31,7 @@ import {
   CAMERA_PRESETS,
   DEFAULT_POST,
   LIGHTING_PRESETS,
+  type CameraFrame,
   type CameraPresetId,
   type LightingPresetId,
   type PostSettings,
@@ -47,9 +50,32 @@ export function resolveAssetUrl(assetBaseUrl: string, path: string): string {
   return /^(https?:|blob:|data:|\/)/.test(path) ? path : `${assetBaseUrl.replace(/\/$/, '')}/${path}`;
 }
 
+/** The soft pass of two-pass hair keeps texels from this alpha up to the cutoff. */
+const SOFT_ALPHA_MIN = 0.04;
+
+/** Fetch and decode an image to RGBA (rows top first, not premultiplied), as the app's exporter decodes it. */
+async function decodePixels(url: string): Promise<RgbaImage> {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`could not load ${url} (${res.status})`);
+  const bitmap = await createImageBitmap(await res.blob(), { premultiplyAlpha: 'none', colorSpaceConversion: 'none' });
+  try {
+    const canvas = new OffscreenCanvas(bitmap.width, bitmap.height);
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    if (!ctx) throw new Error('2D canvas is not available');
+    ctx.drawImage(bitmap, 0, 0);
+    return { width: bitmap.width, height: bitmap.height, data: new Uint8ClampedArray(ctx.getImageData(0, 0, bitmap.width, bitmap.height).data) };
+  } finally {
+    bitmap.close();
+  }
+}
+
 interface PartObject {
   part: ScenePart;
   mesh: THREE.Mesh;
+  /** Hair v2 two-pass alpha: the blended second pass over the same geometry (null without one). */
+  soft: THREE.Mesh | null;
+  /** Hair v2: the gradient-mapped texture shown (atlas, colour), null for a plain texture. */
+  gradientKey: string | null;
   wire: THREE.LineSegments | null;
   material: THREE.ShaderMaterial;
   geometry: THREE.BufferGeometry;
@@ -64,7 +90,7 @@ interface PartObject {
 /** What each part is made of, for the per-pixel model. */
 function surfaceOf(part: ScenePart): SurfaceKind {
   if (part.kind === 'body') return 'skin';
-  if (part.kind === 'hair') return 'hair';
+  if (part.kind === 'hair' || part.kind === 'fur') return 'hair';
   if (part.kind === 'eyes') return 'eyes';
   return 'cloth';
 }
@@ -204,7 +230,11 @@ export class Viewport {
   }
 
   setCameraPreset(id: CameraPresetId): void {
-    const preset = CAMERA_PRESETS[id];
+    this.setCameraFrame(CAMERA_PRESETS[id]);
+  }
+
+  /** Frame the character from any direction (presets, and the test views of M12: front, side, back and top of the head). */
+  setCameraFrame(preset: CameraFrame): void {
     const h = this.characterHeight();
     const target = new THREE.Vector3(0, preset.targetHeight * h, 0);
     const vfov = THREE.MathUtils.degToRad(this.camera.fov);
@@ -514,6 +544,10 @@ export class Viewport {
       if (parts && !parts(key) && obj.mesh.visible) {
         obj.mesh.visible = false;
         hidden.push(obj.mesh);
+        if (obj.soft?.visible) {
+          obj.soft.visible = false;
+          hidden.push(obj.soft);
+        }
       }
       if (obj.wire?.visible) {
         obj.wire.visible = false;
@@ -604,7 +638,49 @@ export class Viewport {
     mesh.frustumCulled = false;
     this.root.add(mesh);
     // The wireframe overlay is built lazily once the geometry has data (see syncWire).
-    return { part, mesh, wire: null, material, geometry, version: -1, texture: null, wireVersion: -1, skinSig: null, surface: surfaceOf(part) };
+    const obj: PartObject = { part, mesh, soft: null, gradientKey: null, wire: null, material, geometry, version: -1, texture: null, wireVersion: -1, skinSig: null, surface: surfaceOf(part) };
+    this.syncSoft(obj);
+    return obj;
+  }
+
+  /**
+   * Hair v2 two-pass alpha (PRD F14, F15): the opaque pass keeps texels at or
+   * above the cutoff and writes depth; a second mesh over the same geometry
+   * blends the softer texels in front of it without writing depth, so strand
+   * tips fade instead of ending in a hard edge. The second material shares
+   * every uniform with the first except its own alpha range.
+   */
+  private syncSoft(obj: PartObject): void {
+    const want = Boolean(obj.part.material.softAlpha && obj.part.material.alphaCutout);
+    if (want && !obj.soft) {
+      const u = obj.material.uniforms;
+      const mat = new THREE.ShaderMaterial({
+        vertexShader: obj.material.vertexShader,
+        fragmentShader: obj.material.fragmentShader,
+        side: obj.material.side,
+        transparent: true,
+        depthWrite: false,
+        uniforms: { ...u, uSoft: { value: 1 }, uAlphaTest: { value: SOFT_ALPHA_MIN }, uAlphaMax: { value: u.uAlphaTest!.value }, uDitherOuter: { value: 0 } },
+      });
+      const soft = new THREE.Mesh(obj.geometry, mat);
+      soft.name = `${obj.part.key}:soft`;
+      soft.userData.partKey = obj.part.key;
+      soft.renderOrder = obj.part.zDepth + 0.5;
+      soft.frustumCulled = false;
+      // Picking and bounds go by the opaque mesh.
+      soft.raycast = () => undefined;
+      this.root.add(soft);
+      obj.soft = soft;
+    } else if (!want && obj.soft) {
+      this.root.remove(obj.soft);
+      (obj.soft.material as THREE.Material).dispose();
+      obj.soft = null;
+    }
+    if (obj.soft) {
+      const su = (obj.soft.material as THREE.ShaderMaterial).uniforms;
+      su.uAlphaMax!.value = obj.material.uniforms.uAlphaTest!.value;
+      obj.soft.visible = obj.mesh.visible;
+    }
   }
 
   private updateObject(obj: PartObject): void {
@@ -617,6 +693,22 @@ export class Viewport {
     obj.material.uniforms.uDitherOuter!.value = m.ditherOuter ? 1 : 0;
     // Volume normals already face out of the hair: lighting the back of a card by |N.L| would light the far side of the head.
     obj.material.uniforms.uTwoSided!.value = m.doubleSided && !m.volumeNormals ? 1 : 0;
+    this.syncSoft(obj);
+    if (p.kind === 'hair') obj.material.uniforms.uLayerMask!.value.set(this.hairLayers.shell ? 1 : 0, this.hairLayers.locks ? 1 : 0, this.hairLayers.cards ? 1 : 0);
+    // Hair v2: a greyscale strand atlas through the hair's gradient map (the exporter does the same).
+    const grad = m.gradient;
+    const gradientKey = grad && m.texture && !m.skin ? `${m.texture}|${hairColourKey(grad.colour)}|${JSON.stringify(grad.regions)}` : null;
+    if (gradientKey !== obj.gradientKey) {
+      obj.gradientKey = gradientKey;
+      obj.texture = gradientKey;
+      setMaterialTexture(obj.material, null);
+      if (gradientKey && grad && m.texture) {
+        const path = m.texture;
+        void this.gradientTexture(gradientKey, path, grad).then((tex) => {
+          if (obj.gradientKey === gradientKey) setMaterialTexture(obj.material, tex);
+        });
+      } else obj.texture = null;
+    }
     if (m.skin) {
       this.syncSkin(obj, m.skin);
     } else if (obj.skinSig !== null) {
@@ -625,7 +717,7 @@ export class Viewport {
       obj.texture = null;
       obj.material.uniforms.uMapRaw!.value = 0;
     }
-    if (!m.skin && m.texture !== obj.texture) {
+    if (!m.skin && !gradientKey && m.texture !== obj.texture) {
       obj.texture = m.texture;
       setMaterialTexture(obj.material, null);
       if (m.texture) {
@@ -645,6 +737,7 @@ export class Viewport {
       g.setAttribute('normal', new THREE.BufferAttribute(shown.normals.slice(), 3).setUsage(THREE.DynamicDrawUsage));
       g.setAttribute('uv', new THREE.BufferAttribute(p.uvs, 2));
       if (p.layer) g.setAttribute('layer', new THREE.BufferAttribute(p.layer, 1));
+      if (p.hairLayer) g.setAttribute('hairLayer', new THREE.BufferAttribute(Float32Array.from(p.hairLayer), 1));
     } else {
       (pos.array as Float32Array).set(shown.positions);
       pos.needsUpdate = true;
@@ -656,7 +749,10 @@ export class Viewport {
     const uv = g.getAttribute('uv') as THREE.BufferAttribute | undefined;
     if (uv && uv.array !== p.uvs) g.setAttribute('uv', new THREE.BufferAttribute(p.uvs, 2));
     const layer = g.getAttribute('layer') as THREE.BufferAttribute | undefined;
-    if (p.layer && layer?.array !== p.layer) g.setAttribute('layer', new THREE.BufferAttribute(p.layer, 1));
+    if (p.layer && layer?.array !== p.layer) {
+      g.setAttribute('layer', new THREE.BufferAttribute(p.layer, 1));
+      if (p.hairLayer) g.setAttribute('hairLayer', new THREE.BufferAttribute(Float32Array.from(p.hairLayer), 1));
+    }
     if (!g.index || g.index.array !== p.indices || obj.version === -1) g.setIndex(new THREE.BufferAttribute(p.indices, 1));
     if (p.kind === 'body' && !g.getAttribute('headRegion')) {
       const flags = this.character?.bodyHeadFlags();
@@ -727,6 +823,113 @@ export class Viewport {
     return body?.skinSig ? (this.compositor?.readPixels() ?? null) : null;
   }
 
+  /** Gradient-mapped hair textures by key (atlas, colour), the last few kept. */
+  private readonly gradientTextures = new Map<string, Promise<THREE.Texture | null>>();
+  private readonly greyAtlases = new Map<string, Promise<RgbaImage>>();
+
+  private gradientTexture(key: string, path: string, g: NonNullable<ScenePart['material']['gradient']>): Promise<THREE.Texture | null> {
+    let p = this.gradientTextures.get(key);
+    if (!p) {
+      let grey = this.greyAtlases.get(path);
+      if (!grey) {
+        grey = decodePixels(resolveAssetUrl(this.options.assetBaseUrl, path));
+        this.greyAtlases.set(path, grey);
+      }
+      p = grey
+        .then((img) => {
+          const coloured = colourizeHair(img, g.regions, g.colour);
+          // DataTextures are not flipped on upload: rows go in bottom first, as OBJ/MakeHuman UVs expect.
+          const W = coloured.width;
+          const H = coloured.height;
+          const data = new Uint8Array(W * H * 4);
+          for (let y = 0; y < H; y++) data.set(coloured.data.subarray((H - 1 - y) * W * 4, (H - y) * W * 4), y * W * 4);
+          const tex = new THREE.DataTexture(data, W, H, THREE.RGBAFormat);
+          tex.colorSpace = THREE.SRGBColorSpace;
+          tex.minFilter = THREE.LinearMipmapLinearFilter;
+          tex.magFilter = THREE.LinearFilter;
+          tex.generateMipmaps = true;
+          tex.anisotropy = 1;
+          tex.needsUpdate = true;
+          return tex as THREE.Texture;
+        })
+        .catch((err: unknown) => {
+          console.warn(`hair texture ${path} failed`, err);
+          return null;
+        });
+      this.gradientTextures.set(key, p);
+      // A colour slider drag makes many; keep the last few.
+      while (this.gradientTextures.size > 6) {
+        const oldest = this.gradientTextures.keys().next().value!;
+        const old = this.gradientTextures.get(oldest)!;
+        this.gradientTextures.delete(oldest);
+        void old.then((t) => {
+          if (t && ![...this.objects.values()].some((o) => o.material.uniforms.uMap!.value === t)) t.dispose();
+        });
+      }
+    }
+    return p;
+  }
+
+  /** Hair Studio's layer view: which hair layers are drawn. */
+  private hairLayers = { shell: true, locks: true, cards: true };
+
+  setHairLayers(layers: { shell: boolean; locks: boolean; cards: boolean }): void {
+    this.hairLayers = { ...layers };
+    this.refresh();
+  }
+
+  /**
+   * An ID render (PRD M12 test): every part in a flat colour by kind (hair 1,
+   * body 2, everything else 3 in the red channel), with each material's alpha
+   * cutout, no lighting and no post. Rows top first.
+   */
+  renderIds(width: number, height: number): { width: number; height: number; data: Uint8Array } {
+    const target = new THREE.WebGLRenderTarget(width, height, { depthBuffer: true });
+    const prevAspect = this.camera.aspect;
+    this.camera.aspect = width / height;
+    this.camera.updateProjectionMatrix();
+    const saved: { u: Record<string, THREE.IUniform>; mode: number }[] = [];
+    const hidden: THREE.Object3D[] = [];
+    for (const obj of this.objects.values()) {
+      const u = obj.material.uniforms;
+      saved.push({ u, mode: u.uMode!.value as number });
+      u.uMode!.value = 4;
+      const id = obj.part.kind === 'hair' ? 1 : obj.part.kind === 'body' ? 2 : 3;
+      u.uIdColor!.value.set(id / 255, 0, 0);
+      // Only the opaque pass counts: soft texels are below the cutoff.
+      if (obj.soft?.visible) {
+        obj.soft.visible = false;
+        hidden.push(obj.soft);
+      }
+      if (obj.wire?.visible) {
+        obj.wire.visible = false;
+        hidden.push(obj.wire);
+      }
+    }
+    const groundVisible = this.ground.visible;
+    this.ground.visible = false;
+    const bg = this.scene3d.background;
+    this.scene3d.background = null;
+    this.renderer.setRenderTarget(target);
+    this.renderer.setClearColor(0x000000, 1);
+    this.renderer.clear();
+    this.renderer.render(this.scene3d, this.camera);
+    const pixels = new Uint8Array(width * height * 4);
+    this.renderer.readRenderTargetPixels(target, 0, 0, width, height, pixels);
+    this.renderer.setRenderTarget(null);
+    this.scene3d.background = bg;
+    this.ground.visible = groundVisible;
+    for (const s of saved) s.u.uMode!.value = s.mode;
+    for (const o of hidden) o.visible = true;
+    this.camera.aspect = prevAspect;
+    this.camera.updateProjectionMatrix();
+    target.dispose();
+    // GL rows are bottom first.
+    const data = new Uint8Array(width * height * 4);
+    for (let y = 0; y < height; y++) data.set(pixels.subarray((height - 1 - y) * width * 4, (height - y) * width * 4), y * width * 4);
+    return { width, height, data };
+  }
+
   private texture(path: string): Promise<THREE.Texture | null> {
     let p = this.textures.get(path);
     if (!p) {
@@ -753,6 +956,10 @@ export class Viewport {
 
   private disposeObject(obj: PartObject): void {
     this.root.remove(obj.mesh);
+    if (obj.soft) {
+      this.root.remove(obj.soft);
+      (obj.soft.material as THREE.Material).dispose();
+    }
     obj.geometry.dispose();
     obj.material.dispose();
     if (obj.wire) {
@@ -809,6 +1016,8 @@ export class Viewport {
   };
 
   private onPointerUp = (e: PointerEvent): void => {
+    // In Hair Studio a click is a brush dab, not a pick.
+    if (this.brushMode) return;
     if (!this.downAt || Math.hypot(e.clientX - this.downAt.x, e.clientY - this.downAt.y) > 4) return;
     this.downAt = null;
     const rect = this.canvas.getBoundingClientRect();
@@ -819,6 +1028,103 @@ export class Viewport {
     const hit = ray.intersectObjects(meshes, false)[0];
     this.options.onPick?.(hit ? (hit.object.userData.partKey as string) : null);
   };
+
+  // ------------------------------------------------------------ Hair Studio (PRD F15)
+
+  private groomLines: THREE.LineSegments | null = null;
+
+  /**
+   * Draw groom guides over the character (engine space, as the scene's parts):
+   * selected ones (weight > 0) in a warm colour, the rest cool. Null removes them.
+   */
+  setGroomOverlay(curves: { points: [number, number, number][]; selected?: number }[] | null): void {
+    if (!curves) {
+      if (this.groomLines) {
+        this.root.remove(this.groomLines);
+        this.groomLines.geometry.dispose();
+        (this.groomLines.material as THREE.Material).dispose();
+        this.groomLines = null;
+      }
+      return;
+    }
+    const pos: number[] = [];
+    const col: number[] = [];
+    for (const c of curves) {
+      const s = Math.min(1, Math.max(0, c.selected ?? 0));
+      const rgb = [0.45 + 0.55 * s, 0.85 - 0.35 * s, 1 - 0.8 * s];
+      for (let i = 1; i < c.points.length; i++) {
+        pos.push(...c.points[i - 1]!, ...c.points[i]!);
+        col.push(...rgb, ...rgb);
+      }
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+    g.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
+    if (!this.groomLines) {
+      this.groomLines = new THREE.LineSegments(g, new THREE.LineBasicMaterial({ vertexColors: true, depthTest: false, transparent: true, opacity: 0.9 }));
+      this.groomLines.renderOrder = 1000;
+      this.groomLines.frustumCulled = false;
+      this.root.add(this.groomLines);
+    } else {
+      this.groomLines.geometry.dispose();
+      this.groomLines.geometry = g;
+    }
+  }
+
+  /** Left drag orbits normally; in Hair Studio it paints, and orbiting moves to the right button. */
+  private brushMode = false;
+
+  setBrushMode(on: boolean): void {
+    this.brushMode = on;
+    this.controls.mouseButtons = on
+      ? { LEFT: null as unknown as THREE.MOUSE, MIDDLE: THREE.MOUSE.PAN, RIGHT: THREE.MOUSE.ROTATE }
+      : { LEFT: THREE.MOUSE.ROTATE, MIDDLE: THREE.MOUSE.DOLLY, RIGHT: THREE.MOUSE.PAN };
+  }
+
+  /**
+   * The camera for screen-space brushes, in engine space (the scene's parts,
+   * before the ground offset) and canvas pixels (client offsets from the canvas' corner).
+   */
+  groomView(): {
+    project(p: [number, number, number]): { x: number; y: number; depth: number };
+    unproject(x: number, y: number, depth: number): [number, number, number];
+    eye: [number, number, number];
+    pick(x: number, y: number, partKey?: string): { point: [number, number, number]; normal: [number, number, number] } | null;
+  } {
+    const rect = this.canvas.getBoundingClientRect();
+    const cam = this.camera;
+    cam.updateMatrixWorld();
+    const off = this.root.position.clone();
+    const camDir = cam.getWorldDirection(new THREE.Vector3());
+    const v = new THREE.Vector3();
+    return {
+      project: (p) => {
+        v.set(p[0], p[1], p[2]).add(off);
+        const depth = v.clone().sub(cam.position).dot(camDir);
+        v.project(cam);
+        return { x: ((v.x + 1) / 2) * rect.width, y: ((1 - v.y) / 2) * rect.height, depth };
+      },
+      unproject: (x, y, depth) => {
+        const ndc = new THREE.Vector3((x / rect.width) * 2 - 1, 1 - (y / rect.height) * 2, 0.5).unproject(cam);
+        const dir = ndc.sub(cam.position).normalize();
+        const t = depth / Math.max(1e-6, dir.dot(camDir));
+        const w = cam.position.clone().addScaledVector(dir, t).sub(off);
+        return [w.x, w.y, w.z];
+      },
+      eye: [cam.position.x - off.x, cam.position.y - off.y, cam.position.z - off.z],
+      pick: (x, y, partKey = 'body') => {
+        const obj = this.objects.get(partKey);
+        if (!obj) return null;
+        const ray = new THREE.Raycaster();
+        ray.setFromCamera(new THREE.Vector2((x / rect.width) * 2 - 1, 1 - (y / rect.height) * 2), cam);
+        const hit = ray.intersectObject(obj.mesh, false)[0];
+        if (!hit || !hit.face) return null;
+        const p = hit.point.clone().sub(off);
+        const n = hit.face.normal.clone().transformDirection(obj.mesh.matrixWorld);
+        return { point: [p.x, p.y, p.z], normal: [n.x, n.y, n.z] };
+      },
+    };
+  }
 
   /** Key of the part under a client-space point (drag-and-drop targeting). */
   partAt(clientX: number, clientY: number): string | null {
