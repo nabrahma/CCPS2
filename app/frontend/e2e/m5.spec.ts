@@ -1,5 +1,5 @@
 /**
- * PRD M5 review renders: the 8 starter card hairstyles on the built-in atlas,
+ * PRD M5 review renders: every starter card hairstyle on the built-in atlas,
  * written to docs/milestones/M5/ for the user to judge.
  */
 import { mkdirSync, readFileSync } from 'node:fs';
@@ -18,9 +18,9 @@ test('M5 review set: starter card hairstyles', async ({ page }) => {
   await boot(page);
   await page.getByLabel('Light').selectOption('studio');
   for (const s of STYLES.filter((x) => !ONLY || ONLY.includes(x.id))) {
-    const female = ['bob', 'shoulder-straight', 'long-straight', 'ponytail'].includes(s.id);
+    const female = ['bob', 'shoulder-straight', 'long-straight', 'ponytail', 'long-centre-part', 'bob-fringe'].includes(s.id);
     await setCharacter(page, { gender: female ? 0 : 1, age: 0.55 }, {
-      hair: { mode: 'cards', style: s.style, atlas: null, tint: { color: [0.55, 0.42, 0.32], brightness: 1 }, alphaThreshold: 0.5 },
+      hair: { mode: 'cards', style: s.style, atlas: null, tint: { color: [1, 1, 1], brightness: 1 }, alphaThreshold: 0.5 },
       garments: [{ slot: 'top', asset: 'mh:clothes/namuhekam_male_polo_shirt', tint: { color: [1, 1, 1], brightness: 1 }, dirt: 0, hideBody: true }],
     });
     for (const cam of ['threeQuarter', 'profile'] as const) {

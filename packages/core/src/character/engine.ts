@@ -11,6 +11,7 @@ import { fitSkeleton, type FittedSkeleton } from '../skeleton/rig';
 import { UndoStack } from '../undo';
 import { cloneCharacter, defaultCharacter, type CharacterDoc } from './doc';
 import { ADULT_MIN_AGE } from './sliders';
+import { completeStyle } from '../hair/style';
 
 export type ChangeKind = 'geometry' | 'doc' | 'history';
 export type ChangeListener = (kind: ChangeKind) => void;
@@ -275,6 +276,8 @@ function setOrDelete(map: Record<string, number>, key: string, v: number, def: n
 function sanitise(doc: CharacterDoc): CharacterDoc {
   doc.macros.age = Math.max(doc.macros.age, ADULT_MIN_AGE); // all characters are adults (PRD F1)
   normaliseEthnic(doc.macros);
+  // A card style from before the groom existed (or set by hand) gets the settings it lacks.
+  if (doc.hair.mode === 'cards' && doc.hair.style) doc.hair.style = completeStyle(doc.hair.style);
   return doc;
 }
 

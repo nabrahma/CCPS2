@@ -19,11 +19,11 @@
     "meshes": [
       "head:5456",
       "body:2544",
-      "hair:2432",
+      "hair:1740",
       "eyes:732"
     ],
-    "triangles": 11164,
-    "budget": 11164,
+    "triangles": 10472,
+    "budget": 10472,
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []
@@ -34,12 +34,12 @@
     "meshes": [
       "head:5456",
       "body:1938",
-      "hair:1052",
+      "hair:842",
       "garments:2500",
       "eyes:732"
     ],
-    "triangles": 11678,
-    "budget": 11678,
+    "triangles": 11468,
+    "budget": 11468,
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []
@@ -80,12 +80,12 @@
     "meshes": [
       "head:5456",
       "body:1852",
-      "hair:552",
+      "hair:652",
       "garments:2500",
       "eyes:732"
     ],
-    "triangles": 11092,
-    "budget": 11092,
+    "triangles": 11192,
+    "budget": 11192,
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []
@@ -96,11 +96,11 @@
     "meshes": [
       "head:5456",
       "body:2544",
-      "hair:1820",
+      "hair:2008",
       "eyes:732"
     ],
-    "triangles": 10552,
-    "budget": 10552,
+    "triangles": 10740,
+    "budget": 10740,
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []
@@ -125,12 +125,12 @@
     "meshes": [
       "head:5456",
       "body:1938",
-      "hair:552",
+      "hair:652",
       "garments:2500",
       "eyes:732"
     ],
-    "triangles": 11178,
-    "budget": 11178,
+    "triangles": 11278,
+    "budget": 11278,
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []

@@ -3,6 +3,9 @@ import { sanitiseStyle, type HairStyleParams } from './style';
 
 export * from './atlas';
 export * from './binding';
+export * from './card-texture';
+export * from './cards-from-curves';
+export { arcLengths, closestOnPolyline, curveLength, resample, shapeRange, transportNormals, trim, worldNormal } from './curves';
 export * from './generate';
 export * from './headproxy';
 export * from './scalp';

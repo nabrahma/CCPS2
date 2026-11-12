@@ -10,6 +10,7 @@ import { alphaSampler, BaseMesh, buildRenderTopology, computeCoveredVertices, co
 import { NodeAssetSource } from '@ps2cc/core/node';
 import { ContainerWriter } from './container-writer';
 import { decimateGarment } from './garments';
+import { buildHairAtlases } from './hair-atlases';
 import { registerDerivedFiles } from './licenses';
 import { Canvas, decodePng } from './png';
 import { buildPs2Body, type Ps2BodyResult } from './ps2body';
@@ -184,7 +185,8 @@ async function main(): Promise<void> {
   console.info(`garments and hair: ${garmentReport.length} decimated, ${over.length} with remaining flips`);
 
   // Built-in hair card atlas (PRD F5): MakeHuman's CC0 long01 texture has vertical strand strips.
-  catalog.hairAtlases = [builtInAtlas('textures/hair/long01.png')];
+  // The generated card atlases come first (the first is the default); the long01 strips stay available.
+  catalog.hairAtlases = [...buildHairAtlases(ASSETS), builtInAtlas('textures/hair/long01.png')];
   writeFileSync(join(shotsDir, '..', 'M4', 'garment_report.json'), JSON.stringify(garmentReport, null, 2) + '\n');
 
   writeFileSync(catalogPath, JSON.stringify(catalog, null, 1) + '\n');

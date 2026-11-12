@@ -1,10 +1,15 @@
 /**
- * Generated card hair (PRD F5 route B, steps 3–7):
+ * Generated card hair (PRD F5 route B). The pipeline follows Daniel Bystedt's
+ * "Hair cards from curves" Blender setup (docs/hair-system.md):
  *
- *   roots (scalp + mask) -> guide strands (flow, gravity, curl, bangs,
- *   ponytail, collision with the head proxy) -> cards swept along the guides
- *   (taper, twist aligned to the scalp normal, layers inner -> outer, atlas
- *   regions by tag) -> optional scalp shell -> binding to the body.
+ *   scalp + hairline mask
+ *   -> a few GUIDE curves that carry the style (flow, gravity, parting, curl,
+ *      bangs, ponytail, collision with the head proxy)
+ *   -> a curve per card, INTERPOLATED from the guides around its root, then
+ *      clumped onto its nearest guide, frizzed and trimmed to its own length
+ *   -> one card per curve (cards-from-curves.ts), layer by layer from the
+ *      inside out, with atlas regions by tag
+ *   -> optional scalp shell -> binding to the body.
  *
  * Deterministic: the same style, atlas and body give the same mesh (see
  * hashHair). Card topology depends only on the style, never on the body.
@@ -16,6 +21,8 @@ import type { FittedSkeleton, RigDefinition } from '../skeleton/rig';
 import type { SparseWeights } from '../skeleton/weights';
 import { regionsFor, type AtlasRegion, type AtlasTag } from './atlas';
 import { HairBinding } from './binding';
+import { cardFromCurve, type HairSurface } from './cards-from-curves';
+import { arcLengths, curveLength, pointAt, resample, shapeRange, trim } from './curves';
 import { dominantBones, HeadProxy } from './headproxy';
 import { Scalp, type HeadFrame, type ScalpRoot } from './scalp';
 import { hairline, type HairStyleParams } from './style';
@@ -35,6 +42,36 @@ export interface GeneratedHair {
   triangleCount: number;
   proxy: HeadProxy;
   binding: HairBinding;
+  /** Guide curves the cards were interpolated from (for review and tests). */
+  guideCurves: Vec3[][];
+  /** The parting line on the scalp, when the style has one. */
+  parting: Vec3[] | null;
+  /** Axis of the hair's volume for shading normals: from the middle of the skull straight down. */
+  volumeAxis: { top: Vec3; length: number };
+}
+
+/** Points per guide curve. */
+const GUIDE_POINTS = 12;
+/** Most a hair may be stretched past its guides to reach its own length. */
+const MAX_STRETCH = 1.35;
+
+interface Guide {
+  /** Root on the neutral body (what "nearest guide" is measured on, so it never depends on the body). */
+  neutral: Vec3;
+  /** The root's angles on the neutral head: from the crown, and around it. */
+  theta: number;
+  phi: number;
+  /** Hairs only follow guides of their own group: one per side of the parting, and one for the fringe. */
+  group: number;
+  /** The length the style asks for at this root. */
+  nominal: number;
+  points: Vec3[];
+  arcs: number[];
+}
+
+interface PlannedCard {
+  root: ScalpRoot;
+  segments: number;
 }
 
 const BIND_BONES = ['head', 'neck_01', 'spine_03', 'spine_02', 'clavicle_l', 'clavicle_r', 'upperarm_l', 'upperarm_r'];
@@ -48,6 +85,10 @@ export class HairGenerator {
   private readonly bindTriangles: Uint32Array;
   readonly skinBones: Set<number>;
   readonly headBone: number;
+  /** Half the scalp's width on the neutral body. */
+  private readonly neutralHalfWidth: number;
+  /** Scalp vertices on the outer edge of the scalp region, where the shell must have faded out. */
+  private readonly scalpBorder = new Set<number>();
 
   constructor(
     private readonly base: BaseMesh,
@@ -71,26 +112,56 @@ export class HairGenerator {
     this.bindTriangles = Uint32Array.from(tris);
     this.skinBones = new Set(SKIN_BONES.map((b) => rig.index.get(b)!));
     this.headBone = rig.index.get('head')!;
+    let half = 0;
+    for (const v of this.scalp.vertices) half = Math.max(half, Math.abs(base.positions[v * 3]! - this.neutralFrame.centre[0]));
+    this.neutralHalfWidth = half;
+    // An edge with a single quad is on the rim of the region.
+    const edges = new Map<string, number>();
+    const Q = this.scalp.quads;
+    const corners = (q: number) => [0, 1, 2, 3].map((k) => Q[q * 4 + k]!).filter((v, k, all) => all.indexOf(v) === k);
+    for (let q = 0; q < Q.length / 4; q++) {
+      const c = corners(q);
+      c.forEach((a, k) => {
+        const b = c[(k + 1) % c.length]!;
+        const key = a < b ? `${a}:${b}` : `${b}:${a}`;
+        edges.set(key, (edges.get(key) ?? 0) + 1);
+      });
+    }
+    for (const [key, count] of edges) if (count === 1) for (const v of key.split(':')) this.scalpBorder.add(Number(v));
   }
 
-  /** Triangles a style will produce: [cards, shell], after fitting the budget. */
-  plan(style: HairStyleParams): { layerCounts: number[]; shellQuads: number[]; segments: number } {
+  /**
+   * The cards a style will produce, layer by layer, fitted to its triangle
+   * budget. Only the style and the neutral body go in, so the result (and with
+   * it the mesh topology) is the same on every body.
+   */
+  plan(style: HairStyleParams): { layers: PlannedCard[][]; layerCounts: number[]; shellQuads: number[]; segments: number } {
     const shellQuads = style.shell.enabled ? this.maskedQuads(style) : [];
-    const segments = style.ponytail.enabled ? Math.max(3, style.cards.segments) : style.cards.segments;
     const L = style.cards.layers;
     let counts = Array.from({ length: L }, (_, k) => Math.round(style.guides * (L === 1 ? 1 : 0.55 + (0.45 * k) / (L - 1))));
     const shellTris = shellQuads.length * 2;
-    const perCard = segments * 2;
-    const cardTris = counts.reduce((s, c) => s + c, 0) * perCard;
     const [min, max] = style.budget;
-    if (cardTris > 0 && shellTris + cardTris > max) {
-      const f = Math.max(0, (max - shellTris) / cardTris);
-      counts = counts.map((c) => Math.floor(c * f));
-    } else if (cardTris > 0 && shellTris + cardTris < min) {
-      const f = (min - shellTris) / cardTris;
-      counts = counts.map((c) => Math.ceil(c * f));
+    const sample = () =>
+      counts.map((count, k) =>
+        this.scalp
+          .sampleRoots(count, mix(style.seed, 7919 * (k + 1)), style.hairline, this.base.positions, this.neutralFrame)
+          .map((root) => ({ root, segments: this.segmentsFor(style, root) })),
+      );
+    const triangles = (layers: PlannedCard[][]) => layers.reduce((n, cards) => n + cards.reduce((m, c) => m + c.segments * 2, 0), 0);
+    let layers = sample();
+    for (let pass = 0; pass < 4; pass++) {
+      const cardTris = triangles(layers);
+      if (cardTris === 0 || (shellTris + cardTris <= max && shellTris + cardTris >= min)) break;
+      const want = shellTris + cardTris > max ? max - shellTris : min - shellTris;
+      const f = Math.max(0, want / cardTris);
+      counts = counts.map((c) => (f < 1 ? Math.floor(c * f) : Math.ceil(c * f)));
+      layers = sample();
     }
-    return { layerCounts: counts, shellQuads, segments };
+    // Rounding can leave a few triangles too many: drop cards from the outside in.
+    for (let k = layers.length - 1; shellTris + triangles(layers) > max && layers.some((l) => l.length > 0); k = (k - 1 + layers.length) % layers.length) {
+      layers[k]!.pop();
+    }
+    return { layers, layerCounts: layers.map((l) => l.length), shellQuads, segments: style.cards.segments };
   }
 
   /**
@@ -100,31 +171,60 @@ export class HairGenerator {
   generate(style: HairStyleParams, atlas: readonly AtlasRegion[], positions: ArrayLike<number>, skeleton: FittedSkeleton): GeneratedHair {
     if (atlas.length === 0) throw new Error('hair atlas has no regions');
     const proxy = HeadProxy.fit(this.base, this.rig, skeleton, this.dominant, positions, this.scalp.vertices);
-    const crane = proxy.cranium;
-    const c = crane.centre;
-    const { layerCounts, shellQuads, segments } = this.plan(style);
+    const { layers, shellQuads } = this.plan(style);
     const out = new MeshBuilder();
-    const scalpBvh = new TriangleBVH(positions, this.scalp.triangles);
+    const surface = this.surface(positions, proxy);
+    const top = proxy.cranium.centre;
+    const volumeAxis = { top: [top[0], top[1], top[2]] as Vec3, length: 0.6 };
 
     // 1. Scalp shell (innermost, drawn first).
     if (shellQuads.length) this.buildShell(out, style, atlas, shellQuads, positions, proxy);
     const shellTriangles = out.indices.length / 3;
 
-    // 2. Cards, layer by layer from the inside out.
-    const L = layerCounts.length;
+    // 2. The groom: guide curves, and the parting line they fall away from.
+    const guides = this.guides(style, positions, proxy);
+    const parting = this.partingLine(style, proxy, surface);
+
+    // 3. Cards, layer by layer from the inside out.
+    const L = layers.length;
     let cards = 0;
     const roots: number[] = [];
     for (let k = 0; k < L; k++) {
       const layerT = L === 1 ? 1 : k / (L - 1);
-      const sampled = this.scalp.sampleRoots(layerCounts[k]!, mix(style.seed, 7919 * (k + 1)), style.hairline, this.base.positions, this.neutralFrame);
-      sampled.forEach((root, i) => {
+      layers[k]!.forEach(({ root, segments }, i) => {
         const rng = new Rng(mix(mix(style.seed, k + 1), i + 1));
-        const guide = this.guide(style, root, layerT, positions, proxy, rng, segments);
         const tag = this.tagFor(style, root, k, L, rng);
+        const flyaway = tag === 'flyaway';
+        const curve = this.child(style, root, layerT, flyaway, guides, positions, proxy, volumeAxis, rng);
         const regions = regionsFor(atlas, tag);
         const region = regions[Math.floor(rng.next() * regions.length)]!;
-        roots.push(out.vertexCount, out.vertexCount + 1);
-        this.sweep(out, style, guide, region, layerT, proxy, c, scalpBvh);
+        const card = cardFromCurve(
+          {
+            curve,
+            segments,
+            // Loose hairs are thinner (the setup's "sparse" cards use a smaller radius), and no two cards are quite alike.
+            width: style.cards.width * (flyaway ? 0.8 : 1) * (0.85 + 0.3 * rng.next()),
+            taper: style.cards.taper,
+            random: rng.next(),
+            surface,
+            parting,
+          },
+          style.build,
+        );
+        // Mirror the texture on half the cards so a few atlas strips do not repeat visibly.
+        const flip = rng.next() < 0.5;
+        const first = out.vertexCount;
+        roots.push(first, first + 1);
+        card.positions.forEach((p, v) => {
+          proxy.pushOut(p, 0.001);
+          const left = (v & 1) === 0;
+          out.vertex(p, [left !== flip ? region.x : region.x + region.w, 1 - (region.y + region.h * card.along[v >> 1]!)], layerT);
+        });
+        for (let j = 0; j < segments; j++) {
+          const a = first + j * 2;
+          out.triangle(a, a + 1, a + 3);
+          out.triangle(a, a + 3, a + 2);
+        }
         cards++;
       });
     }
@@ -138,6 +238,9 @@ export class HairGenerator {
       triangleCount: mesh.indices.length / 3,
       proxy,
       binding,
+      guideCurves: guides.map((g) => g.points),
+      parting,
+      volumeAxis,
     };
   }
 
@@ -148,17 +251,220 @@ export class HairGenerator {
 
   // ------------------------------------------------------------ internals
 
+  /** The skin of the head, neck and shoulders as the surface cards snap to. */
+  private surface(positions: ArrayLike<number>, proxy: HeadProxy): HairSurface {
+    const T = this.bindTriangles;
+    const bvh = new TriangleBVH(positions, T);
+    const c = proxy.cranium.centre;
+    return {
+      closest: (p) => {
+        const hit = bvh.closestPoint(p);
+        if (!hit) return null;
+        const n = triangleNormal(positions, T[hit.triangle * 3]!, T[hit.triangle * 3 + 1]!, T[hit.triangle * 3 + 2]!);
+        // Out of the body: away from the skull's centre on the head, away from the spine below it.
+        const y = Math.min(c[1], hit.point[1]);
+        if (dot(n, [hit.point[0] - c[0], hit.point[1] - y, hit.point[2] - c[2]]) < 0) scale(n, -1);
+        return { point: hit.point, normal: n, distance: hit.distance };
+      },
+    };
+  }
+
+  private neutralPoint(root: ScalpRoot): Vec3 {
+    const P = this.base.positions;
+    const r: Vec3 = [0, 0, 0];
+    for (let k = 0; k < 3; k++) r[k] = root.wa * P[root.a * 3 + k]! + root.wb * P[root.b * 3 + k]! + root.wc * P[root.c * 3 + k]!;
+    return r;
+  }
+
+  /** The parting's place across the head, -1..1 (0 is the middle), or null without a parting. */
+  private partOffset(style: HairStyleParams): number | null {
+    if (style.part.side === 'none') return null;
+    const def = style.part.side === 'left' ? 0.35 : style.part.side === 'right' ? -0.35 : 0;
+    return style.part.position !== 0 ? style.part.position : def;
+  }
+
+  /** Which side of the parting a root is on (1 or -1; 0 without a parting), decided on the neutral body. */
+  private sideOf(style: HairStyleParams, root: ScalpRoot): number {
+    const offset = this.partOffset(style);
+    if (offset === null) return 0;
+    return this.neutralPoint(root)[0] >= this.neutralFrame.centre[0] + offset * this.neutralHalfWidth ? 1 : -1;
+  }
+
+  private groupOf(style: HairStyleParams, root: ScalpRoot): number {
+    return this.isBangs(style, root) ? 2 : this.sideOf(style, root) > 0 ? 1 : 0;
+  }
+
+  /** The length the style gives a hair at this root, before any random variation. */
+  private nominalLength(style: HairStyleParams, root: ScalpRoot): number {
+    if (this.isBangs(style, root)) return style.bangs.length;
+    // A ponytail hair runs over the scalp to the tie and then down the tail.
+    if (style.ponytail.enabled) return style.ponytail.length + 0.12;
+    return this.lengthAt(style, root);
+  }
+
+  /** Quads for a card: one per `segmentLength` of hair, at most `cards.segments` ("Subdivide by length"). */
+  private segmentsFor(style: HairStyleParams, root: ScalpRoot): number {
+    const most = style.ponytail.enabled ? Math.max(3, style.cards.segments) : style.cards.segments;
+    const wanted = Math.ceil((this.nominalLength(style, root) * style.build.lengthFactor) / style.build.segmentLength);
+    return Math.min(most, Math.max(1, wanted));
+  }
+
+  private guides(style: HairStyleParams, positions: ArrayLike<number>, proxy: HeadProxy): Guide[] {
+    const roots = this.scalp.sampleRoots(style.groom.guides, mix(style.seed, 0x6a09e667), style.hairline, this.base.positions, this.neutralFrame);
+    return roots.map((root, i) => {
+      const rng = new Rng(mix(mix(style.seed, 0x51ed270b), i + 1));
+      const points = resample(this.guide(style, root, 1, positions, proxy, rng, GUIDE_POINTS - 1), GUIDE_POINTS);
+      return { neutral: this.neutralPoint(root), theta: root.theta, phi: root.phi, group: this.groupOf(style, root), nominal: this.nominalLength(style, root), points, arcs: arcLengths(points) };
+    });
+  }
+
+  /**
+   * The parting line (the setup's "Parting line curve"): where the plane of
+   * the parting meets the scalp, from the front hairline over the top to
+   * behind the crown.
+   */
+  private partingLine(style: HairStyleParams, proxy: HeadProxy, surface: HairSurface): Vec3[] | null {
+    const offset = this.partOffset(style);
+    if (offset === null || style.ponytail.enabled) return null;
+    const crane = proxy.cranium;
+    const c = crane.centre;
+    const x = c[0] + offset * crane.radii[0];
+    const pts: Vec3[] = [];
+    for (let deg = Math.min(70, style.hairline.front); deg >= -40; deg -= 6) {
+      const a = (deg * Math.PI) / 180;
+      const hit = surface.closest([x, c[1] + crane.radii[1] * 1.2 * Math.cos(a), c[2] + crane.radii[2] * 1.2 * Math.sin(a)]);
+      if (hit) pts.push([x, hit.point[1], hit.point[2]]);
+    }
+    return pts.length >= 2 ? pts : null;
+  }
+
+  /**
+   * One hair's curve: the shapes of the nearest guides blended at its own root
+   * ("Interpolate Hair Curves"), set to its own length ("Trim Hair Curves"),
+   * drawn towards its nearest guide ("Clump Hair Curves") and given a little
+   * waviness of its own ("Hair Curves Noise"). Loose hairs are lifted off the
+   * layers below, more towards the tip (the "Normal offset" and "Shape" of
+   * "Interpolate hair for haircards").
+   */
+  private child(
+    style: HairStyleParams,
+    root: ScalpRoot,
+    layerT: number,
+    flyaway: boolean,
+    guides: readonly Guide[],
+    P: ArrayLike<number>,
+    proxy: HeadProxy,
+    axis: { top: Vec3; length: number },
+    rng: Rng,
+  ): Vec3[] {
+    const c = proxy.cranium.centre;
+    const r: Vec3 = [0, 0, 0];
+    for (let k = 0; k < 3; k++) r[k] = root.wa * P[root.a * 3 + k]! + root.wb * P[root.b * 3 + k]! + root.wc * P[root.c * 3 + k]!;
+    const n = triangleNormal(P, root.a, root.b, root.c);
+    if (dot(n, sub(r, c)) < 0) scale(n, -1);
+    const lift = 0.0015 + style.volume * 0.6 * layerT;
+    const p0 = add(r, mul(n, lift));
+    const groom = style.groom;
+
+    // Nearest guides of this hair's own group, by distance between roots on the neutral body.
+    const group = this.groupOf(style, root);
+    const neutral = this.neutralPoint(root);
+    let pool = guides.filter((g) => g.group === group);
+    if (pool.length === 0) pool = [...guides];
+    const near = pool
+      .map((g) => ({ g, d: Math.hypot(g.neutral[0] - neutral[0], g.neutral[1] - neutral[1], g.neutral[2] - neutral[2]) }))
+      .sort((a, b) => a.d - b.d)
+      .slice(0, Math.max(1, groom.interpolate));
+    let total = 0;
+    const weights = near.map(({ d }) => {
+      const w = 1 / (d * d + 1e-6);
+      total += w;
+      return w;
+    });
+    // A guide's shape is turned about the head's vertical axis by the angle between the two roots, so a
+    // hair at the side of the head that follows a guide from further back still hangs beside the head,
+    // not through it. (Blender's "Follow Surface Normal" tilts the whole hair, which would swing hair
+    // that hangs under gravity; turning about the vertical keeps "down" down.) Near the crown the angle
+    // around the head means little, so the turn fades out there.
+    const turns = near.map(({ g }) => {
+      let yaw = root.phi - g.phi;
+      yaw -= Math.PI * 2 * Math.round(yaw / (Math.PI * 2));
+      yaw *= smoothstep(0.15, 0.6, Math.min(root.theta, g.theta));
+      return [Math.cos(yaw), Math.sin(yaw)] as const;
+    });
+    let curve: Vec3[] = [];
+    let guideNominal = 0;
+    for (let i = 0; i < GUIDE_POINTS; i++) {
+      const q: Vec3 = [p0[0], p0[1], p0[2]];
+      near.forEach(({ g }, j) => {
+        const w = weights[j]! / total;
+        const [cos, sin] = turns[j]!;
+        const ox = g.points[i]![0] - g.points[0]![0];
+        const oz = g.points[i]![2] - g.points[0]![2];
+        q[0] += w * (ox * cos + oz * sin);
+        q[1] += w * (g.points[i]![1] - g.points[0]![1]);
+        q[2] += w * (oz * cos - ox * sin);
+        if (i === 0) guideNominal += w * g.nominal;
+      });
+      curve.push(q);
+    }
+
+    // Its own length: cut shorter, or stretched a little from the root.
+    const wanted = this.nominalLength(style, root) * (1 + style.lengthJitter * rng.range(-0.5, 0.5)) * (0.9 + 0.1 * layerT);
+    const ratio = guideNominal > 1e-6 ? wanted / guideNominal : 1;
+    if (ratio < 1) curve = resample(trim(curve, ratio), GUIDE_POINTS);
+    else if (ratio > 1.02) curve = curve.map((q) => add(p0, mul(sub(q, p0), Math.min(ratio, MAX_STRETCH))));
+
+    const lead = near[0]!.g;
+    const length = curveLength(curve);
+    const waveA: Vec3 = [rng.range(-1, 1), rng.range(-1, 1), rng.range(-1, 1)];
+    const waveB: Vec3 = [rng.range(-1, 1), rng.range(-1, 1), rng.range(-1, 1)];
+    const phase = rng.range(0, Math.PI * 2);
+    for (let i = 1; i < curve.length; i++) {
+      const t = i / (curve.length - 1);
+      // Roots stay planted whatever the shape says.
+      const planted = Math.min(1, t * 4);
+      let q = curve[i]!;
+      if (groom.clump > 0) {
+        const onGuide = pointAt(lead.points, lead.arcs, t * length).point;
+        q = lerp(q, onGuide, groom.clump * shapeRange(t, groom.clumpShape) * planted);
+      }
+      if (groom.frizz > 0) {
+        const k = groom.frizz * shapeRange(t, groom.frizzShape) * planted;
+        const a = Math.sin(t * 8.2 + phase);
+        const b = Math.sin(t * 4.4 + phase * 1.7);
+        q = add(q, [(waveA[0] * a + waveB[0] * b) * k, (waveA[1] * a + waveB[1] * b) * k, (waveA[2] * a + waveB[2] * b) * k]);
+      }
+      if (flyaway && groom.flyawayLift > 0) {
+        const down = Math.min(axis.length, Math.max(0, axis.top[1] - q[1]));
+        const outward: Vec3 = [q[0] - axis.top[0], q[1] - (axis.top[1] - down), q[2] - axis.top[2]];
+        normalise(outward);
+        q = add(q, mul(outward, groom.flyawayLift * shapeRange(t, 0.35)));
+      }
+      proxy.pushOut(q, 0.003 + lift * 0.5);
+      curve[i] = q;
+    }
+    return curve;
+  }
+
+  /**
+   * How far a neutral scalp vertex is towards the hairline: 0 at the crown, 1
+   * on the line, more outside it. A painted mask has no line to measure
+   * against, so it only says in (0.5) or out (1.2).
+   */
+  private hairlineRatio(style: HairStyleParams, v: number): number {
+    const P = this.base.positions;
+    const { theta, phi } = Scalp.angles([P[v * 3]!, P[v * 3 + 1]!, P[v * 3 + 2]!], this.neutralFrame);
+    if (style.hairline.preset === 'painted') return Scalp.allows(style.hairline, theta, phi) ? 0.5 : 1.2;
+    return theta / Math.max(1e-6, Scalp.maskLimit(style.hairline, phi));
+  }
+
+  /** Scalp quads the shell is made of: every quad that reaches inside the hairline. */
   private maskedQuads(style: HairStyleParams): number[] {
     const Q = this.scalp.quads;
-    const P = this.base.positions;
     const out: number[] = [];
     for (let q = 0; q < Q.length / 4; q++) {
-      const inside = [0, 1, 2, 3].every((k) => {
-        const v = Q[q * 4 + k]!;
-        const { theta, phi } = Scalp.angles([P[v * 3]!, P[v * 3 + 1]!, P[v * 3 + 2]!], this.neutralFrame);
-        return Scalp.allows(style.hairline, theta, phi);
-      });
-      if (inside) out.push(q);
+      if ([0, 1, 2, 3].some((k) => this.hairlineRatio(style, Q[q * 4 + k]!) < 1)) out.push(q);
     }
     return out;
   }
@@ -213,7 +519,7 @@ export class HairGenerator {
         pts.push(q);
       }
       const spread: Vec3 = [rng.range(-1, 1) * 0.018, 0, rng.range(-1, 1) * 0.012];
-      const len = style.ponytail.length * (1 + style.lengthJitter * rng.range(-0.3, 0.3));
+      const len = style.ponytail.length;
       for (let j = 1; j <= n2; j++) {
         const u = j / n2;
         const q: Vec3 = [tie[0] + spread[0] * u, tie[1] - len * u, tie[2] + spread[2] * u - 0.03 * u * (1 - style.gravity)];
@@ -224,7 +530,7 @@ export class HairGenerator {
     }
 
     const bangs = this.isBangs(style, root);
-    const length = (bangs ? style.bangs.length : this.lengthAt(style, root)) * (1 + style.lengthJitter * rng.range(-0.5, 0.5)) * (0.9 + 0.1 * layerT);
+    const length = this.nominalLength(style, root);
     // Flow: combed back and/or away from the part; bangs fall forward over the forehead.
     let flow: Vec3;
     if (bangs) {
@@ -237,19 +543,20 @@ export class HairGenerator {
         lateral[0] = h[0];
         lateral[2] = h[2];
       } else {
-        const def = style.part.side === 'left' ? 0.35 : style.part.side === 'right' ? -0.35 : 0;
-        const partX = c[0] + (style.part.position !== 0 ? style.part.position : def) * crane.radii[0];
-        lateral[0] = r[0] >= partX ? 1 : -1;
+        lateral[0] = this.sideOf(style, root);
       }
       flow = add(mul([0, 0, -1], style.flowBack), mul(lateral, 1 - style.flowBack));
+      // Hair rooted towards the front hairline is drawn forward, so it drapes round the face.
+      const frontness = Math.max(0, Math.cos(root.phi)) * smoothstep(0.3, 0.9, root.theta);
+      flow[2] += style.frame * frontness * 1.5;
     }
     let t = sub(flow, mul(n, dot(flow, n)));
     if (Math.hypot(...t) < 1e-6) t = sub(down, mul(n, dot(down, n)));
     normalise(t);
     const d = add(t, mul(n, 0.1 + style.volume * 10));
     normalise(d);
-    // Small per-strand direction jitter.
-    for (let k = 0; k < 3; k++) d[k] = d[k]! + rng.range(-0.08, 0.08);
+    // A little direction of its own per guide, so locks do not all hang alike.
+    for (let k = 0; k < 3; k++) d[k] = d[k]! + rng.range(-0.04, 0.04);
     normalise(d);
 
     const ds = length / segments;
@@ -292,46 +599,6 @@ export class HairGenerator {
     return pts;
   }
 
-  private sweep(out: MeshBuilder, style: HairStyleParams, pts: Vec3[], region: AtlasRegion, layerT: number, proxy: HeadProxy, c: Vec3, scalp: TriangleBVH): void {
-    // How far the strand's root floats above the scalp (its layer lift).
-    const rootHit = scalp.closestPoint(pts[0]!);
-    const rootLift = rootHit ? rootHit.distance : 0;
-    const S = pts.length - 1;
-    const first = out.vertexCount;
-    for (let i = 0; i <= S; i++) {
-      const s = i / S;
-      const tan = i < S ? sub(pts[i + 1]!, pts[i]!) : sub(pts[i]!, pts[i - 1]!);
-      normalise(tan);
-      const outward = sub(pts[i]!, c);
-      normalise(outward);
-      // Twist aligned to the scalp: the card's width runs across the strand, tangent to the head.
-      let side = cross(outward, tan);
-      if (Math.hypot(...side) < 1e-6) side = [1, 0, 0];
-      normalise(side);
-      const w = Math.max(0.15, 1 - style.cards.taper * s) * style.cards.width * 0.5;
-      const v = 1 - (region.y + region.h * s);
-      for (const sgn of [-1, 1]) {
-        let p = add(pts[i]!, mul(side, sgn * w));
-        if (i === 0) {
-          // Root corners sit on the scalp (at the strand's lift), not on the chord across it.
-          const hit = scalp.closestPoint(p);
-          if (hit) {
-            const n = sub(hit.point, c);
-            normalise(n);
-            p = add(hit.point, mul(n, Math.max(0.001, rootLift)));
-          }
-        }
-        proxy.pushOut(p, 0.001);
-        out.vertex(p, [sgn < 0 ? region.x : region.x + region.w, v], layerT);
-      }
-    }
-    for (let i = 0; i < S; i++) {
-      const a = first + i * 2;
-      out.triangle(a, a + 1, a + 3);
-      out.triangle(a, a + 3, a + 2);
-    }
-  }
-
   private buildShell(out: MeshBuilder, style: HairStyleParams, atlas: readonly AtlasRegion[], quads: number[], P: ArrayLike<number>, proxy: HeadProxy): void {
     const Q = this.scalp.quads;
     const region = regionsFor(atlas, 'base')[0]!;
@@ -354,11 +621,15 @@ export class HairGenerator {
         normalise(n);
         const p: Vec3 = [P[x * 3]! + n[0] * style.shell.offset, P[x * 3 + 1]! + n[1] * style.shell.offset, P[x * 3 + 2]! + n[2] * style.shell.offset];
         proxy.pushOut(p, 0.0005);
-        // Mirrored azimuth (no seam at the back) and polar angle, both mapped into the dense middle of
-        // the strip: atlases fade out at their edges, roots and tips.
+        // Mirrored azimuth (no seam at the back) across the dense middle of the strip. Down the strip runs
+        // the way to the hairline: the solid part covers the scalp, and the hairline itself falls in the
+        // strip's ragged end, so the texture's alpha draws it instead of the edges of the scalp's quads.
         const ang = Scalp.angles([N[x * 3]!, N[x * 3 + 1]!, N[x * 3 + 2]!], this.neutralFrame);
         const u = region.x + region.w * (0.2 + 0.6 * (Math.abs(ang.phi) / Math.PI));
-        const vv = 1 - (region.y + region.h * (0.3 + 0.4 * Math.min(1, ang.theta / 2.4)));
+        // The region's own rim (where the head's skin weights end, at the nape) counts as outside too.
+        const ratio = this.scalpBorder.has(x) ? 1.2 : this.hairlineRatio(style, x);
+        const down = ratio <= 0.97 ? 0.25 + 0.47 * (ratio / 0.97) : ratio <= 1 ? 0.72 + 0.14 * ((ratio - 0.97) / 0.03) : Math.min(0.995, 0.86 + 0.9 * (ratio - 1));
+        const vv = 1 - (region.y + region.h * down);
         out.vertex(p, [u, vv], 0);
       });
       out.triangle(first, first + 1, first + 2);
@@ -369,8 +640,8 @@ export class HairGenerator {
 
 /**
  * Scalp faces: body quads whose vertices all belong to the head bone and lie
- * inside the widest hairline preset ('low'), measured from the centre of the
- * neutral head. Each style's own mask then narrows this down.
+ * inside (a margin past) the widest hairline preset ('low'), measured from the
+ * centre of the neutral head. Each style's own mask then narrows this down.
  */
 function scalpFaces(base: BaseMesh, rig: RigDefinition, dominant: { bone: Int16Array; weight: Float32Array }): { faces: number[]; frame: HeadFrame } {
   const head = rig.index.get('head');
@@ -388,7 +659,9 @@ function scalpFaces(base: BaseMesh, rig: RigDefinition, dominant: { bone: Int16A
   }
   // Centre of the cranium: middle of the head box in x and z, 60% of the way up (above the face).
   const frame: HeadFrame = { centre: [(lo[0]! + hi[0]!) / 2, lo[1]! + 0.6 * (hi[1]! - lo[1]!), (lo[2]! + hi[2]!) / 2 - 0.1 * (hi[2]! - lo[2]!)] };
-  const widest = hairline('low');
+  // A little past the widest hairline, so the shell has quads to fade out on beyond any hairline.
+  const low = hairline('low');
+  const widest = { ...low, front: low.front + 6, temples: low.temples + 6, sides: low.sides + 5, nape: low.nape + 6 };
   const inside = (v: number) => {
     const { theta, phi } = Scalp.angles([P[v * 3]!, P[v * 3 + 1]!, P[v * 3 + 2]!], frame);
     return theta <= Scalp.maskLimit(widest, phi);

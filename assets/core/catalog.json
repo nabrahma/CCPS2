@@ -3878,6 +3878,341 @@
  ],
  "hairAtlases": [
   {
+   "id": "ps2cc:atlas/cards_brown",
+   "name": "Hair cards: Brown",
+   "atlas": {
+    "format": "ps2cc.atlas/1",
+    "texture": "textures/hair/cards_brown.png",
+    "regions": [
+     {
+      "x": 0,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.125,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.25,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.375,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.5,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "base"
+     },
+     {
+      "x": 0.625,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "fringe"
+     },
+     {
+      "x": 0.75,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "flyaway"
+     },
+     {
+      "x": 0.875,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "flyaway"
+     }
+    ]
+   },
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "ps2cc:atlas/cards_black",
+   "name": "Hair cards: Black",
+   "atlas": {
+    "format": "ps2cc.atlas/1",
+    "texture": "textures/hair/cards_black.png",
+    "regions": [
+     {
+      "x": 0,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.125,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.25,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.375,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.5,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "base"
+     },
+     {
+      "x": 0.625,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "fringe"
+     },
+     {
+      "x": 0.75,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "flyaway"
+     },
+     {
+      "x": 0.875,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "flyaway"
+     }
+    ]
+   },
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "ps2cc:atlas/cards_blonde",
+   "name": "Hair cards: Blonde",
+   "atlas": {
+    "format": "ps2cc.atlas/1",
+    "texture": "textures/hair/cards_blonde.png",
+    "regions": [
+     {
+      "x": 0,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.125,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.25,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.375,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.5,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "base"
+     },
+     {
+      "x": 0.625,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "fringe"
+     },
+     {
+      "x": 0.75,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "flyaway"
+     },
+     {
+      "x": 0.875,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "flyaway"
+     }
+    ]
+   },
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "ps2cc:atlas/cards_auburn",
+   "name": "Hair cards: Auburn",
+   "atlas": {
+    "format": "ps2cc.atlas/1",
+    "texture": "textures/hair/cards_auburn.png",
+    "regions": [
+     {
+      "x": 0,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.125,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.25,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.375,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.5,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "base"
+     },
+     {
+      "x": 0.625,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "fringe"
+     },
+     {
+      "x": 0.75,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "flyaway"
+     },
+     {
+      "x": 0.875,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "flyaway"
+     }
+    ]
+   },
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "ps2cc:atlas/cards_grey",
+   "name": "Hair cards: Grey (for tinting)",
+   "atlas": {
+    "format": "ps2cc.atlas/1",
+    "texture": "textures/hair/cards_grey.png",
+    "regions": [
+     {
+      "x": 0,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.125,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "clump"
+     },
+     {
+      "x": 0.25,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.375,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "strand"
+     },
+     {
+      "x": 0.5,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "base"
+     },
+     {
+      "x": 0.625,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "fringe"
+     },
+     {
+      "x": 0.75,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "flyaway"
+     },
+     {
+      "x": 0.875,
+      "y": 0,
+      "w": 0.125,
+      "h": 1,
+      "tag": "flyaway"
+     }
+    ]
+   },
+   "licence": "CC0-1.0"
+  },
+  {
    "id": "ps2cc:atlas/long01",
    "name": "Long hair strips (MakeHuman long01)",
    "atlas": {

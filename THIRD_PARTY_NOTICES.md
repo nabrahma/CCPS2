@@ -12,6 +12,12 @@ These parts follow the logic of the projects below closely, which is why PS2CC u
 | [Blender](https://www.blender.org/) `io_scene_fbx` | GPL-2.0-or-later | `app/backend/fbx` (binary FBX 7.4 writer), bone roll conversion in `packages/core/src/skeleton` |
 | [MPFB](https://github.com/makehumancommunity/mpfb2) | GPL-3.0 | Rig and weight file formats, and fitting conventions |
 
+## Methods ported from other work
+
+| Work | Author | Used in |
+| --- | --- | --- |
+| *Geometry nodes - hair cards from curves* (a Blender file) | Daniel Bystedt | The card hair system follows its method: `packages/core/src/hair` ([docs/hair-system.md](docs/hair-system.md)). No content of the file is included in this repository or in PS2CC. Its hair node groups build on Blender's bundled hair nodes (GPL). |
+
 Unmodified MakeHuman code is run at development time to generate test fixtures (`tools/asset-compiler/golden`). It is downloaded and not included in this repository.
 
 ## Character assets

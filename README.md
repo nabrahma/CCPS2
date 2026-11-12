@@ -14,7 +14,7 @@ It needs no Blender, no Python and no network connection to run.
 - **PS2-sized meshes:** 8k, 10k and 12k triangle bodies, with a live budget meter for triangles, texture memory, bones and blendshapes.
 - **Wardrobe:** CC0 garments reduced to PS2 budgets, which refit to every body shape and hide the skin underneath. Drop a PNG on a garment to retexture it.
 - **Your own garments:** export the base body, model around it, then import OBJ, FBX or GLB. PS2CC binds, weights and decimates it for you.
-- **Card hair:** generate hair-card styles from your own atlas textures, paint the hairline, or use MakeHuman hair meshes.
+- **Card hair:** a groom of guide curves with cards built along them, controlled by sliders. Built-in card textures in five colours, or drop in your own. Paint the hairline, or use MakeHuman hair meshes. See [docs/hair-system.md](docs/hair-system.md).
 - **Skin:** layered skin with overlays, projection of a face photo onto the head, and an optional fit of the face's shape to the photo.
 - **Expressions:** 15 blendshapes, including blinks and visemes, baked at export.
 - **PS2 preview:** per-vertex lighting, lighting presets, low resolution, 16-bit dither and interlace post effects, and textures shown at their export size.

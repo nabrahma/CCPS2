@@ -14,7 +14,7 @@ import { closureSteps, eyeVisibility, eyeballOf } from '../expression/blink';
 import { addDelta, difference, transferBound } from '../expression/transfer';
 import type { Ps2BodyMesh } from '../mesh/ps2body';
 import { atlasTemplate, type AtlasRegion, type AtlasSpec } from '../hair/atlas';
-import type { HairStyleParams } from '../hair/style';
+import { sanitiseStyle, type HairStyleParams } from '../hair/style';
 import { HairGenerator, type GeneratedHair } from '../hair/generate';
 import { BodySurface, GarmentCollider } from '../proxy/collision';
 import type { ProxyAsset } from '../proxy/proxy';
@@ -24,6 +24,7 @@ import type { ResolvedSkin } from '../skin/compose';
 import type { RgbaImage } from '../skin/image';
 import { projectPhoto, type LandmarkTable } from '../skin/photo/project';
 import { packHead, splitBody } from '../skin/headsplit';
+import { blendVolumeNormals } from '../hair/cards-from-curves';
 import { atlasCellTexels, EYES_ATLAS_SIZE, GARMENT_ATLAS_SIZE, HAIR_TEXTURE_LIMIT } from '../export/limits';
 
 export type PartKind = 'body' | 'eyes' | 'eyebrows' | 'eyelashes' | 'teeth' | 'garment' | 'hair';
@@ -39,6 +40,11 @@ export interface PartMaterial {
   dirt: number;
   /** Card hair: dithered transparency on the outer layer (uses ScenePart.layer). */
   ditherOuter?: boolean;
+  /**
+   * Card hair: the normals describe the hair's volume, not each card's faces, so
+   * both sides of a card are lit by the same normal instead of each by its own.
+   */
+  volumeNormals?: boolean;
   /** Body only: the skin layer stack to composite (PRD F6); null means just `texture`. */
   skin?: ResolvedSkin | null;
 }
@@ -725,6 +731,8 @@ export class CharacterScene {
       return;
     }
     const atlas = this.cardAtlas(doc);
+    // A style put into the document by hand (or from before the groom existed) may lack newer settings.
+    const style = sanitiseStyle(doc.hair.style);
     const material: PartMaterial = {
       texture: atlas.texture || null,
       tint: doc.hair.tint,
@@ -733,12 +741,12 @@ export class CharacterScene {
       doubleSided: true,
       dirt: 0,
       ditherOuter: Boolean(doc.hair.ditherOuter),
+      volumeNormals: style.build.normalFromSurface > 0,
     };
     if (this.cards && this.cards.signature === signature) {
       this.cards.part.material = material;
       return;
     }
-    const style = doc.hair.style!;
     const hair = this.hairGenerator().generate(style, atlas.regions, this.engine.positions, this.engine.skeleton);
     const n = hair.positions.length / 3;
     const part: ScenePart = {
@@ -757,6 +765,7 @@ export class CharacterScene {
       layer: hair.layer,
     };
     computeTriangleNormals(part.positions, part.indices, n, part.normals);
+    blendVolumeNormals(part.positions, part.normals, hair.volumeAxis.top, hair.volumeAxis.length, style.build.normalFromSurface);
     this.cards = { part, hair, style, regions: atlas.regions, signature, generatedFor: this.engine.geometryVersion };
     this.influenceCache.delete('hair');
   }
@@ -783,6 +792,7 @@ export class CharacterScene {
       c.hair.binding.fit(this.engine.positions, c.part.positions);
     }
     computeTriangleNormals(c.part.positions, c.part.indices, c.part.positions.length / 3, c.part.normals);
+    blendVolumeNormals(c.part.positions, c.part.normals, c.hair.volumeAxis.top, c.hair.volumeAxis.length, c.style.build.normalFromSurface);
     c.part.version++;
   }
 

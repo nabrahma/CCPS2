@@ -9419,6 +9419,61 @@
    "bytes": 834704
   },
   {
+   "file": "textures/hair/cards_auburn.png",
+   "asset": "ps2cc:atlas/cards_auburn",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "a4a3bfc39b56690f99b757d168cedceda5e2ffe3e6d4ac89db162d336dc3d9e6",
+   "bytes": 1009745
+  },
+  {
+   "file": "textures/hair/cards_black.png",
+   "asset": "ps2cc:atlas/cards_black",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "bfb5f1f990d7e6ab824340debaa5a6ae00a13725b82681712b8ee75c1e6f90e9",
+   "bytes": 818266
+  },
+  {
+   "file": "textures/hair/cards_blonde.png",
+   "asset": "ps2cc:atlas/cards_blonde",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "b9fe10ece7f1b015b6cab917af5cbde6d9b5acadae3639948a9cce896ef3d625",
+   "bytes": 1132231
+  },
+  {
+   "file": "textures/hair/cards_brown.png",
+   "asset": "ps2cc:atlas/cards_brown",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "aeec0a80b332273a4dd0ea0d01318a0cbc2e2244d1c9690dc9f715625484a2f4",
+   "bytes": 958595
+  },
+  {
+   "file": "textures/hair/cards_grey.png",
+   "asset": "ps2cc:atlas/cards_grey",
+   "licence": "CC0-1.0",
+   "author": "PS2CC (generated)",
+   "sourceUrl": "https://github.com/nabrahma/CCPS2",
+   "upstream": "ps2cc",
+   "attributionRequired": false,
+   "sha256": "0c88c8a9c1316e49eba5d35a0b18aebe6543848f7fa7e23472128c9bfd361754",
+   "bytes": 938166
+  },
+  {
    "file": "textures/hair/cortu_shaggy_green_hair.png",
    "asset": "mh:hair/cortu_shaggy_green_hair",
    "licence": "CC0-1.0",

@@ -8,9 +8,9 @@
             "avatarValid": true,
             "avatarHuman": true,
             "renderers": 4,
-            "triangles": 10552,
+            "triangles": 10740,
             "budget": 12000,
-            "height": 1.8400487899780273,
+            "height": 1.8343956470489502,
             "feetY": -5.960464477539063e-8,
             "facesPlusZ": true,
             "maxPoseStretch": 1.9380532503128052,
@@ -26,7 +26,7 @@
             "renderersInfo": [
                 "Athlete_Body: y 0.000..1.649, rest skinning error 0.00 mm",
                 "Athlete_Eyes: y 1.701..1.733, rest skinning error 0.00 mm",
-                "Athlete_Hair: y 1.451..1.840, rest skinning error 0.00 mm",
+                "Athlete_Hair: y 1.464..1.834, rest skinning error 0.00 mm",
                 "Athlete_Head: y 1.604..1.832, rest skinning error 0.00 mm"
             ],
             "errors": []
@@ -120,9 +120,9 @@
             "avatarValid": true,
             "avatarHuman": true,
             "renderers": 4,
-            "triangles": 11164,
+            "triangles": 10472,
             "budget": 12000,
-            "height": 1.5958774089813232,
+            "height": 1.590585470199585,
             "feetY": 5.960464477539063e-8,
             "facesPlusZ": true,
             "maxPoseStretch": 2.1878724098205566,
@@ -138,7 +138,7 @@
             "renderersInfo": [
                 "Default Female_Body: y 0.000..1.424, rest skinning error 0.00 mm",
                 "Default Female_Eyes: y 1.471..1.500, rest skinning error 0.00 mm",
-                "Default Female_Hair: y 1.301..1.596, rest skinning error 0.00 mm",
+                "Default Female_Hair: y 1.314..1.591, rest skinning error 0.00 mm",
                 "Default Female_Head: y 1.384..1.589, rest skinning error 0.00 mm"
             ],
             "errors": []
@@ -175,9 +175,9 @@
             "avatarValid": true,
             "avatarHuman": true,
             "renderers": 5,
-            "triangles": 11092,
+            "triangles": 11192,
             "budget": 12000,
-            "height": 1.7299635410308838,
+            "height": 1.7301828861236572,
             "feetY": -5.960464477539063e-8,
             "facesPlusZ": true,
             "maxPoseStretch": 6.004559516906738,
@@ -194,7 +194,7 @@
                 "Heavy_Body: y 0.000..1.543, rest skinning error 0.00 mm",
                 "Heavy_Eyes: y 1.604..1.632, rest skinning error 0.00 mm",
                 "Heavy_Garments: y 0.072..1.528, rest skinning error 0.00 mm",
-                "Heavy_Hair: y 1.577..1.730, rest skinning error 0.00 mm",
+                "Heavy_Hair: y 1.574..1.730, rest skinning error 0.00 mm",
                 "Heavy_Head: y 1.496..1.727, rest skinning error 0.00 mm"
             ],
             "errors": []
@@ -315,9 +315,9 @@
             "avatarValid": true,
             "avatarHuman": true,
             "renderers": 5,
-            "triangles": 11178,
+            "triangles": 11278,
             "budget": 12000,
-            "height": 2.0781726837158203,
+            "height": 2.077564239501953,
             "feetY": -1.1920928955078125e-7,
             "facesPlusZ": true,
             "maxPoseStretch": 12.782573699951172,
@@ -334,7 +334,7 @@
                 "Tall T-pose_Body: y 0.000..1.867, rest skinning error 0.00 mm",
                 "Tall T-pose_Eyes: y 1.932..1.965, rest skinning error 0.00 mm",
                 "Tall T-pose_Garments: y 0.047..1.810, rest skinning error 0.00 mm",
-                "Tall T-pose_Hair: y 1.902..2.078, rest skinning error 0.00 mm",
+                "Tall T-pose_Hair: y 1.899..2.078, rest skinning error 0.00 mm",
                 "Tall T-pose_Head: y 1.815..2.075, rest skinning error 0.00 mm"
             ],
             "errors": []
@@ -344,9 +344,9 @@
             "avatarValid": true,
             "avatarHuman": true,
             "renderers": 5,
-            "triangles": 11678,
+            "triangles": 11468,
             "budget": 12000,
-            "height": 1.7280651330947876,
+            "height": 1.7246780395507813,
             "feetY": -1.1920928955078125e-7,
             "facesPlusZ": true,
             "maxPoseStretch": 14.362475395202637,
@@ -363,7 +363,7 @@
                 "Worker_Body: y 0.000..1.541, rest skinning error 0.00 mm",
                 "Worker_Eyes: y 1.599..1.627, rest skinning error 0.00 mm",
                 "Worker_Garments: y 0.037..1.495, rest skinning error 0.00 mm",
-                "Worker_Hair: y 1.572..1.728, rest skinning error 0.00 mm",
+                "Worker_Hair: y 1.570..1.725, rest skinning error 0.00 mm",
                 "Worker_Head: y 1.492..1.722, rest skinning error 0.00 mm"
             ],
             "errors": []
