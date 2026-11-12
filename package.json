@@ -14,6 +14,7 @@
     "build:assets": "python -I tools/asset-compiler/compile.py all && pnpm build:meshes",
     "build:assets:fetch": "python -I tools/asset-compiler/compile.py fetch",
     "build:meshes": "pnpm --filter @ps2cc/asset-tools run build:meshes",
+    "build:hair": "pnpm --filter @ps2cc/asset-tools run build:hair",
     "build:landmarks": "pnpm --filter @ps2cc/app-frontend exec playwright test -c playwright.tools.config.ts build-landmarks",
     "export:testchars": "pnpm --filter @ps2cc/app-frontend exec playwright test -c playwright.tools.config.ts export-testchars",
     "test:desktop": "pnpm --filter @ps2cc/app-frontend exec playwright test -c playwright.tools.config.ts desktop",

@@ -90,6 +90,8 @@ namespace PS2CC.Editor
         public string texture;
         public float alphaClip;
         public bool doubleSided;
+        /// <summary>Card hair whose normals describe the hair's volume: drawn on both sides, lit by the one normal.</summary>
+        public bool volumeNormals;
         public int maxSize;
         public bool alphaIsTransparency;
     }

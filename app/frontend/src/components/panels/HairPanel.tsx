@@ -132,7 +132,8 @@ function CardHair() {
       ui.error('Could not import the atlas', err);
     }
   };
-  const builtIn = studio.assets.catalog.hairAtlases?.[0];
+  const builtIns = studio.assets.catalog.hairAtlases ?? [];
+  const builtIn = builtIns[0];
   const current = atlas ?? builtIn?.atlas ?? null;
   const [lo, hi] = style.budget;
   const n = (label: string, path: string, v: number, min: number, max: number, step: number, set: (s: HairStyleParams, v: number) => void, unit = '') => (
@@ -169,8 +170,26 @@ function CardHair() {
         <button onClick={() => void saveStyle()}>Save style…</button>
       </div>
 
-      <Section title="Atlas">
-        <p className="muted">{atlas ? `Your atlas, ${atlas.regions.length} regions` : `Built-in: ${builtIn?.name ?? '4 strips (no texture)'}`}</p>
+      <Section title="Card texture">
+        <div className="picker-row">
+          <label htmlFor="hair-atlas">Texture</label>
+          <select
+            id="hair-atlas"
+            data-testid="hair-atlas"
+            value={atlas ? (builtIns.find((b) => b.atlas.texture === atlas.texture)?.id ?? 'own') : (builtIn?.id ?? '')}
+            onChange={(e) => {
+              const pick = builtIns.find((b) => b.id === e.target.value);
+              // The first built-in is the default, stored as "no atlas of its own".
+              if (pick) studio.engine.update('Hair card texture', (d) => void (d.hair.atlas = pick === builtIn ? null : structuredClone(pick.atlas)));
+            }}
+          >
+            {builtIns.map((b) => (
+              <option key={b.id} value={b.id}>{b.name}</option>
+            ))}
+            {atlas && !builtIns.some((b) => b.atlas.texture === atlas.texture) && <option value="own">Your texture ({atlas.regions.length} regions)</option>}
+          </select>
+        </div>
+        <p className="hint">Drop your own card texture (PNG with alpha) on the hair, or load one. Strips are found automatically.</p>
         <div className="toggle-row wrap">
           <button onClick={() => void loadAtlasImage()}>Load atlas PNG…</button>
           {current && current.texture && (
@@ -178,7 +197,6 @@ function CardHair() {
               Edit regions…
             </button>
           )}
-          {atlas && <button onClick={() => studio.engine.update('Built-in atlas', (d) => void (d.hair.atlas = null))}>Use built-in</button>}
         </div>
       </Section>
 
@@ -202,6 +220,7 @@ function CardHair() {
         </div>
         {style.part.side !== 'none' && n('Part position', 'part-pos', style.part.position, -1, 1, 0.01, (s, v) => void (s.part.position = v))}
         {n('Combed back', 'flow-back', style.flowBack, 0, 1, 0.01, (s, v) => void (s.flowBack = v))}
+        {n('Frame the face', 'frame', style.frame, 0, 1, 0.01, (s, v) => void (s.frame = v))}
         {n('Gravity', 'gravity', style.gravity, 0, 1, 0.01, (s, v) => void (s.gravity = v))}
         {n('Volume', 'volume', style.volume, 0, 0.04, 0.001, (s, v) => void (s.volume = v), 'm')}
         {n('Curl size', 'curl-amp', style.curl.amplitude, 0, 0.03, 0.0005, (s, v) => void (s.curl.amplitude = v), 'm')}
@@ -219,12 +238,40 @@ function CardHair() {
       </Section>
 
       <Section title="Cards">
-        {n('Strands', 'guides', style.guides, 0, 300, 1, (s, v) => void (s.guides = Math.round(v)))}
+        {n('Cards', 'guides', style.guides, 0, 300, 1, (s, v) => void (s.guides = Math.round(v)))}
         {n('Layers', 'layers', style.cards.layers, 1, 6, 1, (s, v) => void (s.cards.layers = Math.round(v)))}
-        {n('Segments', 'segments', style.cards.segments, 1, 12, 1, (s, v) => void (s.cards.segments = Math.round(v)))}
+        {n('Most segments', 'segments', style.cards.segments, 1, 12, 1, (s, v) => void (s.cards.segments = Math.round(v)))}
         {n('Card width', 'width', style.cards.width, 0.005, 0.1, 0.001, (s, v) => void (s.cards.width = v), 'm')}
         {n('Taper', 'taper', style.cards.taper, 0, 1, 0.01, (s, v) => void (s.cards.taper = v))}
         {n('Flyaways', 'flyaway', style.cards.flyaway, 0, 1, 0.01, (s, v) => void (s.cards.flyaway = v))}
+        {n('Hair per segment', 'seg-len', style.build.segmentLength, 0.02, 0.3, 0.005, (s, v) => void (s.build.segmentLength = v), 'm')}
+      </Section>
+
+      <Section title="Groom">
+        <p className="hint">A few guide curves carry the style. Every card follows the guides around its root.</p>
+        {n('Guides', 'g-guides', style.groom.guides, 4, 120, 1, (s, v) => void (s.groom.guides = Math.round(v)))}
+        {n('Blend guides', 'g-interp', style.groom.interpolate, 1, 4, 1, (s, v) => void (s.groom.interpolate = Math.round(v)))}
+        {n('Clump', 'g-clump', style.groom.clump, 0, 1, 0.01, (s, v) => void (s.groom.clump = v))}
+        {n('Clump towards tip', 'g-clump-shape', style.groom.clumpShape, 0.05, 0.95, 0.01, (s, v) => void (s.groom.clumpShape = v))}
+        {n('Frizz', 'g-frizz', style.groom.frizz, 0, 0.03, 0.0005, (s, v) => void (s.groom.frizz = v), 'm')}
+        {n('Flyaway lift', 'g-lift', style.groom.flyawayLift, 0, 0.04, 0.001, (s, v) => void (s.groom.flyawayLift = v), 'm')}
+      </Section>
+
+      <Section title="Card build">
+        <p className="hint">How cards sit on their curves: twist, roots, the parting and shading.</p>
+        {n('Length used', 'b-len', style.build.lengthFactor, 0.1, 1, 0.01, (s, v) => void (s.build.lengthFactor = v))}
+        {n('Lie on the head', 'b-align', style.build.alignToSurface, 0, 1, 0.01, (s, v) => void (s.build.alignToSurface = v))}
+        {n('…at the root', 'b-root-align', style.build.rootAlign, 0, 1, 0.01, (s, v) => void (s.build.rootAlign = v))}
+        {n('…at the tip', 'b-tip-align', style.build.tipAlign, 0, 1, 0.01, (s, v) => void (s.build.tipAlign = v))}
+        {n('Random tip twist', 'b-twist', style.build.tipTwist, 0, 1, 0.01, (s, v) => void (s.build.tipTwist = v))}
+        {n('Twist offset', 'b-offset', style.build.offsetTilt, -180, 180, 1, (s, v) => void (s.build.offsetTilt = v), '°')}
+        {n('Root snap', 'b-snap', style.build.rootSnap, 0, 0.08, 0.001, (s, v) => void (s.build.rootSnap = v), 'm')}
+        {n('Push out if inside', 'b-inside', style.build.snapIfInside, 0, 0.08, 0.001, (s, v) => void (s.build.snapIfInside = v), 'm')}
+        {n('Height off the skin', 'b-surface', style.build.surfaceOffset, 0, 0.01, 0.0005, (s, v) => void (s.build.surfaceOffset = v), 'm')}
+        {n('Soft shading', 'b-normal', style.build.normalFromSurface, 0, 1, 0.01, (s, v) => void (s.build.normalFromSurface = v))}
+        {style.part.side !== 'none' && n('Parting snap', 'b-part-snap', style.build.partSnap, 0, 0.08, 0.001, (s, v) => void (s.build.partSnap = v), 'm')}
+        {style.part.side !== 'none' && n('Parting lift', 'b-part-lift', style.build.partLiftHeight, 0, 0.03, 0.0005, (s, v) => void (s.build.partLiftHeight = v), 'm')}
+        {style.part.side !== 'none' && n('Lift reach', 'b-part-reach', style.build.partLiftDistance, 0, 0.1, 0.001, (s, v) => void (s.build.partLiftDistance = v), 'm')}
       </Section>
 
       <Section title="Hairline and scalp">

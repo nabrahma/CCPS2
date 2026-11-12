@@ -8,6 +8,7 @@ const SOFTWARE: { name: string; licence: string; note?: string }[] = [
   { name: 'MakeHuman', licence: 'AGPL-3.0', note: 'morph, macro and clothes-fitting logic is ported from it' },
   { name: 'Blender io_scene_fbx', licence: 'GPL-2.0-or-later', note: 'the FBX writer is ported from it' },
   { name: 'MPFB', licence: 'GPL-3.0', note: 'rig and weight formats' },
+  { name: 'Hair cards from curves, by Daniel Bystedt', licence: 'method only', note: 'the card hair system follows this Blender setup' },
   { name: 'MediaPipe Tasks Vision', licence: 'Apache-2.0', note: 'face landmarks' },
   { name: 'ufbx', licence: 'MIT or public domain' },
   { name: 'meshoptimizer', licence: 'MIT' },

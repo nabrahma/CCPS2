@@ -146,7 +146,7 @@ namespace PS2CC.Editor
                 mat.SetTexture("_BaseMap", tex);
                 if (mat.HasProperty("_Cutoff")) mat.SetFloat("_Cutoff", info.alphaClip > 0 ? info.alphaClip : 0.5f);
                 mat.SetFloat("_Cull", info.doubleSided ? 0f : 2f);
-                mat.SetFloat("_TwoSided", info.doubleSided ? 1f : 0f);
+                mat.SetFloat("_TwoSided", info.doubleSided && !info.volumeNormals ? 1f : 0f);
                 if (created) AssetDatabase.CreateAsset(mat, matPath);
                 else EditorUtility.SetDirty(mat);
                 materials[info.role] = mat;

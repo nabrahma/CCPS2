@@ -68,6 +68,8 @@ export interface ExportMaterial {
   texture: string;
   alphaClip: number;
   doubleSided: boolean;
+  /** Hair whose normals describe its volume: lit one-sided even though both faces are drawn. */
+  volumeNormals?: boolean;
   role: MaterialRole;
 }
 
@@ -208,6 +210,7 @@ export async function buildExportScene(scene: CharacterScene, opts: ExportOption
     const tex = hair.material.texture ? await opts.loadImage(hair.material.texture) : createImage(4, 4, [255, 255, 255, 255]);
     const img = limit(tint(tex, hair.material.tint), HAIR_TEXTURE_LIMIT);
     const mat = addMaterial('hair', 'PS2/Cutout', img, Math.max(img.width, img.height), true, hair.material.alphaThreshold, true);
+    materials[mat]!.volumeNormals = Boolean(hair.material.volumeNormals);
     meshes.push(compact(`${name}_Hair`, 'hair', source(hair), hair.indices, mat));
   }
 
@@ -257,7 +260,7 @@ export async function buildExportScene(scene: CharacterScene, opts: ExportOption
     meshes: meshes.map((m) => ({ name: m.name, role: m.role, vertices: m.positions.length / 3, triangles: m.indices.length / 3, blendshapes: m.shapes.map((s) => s.name) })),
     materials: materials.map((m) => {
       const t = textures.find((x) => x.file === m.texture)!;
-      return { name: m.name, shader: m.shader, role: m.role, texture: m.texture, alphaClip: m.alphaClip, doubleSided: m.doubleSided, maxSize: t.maxSize, alphaIsTransparency: t.alpha };
+      return { name: m.name, shader: m.shader, role: m.role, texture: m.texture, alphaClip: m.alphaClip, doubleSided: m.doubleSided, volumeNormals: Boolean(m.volumeNormals), maxSize: t.maxSize, alphaIsTransparency: t.alpha };
     }),
     // Rest transforms, plus the T-pose the Unity importer uses as the Humanoid reference pose
     // (Unity's "Enforce T-Pose"), so retargeted animations keep the arms where they belong.

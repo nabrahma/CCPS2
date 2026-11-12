@@ -467,6 +467,8 @@ export class Viewport {
     obj.material.uniforms.uAlphaTest!.value = m.alphaCutout ? m.alphaThreshold : 0;
     obj.material.uniforms.uDirt!.value = m.dirt;
     obj.material.uniforms.uDitherOuter!.value = m.ditherOuter ? 1 : 0;
+    // Volume normals already face out of the hair: lighting the back of a card by |N.L| would light the far side of the head.
+    obj.material.uniforms.uTwoSided!.value = m.doubleSided && !m.volumeNormals ? 1 : 0;
     if (m.skin) {
       this.syncSkin(obj, m.skin);
     } else if (obj.skinSig !== null) {

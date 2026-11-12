@@ -33,3 +33,19 @@ All ten milestones are accepted. An audit of the whole PRD against the code then
 **Still needing you:** the clean Windows 11 VM install for M9 (`M9/installer_vm_check.md`), Help → Measure slider speed on your GPU for M1, and one garment you modelled by hand.
 **Not built, on purpose:** LOD exports, which PRD 9.3 only asks about and no milestone requires, and per-garment textures, since merged garments in one atlas keep the character within the PRD's 5 draw calls (D-044).
 
+## The hair system (0.12.0)
+
+Card hair was rebuilt as a port of Daniel Bystedt's Blender setup *Geometry nodes - hair cards from curves*, at your request. `docs/hair-system.md` maps the node graph to the code. Review renders: `docs/milestones/Hair/` (the three styles made for your reference images) and `docs/milestones/M5/` (all eleven styles).
+
+| Part | State | Evidence |
+| --- | --- | --- |
+| Reverse engineering | Done | The `.blend` (Blender 5.2, 34 node trees) read with a purpose-written reader: the 396-node card group, its helpers, the interpolation group, the texture scene, the example settings and the card meshes. |
+| Cards from curves | Done | `cards-from-curves.ts`, every frame of the node group accounted for (ported, adapted or left out with a reason). Tested on an analytic surface: width, length, alignment to the head, tip twist, root snap, push-out, parting snap and lift (`hair-cards.test.ts`). |
+| Groom: guides and interpolated hairs | Done | Hairs fall on their own side of the parting (under 3% cross it); clumping 0.9 brings card tips to under 60% of their unclumped distance from the guides. |
+| Soft volume shading | Done | In the app, the export sidecar (`volumeNormals`) and the Unity importer (D-078). |
+| Generated card textures | Done | Five colours ship; deterministic; coverage checked per strip (scalp strip over 97% solid, loose-hair strips under 30%). |
+| Controls | Done | Card texture picker, Groom and Card build sections, "Frame the face" (`e2e/hair.spec.ts`). |
+| M5 acceptance, on the new generator | Passing | Deterministic per seed; inside the 1,500 to 3,500 budget; no vertex inside the head proxy on 200 random heads; roots stay attached under head scaling; same topology on every body. |
+
+**Known limits.** There is no comb: guides come from sliders, so a style is as specific as the sliders allow. The generated textures are plain next to photo-sourced ones. Short styles still show blocky card ends at the temples. A centre parting shows the forehead in a V below it, as real hair does; lower the hairline's Front or raise Frame the face to close it. No vertex colour or second UV set from the scalp (the Blender setup has both).
+

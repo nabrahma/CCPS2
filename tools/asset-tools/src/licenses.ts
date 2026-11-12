@@ -19,12 +19,27 @@ interface Row {
  * Register generated files. With `from`, the licence, author and source are copied from that file's
  * row (a decimated garment keeps its source garment's licence, including CC-BY attribution).
  */
-export function registerDerivedFiles(assetsDir: string, files: { file: string; asset: string; from?: string }[]): void {
+export function registerDerivedFiles(assetsDir: string, files: { file: string; asset: string; from?: string; generated?: boolean }[]): void {
   const path = join(assetsDir, 'LICENSES.json');
   const doc = JSON.parse(readFileSync(path, 'utf8')) as { files: Row[] };
   const rows = new Map(doc.files.map((r) => [r.file, r]));
-  for (const { file, asset, from } of files) {
+  for (const { file, asset, from, generated } of files) {
     const abs = join(assetsDir, file);
+    if (generated) {
+      // Made by PS2CC's own code from nothing but parameters, and given to the public domain like the rest of the art.
+      rows.set(file, {
+        file,
+        asset,
+        licence: 'CC0-1.0',
+        author: 'PS2CC (generated)',
+        sourceUrl: 'https://github.com/nabrahma/CCPS2',
+        upstream: 'ps2cc',
+        attributionRequired: false,
+        sha256: sha256(readFileSync(abs)),
+        bytes: statSync(abs).size,
+      });
+      continue;
+    }
     const src = from ? rows.get(from) : undefined;
     if (from && !src) throw new Error(`no licence row for ${from} (source of ${file})`);
     rows.set(file, {

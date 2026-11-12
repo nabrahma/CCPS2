@@ -79,8 +79,9 @@ describe('hair atlas', () => {
 });
 
 describe('hair styles', () => {
-  it('has the 8 starter styles from the PRD', () => {
-    expect(STARTER_STYLES.map((s) => s.id)).toEqual(['buzz', 'crew', 'short-messy', 'side-part', 'bob', 'shoulder-straight', 'long-straight', 'ponytail']);
+  it('has the 8 starter styles from the PRD, then the styles made for the reference images', () => {
+    expect(STARTER_STYLES.map((s) => s.id).slice(0, 8)).toEqual(['buzz', 'crew', 'short-messy', 'side-part', 'bob', 'shoulder-straight', 'long-straight', 'ponytail']);
+    expect(STARTER_STYLES.map((s) => s.id).slice(8)).toEqual(['long-centre-part', 'bob-fringe', 'short-sideburns']);
   });
 
   it('round-trips .ps2hair and clamps bad values', () => {
