@@ -1,682 +1,986 @@
 {
-  "format": "ps2cc.hairstyles/1",
-  "styles": [
-    {
-      "id": "buzz",
-      "style": {
-        "name": "Buzz cut",
-        "seed": 11,
-        "guides": 60,
-        "length": {
-          "front": 0.012,
-          "sides": 0.008,
-          "back": 0.008,
-          "top": 0.012
-        },
-        "lengthJitter": 0.2,
-        "part": {
-          "side": "none",
-          "position": 0
-        },
-        "flowBack": 0.6,
-        "gravity": 0,
-        "volume": 0.001,
-        "curl": {
-          "amplitude": 0,
-          "frequency": 0
-        },
-        "bangs": {
-          "enabled": false,
-          "length": 0.03,
-          "width": 0.4
-        },
-        "ponytail": {
-          "enabled": false,
-          "height": 0.45,
-          "length": 0.2
-        },
-        "cards": {
-          "segments": 1,
-          "width": 0.018,
-          "taper": 0.15,
-          "layers": 1,
-          "flyaway": 0
-        },
-        "shell": {
-          "enabled": true,
-          "offset": 0.0015
-        },
-        "hairline": {
-          "preset": "low",
-          "front": 67,
-          "temples": 75,
-          "sides": 102,
-          "nape": 142
-        },
-        "budget": [
-          250,
-          1500
-        ]
-      }
+ "format": "ps2cc.hairstyles/1",
+ "styles": [
+  {
+   "id": "buzz",
+   "style": {
+    "name": "Buzz cut",
+    "seed": 11,
+    "guides": 60,
+    "length": {
+     "front": 0.012,
+     "sides": 0.008,
+     "back": 0.008,
+     "top": 0.012
     },
-    {
-      "id": "crew",
-      "style": {
-        "name": "Crew cut",
-        "seed": 23,
-        "guides": 100,
-        "length": {
-          "front": 0.03,
-          "sides": 0.014,
-          "back": 0.016,
-          "top": 0.035
-        },
-        "lengthJitter": 0.25,
-        "part": {
-          "side": "none",
-          "position": 0
-        },
-        "flowBack": 0.35,
-        "gravity": 0.1,
-        "volume": 0.005,
-        "curl": {
-          "amplitude": 0.001,
-          "frequency": 25
-        },
-        "bangs": {
-          "enabled": false,
-          "length": 0.03,
-          "width": 0.4
-        },
-        "ponytail": {
-          "enabled": false,
-          "height": 0.45,
-          "length": 0.2
-        },
-        "cards": {
-          "segments": 2,
-          "width": 0.025,
-          "taper": 0.15,
-          "layers": 2,
-          "flyaway": 0.05
-        },
-        "shell": {
-          "enabled": true,
-          "offset": 0.0015
-        },
-        "hairline": {
-          "preset": "low",
-          "front": 67,
-          "temples": 75,
-          "sides": 102,
-          "nape": 142
-        },
-        "budget": [
-          800,
-          2200
-        ]
-      }
+    "lengthJitter": 0.2,
+    "part": {
+     "side": "none",
+     "position": 0
     },
-    {
-      "id": "short-messy",
-      "style": {
-        "name": "Short messy",
-        "seed": 37,
-        "guides": 110,
-        "length": {
-          "front": 0.07,
-          "sides": 0.06,
-          "back": 0.07,
-          "top": 0.08
-        },
-        "lengthJitter": 0.35,
-        "part": {
-          "side": "none",
-          "position": 0
-        },
-        "flowBack": 0.45,
-        "gravity": 0.3,
-        "volume": 0.014,
-        "curl": {
-          "amplitude": 0.005,
-          "frequency": 16
-        },
-        "bangs": {
-          "enabled": false,
-          "length": 0.05,
-          "width": 0.5
-        },
-        "ponytail": {
-          "enabled": false,
-          "height": 0.45,
-          "length": 0.2
-        },
-        "cards": {
-          "segments": 3,
-          "width": 0.035,
-          "taper": 0.15,
-          "layers": 3,
-          "flyaway": 0.2
-        },
-        "shell": {
-          "enabled": true,
-          "offset": 0.002
-        },
-        "hairline": {
-          "preset": "low",
-          "front": 67,
-          "temples": 75,
-          "sides": 102,
-          "nape": 142
-        },
-        "budget": [
-          1500,
-          3500
-        ]
-      }
+    "flowBack": 0.6,
+    "gravity": 0,
+    "volume": 0.001,
+    "curl": {
+     "amplitude": 0,
+     "frequency": 0
     },
-    {
-      "id": "side-part",
-      "style": {
-        "name": "Side part",
-        "seed": 41,
-        "guides": 105,
-        "length": {
-          "front": 0.1,
-          "sides": 0.06,
-          "back": 0.06,
-          "top": 0.1
-        },
-        "lengthJitter": 0.15,
-        "part": {
-          "side": "left",
-          "position": 0
-        },
-        "flowBack": 0.25,
-        "gravity": 0.45,
-        "volume": 0.01,
-        "curl": {
-          "amplitude": 0.001,
-          "frequency": 10
-        },
-        "bangs": {
-          "enabled": false,
-          "length": 0.05,
-          "width": 0.5
-        },
-        "ponytail": {
-          "enabled": false,
-          "height": 0.45,
-          "length": 0.2
-        },
-        "cards": {
-          "segments": 4,
-          "width": 0.032,
-          "taper": 0.15,
-          "layers": 3,
-          "flyaway": 0.08
-        },
-        "shell": {
-          "enabled": true,
-          "offset": 0.002
-        },
-        "hairline": {
-          "preset": "low",
-          "front": 67,
-          "temples": 75,
-          "sides": 102,
-          "nape": 142
-        },
-        "budget": [
-          1500,
-          3500
-        ]
-      }
+    "bangs": {
+     "enabled": false,
+     "length": 0.03,
+     "width": 0.4
     },
-    {
-      "id": "bob",
-      "style": {
-        "name": "Bob",
-        "seed": 53,
-        "guides": 90,
-        "length": {
-          "front": 0.14,
-          "sides": 0.17,
-          "back": 0.17,
-          "top": 0.15
-        },
-        "lengthJitter": 0.08,
-        "part": {
-          "side": "center",
-          "position": 0
-        },
-        "flowBack": 0.1,
-        "gravity": 0.85,
-        "volume": 0.012,
-        "curl": {
-          "amplitude": 0,
-          "frequency": 0
-        },
-        "bangs": {
-          "enabled": true,
-          "length": 0.09,
-          "width": 0.45
-        },
-        "ponytail": {
-          "enabled": false,
-          "height": 0.45,
-          "length": 0.2
-        },
-        "cards": {
-          "segments": 5,
-          "width": 0.045,
-          "taper": 0.15,
-          "layers": 3,
-          "flyaway": 0.05
-        },
-        "shell": {
-          "enabled": true,
-          "offset": 0.002
-        },
-        "hairline": {
-          "preset": "full",
-          "front": 63,
-          "temples": 71,
-          "sides": 100,
-          "nape": 138
-        },
-        "budget": [
-          1500,
-          3500
-        ]
-      }
+    "ponytail": {
+     "enabled": false,
+     "height": 0.45,
+     "length": 0.2
     },
-    {
-      "id": "shoulder-straight",
-      "style": {
-        "name": "Shoulder-length straight",
-        "seed": 67,
-        "guides": 80,
-        "length": {
-          "front": 0.24,
-          "sides": 0.26,
-          "back": 0.27,
-          "top": 0.26
-        },
-        "lengthJitter": 0.1,
-        "part": {
-          "side": "center",
-          "position": 0
-        },
-        "flowBack": 0.15,
-        "gravity": 0.9,
-        "volume": 0.01,
-        "curl": {
-          "amplitude": 0.002,
-          "frequency": 4
-        },
-        "bangs": {
-          "enabled": false,
-          "length": 0.08,
-          "width": 0.4
-        },
-        "ponytail": {
-          "enabled": false,
-          "height": 0.45,
-          "length": 0.2
-        },
-        "cards": {
-          "segments": 6,
-          "width": 0.05,
-          "taper": 0.15,
-          "layers": 3,
-          "flyaway": 0.08
-        },
-        "shell": {
-          "enabled": true,
-          "offset": 0.002
-        },
-        "hairline": {
-          "preset": "full",
-          "front": 63,
-          "temples": 71,
-          "sides": 100,
-          "nape": 138
-        },
-        "budget": [
-          1500,
-          3500
-        ]
-      }
+    "cards": {
+     "segments": 1,
+     "width": 0.018,
+     "taper": 0.15,
+     "layers": 1,
+     "flyaway": 0
     },
-    {
-      "id": "long-straight",
-      "style": {
-        "name": "Long straight",
-        "seed": 71,
-        "guides": 75,
-        "length": {
-          "front": 0.4,
-          "sides": 0.42,
-          "back": 0.46,
-          "top": 0.42
-        },
-        "lengthJitter": 0.08,
-        "part": {
-          "side": "center",
-          "position": 0
-        },
-        "flowBack": 0.2,
-        "gravity": 0.95,
-        "volume": 0.01,
-        "curl": {
-          "amplitude": 0.003,
-          "frequency": 3
-        },
-        "bangs": {
-          "enabled": false,
-          "length": 0.08,
-          "width": 0.4
-        },
-        "ponytail": {
-          "enabled": false,
-          "height": 0.45,
-          "length": 0.2
-        },
-        "cards": {
-          "segments": 7,
-          "width": 0.055,
-          "taper": 0.15,
-          "layers": 3,
-          "flyaway": 0.06
-        },
-        "shell": {
-          "enabled": true,
-          "offset": 0.002
-        },
-        "hairline": {
-          "preset": "full",
-          "front": 63,
-          "temples": 71,
-          "sides": 100,
-          "nape": 138
-        },
-        "budget": [
-          1500,
-          3500
-        ]
-      }
+    "shell": {
+     "enabled": true,
+     "offset": 0.0015
     },
-    {
-      "id": "ponytail",
-      "style": {
-        "name": "Ponytail",
-        "seed": 89,
-        "guides": 80,
-        "length": {
-          "front": 0.3,
-          "sides": 0.3,
-          "back": 0.3,
-          "top": 0.3
-        },
-        "lengthJitter": 0.12,
-        "part": {
-          "side": "none",
-          "position": 0
-        },
-        "flowBack": 1,
-        "gravity": 0.9,
-        "volume": 0.006,
-        "curl": {
-          "amplitude": 0,
-          "frequency": 0
-        },
-        "bangs": {
-          "enabled": false,
-          "length": 0.06,
-          "width": 0.4
-        },
-        "ponytail": {
-          "enabled": true,
-          "height": 0.5,
-          "length": 0.3
-        },
-        "cards": {
-          "segments": 6,
-          "width": 0.04,
-          "taper": 0.15,
-          "layers": 2,
-          "flyaway": 0.05
-        },
-        "shell": {
-          "enabled": true,
-          "offset": 0.002
-        },
-        "hairline": {
-          "preset": "full",
-          "front": 63,
-          "temples": 71,
-          "sides": 100,
-          "nape": 138
-        },
-        "budget": [
-          1200,
-          3500
-        ]
-      }
+    "hairline": {
+     "preset": "low",
+     "front": 67,
+     "temples": 75,
+     "sides": 102,
+     "nape": 142
     },
-    {
-      "id": "long-centre-part",
-      "style": {
-        "name": "Long, centre part",
-        "seed": 131,
-        "guides": 80,
-        "length": {
-          "front": 0.5,
-          "sides": 0.5,
-          "back": 0.48,
-          "top": 0.5
-        },
-        "lengthJitter": 0.1,
-        "part": {
-          "side": "center",
-          "position": 0
-        },
-        "flowBack": 0.05,
-        "gravity": 0.95,
-        "volume": 0.008,
-        "curl": {
-          "amplitude": 0.002,
-          "frequency": 2.5
-        },
-        "bangs": {
-          "enabled": false,
-          "length": 0.08,
-          "width": 0.4
-        },
-        "ponytail": {
-          "enabled": false,
-          "height": 0.45,
-          "length": 0.2
-        },
-        "cards": {
-          "segments": 8,
-          "width": 0.05,
-          "taper": 0.1,
-          "layers": 3,
-          "flyaway": 0.1
-        },
-        "shell": {
-          "enabled": true,
-          "offset": 0.002
-        },
-        "hairline": {
-          "preset": "custom",
-          "front": 71,
-          "temples": 77,
-          "sides": 102,
-          "nape": 142
-        },
-        "budget": [
-          1500,
-          3500
-        ],
-        "groom": {
-          "guides": 44,
-          "interpolate": 3,
-          "clump": 0.45,
-          "clumpShape": 0.75,
-          "frizz": 0.003,
-          "frizzShape": 0.4,
-          "flyawayLift": 0.008
-        },
-        "build": {
-          "tipTwist": 0.05,
-          "partLiftHeight": 0.008,
-          "partLiftDistance": 0.035,
-          "segmentLength": 0.065
-        },
-        "frame": 0.45
-      }
+    "budget": [
+     250,
+     1500
+    ]
+   }
+  },
+  {
+   "id": "crew",
+   "style": {
+    "name": "Crew cut",
+    "seed": 23,
+    "guides": 100,
+    "length": {
+     "front": 0.03,
+     "sides": 0.014,
+     "back": 0.016,
+     "top": 0.035
     },
-    {
-      "id": "bob-fringe",
-      "style": {
-        "name": "Bob with fringe",
-        "seed": 137,
-        "guides": 90,
-        "length": {
-          "front": 0.19,
-          "sides": 0.2,
-          "back": 0.17,
-          "top": 0.2
-        },
-        "lengthJitter": 0.08,
-        "part": {
-          "side": "center",
-          "position": 0
-        },
-        "flowBack": 0.1,
-        "gravity": 0.95,
-        "volume": 0.008,
-        "curl": {
-          "amplitude": 0,
-          "frequency": 0
-        },
-        "bangs": {
-          "enabled": true,
-          "length": 0.085,
-          "width": 0.8
-        },
-        "ponytail": {
-          "enabled": false,
-          "height": 0.45,
-          "length": 0.2
-        },
-        "cards": {
-          "segments": 5,
-          "width": 0.05,
-          "taper": 0.1,
-          "layers": 3,
-          "flyaway": 0.05
-        },
-        "shell": {
-          "enabled": true,
-          "offset": 0.002
-        },
-        "hairline": {
-          "preset": "low",
-          "front": 67,
-          "temples": 75,
-          "sides": 102,
-          "nape": 142
-        },
-        "budget": [
-          1500,
-          3500
-        ],
-        "groom": {
-          "guides": 40,
-          "interpolate": 3,
-          "clump": 0.3,
-          "clumpShape": 0.7,
-          "frizz": 0.002,
-          "frizzShape": 0.4,
-          "flyawayLift": 0.006
-        },
-        "build": {
-          "tipTwist": 0.04,
-          "segmentLength": 0.05
-        },
-        "frame": 0.4
-      }
+    "lengthJitter": 0.25,
+    "part": {
+     "side": "none",
+     "position": 0
     },
-    {
-      "id": "short-sideburns",
-      "style": {
-        "name": "Short with sideburns",
-        "seed": 139,
-        "guides": 105,
-        "length": {
-          "front": 0.055,
-          "sides": 0.03,
-          "back": 0.03,
-          "top": 0.055
-        },
-        "lengthJitter": 0.15,
-        "part": {
-          "side": "left",
-          "position": 0
-        },
-        "flowBack": 0.25,
-        "gravity": 0.45,
-        "volume": 0.01,
-        "curl": {
-          "amplitude": 0.001,
-          "frequency": 10
-        },
-        "bangs": {
-          "enabled": false,
-          "length": 0.05,
-          "width": 0.5
-        },
-        "ponytail": {
-          "enabled": false,
-          "height": 0.45,
-          "length": 0.2
-        },
-        "cards": {
-          "segments": 4,
-          "width": 0.032,
-          "taper": 0.15,
-          "layers": 3,
-          "flyaway": 0.08
-        },
-        "shell": {
-          "enabled": true,
-          "offset": 0.002
-        },
-        "hairline": {
-          "preset": "custom",
-          "front": 66,
-          "temples": 75,
-          "sides": 108,
-          "nape": 140
-        },
-        "budget": [
-          1500,
-          3500
-        ],
-        "groom": {
-          "guides": 36,
-          "interpolate": 3,
-          "clump": 0.3,
-          "clumpShape": 0.6,
-          "frizz": 0.003,
-          "frizzShape": 0.4,
-          "flyawayLift": 0.004
-        }
-      }
+    "flowBack": 0.35,
+    "gravity": 0.1,
+    "volume": 0.005,
+    "curl": {
+     "amplitude": 0.001,
+     "frequency": 25
+    },
+    "bangs": {
+     "enabled": false,
+     "length": 0.03,
+     "width": 0.4
+    },
+    "ponytail": {
+     "enabled": false,
+     "height": 0.45,
+     "length": 0.2
+    },
+    "cards": {
+     "segments": 2,
+     "width": 0.025,
+     "taper": 0.15,
+     "layers": 2,
+     "flyaway": 0.05
+    },
+    "shell": {
+     "enabled": true,
+     "offset": 0.0015
+    },
+    "hairline": {
+     "preset": "low",
+     "front": 67,
+     "temples": 75,
+     "sides": 102,
+     "nape": 142
+    },
+    "budget": [
+     800,
+     2200
+    ]
+   }
+  },
+  {
+   "id": "short-messy",
+   "style": {
+    "name": "Short messy",
+    "seed": 37,
+    "guides": 150,
+    "length": {
+     "front": 0.07,
+     "sides": 0.06,
+     "back": 0.07,
+     "top": 0.08
+    },
+    "lengthJitter": 0.35,
+    "part": {
+     "side": "none",
+     "position": 0
+    },
+    "flowBack": 0.45,
+    "gravity": 0.3,
+    "volume": 0.014,
+    "curl": {
+     "amplitude": 0.005,
+     "frequency": 16
+    },
+    "bangs": {
+     "enabled": false,
+     "length": 0.05,
+     "width": 0.5
+    },
+    "ponytail": {
+     "enabled": false,
+     "height": 0.45,
+     "length": 0.2
+    },
+    "cards": {
+     "segments": 3,
+     "width": 0.035,
+     "taper": 0.15,
+     "layers": 2,
+     "flyaway": 0.2
+    },
+    "shell": {
+     "enabled": true,
+     "offset": 0.002,
+     "reach": 0.7
+    },
+    "hairline": {
+     "preset": "low",
+     "front": 67,
+     "temples": 75,
+     "sides": 102,
+     "nape": 142
+    },
+    "budget": [
+     1500,
+     3500
+    ],
+    "scalpLayer": {
+     "enabled": true,
+     "opacity": 1,
+     "softness": 0.5,
+     "density": 0.6
+    },
+    "locks": {
+     "enabled": true,
+     "count": 130,
+     "width": 0.07,
+     "widthJitter": 0.3,
+     "bow": 0.5,
+     "columns": 2,
+     "taper": 0.3,
+     "share": 0.65,
+     "lift": 0.004
+    },
+    "strands": "straightCoarse"
+   }
+  },
+  {
+   "id": "side-part",
+   "style": {
+    "name": "Side part",
+    "seed": 41,
+    "guides": 105,
+    "length": {
+     "front": 0.1,
+     "sides": 0.06,
+     "back": 0.06,
+     "top": 0.1
+    },
+    "lengthJitter": 0.15,
+    "part": {
+     "side": "left",
+     "position": 0,
+     "reach": 120
+    },
+    "flowBack": 0.25,
+    "gravity": 0.45,
+    "volume": 0.01,
+    "curl": {
+     "amplitude": 0.001,
+     "frequency": 10
+    },
+    "bangs": {
+     "enabled": false,
+     "length": 0.05,
+     "width": 0.5
+    },
+    "ponytail": {
+     "enabled": false,
+     "height": 0.45,
+     "length": 0.2
+    },
+    "cards": {
+     "segments": 4,
+     "width": 0.032,
+     "taper": 0.15,
+     "layers": 2,
+     "flyaway": 0.08
+    },
+    "shell": {
+     "enabled": true,
+     "offset": 0.002,
+     "reach": 0.7
+    },
+    "hairline": {
+     "preset": "low",
+     "front": 67,
+     "temples": 75,
+     "sides": 102,
+     "nape": 142
+    },
+    "budget": [
+     1500,
+     3500
+    ],
+    "scalpLayer": {
+     "enabled": true,
+     "opacity": 1,
+     "softness": 0.5,
+     "density": 0.6
+    },
+    "locks": {
+     "enabled": true,
+     "count": 90,
+     "width": 0.07,
+     "widthJitter": 0.3,
+     "bow": 0.4,
+     "columns": 2,
+     "taper": 0.3,
+     "share": 0.7,
+     "lift": 0.004
+    },
+    "strands": "straightFine"
+   }
+  },
+  {
+   "id": "bob",
+   "style": {
+    "name": "Bob",
+    "seed": 53,
+    "guides": 90,
+    "length": {
+     "front": 0.14,
+     "sides": 0.17,
+     "back": 0.17,
+     "top": 0.15
+    },
+    "lengthJitter": 0.08,
+    "part": {
+     "side": "center",
+     "position": 0,
+     "reach": 110
+    },
+    "flowBack": 0.1,
+    "gravity": 0.85,
+    "volume": 0.012,
+    "curl": {
+     "amplitude": 0,
+     "frequency": 0
+    },
+    "bangs": {
+     "enabled": true,
+     "length": 0.09,
+     "width": 0.45
+    },
+    "ponytail": {
+     "enabled": false,
+     "height": 0.45,
+     "length": 0.2
+    },
+    "cards": {
+     "segments": 5,
+     "width": 0.045,
+     "taper": 0.15,
+     "layers": 2,
+     "flyaway": 0.05
+    },
+    "shell": {
+     "enabled": true,
+     "offset": 0.002,
+     "reach": 0.7
+    },
+    "hairline": {
+     "preset": "full",
+     "front": 63,
+     "temples": 71,
+     "sides": 100,
+     "nape": 138
+    },
+    "budget": [
+     1500,
+     3500
+    ],
+    "scalpLayer": {
+     "enabled": true,
+     "opacity": 1,
+     "softness": 0.5,
+     "density": 0.6
+    },
+    "locks": {
+     "enabled": true,
+     "count": 100,
+     "width": 0.085,
+     "widthJitter": 0.3,
+     "bow": 0.4,
+     "columns": 2,
+     "taper": 0.3,
+     "share": 0.6,
+     "lift": 0.004
+    },
+    "strands": "straightFine"
+   }
+  },
+  {
+   "id": "shoulder-straight",
+   "style": {
+    "name": "Shoulder-length straight",
+    "seed": 67,
+    "guides": 80,
+    "length": {
+     "front": 0.24,
+     "sides": 0.26,
+     "back": 0.27,
+     "top": 0.26
+    },
+    "lengthJitter": 0.1,
+    "part": {
+     "side": "center",
+     "position": 0,
+     "reach": 110
+    },
+    "flowBack": 0.15,
+    "gravity": 0.9,
+    "volume": 0.01,
+    "curl": {
+     "amplitude": 0.002,
+     "frequency": 4
+    },
+    "bangs": {
+     "enabled": false,
+     "length": 0.08,
+     "width": 0.4
+    },
+    "ponytail": {
+     "enabled": false,
+     "height": 0.45,
+     "length": 0.2
+    },
+    "cards": {
+     "segments": 6,
+     "width": 0.05,
+     "taper": 0.15,
+     "layers": 2,
+     "flyaway": 0.08
+    },
+    "shell": {
+     "enabled": true,
+     "offset": 0.002,
+     "reach": 0.7
+    },
+    "hairline": {
+     "preset": "full",
+     "front": 63,
+     "temples": 71,
+     "sides": 100,
+     "nape": 138
+    },
+    "budget": [
+     1500,
+     3500
+    ],
+    "scalpLayer": {
+     "enabled": true,
+     "opacity": 1,
+     "softness": 0.5,
+     "density": 0.6
+    },
+    "locks": {
+     "enabled": true,
+     "count": 100,
+     "width": 0.085,
+     "widthJitter": 0.3,
+     "bow": 0.4,
+     "columns": 2,
+     "taper": 0.3,
+     "share": 0.6,
+     "lift": 0.004
+    },
+    "strands": "straightFine"
+   }
+  },
+  {
+   "id": "long-straight",
+   "style": {
+    "name": "Long straight",
+    "seed": 71,
+    "guides": 75,
+    "length": {
+     "front": 0.4,
+     "sides": 0.42,
+     "back": 0.46,
+     "top": 0.42
+    },
+    "lengthJitter": 0.08,
+    "part": {
+     "side": "center",
+     "position": 0,
+     "reach": 110
+    },
+    "flowBack": 0.2,
+    "gravity": 0.95,
+    "volume": 0.01,
+    "curl": {
+     "amplitude": 0.003,
+     "frequency": 3
+    },
+    "bangs": {
+     "enabled": false,
+     "length": 0.08,
+     "width": 0.4
+    },
+    "ponytail": {
+     "enabled": false,
+     "height": 0.45,
+     "length": 0.2
+    },
+    "cards": {
+     "segments": 7,
+     "width": 0.055,
+     "taper": 0.15,
+     "layers": 2,
+     "flyaway": 0.06
+    },
+    "shell": {
+     "enabled": true,
+     "offset": 0.002,
+     "reach": 0.7
+    },
+    "hairline": {
+     "preset": "full",
+     "front": 63,
+     "temples": 71,
+     "sides": 100,
+     "nape": 138
+    },
+    "budget": [
+     1500,
+     3500
+    ],
+    "scalpLayer": {
+     "enabled": true,
+     "opacity": 1,
+     "softness": 0.5,
+     "density": 0.6
+    },
+    "locks": {
+     "enabled": true,
+     "count": 100,
+     "width": 0.085,
+     "widthJitter": 0.3,
+     "bow": 0.4,
+     "columns": 2,
+     "taper": 0.3,
+     "share": 0.6,
+     "lift": 0.004
+    },
+    "strands": "wavy"
+   }
+  },
+  {
+   "id": "ponytail",
+   "style": {
+    "name": "Ponytail",
+    "seed": 89,
+    "guides": 80,
+    "length": {
+     "front": 0.3,
+     "sides": 0.3,
+     "back": 0.3,
+     "top": 0.3
+    },
+    "lengthJitter": 0.12,
+    "part": {
+     "side": "none",
+     "position": 0
+    },
+    "flowBack": 1,
+    "gravity": 0.9,
+    "volume": 0.006,
+    "curl": {
+     "amplitude": 0,
+     "frequency": 0
+    },
+    "bangs": {
+     "enabled": false,
+     "length": 0.06,
+     "width": 0.4
+    },
+    "ponytail": {
+     "enabled": true,
+     "height": 0.5,
+     "length": 0.3
+    },
+    "cards": {
+     "segments": 6,
+     "width": 0.04,
+     "taper": 0.15,
+     "layers": 2,
+     "flyaway": 0.05
+    },
+    "shell": {
+     "enabled": true,
+     "offset": 0.002,
+     "reach": 0.7
+    },
+    "hairline": {
+     "preset": "full",
+     "front": 63,
+     "temples": 71,
+     "sides": 100,
+     "nape": 138
+    },
+    "budget": [
+     1200,
+     3500
+    ],
+    "scalpLayer": {
+     "enabled": true,
+     "opacity": 1,
+     "softness": 0.5,
+     "density": 0.6
+    },
+    "locks": {
+     "enabled": true,
+     "count": 100,
+     "width": 0.07,
+     "widthJitter": 0.3,
+     "bow": 0.4,
+     "columns": 2,
+     "taper": 0.3,
+     "share": 0.6,
+     "lift": 0.004
+    },
+    "strands": "straightFine"
+   }
+  },
+  {
+   "id": "long-centre-part",
+   "style": {
+    "name": "Long, centre part",
+    "seed": 131,
+    "guides": 80,
+    "length": {
+     "front": 0.5,
+     "sides": 0.5,
+     "back": 0.48,
+     "top": 0.5
+    },
+    "lengthJitter": 0.1,
+    "part": {
+     "side": "center",
+     "position": 0
+    },
+    "flowBack": 0.05,
+    "gravity": 0.95,
+    "volume": 0.008,
+    "curl": {
+     "amplitude": 0.002,
+     "frequency": 2.5
+    },
+    "bangs": {
+     "enabled": false,
+     "length": 0.08,
+     "width": 0.4
+    },
+    "ponytail": {
+     "enabled": false,
+     "height": 0.45,
+     "length": 0.2
+    },
+    "cards": {
+     "segments": 8,
+     "width": 0.05,
+     "taper": 0.1,
+     "layers": 3,
+     "flyaway": 0.1
+    },
+    "shell": {
+     "enabled": true,
+     "offset": 0.002
+    },
+    "hairline": {
+     "preset": "custom",
+     "front": 71,
+     "temples": 77,
+     "sides": 102,
+     "nape": 142
+    },
+    "budget": [
+     1500,
+     3500
+    ],
+    "groom": {
+     "guides": 44,
+     "interpolate": 3,
+     "clump": 0.45,
+     "clumpShape": 0.75,
+     "frizz": 0.003,
+     "frizzShape": 0.4,
+     "flyawayLift": 0.008
+    },
+    "build": {
+     "tipTwist": 0.05,
+     "partLiftHeight": 0.008,
+     "partLiftDistance": 0.035,
+     "segmentLength": 0.065
+    },
+    "frame": 0.45
+   }
+  },
+  {
+   "id": "bob-fringe",
+   "style": {
+    "name": "Bob with fringe",
+    "seed": 137,
+    "guides": 90,
+    "length": {
+     "front": 0.19,
+     "sides": 0.2,
+     "back": 0.17,
+     "top": 0.2
+    },
+    "lengthJitter": 0.08,
+    "part": {
+     "side": "center",
+     "position": 0
+    },
+    "flowBack": 0.1,
+    "gravity": 0.95,
+    "volume": 0.008,
+    "curl": {
+     "amplitude": 0,
+     "frequency": 0
+    },
+    "bangs": {
+     "enabled": true,
+     "length": 0.085,
+     "width": 0.8
+    },
+    "ponytail": {
+     "enabled": false,
+     "height": 0.45,
+     "length": 0.2
+    },
+    "cards": {
+     "segments": 5,
+     "width": 0.05,
+     "taper": 0.1,
+     "layers": 3,
+     "flyaway": 0.05
+    },
+    "shell": {
+     "enabled": true,
+     "offset": 0.002
+    },
+    "hairline": {
+     "preset": "low",
+     "front": 67,
+     "temples": 75,
+     "sides": 102,
+     "nape": 142
+    },
+    "budget": [
+     1500,
+     3500
+    ],
+    "groom": {
+     "guides": 40,
+     "interpolate": 3,
+     "clump": 0.3,
+     "clumpShape": 0.7,
+     "frizz": 0.002,
+     "frizzShape": 0.4,
+     "flyawayLift": 0.006
+    },
+    "build": {
+     "tipTwist": 0.04,
+     "segmentLength": 0.05
+    },
+    "frame": 0.4
+   }
+  },
+  {
+   "id": "short-sideburns",
+   "style": {
+    "name": "Short with sideburns",
+    "seed": 139,
+    "guides": 105,
+    "length": {
+     "front": 0.055,
+     "sides": 0.03,
+     "back": 0.03,
+     "top": 0.055
+    },
+    "lengthJitter": 0.15,
+    "part": {
+     "side": "left",
+     "position": 0
+    },
+    "flowBack": 0.25,
+    "gravity": 0.45,
+    "volume": 0.01,
+    "curl": {
+     "amplitude": 0.001,
+     "frequency": 10
+    },
+    "bangs": {
+     "enabled": false,
+     "length": 0.05,
+     "width": 0.5
+    },
+    "ponytail": {
+     "enabled": false,
+     "height": 0.45,
+     "length": 0.2
+    },
+    "cards": {
+     "segments": 4,
+     "width": 0.032,
+     "taper": 0.15,
+     "layers": 3,
+     "flyaway": 0.08
+    },
+    "shell": {
+     "enabled": true,
+     "offset": 0.002
+    },
+    "hairline": {
+     "preset": "custom",
+     "front": 66,
+     "temples": 75,
+     "sides": 108,
+     "nape": 140
+    },
+    "budget": [
+     1500,
+     3500
+    ],
+    "groom": {
+     "guides": 36,
+     "interpolate": 3,
+     "clump": 0.3,
+     "clumpShape": 0.6,
+     "frizz": 0.003,
+     "frizzShape": 0.4,
+     "flyawayLift": 0.004
     }
-  ]
+   }
+  },
+  {
+   "id": "mara-bob",
+   "style": {
+    "name": "Layered bob (Mara)",
+    "seed": 211,
+    "guides": 90,
+    "length": {
+     "front": 0.15,
+     "sides": 0.16,
+     "back": 0.14,
+     "top": 0.15
+    },
+    "lengthJitter": 0.28,
+    "part": {
+     "side": "left",
+     "position": 0.3,
+     "reach": 110
+    },
+    "flowBack": 0.1,
+    "gravity": 0.85,
+    "volume": 0.01,
+    "curl": {
+     "amplitude": 0,
+     "frequency": 0
+    },
+    "bangs": {
+     "enabled": true,
+     "length": 0.075,
+     "width": 0.6
+    },
+    "ponytail": {
+     "enabled": false,
+     "height": 0.45,
+     "length": 0.2
+    },
+    "cards": {
+     "segments": 5,
+     "width": 0.05,
+     "taper": 0.1,
+     "layers": 2,
+     "flyaway": 0.05
+    },
+    "shell": {
+     "enabled": true,
+     "offset": 0.002,
+     "reach": 0.7
+    },
+    "hairline": {
+     "preset": "low",
+     "front": 67,
+     "temples": 75,
+     "sides": 102,
+     "nape": 142
+    },
+    "budget": [
+     1500,
+     3500
+    ],
+    "groom": {
+     "guides": 40,
+     "interpolate": 3,
+     "clump": 0.3,
+     "clumpShape": 0.7,
+     "frizz": 0.002,
+     "frizzShape": 0.4,
+     "flyawayLift": 0.006
+    },
+    "build": {
+     "tipTwist": 0.04,
+     "segmentLength": 0.05
+    },
+    "frame": 0.45,
+    "scalpLayer": {
+     "enabled": true,
+     "opacity": 1,
+     "softness": 0.5,
+     "density": 0.6
+    },
+    "locks": {
+     "enabled": true,
+     "count": 110,
+     "width": 0.085,
+     "widthJitter": 0.3,
+     "bow": 0.4,
+     "columns": 2,
+     "taper": 0.3,
+     "share": 0.6,
+     "lift": 0.004
+    },
+    "strands": "straightFine"
+   }
+  },
+  {
+   "id": "cole-curtain",
+   "style": {
+    "name": "Curtain fringe (Cole)",
+    "seed": 307,
+    "guides": 80,
+    "length": {
+     "front": 0.15,
+     "sides": 0.17,
+     "back": 0.07,
+     "top": 0.15
+    },
+    "lengthJitter": 0.15,
+    "part": {
+     "side": "center",
+     "position": 0,
+     "reach": 100
+    },
+    "flowBack": 0.25,
+    "gravity": 0.8,
+    "volume": 0.01,
+    "curl": {
+     "amplitude": 0.002,
+     "frequency": 2.5
+    },
+    "bangs": {
+     "enabled": false,
+     "length": 0.08,
+     "width": 0.4
+    },
+    "ponytail": {
+     "enabled": false,
+     "height": 0.45,
+     "length": 0.2
+    },
+    "cards": {
+     "segments": 8,
+     "width": 0.05,
+     "taper": 0.1,
+     "layers": 2,
+     "flyaway": 0.1
+    },
+    "shell": {
+     "enabled": true,
+     "offset": 0.002,
+     "reach": 0.7
+    },
+    "hairline": {
+     "preset": "custom",
+     "front": 68,
+     "temples": 74,
+     "sides": 100,
+     "nape": 130
+    },
+    "budget": [
+     1500,
+     3500
+    ],
+    "groom": {
+     "guides": 44,
+     "interpolate": 3,
+     "clump": 0.45,
+     "clumpShape": 0.75,
+     "frizz": 0.003,
+     "frizzShape": 0.4,
+     "flyawayLift": 0.008
+    },
+    "build": {
+     "tipTwist": 0.05,
+     "partLiftHeight": 0.008,
+     "partLiftDistance": 0.035,
+     "segmentLength": 0.065
+    },
+    "frame": 0.55,
+    "scalpLayer": {
+     "enabled": true,
+     "opacity": 1,
+     "softness": 0.5,
+     "density": 0.6
+    },
+    "locks": {
+     "enabled": true,
+     "count": 100,
+     "width": 0.065,
+     "widthJitter": 0.3,
+     "bow": 0.4,
+     "columns": 2,
+     "taper": 0.3,
+     "share": 0.6,
+     "lift": 0.004
+    },
+    "strands": "straightCoarse"
+   }
+  }
+ ]
 }

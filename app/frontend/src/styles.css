@@ -1766,3 +1766,45 @@ code {
 .bake-status.bake-failed {
   color: #ff9478;
 }
+
+/* Hair Studio (PRD F15): grooming tools over the viewport. */
+.hair-studio {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(14, 14, 16, 0.86);
+  color: #e8e6e3;
+  font-size: 12px;
+  z-index: 3;
+}
+
+.hair-studio .hs-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.hair-studio .hs-row .spacer {
+  flex: 1;
+}
+
+.hair-studio .tools button {
+  padding: 3px 8px;
+}
+
+.hair-studio button.active {
+  background: #e05a2b;
+  color: #fff;
+}
+
+.hair-studio input[type='range'] {
+  width: 90px;
+  vertical-align: middle;
+}

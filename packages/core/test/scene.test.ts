@@ -101,7 +101,8 @@ suite('CharacterScene', () => {
     await scene.sync();
     const part = scene.parts.find((p) => p.key === 'hair')!;
     expect(part.kind).toBe('hair');
-    expect(part.material.texture).toBe(assets.catalog.hairAtlases![0]!.atlas.texture);
+    // Hair without a colour is from before Hair v2 and keeps the brown card atlas it was made with.
+    expect(part.material.texture).toBe('textures/hair/cards_brown.png');
     expect(part.layer).toHaveLength(part.positions.length / 3);
     expect(scene.budget().hair).toBe(part.triangleCount);
     const inf = scene.influences('hair')!;

@@ -12,6 +12,7 @@ const TAG_COLOURS: Record<AtlasTag, string> = {
   fringe: '#ffd659',
   flyaway: '#b77bff',
   base: '#6fe08a',
+  lock: '#e05a8a',
 };
 
 type Drag = { index: number; mode: 'move' | 'resize'; startX: number; startY: number; start: AtlasRegion };

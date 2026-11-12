@@ -4,7 +4,8 @@
  * mesh. The viewport renders it; the exporters (M7) will read the same data.
  * Pure TypeScript: no DOM, no Three.js.
  */
-import type { CharacterDoc, GarmentSlot, Tint } from '../character/doc';
+import { wantsScalpLayer, type CharacterDoc, type GarmentSlot, type Tint } from '../character/doc';
+import { hashSeed } from '../random';
 import type { CharacterEngine } from '../character/engine';
 import { computeQuadNormals, computeTriangleNormals } from '../mesh/normals';
 import type { FaceAssets } from '../assets';
@@ -15,7 +16,11 @@ import { addDelta, difference, transferBound } from '../expression/transfer';
 import { mergeUntangleMeshes, untangleDeltas, untangleMesh, untangleMeshFromTriangles, type UntangleMesh } from '../expression/untangle';
 import type { Ps2BodyMesh } from '../mesh/ps2body';
 import { atlasTemplate, type AtlasRegion, type AtlasSpec } from '../hair/atlas';
-import { sanitiseStyle, type HairStyleParams } from '../hair/style';
+import { adjustStyle, sanitiseStyle, styleForBudget, type HairStyleParams } from '../hair/style';
+import { DEFAULT_HAIR_COLOUR, type HairColour } from '../hair/strand-atlas';
+import { drawScalpLayer } from '../hair/scalp-layer';
+import { HairBinding } from '../hair/binding';
+import { boundaryLoops, browRoots, buildSurfaceCards, classifyLoop, furRoots, loopLength, type CardBrows, type FurTrim } from '../hair/surface-cards';
 import { HairGenerator, type GeneratedHair } from '../hair/generate';
 import { BodySurface, GarmentCollider } from '../proxy/collision';
 import type { ProxyAsset } from '../proxy/proxy';
@@ -27,9 +32,8 @@ import { projectPhoto, type LandmarkTable } from '../skin/photo/project';
 import { packHead, splitBody } from '../skin/headsplit';
 import { blendVolumeNormals } from '../hair/cards-from-curves';
 import { atlasCellTexels } from '../export/limits';
-import { scaledHairBudget, STYLE_HAIR_BUDGET } from '../quality/profiles';
 
-export type PartKind = 'body' | 'eyes' | 'eyebrows' | 'eyelashes' | 'teeth' | 'garment' | 'hair';
+export type PartKind = 'body' | 'eyes' | 'eyebrows' | 'eyelashes' | 'teeth' | 'garment' | 'hair' | 'fur';
 
 export interface PartMaterial {
   /** Path of the diffuse texture relative to assets/core, or a library URL. */
@@ -42,6 +46,16 @@ export interface PartMaterial {
   dirt: number;
   /** Card hair: dithered transparency on the outer layer (uses ScenePart.layer). */
   ditherOuter?: boolean;
+  /**
+   * Hair v2 (PRD F15): `texture` is a greyscale strand atlas, coloured through
+   * this gradient map (colourizeHair) by the viewport and the exporter alike.
+   */
+  gradient?: { colour: HairColour; regions: AtlasRegion[] };
+  /**
+   * Hair v2 two-pass alpha (PRD F14/F15): texels at or above `alphaThreshold`
+   * are drawn opaque with depth, softer ones blended over them without depth.
+   */
+  softAlpha?: boolean;
   /**
    * Card hair: the normals describe the hair's volume, not each card's faces, so
    * both sides of a card are lit by the same normal instead of each by its own.
@@ -91,6 +105,8 @@ export interface ScenePart {
   triangleCount: number;
   /** Card hair only: 0 (shell, innermost) .. 1 (outermost layer) per vertex. */
   layer?: Float32Array;
+  /** Card hair only: 0 shell, 1 lock, 2 detail card, per vertex (Hair Studio's layer view, ID renders). */
+  hairLayer?: Uint8Array;
   /**
    * Expression preview (PRD F8 sliders): positions and normals with the
    * previewed blendshapes applied. The viewport draws these when set; the
@@ -188,9 +204,148 @@ export class CharacterScene {
   get parts(): ScenePart[] {
     const list: ScenePart[] = [];
     if (this.body) list.push(this.body.part);
-    for (const p of this.proxies.values()) list.push(p.part);
+    // Card brows replace the eyebrow mesh they grow on.
+    const browCards = this.surfaceCards.has(BROW_CARDS);
+    for (const [key, p] of this.proxies) if (!(browCards && key === 'eyebrows')) list.push(p.part);
     if (this.cards) list.push(this.cards.part);
+    for (const s of this.surfaceCards.values()) list.push(s.part);
     return list.sort((a, b) => a.zDepth - b.zDepth);
+  }
+
+  /**
+   * Hair v2 (PRD F15): the card system grown on other surfaces. Fur trims along
+   * garment edges (key `fur:<garment key>`) and card brows on the eyebrow mesh.
+   */
+  private readonly surfaceCards = new Map<string, SurfaceCardPart>();
+  private bodyTrianglesCache: Uint32Array | null = null;
+
+  /** Every body triangle of hm08 (fur and brows bind to the nearest one). */
+  private bodyTriangles(): Uint32Array {
+    if (!this.bodyTrianglesCache) {
+      const b = this.engine.assets.base;
+      const tris: number[] = [];
+      for (const f of b.facesWhere((g) => g === 'body')) {
+        const q = [0, 1, 2, 3].map((k) => b.faceVerts[f * 4 + k]!);
+        tris.push(q[0]!, q[1]!, q[2]!);
+        if (q[3] !== q[2]) tris.push(q[0]!, q[2]!, q[3]!);
+      }
+      this.bodyTrianglesCache = Uint32Array.from(tris);
+    }
+    return this.bodyTrianglesCache;
+  }
+
+  /** The built-in strand atlas of a preset. */
+  private strandAtlas(preset: string): AtlasSpec | null {
+    const all = this.engine.assets.catalog.hairAtlases ?? [];
+    return (all.find((a) => a.strands === preset) ?? all.find((a) => a.strands))?.atlas ?? null;
+  }
+
+  /** Create or drop fur trims and card brows to match the document; geometry follows in update(). */
+  private syncSurfaceCards(doc: Readonly<CharacterDoc>): void {
+    const wanted = new Map<string, { kind: 'fur' | 'brows'; source: string; settings: FurTrim | CardBrows; colour: HairColour; signature: string }>();
+    for (const g of doc.garments) {
+      if (!g.fur?.enabled || g.fur.edges.length === 0) continue;
+      const source = garmentKey(g);
+      if (!this.proxies.has(source)) continue;
+      const colour: HairColour = { base: g.fur.colour, rootDarken: 0.25, tipLighten: 0.25, streaks: 0, streakColour: g.fur.colour, grey: 0 };
+      wanted.set(`fur:${source}`, { kind: 'fur', source, settings: g.fur, colour, signature: JSON.stringify(g.fur) });
+    }
+    const brows = doc.eyebrows.cards;
+    if (brows && this.proxies.has('eyebrows')) {
+      const hairColour = doc.hair.colour;
+      const base: [number, number, number] = hairColour ? [hairColour.base[0] * 0.8, hairColour.base[1] * 0.8, hairColour.base[2] * 0.8] : [0.24, 0.17, 0.12];
+      const colour: HairColour = { base, rootDarken: 0.2, tipLighten: 0.1, streaks: 0, streakColour: base, grey: 0 };
+      wanted.set(BROW_CARDS, { kind: 'brows', source: 'eyebrows', settings: brows, colour, signature: JSON.stringify([brows, this.proxies.get('eyebrows')!.proxy.id]) });
+    }
+    for (const key of [...this.surfaceCards.keys()]) {
+      if (!wanted.has(key)) {
+        this.surfaceCards.delete(key);
+        this.influenceCache.delete(key);
+      }
+    }
+    for (const [key, w] of wanted) {
+      const atlas = this.strandAtlas(w.kind === 'fur' ? 'curly' : 'straightFine');
+      if (!atlas) continue;
+      const existing = this.surfaceCards.get(key);
+      const material: PartMaterial = {
+        texture: atlas.texture,
+        tint: w.kind === 'brows' ? (doc.eyebrows.tint ?? NEUTRAL) : NEUTRAL,
+        alphaCutout: true,
+        alphaThreshold: 0.5,
+        doubleSided: true,
+        dirt: 0,
+        gradient: { colour: w.colour, regions: atlas.regions },
+        softAlpha: true,
+      };
+      if (existing && existing.signature === w.signature) {
+        existing.part.material = material;
+        continue;
+      }
+      const pp = this.proxies.get(w.source)!;
+      let loops: number[][] = [];
+      let counts: number[] = [];
+      if (w.kind === 'fur') {
+        const fur = w.settings as FurTrim;
+        // Edge loops on the garment's own topology (UV seams are not edges); the counts are fixed here.
+        const sk = this.engine.skeleton;
+        const joint = (name: string): [number, number, number] => {
+          const i = sk.rig.index.get(name);
+          return i === undefined ? [0, -10, 0] : [sk.heads[i * 3]!, sk.heads[i * 3 + 1]!, sk.heads[i * 3 + 2]!];
+        };
+        const joints = { neck: joint('neck_01'), wrists: [joint('hand_l'), joint('hand_r')], ankles: [joint('foot_l'), joint('foot_r')] };
+        pp.proxy.fit(this.engine.positions, pp.fitted);
+        loops = boundaryLoops(pp.topo.sourceIndices).filter((l) => fur.edges.includes(classifyLoop(pp.fitted, l, joints)));
+        counts = loops.map((l) => Math.max(3, Math.round(loopLength(pp.fitted, l) * fur.density)));
+      }
+      const part: ScenePart = {
+        key,
+        kind: w.kind === 'fur' ? 'fur' : 'eyebrows',
+        assetId: w.kind === 'fur' ? 'ps2cc:fur/cards' : 'ps2cc:eyebrows/cards',
+        label: w.kind === 'fur' ? `Fur trim: ${pp.part.label}` : 'Card eyebrows',
+        zDepth: w.kind === 'fur' ? pp.part.zDepth + 1 : pp.part.zDepth,
+        material,
+        uvs: new Float32Array(0),
+        indices: new Uint32Array(0),
+        positions: new Float32Array(0),
+        normals: new Float32Array(0),
+        version: 0,
+        triangleCount: 0,
+      };
+      this.surfaceCards.set(key, { part, kind: w.kind, source: w.source, settings: w.settings, loops, counts, seed: hashSeed(key), signature: w.signature, binding: null, generatedFor: -1 });
+      this.influenceCache.delete(key);
+    }
+  }
+
+  /** Grow the fur and brow cards on the current garment and eyebrow geometry. */
+  private updateSurfaceCards(): void {
+    for (const [key, s] of this.surfaceCards) {
+      const pp = this.proxies.get(s.source);
+      if (!pp) continue;
+      const atlasRegions = s.part.material.gradient?.regions ?? [];
+      const roots =
+        s.kind === 'fur'
+          ? furRoots(pp.fitted, pp.smooth, s.loops, s.counts, s.settings as FurTrim, s.seed)
+          : browRoots(pp.fitted, pp.topo.sourceIndices, 0, s.settings as CardBrows, s.seed);
+      const cards = buildSurfaceCards(roots, atlasRegions, s.kind === 'fur' ? 'clump' : 'strand', s.kind === 'fur' ? 2 : 1, s.seed);
+      const p = s.part;
+      if (p.positions.length !== cards.positions.length) {
+        p.uvs = cards.uvs;
+        p.indices = cards.indices;
+        p.positions = cards.positions;
+        p.normals = new Float32Array(cards.positions.length);
+        p.layer = cards.layer;
+        p.hairLayer = cards.hairLayer;
+        p.triangleCount = cards.triangleCount;
+      } else p.positions.set(cards.positions);
+      computeTriangleNormals(p.positions, p.indices, p.positions.length / 3, p.normals);
+      // Skin weights and expressions come from the body triangle under each vertex, bound once the shape settles.
+      if (!this.engine.interacting || !s.binding) {
+        s.binding = new HairBinding(this.engine.positions, this.bodyTriangles(), p.positions);
+        s.generatedFor = this.engine.geometryVersion;
+        this.influenceCache.delete(key);
+      }
+      p.version++;
+    }
   }
 
   /** Load/unload parts to match the current document. Safe to call often. */
@@ -200,13 +355,15 @@ export class CharacterScene {
       ...w,
       material: { ...w.material, texture: this.engine.assets.textureFor(w.material.texture) },
     }));
-    const cardHair = doc.hair.mode === 'cards' ? { style: doc.hair.style, atlas: doc.hair.atlas ?? null, hairBudget: doc.export.hairBudget } : null;
+    const cardHair =
+      doc.hair.mode === 'cards' ? { style: doc.hair.style, atlas: doc.hair.atlas ?? null, hairBudget: doc.export.hairBudget, v2: Boolean(doc.hair.colour), adjust: doc.hair.adjust ?? null } : null;
     const signature = JSON.stringify({
       body: doc.bodyMesh,
       wanted,
       hide: doc.garments.map((g) => [g.asset, g.hideBody]),
+      surfaceCards: [doc.garments.map((g) => g.fur ?? null), doc.eyebrows.cards ?? null, doc.eyebrows.tint ?? null],
       cardHair,
-      hairLook: [doc.hair.tint, doc.hair.alphaThreshold, doc.hair.ditherOuter],
+      hairLook: [doc.hair.tint, doc.hair.alphaThreshold, doc.hair.ditherOuter, doc.hair.colour ?? null],
     });
     if (signature === this.syncedFor) {
       await this.syncSkin(doc);
@@ -253,7 +410,8 @@ export class CharacterScene {
     this.applyHiddenBody(doc);
     this.anchoredFor = -1;
     this.syncCardHair(doc, cardHair === null ? null : JSON.stringify(cardHair));
-    for (const k of [...this.influenceCache.keys()]) if (k !== 'body' && !this.proxies.has(k)) this.influenceCache.delete(k);
+    this.syncSurfaceCards(doc);
+    for (const k of [...this.influenceCache.keys()]) if (k !== 'body' && k !== 'hair' && !this.proxies.has(k) && !this.surfaceCards.has(k)) this.influenceCache.delete(k);
     for (const k of [...this.faceWeightCache.keys()]) if (!this.proxies.has(k)) this.faceWeightCache.delete(k);
     this.shapeCache.clear();
     this.syncedFor = signature;
@@ -292,6 +450,7 @@ export class CharacterScene {
       pp.part.version++;
     }
     this.updateCardHair();
+    this.updateSurfaceCards();
     this.applyPreview();
     // The photo follows head-shape changes once the shape settles.
     if (this.photo && !this.engine.interacting && this.reprojectPhoto(false)) this.applySkin(this.engine.doc);
@@ -314,7 +473,7 @@ export class CharacterScene {
   /** Load photo inputs when the skin settings change, then resolve the layer stack. */
   private async syncSkin(doc: Readonly<CharacterDoc>): Promise<void> {
     if (!this.body) return;
-    const signature = JSON.stringify([doc.skin, this.baseSkinTexture(doc), this.bakedBody?.key ?? null]);
+    const signature = JSON.stringify([doc.skin, this.baseSkinTexture(doc), this.bakedBody?.key ?? null, this.scalpKey(doc)]);
     if (signature === this.skinSynced) return;
     const p = doc.skin.photo;
     const load = this.options.loadImage;
@@ -377,8 +536,35 @@ export class CharacterScene {
     const photo = this.photo?.layer && (doc.skin.photo?.strength ?? 0) > 0 ? { image: this.photo.layer, key: String(this.photo.key) } : null;
     const hasLayers = photo !== null || doc.skin.layers.some((l) => l.enabled && l.opacity > 0);
     material.skin = hasLayers
-      ? this.engine.assets.skinComposer.resolve(doc.skin, (ref) => (ref === doc.skin.base ? base : this.engine.assets.textureFor(ref)), photo, this.bakedBody)
+      ? this.engine.assets.skinComposer.resolve(doc.skin, (ref) => (ref === doc.skin.base ? base : this.engine.assets.textureFor(ref)), photo, this.bakedBody, this.scalpImage(doc))
       : null;
+  }
+
+  /** The style card hair is generated from: sanitised, with the Character Creator's adjustments. */
+  private effectiveStyle(doc: Readonly<CharacterDoc>): HairStyleParams {
+    return adjustStyle(sanitiseStyle(doc.hair.style), doc.hair.adjust);
+  }
+
+  /** What the scalp layer's pixels depend on (null without one). */
+  private scalpKey(doc: Readonly<CharacterDoc>): string | null {
+    if (!wantsScalpLayer(doc as CharacterDoc) || this.scalpHidden) return null;
+    const s = this.effectiveStyle(doc);
+    return JSON.stringify([s.seed, s.hairline, s.part, s.flowBack, s.frame, s.gravity, s.bangs, s.ponytail, s.groom.curves ?? null, s.groom.cards ?? null, s.scalpLayer, doc.hair.colour]);
+  }
+
+  private scalpCache: { key: string; image: RgbaImage } | null = null;
+
+  /** Short hair painted on the scalp (Hair v2, PRD F15), drawn on the neutral surface; cached by what it depends on. */
+  private scalpImage(doc: Readonly<CharacterDoc>): { image: RgbaImage; key: string } | null {
+    const key = this.scalpKey(doc);
+    if (key === null) return null;
+    if (this.scalpCache?.key !== key) {
+      const style = this.effectiveStyle(doc);
+      const field = this.hairGenerator().scalpField(style);
+      const image = drawScalpLayer(this.engine.assets.skinComposer.surface, field, style.scalpLayer, doc.hair.colour ?? DEFAULT_HAIR_COLOUR, style.seed);
+      this.scalpCache = { key, image };
+    }
+    return { image: this.scalpCache.image, key: String(hashSeed(key)) };
   }
 
   /**
@@ -460,6 +646,12 @@ export class CharacterScene {
       table = selectInfluences(this.bodyInfluences, this.body.mesh ? this.body.mesh.sourceVertex : this.bodyFallbackMap!);
     } else if (key === 'hair' && this.cards) {
       table = buildInfluences(this.hairGenerator().skinWeights(this.cards.hair));
+    } else if (this.surfaceCards.get(key)?.binding) {
+      const s = this.surfaceCards.get(key)!;
+      const rig = this.engine.assets.rig;
+      const all = new Set<number>(rig.bones.map((_, i) => i));
+      const fallback = rig.index.get(s.kind === 'brows' ? 'head' : 'spine_03') ?? 0;
+      table = buildInfluences(s.binding!.weights(sparse, all, fallback));
     } else {
       const pp = this.proxies.get(key);
       if (pp) table = selectInfluences(buildInfluences(pp.proxy.transferWeights(sparse)), pp.topo.sourceVertex);
@@ -563,6 +755,13 @@ export class CharacterScene {
       const n = c.part.positions.length / 3;
       const nd = difference(computeTriangleNormals(addDelta(c.part.positions, d), c.part.indices, n), c.part.normals);
       out.set('hair', { deltas: d, normals: nd });
+    }
+    for (const [key, s] of this.surfaceCards) {
+      if (!s.binding) continue;
+      const d = transferBound(delta, s.binding.tri, s.binding.bary);
+      const n = s.part.positions.length / 3;
+      const nd = difference(computeTriangleNormals(addDelta(s.part.positions, d), s.part.indices, n), s.part.normals);
+      out.set(key, { deltas: d, normals: nd });
     }
     this.shapeCache.set(name, out);
     return out;
@@ -692,7 +891,13 @@ export class CharacterScene {
       head = Math.min(body, this.body.headTriangles);
     }
     if (this.cards) hair += this.cards.part.triangleCount;
-    for (const pp of this.proxies.values()) {
+    const browCards = this.surfaceCards.has(BROW_CARDS);
+    for (const s of this.surfaceCards.values()) {
+      if (s.kind === 'fur') garments += s.part.triangleCount;
+      else eyes += s.part.triangleCount;
+    }
+    for (const [key, pp] of this.proxies) {
+      if (browCards && key === 'eyebrows') continue;
       const n = pp.part.triangleCount;
       if (pp.part.kind === 'hair') hair += n;
       else if (pp.part.kind === 'garment') garments += n;
@@ -763,17 +968,39 @@ export class CharacterScene {
     this.influenceCache.delete('body');
   }
 
-  private hairGenerator(): HairGenerator {
+  /** Generated card hair on the current body (Hair Studio draws its guides), or null. */
+  get cardHair(): GeneratedHair | null {
+    return this.cards?.hair ?? null;
+  }
+
+  /** Hair Studio's layer view: hide the scalp layer without touching the document. */
+  setScalpLayerVisible(on: boolean): void {
+    if (this.scalpHidden === !on) return;
+    this.scalpHidden = !on;
+    this.skinSynced = null;
+    this.applySkin(this.engine.doc);
+  }
+
+  private scalpHidden = false;
+
+  hairGenerator(): HairGenerator {
     const a = this.engine.assets;
     this.hairGen ??= new HairGenerator(a.base, a.rig, a.weights.sparse);
     return this.hairGen;
   }
 
-  /** The card atlas of the document, else the built-in default, else a plain 4-strip layout. */
-  private cardAtlas(doc: Readonly<CharacterDoc>): AtlasSpec {
+  /**
+   * The card atlas of the document, else a built-in one: for Hair v2 (a hair
+   * colour is set) the strand atlas of the style's preset, for older hair the
+   * brown card atlas it was made with; else a plain 4-strip layout.
+   */
+  private cardAtlas(doc: Readonly<CharacterDoc>, style: HairStyleParams): AtlasSpec {
     if (doc.hair.atlas) return doc.hair.atlas;
-    const builtIn = this.engine.assets.catalog.hairAtlases?.[0]?.atlas;
-    return builtIn ?? { format: 'ps2cc.atlas/1', texture: '', regions: atlasTemplate('strips4') };
+    const all = this.engine.assets.catalog.hairAtlases ?? [];
+    const builtIn = doc.hair.colour
+      ? (all.find((a) => a.strands === style.strands) ?? all.find((a) => a.strands))
+      : (all.find((a) => a.id === 'ps2cc:atlas/cards_brown') ?? all.find((a) => !a.atlas.greyscale));
+    return builtIn?.atlas ?? { format: 'ps2cc.atlas/1', texture: '', regions: atlasTemplate('strips4') };
   }
 
   /** Create, regenerate or drop the generated card hair (PRD F5 route B). */
@@ -783,13 +1010,14 @@ export class CharacterScene {
       this.cards = null;
       return;
     }
-    const atlas = this.cardAtlas(doc);
-    // A style put into the document by hand (or from before the groom existed) may lack newer settings.
-    const own = sanitiseStyle(doc.hair.style);
-    // The style's budget was written for 3,500 triangles; the quality profile scales it and the
-    // number of cards with it (F13), so a bigger budget buys denser hair, not just room for it.
-    const f = doc.export.hairBudget / STYLE_HAIR_BUDGET;
-    const style = Math.abs(f - 1) < 1e-9 ? own : { ...own, guides: Math.max(1, Math.round(own.guides * f)), budget: scaledHairBudget(own.budget, doc.export.hairBudget) };
+    // A style put into the document by hand (or from before the groom existed) may lack newer settings;
+    // the Character Creator's length, volume and fringe sliders apply on top of it.
+    const own = adjustStyle(sanitiseStyle(doc.hair.style), doc.hair.adjust);
+    const atlas = this.cardAtlas(doc, own);
+    // The style's budget was written for 3,500 triangles; the quality profile scales it (F13).
+    const style = styleForBudget(own, doc.export.hairBudget);
+    // Greyscale strand atlases are coloured through the hair's gradient map.
+    const gradient = atlas.greyscale ? { colour: doc.hair.colour ?? DEFAULT_HAIR_COLOUR, regions: atlas.regions } : undefined;
     const material: PartMaterial = {
       texture: atlas.texture || null,
       tint: doc.hair.tint,
@@ -799,6 +1027,7 @@ export class CharacterScene {
       dirt: 0,
       ditherOuter: Boolean(doc.hair.ditherOuter),
       volumeNormals: style.build.normalFromSurface > 0,
+      ...(gradient ? { gradient, softAlpha: true } : {}),
     };
     if (this.cards && this.cards.signature === signature) {
       this.cards.part.material = material;
@@ -820,6 +1049,7 @@ export class CharacterScene {
       version: 0,
       triangleCount: hair.triangleCount,
       layer: hair.layer,
+      hairLayer: hair.hairLayer,
     };
     computeTriangleNormals(part.positions, part.indices, n, part.normals);
     blendVolumeNormals(part.positions, part.normals, hair.volumeAxis.top, hair.volumeAxis.length, style.build.normalFromSurface);
@@ -924,6 +1154,24 @@ function densityThreshold(opacity: number | undefined): number {
 
 function garmentKey(g: GarmentSlot): string {
   return `garment:${g.slot}:${g.asset}`;
+}
+
+/** Key of the card brows part (it stands in for the eyebrow mesh). */
+const BROW_CARDS = 'browCards';
+
+interface SurfaceCardPart {
+  part: ScenePart;
+  kind: 'fur' | 'brows';
+  /** The proxy part the cards grow on. */
+  source: string;
+  settings: FurTrim | CardBrows;
+  /** Fur: the garment edge loops chosen and the cards on each, fixed when made. */
+  loops: number[][];
+  counts: number[];
+  seed: number;
+  signature: string;
+  binding: HairBinding | null;
+  generatedFor: number;
 }
 
 function wantedProxies(doc: Readonly<CharacterDoc>, has: (id: string) => boolean): WantedProxy[] {

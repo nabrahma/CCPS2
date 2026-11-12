@@ -240,9 +240,12 @@ suite('the groom on the real head', () => {
     gen = new HairGenerator(assets.base, assets.rig, assets.weights.sparse);
   });
 
-  it('ships the generated atlases, the default first, each with every kind of strip', () => {
+  it('ships the generated atlases (Hair v2 strand atlases first, then Part 1 card atlases), each with every kind of strip', () => {
     const atlases = assets.catalog.hairAtlases ?? [];
-    expect(atlases[0]!.id).toBe('ps2cc:atlas/cards_brown');
+    expect(atlases.filter((a) => a.strands).map((a) => a.id)).toEqual(['straightFine', 'straightCoarse', 'wavy', 'curly', 'stubble'].map((p) => `ps2cc:atlas/strands_${p}`));
+    expect(atlases[0]!.atlas.greyscale).toBe(true);
+    for (const a of atlases.filter((x) => x.strands)) expect(a.atlas.regions.some((r) => r.tag === 'lock'), a.id).toBe(true);
+    expect(atlases.some((a) => a.id === 'ps2cc:atlas/cards_brown')).toBe(true);
     const generated = atlases.filter((a) => a.id.startsWith('ps2cc:atlas/cards_'));
     expect(generated.length).toBeGreaterThanOrEqual(5);
     for (const a of generated) for (const tag of ['clump', 'strand', 'base', 'fringe', 'flyaway']) expect(a.atlas.regions.some((r) => r.tag === tag), `${a.id} ${tag}`).toBe(true);

@@ -12,6 +12,7 @@ import { SliderCatalog } from './character/sliders';
 import { Ps2BodyMesh, type BodyMeshInfo } from './mesh/ps2body';
 import type { BodyMeshId } from './character/doc';
 import type { AtlasSpec } from './hair/atlas';
+import type { StrandPreset } from './hair/strand-atlas';
 import { FaceRig } from './expression/facerig';
 import { FacePoseUnits } from './expression/poseunits';
 import { EXPRESSION_MAP, validateExpressionMap } from './expression/map';
@@ -61,6 +62,8 @@ export interface CatalogHairAtlas {
   name: string;
   atlas: AtlasSpec;
   licence: string;
+  /** Hair v2 atlases: the strand preset they were baked with. */
+  strands?: StrandPreset;
 }
 
 export interface Catalog {

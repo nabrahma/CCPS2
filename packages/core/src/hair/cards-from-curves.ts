@@ -105,10 +105,23 @@ export interface CardInput {
   surface: HairSurface;
   /** The parting line on the scalp, or null. */
   parting: readonly Vec3[] | null;
+  /**
+   * Hair v2 locks (PRD F15): quads across the strip (default 1, a flat card),
+   * how far the strip bows out across its width (0..1 of its half width, at
+   * the middle), and an extra twist that grows to the tip (radians).
+   */
+  columns?: number;
+  bow?: number;
+  twist?: number;
+  /**
+   * Sections crowd towards the root by this power (1 = even). Hair bends most
+   * over the skull near its root, where long straight spans would cut into the head.
+   */
+  rootBias?: number;
 }
 
 export interface Card {
-  /** Two vertices per cross section, left then right; `segments + 1` sections, root first. */
+  /** `columns + 1` vertices per cross section, left to right; `segments + 1` sections, root first. */
   positions: Vec3[];
   /** 0 at the root to 1 at the tip, per section (texture V). */
   along: number[];
@@ -122,6 +135,8 @@ export function isInside(hit: { point: Vec3; normal: Vec3; distance: number }, p
 export function cardFromCurve(input: CardInput, params: CardBuildParams): Card {
   const { surface, parting } = input;
   const S = Math.max(1, Math.round(input.segments));
+  const C = Math.max(1, Math.round(input.columns ?? 1));
+  const bow = input.bow ?? 0;
   let curve = input.curve.map((p) => [...p] as Vec3);
 
   // Frame "Snap curves to parting curve": a root near the parting line starts on it.
@@ -154,7 +169,7 @@ export function cardFromCurve(input: CardInput, params: CardBuildParams): Card {
   const along: number[] = [];
   const normals: Vec3[] = [];
   for (let j = 0; j <= S; j++) {
-    const s = j / S;
+    const s = (j / S) ** (input.rootBias ?? 1);
     // "Position geo along X for each spline": the card is centred on its curve and slightly shorter.
     const arc = total * (0.5 + (s - 0.5) * params.downscale);
     const at = pointAt(curve, arcs, arc);
@@ -162,17 +177,24 @@ export function cardFromCurve(input: CardInput, params: CardBuildParams): Card {
     const tan = normalized(lerp(tans[at.segment]!, tans[Math.min(tans.length - 1, at.segment + 1)]!, at.t), tans[at.segment]!);
     const base = normalized(lerp(frame[at.segment]!, frame[Math.min(frame.length - 1, at.segment + 1)]!, at.t), frame[at.segment]!);
     const align = params.alignToSurface * (params.rootAlign + (params.tipAlign - params.rootAlign) * f);
-    const normal = rotateAbout(base, tan, rootTilt * align + twist * f + offset);
+    const normal = rotateAbout(base, tan, rootTilt * align + twist * f + offset + (input.twist ?? 0) * f);
     // "Deform X axis of geo along curve": the strip's width runs across the curve, tangent to the head.
     const side = normalized(cross(tan, normal), [1, 0, 0]);
     const half = (input.width / 2) * Math.max(0.15, 1 - input.taper * s);
-    positions.push(sub(at.point, mul(side, half)), add(at.point, mul(side, half)));
+    if (C === 1) positions.push(sub(at.point, mul(side, half)), add(at.point, mul(side, half)));
+    else {
+      // A lock: the middle stands off the head and the edges come down to it, so it reads as volume.
+      for (let c = 0; c <= C; c++) {
+        const x = (c / C) * 2 - 1;
+        positions.push(add(add(at.point, mul(side, x * half)), mul(normal, bow * half * (1 - x * x) * 0.5)));
+      }
+    }
     normals.push(normal);
     along.push(s);
   }
 
   for (let v = 0; v < positions.length; v++) {
-    const section = v >> 1;
+    const section = Math.floor(v / (C + 1));
     // The group's "length" attribute: distance along the card itself, 0 at its root end.
     const arc = total * params.downscale * along[section]!;
     let p = positions[v]!;

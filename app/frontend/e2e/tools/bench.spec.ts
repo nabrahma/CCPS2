@@ -44,8 +44,8 @@ const CHARACTERS = [
       garment('mh:clothes/toigo_gloves_short', 'gloves', { tint: tint(0.25, 0.24, 0.23) }),
     ],
     skin: 'mh:skins/young_caucasian_female',
-    // Short layered bob with a fringe.
-    hair: { style: 'bob-fringe', atlas: 'blonde', length: { front: 0.15, sides: 0.16, back: 0.13, top: 0.15 } },
+    // Short layered bob, uneven ends, side-swept fringe (Hair v2, M12).
+    hair: { style: 'mara-bob', colour: 'blonde' },
     layers: [
       ['freckles', { density: 0.35 }],
       ['darkCircles', {}],
@@ -63,8 +63,8 @@ const CHARACTERS = [
       garment('mh:clothes/learning_mma_fighting_gloves', 'gloves', { tint: tint(0.18, 0.17, 0.16) }),
     ],
     skin: 'mh:skins/young_caucasian_male',
-    // Centre-parted curtain fringe, chin-length side locks, short nape.
-    hair: { style: 'long-centre-part', atlas: 'brown', length: { front: 0.17, sides: 0.17, back: 0.08, top: 0.15 } },
+    // Centre-parted curtain fringe, chin-length side locks, short nape (Hair v2, M12).
+    hair: { style: 'cole-curtain', colour: 'darkBrown' },
     layers: [
       ['stubble', { density: 0.35 }],
       ['eyeBags', {}],
@@ -79,17 +79,16 @@ async function build(page: Page, c: (typeof CHARACTERS)[number]): Promise<void> 
       const w = window as unknown as TestWindow;
       const s = w.__ps2cc;
       const { core } = w.__ps2ccTest;
-      const atlas = s.assets.catalog.hairAtlases!.find((a) => a.id === `ps2cc:atlas/cards_${c.hair.atlas}`)!.atlas;
       s.engine.update('benchmark', (d) => {
         d.skin = { base: c.skin, layers: [], photo: null };
-        const style = core.starterStyle(c.hair.style);
-        style.length = { ...c.hair.length };
-        d.hair = { mode: 'cards', style, atlas, tint: { color: [1, 1, 1], brightness: 1 }, alphaThreshold: 0.5 };
+        const colour = structuredClone(core.HAIR_COLOUR_PRESETS[c.hair.colour]!.colour);
+        d.hair = { mode: 'cards', style: core.starterStyle(c.hair.style), atlas: null, colour, tint: { color: [1, 1, 1], brightness: 1 }, alphaThreshold: 0.5 };
         for (const [kind, params] of c.layers) {
           const layer = core.newLayer(kind as never);
           Object.assign(layer.params, params);
           d.skin.layers.push(layer);
         }
+        core.withScalpLayer(d as never);
       });
       await s.settled();
     },

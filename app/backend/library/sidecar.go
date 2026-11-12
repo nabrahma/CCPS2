@@ -70,7 +70,7 @@ func (l *Library) SaveGarment(meta, bin []byte) (*Item, error) {
 }
 
 // checkDocument validates a JSON document and its "format" field.
-func checkDocument(data []byte, format string) error {
+func checkDocument(data []byte, formats ...string) error {
 	if len(data) > MaxDocumentBytes {
 		return &ImportError{"document is larger than 1 MB"}
 	}
@@ -80,10 +80,12 @@ func checkDocument(data []byte, format string) error {
 	if err := json.Unmarshal(data, &head); err != nil {
 		return &ImportError{fmt.Sprintf("invalid JSON: %v", err)}
 	}
-	if head.Format != format {
-		return &ImportError{fmt.Sprintf("expected a %s document, got %q", format, head.Format)}
+	for _, f := range formats {
+		if head.Format == f {
+			return nil
+		}
 	}
-	return nil
+	return &ImportError{fmt.Sprintf("expected a %s document, got %q", formats[len(formats)-1], head.Format)}
 }
 
 // SaveAtlas writes the atlas for a library image beside it as <stem>.atlas.json
@@ -121,16 +123,17 @@ func (l *Library) LoadAtlas(imageRel string) ([]byte, error) {
 
 // SaveHairstyle stores a .ps2hair document under hairstyles/ and returns its item.
 func (l *Library) SaveHairstyle(name string, data []byte) (*Item, error) {
-	return l.saveDocument("hairstyles", HairstyleExt, "ps2cc.hair/1", "hairstyle", name, data)
+	// Version 2 (Hair v2) adds locks, the scalp layer and an authored groom; version 1 files still load.
+	return l.saveDocument("hairstyles", HairstyleExt, []string{"ps2cc.hair/1", "ps2cc.hair/2"}, "hairstyle", name, data)
 }
 
 // SavePreset stores a .ps2preset document under presets/ and returns its item.
 func (l *Library) SavePreset(name string, data []byte) (*Item, error) {
-	return l.saveDocument("presets", PresetExt, "ps2cc.preset/1", "preset", name, data)
+	return l.saveDocument("presets", PresetExt, []string{"ps2cc.preset/1"}, "preset", name, data)
 }
 
-func (l *Library) saveDocument(kind, ext, format, noun, name string, data []byte) (*Item, error) {
-	if err := checkDocument(data, format); err != nil {
+func (l *Library) saveDocument(kind, ext string, formats []string, noun, name string, data []byte) (*Item, error) {
+	if err := checkDocument(data, formats...); err != nil {
 		return nil, err
 	}
 	stem := paths.SafeName(strings.TrimSuffix(name, ext))

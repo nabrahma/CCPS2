@@ -94,6 +94,8 @@ namespace PS2CC.Editor
         public bool doubleSided;
         /// <summary>Card hair whose normals describe the hair's volume: drawn on both sides, lit by the one normal.</summary>
         public bool volumeNormals;
+        /// <summary>Hair v2: draw the texels under the alpha cutoff a second time, blended (PS2/Cutout's SoftAlpha pass).</summary>
+        public bool softAlpha;
         public int maxSize;
         public bool alphaIsTransparency;
         /// <summary>skin, cloth, hair or eyes: the per-pixel model's wrap, gloss and highlight (PS2Common.hlsl).</summary>

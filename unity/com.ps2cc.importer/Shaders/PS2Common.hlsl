@@ -27,6 +27,8 @@ CBUFFER_START(UnityPerMaterial)
     float4 _BaseMap_ST;
     half4 _BaseColor;
     half _Cutoff;
+    // The app's SOFT_ALPHA_MIN (viewport.ts): softer texels are not drawn at all.
+    #define PS2_SOFT_ALPHA_MIN 0.04h
     half _AmbientStrength;
     half4 _RimColor;
     half _RimStrength;
@@ -170,13 +172,20 @@ half PS2KeyShadow(float3 world)
     return 1.0h;
 }
 
-half4 PS2Frag(PS2Varyings i) : SV_Target
+// soft: the blended second pass of Hair v2's two-pass alpha (Part 2 F14, F15), which draws the texels
+// under the cutoff that the opaque pass left out, with their alpha.
+half4 PS2Shade(PS2Varyings i, bool soft)
 {
     UNITY_SETUP_INSTANCE_ID(i);
     UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);
     half4 tex = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, i.uv) * _BaseColor;
+    if (soft)
+    {
+        clip(tex.a - PS2_SOFT_ALPHA_MIN);
+        clip(_Cutoff - tex.a - 1e-4);
+    }
     #if defined(PS2_CUTOUT)
-        clip(tex.a - _Cutoff);
+        else clip(tex.a - _Cutoff);
     #endif
     half3 albedo = tex.rgb;
     #if defined(PS2_DIRT)
@@ -229,7 +238,9 @@ half4 PS2Frag(PS2Varyings i) : SV_Target
                 spec += lc * s;
             }
             half3 tintS = _Aniso > 0.5h ? lerp(half3(1, 1, 1), albedo / max(max(albedo.r, albedo.g), max(albedo.b, 1e-3h)), 0.7h) : half3(1, 1, 1);
-            c += spec * _Gloss * tintS;
+            // Dark hair keeps a soft sheen: the strand highlight scales with the hair's lightness (as materials.ts).
+            half hairK = _Aniso > 0.5h ? 0.25h + 0.75h * min(1.0h, dot(albedo, half3(0.2126h, 0.7152h, 0.0722h)) / 0.35h) : 1.0h;
+            c += spec * _Gloss * tintS * hairK;
         }
     #endif
     if (_ColorDepth > 1.0h)
@@ -251,7 +262,17 @@ half4 PS2Frag(PS2Varyings i) : SV_Target
     {
         c = MixFog(c, i.fogFactor);
     }
-    return half4(c, 1.0h);
+    return half4(c, soft ? tex.a : 1.0h);
+}
+
+half4 PS2Frag(PS2Varyings i) : SV_Target
+{
+    return PS2Shade(i, false);
+}
+
+half4 PS2SoftFrag(PS2Varyings i) : SV_Target
+{
+    return PS2Shade(i, true);
 }
 
 // ---------------------------------------------------------------- shadow caster and depth passes

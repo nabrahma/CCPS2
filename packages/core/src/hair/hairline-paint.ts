@@ -51,6 +51,11 @@ function cached(hex: string): Uint8Array {
 
 /** Does the painted mask grow hair at these angles (radians)? */
 export function paintAllows(hex: string, theta: number, phi: number): boolean {
+  return paintCoverage(hex, theta, phi) >= 0.5;
+}
+
+/** The painted mask read bilinearly at these angles (radians): 0 bare .. 1 hair. */
+export function paintCoverage(hex: string, theta: number, phi: number): number {
   const cells = cached(hex);
   const x = ((phi * 180) / Math.PI + 180) / CELL_DEG - 0.5;
   const y = (theta * 180) / Math.PI / CELL_DEG - 0.5;
@@ -62,7 +67,7 @@ export function paintAllows(hex: string, theta: number, phi: number): boolean {
   const at = (c: number, r: number) => cells[r * PAINT_COLS + ((c % PAINT_COLS) + PAINT_COLS) % PAINT_COLS]!;
   const top = at(x0, y0) * (1 - fx) + at(x0 + 1, y0) * fx;
   const bottom = at(x0, y1) * (1 - fx) + at(x0 + 1, y1) * fx;
-  return top * (1 - fy) + bottom * fy >= 0.5;
+  return top * (1 - fy) + bottom * fy;
 }
 
 /** Fill a mask from "hair grows at these angles (radians)". */
