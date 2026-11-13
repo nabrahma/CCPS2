@@ -9,7 +9,7 @@ from dataclasses import dataclass, field
 from .paths import ASSETS_CORE, COMPILER_DIR
 
 # Art and data: CC0 or CC-BY. Bundled runtime software (MediaPipe): Apache-2.0 with its notice.
-ALLOWED = {"CC0-1.0", "CC-BY-4.0", "Apache-2.0"}
+ALLOWED = {"CC0-1.0", "CC-BY-4.0", "CC-BY-3.0", "Apache-2.0"}
 
 
 @dataclass
@@ -60,7 +60,7 @@ class LicenseCollector:
             del self.rows[r]
         out = {
             "format": "ps2cc.licenses/1",
-            "policy": "Art and data: only CC0-1.0 and CC-BY-4.0 (with attribution). Bundled runtime software: Apache-2.0 with its notice (vendor/).",
+            "policy": "Art and data: only CC0-1.0, CC-BY-4.0 and CC-BY-3.0 (with attribution). Bundled runtime software: Apache-2.0 with its notice (vendor/).",
             "files": [self.rows[k] for k in sorted(self.rows)],
         }
         (ASSETS_CORE / "LICENSES.json").write_text(json.dumps(out, indent=1) + "\n", encoding="utf-8")

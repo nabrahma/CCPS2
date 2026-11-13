@@ -1,7 +1,9 @@
 export * from './image';
 export * from './layout';
 export * from './headsplit';
+export * from './headpack';
 export * from './blend';
+export * from './detail';
 export * from './features';
 export * from './noise';
 export * from './layers';
@@ -12,5 +14,6 @@ export * from './photo/warp';
 export * from './photo/colour';
 export * from './photo/pose';
 export * from './photo/project';
+export * from './photo/multiview';
 export * from './guide';
 export * from './photo/fit';

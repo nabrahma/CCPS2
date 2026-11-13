@@ -23,7 +23,9 @@ import type { CharacterScene, ScenePart } from '../scene/character-scene';
 import { poseWorldMatrices, skinningMatrices } from '../skeleton/rig';
 import { skinPositions } from '../skeleton/skinning';
 import { MAX_INFLUENCES, type InfluenceTable } from '../skeleton/weights';
-import { bodyTexture, cropHeadTexture, packHead, splitBody } from '../skin/headsplit';
+import { bodyTexture, splitBody } from '../skin/headsplit';
+import { headTexture } from '../skin/headpack';
+import { EYE_TEXTURE_SIZE, eyeTexture } from '../eyes/eye-texture';
 import { EYES_ATLAS_SIZE, GARMENT_ATLAS_SIZE, HAIR_TEXTURE_LIMIT } from './limits';
 import { garmentBakeStrength, multiplyBaked } from '../bake/apply';
 import { createImage, resizeImage, type RgbaImage } from '../skin/image';
@@ -100,6 +102,12 @@ export interface ExportOptions {
   loadImage: (url: string) => Promise<RgbaImage>;
   /** The composited skin at 2048 px (viewport composite or the decoded base skin). */
   skin: RgbaImage;
+  /**
+   * The skin stack composited straight into the head layout (Part 2 F19), at
+   * the head texture's size or larger. Without it the head texture is
+   * resampled from `skin`.
+   */
+  headSkin?: RgbaImage | null;
   /** Rotate the arms to a T-pose and re-bake the meshes (PRD 6.2 option). */
   tPose?: boolean;
   appVersion?: string;
@@ -207,10 +215,15 @@ export async function buildExportScene(scene: CharacterScene, opts: ExportOption
   const layout = engine.assets.skinComposer.layout;
   const headSize = doc.export.headTexture;
   const bodySize = doc.export.bodyTexture;
-  const packing = packHead(layout, headSize);
-  const split = splitBody({ sourceVertex: scene.bodySourceVertices!, uvs: body.uvs, indices: body.indices }, layout, packing);
+  const head = await engine.assets.headLayout(doc.bodyMesh);
+  const split = splitBody({ sourceVertex: scene.bodySourceVertices!, uvs: body.uvs, indices: body.indices }, layout, head);
   const bodySrc = source(body);
-  const headMat = addMaterial('head', 'PS2/Skin', cropHeadTexture(opts.skin, packing, headSize), headSize, false, 0, false);
+  const headImage = opts.headSkin
+    ? opts.headSkin.width === headSize
+      ? opts.headSkin
+      : resizeImage(opts.headSkin, headSize, headSize)
+    : headTexture(opts.skin, head, headSize);
+  const headMat = addMaterial('head', 'PS2/Skin', headImage, headSize, false, 0, false);
   meshes.push(compact(`${name}_Head`, 'head', { ...bodySrc, uvs: split.uvs }, split.headIndices, headMat));
   const bodyMat = addMaterial('body', 'PS2/Skin', bodyTexture(opts.skin, bodySize), bodySize, false, 0, false);
   meshes.push(compact(`${name}_Body`, 'body', bodySrc, split.bodyIndices, bodyMat));
@@ -234,7 +247,11 @@ export async function buildExportScene(scene: CharacterScene, opts: ExportOption
     if (parts.length === 0) return;
     const images: RgbaImage[] = [];
     for (const p of parts) {
-      let tex = p.material.texture ? await opts.loadImage(p.material.texture) : createImage(4, 4, [255, 255, 255, 255]);
+      let tex = p.material.eye
+        ? eyeTexture(p.material.eye.look, EYE_TEXTURE_SIZE, p.material.eye.catchLight)
+        : p.material.texture
+          ? await opts.loadImage(p.material.texture)
+          : createImage(4, 4, [255, 255, 255, 255]);
       // Hair v2 cards (fur, card brows): the greyscale strand atlas through their gradient map.
       const g = p.material.gradient;
       if (g) tex = colourizeHair(tex, g.regions, g.colour);
@@ -242,7 +259,8 @@ export async function buildExportScene(scene: CharacterScene, opts: ExportOption
     }
     const atlas = packAtlas(images, size);
     const mat = addMaterial(role, shader, atlas.image, size, true, 0.5, true);
-    if (parts.every((p) => p.material.softAlpha)) materials[mat]!.softAlpha = true;
+    // Soft alpha when a part asks for it; opaque parts (eyeballs, teeth) have no soft texels, so the soft pass leaves them alone.
+    if (parts.some((p) => p.material.softAlpha)) materials[mat]!.softAlpha = true;
     const pieces = parts.map((p, i) => {
       const src = source(p);
       const uvs = new Float32Array(src.uvs.length);

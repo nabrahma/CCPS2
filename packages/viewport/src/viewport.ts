@@ -6,7 +6,11 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import {
   colourizeHair,
+  dilateRgb,
+  EYE_TEXTURE_SIZE,
   eulerXYZ,
+  eyeLookKey,
+  eyeTexture,
   hairColourKey,
   NEUTRAL_GRADE,
   parseCube,
@@ -14,6 +18,7 @@ import {
   skinningMatrices,
   skinPositions,
   type CharacterScene,
+  type HeadLayout,
   type LightingModel,
   type Look,
   type Lut3D,
@@ -695,16 +700,27 @@ export class Viewport {
     obj.material.uniforms.uTwoSided!.value = m.doubleSided && !m.volumeNormals ? 1 : 0;
     this.syncSoft(obj);
     if (p.kind === 'hair') obj.material.uniforms.uLayerMask!.value.set(this.hairLayers.shell ? 1 : 0, this.hairLayers.locks ? 1 : 0, this.hairLayers.cards ? 1 : 0);
-    // Hair v2: a greyscale strand atlas through the hair's gradient map (the exporter does the same).
+    // Generated textures: Hair v2's greyscale strand atlas through the hair's gradient map, and
+    // F19's generated eyes (the exporter makes the same ones).
     const grad = m.gradient;
-    const gradientKey = grad && m.texture && !m.skin ? `${m.texture}|${hairColourKey(grad.colour)}|${JSON.stringify(grad.regions)}` : null;
+    const eye = m.eye;
+    const gradientKey =
+      grad && m.texture && !m.skin
+        ? `${m.texture}|${hairColourKey(grad.colour)}|${JSON.stringify(grad.regions)}`
+        : eye && !m.skin
+          ? `eye|${eyeLookKey(eye.look, eye.catchLight)}`
+          : null;
     if (gradientKey !== obj.gradientKey) {
       obj.gradientKey = gradientKey;
       obj.texture = gradientKey;
       setMaterialTexture(obj.material, null);
       if (gradientKey && grad && m.texture) {
         const path = m.texture;
-        void this.gradientTexture(gradientKey, path, grad).then((tex) => {
+        void this.generatedTexture(gradientKey, () => this.greyAtlas(path).then((img) => colourizeHair(img, grad.regions, grad.colour))).then((tex) => {
+          if (obj.gradientKey === gradientKey) setMaterialTexture(obj.material, tex);
+        });
+      } else if (gradientKey && eye) {
+        void this.generatedTexture(gradientKey, () => Promise.resolve(eyeTexture(eye.look, EYE_TEXTURE_SIZE, eye.catchLight))).then((tex) => {
           if (obj.gradientKey === gradientKey) setMaterialTexture(obj.material, tex);
         });
       } else obj.texture = null;
@@ -755,8 +771,8 @@ export class Viewport {
     }
     if (!g.index || g.index.array !== p.indices || obj.version === -1) g.setIndex(new THREE.BufferAttribute(p.indices, 1));
     if (p.kind === 'body' && !g.getAttribute('headRegion')) {
-      const flags = this.character?.bodyHeadFlags();
-      if (flags?.length === p.uvs.length / 2) g.setAttribute('headRegion', new THREE.BufferAttribute(flags, 1));
+      const density = this.character?.bodyHeadDensity();
+      if (density?.length === p.uvs.length / 2) g.setAttribute('headRegion', new THREE.BufferAttribute(density, 1));
     }
     g.computeBoundingSphere();
     obj.version = p.version;
@@ -844,6 +860,35 @@ export class Viewport {
     return run.then(() => pixels);
   }
 
+  private readonly headGeometries = new WeakMap<HeadLayout, THREE.BufferGeometry>();
+
+  /**
+   * The skin stack composited straight into the head texture's layout (Part 2
+   * F19) at the composite's size, gutters filled; the full skin goes back on
+   * the body afterwards. Null when the body shows a plain texture or its head
+   * layout is not loaded.
+   */
+  headComposite(): Promise<RgbaImage | null> {
+    const body = this.objects.get('body');
+    const skin = body?.part.material.skin;
+    const head = this.character?.bodyHeadLayout;
+    if (!body || !skin || !head) return Promise.resolve(null);
+    let geometry = this.headGeometries.get(head);
+    if (!geometry) {
+      geometry = headGeometry(head);
+      this.headGeometries.set(head, geometry);
+    }
+    const compositor = this.skinCompositor;
+    let pixels: RgbaImage | null = null;
+    const run = this.skinPending.then(async () => {
+      const tex = await compositor.composite(skin, geometry);
+      pixels = tex ? fillGutters(compositor.readPixels()) : null;
+      await compositor.composite(skin);
+    });
+    this.skinPending = run.catch((err: unknown) => console.warn('head composite failed', err));
+    return run.then(() => pixels);
+  }
+
   /** A texture (asset path or library URL) as pixels, rows top first. */
   texturePixels(path: string): Promise<RgbaImage> {
     return decodePixels(resolveAssetUrl(this.options.assetBaseUrl, path));
@@ -853,22 +898,26 @@ export class Viewport {
   private readonly gradientTextures = new Map<string, Promise<THREE.Texture | null>>();
   private readonly greyAtlases = new Map<string, Promise<RgbaImage>>();
 
-  private gradientTexture(key: string, path: string, g: NonNullable<ScenePart['material']['gradient']>): Promise<THREE.Texture | null> {
+  private greyAtlas(path: string): Promise<RgbaImage> {
+    let grey = this.greyAtlases.get(path);
+    if (!grey) {
+      grey = decodePixels(resolveAssetUrl(this.options.assetBaseUrl, path));
+      this.greyAtlases.set(path, grey);
+    }
+    return grey;
+  }
+
+  /** A texture made on the CPU (hair through its gradient map, generated eyes), cached by key. */
+  private generatedTexture(key: string, make: () => Promise<RgbaImage>): Promise<THREE.Texture | null> {
     let p = this.gradientTextures.get(key);
     if (!p) {
-      let grey = this.greyAtlases.get(path);
-      if (!grey) {
-        grey = decodePixels(resolveAssetUrl(this.options.assetBaseUrl, path));
-        this.greyAtlases.set(path, grey);
-      }
-      p = grey
+      p = make()
         .then((img) => {
-          const coloured = colourizeHair(img, g.regions, g.colour);
           // DataTextures are not flipped on upload: rows go in bottom first, as OBJ/MakeHuman UVs expect.
-          const W = coloured.width;
-          const H = coloured.height;
+          const W = img.width;
+          const H = img.height;
           const data = new Uint8Array(W * H * 4);
-          for (let y = 0; y < H; y++) data.set(coloured.data.subarray((H - 1 - y) * W * 4, (H - y) * W * 4), y * W * 4);
+          for (let y = 0; y < H; y++) data.set(img.data.subarray((H - 1 - y) * W * 4, (H - y) * W * 4), y * W * 4);
           const tex = new THREE.DataTexture(data, W, H, THREE.RGBAFormat);
           tex.colorSpace = THREE.SRGBColorSpace;
           tex.minFilter = THREE.LinearMipmapLinearFilter;
@@ -879,7 +928,7 @@ export class Viewport {
           return tex as THREE.Texture;
         })
         .catch((err: unknown) => {
-          console.warn(`hair texture ${path} failed`, err);
+          console.warn(`generated texture ${key.slice(0, 60)} failed`, err);
           return null;
         });
       this.gradientTextures.set(key, p);
@@ -1162,3 +1211,33 @@ export class Viewport {
     return hit ? (hit.object.userData.partKey as string) : null;
   }
 }
+
+/** Head triangles at their head-texture UVs (clip space), sampling at their hm08 UVs. */
+function headGeometry(head: HeadLayout): THREE.BufferGeometry {
+  const tris = head.mesh.triangles;
+  const position = new Float32Array(tris.length * 9);
+  const uv = new Float32Array(tris.length * 6);
+  tris.forEach((t, i) => {
+    t.corners.forEach((c, k) => {
+      position[(i * 3 + k) * 3] = head.uv[c * 2]! * 2 - 1;
+      position[(i * 3 + k) * 3 + 1] = head.uv[c * 2 + 1]! * 2 - 1;
+      uv[(i * 3 + k) * 2] = head.mesh.uvs[c * 2]!;
+      uv[(i * 3 + k) * 2 + 1] = head.mesh.uvs[c * 2 + 1]!;
+    });
+  });
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(position, 3));
+  g.setAttribute('uv', new THREE.BufferAttribute(uv, 2));
+  return g;
+}
+
+/** Fill the uncovered texels (alpha 0) from their covered neighbours, so mipmaps do not bleed in black. */
+function fillGutters(img: RgbaImage | null): RgbaImage | null {
+  if (!img) return null;
+  const covered = new Uint8Array(img.width * img.height);
+  for (let i = 0; i < covered.length; i++) covered[i] = img.data[i * 4 + 3]! > 127 ? 1 : 0;
+  dilateRgb(img, covered, Math.max(4, Math.round(img.width / 128)));
+  for (let i = 0; i < covered.length; i++) img.data[i * 4 + 3] = 255;
+  return img;
+}
+

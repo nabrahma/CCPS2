@@ -16,7 +16,8 @@ It needs no Blender, no Python and no network connection to run.
 - **Your own garments:** export the base body, model around it, then import OBJ, FBX or GLB. PS2CC binds, weights and decimates it for you.
 - **Card hair:** three layers: short hair painted on the scalp, wide locks for the mass, and soft-edged detail cards. Any colour from strand atlases rendered in 3D. Comb the guides in Hair Studio with Blender-style brushes, draw the parting, and shape locks. The same cards grow fur trims on garments and card eyebrows. Or use MakeHuman hair meshes. See [docs/hair-v2.md](docs/hair-v2.md) and [docs/hair-system.md](docs/hair-system.md).
 - **Texture Studio:** paint the skin or a garment in [Material Painter](https://github.com/alla2001/material-painter) (free, installed separately) and bring the paint back in one click. Skin paint stays put whatever the body's shape. See [docs/texture-studio.md](docs/texture-studio.md).
-- **Skin:** layered skin with overlays, projection of a face photo onto the head, and an optional fit of the face's shape to the photo.
+- **Skin:** layered skin with overlays, pores and stubble micro-detail, projection of a face photo (or a front and two side photos) onto the head, and an optional fit of the face's shape to the photo. A scanned face is included as a base skin.
+- **Face and eyes:** a head texture laid out to give the face twice the detail, generated eyes from an iris library, painted brows, soft lashes, and low-poly teeth, tongue and mouth interior. See [docs/face-and-eyes.md](docs/face-and-eyes.md).
 - **Expressions:** 15 blendshapes, including blinks and visemes, baked at export.
 - **PS2 preview:** per-vertex or per-pixel lighting with shadows, graded looks (fog, filmic curve, LUT, bloom, grain), low resolution, 16-bit dither and interlace effects, and textures shown at their export size. Looks save as `.ps2look` files for Unity.
 - **Baking:** a GPU ray tracer bakes occlusion, cavity and thickness from the whole character into its textures, the way the era's games baked shading. See [docs/look-foundation.md](docs/look-foundation.md).
@@ -108,10 +109,10 @@ Design decisions and the reasons for them are in [DECISIONS.md](DECISIONS.md). S
 | --- | --- |
 | The app, engine and tools | [AGPL-3.0-or-later](LICENSE) |
 | `unity/com.ps2cc.importer` | [MIT](unity/com.ps2cc.importer/LICENSE.md), so it can ship inside your games |
-| Character assets | CC0-1.0, with a few CC-BY-4.0 files, each listed in [assets/core/LICENSES.json](assets/core/LICENSES.json) |
+| Character assets | CC0-1.0, with a few CC-BY-4.0 files and one CC-BY-3.0 head scan, each listed in [assets/core/LICENSES.json](assets/core/LICENSES.json) |
 
 Characters you create and export are yours; the AGPL covers PS2CC's code, not what you make with it. PS2CC is AGPL because parts of it are ported from MakeHuman and Blender. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## Credits
 
-PS2CC stands on the work of the [MakeHuman](http://www.makehumancommunity.org/) community, whose CC0 assets make it possible, and on [Blender](https://www.blender.org/), [ufbx](https://github.com/ufbx/ufbx), [meshoptimizer](https://github.com/zeux/meshoptimizer), [Three.js](https://threejs.org/), [Wails](https://wails.io/) and [MediaPipe](https://developers.google.com/mediapipe).
+PS2CC stands on the work of the [MakeHuman](http://www.makehumancommunity.org/) community, whose CC0 assets make it possible, on the Infinite Realities head scan of Lee Perry-Smith (CC BY 3.0), and on [Blender](https://www.blender.org/), [ufbx](https://github.com/ufbx/ufbx), [meshoptimizer](https://github.com/zeux/meshoptimizer), [Three.js](https://threejs.org/), [Wails](https://wails.io/) and [MediaPipe](https://developers.google.com/mediapipe).

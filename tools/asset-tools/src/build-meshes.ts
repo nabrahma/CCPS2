@@ -6,7 +6,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { alphaSampler, BaseMesh, buildRenderTopology, computeCoveredVertices, computeQuadNormals, detectRegions, gather3, ProxyAsset, type AtlasSpec, type AtlasTag } from '@ps2cc/core';
+import { alphaSampler, SLOT_BUDGET, BaseMesh, buildRenderTopology, computeCoveredVertices, computeQuadNormals, detectRegions, gather3, ProxyAsset, type AtlasSpec, type AtlasTag } from '@ps2cc/core';
 import { NodeAssetSource } from '@ps2cc/core/node';
 import { ContainerWriter } from './container-writer';
 import { decimateGarment } from './garments';
@@ -106,7 +106,9 @@ async function main(): Promise<void> {
   mkdirSync(shotsDir, { recursive: true });
   mkdirSync(join(REPO, 'docs', 'milestones', 'M4'), { recursive: true });
 
-  for (const t of BODY_TARGETS) {
+  // PS2CC_PROXIES_ONLY=teeth,tongue rebuilds only those proxy categories (the body tiers and the rest stay as they are).
+  const only = process.env.PS2CC_PROXIES_ONLY ? new Set(process.env.PS2CC_PROXIES_ONLY.split(',')) : null;
+  for (const t of only ? [] : BODY_TARGETS) {
     const r = await buildPs2Body(base, t.id, t.triangles || Number.MAX_SAFE_INTEGER, { fullHead: t.fullHead, lockLowerFace: t.lockLowerFace });
     const tris = r.indices.length / 3;
     const target = t.triangles || tris;
@@ -145,7 +147,7 @@ async function main(): Promise<void> {
     report.push(row);
     console.info(JSON.stringify(row));
   }
-  catalog.bodyMeshes = bodyMeshes;
+  if (!only) catalog.bodyMeshes = bodyMeshes;
   // PS2CC_BODIES_ONLY=1 rebuilds only the body tiers (garments and hair do not depend on them).
   if (process.env.PS2CC_BODIES_ONLY === '1') {
     writeFileSync(catalogPath, JSON.stringify(catalog, null, 1) + '\n');
@@ -166,23 +168,26 @@ async function main(): Promise<void> {
   const proxies = catalog.proxies as { id: string; category: string; file: string; fullFile?: string; slot?: string;
     triangles: number; originalTriangles?: number }[];
   for (const entry of proxies) {
-    if (entry.category !== 'clothes' && entry.category !== 'hair') continue;
+    // Teeth and tongue (Part 2 F19): at most 600 triangles together.
+    const isMouth = entry.category === 'teeth' || entry.category === 'tongue';
+    if (entry.category !== 'clothes' && entry.category !== 'hair' && !isMouth) continue;
+    if (only && !only.has(entry.category)) continue;
     const isHair = entry.category === 'hair';
     const full = entry.fullFile ?? entry.file;
     const proxy = await ProxyAsset.load(source, full);
     const outRel = full.replace(/\.json$/, '.ps2');
     let covered: Uint32Array | undefined;
-    if (!isHair && proxy.deleteVerts.length === 0) {
+    if (!isHair && !isMouth && proxy.deleteVerts.length === 0) {
       covered = garmentCoverage(proxy, base, bodyQuads, bodyNormals);
       writeFileSync(join(coverageDir, `${entry.id.split('/').pop()}.png`), coverageImage(base, bodyQuads, covered));
     }
-    const r = await decimateGarment(proxy, isHair ? 'hair' : (entry.slot ?? 'accessory'), join(ASSETS, outRel), covered);
-    if (!isHair) (entry as Record<string, unknown>).hiddenFaces = proxy.deleteVerts.length ? 'makehuman' : covered?.length ? 'computed' : 'none';
+    const r = await decimateGarment(proxy, isMouth ? entry.category : isHair ? 'hair' : (entry.slot ?? 'accessory'), join(ASSETS, outRel), covered);
+    if (!isHair && !isMouth) (entry as Record<string, unknown>).hiddenFaces = proxy.deleteVerts.length ? 'makehuman' : covered?.length ? 'computed' : 'none';
     entry.fullFile = full;
     entry.file = `${outRel}.json`;
     entry.originalTriangles = r.originalTriangles;
     entry.triangles = r.triangles;
-    (entry as Record<string, unknown>).overBudget = r.triangles > (isHair ? 3500 : 2500);
+    (entry as Record<string, unknown>).overBudget = r.triangles > (isMouth ? SLOT_BUDGET[entry.category]! : isHair ? 3500 : 2500);
     for (const ext of ['json', 'bin']) {
       files.push({ file: `${outRel}.${ext}`, asset: entry.id, from: full.replace(/\.json$/, `.${ext}`) });
     }
@@ -192,6 +197,12 @@ async function main(): Promise<void> {
   const over = garmentReport.filter((g) => (g.flipped as number) > 0);
   console.info(`garments and hair: ${garmentReport.length} decimated, ${over.length} with remaining flips`);
 
+  if (only) {
+    writeFileSync(catalogPath, `${JSON.stringify(catalog, null, 1)}\n`);
+    registerDerivedFiles(ASSETS, files);
+    console.info(JSON.stringify(garmentReport));
+    return;
+  }
   // Built-in hair card atlas (PRD F5): MakeHuman's CC0 long01 texture has vertical strand strips.
   // The generated card atlases come first (the first is the default); the long01 strips stay available.
   catalog.hairAtlases = [...buildHairAtlases(ASSETS), builtInAtlas('textures/hair/long01.png')];

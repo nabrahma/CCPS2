@@ -106,7 +106,7 @@ test('GPU compositing matches the reference compositor', async ({ page }) => {
     const skin = s.scene.parts.find((p) => p.kind === 'body')!.material.skin!;
     const base = await w.__ps2ccTest.decodeImage(`${s.info.coreAssetsUrl}/${skin.base}`);
     const layers = skin.layers.map((l) => ({
-      source: l.source.kind === 'adjust' ? l.source : { kind: 'pixels' as const, image: (l.source as { image: Parameters<typeof core.compositeReference>[0] }).image },
+      source: l.source.kind === 'adjust' || l.source.kind === 'detail' ? l.source : { kind: 'pixels' as const, image: (l.source as { image: Parameters<typeof core.compositeReference>[0] }).image },
       blend: l.blend,
       opacity: l.opacity,
       mask: l.mask,
@@ -141,7 +141,7 @@ test('GPU compositing matches the reference compositor', async ({ page }) => {
       const skin = s.scene.parts.find((p) => p.kind === 'body')!.material.skin!;
       const base = await w.__ps2ccTest.decodeImage(`${s.info.coreAssetsUrl}/${skin.base}`);
       const cl = skin.layers.map((l) => ({
-        source: l.source.kind === 'adjust' ? l.source : { kind: 'pixels' as const, image: (l.source as { image: Parameters<typeof core.compositeReference>[0] }).image },
+        source: l.source.kind === 'adjust' || l.source.kind === 'detail' ? l.source : { kind: 'pixels' as const, image: (l.source as { image: Parameters<typeof core.compositeReference>[0] }).image },
         blend: l.blend,
         opacity: l.opacity,
         mask: l.mask,
@@ -433,7 +433,7 @@ test('M6 review set: layer looks, head/body textures, region guide', async ({ pa
     s.engine.update('review layers', (d) => void (d.skin.layers = [core.newLayer('stubble'), core.newLayer('darkCircles')]));
     await s.settled();
     const comp = await t.currentSkin(s);
-    const packing = core.packHead(s.assets.skinComposer.layout, 1024);
+    const head = await t.currentHeadSkin(s, comp);
     const out: Record<string, string> = {};
     const b64 = async (img: Parameters<typeof t.imageToPng>[0]) => {
       const bytes = new Uint8Array(await (await t.imageToPng(img)).arrayBuffer());
@@ -441,7 +441,7 @@ test('M6 review set: layer looks, head/body textures, region guide', async ({ pa
       for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
       return btoa(bin);
     };
-    out['export_head_texture.png'] = await b64(core.cropHeadTexture(comp, packing, 1024));
+    out['export_head_texture.png'] = await b64(core.resizeImage(head, 1024, 1024));
     out['export_body_texture.png'] = await b64(core.bodyTexture(comp, 1024));
     out['region_guide.png'] = await b64(core.regionGuide(s.assets.skinComposer, 1024).image);
     return out;

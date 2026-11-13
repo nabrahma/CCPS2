@@ -18,7 +18,9 @@ PRD rule 2: nothing is faked. Each item below is either a placeholder or a gap t
 ## Needed for later milestones
 
 - [ ] **Review the M8 expressions:** `docs/milestones/M8/preview_sheet_male.png` and `preview_sheet_female.png` (all 15 shapes in the app) and `unity_expressions_contact_sheet.png` (Unity). `blink_L`, `blink_R`, `jawOpen` and `browsUp`/`browsDown` are single MakeHuman pose units; `smile`, `frown`, `squint` and the visemes `AA`, `EE`, `IH`, `OH`, `OU`, `FV`, `MBP` are blends I chose in `packages/core/src/data/expression_map.json` (no MakeHuman `.mhpose` files were available, DECISIONS D-050). `FV` and `MBP` are subtle. Tell me which to change, or edit the weights there.
-- [ ] **Optional, M8: PS2-budget teeth and a darker mouth interior.** MakeHuman's teeth are 7,120 triangles, so characters have none by default and an open mouth shows the skin texture's pink mouth interior. A low-poly teeth mesh (a few hundred triangles, CC0, fitted to hm08) would fix both.
+- [x] ~~**Optional, M8: PS2-budget teeth and a darker mouth interior.**~~ Done in M14: MakeHuman's teeth reduced to under 400 triangles, a 160-triangle tongue, and a Mouth interior skin layer (D-117, D-118).
+- [ ] **M14: front and side photos for the three-photo projection.** Your own, or properly licensed: a front photo and three-quarter views at about 45° either side, even light. Until then the acceptance runs on renders of MakeHuman characters (`e2e/m14.spec.ts`).
+- [ ] **Review the M14 face images** in `docs/milestones/M14/` (eyes, open mouth, painted brows, scanned face, pores and stubble hairs) and score the face and eyes against Part 1.
 - [ ] ~~M8, expressions:~~ any default blendshape (`browsDown`, `FV` and so on) without a good MakeHuman pose-unit mapping will be listed here inst
 - [ ] **Cloth textures** for garments you import yourself (M10). The app exports a UV template per garment.
 - [ ] **Run Help → Measure slider speed once on your PC** (M1). It reports the frame rate while dragging sliders on your own GPU; the 60 fps target cannot be measured on the software GPU the tests use.

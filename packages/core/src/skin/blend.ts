@@ -15,6 +15,7 @@
  *  - The base alpha is forced to opaque.
  */
 import type { BlendMode, RegionMask } from '../character/doc';
+import { sampleWrap } from './detail';
 import { sampleBilinear, texelUv, type RgbaImage } from './image';
 
 export const BLEND_MODES: readonly BlendMode[] = ['normal', 'multiply', 'overlay', 'screen'];
@@ -73,8 +74,20 @@ export function adjustHsv(r: number, g: number, b: number, adj: HsvAdjust): [num
   return hsvToRgb(nh, Math.min(1, Math.max(0, s * adj.saturation)), Math.min(1, Math.max(0, v * adj.value)));
 }
 
-/** A layer ready to composite: pixels or an adjustment, plus how to blend it. */
-export type CompositeSource = { kind: 'pixels'; image: RgbaImage } | { kind: 'adjust'; hsv: HsvAdjust };
+/**
+ * Micro-detail (Part 2 F19): a periodic tile (skin/detail.ts) repeated `repeat`
+ * times across the UV square, sampled at the composite's own resolution, with
+ * its coverage from the alpha of a region map drawn at the procedural size.
+ */
+export interface DetailSource {
+  kind: 'detail';
+  tile: RgbaImage;
+  weight: RgbaImage;
+  repeat: number;
+}
+
+/** A layer ready to composite: pixels, an adjustment or micro-detail, plus how to blend it. */
+export type CompositeSource = { kind: 'pixels'; image: RgbaImage } | { kind: 'adjust'; hsv: HsvAdjust } | DetailSource;
 
 export interface CompositeLayer {
   source: CompositeSource;
@@ -124,6 +137,11 @@ export function compositeReference(base: RgbaImage, layers: readonly CompositeLa
         if (layer.source.kind === 'adjust') {
           s = adjustHsv(b0, b1, b2, layer.source.hsv);
           a = 1;
+        } else if (layer.source.kind === 'detail') {
+          sampleBilinear(layer.source.weight, u, v, tmp);
+          a = Math.round(tmp[3]!) / 255;
+          sampleWrap(layer.source.tile, u * layer.source.repeat, v * layer.source.repeat, tmp);
+          s = [Math.round(tmp[0]!) / 255, Math.round(tmp[1]!) / 255, Math.round(tmp[2]!) / 255];
         } else {
           sampleBilinear(layer.source.image, u, v, tmp);
           s = [Math.round(tmp[0]!) / 255, Math.round(tmp[1]!) / 255, Math.round(tmp[2]!) / 255];

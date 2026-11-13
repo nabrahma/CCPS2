@@ -2,7 +2,7 @@
  * Skin layer kinds (PRD F6): defaults, parameter ranges for the UI, and
  * validation of layers read from a document.
  */
-import type { BlendMode, RegionMask, SkinLayer, SkinStack } from '../character/doc';
+import type { BlendMode, RegionMask, SidePhoto, SkinLayer, SkinStack } from '../character/doc';
 import { BLEND_MODES } from './blend';
 
 export type LayerKind = SkinLayer['kind'];
@@ -144,6 +144,56 @@ export const LAYER_KINDS: readonly LayerKindSpec[] = [
     mask: 'none',
     procedural: true,
     params: [color('color', 'Colour', '#ffffff'), num('amount', 'Amount', 0, 1, 0.01, 0.5), seed],
+  },
+  {
+    kind: 'brows',
+    label: 'Painted eyebrows',
+    blend: 'normal',
+    opacity: 0.85,
+    mask: 'none',
+    procedural: true,
+    params: [
+      color('color', 'Colour', '#3b2a20'),
+      num('thickness', 'Thickness', 0.5, 2, 0.01, 0.85),
+      num('arch', 'Arch', 0, 2, 0.01, 1),
+      num('density', 'Hair density', 0, 1, 0.01, 0.7),
+      seed,
+    ],
+  },
+  {
+    // Part 2 F19 micro-detail: a tileable pore pattern (skin/detail.ts) masked per region.
+    kind: 'pores',
+    label: 'Skin pores (micro-detail)',
+    blend: 'overlay',
+    opacity: 0.5,
+    mask: 'none',
+    procedural: true,
+    params: [
+      num('nose', 'Nose', 0, 1, 0.01, 1),
+      num('cheeks', 'Cheeks', 0, 1, 0.01, 0.8),
+      num('forehead', 'Forehead', 0, 1, 0.01, 0.55),
+      num('body', 'Body', 0, 1, 0.01, 0.25),
+      num('scale', 'Pore size', 0.5, 2, 0.01, 1),
+    ],
+  },
+  {
+    // Part 2 F19 micro-detail: tileable stubble hairs over the beard area (close-ups of the stubble shadow).
+    kind: 'stubbleHair',
+    label: 'Stubble hairs (micro-detail)',
+    blend: 'multiply',
+    opacity: 0.7,
+    mask: 'none',
+    procedural: true,
+    params: [color('color', 'Colour', '#3a2c24'), num('fullness', 'Coverage', 0, 1, 0.01, 1), num('scale', 'Hair size', 0.5, 2, 0.01, 1)],
+  },
+  {
+    kind: 'mouth',
+    label: 'Mouth interior',
+    blend: 'multiply',
+    opacity: 1,
+    mask: 'none',
+    procedural: true,
+    params: [color('color', 'Throat colour', '#2b1215'), num('depth', 'Depth to full dark (cm)', 0.5, 4, 0.1, 1.6)],
   },
   {
     kind: 'image',
@@ -290,6 +340,17 @@ export function sanitiseSkin(raw: Partial<SkinStack> | undefined, fallbackBase: 
     if (typeof p.width === 'number' && typeof p.height === 'number' && p.width > 0 && p.height > 0) {
       photo.width = p.width;
       photo.height = p.height;
+    }
+    const side = (s: unknown): SidePhoto | null => {
+      const v = s as Partial<SidePhoto> | null | undefined;
+      if (!v || typeof v.image !== 'string' || !v.image || !Array.isArray(v.landmarks) || v.landmarks.length % 3 !== 0) return null;
+      if (!v.landmarks.every((x) => typeof x === 'number' && Number.isFinite(x))) return null;
+      return { image: v.image, landmarks: v.landmarks, width: Number(v.width) || 0, height: Number(v.height) || 0 };
+    };
+    if (p.sides && typeof p.sides === 'object') {
+      const left = side(p.sides.left);
+      const right = side(p.sides.right);
+      if (left || right) photo.sides = { left, right };
     }
   }
   return { base: typeof raw?.base === 'string' && raw.base ? raw.base : fallbackBase, layers, photo };

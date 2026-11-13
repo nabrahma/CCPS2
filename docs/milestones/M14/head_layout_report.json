@@ -1,0 +1,29 @@
+{
+  "part1HeadScale": 1.4715,
+  "meshes": {
+    "ps2_body_8k": {
+      "texelsUsed": 0.8688,
+      "faceDensityGain": 2.105
+    },
+    "ps2_body_10k": {
+      "texelsUsed": 0.8705,
+      "faceDensityGain": 2.158
+    },
+    "ps2_body_12k": {
+      "texelsUsed": 0.8733,
+      "faceDensityGain": 2.161
+    },
+    "ps2_body_16k": {
+      "texelsUsed": 0.8733,
+      "faceDensityGain": 2.16
+    },
+    "ps2_body_20k": {
+      "texelsUsed": 0.8733,
+      "faceDensityGain": 2.162
+    },
+    "ps2_body_full": {
+      "texelsUsed": 0.8733,
+      "faceDensityGain": 2.164
+    }
+  }
+}

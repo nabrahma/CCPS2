@@ -1,0 +1,160 @@
+{
+  "limitTexels": 4,
+  "syntheticPhotos": true,
+  "sideYawDegrees": 40,
+  "sets": [
+    {
+      "set": "synthetic_1_african_female",
+      "worstTexels": 1.898,
+      "errors": {
+        "rightEyeOuter": 0.38,
+        "rightEyeInner": 0.53,
+        "rightEyeTop": 1.53,
+        "rightEyeBottom": 0.23,
+        "leftEyeInner": 0.91,
+        "leftEyeOuter": 0.76,
+        "leftEyeTop": 1.16,
+        "leftEyeBottom": 0.52,
+        "mouthRight": 0.59,
+        "mouthLeft": 1.01,
+        "upperLip": 0.53,
+        "lowerLip": 1.9
+      },
+      "seamStep": {
+        "p95": 0.42,
+        "count": 675
+      },
+      "seamStepIncludingVisibilityEdges": {
+        "p95": 0.9,
+        "count": 850
+      },
+      "hardSwitchSeamStep": {
+        "p95": 20.2,
+        "count": 675
+      },
+      "insideStep": {
+        "p95": 0.32,
+        "count": 27598
+      },
+      "views": [
+        {
+          "yaw": 0,
+          "used": 390,
+          "residualPx": 9.14
+        },
+        {
+          "yaw": 28.2,
+          "used": 361,
+          "residualPx": 25.41
+        },
+        {
+          "yaw": -29.4,
+          "used": 360,
+          "residualPx": 37.98
+        }
+      ]
+    },
+    {
+      "set": "synthetic_2_asian_male_older",
+      "worstTexels": 2.452,
+      "errors": {
+        "rightEyeOuter": 0.66,
+        "rightEyeInner": 1.06,
+        "rightEyeTop": 1.83,
+        "rightEyeBottom": 0.19,
+        "leftEyeInner": 0.46,
+        "leftEyeOuter": 1.26,
+        "leftEyeTop": 0.66,
+        "leftEyeBottom": 0.74,
+        "mouthRight": 1.38,
+        "mouthLeft": 0.93,
+        "upperLip": 2.11,
+        "lowerLip": 2.45
+      },
+      "seamStep": {
+        "p95": 0.69,
+        "count": 719
+      },
+      "seamStepIncludingVisibilityEdges": {
+        "p95": 2.35,
+        "count": 878
+      },
+      "hardSwitchSeamStep": {
+        "p95": 25.76,
+        "count": 719
+      },
+      "insideStep": {
+        "p95": 0.36,
+        "count": 30919
+      },
+      "views": [
+        {
+          "yaw": 0,
+          "used": 383,
+          "residualPx": 7.9
+        },
+        {
+          "yaw": 27.8,
+          "used": 362,
+          "residualPx": 27.01
+        },
+        {
+          "yaw": -30.6,
+          "used": 353,
+          "residualPx": 38.87
+        }
+      ]
+    },
+    {
+      "set": "synthetic_3_caucasian_female",
+      "worstTexels": 0.968,
+      "errors": {
+        "rightEyeOuter": 0.57,
+        "rightEyeInner": 0.45,
+        "rightEyeTop": 0.97,
+        "rightEyeBottom": 0.07,
+        "leftEyeInner": 0.41,
+        "leftEyeOuter": 0.82,
+        "leftEyeTop": 0.83,
+        "leftEyeBottom": 0.4,
+        "mouthRight": 0.35,
+        "mouthLeft": 0.94,
+        "upperLip": 0.62,
+        "lowerLip": 0.25
+      },
+      "seamStep": {
+        "p95": 1.78,
+        "count": 614
+      },
+      "seamStepIncludingVisibilityEdges": {
+        "p95": 5.19,
+        "count": 797
+      },
+      "hardSwitchSeamStep": {
+        "p95": 30.18,
+        "count": 614
+      },
+      "insideStep": {
+        "p95": 0.39,
+        "count": 32505
+      },
+      "views": [
+        {
+          "yaw": -0.3,
+          "used": 388,
+          "residualPx": 7.15
+        },
+        {
+          "yaw": 27.7,
+          "used": 365,
+          "residualPx": 24.36
+        },
+        {
+          "yaw": -27.6,
+          "used": 360,
+          "residualPx": 27.73
+        }
+      ]
+    }
+  ]
+}

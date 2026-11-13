@@ -22,7 +22,9 @@ Unmodified MakeHuman code is run at development time to generate test fixtures (
 
 ## Character assets
 
-The files in `assets/core` come from MakeHuman's asset packs: CC0-1.0, with a few under CC-BY-4.0. [assets/core/LICENSES.json](assets/core/LICENSES.json) lists the source, licence and attribution of every file.
+Most files in `assets/core` come from MakeHuman's asset packs: CC0-1.0, with a few under CC-BY-4.0. [assets/core/LICENSES.json](assets/core/LICENSES.json) lists the source, licence and attribution of every file.
+
+The scanned-face base skin, `assets/core/textures/skins/ps2cc_scan_lee.jpg`, is made from "Infinite, 3D Head Scan" by Lee Perry-Smith (Infinite Realities, based on a work at www.triplegangers.com), licensed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). It was taken from the [three.js repository](https://github.com/mrdoob/three.js/tree/r187/examples/models/gltf/LeePerrySmith) (r187). PS2CC rendered the scan from three directions, projected the renders onto MakeHuman's neutral head, colour-matched the result to MakeHuman's young caucasian male skin (CC0) and composited it over that skin.
 
 ## Bundled and linked software
 

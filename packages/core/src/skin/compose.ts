@@ -10,10 +10,11 @@ import type { BaseMesh } from '../mesh/basemesh';
 import { computeQuadNormals } from '../mesh/normals';
 import type { RigDefinition } from '../skeleton/rig';
 import type { SparseWeights } from '../skeleton/weights';
-import type { HsvAdjust } from './blend';
+import type { DetailSource, HsvAdjust } from './blend';
+import { DETAIL_TILE_METRES, detailTile, faceUvPerMetre } from './detail';
 import { faceFeatures, type FaceFeatures } from './features';
 import type { RgbaImage } from './image';
-import { BAKED_LAYER_CHANNEL, numParam } from './layers';
+import { BAKED_LAYER_CHANNEL, colorParam, numParam } from './layers';
 import { SkinLayout, type SurfaceMap } from './layout';
 import { generateLayer, isProcedural } from './procedural';
 
@@ -24,7 +25,7 @@ export const PROCEDURAL_SIZE = 1024;
 /** Region masks resolution. */
 export const MASK_SIZE = 1024;
 
-export type ResolvedSource = { kind: 'url'; url: string } | { kind: 'pixels'; image: RgbaImage } | { kind: 'adjust'; hsv: HsvAdjust };
+export type ResolvedSource = { kind: 'url'; url: string } | { kind: 'pixels'; image: RgbaImage } | { kind: 'adjust'; hsv: HsvAdjust } | DetailSource;
 
 export interface ResolvedSkinLayer {
   /** Changes whenever this layer's pixels change (texture cache key). */
@@ -86,6 +87,24 @@ export class SkinComposer {
     return img;
   }
 
+  private mouthIslandId: number | null = null;
+  private uvPerMetre: number | null = null;
+
+  /** The mouth interior's UV island: the small head island on the midline (the other two are the eye sockets). */
+  get mouthIsland(): number {
+    if (this.mouthIslandId === null) {
+      const small = this.layout.islands.filter((i) => i.kind === 'head').sort((a, b) => b.faces.length - a.faces.length).slice(1);
+      const pos = this.base.positions;
+      const meanAbsX = (faces: number[]) => {
+        let sx = 0;
+        for (const f of faces) for (let k = 0; k < 4; k++) sx += pos[this.base.faceVerts[f * 4 + k]! * 3]!;
+        return Math.abs(sx / (faces.length * 4));
+      };
+      this.mouthIslandId = small.reduce((a, b) => (meanAbsX(a.faces) < meanAbsX(b.faces) ? a : b)).id;
+    }
+    return this.mouthIslandId;
+  }
+
   /** Pixels of a procedural layer (cached by kind and parameters). */
   layerImage(layer: SkinLayer): RgbaImage {
     const key = proceduralKey(layer);
@@ -96,6 +115,7 @@ export class SkinComposer {
         features: this.features,
         islandKinds: this.layout.islands.map((i) => i.kind),
         faceIsland: this.layout.islands.filter((i) => i.kind === 'head').sort((a, b) => b.faces.length - a.faces.length)[0]!.id,
+        mouthIsland: this.mouthIsland,
       });
       this.cache.set(key, img);
       // Keep the cache small: drop the oldest entries.
@@ -133,6 +153,13 @@ export class SkinComposer {
         if (!url) continue;
         source = { kind: 'url', url };
         key = `url:${url}`;
+      } else if (l.kind === 'pores' || l.kind === 'stubbleHair') {
+        // Micro-detail: the tile at full resolution, through the region map.
+        this.uvPerMetre ??= faceUvPerMetre(this.layout);
+        const tile = detailTile(l.kind, l.kind === 'stubbleHair' ? colorParam(l, 'color') : undefined);
+        const repeat = 1 / (this.uvPerMetre * DETAIL_TILE_METRES[l.kind] * numParam(l, 'scale'));
+        source = { kind: 'detail', tile, weight: this.layerImage(l), repeat };
+        key = `detail:${proceduralKey(l)}`;
       } else if (isProcedural(l.kind)) {
         source = { kind: 'pixels', image: this.layerImage(l) };
         key = proceduralKey(l);

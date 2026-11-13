@@ -251,92 +251,113 @@
    "id": "mh:teeth/teeth_base",
    "category": "teeth",
    "name": "Teeth_Base",
-   "file": "proxies/teeth/teeth_base.json",
+   "file": "proxies/teeth/teeth_base.ps2.json",
    "thumbnail": null,
-   "triangles": 7120,
+   "triangles": 381,
    "slot": null,
    "tags": [
     "makehuman™"
    ],
-   "licence": "CC0-1.0"
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/teeth/teeth_base.json",
+   "originalTriangles": 7120,
+   "overBudget": false
   },
   {
    "id": "mh:teeth/teeth_shape01",
    "category": "teeth",
    "name": "Teeth_Shape01",
-   "file": "proxies/teeth/teeth_shape01.json",
+   "file": "proxies/teeth/teeth_shape01.ps2.json",
    "thumbnail": null,
-   "triangles": 7120,
+   "triangles": 379,
    "slot": null,
    "tags": [
     "makehuman™"
    ],
-   "licence": "CC0-1.0"
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/teeth/teeth_shape01.json",
+   "originalTriangles": 7120,
+   "overBudget": false
   },
   {
    "id": "mh:teeth/teeth_shape02",
    "category": "teeth",
    "name": "Teeth_Shape02",
-   "file": "proxies/teeth/teeth_shape02.json",
+   "file": "proxies/teeth/teeth_shape02.ps2.json",
    "thumbnail": null,
-   "triangles": 7120,
+   "triangles": 378,
    "slot": null,
    "tags": [
     "makehuman™"
    ],
-   "licence": "CC0-1.0"
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/teeth/teeth_shape02.json",
+   "originalTriangles": 7120,
+   "overBudget": false
   },
   {
    "id": "mh:teeth/teeth_shape03",
    "category": "teeth",
    "name": "Teeth_Shape03",
-   "file": "proxies/teeth/teeth_shape03.json",
+   "file": "proxies/teeth/teeth_shape03.ps2.json",
    "thumbnail": null,
-   "triangles": 7120,
+   "triangles": 383,
    "slot": null,
    "tags": [
     "makehuman™"
    ],
-   "licence": "CC0-1.0"
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/teeth/teeth_shape03.json",
+   "originalTriangles": 7120,
+   "overBudget": false
   },
   {
    "id": "mh:teeth/teeth_shape04",
    "category": "teeth",
    "name": "Teeth_Shape04",
-   "file": "proxies/teeth/teeth_shape04.json",
+   "file": "proxies/teeth/teeth_shape04.ps2.json",
    "thumbnail": null,
-   "triangles": 7120,
+   "triangles": 381,
    "slot": null,
    "tags": [
     "makehuman™"
    ],
-   "licence": "CC0-1.0"
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/teeth/teeth_shape04.json",
+   "originalTriangles": 7120,
+   "overBudget": false
   },
   {
    "id": "mh:teeth/teeth_shape05",
    "category": "teeth",
    "name": "Teeth_Shape05",
-   "file": "proxies/teeth/teeth_shape05.json",
+   "file": "proxies/teeth/teeth_shape05.ps2.json",
    "thumbnail": null,
-   "triangles": 7120,
+   "triangles": 384,
    "slot": null,
    "tags": [
     "makehuman™"
    ],
-   "licence": "CC0-1.0"
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/teeth/teeth_shape05.json",
+   "originalTriangles": 7120,
+   "overBudget": false
   },
   {
    "id": "mh:tongue/tongue01",
    "category": "tongue",
    "name": "tongue01",
-   "file": "proxies/tongue/tongue01.json",
+   "file": "proxies/tongue/tongue01.ps2.json",
    "thumbnail": null,
-   "triangles": 448,
+   "triangles": 160,
    "slot": null,
    "tags": [
     "makehuman™"
    ],
-   "licence": "CC0-1.0"
+   "licence": "CC0-1.0",
+   "fullFile": "proxies/tongue/tongue01.json",
+   "originalTriangles": 448,
+   "overBudget": false
   },
   {
    "id": "mh:hair/afro01",
@@ -3807,6 +3828,22 @@
     "male"
    ],
    "licence": "CC0-1.0"
+  },
+  {
+   "id": "ps2cc:skins/scan_lee",
+   "category": "skins",
+   "name": "Scanned face (Lee Perry-Smith, CC BY 3.0)",
+   "texture": "textures/skins/ps2cc_scan_lee.jpg",
+   "textureSize": [
+    2048,
+    2048
+   ],
+   "tags": [
+    "scan",
+    "male",
+    "caucasian"
+   ],
+   "licence": "CC-BY-3.0"
   }
  ],
  "eyeColours": [
