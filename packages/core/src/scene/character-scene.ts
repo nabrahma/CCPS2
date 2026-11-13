@@ -35,6 +35,8 @@ import type { EyeLook } from '../eyes/eye-texture';
 import type { HeadLayout } from '../skin/headpack';
 import { blendVolumeNormals } from '../hair/cards-from-curves';
 import { atlasCellTexels } from '../export/limits';
+import { GarmentLookComposer } from '../wardrobe/composer';
+import type { GarmentLook } from '../wardrobe/look';
 
 export type PartKind = 'body' | 'eyes' | 'eyebrows' | 'eyelashes' | 'teeth' | 'garment' | 'hair' | 'fur';
 
@@ -71,6 +73,17 @@ export interface PartMaterial {
    * with the catch-light painted in when lighting is per vertex (Classic).
    */
   eye?: { look: EyeLook; catchLight: boolean };
+  /**
+   * Garments, Part 2 F18: the texture is composed from the garment's look
+   * (material zones, seams, folds, decals) over `texture`; `key` changes
+   * whenever the composed image would.
+   */
+  wardrobe?: WardrobeTexture | null;
+}
+
+export interface WardrobeTexture {
+  key: string;
+  compose(size: number, load: (path: string) => Promise<RgbaImage>): Promise<RgbaImage>;
 }
 
 export interface SceneOptions {
@@ -358,6 +371,25 @@ export class CharacterScene {
     }
   }
 
+  private lookComposer: GarmentLookComposer | null = null;
+
+  /** Composes garment textures from their looks (Part 2 F18); shared by the viewport and the exporter. */
+  get garmentLooks(): GarmentLookComposer {
+    return (this.lookComposer ??= new GarmentLookComposer(this.engine.assets));
+  }
+
+  /** A garment's material with its look attached (or without, when it has none). */
+  private dressed(m: PartMaterial, w: WantedProxy): PartMaterial {
+    const look = w.look;
+    if (!look || w.kind !== 'garment') return { ...m, wardrobe: null };
+    const base = m.texture;
+    const assetId = w.assetId;
+    return {
+      ...m,
+      wardrobe: { key: `${assetId}|${base ?? ''}|${JSON.stringify(look)}`, compose: (size, load) => this.garmentLooks.compose(assetId, look, base, size, load) },
+    };
+  }
+
   /** Load/unload parts to match the current document. Safe to call often. */
   async sync(): Promise<void> {
     const doc = this.engine.doc;
@@ -387,7 +419,7 @@ export class CharacterScene {
     for (const w of wanted) {
       const existing = this.proxies.get(w.key);
       if (existing && existing.proxy.id === w.assetId) {
-        existing.part.material = { ...w.material, texture: w.material.texture ?? existing.proxy.meta.material?.diffuseTexture ?? null };
+        existing.part.material = this.dressed({ ...w.material, texture: w.material.texture ?? existing.proxy.meta.material?.diffuseTexture ?? null }, w);
         continue;
       }
       const proxy = await this.engine.assets.proxy(w.assetId);
@@ -399,7 +431,7 @@ export class CharacterScene {
         assetId: w.assetId,
         label: proxy.meta.name,
         zDepth: proxy.meta.zDepth,
-        material: { ...w.material, texture: w.material.texture ?? proxy.meta.material?.diffuseTexture ?? null },
+        material: this.dressed({ ...w.material, texture: w.material.texture ?? proxy.meta.material?.diffuseTexture ?? null }, w),
         uvs: topo.uvs,
         indices: topo.indices,
         positions: new Float32Array(n * 3),
@@ -1017,6 +1049,15 @@ export class CharacterScene {
 
   private scalpHidden = false;
 
+  /** Garment Studio (Part 2 F18): the garment being edited does not hide the body, so a crop shows skin, not a hole. */
+  private bodyShownUnder: string | null = null;
+
+  showBodyUnder(partKey: string | null): void {
+    if (this.bodyShownUnder === partKey) return;
+    this.bodyShownUnder = partKey;
+    this.applyHiddenBody(this.engine.doc);
+  }
+
   hairGenerator(): HairGenerator {
     const a = this.engine.assets;
     this.hairGen ??= new HairGenerator(a.base, a.rig, a.weights.sparse);
@@ -1144,7 +1185,7 @@ export class CharacterScene {
     const deleted = new Set<number>();
     const covered: Set<number>[] = [];
     for (const g of doc.garments) {
-      if (!g.hideBody) continue;
+      if (!g.hideBody || garmentKey(g) === this.bodyShownUnder) continue;
       const pp = this.proxies.get(garmentKey(g));
       if (!pp) continue;
       for (const v of pp.proxy.deleteVerts) deleted.add(v);
@@ -1178,6 +1219,8 @@ interface WantedProxy {
   kind: PartKind;
   assetId: string;
   material: PartMaterial;
+  /** Garments (Part 2 F18): the look to compose the texture from (none when painted in Material Painter). */
+  look?: GarmentLook | null;
 }
 
 /** Brow/lash density (PRD F3) as an alpha-cutout threshold: 1 -> 0.5 (MakeHuman look), 0 -> 0.95 (sparse). */
@@ -1251,6 +1294,8 @@ function wantedProxies(doc: Readonly<CharacterDoc>, has: (id: string) => boolean
       kind: 'garment',
       assetId: g.asset,
       material: { texture: g.paint ?? g.texture ?? null, tint: g.tint, alphaCutout: true, alphaThreshold: 0.5, doubleSided: true, dirt: g.dirt },
+      // Paint from Material Painter was painted over the composed look, so it replaces it.
+      look: g.paint ? null : (g.look ?? null),
     });
   }
   if (doc.hair.mode === 'mesh' && doc.hair.asset && has(doc.hair.asset)) {

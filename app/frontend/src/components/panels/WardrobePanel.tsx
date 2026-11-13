@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NEUTRAL_TINT, type GarmentSlotName } from '@ps2cc/core';
+import { NEUTRAL_TINT, sanitiseFur, sanitiseLook, type GarmentSlotName } from '@ps2cc/core';
 import { backend } from '../../backend';
 import { useStudio, useStudioVersion } from '../../state/hooks';
 import { useUi } from '../../state/ui';
@@ -54,7 +54,19 @@ export function WardrobePanel() {
     studio.engine.update('Change garments', (d) => {
       const i = d.garments.findIndex((g) => g.asset === id);
       if (i >= 0) d.garments.splice(i, 1);
-      else d.garments.push({ slot: garmentSlot, asset: id, tint: { ...NEUTRAL_TINT, color: [1, 1, 1] }, dirt: 0, hideBody: true });
+      else {
+        // Garments made in Garment Studio come dressed (Part 2 F18).
+        const def = studio.assets.proxyInfo(id).defaults;
+        d.garments.push({
+          slot: garmentSlot,
+          asset: id,
+          tint: { ...NEUTRAL_TINT, color: def?.tint ? [...def.tint] : [1, 1, 1] },
+          dirt: 0,
+          hideBody: true,
+          ...(def?.look ? { look: sanitiseLook(def.look) } : {}),
+          ...(def?.fur ? { fur: sanitiseFur(def.fur) } : {}),
+        });
+      }
     });
   return (
     <div className="slider-panel">

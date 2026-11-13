@@ -15,6 +15,8 @@ import { useStudio, useStudioVersion } from '../state/hooks';
 import { useUi, type BackgroundId } from '../state/ui';
 import { AppMenus } from './AppMenus';
 import { HairStudio } from './HairStudio';
+import { GarmentLookTool } from './GarmentLookTool';
+import { GarmentStudio } from './GarmentStudio';
 import { BoltIcon } from './icons';
 
 const SHADING: { id: ShadingMode; label: string }[] = [
@@ -343,6 +345,8 @@ export function ViewportPanel() {
         </div>
       </div>
       {ui.hairStudio && studio.engine.doc.hair.mode === 'cards' && studio.scene.cardHair && <HairStudio canvas={canvasRef.current} />}
+      {ui.garmentTool && !ui.garmentStudio && <GarmentLookTool canvas={canvasRef.current} />}
+      {ui.garmentStudio && <GarmentStudio canvas={canvasRef.current} partKey={ui.garmentStudio} />}
       <button className="fab" onClick={() => ui.setTab('export')} title="Export settings (Ctrl+E)" aria-label="Open export settings">
         <BoltIcon size={18} />
       </button>

@@ -11,7 +11,8 @@ import { prepareExport } from './export/exportCharacter';
 import { buildGlb } from './export/glb';
 import { useUi } from './state/ui';
 import { runSliderSweep } from './perf';
+import { renderMaterialPair } from './testing/material-check';
 
-export const testHooks = { runSliderSweep, core, detectLandmarks, imageToCanvas, imageToPng, canvasToPng, decodeImage, faceView, applyPhoto, placePhoto, currentSkin, currentHeadSkin, applySidePhoto, renderScanViews, prepareExport, buildGlb, useUi };
+export const testHooks = { runSliderSweep, core, detectLandmarks, imageToCanvas, imageToPng, canvasToPng, decodeImage, faceView, applyPhoto, placePhoto, currentSkin, currentHeadSkin, applySidePhoto, renderScanViews, prepareExport, buildGlb, useUi, renderMaterialPair };
 
 export type TestHooks = typeof testHooks;

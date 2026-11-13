@@ -1,0 +1,234 @@
+{
+ "binary": "ps2cc_mara_utility_vest.bin",
+ "byteLength": 123056,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2460
+  },
+  "uvs": {
+   "offset": 9840,
+   "dtype": "f32",
+   "count": 1892
+  },
+  "faceVerts": {
+   "offset": 17408,
+   "dtype": "u32",
+   "count": 5756
+  },
+  "faceUvs": {
+   "offset": 40432,
+   "dtype": "u32",
+   "count": 5756
+  },
+  "refVerts": {
+   "offset": 63456,
+   "dtype": "u32",
+   "count": 2460
+  },
+  "refWeights": {
+   "offset": 73296,
+   "dtype": "f32",
+   "count": 2460
+  },
+  "refOffsets": {
+   "offset": 83136,
+   "dtype": "f32",
+   "count": 2460
+  },
+  "coveredVerts": {
+   "offset": 92976,
+   "dtype": "u32",
+   "count": 973
+  },
+  "skinOffsets": {
+   "offset": 96880,
+   "dtype": "u32",
+   "count": 821
+  },
+  "skinBones": {
+   "offset": 100176,
+   "dtype": "u16",
+   "count": 3812
+  },
+  "skinValues": {
+   "offset": 107808,
+   "dtype": "f32",
+   "count": 3812
+  }
+ },
+ "format": "ps2cc.proxy/1",
+ "id": "ps2cc:clothes/mara_utility_vest",
+ "category": "clothes",
+ "name": "Utility vest",
+ "uuid": "02926ca4d28893415b924d15d0e7ff49",
+ "tags": [
+  "ps2cc",
+  "garment-studio"
+ ],
+ "zDepth": 60,
+ "vertexCount": 820,
+ "faceCount": 1439,
+ "scale": [
+  [
+   1430,
+   8118,
+   0.45599910616874695
+  ],
+  [
+   10963,
+   7550,
+   0.5862983986735344
+  ],
+  [
+   4212,
+   8554,
+   0.2421000748872757
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.78,
+   0.78,
+   0.75
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/ps2cc_mara_utility_vest.png",
+  "textureSize": [
+   64,
+   64
+  ]
+ },
+ "slot": "outer",
+ "decimatedFrom": 820,
+ "hiddenFaces": "computed",
+ "originalTriangles": 1439,
+ "defaults": {
+  "look": {
+   "zones": [
+    {
+     "id": "z1",
+     "name": "Garment",
+     "islands": "rest",
+     "material": "ps2cc:materials/canvas",
+     "tint": [
+      0.62,
+      0.6,
+      0.46
+     ],
+     "scale": 1,
+     "rotation": 0,
+     "wear": 0.4
+    },
+    {
+     "id": "z2",
+     "name": "Pockets",
+     "islands": [
+      9,
+      8
+     ],
+     "material": "ps2cc:materials/canvas",
+     "tint": [
+      0.56,
+      0.54,
+      0.41
+     ],
+     "scale": 1,
+     "rotation": 0,
+     "wear": 0.5
+    },
+    {
+     "id": "z3",
+     "name": "Neck band",
+     "islands": [
+      7
+     ],
+     "material": "ps2cc:materials/nylon_ripstop",
+     "tint": [
+      0.45,
+      0.44,
+      0.36
+     ],
+     "scale": 1,
+     "rotation": 0,
+     "wear": 0.2
+    }
+   ],
+   "mask": null,
+   "seams": {
+    "stitches": 0.8,
+    "thread": null,
+    "shadow": 0.6,
+    "spacingMm": 4,
+    "hemRows": 2
+   },
+   "folds": {
+    "strength": 0.7,
+    "sites": {
+     "elbows": 1,
+     "armpits": 1,
+     "waist": 1,
+     "crotch": 1,
+     "knees": 1
+    },
+    "seed": 1
+   },
+   "decals": [
+    {
+     "id": "zip",
+     "kind": "zip",
+     "uv": [
+      0.2197265625,
+      0.3271484375
+     ],
+     "uv2": [
+      0.2353515625,
+      0.0654296875
+     ],
+     "sizeMm": 10,
+     "rotation": 0,
+     "colour": [
+      0.55,
+      0.53,
+      0.5
+     ]
+    },
+    {
+     "id": "flap0",
+     "kind": "pocketFlap",
+     "uv": [
+      0.8701171875,
+      0.0478515625
+     ],
+     "sizeMm": 118,
+     "heightMm": 46,
+     "rotation": 0,
+     "colour": [
+      0.3,
+      0.27,
+      0.2
+     ]
+    },
+    {
+     "id": "flap1",
+     "kind": "pocketFlap",
+     "uv": [
+      0.9501953125,
+      0.0478515625
+     ],
+     "sizeMm": 118,
+     "heightMm": 46,
+     "rotation": -6,
+     "colour": [
+      0.3,
+      0.27,
+      0.2
+     ]
+    }
+   ]
+  }
+ }
+}

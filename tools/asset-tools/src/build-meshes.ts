@@ -171,6 +171,8 @@ async function main(): Promise<void> {
     // Teeth and tongue (Part 2 F19): at most 600 triangles together.
     const isMouth = entry.category === 'teeth' || entry.category === 'tongue';
     if (entry.category !== 'clothes' && entry.category !== 'hair' && !isMouth) continue;
+    // Garments made with Garment Studio (Part 2 F18, `pnpm build:outfits`) are already at their budget.
+    if (entry.id.startsWith('ps2cc:')) continue;
     if (only && !only.has(entry.category)) continue;
     const isHair = entry.category === 'hair';
     const full = entry.fullFile ?? entry.file;

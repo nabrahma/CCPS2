@@ -16,6 +16,13 @@ import {
   baseBodyObj,
   FetchAssetSource,
   importGarment,
+  bodySurface,
+  editMeshToRaw,
+  moveToBody,
+  remapTexture,
+  type EditMesh,
+  type GarmentDefaults,
+  type BodySurface,
   parseCharacter,
   ProxyAsset,
   readJson,
@@ -31,8 +38,8 @@ import {
   type ReferenceBody,
 } from '@ps2cc/core';
 import { BakeCancelled, resolveAssetUrl, Viewport, type BakedMap } from '@ps2cc/viewport';
-import { backend, isDesktop, type AppInfo, type GarmentFile, type Settings } from '../backend';
-import { decodeImage } from '../images';
+import { backend, isDesktop, libraryUrl, type AppInfo, type GarmentFile, type Settings } from '../backend';
+import { decodeImage, imageToPng } from '../images';
 import { useUi } from './ui';
 
 type Listener = () => void;
@@ -68,6 +75,7 @@ function garmentEntry(meta: ProxyMeta, file: string): CatalogProxy {
     slot: meta.slot ?? 'accessory',
     tags: meta.tags,
     licence: 'user',
+    ...(meta.defaults ? { defaults: meta.defaults } : {}),
   };
 }
 
@@ -333,6 +341,33 @@ export class Studio {
     const garment = await importGarment(decodeGarment(file), { ...options, body: this.garmentBody });
     const item = await backend.saveGarment(JSON.stringify(garment.meta), garment.bin);
     this.assets.addUserProxy(garmentEntry(garment.meta, item.file), () => Promise.resolve(garment.proxy));
+    this.bump();
+    return garment;
+  }
+
+  /**
+   * Save a garment edited in Garment Studio (Part 2 F18) as a new library
+   * garment. `edit` is on the body it was edited on (`editedOn`); it is moved
+   * onto the reference body, imported like a modelled garment (M10), and gets
+   * its texture remapped to the edited UVs from `texture` (the original's).
+   */
+  async saveStudioGarment(
+    edit: EditMesh,
+    editedOn: BodySurface,
+    options: { name: string; slot: ImportSlot; texture: string | null; defaults?: GarmentDefaults },
+  ): Promise<ImportedGarment> {
+    this.garmentBody ??= referenceBody(this.assets);
+    const onRef = moveToBody(edit, editedOn, bodySurface(this.garmentBody));
+    const garment = await importGarment(editMeshToRaw(onRef), { name: options.name, slot: options.slot, body: this.garmentBody });
+    const original = options.texture ? await decodeImage(resolveAssetUrl(this.info.coreAssetsUrl, options.texture)).catch(() => null) : null;
+    const tex = remapTexture(original, edit, 1024);
+    const stem = garment.meta.binary.replace(/\.bin$/, '');
+    const item = await backend.importFile('garment-textures', new File([await imageToPng(tex)], `${stem}.png`, { type: 'image/png' }));
+    garment.meta.material = { diffuseColor: [0.8, 0.8, 0.8], transparent: false, backfaceCull: false, opacity: 1, diffuseTexture: libraryUrl(this.info, item.file), textureSize: [tex.width, tex.height] };
+    garment.meta.tags = ['user', 'garment-studio'];
+    if (options.defaults) garment.meta.defaults = options.defaults;
+    const saved = await backend.saveGarment(JSON.stringify(garment.meta), garment.bin);
+    this.assets.addUserProxy(garmentEntry(garment.meta, saved.file), () => Promise.resolve(garment.proxy));
     this.bump();
     return garment;
   }

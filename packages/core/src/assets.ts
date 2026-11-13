@@ -4,7 +4,7 @@ import { headLayoutFrom, headLayoutPath, headMeshOf, type HeadLayout, type HeadL
 import { BaseMesh } from './mesh/basemesh';
 import { ModifierSet } from './morph/modifiers';
 import { TargetStore } from './morph/targets';
-import { ProxyAsset } from './proxy/proxy';
+import { ProxyAsset, type GarmentDefaults } from './proxy/proxy';
 import { RigDefinition } from './skeleton/rig';
 import { RigWeights } from './skeleton/weights';
 import { SkinComposer } from './skin/compose';
@@ -18,6 +18,7 @@ import { FaceRig } from './expression/facerig';
 import { FacePoseUnits } from './expression/poseunits';
 import { EXPRESSION_MAP, validateExpressionMap } from './expression/map';
 import type { LicenceManifest } from './credits';
+import type { CatalogMaterial } from './wardrobe/material';
 
 export interface FaceAssets {
   rig: FaceRig;
@@ -41,6 +42,8 @@ export interface CatalogProxy {
   slot: string | null;
   tags: string[];
   licence: string;
+  /** Garments made in Garment Studio (Part 2 F18): look, fur and tint applied when put on. */
+  defaults?: GarmentDefaults;
 }
 
 export interface CatalogSkin {
@@ -75,6 +78,8 @@ export interface Catalog {
   bodyMeshes?: BodyMeshInfo[];
   /** Built-in hair card atlases (the first is the default for card hair). */
   hairAtlases?: CatalogHairAtlas[];
+  /** The material library (Part 2 F18). */
+  materials?: CatalogMaterial[];
 }
 
 /** Built by `pnpm build:landmarks` (app/frontend/e2e/build-landmarks.spec.ts). */

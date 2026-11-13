@@ -55,6 +55,9 @@ export function resolveAssetUrl(assetBaseUrl: string, path: string): string {
   return /^(https?:|blob:|data:|\/)/.test(path) ? path : `${assetBaseUrl.replace(/\/$/, '')}/${path}`;
 }
 
+/** Garment looks (Part 2 F18) are previewed at this size. */
+const GARMENT_PREVIEW_SIZE = 1024;
+
 /** The soft pass of two-pass hair keeps texels from this alpha up to the cutoff. */
 const SOFT_ALPHA_MIN = 0.04;
 
@@ -704,12 +707,15 @@ export class Viewport {
     // F19's generated eyes (the exporter makes the same ones).
     const grad = m.gradient;
     const eye = m.eye;
+    const dress = m.wardrobe ?? null;
     const gradientKey =
       grad && m.texture && !m.skin
         ? `${m.texture}|${hairColourKey(grad.colour)}|${JSON.stringify(grad.regions)}`
         : eye && !m.skin
           ? `eye|${eyeLookKey(eye.look, eye.catchLight)}`
-          : null;
+          : dress
+            ? `look|${dress.key}`
+            : null;
     if (gradientKey !== obj.gradientKey) {
       obj.gradientKey = gradientKey;
       obj.texture = gradientKey;
@@ -721,6 +727,11 @@ export class Viewport {
         });
       } else if (gradientKey && eye) {
         void this.generatedTexture(gradientKey, () => Promise.resolve(eyeTexture(eye.look, EYE_TEXTURE_SIZE, eye.catchLight))).then((tex) => {
+          if (obj.gradientKey === gradientKey) setMaterialTexture(obj.material, tex);
+        });
+      } else if (gradientKey && dress) {
+        // Part 2 F18: the garment's look composed over its own texture (the exporter composes the same).
+        void this.generatedTexture(gradientKey, () => dress.compose(GARMENT_PREVIEW_SIZE, (path) => decodePixels(resolveAssetUrl(this.options.assetBaseUrl, path)))).then((tex) => {
           if (obj.gradientKey === gradientKey) setMaterialTexture(obj.material, tex);
         });
       } else obj.texture = null;
@@ -1164,7 +1175,7 @@ export class Viewport {
     project(p: [number, number, number]): { x: number; y: number; depth: number };
     unproject(x: number, y: number, depth: number): [number, number, number];
     eye: [number, number, number];
-    pick(x: number, y: number, partKey?: string): { point: [number, number, number]; normal: [number, number, number] } | null;
+    pick(x: number, y: number, partKey?: string): { point: [number, number, number]; normal: [number, number, number]; uv: [number, number]; face: number } | null;
   } {
     const rect = this.canvas.getBoundingClientRect();
     const cam = this.camera;
@@ -1192,13 +1203,59 @@ export class Viewport {
         if (!obj) return null;
         const ray = new THREE.Raycaster();
         ray.setFromCamera(new THREE.Vector2((x / rect.width) * 2 - 1, 1 - (y / rect.height) * 2), cam);
-        const hit = ray.intersectObject(obj.mesh, false)[0];
+        // In Garment Studio the part is shown by its edit mesh.
+        const target = this.studioMesh && this.studioMesh.partKey === partKey ? this.studioMesh.mesh : obj.mesh;
+        const hit = ray.intersectObject(target, false)[0];
         if (!hit || !hit.face) return null;
         const p = hit.point.clone().sub(off);
-        const n = hit.face.normal.clone().transformDirection(obj.mesh.matrixWorld);
-        return { point: [p.x, p.y, p.z], normal: [n.x, n.y, n.z] };
+        const n = hit.face.normal.clone().transformDirection(target.matrixWorld);
+        return { point: [p.x, p.y, p.z], normal: [n.x, n.y, n.z], uv: hit.uv ? [hit.uv.x, hit.uv.y] : [0, 0], face: hit.faceIndex ?? -1 };
       },
     };
+  }
+
+  // ------------------------------------------------------------ Garment Studio (Part 2 F18)
+
+  private studioMesh: { partKey: string; mesh: THREE.Mesh } | null = null;
+
+  /**
+   * Show a garment being edited in Garment Studio in place of its part (engine
+   * space, triangles in render vertices), with the part's texture. Null puts
+   * the part back.
+   */
+  setStudioMesh(partKey: string, mesh: { positions: Float32Array; uvs: Float32Array; indices: Uint32Array } | null): void {
+    const obj = this.objects.get(partKey);
+    if (!mesh) {
+      if (this.studioMesh) {
+        this.root.remove(this.studioMesh.mesh);
+        this.studioMesh.mesh.geometry.dispose();
+        (this.studioMesh.mesh.material as THREE.Material).dispose();
+        this.studioMesh = null;
+      }
+      if (obj) obj.mesh.visible = true;
+      this.refresh();
+      return;
+    }
+    let sm = this.studioMesh;
+    if (!sm || sm.partKey !== partKey) {
+      if (sm) this.setStudioMesh(sm.partKey, null);
+      const map = (obj?.material.uniforms.uMap?.value as THREE.Texture | null) ?? null;
+      // Matcap: shaded by the normal without the scene's lights (the viewport lights its parts in its own shaders).
+      const material = new THREE.MeshMatcapMaterial({ map, side: THREE.DoubleSide, alphaTest: 0.5 });
+      sm = { partKey, mesh: new THREE.Mesh(new THREE.BufferGeometry(), material) };
+      this.studioMesh = sm;
+      this.root.add(sm.mesh);
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(mesh.positions, 3));
+    g.setAttribute('uv', new THREE.BufferAttribute(mesh.uvs, 2));
+    g.setIndex(new THREE.BufferAttribute(mesh.indices, 1));
+    g.computeVertexNormals();
+    sm.mesh.geometry.dispose();
+    sm.mesh.geometry = g;
+    if (obj) obj.mesh.visible = false;
+    if (obj?.soft) obj.soft.visible = false;
+    this.refresh();
   }
 
   /** Key of the part under a client-space point (drag-and-drop targeting). */

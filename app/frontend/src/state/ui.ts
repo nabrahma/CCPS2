@@ -1,6 +1,6 @@
 /** UI-only state (no character data): tabs, view options, selection, toasts. */
 import { create } from 'zustand';
-import type { AtlasRegion, LightingModel, Look, PhotoCheck, ShadowMode } from '@ps2cc/core';
+import type { AtlasRegion, DecalKind, LightingModel, Look, PhotoCheck, ShadowMode } from '@ps2cc/core';
 import type { GarmentFile } from '../backend';
 import { DEFAULT_POST, type CameraPresetId, type LightingPresetId, type PostSettings, type ShadingMode } from '@ps2cc/viewport';
 
@@ -58,6 +58,12 @@ export interface UiState {
   poseTest: boolean;
   /** Hair Studio (PRD F15): grooming brushes over the viewport. */
   hairStudio: boolean;
+  /** Garment looks (Part 2 F18): what a click or drag on the selected garment does (null: nothing). */
+  garmentTool: GarmentTool | null;
+  setGarmentTool(v: GarmentTool | null): void;
+  /** Garment Studio (Part 2 F18): the worn garment being reshaped (its part key), or null. */
+  garmentStudio: string | null;
+  setGarmentStudio(v: string | null): void;
   background: BackgroundId;
   /** URL of the user's background image, once one is chosen. */
   backgroundImage: string | null;
@@ -94,6 +100,12 @@ export interface UiState {
   setPhoto(v: PhotoStatus | null): void;
 }
 
+/** A viewport tool on a garment's look: toggle a zone's islands, paint a zone, or place a decal. */
+export type GarmentTool =
+  | { partKey: string; mode: 'islands'; zone: number }
+  | { partKey: string; mode: 'paint'; zone: number; radiusMm: number }
+  | { partKey: string; mode: 'decal'; kind: DecalKind };
+
 let toastId = 0;
 
 export const useUi = create<UiState>((set) => ({
@@ -116,6 +128,10 @@ export const useUi = create<UiState>((set) => ({
   turntable: false,
   poseTest: false,
   hairStudio: false,
+  garmentTool: null,
+  setGarmentTool: (garmentTool) => set({ garmentTool }),
+  garmentStudio: null,
+  setGarmentStudio: (garmentStudio) => set({ garmentStudio, garmentTool: null }),
   background: 'preset',
   backgroundImage: null,
   toasts: [],

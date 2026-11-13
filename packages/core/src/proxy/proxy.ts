@@ -11,6 +11,15 @@
 import type { Container, ContainerMeta } from '../io/container';
 import { readContainer, type AssetSource } from '../io/source';
 import type { SparseWeights } from '../skeleton/weights';
+import type { FurTrim } from '../hair/surface-cards';
+import type { GarmentLook } from '../wardrobe/look';
+
+/** How a library garment is dressed when it is put on (Part 2 F18): its look, fur trim and tint. */
+export interface GarmentDefaults {
+  look?: GarmentLook;
+  fur?: FurTrim;
+  tint?: [number, number, number];
+}
 
 export interface ProxyMaterial {
   diffuseColor: [number, number, number];
@@ -40,6 +49,8 @@ export interface ProxyMeta extends ContainerMeta {
   originalTriangles?: number;
   /** Where hidden body faces come from: MakeHuman delete_verts, or computed at build time. */
   hiddenFaces?: 'makehuman' | 'computed' | 'none';
+  /** Garments made in Garment Studio: how they are dressed when put on. */
+  defaults?: GarmentDefaults;
 }
 
 const WEIGHT_THRESHOLD = 1e-4;

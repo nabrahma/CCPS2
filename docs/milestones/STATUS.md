@@ -147,3 +147,40 @@ Also tested:
 - The scanned face is one person's face, fitted to the neutral head.
 - The tongue sits high in the mouth, where MakeHuman puts it.
 - Micro-detail tiles follow hm08's UVs, so stubble hairs stop at the face island's edge under the jaw. The stubble shadow carries on past it.
+
+## M15: Materials and wardrobe (0.17.0, Part 2)
+
+Overview: `docs/materials-and-wardrobe.md`. Decisions D-124 to D-131. Review images: `docs/milestones/M15/`.
+
+What M15 adds:
+- a CC0 material library: 11 materials from Poly Haven and ambientCG, converted to era diffuses;
+- garment looks: material zones (picked pieces or painted), seams and stitches found from the mesh, fold stamps and procedural decals;
+- Garment Studio: shape brushes and kitbash tools, with saving as a new library garment;
+- the benchmark outfits, made with Garment Studio's tools; Mara and Cole wear them on the board.
+
+| Acceptance (Part 2 M15) | State | Evidence |
+| --- | --- | --- |
+| Every material in the manifest is CC0 with a source URL | Passing | `test/m15.test.ts`: 11 materials covering the nine kinds the PRD lists. All 44 files have a CC0 row naming the material's Poly Haven or ambientCG page, and every `mat_*` source is CC0 |
+| A converted material rendered flat matches the PBR original under the same light at SSIM >= 0.85 | Passing | `e2e/m15.spec.ts`: 0.926 (knit) to 0.995 (smooth leather). Control: the plain albedo, unconverted, averages 0.931 against the converted materials' 0.968. `material_check.json` |
+| Seams are detected on every library garment | Passing | `test/m15.test.ts`: all 121 garments (116 MakeHuman, 5 made in Garment Studio) have seams; 106 also have hems |
+| Edited garments still pass the M10 poke-through test (50 bodies, 2 mm) | Passing | `test/m15.test.ts`: the five Garment Studio garments on 50 random bodies (8k, 10k and 12k). No vertex inside the skin; 130,900 vertices sampled, 62,901 within 3 cm of skin. Without the collider they go 4.37 mm deep, so the check can fail. `wardrobe_report.json` |
+| Mara's vest and Cole's jacket exist as library garments with fur trim | Passing | `ps2cc:clothes/mara_utility_vest` and `ps2cc:clothes/cole_leather_jacket` are in the Wardrobe. The jacket has a shearling collar and fur trim on the collar and cuffs. Mara's benchmark outfit has no fur (PRD section 4), so her vest has none |
+| User score for clothing rises | Needs your review | `mara_*.png`, `cole_*.png`, `texture_*.png`. The benchmark board was not re-run |
+
+Also tested:
+- the converter keeps a flat texel at its albedo and keeps tiles seamless;
+- composing a look is deterministic; stitches and seam shadows change only seams and hems; folds gather at the elbows (47% of texels there change, none on the upper back); a decal stays round its point; wear scuffs edges more than the middle;
+- each brush and kitbash tool, and moving an edit to another body and back (within 6 mm);
+- in the browser (`e2e/m15.spec.ts`), a garment dressed through the Inspector, composed the same twice and exported, its look surviving save and load;
+- a Garment Studio round trip: crop, pocket, collar and an undone stroke, saved, worn, then put on another character from the Wardrobe.
+
+**Found on the way.**
+- The new garments changed the pairs the M4 poke-through test draws. One new pair puts MakeHuman's `toigo_flats` shoe 3.2 mm inside an 8k body. That test now draws MakeHuman's garments only, as accepted in M4, and the shoe is listed in TODO_ART.
+- Cole's tall boots showed through the cargo trousers, so the board gives him ankle boots.
+
+**Known limits.**
+- Gloss is still one value per surface.
+- A decal stops at the edge of its piece of cloth.
+- Garment Studio has its own Undo; saving is one undo step in the app.
+- Cropped hems follow the garment's triangles, so they are a little jagged on coarse garments.
+- MakeHuman's fisherman sweater leaves a small gap under each arm where skin shows. The roll-neck, the vest and the jacket are made from it and keep the gap.

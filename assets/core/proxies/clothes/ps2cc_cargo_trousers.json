@@ -1,0 +1,199 @@
+{
+ "binary": "ps2cc_cargo_trousers.bin",
+ "byteLength": 38580,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 783
+  },
+  "uvs": {
+   "offset": 3136,
+   "dtype": "f32",
+   "count": 324
+  },
+  "faceVerts": {
+   "offset": 4432,
+   "dtype": "u32",
+   "count": 1824
+  },
+  "faceUvs": {
+   "offset": 11728,
+   "dtype": "u32",
+   "count": 1824
+  },
+  "refVerts": {
+   "offset": 19024,
+   "dtype": "u32",
+   "count": 783
+  },
+  "refWeights": {
+   "offset": 22160,
+   "dtype": "f32",
+   "count": 783
+  },
+  "refOffsets": {
+   "offset": 25296,
+   "dtype": "f32",
+   "count": 783
+  },
+  "coveredVerts": {
+   "offset": 28432,
+   "dtype": "u32",
+   "count": 1054
+  },
+  "skinOffsets": {
+   "offset": 32656,
+   "dtype": "u32",
+   "count": 262
+  },
+  "skinBones": {
+   "offset": 33712,
+   "dtype": "u16",
+   "count": 809
+  },
+  "skinValues": {
+   "offset": 35344,
+   "dtype": "f32",
+   "count": 809
+  }
+ },
+ "format": "ps2cc.proxy/1",
+ "id": "ps2cc:clothes/cargo_trousers",
+ "category": "clothes",
+ "name": "Cargo trousers",
+ "uuid": "955a8111807842ac4bca53241ca296b7",
+ "tags": [
+  "ps2cc",
+  "garment-studio"
+ ],
+ "zDepth": 45,
+ "vertexCount": 261,
+ "faceCount": 456,
+ "scale": [
+  [
+   4725,
+   11343,
+   0.4370318055152893
+  ],
+  [
+   6356,
+   4109,
+   0.9518638849258423
+  ],
+  [
+   10854,
+   4109,
+   0.2346336394548416
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.78,
+   0.78,
+   0.75
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/ps2cc_cargo_trousers.png",
+  "textureSize": [
+   64,
+   64
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 261,
+ "hiddenFaces": "computed",
+ "originalTriangles": 456,
+ "defaults": {
+  "look": {
+   "zones": [
+    {
+     "id": "z1",
+     "name": "Garment",
+     "islands": "rest",
+     "material": "ps2cc:materials/canvas",
+     "tint": [
+      0.5,
+      0.48,
+      0.38
+     ],
+     "scale": 1,
+     "rotation": 0,
+     "wear": 0.35
+    },
+    {
+     "id": "z2",
+     "name": "Cargo pockets",
+     "islands": [
+      1,
+      2
+     ],
+     "material": "ps2cc:materials/canvas",
+     "tint": [
+      0.47,
+      0.45,
+      0.35
+     ],
+     "scale": 1,
+     "rotation": 0,
+     "wear": 0.45
+    }
+   ],
+   "mask": null,
+   "seams": {
+    "stitches": 0.8,
+    "thread": null,
+    "shadow": 0.6,
+    "spacingMm": 4,
+    "hemRows": 2
+   },
+   "folds": {
+    "strength": 0.9,
+    "sites": {
+     "elbows": 1,
+     "armpits": 1,
+     "waist": 1,
+     "crotch": 1,
+     "knees": 1
+    },
+    "seed": 1
+   },
+   "decals": [
+    {
+     "id": "flap_l",
+     "kind": "pocketFlap",
+     "uv": [
+      0.8603515625,
+      0.0673828125
+     ],
+     "sizeMm": 150,
+     "heightMm": 55,
+     "rotation": 0,
+     "colour": [
+      0.3,
+      0.28,
+      0.22
+     ]
+    },
+    {
+     "id": "flap_r",
+     "kind": "pocketFlap",
+     "uv": [
+      0.8603515625,
+      0.1982421875
+     ],
+     "sizeMm": 150,
+     "heightMm": 55,
+     "rotation": 0,
+     "colour": [
+      0.3,
+      0.28,
+      0.22
+     ]
+    }
+   ]
+  }
+ }
+}
