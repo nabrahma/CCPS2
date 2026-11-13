@@ -29,6 +29,21 @@
     "size": 6636192,
     "url": "https://files.makehumancommunity.org/asset_packs/hats01/hats01_cc0.zip"
   },
+  "leeperrysmith_col": {
+    "sha256": "e976d73b31407f8d0967412bf468019ed26a5d5a32cf5811aabff7e816458a65",
+    "size": 148269,
+    "url": "https://raw.githubusercontent.com/mrdoob/three.js/7e89746a687bb88271253698fa108b1dd59825d0/examples/models/gltf/LeePerrySmith/Map-COL.jpg"
+  },
+  "leeperrysmith_glb": {
+    "sha256": "402b8a8ac9f03232e6d64b5962929703a069daf99d3c49ac8eb0e48bedc9c576",
+    "size": 404976,
+    "url": "https://raw.githubusercontent.com/mrdoob/three.js/7e89746a687bb88271253698fa108b1dd59825d0/examples/models/gltf/LeePerrySmith/LeePerrySmith.glb"
+  },
+  "leeperrysmith_licence": {
+    "sha256": "7cf4da43a6ae6d32f7f7d063fe129a19468af6f4fe7c53b937f83959709fcb50",
+    "size": 364,
+    "url": "https://raw.githubusercontent.com/mrdoob/three.js/7e89746a687bb88271253698fa108b1dd59825d0/examples/models/gltf/LeePerrySmith/LeePerrySmith_License.txt"
+  },
   "makehuman": {
     "sha256": "f3b7c08a02a0780db1ca06e1a39e32aa375b469371f89c6d735c84e07ba4c33c",
     "size": 44253762,

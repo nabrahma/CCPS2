@@ -75,7 +75,7 @@ suite('with the shipped assets', () => {
     const c = buildCredits(manifest);
     expect(c.files).toBe(manifest.files.length);
     const credited = new Set(c.attribution.flatMap((e) => e.assets));
-    const required = manifest.files.filter((f) => f.licence === 'CC-BY-4.0');
+    const required = manifest.files.filter((f) => f.licence.startsWith('CC-BY'));
     expect(required.length).toBeGreaterThan(0);
     for (const f of required) expect(credited.has(f.asset!), f.file).toBe(true);
   });
@@ -139,8 +139,8 @@ suite('with the shipped assets', () => {
       });
       const at512 = scene.exportTexels(body());
       expect(at512.texels).toBe(512);
-      expect(at512.head / at1024.head).toBeGreaterThan(0.45);
-      expect(at512.head / at1024.head).toBeLessThan(0.5); // the 8 px gutter costs a 512 px head a little more
+      // The head texture's size; the head layout's density scales it per vertex (bodyHeadDensity).
+      expect(at512.head).toBe(512);
 
       const wear = (asset: string): GarmentSlot => ({ slot: 'top', asset, tint: { ...NEUTRAL_TINT }, dirt: 0, hideBody: true });
       engine.update('one', (d) => void d.garments.push(wear('mh:clothes/male_casualsuit01')));
@@ -152,13 +152,15 @@ suite('with the shipped assets', () => {
       expect(scene.exportTexels(garment()).texels).toBe(atlasCellTexels(2, engine.doc.export.garmentAtlas));
     });
 
-    it('marks head vertices, and only those', async () => {
+    it('marks head vertices, and only those, with the head layout density', async () => {
       const scene = new CharacterScene(new CharacterEngine(assets));
       await scene.sync();
       const body = scene.parts.find((p) => p.kind === 'body')!;
-      const flags = scene.bodyHeadFlags()!;
-      expect(flags).toHaveLength(body.uvs.length / 2);
-      const heads = flags.reduce((n, f) => n + f, 0);
+      const density = scene.bodyHeadDensity()!;
+      expect(density).toHaveLength(body.uvs.length / 2);
+      const flags = Array.from(density, (d) => (d > 0 ? 1 : 0));
+      expect(Math.max(...density)).toBeGreaterThan(2);
+      const heads = flags.reduce((n: number, f: number) => n + f, 0);
       expect(heads).toBeGreaterThan(flags.length * 0.2);
       expect(heads).toBeLessThan(flags.length * 0.8);
     });

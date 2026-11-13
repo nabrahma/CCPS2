@@ -112,3 +112,38 @@ The round trip with the real Material Painter is tested end to end:
 - Material Painter must be installed separately and its agent control turned on once.
 - The hair atlas and the eyes are not paint targets yet: the eyes come with M14.
 - Skin paint is kept as the colour Material Painter exported, so a stroke with partial opacity holds its mix with the skin as it was. A later change to the base skin shows through only where nothing was painted.
+
+## M14: Face and eyes (0.16.0, Part 2)
+
+Overview: `docs/face-and-eyes.md`. Decisions D-116 to D-123. Review images: `docs/milestones/M14/`.
+
+What M14 adds:
+- the head UV repack (per body mesh);
+- generated eyes with a 12-colour iris library;
+- painted brows and soft-edged lashes;
+- low-poly teeth and tongue, and a mouth interior layer;
+- three-photo projection;
+- a scanned-face base skin (Lee Perry-Smith, CC BY 3.0);
+- micro-detail layers: pores, and stubble hairs.
+
+| Acceptance (Part 2 M14) | State | Evidence |
+| --- | --- | --- |
+| The head texture uses at least 85% of its texels | Passing | `test/m14.test.ts`, every body mesh: 86.9% (8k) to 87.3% (12k and up); no triangle folds or overlaps |
+| Face texel density at least doubles | Passing | `test/m14.test.ts`: x2.11 (8k) to x2.16 over Part 1's packing |
+| Teeth and tongue at most 600 triangles together | Passing | `test/m14.test.ts`: every teeth set plus the tongue, at most 544 (teeth 378 to 384, tongue 160) |
+| Three-photo projection: eyes and mouth within 4 texels at 1024 | Passing (synthetic photos) | `e2e/m14.spec.ts`: worst landmark 2.34, 2.33 and 0.86 texels on three stand-in sets (front and ±40°) |
+| No visible seam where views blend (pixel test) | Passing (synthetic photos) | `e2e/m14.spec.ts`: 95th-percentile step across a change of leading photo 0.47 to 1.23 levels (limit 3); a hard switch between photos measures 19.8 to 28.5. `docs/milestones/M14/three_photo_report.json` |
+| The head-scan transfer is credited in Help → Credits | Passing | `e2e/m14.spec.ts` (credits names Lee Perry-Smith, CC-BY-3.0 and the skin), `credits_head_scan.png` |
+| User scores for face and eyes rise | Needs your review | `eyes_*.png`, `mouth_open*.png`, `brows_painted.png`, `scan_face_*.png`, `detail_*.png`, `three_photo_*.png` |
+
+Also tested:
+- the generated eyes (pupil, iris colour and sclera on both discs; the catch-light only with Classic lighting);
+- the micro-detail tiles repeat without a seam;
+- the pores leave the lids and lips alone and are strongest on the nose;
+- the reference compositor draws a detail layer (`test/m14.test.ts`).
+
+**Known limits.**
+- The three-photo projection has been tested with synthetic stand-in photos, not real ones.
+- The scanned face is one person's face, fitted to the neutral head.
+- The tongue sits high in the mouth, where MakeHuman puts it.
+- Micro-detail tiles follow hm08's UVs, so stubble hairs stop at the face island's edge under the jaw. The stubble shadow carries on past it.

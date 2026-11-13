@@ -150,7 +150,7 @@ uniform float uAlphaMax;
 uniform vec3 uLayerMask;
 uniform float uDirt;
 uniform float uDitherOuter;
-uniform vec2 uExportTexels; // texels across the map after export: x most of the part, y its head; 0 = no limit
+uniform vec2 uExportTexels; // texels across the map after export: x most of the part, y its head texture; 0 = no limit
 uniform float uPerPixel;
 uniform float uGloss;
 uniform float uShininess;
@@ -187,7 +187,8 @@ varying float vHairLayer;
 // Read the map no sharper than the export (PRD F9). The mip chain stands in for the
 // exported size; when the camera is far enough away, normal mip selection wins.
 vec4 sampleMap(vec2 uv) {
-  float limit = vHead > 0.5 ? uExportTexels.y : uExportTexels.x;
+  // On the head (vHead: head-texture units per hm08 UV unit, F19), the head texture's density there.
+  float limit = vHead > 0.0 ? uExportTexels.y * vHead : uExportTexels.x;
   vec2 size = vec2(textureSize(uMap, 0));
   float side = max(size.x, size.y);
   if (limit <= 0.0 || limit >= side) return texture2D(uMap, uv);

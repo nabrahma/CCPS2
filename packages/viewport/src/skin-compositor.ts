@@ -8,15 +8,23 @@
  *
  * The result stays sRGB-encoded in a plain RGBA8 texture; the PS2 material
  * decodes it (uMapRaw) the same way the GPU decodes sRGB textures.
+ *
+ * Part 2 F19: the same passes can draw the head triangles instead of a
+ * full-screen quad (`into`), each at its head-texture UV and sampling the
+ * layers at its hm08 UV, which composites the stack straight into the head
+ * texture's layout at full resolution. Alpha is then 1 on the triangles and
+ * 0 in the gutters.
  */
 import * as THREE from 'three';
 import type { RgbaImage, ResolvedSkin, ResolvedSkinLayer } from '@ps2cc/core';
 import { BLEND_MODE_ID, MASK_CHANNEL } from '@ps2cc/core';
 
 const vertexShader = /* glsl */ `
-varying vec2 vUv;
+varying vec2 vUv;  // where the layers are sampled (hm08 UV)
+varying vec2 vDst; // where the result is written (the target's UV)
 void main() {
   vUv = uv;
+  vDst = position.xy * 0.5 + 0.5;
   gl_Position = vec4(position.xy, 0.0, 1.0);
 }
 `;
@@ -26,13 +34,16 @@ precision highp float;
 uniform sampler2D uBelow;
 uniform sampler2D uLayer;
 uniform sampler2D uMask;
-uniform int uKind;        // 0 pixels, 1 HSV adjustment, 2 copy the base, 3 copy below
+uniform sampler2D uTile;  // micro-detail tile (REPEAT), kind 4
+uniform float uRepeat;    // tiles across the UV square
+uniform int uKind;        // 0 pixels, 1 HSV adjustment, 2 copy the base, 3 copy below, 4 micro-detail
 uniform int uMode;        // 0 normal, 1 multiply, 2 overlay, 3 screen
 uniform int uMaskChannel; // -1 none, 0 face, 1 body, 2 hands
 uniform float uOpacity;
 uniform float uLayerFlip; // 1: image rows are stored top first (DataTexture)
 uniform vec3 uHsv;        // hue shift (degrees), saturation and value multipliers
 varying vec2 vUv;
+varying vec2 vDst;
 
 float q(float x) { return floor(x * 255.0 + 0.5) / 255.0; }
 vec3 q3(vec3 c) { return floor(c * 255.0 + 0.5) / 255.0; }
@@ -77,7 +88,7 @@ void main() {
     gl_FragColor = vec4(q3(texture2D(uLayer, uLayerFlip > 0.5 ? vec2(vUv.x, 1.0 - vUv.y) : vUv).rgb), 1.0);
     return;
   }
-  vec3 b = texture2D(uBelow, vUv).rgb;
+  vec3 b = texture2D(uBelow, vDst).rgb;
   if (uKind == 3) {
     gl_FragColor = vec4(b, 1.0);
     return;
@@ -92,6 +103,10 @@ void main() {
   if (uKind == 1) {
     s = adjust(b);
     a = 1.0;
+  } else if (uKind == 4) {
+    // Coverage from the region map (rows top first), colour from the tile at full resolution.
+    a = q(texture2D(uLayer, vec2(vUv.x, 1.0 - vUv.y)).a);
+    s = q3(texture2D(uTile, vec2(vUv.x * uRepeat, 1.0 - vUv.y * uRepeat)).rgb);
   } else {
     vec4 l = texture2D(uLayer, uLayerFlip > 0.5 ? vec2(vUv.x, 1.0 - vUv.y) : vUv);
     s = q3(l.rgb);
@@ -113,11 +128,15 @@ export class SkinCompositor {
   private readonly camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
   private readonly material: THREE.ShaderMaterial;
   private readonly quad: THREE.Mesh;
+  private readonly plane: THREE.PlaneGeometry;
+  /** Clear each target before its pass (when drawing triangles rather than the full quad). */
+  private clearEach = false;
   private size = 0;
   private ping: THREE.WebGLRenderTarget | null = null;
   private pong: THREE.WebGLRenderTarget | null = null;
   private out: THREE.WebGLRenderTarget | null = null;
   private readonly pixelTextures = new WeakMap<RgbaImage, THREE.DataTexture>();
+  private readonly tileTextures = new WeakMap<RgbaImage, THREE.DataTexture>();
   private readonly urlTextures = new Map<string, Promise<THREE.Texture | null>>();
   private readonly loader = new THREE.TextureLoader();
   private maskTexture: { image: RgbaImage; texture: THREE.DataTexture } | null = null;
@@ -145,9 +164,12 @@ export class SkinCompositor {
         uOpacity: { value: 1 },
         uLayerFlip: { value: 0 },
         uHsv: { value: new THREE.Vector3(0, 1, 1) },
+        uTile: { value: this.white },
+        uRepeat: { value: 1 },
       },
     });
-    this.quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), this.material);
+    this.plane = new THREE.PlaneGeometry(2, 2);
+    this.quad = new THREE.Mesh(this.plane, this.material);
     this.quad.frustumCulled = false;
     this.scene.add(this.quad);
   }
@@ -161,11 +183,11 @@ export class SkinCompositor {
    * Composite a resolved stack. Loads URL layers first; returns null if the
    * base texture cannot be loaded.
    */
-  async composite(skin: ResolvedSkin): Promise<THREE.Texture | null> {
+  async composite(skin: ResolvedSkin, into?: THREE.BufferGeometry): Promise<THREE.Texture | null> {
     const base = skin.base ? await this.urlTexture(skin.base) : null;
     if (!base) return null;
     const urls = await Promise.all(skin.layers.map((l) => (l.source.kind === 'url' ? this.urlTexture(l.source.url) : Promise.resolve(null))));
-    return this.compositeLoaded(skin.size, { texture: base, flip: false }, skin.layers, urls, skin.masks);
+    return this.compositeLoaded(skin.size, { texture: base, flip: false }, skin.layers, urls, skin.masks, into);
   }
 
   /**
@@ -182,10 +204,13 @@ export class SkinCompositor {
     layers: ResolvedSkinLayer[],
     urlTextures: (THREE.Texture | null)[],
     masks: RgbaImage | null,
+    into?: THREE.BufferGeometry,
   ): THREE.Texture {
     const t0 = performance.now();
     this.ensureTargets(size);
     const r = this.renderer;
+    this.quad.geometry = into ?? this.plane;
+    this.clearEach = Boolean(into);
     const prevTarget = r.getRenderTarget();
     const prevAutoClear = r.autoClear;
     r.autoClear = false;
@@ -214,6 +239,11 @@ export class SkinCompositor {
       if (s.kind === 'adjust') {
         u.uKind!.value = 1;
         (u.uHsv!.value as THREE.Vector3).set(s.hsv.hue, s.hsv.saturation, s.hsv.value);
+      } else if (s.kind === 'detail') {
+        u.uKind!.value = 4;
+        u.uLayer!.value = this.pixelTexture(s.weight);
+        u.uTile!.value = this.tileTexture(s.tile);
+        u.uRepeat!.value = s.repeat;
       } else {
         const tex = s.kind === 'pixels' ? this.pixelTexture(s.image) : urlTextures[i];
         if (!tex) return;
@@ -228,11 +258,14 @@ export class SkinCompositor {
     // Copy into the output target (mipmapped for the material).
     u.uKind!.value = 3;
     u.uLayer!.value = this.white;
+    u.uTile!.value = this.white;
     u.uMask!.value = this.white;
     u.uBelow!.value = src.texture;
     this.pass(this.out!);
     r.setRenderTarget(prevTarget);
     r.autoClear = prevAutoClear;
+    this.quad.geometry = this.plane;
+    this.clearEach = false;
     this.lastStats = { passes: passes + 1, ms: performance.now() - t0 };
     return this.out!.texture;
   }
@@ -261,6 +294,14 @@ export class SkinCompositor {
 
   private pass(target: THREE.WebGLRenderTarget): void {
     this.renderer.setRenderTarget(target);
+    if (this.clearEach) {
+      // Drawing triangles: texels outside them must read as uncovered (alpha 0).
+      const colour = this.renderer.getClearColor(new THREE.Color());
+      const alpha = this.renderer.getClearAlpha();
+      this.renderer.setClearColor(0x000000, 0);
+      this.renderer.clear(true, false, false);
+      this.renderer.setClearColor(colour, alpha);
+    }
     this.renderer.render(this.scene, this.camera);
   }
 
@@ -301,6 +342,24 @@ export class SkinCompositor {
       tex.flipY = false;
       tex.needsUpdate = true;
       this.pixelTextures.set(img, tex);
+    }
+    return tex;
+  }
+
+  /** A micro-detail tile: wraps around (REPEAT), bilinear, no mipmaps (detail.ts sizes it for that). */
+  private tileTexture(img: RgbaImage): THREE.DataTexture {
+    let tex = this.tileTextures.get(img);
+    if (!tex) {
+      tex = new THREE.DataTexture(img.data, img.width, img.height, THREE.RGBAFormat, THREE.UnsignedByteType);
+      tex.colorSpace = THREE.NoColorSpace;
+      tex.minFilter = THREE.LinearFilter;
+      tex.magFilter = THREE.LinearFilter;
+      tex.wrapS = THREE.RepeatWrapping;
+      tex.wrapT = THREE.RepeatWrapping;
+      tex.generateMipmaps = false;
+      tex.flipY = false;
+      tex.needsUpdate = true;
+      this.tileTextures.set(img, tex);
     }
     return tex;
   }

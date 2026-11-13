@@ -1,7 +1,7 @@
 import { useEffect, useId, useMemo, useState, type ReactNode } from 'react';
 import { BLEND_MODES, LAYER_KINDS, layerKind, layerParam, newLayer, PAINTED_LAYER_PREFIX, type BlendMode, type LayerKind, type RegionMask, type SkinLayer } from '@ps2cc/core';
 import { backend, libraryUrl, type LibraryItem } from '../../backend';
-import { cancelPhoto, exportRegionGuide, exportSkinTextures, exportSkinUvTemplate, fitFaceShape, placePhoto } from '../../skin';
+import { applySidePhoto, cancelPhoto, exportRegionGuide, exportSkinTextures, exportSkinUvTemplate, fitFaceShape, placePhoto } from '../../skin';
 import { useStudio, useStudioVersion } from '../../state/hooks';
 import { useUi } from '../../state/ui';
 import { PainterLink } from '../PainterLink';
@@ -185,8 +185,54 @@ function PhotoSection() {
             <input type="checkbox" checked={photo.colourMatch} onChange={(e) => edit('Photo colour match', (p) => void (p.colourMatch = e.target.checked))} />
             Match colour to the skin
           </label>
+          <SidePhotos />
         </>
       )}
+    </div>
+  );
+}
+
+/** Left and right photos for the three-photo projection (Part 2 F19). */
+function SidePhotos() {
+  const studio = useStudio();
+  useStudioVersion();
+  const ui = useUi();
+  const [busy, setBusy] = useState<'left' | 'right' | null>(null);
+  const sides = studio.engine.doc.skin.photo?.sides;
+  const choose = async (side: 'left' | 'right') => {
+    try {
+      const items = await backend.pickAndImport('photos');
+      if (!items[0]) return;
+      setBusy(side);
+      await applySidePhoto(studio, side, libraryUrl(studio.info, items[0].file));
+    } catch (err) {
+      ui.error('Could not use the side photo', err);
+    } finally {
+      setBusy(null);
+    }
+  };
+  const remove = (side: 'left' | 'right') =>
+    studio.engine.update(`Remove ${side} side photo`, (d) => {
+      if (d.skin.photo?.sides) d.skin.photo.sides = { ...d.skin.photo.sides, [side]: null };
+    });
+  return (
+    <div className="side-photos" data-testid="side-photos">
+      <p className="hint">Optional: a left and a right photo (three-quarter views, about 45°) cover the sides of the head. The front photo stays in charge of the eyes and mouth.</p>
+      {(['left', 'right'] as const).map((side) => (
+        <div className="button-row" key={side}>
+          <button disabled={busy !== null} onClick={() => void choose(side)} data-testid={`side-photo-${side}`}>
+            {busy === side ? 'Finding the face…' : sides?.[side] ? `Replace ${side} photo…` : `Add ${side} photo…`}
+          </button>
+          {sides?.[side] && (
+            <>
+              <img className="side-thumb" src={sides[side]!.image} alt={`${side} photo`} />
+              <button className="danger" onClick={() => remove(side)}>
+                Remove
+              </button>
+            </>
+          )}
+        </div>
+      ))}
     </div>
   );
 }

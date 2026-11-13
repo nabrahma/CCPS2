@@ -1,5 +1,6 @@
 /** Loads the compiled core assets the engine needs at startup. */
 import { readJson, type AssetSource } from './io/source';
+import { headLayoutFrom, headLayoutPath, headMeshOf, type HeadLayout, type HeadLayoutFile } from './skin/headpack';
 import { BaseMesh } from './mesh/basemesh';
 import { ModifierSet } from './morph/modifiers';
 import { TargetStore } from './morph/targets';
@@ -110,6 +111,26 @@ export class CoreAssets {
     onProgress?.('catalog');
     const catalog = await readJson<Catalog>(source, 'catalog.json');
     return new CoreAssets(source, base, targets, modifiers, sliders, rig, weights, catalog);
+  }
+
+  private readonly heads = new Map<BodyMeshId, Promise<HeadLayout>>();
+
+  /**
+   * The head texture's UV layout for a PS2 body mesh (Part 2 F19), from
+   * `skin/head/<mesh>.json` (solved here, a few seconds, if it is missing).
+   */
+  headLayout(id: BodyMeshId): Promise<HeadLayout> {
+    let p = this.heads.get(id);
+    if (!p) {
+      p = (async () => {
+        const mesh = await this.bodyMesh(id);
+        if (!mesh) throw new Error(`unknown body mesh ${id}`);
+        const file = await readJson<HeadLayoutFile>(this.source, headLayoutPath(id)).catch(() => null);
+        return headLayoutFrom(this.skinComposer.layout, this.base, headMeshOf(this.skinComposer.layout, mesh), file);
+      })();
+      this.heads.set(id, p);
+    }
+    return p;
   }
 
   private composer: SkinComposer | null = null;

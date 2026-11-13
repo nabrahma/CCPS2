@@ -1,0 +1,93 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:teeth/teeth_shape05",
+ "category": "teeth",
+ "name": "Teeth_Shape05",
+ "uuid": "c6096ff1-46b6-4fdf-b992-49c1bc67f18b",
+ "tags": [
+  "makehuman™"
+ ],
+ "zDepth": 50,
+ "vertexCount": 291,
+ "faceCount": 384,
+ "triangleFaces": 384,
+ "scale": [
+  [
+   15077,
+   15111,
+   0.05002
+  ],
+  [
+   14993,
+   15061,
+   0.03132
+  ],
+  [
+   15061,
+   15068,
+   0.04465
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/teeth/teeth_shape05.jpg",
+  "textureSize": [
+   256,
+   256
+  ]
+ },
+ "decimatedFrom": 3868,
+ "hiddenFaces": "none",
+ "originalTriangles": 7120,
+ "binary": "teeth_shape05.ps2.bin",
+ "byteLength": 30556,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 873
+  },
+  "uvs": {
+   "offset": 3504,
+   "dtype": "f32",
+   "count": 770
+  },
+  "faceVerts": {
+   "offset": 6592,
+   "dtype": "u32",
+   "count": 1536
+  },
+  "faceUvs": {
+   "offset": 12736,
+   "dtype": "u32",
+   "count": 1536
+  },
+  "refVerts": {
+   "offset": 18880,
+   "dtype": "u32",
+   "count": 873
+  },
+  "refWeights": {
+   "offset": 22384,
+   "dtype": "f32",
+   "count": 873
+  },
+  "refOffsets": {
+   "offset": 25888,
+   "dtype": "f32",
+   "count": 873
+  },
+  "sourceProxyVertex": {
+   "offset": 29392,
+   "dtype": "u32",
+   "count": 291
+  }
+ }
+}

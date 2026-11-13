@@ -191,7 +191,7 @@ export function blitResampled(
  * bilinear filtering and mipmaps at island edges do not pull in black.
  * `coverage[i] > 0` marks pixels that hold real colour.
  */
-export function dilateRgb(img: RgbaImage, coverage: Uint8Array, passes: number): void {
+export function dilateRgb(img: RgbaImage, coverage: Uint8Array, passes: number, channels: 3 | 4 = 3): void {
   const { width: w, height: h, data: d } = img;
   let filled = coverage.slice();
   for (let p = 0; p < passes; p++) {
@@ -201,18 +201,18 @@ export function dilateRgb(img: RgbaImage, coverage: Uint8Array, passes: number):
         const i = y * w + x;
         if (filled[i]) continue;
         let n = 0;
-        const acc = [0, 0, 0];
+        const acc = [0, 0, 0, 0];
         for (const [ox, oy] of NEIGHBOURS) {
           const xx = x + ox;
           const yy = y + oy;
           if (xx < 0 || yy < 0 || xx >= w || yy >= h) continue;
           const j = yy * w + xx;
           if (!filled[j]) continue;
-          for (let k = 0; k < 3; k++) acc[k]! += d[j * 4 + k]!;
+          for (let k = 0; k < channels; k++) acc[k]! += d[j * 4 + k]!;
           n++;
         }
         if (n === 0) continue;
-        for (let k = 0; k < 3; k++) d[i * 4 + k] = acc[k]! / n;
+        for (let k = 0; k < channels; k++) d[i * 4 + k] = acc[k]! / n;
         next[i] = 1;
       }
     }

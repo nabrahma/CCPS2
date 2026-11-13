@@ -507,7 +507,7 @@
     "farthestFoldFromMouthRimMm": 7.91,
     "makehumanFullMeshFolds": 22,
     "chinDropMm": 25.44,
-    "lowerTeethDropMm": 26.4
+    "lowerTeethDropMm": 26.14
    }
   },
   {
@@ -521,7 +521,7 @@
     "farthestFoldFromMouthRimMm": 0.08,
     "makehumanFullMeshFolds": 2,
     "chinDropMm": 23.9,
-    "lowerTeethDropMm": 23.48
+    "lowerTeethDropMm": 23.25
    }
   },
   {
@@ -535,7 +535,7 @@
     "farthestFoldFromMouthRimMm": 9.64,
     "makehumanFullMeshFolds": 22,
     "chinDropMm": 26.78,
-    "lowerTeethDropMm": 26.4
+    "lowerTeethDropMm": 26.14
    }
   },
   {
@@ -549,7 +549,7 @@
     "farthestFoldFromMouthRimMm": 9.64,
     "makehumanFullMeshFolds": 22,
     "chinDropMm": 26.78,
-    "lowerTeethDropMm": 26.4
+    "lowerTeethDropMm": 26.14
    }
   },
   {
@@ -563,7 +563,7 @@
     "farthestFoldFromMouthRimMm": 9.64,
     "makehumanFullMeshFolds": 22,
     "chinDropMm": 26.78,
-    "lowerTeethDropMm": 26.4
+    "lowerTeethDropMm": 26.14
    }
   },
   {
@@ -577,7 +577,7 @@
     "farthestFoldFromMouthRimMm": 7.71,
     "makehumanFullMeshFolds": 0,
     "chinDropMm": 23.97,
-    "lowerTeethDropMm": 24.71
+    "lowerTeethDropMm": 24.46
    }
   },
   {
@@ -591,7 +591,7 @@
     "farthestFoldFromMouthRimMm": 0,
     "makehumanFullMeshFolds": 0,
     "chinDropMm": 24.5,
-    "lowerTeethDropMm": 23.69
+    "lowerTeethDropMm": 23.45
    }
   },
   {
@@ -605,7 +605,7 @@
     "farthestFoldFromMouthRimMm": 4.18,
     "makehumanFullMeshFolds": 4,
     "chinDropMm": 23.26,
-    "lowerTeethDropMm": 22.36
+    "lowerTeethDropMm": 22.13
    }
   },
   {
@@ -619,7 +619,7 @@
     "farthestFoldFromMouthRimMm": 8.01,
     "makehumanFullMeshFolds": 12,
     "chinDropMm": 25.75,
-    "lowerTeethDropMm": 27.01
+    "lowerTeethDropMm": 26.74
    }
   }
  ]

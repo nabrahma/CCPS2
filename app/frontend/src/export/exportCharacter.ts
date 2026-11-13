@@ -7,7 +7,7 @@ import { buildExportScene, encodeExportMessage, fbxTime, type ExportScene } from
 import { resolveAssetUrl } from '@ps2cc/viewport';
 import { backend, type ExportResult } from '../backend';
 import { decodeImage, imageToPng } from '../images';
-import { currentSkin } from '../skin';
+import { currentHeadSkin, currentSkin } from '../skin';
 import type { Studio } from '../state/studio';
 import { buildGlb } from './glb';
 
@@ -46,10 +46,12 @@ export async function prepareExport(studio: Studio, opts: Pick<ExportOptions, 'g
   }
   step('Compositing the skin');
   const skin = await currentSkin(studio);
+  const headSkin = await currentHeadSkin(studio, skin);
   step('Building meshes and skeleton');
   const scene = await buildExportScene(studio.scene, {
     loadImage: (url) => decodeImage(resolveAssetUrl(studio.info.coreAssetsUrl, url)),
     skin,
+    headSkin,
     tPose: opts.tPose,
     appVersion: studio.info.version,
     baked: (key) => studio.bakedImage(key),

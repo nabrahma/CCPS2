@@ -1,6 +1,8 @@
 /**
  * Procedural skin layers (PRD F6): dark circles, eye bags, stubble, lips,
- * eyeliner and eyeshadow, blush, freckles, dirt, bruises and sweat.
+ * eyeliner and eyeshadow, blush, freckles, dirt, bruises and sweat; and the
+ * mouth interior's darkening towards the throat and painted eyebrows, the
+ * era-typical alternative to brow geometry (Part 2 F19).
  *
  * Each layer is a function of the neutral surface (position and normal per
  * texel, from SkinLayout.surfaceMap) and the facial features measured on the
@@ -11,7 +13,7 @@
  */
 import type { SkinLayer } from '../character/doc';
 import type { FaceFeatures, Vec3 } from './features';
-import { createImage, type RgbaImage } from './image';
+import { createImage, dilateRgb, type RgbaImage } from './image';
 import { colorParam, numParam } from './layers';
 import type { SurfaceMap } from './layout';
 import { fbm, hash3, smoothstep, spots, valueNoise } from './noise';
@@ -23,9 +25,11 @@ export interface ProceduralContext {
   islandKinds: readonly string[];
   /** Island ids of the main face island and other islands that must not get face makeup. */
   faceIsland: number;
+  /** The mouth interior's island. */
+  mouthIsland: number;
 }
 
-type Shade = (p: Vec3, n: Vec3, out: { a: number; rgb: [number, number, number] | null }) => void;
+type Shade = (p: Vec3, n: Vec3, out: { a: number; rgb: [number, number, number] | null }, island: number) => void;
 
 /** Render a procedural layer into an RGBA image the size of the surface map. */
 export function generateLayer(layer: SkinLayer, ctx: ProceduralContext): RgbaImage {
@@ -33,7 +37,8 @@ export function generateLayer(layer: SkinLayer, ctx: ProceduralContext): RgbaIma
   const { map } = ctx;
   const img = createImage(map.size, map.size);
   if (!isProcedural(layer.kind)) throw new Error(`layer kind ${layer.kind} is not procedural`);
-  const base = colorParam(layer, 'color');
+  // The pores' region map has no colour of its own (only its alpha is used).
+  const base: [number, number, number] = layer.kind === 'pores' ? [128, 128, 128] : colorParam(layer, 'color');
   const p: Vec3 = [0, 0, 0];
   const n: Vec3 = [0, 0, 0];
   const out: { a: number; rgb: [number, number, number] | null } = { a: 0, rgb: null };
@@ -48,22 +53,30 @@ export function generateLayer(layer: SkinLayer, ctx: ProceduralContext): RgbaIma
     n[2] = map.normal[t * 3 + 2]!;
     out.a = 0;
     out.rgb = null;
-    shade(p, n, out);
+    shade(p, n, out, map.island[t]!);
     const c = out.rgb ?? base;
     img.data[t * 4] = c[0];
     img.data[t * 4 + 1] = c[1];
     img.data[t * 4 + 2] = c[2];
     img.data[t * 4 + 3] = Math.round(Math.min(1, Math.max(0, out.a)) * 255);
   }
-  // Colour outside the islands too, so bilinear filtering at island edges keeps the layer colour.
+  // Carry colour and coverage a few texels past the island edges, so bilinear filtering (and the
+  // composite's 2x upsampling) does not fade the layer along every UV seam; the gutters are not
+  // drawn on the mesh, so this only affects the edge texels' filtering.
+  const edge = Uint8Array.from(map.coverage);
+  dilateRgb(img, edge, GUTTER_TEXELS, 4);
+  // Colour further out too, so filtering keeps the layer colour everywhere.
   for (let t = 0; t < total; t++) {
-    if (map.coverage[t]) continue;
+    if (map.coverage[t] || img.data[t * 4 + 3]! > 0) continue;
     img.data[t * 4] = base[0];
     img.data[t * 4 + 1] = base[1];
     img.data[t * 4 + 2] = base[2];
   }
   return img;
 }
+
+/** Texels the layers' colour and coverage reach past the island edges. */
+const GUTTER_TEXELS = 3;
 
 /** True for procedural kinds (generated from the surface). */
 export function isProcedural(kind: SkinLayer['kind']): boolean {
@@ -84,6 +97,29 @@ function shaderFor(layer: SkinLayer, ctx: ProceduralContext): Shade {
   const mouth = f.mouth;
   const seed = layer.params.seed !== undefined ? numParam(layer, 'seed') : 1;
   const onFace = (p: Vec3) => p[1] > f.chin[1] - 0.06 * k && p[2] > f.neck[2] - 0.01 * k;
+  const mx = mouth.centre;
+  // The beard area (stubble, stubble hairs): 0..1, `fullness` 0 = goatee and moustache, 1 = full beard.
+  const beard = (p: Vec3, fullness: number): number => {
+    if (!onFace(p)) return 0;
+    const ax = Math.abs(p[0]);
+    // Cheek line from the mouth corner up to the sideburn; the beard is below it.
+    const t = smoothstep(mouth.halfWidth, mouth.halfWidth + 0.05 * k, ax);
+    const lineY = mx[1] + 0.012 * k + t * (0.045 * k);
+    let w = 1 - smoothstep(lineY - 0.004 * k, lineY + 0.004 * k, p[1]);
+    // Moustache: up to just under the nose.
+    if (ax < mouth.halfWidth * 1.3) w = Math.max(w, 1 - smoothstep(f.noseTip[1] - 0.02 * k, f.noseTip[1] - 0.012 * k, p[1]));
+    // Not on the lips.
+    const lip = gauss(p[0] - mx[0], p[1] - (mx[1] - 0.001 * k), 0, mouth.halfWidth * 1.05, 0.0085 * k, 1);
+    w *= 1 - smoothstep(0.35, 0.7, lip);
+    // Under the jaw it fades out towards the Adam's apple.
+    w *= smoothstep(f.chin[1] - 0.035 * k, f.chin[1] - 0.01 * k, p[1]);
+    // Behind the sideburns it stops.
+    w *= smoothstep(f.neck[2] - 0.005 * k, f.neck[2] + 0.025 * k, p[2]);
+    // Not on the ears (out at the side and well back from the jaw line).
+    w *= 1 - smoothstep(0.068 * k, 0.075 * k, ax) * (1 - smoothstep(0.05 * k, 0.065 * k, p[2] - f.neck[2]));
+    const reach = mouth.halfWidth * 1.4 + fullness * 0.08 * k;
+    return w * (1 - smoothstep(reach * 0.8, reach, ax));
+  };
   switch (layer.kind) {
     case 'darkCircles': {
       const size = numParam(layer, 'size');
@@ -121,26 +157,8 @@ function shaderFor(layer: SkinLayer, ctx: ProceduralContext): Shade {
       const fullness = numParam(layer, 'fullness');
       const shadow = numParam(layer, 'shadow');
       const cell = 0.0006 * k;
-      const mx = mouth.centre;
       return (p, n, o) => {
-        if (!onFace(p)) return;
-        const ax = Math.abs(p[0]);
-        // Cheek line from the mouth corner up to the sideburn; the beard is below it.
-        const t = smoothstep(mouth.halfWidth, mouth.halfWidth + 0.05 * k, ax);
-        const lineY = mx[1] + 0.012 * k + t * (0.045 * k);
-        let w = 1 - smoothstep(lineY - 0.004 * k, lineY + 0.004 * k, p[1]);
-        // Moustache: up to just under the nose.
-        if (ax < mouth.halfWidth * 1.3) w = Math.max(w, 1 - smoothstep(f.noseTip[1] - 0.02 * k, f.noseTip[1] - 0.012 * k, p[1]));
-        // Not on the lips.
-        const lip = gauss(p[0] - mx[0], p[1] - (mx[1] - 0.001 * k), 0, mouth.halfWidth * 1.05, 0.0085 * k, 1);
-        w *= 1 - smoothstep(0.35, 0.7, lip);
-        // Under the jaw it fades out towards the Adam's apple.
-        w *= smoothstep(f.chin[1] - 0.035 * k, f.chin[1] - 0.01 * k, p[1]);
-        // Behind the sideburns it stops.
-        w *= smoothstep(f.neck[2] - 0.005 * k, f.neck[2] + 0.025 * k, p[2]);
-        // Coverage: 0 = goatee and moustache only, 1 = full beard area.
-        const reach = mouth.halfWidth * 1.4 + fullness * 0.08 * k;
-        w *= 1 - smoothstep(reach * 0.8, reach, ax);
+        const w = beard(p, fullness);
         if (w <= 0.001) return;
         const hair = valueNoise(p[0] / cell, p[1] / cell, p[2] / cell, seed) < density ? 1 : 0;
         const patch = 0.75 + 0.25 * fbm(p[0] / (0.012 * k), p[1] / (0.012 * k), p[2] / (0.012 * k), seed + 7, 2);
@@ -245,6 +263,96 @@ function shaderFor(layer: SkinLayer, ctx: ProceduralContext): Shade {
         for (let i = 0; i < 3; i++) rgb[i] = Math.round(centre[i]! + (rim[i]! - centre[i]!) * m);
         o.a = best;
         o.rgb = rgb;
+      };
+    }
+    case 'brows': {
+      // Shaped on MakeHuman's eyebrow001 over the neutral eyes: in units of the eye opening's half
+      // width (s, along, outwards positive) and half height (height above the eye centre).
+      const thick = numParam(layer, 'thickness');
+      const arch = numParam(layer, 'arch');
+      const density = numParam(layer, 'density');
+      return (p, n, o) => {
+        let a = 0;
+        for (const e of [eyeL, eyeR]) {
+          const side = Math.sign(e.centre[0]);
+          const s = ((p[0] - e.centre[0]) / e.halfWidth) * side;
+          if (s < -2.6 || s > 2.9 || Math.abs(p[2] - e.centre[2] - 0.006 * k) > 0.02 * k) continue;
+          const h = (p[1] - e.centre[1]) / e.halfHeight;
+          const bend = s < 0.4 ? 0.22 * (s - 0.4) ** 2 : 0.55 * (s - 0.4) ** 2;
+          const centre = 8.9 - arch * bend + (1 - arch) * 0.3 * (s - 0.4);
+          const half = Math.max(0.25, (1.35 - 0.2 * (s + 2)) * thick);
+          const across = Math.abs(h - centre) / half;
+          const shape = (1 - smoothstep(0.55, 1.15, across)) * smoothstep(-2.25, -1.85, s) * (1 - smoothstep(1.9, 2.5, s));
+          if (shape <= 0) continue;
+          // Hair strokes: inner hairs point up, the rest lean outwards along the brow.
+          const lean = 0.25 + 1.05 * smoothstep(-1.8, 0.6, s);
+          const cx = (p[0] - e.centre[0]) * side;
+          const cy = p[1] - e.centre[1];
+          const along = cx * Math.sin(lean) + cy * Math.cos(lean);
+          const acrossHair = cx * Math.cos(lean) - cy * Math.sin(lean);
+          // Strokes about a texel across at the layer's 1024 px (D-036), several long.
+          const strand = valueNoise(acrossHair / (0.0009 * k), along / (0.005 * k), side, seed + 41);
+          const hair = smoothstep(0.42, 0.78, strand);
+          a = Math.max(a, shape * (1 - 0.6 * density + 0.6 * density * hair) * (0.8 + 0.2 * (1 - across)));
+        }
+        o.a = a * front(n);
+      };
+    }
+    case 'pores': {
+      // Region strength for the pore tile (detail.ts): strongest on the nose, then the cheeks,
+      // lighter on the forehead and the rest of the face, none on the eyelids and lips, faint on the body.
+      const nose = numParam(layer, 'nose');
+      const cheeks = numParam(layer, 'cheeks');
+      const forehead = numParam(layer, 'forehead');
+      const body = numParam(layer, 'body');
+      const eyeY = (eyeL.centre[1] + eyeR.centre[1]) / 2;
+      return (p, _n, o, island) => {
+        if (island !== ctx.faceIsland) {
+          o.a = ctx.islandKinds[island] === 'head' ? 0 : body;
+          return;
+        }
+        let w = 0.6 * cheeks;
+        // Forehead: above the brows, fading in over a couple of centimetres.
+        w = Math.max(w, forehead * smoothstep(eyeY + 0.012 * k, eyeY + 0.03 * k, p[1]));
+        for (const e of [eyeL, eyeR]) {
+          const side = Math.sign(e.centre[0]);
+          const cheek = gauss(p[0] - (e.centre[0] + side * 0.006 * k), p[1] - (f.noseTip[1] + 0.004 * k), p[2] - (e.centre[2] - 0.01 * k), 0.028 * k, 0.026 * k, 0.04 * k);
+          w = Math.max(w, cheeks * (0.6 + 0.4 * cheek));
+        }
+        const noseW = gauss(p[0], p[1] - (f.noseTip[1] + 0.012 * k), p[2] - (f.noseTip[2] - 0.012 * k), 0.017 * k, 0.026 * k, 0.03 * k);
+        w = Math.max(w, nose * smoothstep(0.2, 0.7, noseW));
+        // None on the lids (around each eye opening) or the lips.
+        for (const e of [eyeL, eyeR]) {
+          const lid = gauss(p[0] - e.centre[0], p[1] - e.centre[1], 0, e.halfWidth * 1.9, e.halfHeight * 3.5, 1);
+          w *= 1 - smoothstep(0.2, 0.6, lid);
+        }
+        const lip = gauss(p[0] - mx[0], p[1] - (mx[1] - 0.001 * k), 0, mouth.halfWidth * 1.35, 0.011 * k, 1);
+        w *= 1 - smoothstep(0.15, 0.5, lip);
+        // The scalp and the back of the head (under hair) get the body's strength.
+        const back = 1 - smoothstep(f.neck[2] - 0.01 * k, f.neck[2] + 0.03 * k, p[2]);
+        const top = smoothstep(eyeY + 0.06 * k, eyeY + 0.09 * k, p[1]);
+        const away = Math.max(back, top);
+        o.a = w * (1 - away) + body * away;
+      };
+    }
+    case 'stubbleHair': {
+      // Region strength for the stubble-hair tile (detail.ts): the beard area.
+      const fullness = numParam(layer, 'fullness');
+      return (p, n, o, island) => {
+        // The face island only: elsewhere hm08's UVs are too stretched for the tile (it streaks), and
+        // the stubble layer's own shadow carries on under the jaw.
+        if (island !== ctx.faceIsland) return;
+        // Fading out under the jaw (facing down), where the face island's UVs compress towards its edge.
+        o.a = beard(p, fullness) * (1 - smoothstep(0.15, 0.55, -n[1]));
+      };
+    }
+    case 'mouth': {
+      // Dark towards the throat: 0 at the lip line, full at `depth` behind it, on the mouth interior only.
+      const depth = (numParam(layer, 'depth') / 100) * k;
+      const lip = mouth.centre[2];
+      return (p, _n, o, island) => {
+        if (island !== ctx.mouthIsland) return;
+        o.a = smoothstep(0.002 * k, depth, lip - p[2]);
       };
     }
     case 'sweat': {

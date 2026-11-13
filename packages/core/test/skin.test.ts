@@ -23,7 +23,7 @@ import {
   checkPhoto,
   compositeReference,
   createImage,
-  cropHeadTexture,
+  headTexture,
   delaunay,
   headAngles,
   labStats,
@@ -31,11 +31,9 @@ import {
   labTransfer,
   LAYER_KINDS,
   newLayer,
-  packHead,
   PiecewiseAffine,
   projectPhoto,
   rasterTriangle,
-  remapHeadUv,
   rgbToLab,
   sampleBilinear,
   sanitiseSkin,
@@ -239,47 +237,41 @@ describe.skipIf(!assetsAvailable)('skin layout and head split on hm08', () => {
   });
 
   for (const tier of ['ps2_body_8k', 'ps2_body_10k', 'ps2_body_12k'] as const) {
-    it(`${tier}: head UVs remap inside 0..1, islands do not overlap, every triangle has one material`, async () => {
+    it(`${tier}: head UVs inside 0..1, islands do not overlap, nothing turns over, every triangle has one material`, async () => {
       const mesh = await assets.bodyMesh(tier)!;
-      const packing = packHead(composer.layout, 1024, 8);
-      const split = splitBody(mesh, composer.layout, packing);
+      const split = splitBody(mesh, composer.layout, await assets.headLayout(tier));
       expect(split.headIndices.length + split.bodyIndices.length).toBe(mesh.indices.length);
       expect(split.headIndices.length).toBeGreaterThan(1000 * 3);
-      for (let i = 0; i < split.isHead.length; i++) {
-        if (!split.isHead[i]) continue;
+      for (let i = 0; i < split.headDensity.length; i++) {
+        if (!split.headDensity[i]) continue;
         expect(split.uvs[i * 2]).toBeGreaterThanOrEqual(0);
         expect(split.uvs[i * 2]).toBeLessThanOrEqual(1);
         expect(split.uvs[i * 2 + 1]).toBeGreaterThanOrEqual(0);
         expect(split.uvs[i * 2 + 1]).toBeLessThanOrEqual(1);
       }
-      // Packed rectangles are disjoint.
-      const r = packing.islands.map((p) => p.dst);
-      for (let a = 0; a < r.length; a++)
-        for (let b = a + 1; b < r.length; b++) {
-          const ra = r[a]!;
-          const rb = r[b]!;
-          const disjoint = ra[2] <= rb[0] || rb[2] <= ra[0] || ra[3] <= rb[1] || rb[3] <= ra[1];
-          expect(disjoint).toBe(true);
-        }
-      // Rasterised head triangles in the head texture never hit another island's rectangle.
+      // Rasterised head triangles in the head texture never hit another island's texels,
+      // and none folds over (every winding is positive, F19).
       const size = 1024;
       const owner = new Int16Array(size * size).fill(-1);
       let clashes = 0;
+      let turned = 0;
+      const area = (uv: ArrayLike<number>, c: number[]) =>
+        (uv[c[1]! * 2]! - uv[c[0]! * 2]!) * (uv[c[2]! * 2 + 1]! - uv[c[0]! * 2 + 1]!) - (uv[c[2]! * 2]! - uv[c[0]! * 2]!) * (uv[c[1]! * 2 + 1]! - uv[c[0]! * 2 + 1]!);
       for (let t = 0; t < split.headIndices.length; t += 3) {
         const c = [split.headIndices[t]!, split.headIndices[t + 1]!, split.headIndices[t + 2]!];
         const island = composer.layout.islandsOfCorner(mesh.sourceVertex[c[0]!]!, mesh.uvs[c[0]! * 2]!, mesh.uvs[c[0]! * 2 + 1]!)[0]!;
+        if (!(area(split.uvs, c) > 0)) turned++;
         rasterTriangle(size, c.map((v) => split.uvs[v * 2]! * size), c.map((v) => (1 - split.uvs[v * 2 + 1]!) * size), (texel) => {
           if (owner[texel] === -1) owner[texel] = island;
           else if (owner[texel] !== island) clashes++;
         });
       }
       expect(clashes).toBe(0);
-      // The head gets more texels per UV unit than the 1024 body texture.
-      expect(packing.scale).toBeGreaterThan(1.3);
+      expect(turned).toBe(0);
     });
   }
 
-  it('the head texture crop carries the composite texels to the remapped UVs', () => {
+  it('the head texture carries the composite texels to the head UVs', async () => {
     // Composite whose colour encodes its own UV.
     const size = 512;
     const comp = createImage(size, size);
@@ -289,21 +281,16 @@ describe.skipIf(!assetsAvailable)('skin layout and head split on hm08', () => {
         const v = 1 - (y + 0.5) / size;
         comp.data.set([Math.round(u * 255), Math.round(v * 255), 0, 255], (y * size + x) * 4);
       }
-    const packing = packHead(composer.layout, 512, 8);
-    const head = cropHeadTexture(comp, packing);
+    const head = await assets.headLayout('ps2_body_12k');
+    const tex = headTexture(comp, head, 1024);
     const out = [0, 0, 0, 0];
     let worst = 0;
-    const uv = assets.base.uvs;
-    for (const p of packing.islands) {
-      const tris = composer.layout.trianglesOf((i) => i.id === p.island);
-      for (let k = 0; k < tris.length; k += 17) {
-        const t = tris[k]!;
-        const u = (uv[t.uvs[0] * 2]! + uv[t.uvs[1] * 2]! + uv[t.uvs[2] * 2]!) / 3;
-        const v = (uv[t.uvs[0] * 2 + 1]! + uv[t.uvs[1] * 2 + 1]! + uv[t.uvs[2] * 2 + 1]!) / 3;
-        const [hu, hv] = remapHeadUv(p, packing.scale, u, v);
-        sampleBilinear(head, hu, hv, out);
-        worst = Math.max(worst, Math.abs(out[0]! / 255 - u), Math.abs(out[1]! / 255 - v));
-      }
+    const uv = head.mesh.uvs;
+    for (let k = 0; k < head.mesh.triangles.length; k += 17) {
+      const t = head.mesh.triangles[k]!;
+      const at = (src: ArrayLike<number>, d: number) => (src[t.corners[0] * 2 + d]! + src[t.corners[1] * 2 + d]! + src[t.corners[2] * 2 + d]!) / 3;
+      sampleBilinear(tex, at(head.uv, 0), at(head.uv, 1), out);
+      worst = Math.max(worst, Math.abs(out[0]! / 255 - at(uv, 0)), Math.abs(out[1]! / 255 - at(uv, 1)));
     }
     // Within 2 levels of the 8-bit UV encoding.
     expect(worst).toBeLessThan(2.5 / 255);

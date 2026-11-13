@@ -6,10 +6,9 @@ import {
   bodyTexture,
   anglesFromMatrix,
   checkPhoto,
-  cropHeadTexture,
   faceFeatures,
   fitFaceToPhoto,
-  packHead,
+  headTexture,
   regionGuide,
   renderUvTemplate,
   type PhotoCheck,
@@ -48,6 +47,27 @@ export async function applyPhoto(studio: Studio, url: string, cancelled: () => b
     };
   });
   return check;
+}
+
+/**
+ * A side photo for the three-photo projection (Part 2 F19): its landmarks are
+ * found and it is blended with the front photo, which must be placed first.
+ * Three-quarter views (about 30 to 50 degrees) work best: MediaPipe does not
+ * find faces in full profile.
+ */
+export async function applySidePhoto(studio: Studio, side: 'left' | 'right', url: string): Promise<void> {
+  if (!studio.engine.doc.skin.photo) throw new Error('Place a front photo first.');
+  const img = await loadImageElement(url);
+  const found = await detectLandmarks(studio.info.coreAssetsUrl, img);
+  if (!found) throw new Error('No face was found in the side photo. Use a three-quarter view (about 45 degrees) with both eyes visible.');
+  studio.engine.update(`${side === 'left' ? 'Left' : 'Right'} side photo`, (d) => {
+    if (!d.skin.photo) return;
+    d.skin.photo.sides = {
+      ...(d.skin.photo.sides ?? {}),
+      [side]: { image: url, landmarks: found.points.map((x) => Math.round(x * 1e6) / 1e6), width: found.width, height: found.height },
+    };
+  });
+  await studio.settled();
 }
 
 let photoRun = 0;
@@ -126,6 +146,19 @@ export async function currentSkin(studio: Studio): Promise<RgbaImage> {
   return decodeImage(resolveAssetUrl(studio.info.coreAssetsUrl, base));
 }
 
+/**
+ * The skin composited straight into the head texture's layout (Part 2 F19),
+ * at the composite's size; resampled from the composite when the viewport
+ * cannot draw it.
+ */
+export async function currentHeadSkin(studio: Studio, composite?: RgbaImage): Promise<RgbaImage> {
+  await studio.settled();
+  const head = await studio.viewport?.headComposite();
+  if (head) return head;
+  const layout = await studio.assets.headLayout(studio.engine.doc.bodyMesh);
+  return headTexture(composite ?? (await currentSkin(studio)), layout, SKIN_TEMPLATE_SIZE);
+}
+
 /** Skin UV template: the hm08 body UV wireframe over the current skin, 2048 px (the composite size). */
 export async function exportSkinUvTemplate(studio: Studio): Promise<string> {
   const size = SKIN_TEMPLATE_SIZE;
@@ -183,8 +216,8 @@ export async function exportSkinTextures(studio: Studio): Promise<string[]> {
   const doc = studio.engine.doc;
   const skin = await currentSkin(studio);
   const composite = skin.width === SKIN_TEMPLATE_SIZE ? skin : resize(skin, SKIN_TEMPLATE_SIZE);
-  const packing = packHead(studio.assets.skinComposer.layout, doc.export.headTexture);
-  const head = cropHeadTexture(composite, packing, doc.export.headTexture);
+  const headSkin = await currentHeadSkin(studio, composite);
+  const head = headSkin.width === doc.export.headTexture ? headSkin : resize(headSkin, doc.export.headTexture);
   const body = bodyTexture(composite, doc.export.bodyTexture);
   const name = doc.name || 'Character';
   return [

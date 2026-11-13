@@ -4,7 +4,7 @@
  * mesh. The viewport renders it; the exporters (M7) will read the same data.
  * Pure TypeScript: no DOM, no Three.js.
  */
-import { wantsScalpLayer, type CharacterDoc, type GarmentSlot, type Tint } from '../character/doc';
+import { wantsScalpLayer, type CharacterDoc, type GarmentSlot, type SidePhoto, type Tint } from '../character/doc';
 import { hashSeed } from '../random';
 import type { CharacterEngine } from '../character/engine';
 import { computeQuadNormals, computeTriangleNormals } from '../mesh/normals';
@@ -29,7 +29,10 @@ import { buildRenderTopology, gather3, type RenderTopology } from './render-mesh
 import type { ResolvedSkin } from '../skin/compose';
 import type { RgbaImage } from '../skin/image';
 import { projectPhoto, type LandmarkTable } from '../skin/photo/project';
-import { packHead, splitBody } from '../skin/headsplit';
+import { projectPhotos, type PhotoView } from '../skin/photo/multiview';
+import { splitBody } from '../skin/headsplit';
+import type { EyeLook } from '../eyes/eye-texture';
+import type { HeadLayout } from '../skin/headpack';
 import { blendVolumeNormals } from '../hair/cards-from-curves';
 import { atlasCellTexels } from '../export/limits';
 
@@ -63,6 +66,11 @@ export interface PartMaterial {
   volumeNormals?: boolean;
   /** Body only: the skin layer stack to composite (PRD F6); null means just `texture`. */
   skin?: ResolvedSkin | null;
+  /**
+   * Eyes, Part 2 F19: a generated eye texture (eyeTexture) instead of `texture`,
+   * with the catch-light painted in when lighting is per vertex (Classic).
+   */
+  eye?: { look: EyeLook; catchLight: boolean };
 }
 
 export interface SceneOptions {
@@ -79,6 +87,8 @@ interface PhotoState {
   spec: string;
   photo: RgbaImage;
   baseSkin: RgbaImage | null;
+  /** Side photos (Part 2 F19), with their landmarks. */
+  sides: PhotoView[];
   table: LandmarkTable;
   layer: RgbaImage | null;
   /** Bumped per projection (texture cache key). */
@@ -158,7 +168,7 @@ const NEUTRAL: Tint = { color: [1, 1, 1], brightness: 1 };
 const DELETE_MAJORITY = 2;
 
 export class CharacterScene {
-  private body: { part: ScenePart; mesh: Ps2BodyMesh | null; fullIndices: Uint32Array; headTriangles: number } | null = null;
+  private body: { part: ScenePart; mesh: Ps2BodyMesh | null; head: HeadLayout | null; fullIndices: Uint32Array; headTriangles: number } | null = null;
   private bodyMeshId: string | null = null;
   private proxies = new Map<string, ProxyPart>();
   private syncedFor: string | null = null;
@@ -479,12 +489,26 @@ export class CharacterScene {
     const load = this.options.loadImage;
     if (p && p.landmarks && load) {
       const base = this.baseSkinTexture(doc);
-      const spec = JSON.stringify([p.image, p.landmarks, p.colourMatch, base]);
+      const sides = [p.sides?.left ?? null, p.sides?.right ?? null].filter((x): x is SidePhoto => x !== null);
+      const spec = JSON.stringify([p.image, p.landmarks, p.colourMatch, base, sides]);
       if (this.photo?.spec !== spec) {
         const table = await this.engine.assets.landmarkTable();
         if (!table) throw new Error('the face landmark table is missing from assets/core (run pnpm build:landmarks)');
-        const [photo, baseSkin] = await Promise.all([load(p.image), p.colourMatch && base ? load(base) : Promise.resolve(null)]);
-        this.photo = { spec, photo, baseSkin, table, layer: null, key: (this.photo?.key ?? 0) + 1, projectedFor: null };
+        const [photo, baseSkin, ...sidePhotos] = await Promise.all([
+          load(p.image),
+          p.colourMatch && base ? load(base) : Promise.resolve(null),
+          ...sides.map((s) => load(s.image)),
+        ]);
+        this.photo = {
+          spec,
+          photo: photo!,
+          baseSkin,
+          sides: sides.map((s, i) => ({ photo: sidePhotos[i]!, landmarks: s.landmarks })),
+          table,
+          layer: null,
+          key: (this.photo?.key ?? 0) + 1,
+          projectedFor: null,
+        };
         this.reprojectPhoto(true);
       }
     } else {
@@ -512,15 +536,25 @@ export class CharacterScene {
       for (let i = 0; i < now.length; i++) moved = Math.max(moved, Math.abs(now[i]! - ph.projectedFor[i]!));
       if (moved < 1e-4) return false;
     }
-    const result = projectPhoto({
-      layout: this.engine.assets.skinComposer.layout,
-      table: ph.table,
-      positions: pos,
-      normals: this.engine.normals,
-      photo: ph.photo,
-      landmarks: lm,
-      baseSkin: ph.baseSkin,
-    });
+    // With side photos, the three-photo projection (Part 2 F19); the front photo alone keeps F7's.
+    const result = ph.sides.length
+      ? projectPhotos({
+          layout: this.engine.assets.skinComposer.layout,
+          table: ph.table,
+          positions: pos,
+          normals: this.engine.normals,
+          views: [{ photo: ph.photo, landmarks: lm }, ...ph.sides],
+          baseSkin: ph.baseSkin,
+        })
+      : projectPhoto({
+          layout: this.engine.assets.skinComposer.layout,
+          table: ph.table,
+          positions: pos,
+          normals: this.engine.normals,
+          photo: ph.photo,
+          landmarks: lm,
+          baseSkin: ph.baseSkin,
+        });
     ph.layer = result.image;
     ph.key++;
     ph.projectedFor = now;
@@ -589,14 +623,15 @@ export class CharacterScene {
   /**
    * Texels across this part's whole texture once exported (PRD F9: previews
    * are no sharper than the export). `head` applies to head vertices, which
-   * get their own texture.
+   * get their own texture: its size, scaled per vertex by the head layout's
+   * density (bodyHeadDensity).
    */
   exportTexels(part: ScenePart): { texels: number; head: number } {
     const doc = this.engine.doc;
     const count = (...kinds: PartKind[]) => this.parts.filter((p) => kinds.includes(p.kind)).length;
     switch (part.kind) {
       case 'body':
-        return { texels: doc.export.bodyTexture, head: this.headDensity(doc.export.headTexture) };
+        return { texels: doc.export.bodyTexture, head: doc.export.headTexture };
       case 'hair':
         return { texels: doc.export.hairTexture, head: doc.export.hairTexture };
       case 'garment': {
@@ -610,30 +645,26 @@ export class CharacterScene {
     }
   }
 
-  private headDensityCache = new Map<number, number>();
+  private headDensityCache: { indices: Uint32Array; density: Float32Array } | null = null;
 
-  /** The head texture holds the head islands at one uniform scale; texels per hm08 UV unit. */
-  private headDensity(size: number): number {
-    let d = this.headDensityCache.get(size);
-    if (d === undefined) {
-      d = packHead(this.engine.assets.skinComposer.layout, size).scale * size;
-      this.headDensityCache.set(size, d);
-    }
-    return d;
+  /** The head texture's layout for the body mesh shown (Part 2 F19), or null before it is loaded. */
+  get bodyHeadLayout(): HeadLayout | null {
+    return this.body?.head ?? null;
   }
 
-  private headFlagCache: { indices: Uint32Array; flags: Float32Array } | null = null;
-
-  /** Per render vertex of the body: 1 on the head material, 0 on the body. Null before the PS2 body is loaded. */
-  bodyHeadFlags(): Float32Array | null {
+  /**
+   * Per render vertex of the body: head-texture units per hm08 UV unit on the
+   * head material (Part 2 F19 head layout), 0 on the body. Null before the PS2
+   * body is loaded.
+   */
+  bodyHeadDensity(): Float32Array | null {
     const body = this.body;
-    if (!body?.mesh) return null;
-    if (this.headFlagCache?.indices !== body.fullIndices) {
-      const layout = this.engine.assets.skinComposer.layout;
-      const split = splitBody({ sourceVertex: this.bodySourceVertices!, uvs: body.part.uvs, indices: body.fullIndices }, layout, packHead(layout));
-      this.headFlagCache = { indices: body.fullIndices, flags: Float32Array.from(split.isHead) };
+    if (!body?.mesh || !body.head) return null;
+    if (this.headDensityCache?.indices !== body.fullIndices) {
+      const split = splitBody({ sourceVertex: this.bodySourceVertices!, uvs: body.part.uvs, indices: body.fullIndices }, this.engine.assets.skinComposer.layout, body.head);
+      this.headDensityCache = { indices: body.fullIndices, density: split.headDensity };
     }
-    return this.headFlagCache.flags;
+    return this.headDensityCache.density;
   }
 
   influences(key: string): InfluenceTable | null {
@@ -930,8 +961,10 @@ export class CharacterScene {
     let uvs: Float32Array;
     let indices: Uint32Array;
     let headTriangles = 0;
+    let head: HeadLayout | null = null;
     if (meshPromise) {
       mesh = await meshPromise;
+      head = await assets.headLayout(doc.bodyMesh);
       uvs = mesh.uvs;
       indices = mesh.indices;
       const headRegions = new Set(['head', 'face', 'opening'].map((r) => mesh!.meta.regions.indexOf(r)));
@@ -947,6 +980,7 @@ export class CharacterScene {
     const n = uvs.length / 2;
     this.body = {
       mesh,
+      head,
       fullIndices: indices,
       headTriangles,
       part: {
@@ -1187,15 +1221,29 @@ function wantedProxies(doc: Readonly<CharacterDoc>, has: (id: string) => boolean
   const solid = (tint?: Tint): PartMaterial => ({ texture: null, tint: tint ?? NEUTRAL, alphaCutout: false, alphaThreshold: 0.5,
     doubleSided: false, dirt: 0 });
   if (doc.eyes.asset && has(doc.eyes.asset)) {
-    out.push({ key: 'eyes', kind: 'eyes', assetId: doc.eyes.asset, material: { ...solid(doc.eyes.tint), texture: doc.eyes.texture ?? null } });
+    const look = doc.eyes.look;
+    out.push({
+      key: 'eyes',
+      kind: 'eyes',
+      assetId: doc.eyes.asset,
+      material: {
+        ...solid(doc.eyes.tint),
+        texture: look ? null : (doc.eyes.texture ?? null),
+        ...(look ? { eye: { look, catchLight: doc.export.lighting === 'vertex' } } : {}),
+      },
+    });
   }
   if (doc.eyebrows.asset && has(doc.eyebrows.asset)) {
     out.push({ key: 'eyebrows', kind: 'eyebrows', assetId: doc.eyebrows.asset, material: cutout(doc.eyebrows.tint, densityThreshold(doc.eyebrows.opacity)) });
   }
   if (doc.eyelashes.asset && has(doc.eyelashes.asset)) {
-    out.push({ key: 'eyelashes', kind: 'eyelashes', assetId: doc.eyelashes.asset, material: cutout(doc.eyelashes.tint, densityThreshold(doc.eyelashes.opacity)) });
+    // Part 2 F19: lashes with soft alpha (two-pass, D-109). (Brow meshes keep the cutout: their cards' faint
+    // background would show as a band.)
+    out.push({ key: 'eyelashes', kind: 'eyelashes', assetId: doc.eyelashes.asset, material: { ...cutout(doc.eyelashes.tint, densityThreshold(doc.eyelashes.opacity)), softAlpha: true } });
   }
-  if (doc.teeth?.asset && has(doc.teeth.asset)) out.push({ key: 'teeth', kind: 'teeth', assetId: doc.teeth.asset, material: solid() });
+  // Teeth are decimated hard (Part 2 F19) and may keep a few inward-facing slivers: drawn double-sided.
+  if (doc.teeth?.asset && has(doc.teeth.asset)) out.push({ key: 'teeth', kind: 'teeth', assetId: doc.teeth.asset, material: { ...solid(), doubleSided: true } });
+  if (doc.tongue?.asset && has(doc.tongue.asset)) out.push({ key: 'tongue', kind: 'teeth', assetId: doc.tongue.asset, material: solid() });
   for (const g of doc.garments) {
     if (!has(g.asset)) continue;
     out.push({

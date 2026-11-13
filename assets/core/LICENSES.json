@@ -1,6 +1,6 @@
 {
  "format": "ps2cc.licenses/1",
- "policy": "Art and data: only CC0-1.0 and CC-BY-4.0 (with attribution). Bundled runtime software: Apache-2.0 with its notice (vendor/).",
+ "policy": "Art and data: only CC0-1.0, CC-BY-4.0 and CC-BY-3.0 (with attribution). Bundled runtime software: Apache-2.0 with its notice (vendor/).",
  "files": [
   {
    "file": "basemesh/hm08.bin",
@@ -7791,6 +7791,28 @@
    "bytes": 1333
   },
   {
+   "file": "proxies/teeth/teeth_base.ps2.bin",
+   "asset": "mh:teeth/teeth_base",
+   "licence": "CC0-1.0",
+   "author": "makehuman_system (decimated by PS2CC)",
+   "sourceUrl": "http://www.makehumancommunity.org",
+   "upstream": "makehuman_system_assets",
+   "attributionRequired": false,
+   "sha256": "614daa2cee5847372725f7256f9051312996fc5dc5fa44d0b18247c987b0e053",
+   "bytes": 30224
+  },
+  {
+   "file": "proxies/teeth/teeth_base.ps2.json",
+   "asset": "mh:teeth/teeth_base",
+   "licence": "CC0-1.0",
+   "author": "makehuman_system (decimated by PS2CC)",
+   "sourceUrl": "http://www.makehumancommunity.org",
+   "upstream": "makehuman_system_assets",
+   "attributionRequired": false,
+   "sha256": "0b4bc041258f87c1aff1747d22663cd190a474f28c04c3e3e44acf6fc2d932f3",
+   "bytes": 1390
+  },
+  {
    "file": "proxies/teeth/teeth_shape01.bin",
    "asset": "mh:teeth/teeth_shape01",
    "licence": "CC0-1.0",
@@ -7811,6 +7833,28 @@
    "attributionRequired": false,
    "sha256": "d565105347fa8dc1768588f2e4d1184059dcf26bf0e0524cdb47a0243e9d17ec",
    "bytes": 1345
+  },
+  {
+   "file": "proxies/teeth/teeth_shape01.ps2.bin",
+   "asset": "mh:teeth/teeth_shape01",
+   "licence": "CC0-1.0",
+   "author": "makehuman_system (decimated by PS2CC)",
+   "sourceUrl": "http://www.makehumancommunity.org",
+   "upstream": "makehuman_system_assets",
+   "attributionRequired": false,
+   "sha256": "aa7406c0f7572748271e8462ee317edba9f83fc85b6a9a5fd0dcbad802249f72",
+   "bytes": 30212
+  },
+  {
+   "file": "proxies/teeth/teeth_shape01.ps2.json",
+   "asset": "mh:teeth/teeth_shape01",
+   "licence": "CC0-1.0",
+   "author": "makehuman_system (decimated by PS2CC)",
+   "sourceUrl": "http://www.makehumancommunity.org",
+   "upstream": "makehuman_system_assets",
+   "attributionRequired": false,
+   "sha256": "9d64cfa378aa48435c4c8244f829256bba2fb751862deb11e3caabe39e1622a3",
+   "bytes": 1402
   },
   {
    "file": "proxies/teeth/teeth_shape02.bin",
@@ -7835,6 +7879,28 @@
    "bytes": 1345
   },
   {
+   "file": "proxies/teeth/teeth_shape02.ps2.bin",
+   "asset": "mh:teeth/teeth_shape02",
+   "licence": "CC0-1.0",
+   "author": "makehuman_system (decimated by PS2CC)",
+   "sourceUrl": "http://www.makehumancommunity.org",
+   "upstream": "makehuman_system_assets",
+   "attributionRequired": false,
+   "sha256": "4a9a40022fe3f63faff2fb8957a5e7cd651c61a6de18c2ee7209c64302308a49",
+   "bytes": 30108
+  },
+  {
+   "file": "proxies/teeth/teeth_shape02.ps2.json",
+   "asset": "mh:teeth/teeth_shape02",
+   "licence": "CC0-1.0",
+   "author": "makehuman_system (decimated by PS2CC)",
+   "sourceUrl": "http://www.makehumancommunity.org",
+   "upstream": "makehuman_system_assets",
+   "attributionRequired": false,
+   "sha256": "af7c37aeedd5f58542235b836974146f030608de35e9e071a77a31f854018150",
+   "bytes": 1402
+  },
+  {
    "file": "proxies/teeth/teeth_shape03.bin",
    "asset": "mh:teeth/teeth_shape03",
    "licence": "CC0-1.0",
@@ -7855,6 +7921,28 @@
    "attributionRequired": false,
    "sha256": "f6744df62442102687efc62e03a2d132af4f835f415028a37c632265ff62a4f0",
    "bytes": 1345
+  },
+  {
+   "file": "proxies/teeth/teeth_shape03.ps2.bin",
+   "asset": "mh:teeth/teeth_shape03",
+   "licence": "CC0-1.0",
+   "author": "makehuman_system (decimated by PS2CC)",
+   "sourceUrl": "http://www.makehumancommunity.org",
+   "upstream": "makehuman_system_assets",
+   "attributionRequired": false,
+   "sha256": "115802c73d3fcded38fdb0c52fcb16049fd00b9166f3af7a79efeafb83ff36f7",
+   "bytes": 30388
+  },
+  {
+   "file": "proxies/teeth/teeth_shape03.ps2.json",
+   "asset": "mh:teeth/teeth_shape03",
+   "licence": "CC0-1.0",
+   "author": "makehuman_system (decimated by PS2CC)",
+   "sourceUrl": "http://www.makehumancommunity.org",
+   "upstream": "makehuman_system_assets",
+   "attributionRequired": false,
+   "sha256": "896e7c9af81abb65797f2de44aef77cce211b491b78234d5d18a08fb6c6940b9",
+   "bytes": 1402
   },
   {
    "file": "proxies/teeth/teeth_shape04.bin",
@@ -7879,6 +7967,28 @@
    "bytes": 1345
   },
   {
+   "file": "proxies/teeth/teeth_shape04.ps2.bin",
+   "asset": "mh:teeth/teeth_shape04",
+   "licence": "CC0-1.0",
+   "author": "makehuman_system (decimated by PS2CC)",
+   "sourceUrl": "http://www.makehumancommunity.org",
+   "upstream": "makehuman_system_assets",
+   "attributionRequired": false,
+   "sha256": "4901baf74468be3d774207d5754b9fe9cfa9f70e991b90e47fe6246039cd8784",
+   "bytes": 30204
+  },
+  {
+   "file": "proxies/teeth/teeth_shape04.ps2.json",
+   "asset": "mh:teeth/teeth_shape04",
+   "licence": "CC0-1.0",
+   "author": "makehuman_system (decimated by PS2CC)",
+   "sourceUrl": "http://www.makehumancommunity.org",
+   "upstream": "makehuman_system_assets",
+   "attributionRequired": false,
+   "sha256": "d58d334b3a3dfc7a547dbdad572e359f6386cac53adcd53b72cefda1cf4ac6e8",
+   "bytes": 1402
+  },
+  {
    "file": "proxies/teeth/teeth_shape05.bin",
    "asset": "mh:teeth/teeth_shape05",
    "licence": "CC0-1.0",
@@ -7901,6 +8011,28 @@
    "bytes": 1345
   },
   {
+   "file": "proxies/teeth/teeth_shape05.ps2.bin",
+   "asset": "mh:teeth/teeth_shape05",
+   "licence": "CC0-1.0",
+   "author": "makehuman_system (decimated by PS2CC)",
+   "sourceUrl": "http://www.makehumancommunity.org",
+   "upstream": "makehuman_system_assets",
+   "attributionRequired": false,
+   "sha256": "4995d52f9f8512d4c10aac2b38b792517eb021a1fc05ddcbddf1b5b852721de3",
+   "bytes": 30556
+  },
+  {
+   "file": "proxies/teeth/teeth_shape05.ps2.json",
+   "asset": "mh:teeth/teeth_shape05",
+   "licence": "CC0-1.0",
+   "author": "makehuman_system (decimated by PS2CC)",
+   "sourceUrl": "http://www.makehumancommunity.org",
+   "upstream": "makehuman_system_assets",
+   "attributionRequired": false,
+   "sha256": "7901891d07970624678a5e94022087ef1eeeffb2c930d8ca7cd51ec2003068f9",
+   "bytes": 1402
+  },
+  {
    "file": "proxies/tongue/tongue01.bin",
    "asset": "mh:tongue/tongue01",
    "licence": "CC0-1.0",
@@ -7921,6 +8053,28 @@
    "attributionRequired": false,
    "sha256": "8a8afa82a8ea4eaebee51a686c5376357a721584f84db4b741f9492ac3433e42",
    "bytes": 1303
+  },
+  {
+   "file": "proxies/tongue/tongue01.ps2.bin",
+   "asset": "mh:tongue/tongue01",
+   "licence": "CC0-1.0",
+   "author": "makehuman_system (decimated by PS2CC)",
+   "sourceUrl": "http://www.makehumancommunity.org",
+   "upstream": "makehuman_system_assets",
+   "attributionRequired": false,
+   "sha256": "5e1ddc891600dd25e6dcae8c37a57824cd9682c98b96e5f8dfd047cff6789ce0",
+   "bytes": 10184
+  },
+  {
+   "file": "proxies/tongue/tongue01.ps2.json",
+   "asset": "mh:tongue/tongue01",
+   "licence": "CC0-1.0",
+   "author": "makehuman_system (decimated by PS2CC)",
+   "sourceUrl": "http://www.makehumancommunity.org",
+   "upstream": "makehuman_system_assets",
+   "attributionRequired": false,
+   "sha256": "ccef01e8d44021155c34506fd1f4a219b9668730fefeb71697de31a5a990973a",
+   "bytes": 1365
   },
   {
    "file": "rigs/default.json",
@@ -7987,6 +8141,72 @@
    "attributionRequired": false,
    "sha256": "f29e5e20029fde63ff2a46755754b89b3ebc5550a245d40e82a731290085e59d",
    "bytes": 4230
+  },
+  {
+   "file": "skin/head/ps2_body_10k.json",
+   "asset": "ps2cc:skin/head/ps2_body_10k",
+   "licence": "CC0-1.0",
+   "author": "MakeHuman team / Data Collection AB (derived by PS2CC)",
+   "sourceUrl": "https://github.com/makehumancommunity/makehuman",
+   "upstream": "makehuman",
+   "attributionRequired": false,
+   "sha256": "e61e122fed5a8cce205de3cd54e6bf983dc4ab1742020fd271c17766cac52be1",
+   "bytes": 74639
+  },
+  {
+   "file": "skin/head/ps2_body_12k.json",
+   "asset": "ps2cc:skin/head/ps2_body_12k",
+   "licence": "CC0-1.0",
+   "author": "MakeHuman team / Data Collection AB (derived by PS2CC)",
+   "sourceUrl": "https://github.com/makehumancommunity/makehuman",
+   "upstream": "makehuman",
+   "attributionRequired": false,
+   "sha256": "24eecd5619fd82d7ab0737312d4009a1366c125cc09f3de78fc015841b0bfbad",
+   "bytes": 104179
+  },
+  {
+   "file": "skin/head/ps2_body_16k.json",
+   "asset": "ps2cc:skin/head/ps2_body_16k",
+   "licence": "CC0-1.0",
+   "author": "MakeHuman team / Data Collection AB (derived by PS2CC)",
+   "sourceUrl": "https://github.com/makehumancommunity/makehuman",
+   "upstream": "makehuman",
+   "attributionRequired": false,
+   "sha256": "8517c6c702bdc4634240325ad93061d35477eb0146873cff98aa12b7fe17754e",
+   "bytes": 104302
+  },
+  {
+   "file": "skin/head/ps2_body_20k.json",
+   "asset": "ps2cc:skin/head/ps2_body_20k",
+   "licence": "CC0-1.0",
+   "author": "MakeHuman team / Data Collection AB (derived by PS2CC)",
+   "sourceUrl": "https://github.com/makehumancommunity/makehuman",
+   "upstream": "makehuman",
+   "attributionRequired": false,
+   "sha256": "d8f17ea7aaf9054cf4f83abb0b88f59732b97b40f60fbc7a0ac60289d3e1af17",
+   "bytes": 104634
+  },
+  {
+   "file": "skin/head/ps2_body_8k.json",
+   "asset": "ps2cc:skin/head/ps2_body_8k",
+   "licence": "CC0-1.0",
+   "author": "MakeHuman team / Data Collection AB (derived by PS2CC)",
+   "sourceUrl": "https://github.com/makehumancommunity/makehuman",
+   "upstream": "makehuman",
+   "attributionRequired": false,
+   "sha256": "9a542d147d440791f5aae4bbde7843f7545239abf4eeef4515d8d4f7634b98e1",
+   "bytes": 69503
+  },
+  {
+   "file": "skin/head/ps2_body_full.json",
+   "asset": "ps2cc:skin/head/ps2_body_full",
+   "licence": "CC0-1.0",
+   "author": "MakeHuman team / Data Collection AB (derived by PS2CC)",
+   "sourceUrl": "https://github.com/makehumancommunity/makehuman",
+   "upstream": "makehuman",
+   "attributionRequired": false,
+   "sha256": "6d9cc5e2bca2a712e1854caf0cb47df7f24be4a89f56b11828a690376f0b6a67",
+   "bytes": 105565
   },
   {
    "file": "skin/landmarks.json",
@@ -10407,6 +10627,17 @@
    "attributionRequired": false,
    "sha256": "13848cd3616dde4a6d4ec8c1357bb58094addfef5df7a77c04fdc2a2f96c34cd",
    "bytes": 618743
+  },
+  {
+   "file": "textures/skins/ps2cc_scan_lee.jpg",
+   "asset": "ps2cc:skins/scan_lee",
+   "licence": "CC-BY-3.0",
+   "author": "\"Infinite, 3D Head Scan\" by Lee Perry-Smith (Infinite Realities, based on a work at www.triplegangers.com), projected onto MakeHuman's young caucasian male skin (CC0) by PS2CC",
+   "sourceUrl": "https://github.com/mrdoob/three.js/tree/r187/examples/models/gltf/LeePerrySmith",
+   "upstream": "infinite-realities",
+   "attributionRequired": true,
+   "sha256": "0b002691e700e3637b728227f36e278e1fd8f0e401598b75b86259a53b7fb46a",
+   "bytes": 537837
   },
   {
    "file": "textures/skins/rehmanpolanski_skin_viking_tattoos.jpg",

@@ -10,6 +10,7 @@ import { sanitiseAdjust, sanitiseStyle, type HairAdjust, type HairStyleParams } 
 import { sanitiseHairColour, type HairColour } from '../hair/strand-atlas';
 import { sanitiseCardBrows, sanitiseFur, type CardBrows, type FurTrim } from '../hair/surface-cards';
 import { newLayer, sanitiseSkin } from '../skin/layers';
+import { DEFAULT_EYE_LOOK, sanitiseEyeLook, type EyeLook } from '../eyes/eye-texture';
 import { DEFAULT_MACROS, normaliseEthnic, type MacroValues } from '../morph/macros';
 import {
   DEFAULT_PROFILE,
@@ -48,6 +49,12 @@ export interface SkinLayer {
     | 'dirt'
     | 'bruises'
     | 'sweat'
+    // Part 2 F19: the mouth interior darkening towards the throat, and painted eyebrows.
+    | 'mouth'
+    | 'brows'
+    // Part 2 F19 micro-detail: tileable pores and stubble hairs, masked per region.
+    | 'pores'
+    | 'stubbleHair'
     | 'image'
     // Baked from the assembled character by the bake engine (Part 2 F16).
     | 'occlusion'
@@ -77,6 +84,16 @@ export interface PhotoSpec {
   /** Photo size in pixels when the landmarks were found. */
   width?: number;
   height?: number;
+  /** Part 2 F19: side photos (three-quarter views work best), blended with the front one for full-head coverage. */
+  sides?: { left?: SidePhoto | null; right?: SidePhoto | null };
+}
+
+/** A side photo for the three-photo projection (Part 2 F19). */
+export interface SidePhoto {
+  image: string;
+  landmarks: number[];
+  width: number;
+  height: number;
 }
 
 export interface SkinStack {
@@ -131,6 +148,8 @@ export interface AssetRef {
   texture?: string | null;
   /** Eyebrows only, Hair v2 (Part 2 F15): card brows grown on the eyebrow mesh instead of the mesh itself. */
   cards?: CardBrows | null;
+  /** Eyes only, Part 2 F19: a generated eye (iris library, sclera, pupil, lid shadow) instead of `texture`. */
+  look?: EyeLook | null;
 }
 
 export interface ExportSettings {
@@ -170,6 +189,8 @@ export interface CharacterDoc {
   eyebrows: AssetRef;
   eyelashes: AssetRef;
   teeth?: AssetRef;
+  /** Part 2 F19: the tongue (with the teeth, at most 600 triangles). */
+  tongue?: AssetRef;
   garments: GarmentSlot[];
   hair: HairSpec;
   expressionsToBake: string[];
@@ -213,11 +234,14 @@ export function defaultCharacter(name = 'New character', profileId: QualityProfi
     macros: { ...DEFAULT_MACROS },
     modifiers: {},
     bodyMesh: bodyMeshFor(profileId), // leaves room for hair and clothes in the profile's budget (D-031, F13)
-    skin: { base: 'mh:skins/young_caucasian_male', layers: [], photo: null },
-    eyes: { asset: 'mh:eyes/low-poly' },
+    // Part 2 F19: skin pores (micro-detail), and an open mouth reads as a mouth (dark towards the throat).
+    skin: { base: 'mh:skins/young_caucasian_male', layers: [newLayer('pores'), newLayer('mouth')], photo: null },
+    eyes: { asset: 'mh:eyes/low-poly', look: { ...DEFAULT_EYE_LOOK } },
     eyebrows: { asset: 'mh:eyebrows/eyebrow001', tint: { ...NEUTRAL_TINT, color: [1, 1, 1] }, opacity: 1 },
     eyelashes: { asset: 'mh:eyelashes/eyelashes01', opacity: 1 },
-    teeth: { asset: null },
+    // Part 2 F19: low-poly teeth and tongue, so an open mouth reads correctly.
+    teeth: { asset: 'mh:teeth/teeth_base' },
+    tongue: { asset: 'mh:tongue/tongue01' },
     garments: [],
     hair: { mode: 'none', tint: { ...NEUTRAL_TINT, color: [1, 1, 1] }, alphaThreshold: 0.5 },
     expressionsToBake: [...DEFAULT_EXPRESSIONS],
@@ -318,6 +342,10 @@ export function parseCharacter(json: unknown): CharacterDoc {
     garments: Array.isArray(raw.garments) ? raw.garments.map((g) => (g && g.fur !== undefined ? { ...g, fur: sanitiseFur(g.fur) } : g)) : [],
     hair: sanitiseHair({ ...base.hair, ...(raw.hair ?? {}) }),
     eyebrows: raw.eyebrows?.cards ? { ...raw.eyebrows, cards: sanitiseCardBrows(raw.eyebrows.cards) } : (raw.eyebrows ?? base.eyebrows),
+    eyes: raw.eyes ? { ...raw.eyes, look: raw.eyes.look ? sanitiseEyeLook(raw.eyes.look) : null } : base.eyes,
+    // Documents from before Part 2 F19 had no tongue and stay as they were saved.
+    teeth: raw.teeth ?? { asset: null },
+    tongue: raw.tongue ?? { asset: null },
     // Old documents (no profile) keep the settings they were made with (LEGACY_EXPORT).
     export: sanitiseExport(raw.export, base.export),
     expressionsToBake: Array.isArray(raw.expressionsToBake) ? raw.expressionsToBake : base.expressionsToBake,
