@@ -1,0 +1,149 @@
+{
+ "binary": "ps2cc_wristbands.bin",
+ "byteLength": 7600,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 183
+  },
+  "uvs": {
+   "offset": 736,
+   "dtype": "f32",
+   "count": 142
+  },
+  "faceVerts": {
+   "offset": 1312,
+   "dtype": "u32",
+   "count": 372
+  },
+  "faceUvs": {
+   "offset": 2800,
+   "dtype": "u32",
+   "count": 372
+  },
+  "refVerts": {
+   "offset": 4288,
+   "dtype": "u32",
+   "count": 183
+  },
+  "refWeights": {
+   "offset": 5024,
+   "dtype": "f32",
+   "count": 183
+  },
+  "refOffsets": {
+   "offset": 5760,
+   "dtype": "f32",
+   "count": 183
+  },
+  "coveredVerts": {
+   "offset": 6496,
+   "dtype": "u32",
+   "count": 32
+  },
+  "skinOffsets": {
+   "offset": 6624,
+   "dtype": "u32",
+   "count": 62
+  },
+  "skinBones": {
+   "offset": 6880,
+   "dtype": "u16",
+   "count": 120
+  },
+  "skinValues": {
+   "offset": 7120,
+   "dtype": "f32",
+   "count": 120
+  }
+ },
+ "format": "ps2cc.proxy/1",
+ "id": "ps2cc:clothes/wristbands",
+ "category": "clothes",
+ "name": "Wristbands",
+ "uuid": "d3fe016b078d689c0293080743c4ff41",
+ "tags": [
+  "ps2cc",
+  "garment-studio"
+ ],
+ "zDepth": 50,
+ "vertexCount": 61,
+ "faceCount": 93,
+ "scale": [
+  [
+   3886,
+   10551,
+   0.9389199614524841
+  ],
+  [
+   10534,
+   10138,
+   0.09103262424468994
+  ],
+  [
+   10144,
+   3551,
+   0.11103697866201401
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.78,
+   0.78,
+   0.75
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/ps2cc_wristbands.png",
+  "textureSize": [
+   64,
+   64
+  ]
+ },
+ "slot": "gloves",
+ "decimatedFrom": 61,
+ "hiddenFaces": "computed",
+ "originalTriangles": 93,
+ "defaults": {
+  "look": {
+   "zones": [
+    {
+     "id": "z1",
+     "name": "Garment",
+     "islands": "rest",
+     "material": "ps2cc:materials/knit",
+     "tint": [
+      0.3,
+      0.29,
+      0.28
+     ],
+     "scale": 1,
+     "rotation": 90,
+     "wear": 0
+    }
+   ],
+   "mask": null,
+   "seams": {
+    "stitches": 0.8,
+    "thread": null,
+    "shadow": 0.6,
+    "spacingMm": 4,
+    "hemRows": 2
+   },
+   "folds": {
+    "strength": 0,
+    "sites": {
+     "elbows": 1,
+     "armpits": 1,
+     "waist": 1,
+     "crotch": 1,
+     "knees": 1
+    },
+    "seed": 1
+   },
+   "decals": []
+  }
+ }
+}

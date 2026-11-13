@@ -3024,6 +3024,520 @@
    "originalTriangles": 12960,
    "overBudget": true,
    "hiddenFaces": "makehuman"
+  },
+  {
+   "id": "ps2cc:clothes/rollneck_sweater",
+   "category": "clothes",
+   "name": "Roll-neck sweater",
+   "file": "proxies/clothes/ps2cc_rollneck_sweater.json",
+   "triangles": 1800,
+   "originalTriangles": 2408,
+   "hiddenFaces": "computed",
+   "overBudget": false,
+   "slot": "top",
+   "tags": [
+    "ps2cc",
+    "garment-studio"
+   ],
+   "licence": "CC0-1.0",
+   "defaults": {
+    "look": {
+     "zones": [
+      {
+       "id": "z1",
+       "name": "Garment",
+       "islands": "rest",
+       "material": "ps2cc:materials/knit",
+       "tint": [
+        1,
+        1,
+        1
+       ],
+       "scale": 1,
+       "rotation": 0,
+       "wear": 0
+      },
+      {
+       "id": "z2",
+       "name": "Roll neck",
+       "islands": [
+        9
+       ],
+       "material": "ps2cc:materials/knit",
+       "tint": [
+        1,
+        1,
+        1
+       ],
+       "scale": 0.8,
+       "rotation": 90,
+       "wear": 0
+      }
+     ],
+     "mask": null,
+     "seams": {
+      "stitches": 0.35,
+      "thread": null,
+      "shadow": 0.6,
+      "spacingMm": 4,
+      "hemRows": 2
+     },
+     "folds": {
+      "strength": 0.8,
+      "sites": {
+       "elbows": 1,
+       "armpits": 1,
+       "waist": 1,
+       "crotch": 1,
+       "knees": 1
+      },
+      "seed": 1
+     },
+     "decals": []
+    }
+   }
+  },
+  {
+   "id": "ps2cc:clothes/mara_utility_vest",
+   "category": "clothes",
+   "name": "Utility vest",
+   "file": "proxies/clothes/ps2cc_mara_utility_vest.json",
+   "triangles": 1439,
+   "originalTriangles": 1439,
+   "hiddenFaces": "computed",
+   "overBudget": false,
+   "slot": "outer",
+   "tags": [
+    "ps2cc",
+    "garment-studio"
+   ],
+   "licence": "CC0-1.0",
+   "defaults": {
+    "look": {
+     "zones": [
+      {
+       "id": "z1",
+       "name": "Garment",
+       "islands": "rest",
+       "material": "ps2cc:materials/canvas",
+       "tint": [
+        0.62,
+        0.6,
+        0.46
+       ],
+       "scale": 1,
+       "rotation": 0,
+       "wear": 0.4
+      },
+      {
+       "id": "z2",
+       "name": "Pockets",
+       "islands": [
+        9,
+        8
+       ],
+       "material": "ps2cc:materials/canvas",
+       "tint": [
+        0.56,
+        0.54,
+        0.41
+       ],
+       "scale": 1,
+       "rotation": 0,
+       "wear": 0.5
+      },
+      {
+       "id": "z3",
+       "name": "Neck band",
+       "islands": [
+        7
+       ],
+       "material": "ps2cc:materials/nylon_ripstop",
+       "tint": [
+        0.45,
+        0.44,
+        0.36
+       ],
+       "scale": 1,
+       "rotation": 0,
+       "wear": 0.2
+      }
+     ],
+     "mask": null,
+     "seams": {
+      "stitches": 0.8,
+      "thread": null,
+      "shadow": 0.6,
+      "spacingMm": 4,
+      "hemRows": 2
+     },
+     "folds": {
+      "strength": 0.7,
+      "sites": {
+       "elbows": 1,
+       "armpits": 1,
+       "waist": 1,
+       "crotch": 1,
+       "knees": 1
+      },
+      "seed": 1
+     },
+     "decals": [
+      {
+       "id": "zip",
+       "kind": "zip",
+       "uv": [
+        0.2197265625,
+        0.3271484375
+       ],
+       "uv2": [
+        0.2353515625,
+        0.0654296875
+       ],
+       "sizeMm": 10,
+       "rotation": 0,
+       "colour": [
+        0.55,
+        0.53,
+        0.5
+       ]
+      },
+      {
+       "id": "flap0",
+       "kind": "pocketFlap",
+       "uv": [
+        0.8701171875,
+        0.0478515625
+       ],
+       "sizeMm": 118,
+       "heightMm": 46,
+       "rotation": 0,
+       "colour": [
+        0.3,
+        0.27,
+        0.2
+       ]
+      },
+      {
+       "id": "flap1",
+       "kind": "pocketFlap",
+       "uv": [
+        0.9501953125,
+        0.0478515625
+       ],
+       "sizeMm": 118,
+       "heightMm": 46,
+       "rotation": -6,
+       "colour": [
+        0.3,
+        0.27,
+        0.2
+       ]
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "ps2cc:clothes/cole_leather_jacket",
+   "category": "clothes",
+   "name": "Cropped leather jacket",
+   "file": "proxies/clothes/ps2cc_cole_leather_jacket.json",
+   "triangles": 2152,
+   "originalTriangles": 2152,
+   "hiddenFaces": "computed",
+   "overBudget": false,
+   "slot": "outer",
+   "tags": [
+    "ps2cc",
+    "garment-studio"
+   ],
+   "licence": "CC0-1.0",
+   "defaults": {
+    "look": {
+     "zones": [
+      {
+       "id": "z1",
+       "name": "Garment",
+       "islands": "rest",
+       "material": "ps2cc:materials/leather_worn",
+       "tint": [
+        0.62,
+        0.5,
+        0.42
+       ],
+       "scale": 1,
+       "rotation": 0,
+       "wear": 0.45
+      },
+      {
+       "id": "z2",
+       "name": "Shearling collar",
+       "islands": [
+        11
+       ],
+       "material": "ps2cc:materials/shearling",
+       "tint": [
+        1,
+        0.96,
+        0.9
+       ],
+       "scale": 0.7,
+       "rotation": 0,
+       "wear": 0
+      }
+     ],
+     "mask": null,
+     "seams": {
+      "stitches": 0.7,
+      "thread": null,
+      "shadow": 0.75,
+      "spacingMm": 4,
+      "hemRows": 2
+     },
+     "folds": {
+      "strength": 1,
+      "sites": {
+       "elbows": 1,
+       "armpits": 1,
+       "waist": 1,
+       "crotch": 1,
+       "knees": 1
+      },
+      "seed": 1
+     },
+     "decals": [
+      {
+       "id": "zip",
+       "kind": "zip",
+       "uv": [
+        0.2197265625,
+        0.3154296875
+       ],
+       "uv2": [
+        0.2353515625,
+        0.0654296875
+       ],
+       "sizeMm": 11,
+       "rotation": 0,
+       "colour": [
+        0.62,
+        0.6,
+        0.56
+       ]
+      },
+      {
+       "id": "flap0",
+       "kind": "pocketFlap",
+       "uv": [
+        0.1611328125,
+        0.2646484375
+       ],
+       "sizeMm": 110,
+       "heightMm": 42,
+       "rotation": 7,
+       "colour": [
+        0.6,
+        0.58,
+        0.54
+       ]
+      },
+      {
+       "id": "flap1",
+       "kind": "pocketFlap",
+       "uv": [
+        0.2783203125,
+        0.2646484375
+       ],
+       "sizeMm": 110,
+       "heightMm": 42,
+       "rotation": -7,
+       "colour": [
+        0.6,
+        0.58,
+        0.54
+       ]
+      }
+     ]
+    },
+    "fur": {
+     "enabled": true,
+     "edges": [
+      "collar",
+      "cuffs"
+     ],
+     "length": 0.022,
+     "density": 190,
+     "lift": 0.55,
+     "colour": [
+      0.82,
+      0.76,
+      0.64
+     ]
+    }
+   }
+  },
+  {
+   "id": "ps2cc:clothes/wristbands",
+   "category": "clothes",
+   "name": "Wristbands",
+   "file": "proxies/clothes/ps2cc_wristbands.json",
+   "triangles": 93,
+   "originalTriangles": 93,
+   "hiddenFaces": "computed",
+   "overBudget": false,
+   "slot": "gloves",
+   "tags": [
+    "ps2cc",
+    "garment-studio"
+   ],
+   "licence": "CC0-1.0",
+   "defaults": {
+    "look": {
+     "zones": [
+      {
+       "id": "z1",
+       "name": "Garment",
+       "islands": "rest",
+       "material": "ps2cc:materials/knit",
+       "tint": [
+        0.3,
+        0.29,
+        0.28
+       ],
+       "scale": 1,
+       "rotation": 90,
+       "wear": 0
+      }
+     ],
+     "mask": null,
+     "seams": {
+      "stitches": 0.8,
+      "thread": null,
+      "shadow": 0.6,
+      "spacingMm": 4,
+      "hemRows": 2
+     },
+     "folds": {
+      "strength": 0,
+      "sites": {
+       "elbows": 1,
+       "armpits": 1,
+       "waist": 1,
+       "crotch": 1,
+       "knees": 1
+      },
+      "seed": 1
+     },
+     "decals": []
+    }
+   }
+  },
+  {
+   "id": "ps2cc:clothes/cargo_trousers",
+   "category": "clothes",
+   "name": "Cargo trousers",
+   "file": "proxies/clothes/ps2cc_cargo_trousers.json",
+   "triangles": 456,
+   "originalTriangles": 456,
+   "hiddenFaces": "computed",
+   "overBudget": false,
+   "slot": "bottom",
+   "tags": [
+    "ps2cc",
+    "garment-studio"
+   ],
+   "licence": "CC0-1.0",
+   "defaults": {
+    "look": {
+     "zones": [
+      {
+       "id": "z1",
+       "name": "Garment",
+       "islands": "rest",
+       "material": "ps2cc:materials/canvas",
+       "tint": [
+        0.5,
+        0.48,
+        0.38
+       ],
+       "scale": 1,
+       "rotation": 0,
+       "wear": 0.35
+      },
+      {
+       "id": "z2",
+       "name": "Cargo pockets",
+       "islands": [
+        1,
+        2
+       ],
+       "material": "ps2cc:materials/canvas",
+       "tint": [
+        0.47,
+        0.45,
+        0.35
+       ],
+       "scale": 1,
+       "rotation": 0,
+       "wear": 0.45
+      }
+     ],
+     "mask": null,
+     "seams": {
+      "stitches": 0.8,
+      "thread": null,
+      "shadow": 0.6,
+      "spacingMm": 4,
+      "hemRows": 2
+     },
+     "folds": {
+      "strength": 0.9,
+      "sites": {
+       "elbows": 1,
+       "armpits": 1,
+       "waist": 1,
+       "crotch": 1,
+       "knees": 1
+      },
+      "seed": 1
+     },
+     "decals": [
+      {
+       "id": "flap_l",
+       "kind": "pocketFlap",
+       "uv": [
+        0.8603515625,
+        0.0673828125
+       ],
+       "sizeMm": 150,
+       "heightMm": 55,
+       "rotation": 0,
+       "colour": [
+        0.3,
+        0.28,
+        0.22
+       ]
+      },
+      {
+       "id": "flap_r",
+       "kind": "pocketFlap",
+       "uv": [
+        0.8603515625,
+        0.1982421875
+       ],
+       "sizeMm": 150,
+       "heightMm": 55,
+       "rotation": 0,
+       "colour": [
+        0.3,
+        0.28,
+        0.22
+       ]
+      }
+     ]
+    }
+   }
   }
  ],
  "skins": [
@@ -4690,6 +5204,316 @@
     ]
    },
    "licence": "CC0-1.0"
+  }
+ ],
+ "materials": [
+  {
+   "id": "ps2cc:materials/leather_smooth",
+   "name": "Smooth leather",
+   "kind": "leather",
+   "diffuse": "materials/leather_smooth/leather_smooth_diffuse.jpg",
+   "diffuseSize": 2048,
+   "pbr": {
+    "albedo": "materials/leather_smooth/leather_smooth_albedo.jpg",
+    "normal": "materials/leather_smooth/leather_smooth_normal.jpg",
+    "arm": "materials/leather_smooth/leather_smooth_arm.jpg",
+    "size": 1024
+   },
+   "tileMetres": 0.3,
+   "roughness": 0.617,
+   "gloss": 0.13,
+   "swatch": [
+    0.57,
+    0.558,
+    0.486
+   ],
+   "source": {
+    "site": "Poly Haven",
+    "asset": "leather_white",
+    "url": "https://polyhaven.com/a/leather_white",
+    "licence": "CC0-1.0",
+    "author": "Rob Tuytel (Poly Haven)"
+   }
+  },
+  {
+   "id": "ps2cc:materials/leather_worn",
+   "name": "Worn brown leather",
+   "kind": "leather",
+   "diffuse": "materials/leather_worn/leather_worn_diffuse.jpg",
+   "diffuseSize": 2048,
+   "pbr": {
+    "albedo": "materials/leather_worn/leather_worn_albedo.jpg",
+    "normal": "materials/leather_worn/leather_worn_normal.jpg",
+    "arm": "materials/leather_worn/leather_worn_arm.jpg",
+    "size": 1024
+   },
+   "tileMetres": 0.4,
+   "roughness": 0.662,
+   "gloss": 0.1,
+   "swatch": [
+    0.299,
+    0.166,
+    0.057
+   ],
+   "source": {
+    "site": "Poly Haven",
+    "asset": "brown_leather",
+    "url": "https://polyhaven.com/a/brown_leather",
+    "licence": "CC0-1.0",
+    "author": "Rob Tuytel (Poly Haven)"
+   }
+  },
+  {
+   "id": "ps2cc:materials/leather_black",
+   "name": "Black leather",
+   "kind": "leather",
+   "diffuse": "materials/leather_black/leather_black_diffuse.jpg",
+   "diffuseSize": 2048,
+   "pbr": {
+    "albedo": "materials/leather_black/leather_black_albedo.jpg",
+    "normal": "materials/leather_black/leather_black_normal.jpg",
+    "arm": "materials/leather_black/leather_black_arm.jpg",
+    "size": 1024
+   },
+   "tileMetres": 0.45,
+   "roughness": 0.529,
+   "gloss": 0.2,
+   "swatch": [
+    0.132,
+    0.132,
+    0.132
+   ],
+   "source": {
+    "site": "ambientCG",
+    "asset": "Leather031",
+    "url": "https://ambientcg.com/view?id=Leather031",
+    "licence": "CC0-1.0",
+    "author": "Lennart Demes (ambientCG)"
+   }
+  },
+  {
+   "id": "ps2cc:materials/suede",
+   "name": "Suede",
+   "kind": "suede",
+   "diffuse": "materials/suede/suede_diffuse.jpg",
+   "diffuseSize": 2048,
+   "pbr": {
+    "albedo": "materials/suede/suede_albedo.jpg",
+    "normal": "materials/suede/suede_normal.jpg",
+    "arm": "materials/suede/suede_arm.jpg",
+    "size": 1024
+   },
+   "tileMetres": 0.3,
+   "roughness": 0.593,
+   "gloss": 0.15,
+   "swatch": [
+    0.944,
+    0.736,
+    0.446
+   ],
+   "source": {
+    "site": "ambientCG",
+    "asset": "Leather039",
+    "url": "https://ambientcg.com/view?id=Leather039",
+    "licence": "CC0-1.0",
+    "author": "Lennart Demes (ambientCG)"
+   }
+  },
+  {
+   "id": "ps2cc:materials/denim",
+   "name": "Denim",
+   "kind": "denim",
+   "diffuse": "materials/denim/denim_diffuse.jpg",
+   "diffuseSize": 2048,
+   "pbr": {
+    "albedo": "materials/denim/denim_albedo.jpg",
+    "normal": "materials/denim/denim_normal.jpg",
+    "arm": "materials/denim/denim_arm.jpg",
+    "size": 1024
+   },
+   "tileMetres": 0.271,
+   "roughness": 0.69,
+   "gloss": 0.09,
+   "swatch": [
+    0.218,
+    0.332,
+    0.449
+   ],
+   "source": {
+    "site": "Poly Haven",
+    "asset": "denim_fabric_03",
+    "url": "https://polyhaven.com/a/denim_fabric_03",
+    "licence": "CC0-1.0",
+    "author": "colormass and Rico Cilliers (Poly Haven)"
+   }
+  },
+  {
+   "id": "ps2cc:materials/cotton_jersey",
+   "name": "Cotton jersey",
+   "kind": "cotton",
+   "diffuse": "materials/cotton_jersey/cotton_jersey_diffuse.jpg",
+   "diffuseSize": 2048,
+   "pbr": {
+    "albedo": "materials/cotton_jersey/cotton_jersey_albedo.jpg",
+    "normal": "materials/cotton_jersey/cotton_jersey_normal.jpg",
+    "arm": "materials/cotton_jersey/cotton_jersey_arm.jpg",
+    "size": 1024
+   },
+   "tileMetres": 0.264,
+   "roughness": 0.802,
+   "gloss": 0.04,
+   "swatch": [
+    0.745,
+    0.654,
+    0.602
+   ],
+   "source": {
+    "site": "Poly Haven",
+    "asset": "cotton_jersey",
+    "url": "https://polyhaven.com/a/cotton_jersey",
+    "licence": "CC0-1.0",
+    "author": "colormass and Rico Cilliers (Poly Haven)"
+   }
+  },
+  {
+   "id": "ps2cc:materials/canvas",
+   "name": "Canvas",
+   "kind": "canvas",
+   "diffuse": "materials/canvas/canvas_diffuse.jpg",
+   "diffuseSize": 2048,
+   "pbr": {
+    "albedo": "materials/canvas/canvas_albedo.jpg",
+    "normal": "materials/canvas/canvas_normal.jpg",
+    "arm": "materials/canvas/canvas_arm.jpg",
+    "size": 1024
+   },
+   "tileMetres": 0.4,
+   "roughness": 0.824,
+   "gloss": 0.03,
+   "swatch": [
+    0.701,
+    0.681,
+    0.651
+   ],
+   "source": {
+    "site": "ambientCG",
+    "asset": "Fabric062",
+    "url": "https://ambientcg.com/view?id=Fabric062",
+    "licence": "CC0-1.0",
+    "author": "Lennart Demes (ambientCG)"
+   }
+  },
+  {
+   "id": "ps2cc:materials/wool_herringbone",
+   "name": "Herringbone wool",
+   "kind": "wool",
+   "diffuse": "materials/wool_herringbone/wool_herringbone_diffuse.jpg",
+   "diffuseSize": 2048,
+   "pbr": {
+    "albedo": "materials/wool_herringbone/wool_herringbone_albedo.jpg",
+    "normal": "materials/wool_herringbone/wool_herringbone_normal.jpg",
+    "arm": "materials/wool_herringbone/wool_herringbone_arm.jpg",
+    "size": 1024
+   },
+   "tileMetres": 0.27,
+   "roughness": 0.628,
+   "gloss": 0.12,
+   "swatch": [
+    0.451,
+    0.437,
+    0.42
+   ],
+   "source": {
+    "site": "Poly Haven",
+    "asset": "poly_wool_herringbone",
+    "url": "https://polyhaven.com/a/poly_wool_herringbone",
+    "licence": "CC0-1.0",
+    "author": "colormass and Rico Cilliers (Poly Haven)"
+   }
+  },
+  {
+   "id": "ps2cc:materials/knit",
+   "name": "Knit",
+   "kind": "knit",
+   "diffuse": "materials/knit/knit_diffuse.jpg",
+   "diffuseSize": 2048,
+   "pbr": {
+    "albedo": "materials/knit/knit_albedo.jpg",
+    "normal": "materials/knit/knit_normal.jpg",
+    "arm": "materials/knit/knit_arm.jpg",
+    "size": 1024
+   },
+   "tileMetres": 0.267,
+   "roughness": 0.623,
+   "gloss": 0.13,
+   "swatch": [
+    0.318,
+    0.282,
+    0.234
+   ],
+   "source": {
+    "site": "Poly Haven",
+    "asset": "knitted_fleece",
+    "url": "https://polyhaven.com/a/knitted_fleece",
+    "licence": "CC0-1.0",
+    "author": "colormass and Rico Cilliers (Poly Haven)"
+   }
+  },
+  {
+   "id": "ps2cc:materials/nylon_ripstop",
+   "name": "Nylon ripstop",
+   "kind": "nylon",
+   "diffuse": "materials/nylon_ripstop/nylon_ripstop_diffuse.jpg",
+   "diffuseSize": 2048,
+   "pbr": {
+    "albedo": "materials/nylon_ripstop/nylon_ripstop_albedo.jpg",
+    "normal": "materials/nylon_ripstop/nylon_ripstop_normal.jpg",
+    "arm": "materials/nylon_ripstop/nylon_ripstop_arm.jpg",
+    "size": 1024
+   },
+   "tileMetres": 0.05,
+   "roughness": 0.533,
+   "gloss": 0.2,
+   "swatch": [
+    0.902,
+    0.902,
+    0.899
+   ],
+   "source": {
+    "site": "ambientCG",
+    "asset": "Fabric048",
+    "url": "https://ambientcg.com/view?id=Fabric048",
+    "licence": "CC0-1.0",
+    "author": "Lennart Demes (ambientCG)"
+   }
+  },
+  {
+   "id": "ps2cc:materials/shearling",
+   "name": "Shearling",
+   "kind": "fur",
+   "diffuse": "materials/shearling/shearling_diffuse.jpg",
+   "diffuseSize": 2048,
+   "pbr": {
+    "albedo": "materials/shearling/shearling_albedo.jpg",
+    "normal": "materials/shearling/shearling_normal.jpg",
+    "arm": "materials/shearling/shearling_arm.jpg",
+    "size": 1024
+   },
+   "tileMetres": 0.335,
+   "roughness": 0.702,
+   "gloss": 0.08,
+   "swatch": [
+    0.871,
+    0.788,
+    0.7
+   ],
+   "source": {
+    "site": "Poly Haven",
+    "asset": "curly_teddy_natural",
+    "url": "https://polyhaven.com/a/curly_teddy_natural",
+    "licence": "CC0-1.0",
+    "author": "colormass and Rico Cilliers (Poly Haven)"
+   }
   }
  ]
 }

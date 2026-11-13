@@ -24,7 +24,8 @@ import {
   type RgbaImage,
 } from '@ps2cc/core';
 import { backend, libraryUrl } from '../backend';
-import { imageToPng } from '../images';
+import { decodeImage, imageToPng } from '../images';
+import { resolveAssetUrl } from '@ps2cc/viewport';
 import type { Studio } from '../state/studio';
 
 /** The scene part of a worn garment, by slot. */
@@ -41,6 +42,21 @@ async function garmentTexture(studio: Studio, slot: string): Promise<string> {
   const path = g.texture ?? (await studio.engine.assets.proxy(g.asset)).meta.material?.diffuseTexture ?? null;
   if (!path) throw new Error('this garment has no texture to paint over');
   return path;
+}
+
+/**
+ * What the garment looks like without paint: its look composed over its own
+ * texture (Part 2 F18) when it has one, else that texture.
+ */
+async function garmentReference(studio: Studio, slot: string): Promise<RgbaImage> {
+  const g = studio.engine.doc.garments.find((x) => x.slot === slot);
+  // From the document's look even when paint hides it in the scene: the paint was made over it.
+  if (g?.look) {
+    const base = studio.info.coreAssetsUrl;
+    const own = g.texture ?? (await studio.engine.assets.proxy(g.asset)).meta.material?.diffuseTexture ?? null;
+    return studio.scene.garmentLooks.compose(g.asset, g.look, own ? studio.engine.assets.textureFor(own) : null, 1024, (p) => decodeImage(resolveAssetUrl(base, p)));
+  }
+  return studio.viewport!.texturePixels(await garmentTexture(studio, slot));
 }
 
 function square(img: RgbaImage): RgbaImage {
@@ -65,7 +81,7 @@ export async function openInPainter(studio: Studio, target: PaintTarget): Promis
   } else {
     const slot = target.slice('garment:'.length);
     const part = garmentPart(studio, slot);
-    reference = square(await vp.texturePixels(await garmentTexture(studio, slot)));
+    reference = square(await garmentReference(studio, slot));
     obj = meshObj(slot, part.positions, part.uvs, part.indices);
   }
   await backend.painterOpen(doc.name, target, obj, await imageToPng(opaque(reference)), reference.width);
@@ -88,7 +104,7 @@ export async function bringPaintBack(studio: Studio, target: PaintTarget): Promi
     texels = paintedLayer(reference, painted).texels;
     // The garment's own alpha (its texture may be a cut-out); the reference was sent opaque.
     const slot = target.slice('garment:'.length);
-    const own = square(await studio.viewport!.texturePixels(await garmentTexture(studio, slot)));
+    const own = square(await garmentReference(studio, slot));
     image = withAlphaOf(painted, own);
     kind = 'garment-textures';
   }

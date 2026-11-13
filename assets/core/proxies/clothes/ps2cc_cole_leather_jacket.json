@@ -1,0 +1,232 @@
+{
+ "binary": "ps2cc_cole_leather_jacket.bin",
+ "byteLength": 176256,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3405
+  },
+  "uvs": {
+   "offset": 13632,
+   "dtype": "f32",
+   "count": 2694
+  },
+  "faceVerts": {
+   "offset": 24416,
+   "dtype": "u32",
+   "count": 8608
+  },
+  "faceUvs": {
+   "offset": 58848,
+   "dtype": "u32",
+   "count": 8608
+  },
+  "refVerts": {
+   "offset": 93280,
+   "dtype": "u32",
+   "count": 3405
+  },
+  "refWeights": {
+   "offset": 106912,
+   "dtype": "f32",
+   "count": 3405
+  },
+  "refOffsets": {
+   "offset": 120544,
+   "dtype": "f32",
+   "count": 3405
+  },
+  "coveredVerts": {
+   "offset": 134176,
+   "dtype": "u32",
+   "count": 1959
+  },
+  "skinOffsets": {
+   "offset": 142016,
+   "dtype": "u32",
+   "count": 1136
+  },
+  "skinBones": {
+   "offset": 146560,
+   "dtype": "u16",
+   "count": 4948
+  },
+  "skinValues": {
+   "offset": 156464,
+   "dtype": "f32",
+   "count": 4948
+  }
+ },
+ "format": "ps2cc.proxy/1",
+ "id": "ps2cc:clothes/cole_leather_jacket",
+ "category": "clothes",
+ "name": "Cropped leather jacket",
+ "uuid": "70cfa727ad8b69fedbda3e74529ad919",
+ "tags": [
+  "ps2cc",
+  "garment-studio"
+ ],
+ "zDepth": 60,
+ "vertexCount": 1135,
+ "faceCount": 2152,
+ "scale": [
+  [
+   3886,
+   10551,
+   0.9389199614524841
+  ],
+  [
+   10922,
+   836,
+   0.6007344983518124
+  ],
+  [
+   10505,
+   10220,
+   0.274139441549778
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.78,
+   0.78,
+   0.75
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/ps2cc_cole_leather_jacket.png",
+  "textureSize": [
+   64,
+   64
+  ]
+ },
+ "slot": "outer",
+ "decimatedFrom": 1135,
+ "hiddenFaces": "computed",
+ "originalTriangles": 2152,
+ "defaults": {
+  "look": {
+   "zones": [
+    {
+     "id": "z1",
+     "name": "Garment",
+     "islands": "rest",
+     "material": "ps2cc:materials/leather_worn",
+     "tint": [
+      0.62,
+      0.5,
+      0.42
+     ],
+     "scale": 1,
+     "rotation": 0,
+     "wear": 0.45
+    },
+    {
+     "id": "z2",
+     "name": "Shearling collar",
+     "islands": [
+      11
+     ],
+     "material": "ps2cc:materials/shearling",
+     "tint": [
+      1,
+      0.96,
+      0.9
+     ],
+     "scale": 0.7,
+     "rotation": 0,
+     "wear": 0
+    }
+   ],
+   "mask": null,
+   "seams": {
+    "stitches": 0.7,
+    "thread": null,
+    "shadow": 0.75,
+    "spacingMm": 4,
+    "hemRows": 2
+   },
+   "folds": {
+    "strength": 1,
+    "sites": {
+     "elbows": 1,
+     "armpits": 1,
+     "waist": 1,
+     "crotch": 1,
+     "knees": 1
+    },
+    "seed": 1
+   },
+   "decals": [
+    {
+     "id": "zip",
+     "kind": "zip",
+     "uv": [
+      0.2197265625,
+      0.3154296875
+     ],
+     "uv2": [
+      0.2353515625,
+      0.0654296875
+     ],
+     "sizeMm": 11,
+     "rotation": 0,
+     "colour": [
+      0.62,
+      0.6,
+      0.56
+     ]
+    },
+    {
+     "id": "flap0",
+     "kind": "pocketFlap",
+     "uv": [
+      0.1611328125,
+      0.2646484375
+     ],
+     "sizeMm": 110,
+     "heightMm": 42,
+     "rotation": 7,
+     "colour": [
+      0.6,
+      0.58,
+      0.54
+     ]
+    },
+    {
+     "id": "flap1",
+     "kind": "pocketFlap",
+     "uv": [
+      0.2783203125,
+      0.2646484375
+     ],
+     "sizeMm": 110,
+     "heightMm": 42,
+     "rotation": -7,
+     "colour": [
+      0.6,
+      0.58,
+      0.54
+     ]
+    }
+   ]
+  },
+  "fur": {
+   "enabled": true,
+   "edges": [
+    "collar",
+    "cuffs"
+   ],
+   "length": 0.022,
+   "density": 190,
+   "lift": 0.55,
+   "colour": [
+    0.82,
+    0.76,
+    0.64
+   ]
+  }
+ }
+}

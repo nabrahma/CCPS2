@@ -26,7 +26,7 @@ import { MAX_INFLUENCES, type InfluenceTable } from '../skeleton/weights';
 import { bodyTexture, splitBody } from '../skin/headsplit';
 import { headTexture } from '../skin/headpack';
 import { EYE_TEXTURE_SIZE, eyeTexture } from '../eyes/eye-texture';
-import { EYES_ATLAS_SIZE, GARMENT_ATLAS_SIZE, HAIR_TEXTURE_LIMIT } from './limits';
+import { atlasCellTexels, EYES_ATLAS_SIZE, GARMENT_ATLAS_SIZE, HAIR_TEXTURE_LIMIT } from './limits';
 import { garmentBakeStrength, multiplyBaked } from '../bake/apply';
 import { createImage, resizeImage, type RgbaImage } from '../skin/image';
 import { colourizeHair } from '../hair/strand-atlas';
@@ -247,9 +247,13 @@ export async function buildExportScene(scene: CharacterScene, opts: ExportOption
     if (parts.length === 0) return;
     const images: RgbaImage[] = [];
     for (const p of parts) {
+      // Garments with a look (Part 2 F18): composed at a power of two at least as big as the atlas cell they get.
+      const cell = atlasCellTexels(parts.length, size);
       let tex = p.material.eye
         ? eyeTexture(p.material.eye.look, EYE_TEXTURE_SIZE, p.material.eye.catchLight)
-        : p.material.texture
+        : p.material.wardrobe
+          ? await p.material.wardrobe.compose(Math.min(2048, 2 ** Math.ceil(Math.log2(Math.max(64, cell)))), opts.loadImage)
+          : p.material.texture
           ? await opts.loadImage(p.material.texture)
           : createImage(4, 4, [255, 255, 255, 255]);
       // Hair v2 cards (fur, card brows): the greyscale strand atlas through their gradient map.

@@ -1,0 +1,165 @@
+{
+ "binary": "ps2cc_rollneck_sweater.bin",
+ "byteLength": 145380,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2832
+  },
+  "uvs": {
+   "offset": 11328,
+   "dtype": "f32",
+   "count": 2308
+  },
+  "faceVerts": {
+   "offset": 20560,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "faceUvs": {
+   "offset": 49360,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "refVerts": {
+   "offset": 78160,
+   "dtype": "u32",
+   "count": 2832
+  },
+  "refWeights": {
+   "offset": 89488,
+   "dtype": "f32",
+   "count": 2832
+  },
+  "refOffsets": {
+   "offset": 100816,
+   "dtype": "f32",
+   "count": 2832
+  },
+  "coveredVerts": {
+   "offset": 112144,
+   "dtype": "u32",
+   "count": 2178
+  },
+  "skinOffsets": {
+   "offset": 120864,
+   "dtype": "u32",
+   "count": 945
+  },
+  "skinBones": {
+   "offset": 124656,
+   "dtype": "u16",
+   "count": 3453
+  },
+  "skinValues": {
+   "offset": 131568,
+   "dtype": "f32",
+   "count": 3453
+  }
+ },
+ "format": "ps2cc.proxy/1",
+ "id": "ps2cc:clothes/rollneck_sweater",
+ "category": "clothes",
+ "name": "Roll-neck sweater",
+ "uuid": "28651ce5bbef5bdffe0c158f850be579",
+ "tags": [
+  "ps2cc",
+  "garment-studio"
+ ],
+ "zDepth": 50,
+ "vertexCount": 944,
+ "faceCount": 1800,
+ "scale": [
+  [
+   3886,
+   10551,
+   0.9389199614524841
+  ],
+  [
+   4340,
+   7538,
+   0.5742393396794796
+  ],
+  [
+   4212,
+   10562,
+   0.2879389375448227
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.78,
+   0.78,
+   0.75
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/ps2cc_rollneck_sweater.png",
+  "textureSize": [
+   64,
+   64
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 1248,
+ "hiddenFaces": "computed",
+ "originalTriangles": 2408,
+ "defaults": {
+  "look": {
+   "zones": [
+    {
+     "id": "z1",
+     "name": "Garment",
+     "islands": "rest",
+     "material": "ps2cc:materials/knit",
+     "tint": [
+      1,
+      1,
+      1
+     ],
+     "scale": 1,
+     "rotation": 0,
+     "wear": 0
+    },
+    {
+     "id": "z2",
+     "name": "Roll neck",
+     "islands": [
+      9
+     ],
+     "material": "ps2cc:materials/knit",
+     "tint": [
+      1,
+      1,
+      1
+     ],
+     "scale": 0.8,
+     "rotation": 90,
+     "wear": 0
+    }
+   ],
+   "mask": null,
+   "seams": {
+    "stitches": 0.35,
+    "thread": null,
+    "shadow": 0.6,
+    "spacingMm": 4,
+    "hemRows": 2
+   },
+   "folds": {
+    "strength": 0.8,
+    "sites": {
+     "elbows": 1,
+     "armpits": 1,
+     "waist": 1,
+     "crotch": 1,
+     "knees": 1
+    },
+    "seed": 1
+   },
+   "decals": []
+  }
+ }
+}

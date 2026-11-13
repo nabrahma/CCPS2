@@ -10,6 +10,7 @@
     "build:hair": "tsx src/hair-atlases.ts",
     "build:looks": "tsx src/looks.ts",
     "build:headlayout": "tsx src/head-layout.ts",
+    "build:outfits": "tsx src/outfits.ts",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "vitest run"
   },

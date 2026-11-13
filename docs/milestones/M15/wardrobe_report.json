@@ -1,0 +1,835 @@
+{
+ "materials": [
+  {
+   "id": "ps2cc:materials/leather_smooth",
+   "kind": "leather",
+   "source": "https://polyhaven.com/a/leather_white",
+   "tileMetres": 0.3,
+   "gloss": 0.13
+  },
+  {
+   "id": "ps2cc:materials/leather_worn",
+   "kind": "leather",
+   "source": "https://polyhaven.com/a/brown_leather",
+   "tileMetres": 0.4,
+   "gloss": 0.1
+  },
+  {
+   "id": "ps2cc:materials/leather_black",
+   "kind": "leather",
+   "source": "https://ambientcg.com/view?id=Leather031",
+   "tileMetres": 0.45,
+   "gloss": 0.2
+  },
+  {
+   "id": "ps2cc:materials/suede",
+   "kind": "suede",
+   "source": "https://ambientcg.com/view?id=Leather039",
+   "tileMetres": 0.3,
+   "gloss": 0.15
+  },
+  {
+   "id": "ps2cc:materials/denim",
+   "kind": "denim",
+   "source": "https://polyhaven.com/a/denim_fabric_03",
+   "tileMetres": 0.271,
+   "gloss": 0.09
+  },
+  {
+   "id": "ps2cc:materials/cotton_jersey",
+   "kind": "cotton",
+   "source": "https://polyhaven.com/a/cotton_jersey",
+   "tileMetres": 0.264,
+   "gloss": 0.04
+  },
+  {
+   "id": "ps2cc:materials/canvas",
+   "kind": "canvas",
+   "source": "https://ambientcg.com/view?id=Fabric062",
+   "tileMetres": 0.4,
+   "gloss": 0.03
+  },
+  {
+   "id": "ps2cc:materials/wool_herringbone",
+   "kind": "wool",
+   "source": "https://polyhaven.com/a/poly_wool_herringbone",
+   "tileMetres": 0.27,
+   "gloss": 0.12
+  },
+  {
+   "id": "ps2cc:materials/knit",
+   "kind": "knit",
+   "source": "https://polyhaven.com/a/knitted_fleece",
+   "tileMetres": 0.267,
+   "gloss": 0.13
+  },
+  {
+   "id": "ps2cc:materials/nylon_ripstop",
+   "kind": "nylon",
+   "source": "https://ambientcg.com/view?id=Fabric048",
+   "tileMetres": 0.05,
+   "gloss": 0.2
+  },
+  {
+   "id": "ps2cc:materials/shearling",
+   "kind": "fur",
+   "source": "https://polyhaven.com/a/curly_teddy_natural",
+   "tileMetres": 0.335,
+   "gloss": 0.08
+  }
+ ],
+ "seams": {
+  "garments": 121,
+  "withSeams": 121,
+  "withHems": 106,
+  "none": [],
+  "perGarment": [
+   {
+    "id": "mh:clothes/fedora01",
+    "islands": 2,
+    "seamMetres": 0.455,
+    "hemMetres": 0.511
+   },
+   {
+    "id": "mh:clothes/fedora_cocked",
+    "islands": 2,
+    "seamMetres": 0.454,
+    "hemMetres": 0.516
+   },
+   {
+    "id": "mh:clothes/female_casualsuit01",
+    "islands": 6,
+    "seamMetres": 3.88,
+    "hemMetres": 3.154
+   },
+   {
+    "id": "mh:clothes/female_casualsuit02",
+    "islands": 9,
+    "seamMetres": 2.92,
+    "hemMetres": 3.958
+   },
+   {
+    "id": "mh:clothes/female_elegantsuit01",
+    "islands": 10,
+    "seamMetres": 4.847,
+    "hemMetres": 4.924
+   },
+   {
+    "id": "mh:clothes/female_sportsuit01",
+    "islands": 6,
+    "seamMetres": 3.435,
+    "hemMetres": 3.212
+   },
+   {
+    "id": "mh:clothes/male_casualsuit01",
+    "islands": 6,
+    "seamMetres": 6.581,
+    "hemMetres": 1.486
+   },
+   {
+    "id": "mh:clothes/male_casualsuit02",
+    "islands": 6,
+    "seamMetres": 4.846,
+    "hemMetres": 3.339
+   },
+   {
+    "id": "mh:clothes/male_casualsuit03",
+    "islands": 11,
+    "seamMetres": 7.29,
+    "hemMetres": 4.702
+   },
+   {
+    "id": "mh:clothes/male_casualsuit04",
+    "islands": 6,
+    "seamMetres": 4.06,
+    "hemMetres": 3.529
+   },
+   {
+    "id": "mh:clothes/male_casualsuit05",
+    "islands": 21,
+    "seamMetres": 8.515,
+    "hemMetres": 9.897
+   },
+   {
+    "id": "mh:clothes/male_casualsuit06",
+    "islands": 6,
+    "seamMetres": 4.164,
+    "hemMetres": 3.448
+   },
+   {
+    "id": "mh:clothes/male_elegantsuit01",
+    "islands": 23,
+    "seamMetres": 8.026,
+    "hemMetres": 3.729
+   },
+   {
+    "id": "mh:clothes/male_worksuit01",
+    "islands": 11,
+    "seamMetres": 4.262,
+    "hemMetres": 7.013
+   },
+   {
+    "id": "mh:clothes/shoes01",
+    "islands": 6,
+    "seamMetres": 1.771,
+    "hemMetres": 1.78
+   },
+   {
+    "id": "mh:clothes/shoes02",
+    "islands": 8,
+    "seamMetres": 1.91,
+    "hemMetres": 1.82
+   },
+   {
+    "id": "mh:clothes/shoes03",
+    "islands": 20,
+    "seamMetres": 3.554,
+    "hemMetres": 2.558
+   },
+   {
+    "id": "mh:clothes/shoes04",
+    "islands": 6,
+    "seamMetres": 1.771,
+    "hemMetres": 1.78
+   },
+   {
+    "id": "mh:clothes/shoes05",
+    "islands": 8,
+    "seamMetres": 1.91,
+    "hemMetres": 1.82
+   },
+   {
+    "id": "mh:clothes/shoes06",
+    "islands": 8,
+    "seamMetres": 1.91,
+    "hemMetres": 1.82
+   },
+   {
+    "id": "mh:clothes/elvs_crude_t-shirt_male",
+    "islands": 2,
+    "seamMetres": 1.295,
+    "hemMetres": 2.169
+   },
+   {
+    "id": "mh:clothes/joepal_crude_t-shirt_female",
+    "islands": 2,
+    "seamMetres": 1.412,
+    "hemMetres": 2.264
+   },
+   {
+    "id": "mh:clothes/namuhekam_male_polo_shirt",
+    "islands": 11,
+    "seamMetres": 2.453,
+    "hemMetres": 5.995
+   },
+   {
+    "id": "mh:clothes/skalldyrssuppe_tube_top_funky_colors",
+    "islands": 6,
+    "seamMetres": 4.006,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/toigo_basic_tucked_t-shirt",
+    "islands": 6,
+    "seamMetres": 2.54,
+    "hemMetres": 1.766
+   },
+   {
+    "id": "mh:clothes/toigo_bodice-style_top",
+    "islands": 7,
+    "seamMetres": 1.936,
+    "hemMetres": 1.856
+   },
+   {
+    "id": "mh:clothes/toigo_camisole_top",
+    "islands": 5,
+    "seamMetres": 2.571,
+    "hemMetres": 2.693
+   },
+   {
+    "id": "mh:clothes/toigo_fisherman_sweater",
+    "islands": 9,
+    "seamMetres": 4.622,
+    "hemMetres": 1.755
+   },
+   {
+    "id": "mh:clothes/toigo_keyhole_tank_top",
+    "islands": 2,
+    "seamMetres": 0.749,
+    "hemMetres": 3.308
+   },
+   {
+    "id": "mh:clothes/toigo_turtleneck_halter_top",
+    "islands": 3,
+    "seamMetres": 0.683,
+    "hemMetres": 2.435
+   },
+   {
+    "id": "mh:clothes/cortu_cargo_pants",
+    "islands": 1,
+    "seamMetres": 1.392,
+    "hemMetres": 1.808
+   },
+   {
+    "id": "mh:clothes/cortu_jeans_shorts",
+    "islands": 1,
+    "seamMetres": 0.042,
+    "hemMetres": 1.912
+   },
+   {
+    "id": "mh:clothes/toigo_harem_pants",
+    "islands": 7,
+    "seamMetres": 4.95,
+    "hemMetres": 1.162
+   },
+   {
+    "id": "mh:clothes/toigo_wool_pants",
+    "islands": 4,
+    "seamMetres": 4.157,
+    "hemMetres": 1.708
+   },
+   {
+    "id": "mh:clothes/cortu_floppy_overknee_shoes",
+    "islands": 4,
+    "seamMetres": 2.591,
+    "hemMetres": 0.938
+   },
+   {
+    "id": "mh:clothes/cortu_t-bar",
+    "islands": 8,
+    "seamMetres": 1.935,
+    "hemMetres": 1.506
+   },
+   {
+    "id": "mh:clothes/culturalibre_hero_boots_1",
+    "islands": 12,
+    "seamMetres": 3.926,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/culturalibre_hero_boots_2",
+    "islands": 6,
+    "seamMetres": 2.637,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/culturalibre_hero_boots_3",
+    "islands": 6,
+    "seamMetres": 2.596,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/culturalibre_hero_boots_4",
+    "islands": 6,
+    "seamMetres": 2.918,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/culturalibre_hero_boots_5",
+    "islands": 14,
+    "seamMetres": 5.831,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/culturalibre_heroine_boots_1",
+    "islands": 6,
+    "seamMetres": 4.214,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/culturalibre_heroine_boots_2",
+    "islands": 6,
+    "seamMetres": 3.046,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/culturalibre_heroine_boots_3",
+    "islands": 6,
+    "seamMetres": 2.781,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/culturalibre_heroine_boots_4",
+    "islands": 69,
+    "seamMetres": 14.935,
+    "hemMetres": 0.558
+   },
+   {
+    "id": "mh:clothes/culturalibre_male_boots",
+    "islands": 8,
+    "seamMetres": 2.599,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/grinsegold_female_pirate_boots",
+    "islands": 34,
+    "seamMetres": 9.616,
+    "hemMetres": 0.476
+   },
+   {
+    "id": "mh:clothes/scailman_gogo_platform_boots",
+    "islands": 20,
+    "seamMetres": 7.286,
+    "hemMetres": 3.333
+   },
+   {
+    "id": "mh:clothes/scailman_semitransparent_water_boots",
+    "islands": 22,
+    "seamMetres": 6.971,
+    "hemMetres": 2.186
+   },
+   {
+    "id": "mh:clothes/toigo_ankle_boots_female",
+    "islands": 12,
+    "seamMetres": 3.175,
+    "hemMetres": 0.411
+   },
+   {
+    "id": "mh:clothes/toigo_ankle_boots_male",
+    "islands": 12,
+    "seamMetres": 4.516,
+    "hemMetres": 0.512
+   },
+   {
+    "id": "mh:clothes/toigo_ballet_flats",
+    "islands": 8,
+    "seamMetres": 1.816,
+    "hemMetres": 0.787
+   },
+   {
+    "id": "mh:clothes/toigo_ballet_flats_with_bows",
+    "islands": 13,
+    "seamMetres": 1.81,
+    "hemMetres": 1.168
+   },
+   {
+    "id": "mh:clothes/toigo_ballet_flats_with_flowers",
+    "islands": 12,
+    "seamMetres": 1.818,
+    "hemMetres": 0.927
+   },
+   {
+    "id": "mh:clothes/toigo_flats",
+    "islands": 26,
+    "seamMetres": 7.183,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/toigo_mj_cloth_shoes",
+    "islands": 14,
+    "seamMetres": 4.348,
+    "hemMetres": 1.352
+   },
+   {
+    "id": "mh:clothes/toigo_stiletto_booties",
+    "islands": 10,
+    "seamMetres": 2.357,
+    "hemMetres": 0.363
+   },
+   {
+    "id": "mh:clothes/toigo_female_double-breasted_suit",
+    "islands": 38,
+    "seamMetres": 8.431,
+    "hemMetres": 9.093
+   },
+   {
+    "id": "mh:clothes/toigo_female_suit_2",
+    "islands": 37,
+    "seamMetres": 10.951,
+    "hemMetres": 8.622
+   },
+   {
+    "id": "mh:clothes/toigo_male_double-breasted_suit",
+    "islands": 38,
+    "seamMetres": 8.296,
+    "hemMetres": 8.591
+   },
+   {
+    "id": "mh:clothes/toigo_male_suit_3",
+    "islands": 36,
+    "seamMetres": 10.839,
+    "hemMetres": 8.614
+   },
+   {
+    "id": "mh:clothes/toigo_male_suit_tie_and_jacket",
+    "islands": 18,
+    "seamMetres": 8.994,
+    "hemMetres": 7.868
+   },
+   {
+    "id": "mh:clothes/toigo_suit_with_dinner_jacket",
+    "islands": 22,
+    "seamMetres": 9.28,
+    "hemMetres": 6.976
+   },
+   {
+    "id": "mh:clothes/toigo_suit_with_jacket_and_bowtie",
+    "islands": 14,
+    "seamMetres": 8.85,
+    "hemMetres": 7.433
+   },
+   {
+    "id": "mh:clothes/kwnet_at_pantyhose01",
+    "islands": 13,
+    "seamMetres": 6.63,
+    "hemMetres": 0.792
+   },
+   {
+    "id": "mh:clothes/marco_105_armsleeve02",
+    "islands": 2,
+    "seamMetres": 0.6,
+    "hemMetres": 0.963
+   },
+   {
+    "id": "mh:clothes/marco_105_stocking01",
+    "islands": 2,
+    "seamMetres": 2.389,
+    "hemMetres": 1.11
+   },
+   {
+    "id": "mh:clothes/marco_105_stocking02",
+    "islands": 2,
+    "seamMetres": 2.559,
+    "hemMetres": 1.112
+   },
+   {
+    "id": "mh:clothes/v0rt3x_armsleeves_black_fishnet_large",
+    "islands": 8,
+    "seamMetres": 3.796,
+    "hemMetres": 1.092
+   },
+   {
+    "id": "mh:clothes/v0rt3x_armsleeves_black_fishnet_medium",
+    "islands": 8,
+    "seamMetres": 3.796,
+    "hemMetres": 1.092
+   },
+   {
+    "id": "mh:clothes/v0rt3x_armsleeves_black_fishnet_small",
+    "islands": 8,
+    "seamMetres": 3.796,
+    "hemMetres": 1.092
+   },
+   {
+    "id": "mh:clothes/v0rt3x_armsleeves_white_fishnet_large",
+    "islands": 8,
+    "seamMetres": 3.796,
+    "hemMetres": 1.092
+   },
+   {
+    "id": "mh:clothes/v0rt3x_armsleeves_white_fishnet_medium",
+    "islands": 8,
+    "seamMetres": 3.796,
+    "hemMetres": 1.092
+   },
+   {
+    "id": "mh:clothes/v0rt3x_armsleeves_white_fishnet_small",
+    "islands": 8,
+    "seamMetres": 3.796,
+    "hemMetres": 1.092
+   },
+   {
+    "id": "mh:clothes/v0rt3x_stockings_black_fishnet_large",
+    "islands": 18,
+    "seamMetres": 8.661,
+    "hemMetres": 1.113
+   },
+   {
+    "id": "mh:clothes/v0rt3x_stockings_black_fishnet_medium",
+    "islands": 18,
+    "seamMetres": 8.661,
+    "hemMetres": 1.113
+   },
+   {
+    "id": "mh:clothes/v0rt3x_stockings_black_fishnet_small",
+    "islands": 18,
+    "seamMetres": 8.659,
+    "hemMetres": 1.113
+   },
+   {
+    "id": "mh:clothes/v0rt3x_stockings_white_fishnet_large",
+    "islands": 18,
+    "seamMetres": 8.659,
+    "hemMetres": 1.113
+   },
+   {
+    "id": "mh:clothes/v0rt3x_stockings_white_fishnet_medium",
+    "islands": 18,
+    "seamMetres": 8.659,
+    "hemMetres": 1.113
+   },
+   {
+    "id": "mh:clothes/v0rt3x_stockings_white_fishnet_small",
+    "islands": 18,
+    "seamMetres": 8.659,
+    "hemMetres": 1.113
+   },
+   {
+    "id": "mh:clothes/wolgade_female_panties_01",
+    "islands": 2,
+    "seamMetres": 0.054,
+    "hemMetres": 2.157
+   },
+   {
+    "id": "mh:clothes/wolgade_female_top_01",
+    "islands": 2,
+    "seamMetres": 0.243,
+    "hemMetres": 2.943
+   },
+   {
+    "id": "mh:clothes/aethelraed_unraed_cloche_hat",
+    "islands": 12,
+    "seamMetres": 1.632,
+    "hemMetres": 2.151
+   },
+   {
+    "id": "mh:clothes/grinsegold_uncle_joshis_hat",
+    "islands": 382,
+    "seamMetres": 14.226,
+    "hemMetres": 0.029
+   },
+   {
+    "id": "mh:clothes/joepal_xmas_cap",
+    "islands": 5,
+    "seamMetres": 1.073,
+    "hemMetres": 0.551
+   },
+   {
+    "id": "mh:clothes/jujube_bag_on_head",
+    "islands": 2,
+    "seamMetres": 1.668,
+    "hemMetres": 1.681
+   },
+   {
+    "id": "mh:clothes/jujube_newsboy_cap",
+    "islands": 4,
+    "seamMetres": 0.652,
+    "hemMetres": 0.534
+   },
+   {
+    "id": "mh:clothes/toigo_maga_hat",
+    "islands": 4,
+    "seamMetres": 0.451,
+    "hemMetres": 1.105
+   },
+   {
+    "id": "mh:clothes/culturalibre_hero-heroine_gloves_1",
+    "islands": 4,
+    "seamMetres": 5.218,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/culturalibre_hero-heroine_gloves_2",
+    "islands": 10,
+    "seamMetres": 4.779,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/culturalibre_hero-heroine_gloves_3",
+    "islands": 6,
+    "seamMetres": 4.577,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/culturalibre_hero-heroine_gloves_4",
+    "islands": 6,
+    "seamMetres": 4.999,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/culturalibre_hero-heroine_gloves_5",
+    "islands": 4,
+    "seamMetres": 4.838,
+    "hemMetres": 0.837
+   },
+   {
+    "id": "mh:clothes/learning_mma_fighting_gloves",
+    "islands": 26,
+    "seamMetres": 1.129,
+    "hemMetres": 5.242
+   },
+   {
+    "id": "mh:clothes/toigo_gloves_long",
+    "islands": 4,
+    "seamMetres": 2.645,
+    "hemMetres": 0.602
+   },
+   {
+    "id": "mh:clothes/toigo_gloves_medium",
+    "islands": 6,
+    "seamMetres": 2.679,
+    "hemMetres": 0.43
+   },
+   {
+    "id": "mh:clothes/toigo_gloves_short",
+    "islands": 4,
+    "seamMetres": 1.77,
+    "hemMetres": 0.245
+   },
+   {
+    "id": "mh:clothes/aethelraed_flapper_dress",
+    "islands": 4,
+    "seamMetres": 0.788,
+    "hemMetres": 10.485
+   },
+   {
+    "id": "mh:clothes/mindfront_kimono",
+    "islands": 12,
+    "seamMetres": 11.298,
+    "hemMetres": 6.201
+   },
+   {
+    "id": "mh:clothes/toigo_bodice_dress_with_lace_ruffle_skirt",
+    "islands": 5,
+    "seamMetres": 4.172,
+    "hemMetres": 2.8
+   },
+   {
+    "id": "mh:clothes/toigo_camisole_dress_with_full_skirt",
+    "islands": 4,
+    "seamMetres": 2.824,
+    "hemMetres": 5.119
+   },
+   {
+    "id": "mh:clothes/toigo_cut_out_dress",
+    "islands": 7,
+    "seamMetres": 4.72,
+    "hemMetres": 2.973
+   },
+   {
+    "id": "mh:clothes/toigo_dress_with_tiered_skirt",
+    "islands": 11,
+    "seamMetres": 7.74,
+    "hemMetres": 7.955
+   },
+   {
+    "id": "mh:clothes/toigo_halter_dress_knee_length",
+    "islands": 3,
+    "seamMetres": 1.936,
+    "hemMetres": 3.868
+   },
+   {
+    "id": "mh:clothes/toigo_halter_dress_midi",
+    "islands": 3,
+    "seamMetres": 2.56,
+    "hemMetres": 3.277
+   },
+   {
+    "id": "mh:clothes/toigo_halter_dress_with_fluted_skirt",
+    "islands": 5,
+    "seamMetres": 5.67,
+    "hemMetres": 5.232
+   },
+   {
+    "id": "mh:clothes/toigo_keyhole_neck_dress",
+    "islands": 4,
+    "seamMetres": 3.031,
+    "hemMetres": 3.804
+   },
+   {
+    "id": "mh:clothes/toigo_shift_dress",
+    "islands": 5,
+    "seamMetres": 3.454,
+    "hemMetres": 3.002
+   },
+   {
+    "id": "mh:clothes/toigo_strapless_ruffle_top_dress",
+    "islands": 6,
+    "seamMetres": 4.225,
+    "hemMetres": 4.929
+   },
+   {
+    "id": "mh:clothes/wdg_mycenaean_tunic",
+    "islands": 2,
+    "seamMetres": 2.488,
+    "hemMetres": 2.293
+   },
+   {
+    "id": "mh:clothes/frankyaye_mini_skirt_01",
+    "islands": 13,
+    "seamMetres": 1.348,
+    "hemMetres": 1.859
+   },
+   {
+    "id": "mh:clothes/frankyaye_mini_skirt_02",
+    "islands": 14,
+    "seamMetres": 1.435,
+    "hemMetres": 4.833
+   },
+   {
+    "id": "mh:clothes/toigo_long_full_skirt",
+    "islands": 2,
+    "seamMetres": 1.733,
+    "hemMetres": 4.732
+   },
+   {
+    "id": "mh:clothes/toigo_skirt_with_lace_ruffle",
+    "islands": 4,
+    "seamMetres": 3.742,
+    "hemMetres": 3.399
+   },
+   {
+    "id": "mh:clothes/toigo_tiered_mini_skirt",
+    "islands": 8,
+    "seamMetres": 5.945,
+    "hemMetres": 5.592
+   },
+   {
+    "id": "mh:clothes/toigo_tiered_skirt",
+    "islands": 8,
+    "seamMetres": 6.926,
+    "hemMetres": 5.279
+   },
+   {
+    "id": "ps2cc:clothes/rollneck_sweater",
+    "islands": 10,
+    "seamMetres": 5.113,
+    "hemMetres": 1.869
+   },
+   {
+    "id": "ps2cc:clothes/mara_utility_vest",
+    "islands": 10,
+    "seamMetres": 4.174,
+    "hemMetres": 5.727
+   },
+   {
+    "id": "ps2cc:clothes/cole_leather_jacket",
+    "islands": 12,
+    "seamMetres": 5.245,
+    "hemMetres": 2.771
+   },
+   {
+    "id": "ps2cc:clothes/wristbands",
+    "islands": 2,
+    "seamMetres": 0.142,
+    "hemMetres": 0.812
+   },
+   {
+    "id": "ps2cc:clothes/cargo_trousers",
+    "islands": 3,
+    "seamMetres": 1.392,
+    "hemMetres": 2.952
+   }
+  ]
+ },
+ "folds": {
+  "elbowTexelsChanged": 0.468,
+  "upperBackTexelsChanged": 0
+ },
+ "pokeThrough": {
+  "bodies": 50,
+  "seed": 15000,
+  "limitMm": 2,
+  "sampledVertices": 130900,
+  "within3cmOfSkin": 62901,
+  "deepestWithoutColliderMm": 4.37,
+  "worstMm": {
+   "ps2cc:clothes/cargo_trousers": 0,
+   "ps2cc:clothes/rollneck_sweater": 0,
+   "ps2cc:clothes/wristbands": 0,
+   "ps2cc:clothes/mara_utility_vest": 0,
+   "ps2cc:clothes/cole_leather_jacket": 0
+  },
+  "failures": []
+ }
+}

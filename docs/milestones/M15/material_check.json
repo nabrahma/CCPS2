@@ -1,0 +1,32 @@
+{
+ "limit": 0.85,
+ "light": "ERA_LIGHT (key from above and in front, hemisphere fill)",
+ "ssim": {
+  "ps2cc:materials/leather_smooth": 0.995,
+  "ps2cc:materials/leather_worn": 0.9398,
+  "ps2cc:materials/leather_black": 0.9508,
+  "ps2cc:materials/suede": 0.9822,
+  "ps2cc:materials/denim": 0.992,
+  "ps2cc:materials/cotton_jersey": 0.9807,
+  "ps2cc:materials/canvas": 0.9687,
+  "ps2cc:materials/wool_herringbone": 0.9778,
+  "ps2cc:materials/knit": 0.9258,
+  "ps2cc:materials/nylon_ripstop": 0.9511,
+  "ps2cc:materials/shearling": 0.9921
+ },
+ "controlAlbedoOnly": {
+  "ps2cc:materials/leather_smooth": 0.9947,
+  "ps2cc:materials/leather_worn": 0.9164,
+  "ps2cc:materials/leather_black": 0.9481,
+  "ps2cc:materials/suede": 0.9841,
+  "ps2cc:materials/denim": 0.9891,
+  "ps2cc:materials/cotton_jersey": 0.9936,
+  "ps2cc:materials/canvas": 0.9815,
+  "ps2cc:materials/wool_herringbone": 0.9681,
+  "ps2cc:materials/knit": 0.8859,
+  "ps2cc:materials/nylon_ripstop": 0.693,
+  "ps2cc:materials/shearling": 0.8701
+ },
+ "meanEra": 0.9687272727272728,
+ "meanControl": 0.9295090909090908
+}

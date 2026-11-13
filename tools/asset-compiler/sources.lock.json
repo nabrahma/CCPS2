@@ -59,6 +59,131 @@
     "size": 820410,
     "url": "https://files.makehumancommunity.org/asset_packs/makehuman_system_poses/makehuman_system_poses_cc0.zip"
   },
+  "mat_brown_leather_albedo": {
+    "sha256": "b0de2403a31efa31e501b0028c0bd8e504d5bd6318f4a5ce90c550c3067f96d8",
+    "size": 2137518,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brown_leather/brown_leather_albedo_2k.jpg"
+  },
+  "mat_brown_leather_arm": {
+    "sha256": "3c043ed2e4595e735c1cd013dacbcdfbaf8b2e5975b868d1dc188ecfe463f66d",
+    "size": 1870765,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brown_leather/brown_leather_arm_2k.jpg"
+  },
+  "mat_brown_leather_normal": {
+    "sha256": "3386277290af50b4d464dc9a9f195bbf8dd6f137b9ae0274552397d2f0135c98",
+    "size": 3030702,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brown_leather/brown_leather_nor_gl_2k.jpg"
+  },
+  "mat_cotton_jersey_albedo": {
+    "sha256": "ddaedb1e9d7d903eac532f7f8722fbb397a9efb0da82801b97002bada416d2d0",
+    "size": 3009673,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/cotton_jersey/cotton_jersey_diff_2k.jpg"
+  },
+  "mat_cotton_jersey_arm": {
+    "sha256": "27aa148d26c30789148c8e977a0b711da8a591e1915b38ebcb8e549e26b3fa18",
+    "size": 4615270,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/cotton_jersey/cotton_jersey_arm_2k.jpg"
+  },
+  "mat_cotton_jersey_normal": {
+    "sha256": "ce2ff297a75638492fb46dae98e628e41e08f604634d04301184751695843b71",
+    "size": 3302722,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/cotton_jersey/cotton_jersey_nor_gl_2k.jpg"
+  },
+  "mat_curly_teddy_natural_albedo": {
+    "sha256": "512aa3bf7839190eb805f5d095860622c84417449929dd8c5370880d4989b7c6",
+    "size": 2266933,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/curly_teddy_natural/curly_teddy_natural_diff_2k.jpg"
+  },
+  "mat_curly_teddy_natural_arm": {
+    "sha256": "38080b2375d5baba55e268bd01fa0518834af7fbb6317da9fd26f1e818d5ad08",
+    "size": 3572209,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/curly_teddy_natural/curly_teddy_natural_arm_2k.jpg"
+  },
+  "mat_curly_teddy_natural_normal": {
+    "sha256": "b3cfafe1e053c704b022bafb919889e465723db03da4d91494a7c5472805935f",
+    "size": 1952612,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/curly_teddy_natural/curly_teddy_natural_nor_gl_2k.jpg"
+  },
+  "mat_denim_fabric_03_albedo": {
+    "sha256": "f7456ece0e77f29ac3594e6965ee61f69998f17311bd5f0e0774092c573ef520",
+    "size": 4357564,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/denim_fabric_03/denim_fabric_03_diff_2k.jpg"
+  },
+  "mat_denim_fabric_03_arm": {
+    "sha256": "67ea635af1b58185d418480d06f9e5cd2b73b11efeba2f6eb90287ec2d0bedbb",
+    "size": 4663093,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/denim_fabric_03/denim_fabric_03_arm_2k.jpg"
+  },
+  "mat_denim_fabric_03_normal": {
+    "sha256": "7776b94f745e38b4d9c030f2d166b1f6bc6bc475a95bba1396c7b46f425e8278",
+    "size": 4224438,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/denim_fabric_03/denim_fabric_03_nor_gl_2k.jpg"
+  },
+  "mat_fabric048": {
+    "sha256": "01ab981cdcc096cfcd506bbbff39410a37c7e788ee9480d691429f13aa64873a",
+    "size": 23656554,
+    "url": "https://ambientcg.com/get?file=Fabric048_2K-JPG.zip"
+  },
+  "mat_fabric062": {
+    "sha256": "af2f1e0db747b69a2c9a3916b6d4b0187c89c7e557fc7f056ab4714a2ae140e5",
+    "size": 31585078,
+    "url": "https://ambientcg.com/get?file=Fabric062_2K-JPG.zip"
+  },
+  "mat_knitted_fleece_albedo": {
+    "sha256": "7cc9a0bf3adca4a913d79fbe70149729e1ed2cc0ef479a9e9ab020a35d006e3a",
+    "size": 3531764,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/knitted_fleece/knitted_fleece_diff_2k.jpg"
+  },
+  "mat_knitted_fleece_arm": {
+    "sha256": "033cfff24db4236c529471802b6f701fb5119a8ef9e0dd99d169b876ef970b88",
+    "size": 5262922,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/knitted_fleece/knitted_fleece_arm_2k.jpg"
+  },
+  "mat_knitted_fleece_normal": {
+    "sha256": "4a47d8fe66ba1d27e21702ea9b81c94a8b78568d170aa770e049f980150b464b",
+    "size": 4438653,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/knitted_fleece/knitted_fleece_nor_gl_2k.jpg"
+  },
+  "mat_leather031": {
+    "sha256": "67c7130bf70599c3459c33a1435f5a1fad1480ca327fa2ba6d14a38470006124",
+    "size": 26364740,
+    "url": "https://ambientcg.com/get?file=Leather031_2K-JPG.zip"
+  },
+  "mat_leather039": {
+    "sha256": "650efcd50b06d1671005e809c16c767059417505b4416a197e490dda9c420364",
+    "size": 29492289,
+    "url": "https://ambientcg.com/get?file=Leather039_2K-JPG.zip"
+  },
+  "mat_leather_white_albedo": {
+    "sha256": "5b2d3f7c2f6f10ea65a644353a9f4e0ce87a6737e09b4cb38c1e1ad3257c86a4",
+    "size": 3460639,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/leather_white/leather_white_diff_2k.jpg"
+  },
+  "mat_leather_white_arm": {
+    "sha256": "fc384369a148ca70b845ac05acc509b20660c083b020102e75dd0287d7498686",
+    "size": 4116304,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/leather_white/leather_white_arm_2k.jpg"
+  },
+  "mat_leather_white_normal": {
+    "sha256": "f06e81389faf7c4bef47b8ed5a5c433b6e3b7d0ac77e4090f65ed9d964a589f6",
+    "size": 3176928,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/leather_white/leather_white_nor_gl_2k.jpg"
+  },
+  "mat_poly_wool_herringbone_albedo": {
+    "sha256": "ca21de8e2e7f43178f8290361bfb2271eb264af0d2887c7c93e76a113ff3cc64",
+    "size": 3650614,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/poly_wool_herringbone/poly_wool_herringbone_diff_2k.jpg"
+  },
+  "mat_poly_wool_herringbone_arm": {
+    "sha256": "0846fe2146094e295a0a8491c3c7608be51b28dc2aec96b9fb65d762b1da424f",
+    "size": 5200286,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/poly_wool_herringbone/poly_wool_herringbone_arm_2k.jpg"
+  },
+  "mat_poly_wool_herringbone_normal": {
+    "sha256": "bd68cd14cafdb033dccb80ff8aff2600317e66ef11eb37ef7f224e420075f1fd",
+    "size": 4048573,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/poly_wool_herringbone/poly_wool_herringbone_nor_gl_2k.jpg"
+  },
   "mediapipe_face_landmarker": {
     "sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff",
     "size": 3758596,

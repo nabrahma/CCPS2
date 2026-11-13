@@ -15,7 +15,8 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { test, type Page } from '@playwright/test';
-import { boot, garment, setCharacter } from '../helpers';
+import { boot } from '../helpers';
+import { buildCharacter as build, CHARACTERS } from '../bench-characters';
 import { waitForTestHooks, type TestWindow } from '../skin-helpers';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -25,76 +26,6 @@ const SIZE = Number(process.env.PS2CC_BENCH_SIZE ?? 640);
 const PROFILES = ['classic', 'enhanced', 'hero'] as const;
 const LOOKS = ['interiorFlashlight', 'villageOvercast'] as const;
 const CAMERAS = ['threeQuarter', 'full', 'profile', 'back'] as const;
-const DEFAULTS = { gender: 0.5, age: 0.5, muscle: 0.5, weight: 0.5, height: 0.5, proportions: 0.5, breastSize: 0.5, breastFirmness: 0.5, african: 1 / 3, asian: 1 / 3, caucasian: 1 / 3 };
-const tint = (r: number, g: number, b: number) => ({ color: [r, g, b], brightness: 1 });
-
-/**
- * The benchmark characters (section 4). Part 2 builds their outfits in later
- * milestones; this first pass uses what the library has now.
- */
-const CHARACTERS = [
-  {
-    id: 'mara',
-    name: 'Mara',
-    macros: { ...DEFAULTS, gender: 0, age: 0.38, muscle: 0.55, weight: 0.42, height: 0.48 },
-    garments: [
-      garment('mh:clothes/toigo_turtleneck_halter_top', 'top', { tint: tint(0.36, 0.38, 0.34), dirt: 0.35 }),
-      garment('mh:clothes/cortu_cargo_pants', 'bottom', { tint: tint(0.42, 0.38, 0.3), dirt: 0.4 }),
-      garment('mh:clothes/toigo_ankle_boots_female', 'shoes', { tint: tint(0.35, 0.3, 0.26) }),
-      garment('mh:clothes/toigo_gloves_short', 'gloves', { tint: tint(0.25, 0.24, 0.23) }),
-    ],
-    skin: 'mh:skins/young_caucasian_female',
-    // Short layered bob, uneven ends, side-swept fringe (Hair v2, M12).
-    hair: { style: 'mara-bob', colour: 'blonde' },
-    layers: [
-      ['freckles', { density: 0.35 }],
-      ['darkCircles', {}],
-      ['dirt', { amount: 0.25 }],
-    ],
-  },
-  {
-    id: 'cole',
-    name: 'Cole',
-    macros: { ...DEFAULTS, gender: 1, age: 0.55, muscle: 0.62, weight: 0.5, height: 0.6 },
-    garments: [
-      garment('mh:clothes/toigo_fisherman_sweater', 'outer', { tint: tint(0.2, 0.19, 0.18) }),
-      garment('mh:clothes/cortu_cargo_pants', 'bottom', { tint: tint(0.3, 0.3, 0.26), dirt: 0.3 }),
-      garment('mh:clothes/culturalibre_male_boots', 'shoes', { tint: tint(0.3, 0.24, 0.19) }),
-      garment('mh:clothes/learning_mma_fighting_gloves', 'gloves', { tint: tint(0.18, 0.17, 0.16) }),
-    ],
-    skin: 'mh:skins/young_caucasian_male',
-    // Centre-parted curtain fringe, chin-length side locks, short nape (Hair v2, M12).
-    hair: { style: 'cole-curtain', colour: 'darkBrown' },
-    layers: [
-      ['stubble', { density: 0.35 }],
-      ['eyeBags', {}],
-    ],
-  },
-] as const;
-
-async function build(page: Page, c: (typeof CHARACTERS)[number]): Promise<void> {
-  await setCharacter(page, c.macros, { name: c.name, modifiers: {}, garments: c.garments });
-  await page.evaluate(
-    async (c: (typeof CHARACTERS)[number]) => {
-      const w = window as unknown as TestWindow;
-      const s = w.__ps2cc;
-      const { core } = w.__ps2ccTest;
-      s.engine.update('benchmark', (d) => {
-        d.skin = { base: c.skin, layers: [], photo: null };
-        const colour = structuredClone(core.HAIR_COLOUR_PRESETS[c.hair.colour]!.colour);
-        d.hair = { mode: 'cards', style: core.starterStyle(c.hair.style), atlas: null, colour, tint: { color: [1, 1, 1], brightness: 1 }, alphaThreshold: 0.5 };
-        for (const [kind, params] of c.layers) {
-          const layer = core.newLayer(kind as never);
-          Object.assign(layer.params, params);
-          d.skin.layers.push(layer);
-        }
-        core.withScalpLayer(d as never);
-      });
-      await s.settled();
-    },
-    c,
-  );
-}
 
 async function useProfile(page: Page, profile: string): Promise<void> {
   await page.evaluate(async (id) => {

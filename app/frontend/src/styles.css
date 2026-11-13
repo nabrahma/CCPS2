@@ -1821,3 +1821,57 @@ code {
   width: 90px;
   vertical-align: middle;
 }
+
+/* Garment looks and Garment Studio (Part 2 F18) */
+.look-editor h3 {
+  margin: 14px 0 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted, #999);
+}
+.look-editor .zone,
+.look-editor .decal {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 6px 8px;
+  margin-bottom: 8px;
+}
+.look-editor .zone-head {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.look-editor .zone-head select,
+.look-editor .zone-name {
+  flex: 1;
+  min-width: 0;
+}
+.look-editor .zone-tools,
+.look-editor .row-buttons {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 4px 0;
+}
+.look-editor button.active,
+.garment-tool-hint button.active {
+  outline: 1px solid var(--accent, #e0a050);
+}
+.garment-tool-hint {
+  position: absolute;
+  left: 50%;
+  top: 12px;
+  transform: translateX(-50%);
+  background: rgba(16, 16, 18, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  z-index: 5;
+}
+.garment-studio .error {
+  color: #ff8a7a;
+}

@@ -11,6 +11,7 @@ import { sanitiseHairColour, type HairColour } from '../hair/strand-atlas';
 import { sanitiseCardBrows, sanitiseFur, type CardBrows, type FurTrim } from '../hair/surface-cards';
 import { newLayer, sanitiseSkin } from '../skin/layers';
 import { DEFAULT_EYE_LOOK, sanitiseEyeLook, type EyeLook } from '../eyes/eye-texture';
+import { sanitiseLook, type GarmentLook } from '../wardrobe/look';
 import { DEFAULT_MACROS, normaliseEthnic, type MacroValues } from '../morph/macros';
 import {
   DEFAULT_PROFILE,
@@ -115,6 +116,8 @@ export interface GarmentSlot {
   hideBody: boolean;
   /** Hair v2 (Part 2 F15): fur cards grown along the garment's collar, cuffs or hem. */
   fur?: FurTrim;
+  /** Part 2 F18: material zones, seams, folds and decals; absent or null = the garment's own texture as before. */
+  look?: GarmentLook | null;
 }
 
 export interface HairSpec {
@@ -339,7 +342,15 @@ export function parseCharacter(json: unknown): CharacterDoc {
     macros,
     modifiers,
     skin: sanitiseSkin(raw.skin, base.skin.base),
-    garments: Array.isArray(raw.garments) ? raw.garments.map((g) => (g && g.fur !== undefined ? { ...g, fur: sanitiseFur(g.fur) } : g)) : [],
+    garments: Array.isArray(raw.garments)
+      ? raw.garments.map((g) => {
+          if (!g) return g;
+          let out = g;
+          if (g.fur !== undefined) out = { ...out, fur: sanitiseFur(g.fur) };
+          if (g.look !== undefined && g.look !== null) out = { ...out, look: sanitiseLook(g.look) };
+          return out;
+        })
+      : [],
     hair: sanitiseHair({ ...base.hair, ...(raw.hair ?? {}) }),
     eyebrows: raw.eyebrows?.cards ? { ...raw.eyebrows, cards: sanitiseCardBrows(raw.eyebrows.cards) } : (raw.eyebrows ?? base.eyebrows),
     eyes: raw.eyes ? { ...raw.eyes, look: raw.eyes.look ? sanitiseEyeLook(raw.eyes.look) : null } : base.eyes,
