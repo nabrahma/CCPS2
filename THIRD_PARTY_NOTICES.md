@@ -36,4 +36,10 @@ The files in `assets/core` come from MakeHuman's asset packs: CC0-1.0, with a fe
 | [Zustand](https://github.com/pmndrs/zustand) | MIT | npm dependency, in the app bundle |
 | [Wails](https://github.com/wailsapp/wails) | MIT | Go dependency |
 
+## Programs PS2CC works with (not included)
+
+| Program | Licence | How |
+| --- | --- | --- |
+| [Material Painter](https://github.com/alla2001/material-painter) | GPL-3.0-or-later | Texture Studio (M13, D-115). The user installs it; PS2CC starts it and talks to its local agent-control server. No Material Painter code or assets are in this repository or in PS2CC. |
+
 Build-time tools (NSIS, mingw-w64, Playwright and others) are listed in [TOOLCHAIN.md](TOOLCHAIN.md) and are not distributed with PS2CC.

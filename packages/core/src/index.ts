@@ -27,6 +27,7 @@ export * from './character/doc';
 export * from './quality/profiles';
 export * from './look';
 export * from './bake';
+export * from './paint/material-painter';
 export * from './character/sliders';
 export * from './character/presets';
 export * from './credits';

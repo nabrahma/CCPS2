@@ -19,6 +19,7 @@
     "build:landmarks": "pnpm --filter @ps2cc/app-frontend exec playwright test -c playwright.tools.config.ts build-landmarks",
     "export:testchars": "pnpm --filter @ps2cc/app-frontend exec playwright test -c playwright.tools.config.ts export-testchars",
     "test:desktop": "pnpm --filter @ps2cc/app-frontend exec playwright test -c playwright.tools.config.ts desktop",
+    "test:painter": "pnpm --filter @ps2cc/app-frontend exec playwright test -c playwright.tools.config.ts material-painter",
     "build:installer": "node scripts/build-installer.mjs",
     "test:installer": "node scripts/test-installer.mjs",
     "golden": "python -I tools/asset-compiler/compile.py golden",

@@ -1,9 +1,10 @@
 import { useEffect, useId, useMemo, useState, type ReactNode } from 'react';
-import { BLEND_MODES, LAYER_KINDS, layerKind, layerParam, newLayer, type BlendMode, type LayerKind, type RegionMask, type SkinLayer } from '@ps2cc/core';
+import { BLEND_MODES, LAYER_KINDS, layerKind, layerParam, newLayer, PAINTED_LAYER_PREFIX, type BlendMode, type LayerKind, type RegionMask, type SkinLayer } from '@ps2cc/core';
 import { backend, libraryUrl, type LibraryItem } from '../../backend';
 import { cancelPhoto, exportRegionGuide, exportSkinTextures, exportSkinUvTemplate, fitFaceShape, placePhoto } from '../../skin';
 import { useStudio, useStudioVersion } from '../../state/hooks';
 import { useUi } from '../../state/ui';
+import { PainterLink } from '../PainterLink';
 
 const MASK_LABEL: Record<RegionMask, string> = { none: 'Everywhere', face: 'Face only', body: 'Body only', hands: 'Hands only' };
 const BLEND_LABEL: Record<BlendMode, string> = { normal: 'Normal', multiply: 'Multiply', overlay: 'Overlay', screen: 'Screen' };
@@ -23,6 +24,13 @@ export function SkinPanel() {
       </Section>
       <Section title="Layers">
         <LayerStack />
+      </Section>
+      <Section title="Texture Studio">
+        <p className="hint">
+          Paint the skin in Material Painter: brushes, projection, stencils, smart masks. Your paint comes back as the top layer, in the
+          skin's own UV space, so it stays put whatever the body's shape.
+        </p>
+        <PainterLink target="skin" label="The skin" />
       </Section>
       <Section title="Paint your own">
         <PaintTools />
@@ -250,7 +258,12 @@ function LayerCard({ layer, index, count }: { layer: SkinLayer; index: number; c
       d.skin.layers.splice(j, 0, l!);
     });
   const done = () => studio.engine.endInteraction();
-  const name = layer.kind === 'image' ? `Overlay: ${decodeURIComponent(layer.image?.split('/').pop() ?? '')}` : spec.label;
+  const name =
+    layer.kind === 'image'
+      ? layer.id.startsWith(PAINTED_LAYER_PREFIX)
+        ? 'Painted in Material Painter'
+        : `Overlay: ${decodeURIComponent(layer.image?.split('/').pop() ?? '')}`
+      : spec.label;
   return (
     <li className={layer.enabled ? 'layer-card' : 'layer-card disabled'} data-kind={layer.kind}>
       <div className="layer-head">

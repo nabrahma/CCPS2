@@ -51,6 +51,20 @@ export interface Settings {
   symmetry: boolean;
   /** The quality profile new characters start with (F13). */
   qualityProfile: QualityProfileId;
+  /** Material Painter's executable chosen by the user ('' finds it in the usual install folders; D-115). */
+  materialPainter?: string;
+}
+
+/** Where Material Painter is (Texture Studio, D-115). */
+export interface PainterInfo {
+  exe: string;
+  found: boolean;
+}
+
+/** What Material Painter painted, and the reference it painted over (PNG, base64). */
+export interface PaintResult {
+  painted: string;
+  reference: string;
 }
 
 /** What an export wrote (app/backend/exporter.Result). */
@@ -106,6 +120,12 @@ interface GoApp {
   ChooseExportFolder(): Promise<string>;
   OpenFolder(dir: string): Promise<void>;
   OpenLogFolder(): Promise<void>;
+  PainterStatus(): Promise<PainterInfo>;
+  PainterLocate(): Promise<string>;
+  PainterEnableAgents(): Promise<void>;
+  PainterHasSession(character: string, target: string): Promise<boolean>;
+  PainterOpen(character: string, target: string, objText: string, referenceBase64: string, size: number): Promise<void>;
+  PainterCollect(character: string, target: string): Promise<PaintResult>;
 }
 
 interface WailsRuntime {
@@ -330,6 +350,32 @@ export const backend = {
   },
   openLogFolder(): void {
     void go()?.OpenLogFolder();
+  },
+  /** Texture Studio (D-115): where Material Painter is. Browser mode: never found. */
+  async painterStatus(): Promise<PainterInfo> {
+    const g = go();
+    return g ? g.PainterStatus() : { exe: '', found: false };
+  },
+  async painterLocate(): Promise<string> {
+    const g = go();
+    return g ? g.PainterLocate() : browserOnly('Material Painter');
+  },
+  async painterEnableAgents(): Promise<void> {
+    const g = go();
+    return g ? g.PainterEnableAgents() : browserOnly('Material Painter');
+  },
+  async painterHasSession(character: string, target: string): Promise<boolean> {
+    const g = go();
+    return g ? g.PainterHasSession(character, target) : false;
+  },
+  /** Send a mesh and the texture to paint over to Material Painter (starting it if needed). */
+  async painterOpen(character: string, target: string, objText: string, reference: Blob, size: number): Promise<void> {
+    const g = go();
+    return g ? g.PainterOpen(character, target, objText, await blobToBase64(reference), size) : browserOnly('Material Painter');
+  },
+  async painterCollect(character: string, target: string): Promise<PaintResult> {
+    const g = go();
+    return g ? g.PainterCollect(character, target) : browserOnly('Material Painter');
   },
   /** Explorer drag-and-drop with real file paths (desktop only). */
   onFileDrop(cb: (x: number, y: number, paths: string[]) => void): () => void {

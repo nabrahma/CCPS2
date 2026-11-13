@@ -15,6 +15,7 @@ It needs no Blender, no Python and no network connection to run.
 - **Wardrobe:** CC0 garments reduced to PS2 budgets, which refit to every body shape and hide the skin underneath. Drop a PNG on a garment to retexture it.
 - **Your own garments:** export the base body, model around it, then import OBJ, FBX or GLB. PS2CC binds, weights and decimates it for you.
 - **Card hair:** three layers: short hair painted on the scalp, wide locks for the mass, and soft-edged detail cards. Any colour from strand atlases rendered in 3D. Comb the guides in Hair Studio with Blender-style brushes, draw the parting, and shape locks. The same cards grow fur trims on garments and card eyebrows. Or use MakeHuman hair meshes. See [docs/hair-v2.md](docs/hair-v2.md) and [docs/hair-system.md](docs/hair-system.md).
+- **Texture Studio:** paint the skin or a garment in [Material Painter](https://github.com/alla2001/material-painter) (free, installed separately) and bring the paint back in one click. Skin paint stays put whatever the body's shape. See [docs/texture-studio.md](docs/texture-studio.md).
 - **Skin:** layered skin with overlays, projection of a face photo onto the head, and an optional fit of the face's shape to the photo.
 - **Expressions:** 15 blendshapes, including blinks and visemes, baked at export.
 - **PS2 preview:** per-vertex or per-pixel lighting with shadows, graded looks (fog, filmic curve, LUT, bloom, grain), low resolution, 16-bit dither and interlace effects, and textures shown at their export size. Looks save as `.ps2look` files for Unity.

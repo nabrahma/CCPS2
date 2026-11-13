@@ -4,6 +4,7 @@ import { useStudio, useStudioVersion } from '../state/hooks';
 import { useUi } from '../state/ui';
 import { exportUvTemplate } from '../uvTemplate';
 import { TintRow } from './panels/HairPanel';
+import { PainterLink } from './PainterLink';
 
 /** Right-hand context inspector (PRD 7): details of the part clicked in the viewport. */
 export function Inspector() {
@@ -124,6 +125,12 @@ function GarmentInspector({ partKey }: { partKey: string }) {
       </label>
       {garment.texture && (
         <button onClick={() => edit('Reset garment texture', (g) => void (g.texture = null))}>Use original texture</button>
+      )}
+      <PainterLink target={`garment:${garment.slot}`} label="The garment" />
+      {garment.paint && (
+        <button onClick={() => edit('Remove garment paint', (g) => void (g.paint = null))} data-testid="garment-paint-remove">
+          Remove paint
+        </button>
       )}
       <button
         className="danger"

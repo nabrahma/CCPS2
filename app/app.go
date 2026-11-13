@@ -1,12 +1,14 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"encoding/base64"
 	"encoding/binary"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"image/png"
 	"math"
 	"os"
 	"path/filepath"
@@ -20,6 +22,7 @@ import (
 	"github.com/ps2cc/ps2cc/app/backend/garments"
 	"github.com/ps2cc/ps2cc/app/backend/library"
 	"github.com/ps2cc/ps2cc/app/backend/logging"
+	"github.com/ps2cc/ps2cc/app/backend/materialpainter"
 	"github.com/ps2cc/ps2cc/app/backend/paths"
 	"github.com/ps2cc/ps2cc/app/backend/projects"
 	"github.com/ps2cc/ps2cc/app/backend/settings"
@@ -51,7 +54,7 @@ type AppInfo struct {
 	Pid int `json:"pid"`
 }
 
-const appVersion = "0.14.0"
+const appVersion = "0.15.0"
 
 func newApp(layout *paths.Layout, log *logging.Logger) *App {
 	return &App{
@@ -512,4 +515,114 @@ func (a *App) CheckUnityProject(dir string) (string, error) { return settings.Ch
 // OpenLogFolder opens the log folder in Explorer.
 func (a *App) OpenLogFolder() {
 	runtime.BrowserOpenURL(a.ctx, "file:///"+filepath.ToSlash(a.layout.Logs))
+}
+
+// PainterInfo says where Material Painter is (Texture Studio, D-115).
+type PainterInfo struct {
+	Exe   string `json:"exe"`
+	Found bool   `json:"found"`
+}
+
+// PaintResult is what Material Painter painted, with the reference it painted over (PNG, base64).
+type PaintResult struct {
+	Painted   string `json:"painted"`
+	Reference string `json:"reference"`
+}
+
+func (a *App) painterExe() string {
+	s, _ := a.settings.Load()
+	return materialpainter.FindExe(s.MaterialPainter)
+}
+
+// PainterStatus reports whether Material Painter was found.
+func (a *App) PainterStatus() PainterInfo {
+	exe := a.painterExe()
+	return PainterInfo{Exe: exe, Found: exe != ""}
+}
+
+// PainterLocate asks for MaterialPainter.exe and remembers it. "" means cancelled.
+func (a *App) PainterLocate() (string, error) {
+	path, err := runtime.OpenFileDialog(a.ctx, runtime.OpenDialogOptions{
+		Title:   "Find Material Painter",
+		Filters: []runtime.FileFilter{{DisplayName: "MaterialPainter.exe", Pattern: "*.exe"}},
+	})
+	if err != nil || path == "" {
+		return "", err
+	}
+	s, err := a.settings.Load()
+	if err != nil {
+		return "", err
+	}
+	s.MaterialPainter = path
+	if err := a.settings.Save(s); err != nil {
+		return "", err
+	}
+	return path, nil
+}
+
+// PainterEnableAgents turns on Material Painter's agent control (from its next start).
+func (a *App) PainterEnableAgents() error {
+	if err := materialpainter.EnableAgents(materialpainter.PrefsPath()); err != nil {
+		return err
+	}
+	a.log.Infof("turned on agent control in Material Painter's preferences")
+	return nil
+}
+
+// PainterHasSession reports whether a character's paint target has a saved Material Painter project.
+func (a *App) PainterHasSession(character, target string) bool {
+	return materialpainter.Session{Dir: materialpainter.SessionDir(a.layout.Root, character, target)}.HasProject()
+}
+
+// PainterOpen sends a mesh (OBJ text) and the texture to paint over (PNG,
+// base64) to Material Painter, starting it if needed, at `size` pixels.
+func (a *App) PainterOpen(character, target, objText, referenceBase64 string, size int) error {
+	ref, err := base64.StdEncoding.DecodeString(referenceBase64)
+	if err != nil {
+		return fmt.Errorf("invalid reference image: %w", err)
+	}
+	s := materialpainter.Session{Dir: materialpainter.SessionDir(a.layout.Root, character, target)}
+	if err := s.Write([]byte(objText), ref); err != nil {
+		return err
+	}
+	c, err := materialpainter.Connect(a.painterExe(), 60*time.Second)
+	if err != nil {
+		return err
+	}
+	if err := s.Open(c, size); err != nil {
+		return err
+	}
+	a.log.Infof("opened %s of %s in Material Painter (%s)", target, character, s.Dir)
+	return nil
+}
+
+// PainterCollect takes the base colour back from Material Painter, at the size of the reference it was sent.
+func (a *App) PainterCollect(character, target string) (*PaintResult, error) {
+	s := materialpainter.Session{Dir: materialpainter.SessionDir(a.layout.Root, character, target)}
+	ref, err := os.ReadFile(s.Reference())
+	if err != nil {
+		return nil, errors.New("nothing was sent to Material Painter for this yet")
+	}
+	cfg, err := png.DecodeConfig(bytes.NewReader(ref))
+	if err != nil {
+		return nil, fmt.Errorf("the reference image is not a PNG: %w", err)
+	}
+	size := max(cfg.Width, cfg.Height)
+	c, err := materialpainter.Connect("", 0)
+	if err != nil {
+		if errors.Is(err, materialpainter.ErrNotFound) {
+			return nil, errors.New("material-painter:not-running: Material Painter is not running: open it again from PS2CC")
+		}
+		return nil, err
+	}
+	path, err := s.Collect(c, size)
+	if err != nil {
+		return nil, err
+	}
+	painted, err := os.ReadFile(path)
+	if err != nil {
+		return nil, err
+	}
+	a.log.Infof("took %s of %s back from Material Painter", target, character)
+	return &PaintResult{Painted: base64.StdEncoding.EncodeToString(painted), Reference: base64.StdEncoding.EncodeToString(ref)}, nil
 }
