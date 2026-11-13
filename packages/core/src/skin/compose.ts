@@ -29,6 +29,8 @@ export type ResolvedSource = { kind: 'url'; url: string } | { kind: 'pixels'; im
 export interface ResolvedSkinLayer {
   /** Changes whenever this layer's pixels change (texture cache key). */
   key: string;
+  /** The document layer it comes from (none for the photo). */
+  layerId?: string;
   label: string;
   blend: SkinLayer['blend'];
   opacity: number;
@@ -146,7 +148,7 @@ export class SkinComposer {
         key = `bake:${baked.key}:${l.kind}:${contrast}`;
         source = { kind: 'pixels', image: this.bakedChannel(baked.image, BAKED_LAYER_CHANNEL[l.kind]!, contrast, key) };
       } else continue;
-      layers.push({ key, label: l.kind, blend: l.blend, opacity: l.opacity, mask: l.mask, source });
+      layers.push({ key, layerId: l.id, label: l.kind, blend: l.blend, opacity: l.opacity, mask: l.mask, source });
     }
     const base = texture(skin.base);
     const signature = JSON.stringify([base, layers.map((l) => [l.key, l.blend, l.opacity, l.mask])]);

@@ -1202,7 +1202,7 @@ function wantedProxies(doc: Readonly<CharacterDoc>, has: (id: string) => boolean
       key: garmentKey(g),
       kind: 'garment',
       assetId: g.asset,
-      material: { texture: g.texture ?? null, tint: g.tint, alphaCutout: true, alphaThreshold: 0.5, doubleSided: true, dirt: g.dirt },
+      material: { texture: g.paint ?? g.texture ?? null, tint: g.tint, alphaCutout: true, alphaThreshold: 0.5, doubleSided: true, dirt: g.dirt },
     });
   }
   if (doc.hair.mode === 'mesh' && doc.hair.asset && has(doc.hair.asset)) {

@@ -823,6 +823,32 @@ export class Viewport {
     return body?.skinSig ? (this.compositor?.readPixels() ?? null) : null;
   }
 
+  /**
+   * The skin composited without some of its document layers (Material Painter's
+   * reference: everything under its own paint), then the full skin again on the
+   * body. Null when the body shows a plain texture.
+   */
+  skinCompositeWithout(layerIds: readonly string[]): Promise<RgbaImage | null> {
+    const body = this.objects.get('body');
+    const skin = body?.part.material.skin;
+    if (!body || !skin) return Promise.resolve(null);
+    const compositor = this.skinCompositor;
+    let pixels: RgbaImage | null = null;
+    const run = this.skinPending.then(async () => {
+      const tex = await compositor.composite({ ...skin, layers: skin.layers.filter((l) => !l.layerId || !layerIds.includes(l.layerId)) });
+      pixels = tex ? compositor.readPixels() : null;
+      // The body's material samples the compositor's output: put the full skin back.
+      await compositor.composite(skin);
+    });
+    this.skinPending = run.catch((err: unknown) => console.warn('skin composite failed', err));
+    return run.then(() => pixels);
+  }
+
+  /** A texture (asset path or library URL) as pixels, rows top first. */
+  texturePixels(path: string): Promise<RgbaImage> {
+    return decodePixels(resolveAssetUrl(this.options.assetBaseUrl, path));
+  }
+
   /** Gradient-mapped hair textures by key (atlas, colour), the last few kept. */
   private readonly gradientTextures = new Map<string, Promise<THREE.Texture | null>>();
   private readonly greyAtlases = new Map<string, Promise<RgbaImage>>();

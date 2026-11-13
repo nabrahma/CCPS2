@@ -91,6 +91,8 @@ export interface GarmentSlot {
   slot: GarmentSlotName;
   asset: string;
   texture?: string | null; // library texture id overriding the diffuse
+  /** Texture Studio (Part 2 F17): the garment as painted in Material Painter, shown over `texture` (library image). */
+  paint?: string | null;
   tint: Tint;
   dirt: number; // 0..1
   hideBody: boolean;

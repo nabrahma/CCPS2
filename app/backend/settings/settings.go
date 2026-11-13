@@ -24,6 +24,8 @@ type Settings struct {
 	Symmetry          bool   `json:"symmetry"`
 	// QualityProfile is the profile new characters start with (PRD Part 2 F13): classic, enhanced or hero.
 	QualityProfile string `json:"qualityProfile"`
+	// MaterialPainter is the Material Painter executable chosen by the user ("" finds it in the usual install folders; D-115).
+	MaterialPainter string `json:"materialPainter"`
 }
 
 // Defaults follow the PRD (12k target / 15k max, 1024 textures, 2 min autosave).

@@ -85,3 +85,30 @@ Overview: `docs/hair-v2.md`. Decisions D-100 to D-114. Review images: `docs/mile
 Also in M12: the 3D strand atlas baker and five strand looks; hair colour as a gradient map; the Creator's length, volume and fringe adjustments; `.ps2hair` version 2; Hair Studio (brushes, parting, lock tool, layer view, and card mode: one curve is one card, D-114); two-pass alpha in the app and Unity (PS2/Cutout's SoftAlpha pass); fur trims on garment edges and card eyebrows.
 
 **Known limits.** In guide mode, locks and cards are regenerated from the guides; card mode (D-114) places them one by one instead, and a quality profile with a smaller budget leaves some hand-placed detail cards out. Fur trims grow on whole edge loops (collar, cuffs, hem) picked by the nearest joint; a garment whose collar is not an open edge gets none. Five Part 1 styles (buzz, crew, long centre part, bob with fringe, short with sideburns) are unchanged and have no locks.
+
+## M13: Texture Studio (0.15.0, Part 2)
+
+Overview: `docs/texture-studio.md`. Decision D-115: painting happens in [Material Painter](https://github.com/alla2001/material-painter) (GPL-3.0, v0.1.6), run as its own program and driven through its local agent server. It replaces spike S1 (TextureCraft) and the in-house painter. Review images: `docs/milestones/M13/`, showing the skin and a T-shirt painted in Material Painter, and each back in PS2CC.
+
+| Acceptance (Part 2 M13) | State | Evidence |
+| --- | --- | --- |
+| Run S1 and record the decision | Replaced | The user chose Material Painter instead (D-115) |
+| Paint survives morphing: 20 random slider changes leave every painted texel unchanged | Passing | `test/m13.test.ts`: the mesh's UVs and the painted layer's input to the compositor are unchanged after 20 random slider changes |
+| Compositing still matches the reference implementation | Passing | The existing compositor tests; the painted layer over the reference gives Material Painter's texture back texel for texel (`test/m13.test.ts`) |
+| One undo step per stroke | Passing (import) | Strokes undo inside Material Painter; bringing paint back is one undo step in PS2CC (`test/m13.test.ts`, `pnpm test:painter`) |
+| A stroke across a UV seam leaves no gap or doubled edge | Material Painter's | Material Painter paints in 3D and projects across seams; not retested here |
+| Projecting a checker from the camera reprojects within 1 texel | Material Painter's | Its projection and stencils; not retested here |
+| Stroke-to-pixel latency under 30 ms at 2048 | Material Painter's | Strokes are drawn in Material Painter's own viewport; not measured here |
+
+The round trip with the real Material Painter is tested end to end:
+- **Go live test** (`PS2CC_MP_LIVE=1 go test -run TestLive ./backend/materialpainter/`): an unpainted round trip is exact, a painted triangle comes back, and paint survives reopening the project.
+- **`pnpm test:painter`** (desktop app):
+  - skin: one painted UV island comes back as one layer holding just that island;
+  - a reopened session sends a reference identical to the first;
+  - garment: the T-shirt's paint becomes its paint texture.
+
+**Known limits.**
+- Painting is in Material Painter's own window, not in PS2CC's viewport.
+- Material Painter must be installed separately and its agent control turned on once.
+- The hair atlas and the eyes are not paint targets yet: the eyes come with M14.
+- Skin paint is kept as the colour Material Painter exported, so a stroke with partial opacity holds its mix with the skin as it was. A later change to the base skin shows through only where nothing was painted.
