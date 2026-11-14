@@ -1,0 +1,99 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_middle_length_qipao",
+ "category": "clothes",
+ "name": "Qipao",
+ "uuid": "2ef62cea-404c-46f1-a5d6-8fffdd6c6571",
+ "tags": [
+  "gown"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1327,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_middle_length_qipao.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 4063,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 7826,
+ "binary": "punkduck_middle_length_qipao.ps2.bin",
+ "byteLength": 163740,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3981
+  },
+  "uvs": {
+   "offset": 15936,
+   "dtype": "f32",
+   "count": 1630
+  },
+  "faceVerts": {
+   "offset": 22464,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 62464,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 102464,
+   "dtype": "u32",
+   "count": 3981
+  },
+  "refWeights": {
+   "offset": 118400,
+   "dtype": "f32",
+   "count": 3981
+  },
+  "refOffsets": {
+   "offset": 134336,
+   "dtype": "f32",
+   "count": 3981
+  },
+  "deleteVerts": {
+   "offset": 150272,
+   "dtype": "u32",
+   "count": 2038
+  },
+  "sourceProxyVertex": {
+   "offset": 158432,
+   "dtype": "u32",
+   "count": 1327
+  }
+ }
+}

@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_french_lingerie_suspender_belt",
+ "category": "clothes",
+ "name": "suspender-belt",
+ "uuid": "abc739dd-468c-4232-a119-4db9368fed74",
+ "tags": [
+  "female",
+  "lingerie"
+ ],
+ "zDepth": 50,
+ "vertexCount": 257,
+ "faceCount": 477,
+ "triangleFaces": 477,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_french_lingerie_suspender_belt.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 1930,
+ "hiddenFaces": "none",
+ "originalTriangles": 3324,
+ "binary": "punkduck_french_lingerie_suspender_belt.ps2.bin",
+ "byteLength": 32372,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 771
+  },
+  "uvs": {
+   "offset": 3088,
+   "dtype": "f32",
+   "count": 932
+  },
+  "faceVerts": {
+   "offset": 6816,
+   "dtype": "u32",
+   "count": 1908
+  },
+  "faceUvs": {
+   "offset": 14448,
+   "dtype": "u32",
+   "count": 1908
+  },
+  "refVerts": {
+   "offset": 22080,
+   "dtype": "u32",
+   "count": 771
+  },
+  "refWeights": {
+   "offset": 25168,
+   "dtype": "f32",
+   "count": 771
+  },
+  "refOffsets": {
+   "offset": 28256,
+   "dtype": "f32",
+   "count": 771
+  },
+  "sourceProxyVertex": {
+   "offset": 31344,
+   "dtype": "u32",
+   "count": 257
+  }
+ }
+}

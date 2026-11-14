@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_electric_guitar",
+ "category": "clothes",
+ "name": "ElectricGuitar",
+ "uuid": "abd6cdf1-812f-4170-974b-cdd873e0e6c0",
+ "tags": [
+  "carried",
+  "guitar"
+ ],
+ "zDepth": 100,
+ "vertexCount": 183,
+ "faceCount": 469,
+ "triangleFaces": 469,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_electric_guitar.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 4621,
+ "hiddenFaces": "computed",
+ "originalTriangles": 7700,
+ "binary": "punkduck_electric_guitar.ps2.bin",
+ "byteLength": 26220,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 549
+  },
+  "uvs": {
+   "offset": 2208,
+   "dtype": "f32",
+   "count": 352
+  },
+  "faceVerts": {
+   "offset": 3616,
+   "dtype": "u32",
+   "count": 1876
+  },
+  "faceUvs": {
+   "offset": 11120,
+   "dtype": "u32",
+   "count": 1876
+  },
+  "refVerts": {
+   "offset": 18624,
+   "dtype": "u32",
+   "count": 549
+  },
+  "refWeights": {
+   "offset": 20832,
+   "dtype": "f32",
+   "count": 549
+  },
+  "refOffsets": {
+   "offset": 23040,
+   "dtype": "f32",
+   "count": 549
+  },
+  "coveredVerts": {
+   "offset": 25248,
+   "dtype": "u32",
+   "count": 57
+  },
+  "sourceProxyVertex": {
+   "offset": 25488,
+   "dtype": "u32",
+   "count": 183
+  }
+ }
+}

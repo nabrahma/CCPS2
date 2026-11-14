@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/elvs_50s_updo",
+ "category": "hair",
+ "name": "elv_50supdo1",
+ "uuid": "2ff5eb2b-195b-4a2e-9332-a6a55c2d0ce0",
+ "tags": [
+  "hair",
+  "1950s",
+  "updo",
+  "female",
+  "classic"
+ ],
+ "zDepth": 53,
+ "vertexCount": 1372,
+ "faceCount": 2677,
+ "triangleFaces": 2677,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/elvs_50s_updo.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "elvs_50s_updo.bin",
+ "byteLength": 173632,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4116
+  },
+  "uvs": {
+   "offset": 16464,
+   "dtype": "f32",
+   "count": 5526
+  },
+  "faceVerts": {
+   "offset": 38576,
+   "dtype": "u32",
+   "count": 10708
+  },
+  "faceUvs": {
+   "offset": 81408,
+   "dtype": "u32",
+   "count": 10708
+  },
+  "refVerts": {
+   "offset": 124240,
+   "dtype": "u32",
+   "count": 4116
+  },
+  "refWeights": {
+   "offset": 140704,
+   "dtype": "f32",
+   "count": 4116
+  },
+  "refOffsets": {
+   "offset": 157168,
+   "dtype": "f32",
+   "count": 4116
+  }
+ }
+}

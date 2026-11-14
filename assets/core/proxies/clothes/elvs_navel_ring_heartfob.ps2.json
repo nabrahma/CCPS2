@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_navel_ring_heartfob",
+ "category": "clothes",
+ "name": "Naval_ring_heartfob",
+ "uuid": "a1f9fde3-7c01-4b25-94b5-a9412ebfa4eb",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 252,
+ "faceCount": 500,
+ "triangleFaces": 500,
+ "scale": [
+  [
+   13868,
+   14308,
+   0.96806
+  ],
+  [
+   881,
+   13137,
+   1.6655100000000003
+  ],
+  [
+   10854,
+   10981,
+   0.24356
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_navel_ring_heartfob.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 261,
+ "hiddenFaces": "none",
+ "originalTriangles": 518,
+ "binary": "elvs_navel_ring_heartfob.ps2.bin",
+ "byteLength": 33440,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 756
+  },
+  "uvs": {
+   "offset": 3024,
+   "dtype": "f32",
+   "count": 1084
+  },
+  "faceVerts": {
+   "offset": 7360,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "faceUvs": {
+   "offset": 15360,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "refVerts": {
+   "offset": 23360,
+   "dtype": "u32",
+   "count": 756
+  },
+  "refWeights": {
+   "offset": 26384,
+   "dtype": "f32",
+   "count": 756
+  },
+  "refOffsets": {
+   "offset": 29408,
+   "dtype": "f32",
+   "count": 756
+  },
+  "sourceProxyVertex": {
+   "offset": 32432,
+   "dtype": "u32",
+   "count": 252
+  }
+ }
+}

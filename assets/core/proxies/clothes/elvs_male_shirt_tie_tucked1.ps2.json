@@ -1,0 +1,103 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_male_shirt_tie_tucked1",
+ "category": "clothes",
+ "name": "mens_shirt_tie_tuck_elv1f",
+ "uuid": "ee225430-2cc6-4ff2-9da6-b9a99657044d",
+ "tags": [
+  "shirt",
+  "menswear",
+  "fashion",
+  "traditional",
+  "tie"
+ ],
+ "zDepth": 47,
+ "vertexCount": 1008,
+ "faceCount": 1800,
+ "triangleFaces": 1800,
+ "scale": [
+  [
+   10589,
+   3924,
+   0.31594000000000005
+  ],
+  [
+   1524,
+   4370,
+   0.57703
+  ],
+  [
+   1892,
+   3946,
+   0.19743
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.2476,
+   0,
+   0.6393
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_male_shirt_tie_tucked1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 2441,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 4666,
+ "binary": "elvs_male_shirt_tie_tucked1.ps2.bin",
+ "byteLength": 127680,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3024
+  },
+  "uvs": {
+   "offset": 12096,
+   "dtype": "f32",
+   "count": 2248
+  },
+  "faceVerts": {
+   "offset": 21088,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "faceUvs": {
+   "offset": 49888,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "refVerts": {
+   "offset": 78688,
+   "dtype": "u32",
+   "count": 3024
+  },
+  "refWeights": {
+   "offset": 90784,
+   "dtype": "f32",
+   "count": 3024
+  },
+  "refOffsets": {
+   "offset": 102880,
+   "dtype": "f32",
+   "count": 3024
+  },
+  "deleteVerts": {
+   "offset": 114976,
+   "dtype": "u32",
+   "count": 2168
+  },
+  "sourceProxyVertex": {
+   "offset": 123648,
+   "dtype": "u32",
+   "count": 1008
+  }
+ }
+}

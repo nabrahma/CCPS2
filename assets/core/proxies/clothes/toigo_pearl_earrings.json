@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_pearl_earrings",
+ "category": "clothes",
+ "name": "Pearl_Earrings",
+ "uuid": "b9021300-33c6-4502-9621-20abb95e36bf",
+ "tags": [],
+ "zDepth": 69,
+ "vertexCount": 1596,
+ "faceCount": 1592,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/toigo_pearl_earrings.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "toigo_pearl_earrings.bin",
+ "byteLength": 141344,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4788
+  },
+  "uvs": {
+   "offset": 19152,
+   "dtype": "f32",
+   "count": 3448
+  },
+  "faceVerts": {
+   "offset": 32944,
+   "dtype": "u32",
+   "count": 6368
+  },
+  "faceUvs": {
+   "offset": 58416,
+   "dtype": "u32",
+   "count": 6368
+  },
+  "refVerts": {
+   "offset": 83888,
+   "dtype": "u32",
+   "count": 4788
+  },
+  "refWeights": {
+   "offset": 103040,
+   "dtype": "f32",
+   "count": 4788
+  },
+  "refOffsets": {
+   "offset": 122192,
+   "dtype": "f32",
+   "count": 4788
+  }
+ }
+}

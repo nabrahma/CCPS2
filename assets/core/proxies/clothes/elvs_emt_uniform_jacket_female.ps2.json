@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_emt_uniform_jacket_female",
+ "category": "clothes",
+ "name": "rescueteam-jacket-female",
+ "uuid": "84d66b47-ae4e-4405-b6e0-8bcf0b55f31e",
+ "tags": [
+  "jacket",
+  "uniform",
+  "female"
+ ],
+ "zDepth": 54,
+ "vertexCount": 1214,
+ "faceCount": 2200,
+ "triangleFaces": 2200,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_emt_uniform_jacket_female.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "outer",
+ "decimatedFrom": 11152,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 21612,
+ "binary": "elvs_emt_uniform_jacket_female.ps2.bin",
+ "byteLength": 156344,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3642
+  },
+  "uvs": {
+   "offset": 14576,
+   "dtype": "f32",
+   "count": 3494
+  },
+  "faceVerts": {
+   "offset": 28560,
+   "dtype": "u32",
+   "count": 8800
+  },
+  "faceUvs": {
+   "offset": 63760,
+   "dtype": "u32",
+   "count": 8800
+  },
+  "refVerts": {
+   "offset": 98960,
+   "dtype": "u32",
+   "count": 3642
+  },
+  "refWeights": {
+   "offset": 113536,
+   "dtype": "f32",
+   "count": 3642
+  },
+  "refOffsets": {
+   "offset": 128112,
+   "dtype": "f32",
+   "count": 3642
+  },
+  "deleteVerts": {
+   "offset": 142688,
+   "dtype": "u32",
+   "count": 2198
+  },
+  "sourceProxyVertex": {
+   "offset": 151488,
+   "dtype": "u32",
+   "count": 1214
+  }
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_disco_pants_skinny",
+ "category": "clothes",
+ "name": "elvs_disco_pant1",
+ "uuid": "9aa572af-be8f-4d66-a7ab-254a37cc77d8",
+ "tags": [
+  "female",
+  "formal",
+  "festive",
+  "vintage",
+  "pants",
+  "disco"
+ ],
+ "zDepth": 50,
+ "vertexCount": 3267,
+ "faceCount": 6460,
+ "triangleFaces": 6460,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_disco_pants_skinny.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "elvs_disco_pants_skinny.bin",
+ "byteLength": 421080,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 9801
+  },
+  "uvs": {
+   "offset": 39216,
+   "dtype": "f32",
+   "count": 12980
+  },
+  "faceVerts": {
+   "offset": 91136,
+   "dtype": "u32",
+   "count": 25840
+  },
+  "faceUvs": {
+   "offset": 194496,
+   "dtype": "u32",
+   "count": 25840
+  },
+  "refVerts": {
+   "offset": 297856,
+   "dtype": "u32",
+   "count": 9801
+  },
+  "refWeights": {
+   "offset": 337072,
+   "dtype": "f32",
+   "count": 9801
+  },
+  "refOffsets": {
+   "offset": 376288,
+   "dtype": "f32",
+   "count": 9801
+  },
+  "deleteVerts": {
+   "offset": 415504,
+   "dtype": "u32",
+   "count": 1394
+  }
+ }
+}

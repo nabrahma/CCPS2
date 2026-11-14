@@ -1,0 +1,86 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_nails_01_short",
+ "category": "clothes",
+ "name": "Mind_Nails_01_short",
+ "uuid": "ef1981b5-afd1-4ea9-b0e3-573cedec9798",
+ "tags": [
+  "nails"
+ ],
+ "zDepth": 31,
+ "vertexCount": 408,
+ "faceCount": 388,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   8938,
+   10548,
+   0.044180000000000004
+  ],
+  [
+   9881,
+   10318,
+   0.00445
+  ],
+  [
+   9864,
+   10267,
+   0.06023
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/mindfront_nails_01_short.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "mindfront_nails_01_short.bin",
+ "byteLength": 35488,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1224
+  },
+  "uvs": {
+   "offset": 4896,
+   "dtype": "f32",
+   "count": 872
+  },
+  "faceVerts": {
+   "offset": 8384,
+   "dtype": "u32",
+   "count": 1552
+  },
+  "faceUvs": {
+   "offset": 14592,
+   "dtype": "u32",
+   "count": 1552
+  },
+  "refVerts": {
+   "offset": 20800,
+   "dtype": "u32",
+   "count": 1224
+  },
+  "refWeights": {
+   "offset": 25696,
+   "dtype": "f32",
+   "count": 1224
+  },
+  "refOffsets": {
+   "offset": 30592,
+   "dtype": "f32",
+   "count": 1224
+  }
+ }
+}

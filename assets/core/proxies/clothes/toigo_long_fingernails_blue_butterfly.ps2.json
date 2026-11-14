@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_long_fingernails_blue_butterfly",
+ "category": "clothes",
+ "name": "LongFingernails-BlueButterfly",
+ "uuid": "f7bb12c8-9534-4c09-b708-f8fc0266c54c",
+ "tags": [
+  "fingernails",
+  "female",
+  "fancy"
+ ],
+ "zDepth": 50,
+ "vertexCount": 270,
+ "faceCount": 500,
+ "triangleFaces": 500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/toigo_long_fingernails_blue_butterfly.jpg",
+  "textureSize": [
+   1024,
+   512
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 1020,
+ "hiddenFaces": "computed",
+ "originalTriangles": 2000,
+ "binary": "toigo_long_fingernails_blue_butterfly.ps2.bin",
+ "byteLength": 33192,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 810
+  },
+  "uvs": {
+   "offset": 3248,
+   "dtype": "f32",
+   "count": 774
+  },
+  "faceVerts": {
+   "offset": 6352,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "faceUvs": {
+   "offset": 14352,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "refVerts": {
+   "offset": 22352,
+   "dtype": "u32",
+   "count": 810
+  },
+  "refWeights": {
+   "offset": 25600,
+   "dtype": "f32",
+   "count": 810
+  },
+  "refOffsets": {
+   "offset": 28848,
+   "dtype": "f32",
+   "count": 810
+  },
+  "coveredVerts": {
+   "offset": 32096,
+   "dtype": "u32",
+   "count": 2
+  },
+  "sourceProxyVertex": {
+   "offset": 32112,
+   "dtype": "u32",
+   "count": 270
+  }
+ }
+}

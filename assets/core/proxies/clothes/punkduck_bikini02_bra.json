@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_bikini02_bra",
+ "category": "clothes",
+ "name": "bikinibra2",
+ "uuid": "206a02f3-f038-4ebe-9d73-ee873c354d0b",
+ "tags": [
+  "female",
+  "bikini"
+ ],
+ "zDepth": 50,
+ "vertexCount": 2254,
+ "faceCount": 2012,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_bikini02_bra.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "punkduck_bikini02_bra.bin",
+ "byteLength": 196192,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 6762
+  },
+  "uvs": {
+   "offset": 27056,
+   "dtype": "f32",
+   "count": 5712
+  },
+  "faceVerts": {
+   "offset": 49904,
+   "dtype": "u32",
+   "count": 8048
+  },
+  "faceUvs": {
+   "offset": 82096,
+   "dtype": "u32",
+   "count": 8048
+  },
+  "refVerts": {
+   "offset": 114288,
+   "dtype": "u32",
+   "count": 6762
+  },
+  "refWeights": {
+   "offset": 141344,
+   "dtype": "f32",
+   "count": 6762
+  },
+  "refOffsets": {
+   "offset": 168400,
+   "dtype": "f32",
+   "count": 6762
+  },
+  "deleteVerts": {
+   "offset": 195456,
+   "dtype": "u32",
+   "count": 184
+  }
+ }
+}

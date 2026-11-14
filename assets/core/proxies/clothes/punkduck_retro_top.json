@@ -1,0 +1,93 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_retro_top",
+ "category": "clothes",
+ "name": "VintageTop",
+ "uuid": "3ecd9149-8a34-427b-bbe8-dab813ca631f",
+ "tags": [
+  "female",
+  "top",
+  "vintage"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1695,
+ "faceCount": 1606,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_retro_top.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "punkduck_retro_top.bin",
+ "byteLength": 152228,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 5085
+  },
+  "uvs": {
+   "offset": 20352,
+   "dtype": "f32",
+   "count": 3648
+  },
+  "faceVerts": {
+   "offset": 34944,
+   "dtype": "u32",
+   "count": 6424
+  },
+  "faceUvs": {
+   "offset": 60640,
+   "dtype": "u32",
+   "count": 6424
+  },
+  "refVerts": {
+   "offset": 86336,
+   "dtype": "u32",
+   "count": 5085
+  },
+  "refWeights": {
+   "offset": 106688,
+   "dtype": "f32",
+   "count": 5085
+  },
+  "refOffsets": {
+   "offset": 127040,
+   "dtype": "f32",
+   "count": 5085
+  },
+  "deleteVerts": {
+   "offset": 147392,
+   "dtype": "u32",
+   "count": 1209
+  }
+ }
+}

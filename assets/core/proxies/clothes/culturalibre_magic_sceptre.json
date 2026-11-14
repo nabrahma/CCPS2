@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_magic_sceptre",
+ "category": "clothes",
+ "name": "magic_sceptre",
+ "uuid": "a5ed60b2-9666-4980-bdf3-eb3b3e3817c6",
+ "tags": [],
+ "zDepth": 70,
+ "vertexCount": 1346,
+ "faceCount": 1340,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/culturalibre_magic_sceptre.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "culturalibre_magic_sceptre.bin",
+ "byteLength": 119624,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4038
+  },
+  "uvs": {
+   "offset": 16160,
+   "dtype": "f32",
+   "count": 3028
+  },
+  "faceVerts": {
+   "offset": 28272,
+   "dtype": "u32",
+   "count": 5360
+  },
+  "faceUvs": {
+   "offset": 49712,
+   "dtype": "u32",
+   "count": 5360
+  },
+  "refVerts": {
+   "offset": 71152,
+   "dtype": "u32",
+   "count": 4038
+  },
+  "refWeights": {
+   "offset": 87312,
+   "dtype": "f32",
+   "count": 4038
+  },
+  "refOffsets": {
+   "offset": 103472,
+   "dtype": "f32",
+   "count": 4038
+  }
+ }
+}

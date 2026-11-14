@@ -1,11 +1,95 @@
 [
  {
-  "asset": "toigo_female_suit.mhclo",
-  "reason": "toigo_female_suit.mhclo: shear transforms are not supported"
- },
- {
   "asset": "underwear01/clothes/punkduck_strappy_lace_thong",
   "reason": "excluded by content policy"
+ },
+ {
+  "asset": "shirts02/clothes/punkduck_deathnote_t-shirt",
+  "reason": "another work's character or design"
+ },
+ {
+  "asset": "shoes02/clothes/punkduck_kill_bill_shoes",
+  "reason": "another work's character or design"
+ },
+ {
+  "asset": "suits02/clothes/culturalibre_hero_suit_3",
+  "reason": "another work's character or design"
+ },
+ {
+  "asset": "suits02/clothes/green_tomato_rei_ayanami",
+  "reason": "another work's character or design"
+ },
+ {
+  "asset": "suits02/clothes/green_tomato_yoko_tsuno",
+  "reason": "another work's character or design"
+ },
+ {
+  "asset": "suits02/clothes/slayer227_spider-gwen",
+  "reason": "another work's character or design"
+ },
+ {
+  "asset": "suits04/clothes/culturalibre_el_chapulin_colorado",
+  "reason": "another work's character or design"
+ },
+ {
+  "asset": "suits04/clothes/culturalibre_heroine_suit_7",
+  "reason": "another work's character or design"
+ },
+ {
+  "asset": "underwear02/clothes/punkduck_french_lingerie_thong",
+  "reason": "excluded by content policy"
+ },
+ {
+  "asset": "underwear02/clothes/punkduck_string_2",
+  "reason": "excluded by content policy"
+ },
+ {
+  "asset": "underwear02/clothes/punkduck_string_4",
+  "reason": "excluded by content policy"
+ },
+ {
+  "asset": "underwear02/clothes/punkduck_string_5",
+  "reason": "excluded by content policy"
+ },
+ {
+  "asset": "underwear02/clothes/punkduck_teddy_erotic_lingerie",
+  "reason": "excluded by content policy"
+ },
+ {
+  "asset": "underwear02/clothes/punkduck_transparent_bra",
+  "reason": "excluded by content policy"
+ },
+ {
+  "asset": "glasses01/clothes/culturalibre_doc_ock_glasses",
+  "reason": "another work's character or design"
+ },
+ {
+  "asset": "jewelry01/clothes/learning_slave_collar_chain",
+  "reason": "excluded by content policy"
+ },
+ {
+  "asset": "masks01/clothes/culturalibre_hero-heroine_hood_2",
+  "reason": "another work's character or design"
+ },
+ {
+  "asset": "bodyparts01/clothes/freezychan_lucoa_quetzalcoatl_horns",
+  "reason": "another work's character or design"
+ },
+ {
+  "asset": "bodyparts01/clothes/jaldmic_houndoom_horns",
+  "reason": "another work's character or design"
+ },
+ {
+  "asset": "bodyparts02/clothes/jaldmic_toriel_horns",
+  "reason": "another work's character or design"
+ },
+ {
+  "asset": "bodyparts03/clothes/culturalibre_tigra_tail",
+  "reason": "another work's character or design"
+ },
+ {
+  "asset": "equipment02/clothes/punkduck_p-ivy_weapon",
+  "reason": "another work's character or design"
  },
  {
   "asset": "skins/toon01",
@@ -33,6 +117,34 @@
  },
  {
   "asset": "skins/jartur69_old_slavic_male_with_genitals_and_beard",
+  "reason": "excluded by content policy"
+ },
+ {
+  "asset": "skins/culturalibre_dr_manhattan",
+  "reason": "another work's character or design"
+ },
+ {
+  "asset": "skins/culturalibre_tigra_skin",
+  "reason": "another work's character or design"
+ },
+ {
+  "asset": "skins/culturalibre_tigra_white_skin",
+  "reason": "another work's character or design"
+ },
+ {
+  "asset": "skins/joepal_annotated_skin",
+  "reason": "another work's character or design"
+ },
+ {
+  "asset": "skins/reizibarrientos_white_walker_skin",
+  "reason": "another work's character or design"
+ },
+ {
+  "asset": "skins/xhado84_middleage_afro_female_special_suit_green",
+  "reason": "excluded by content policy"
+ },
+ {
+  "asset": "skins/xhado84_young_asian_female_special_suit_red",
   "reason": "excluded by content policy"
  }
 ]

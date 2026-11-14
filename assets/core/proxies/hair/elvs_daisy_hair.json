@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/elvs_daisy_hair",
+ "category": "hair",
+ "name": "elvs_daisyhair1",
+ "uuid": "79295f35-36b7-4e92-babb-33465c828151",
+ "tags": [
+  "hair",
+  "ladies hair",
+  "female",
+  "long hair",
+  "straight hair"
+ ],
+ "zDepth": 57,
+ "vertexCount": 4940,
+ "faceCount": 6639,
+ "triangleFaces": 6639,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/elvs_daisy_hair.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "elvs_daisy_hair.bin",
+ "byteLength": 503344,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 14820
+  },
+  "uvs": {
+   "offset": 59280,
+   "dtype": "f32",
+   "count": 13442
+  },
+  "faceVerts": {
+   "offset": 113056,
+   "dtype": "u32",
+   "count": 26556
+  },
+  "faceUvs": {
+   "offset": 219280,
+   "dtype": "u32",
+   "count": 26556
+  },
+  "refVerts": {
+   "offset": 325504,
+   "dtype": "u32",
+   "count": 14820
+  },
+  "refWeights": {
+   "offset": 384784,
+   "dtype": "f32",
+   "count": 14820
+  },
+  "refOffsets": {
+   "offset": 444064,
+   "dtype": "f32",
+   "count": 14820
+  }
+ }
+}

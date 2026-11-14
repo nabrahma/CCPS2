@@ -1,0 +1,103 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_male_trouser_short_2",
+ "category": "clothes",
+ "name": "mens_trouser_short_nc_elvcrf",
+ "uuid": "4a70e3b3-e9d4-4e8f-8081-dfcb53cef24d",
+ "tags": [
+  "shorts",
+  "menswear",
+  "fashion",
+  "traditional",
+  "trouser"
+ ],
+ "zDepth": 47,
+ "vertexCount": 740,
+ "faceCount": 1523,
+ "triangleFaces": 1523,
+ "scale": [
+  [
+   11133,
+   11141,
+   0.14762999999999998
+  ],
+  [
+   11025,
+   11460,
+   0.74151
+  ],
+  [
+   11130,
+   11135,
+   0.15612
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.0551,
+   0.2102,
+   0.242
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_male_trouser_short_2.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 6960,
+ "hiddenFaces": "computed",
+ "originalTriangles": 13392,
+ "binary": "elvs_male_trouser_short_2.ps2.bin",
+ "byteLength": 95552,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2220
+  },
+  "uvs": {
+   "offset": 8880,
+   "dtype": "f32",
+   "count": 1472
+  },
+  "faceVerts": {
+   "offset": 14768,
+   "dtype": "u32",
+   "count": 6092
+  },
+  "faceUvs": {
+   "offset": 39136,
+   "dtype": "u32",
+   "count": 6092
+  },
+  "refVerts": {
+   "offset": 63504,
+   "dtype": "u32",
+   "count": 2220
+  },
+  "refWeights": {
+   "offset": 72384,
+   "dtype": "f32",
+   "count": 2220
+  },
+  "refOffsets": {
+   "offset": 81264,
+   "dtype": "f32",
+   "count": 2220
+  },
+  "coveredVerts": {
+   "offset": 90144,
+   "dtype": "u32",
+   "count": 610
+  },
+  "sourceProxyVertex": {
+   "offset": 92592,
+   "dtype": "u32",
+   "count": 740
+  }
+ }
+}

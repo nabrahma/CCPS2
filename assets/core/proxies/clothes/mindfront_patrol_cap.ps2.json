@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_patrol_cap",
+ "category": "clothes",
+ "name": "Patrol_Cap",
+ "uuid": "2cd61e52-ee0c-4da0-9d12-90c9dfefcb4a",
+ "tags": [
+  "hats",
+  "cap"
+ ],
+ "zDepth": 61,
+ "vertexCount": 365,
+ "faceCount": 700,
+ "triangleFaces": 700,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/mindfront_patrol_cap.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "decimatedFrom": 377,
+ "hiddenFaces": "computed",
+ "originalTriangles": 724,
+ "binary": "mindfront_patrol_cap.ps2.bin",
+ "byteLength": 45732,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1095
+  },
+  "uvs": {
+   "offset": 4384,
+   "dtype": "f32",
+   "count": 914
+  },
+  "faceVerts": {
+   "offset": 8048,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "faceUvs": {
+   "offset": 19248,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "refVerts": {
+   "offset": 30448,
+   "dtype": "u32",
+   "count": 1095
+  },
+  "refWeights": {
+   "offset": 34832,
+   "dtype": "f32",
+   "count": 1095
+  },
+  "refOffsets": {
+   "offset": 39216,
+   "dtype": "f32",
+   "count": 1095
+  },
+  "coveredVerts": {
+   "offset": 43600,
+   "dtype": "u32",
+   "count": 165
+  },
+  "sourceProxyVertex": {
+   "offset": 44272,
+   "dtype": "u32",
+   "count": 365
+  }
+ }
+}

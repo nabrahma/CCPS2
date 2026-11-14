@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_interlocking_rings_anklet1",
+ "category": "clothes",
+ "name": "elvs_interlockrings_anklet1",
+ "uuid": "8f5585a7-e7e7-4481-a476-3201275d464c",
+ "tags": [
+  "unisex",
+  "casual",
+  "festive",
+  "contemporary",
+  "jewelry",
+  "anklet"
+ ],
+ "zDepth": 50,
+ "vertexCount": 7200,
+ "faceCount": 7200,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_interlocking_rings_anklet1.jpg",
+  "textureSize": [
+   480,
+   480
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_interlocking_rings_anklet1.bin",
+ "byteLength": 671888,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 21600
+  },
+  "uvs": {
+   "offset": 86400,
+   "dtype": "f32",
+   "count": 23970
+  },
+  "faceVerts": {
+   "offset": 182288,
+   "dtype": "u32",
+   "count": 28800
+  },
+  "faceUvs": {
+   "offset": 297488,
+   "dtype": "u32",
+   "count": 28800
+  },
+  "refVerts": {
+   "offset": 412688,
+   "dtype": "u32",
+   "count": 21600
+  },
+  "refWeights": {
+   "offset": 499088,
+   "dtype": "f32",
+   "count": 21600
+  },
+  "refOffsets": {
+   "offset": 585488,
+   "dtype": "f32",
+   "count": 21600
+  }
+ }
+}

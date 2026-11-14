@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/joepal_plain_bra",
+ "category": "clothes",
+ "name": "plain_bra",
+ "uuid": "eb804d68-3144-407a-88a0-67aae0be6e0e",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 2618,
+ "faceCount": 2458,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.02663
+  ],
+  [
+   1524,
+   4370,
+   0.056799999999999996
+  ],
+  [
+   1892,
+   3946,
+   0.0173
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.6,
+   0.6,
+   0.6
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/joepal_plain_bra.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "joepal_plain_bra.bin",
+ "byteLength": 226420,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 7854
+  },
+  "uvs": {
+   "offset": 31424,
+   "dtype": "f32",
+   "count": 5328
+  },
+  "faceVerts": {
+   "offset": 52736,
+   "dtype": "u32",
+   "count": 9832
+  },
+  "faceUvs": {
+   "offset": 92064,
+   "dtype": "u32",
+   "count": 9832
+  },
+  "refVerts": {
+   "offset": 131392,
+   "dtype": "u32",
+   "count": 7854
+  },
+  "refWeights": {
+   "offset": 162816,
+   "dtype": "f32",
+   "count": 7854
+  },
+  "refOffsets": {
+   "offset": 194240,
+   "dtype": "f32",
+   "count": 7854
+  },
+  "deleteVerts": {
+   "offset": 225664,
+   "dtype": "u32",
+   "count": 189
+  }
+ }
+}

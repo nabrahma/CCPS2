@@ -1,0 +1,99 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_sun_visor_sports_visor",
+ "category": "clothes",
+ "name": "SunVisor",
+ "uuid": "64fecc96-dd36-4715-a7c7-2f6fa51b1198",
+ "tags": [
+  "sport"
+ ],
+ "zDepth": 60,
+ "vertexCount": 358,
+ "faceCount": 700,
+ "triangleFaces": 700,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_sun_visor_sports_visor.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "decimatedFrom": 414,
+ "hiddenFaces": "computed",
+ "originalTriangles": 812,
+ "binary": "punkduck_sun_visor_sports_visor.ps2.bin",
+ "byteLength": 44936,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1074
+  },
+  "uvs": {
+   "offset": 4304,
+   "dtype": "f32",
+   "count": 894
+  },
+  "faceVerts": {
+   "offset": 7888,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "faceUvs": {
+   "offset": 19088,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "refVerts": {
+   "offset": 30288,
+   "dtype": "u32",
+   "count": 1074
+  },
+  "refWeights": {
+   "offset": 34592,
+   "dtype": "f32",
+   "count": 1074
+  },
+  "refOffsets": {
+   "offset": 38896,
+   "dtype": "f32",
+   "count": 1074
+  },
+  "coveredVerts": {
+   "offset": 43200,
+   "dtype": "u32",
+   "count": 74
+  },
+  "sourceProxyVertex": {
+   "offset": 43504,
+   "dtype": "u32",
+   "count": 358
+  }
+ }
+}

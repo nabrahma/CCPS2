@@ -1,0 +1,102 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_all_tied_up_bikini",
+ "category": "clothes",
+ "name": "all_tiedup_kini1",
+ "uuid": "a4ec8abd-c06e-48ea-b9b4-c344d1b7d8fb",
+ "tags": [
+  "bathing suit",
+  "bikini",
+  "ladies wear",
+  "summer"
+ ],
+ "zDepth": 31,
+ "vertexCount": 518,
+ "faceCount": 1232,
+ "triangleFaces": 1232,
+ "scale": [
+  [
+   13868,
+   14308,
+   0.95666
+  ],
+  [
+   881,
+   13137,
+   1.6005099999999999
+  ],
+  [
+   10854,
+   10981,
+   0.22246
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.7529,
+   0.7529,
+   0.7529
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_all_tied_up_bikini.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 78400,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 155930,
+ "binary": "elvs_all_tied_up_bikini.ps2.bin",
+ "byteLength": 70936,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1554
+  },
+  "uvs": {
+   "offset": 6224,
+   "dtype": "f32",
+   "count": 1036
+  },
+  "faceVerts": {
+   "offset": 10368,
+   "dtype": "u32",
+   "count": 4928
+  },
+  "faceUvs": {
+   "offset": 30080,
+   "dtype": "u32",
+   "count": 4928
+  },
+  "refVerts": {
+   "offset": 49792,
+   "dtype": "u32",
+   "count": 1554
+  },
+  "refWeights": {
+   "offset": 56016,
+   "dtype": "f32",
+   "count": 1554
+  },
+  "refOffsets": {
+   "offset": 62240,
+   "dtype": "f32",
+   "count": 1554
+  },
+  "deleteVerts": {
+   "offset": 68464,
+   "dtype": "u32",
+   "count": 99
+  },
+  "sourceProxyVertex": {
+   "offset": 68864,
+   "dtype": "u32",
+   "count": 518
+  }
+ }
+}

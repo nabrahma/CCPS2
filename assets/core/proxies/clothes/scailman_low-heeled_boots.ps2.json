@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/scailman_low-heeled_boots",
+ "category": "clothes",
+ "name": "BotasTaconBajo",
+ "uuid": "4df3da35-3f5b-4452-9794-188266fc9818",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 488,
+ "faceCount": 900,
+ "triangleFaces": 900,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.0999,
+   0.0999,
+   0.1301
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/scailman_low-heeled_boots.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "decimatedFrom": 3138,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 6200,
+ "binary": "scailman_low-heeled_boots.ps2.bin",
+ "byteLength": 69216,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1464
+  },
+  "uvs": {
+   "offset": 5856,
+   "dtype": "f32",
+   "count": 920
+  },
+  "faceVerts": {
+   "offset": 9536,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "faceUvs": {
+   "offset": 23936,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "refVerts": {
+   "offset": 38336,
+   "dtype": "u32",
+   "count": 1464
+  },
+  "refWeights": {
+   "offset": 44192,
+   "dtype": "f32",
+   "count": 1464
+  },
+  "refOffsets": {
+   "offset": 50048,
+   "dtype": "f32",
+   "count": 1464
+  },
+  "deleteVerts": {
+   "offset": 55904,
+   "dtype": "u32",
+   "count": 2838
+  },
+  "sourceProxyVertex": {
+   "offset": 67264,
+   "dtype": "u32",
+   "count": 488
+  }
+ }
+}

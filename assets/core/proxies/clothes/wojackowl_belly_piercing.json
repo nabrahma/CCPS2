@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/wojackowl_belly_piercing",
+ "category": "clothes",
+ "name": "Belly Piercing",
+ "uuid": "ae1581f1-7de3-4cd0-9314-8d4266ffb99e",
+ "tags": [
+  "unisex",
+  "jewelry"
+ ],
+ "zDepth": 50,
+ "vertexCount": 249,
+ "faceCount": 494,
+ "triangleFaces": 494,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.02878
+  ],
+  [
+   1524,
+   4370,
+   0.057240000000000006
+  ],
+  [
+   1892,
+   3946,
+   0.018310000000000003
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/wojackowl_belly_piercing.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "wojackowl_belly_piercing.bin",
+ "byteLength": 33500,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 747
+  },
+  "uvs": {
+   "offset": 2992,
+   "dtype": "f32",
+   "count": 1432
+  },
+  "faceVerts": {
+   "offset": 8720,
+   "dtype": "u32",
+   "count": 1976
+  },
+  "faceUvs": {
+   "offset": 16624,
+   "dtype": "u32",
+   "count": 1976
+  },
+  "refVerts": {
+   "offset": 24528,
+   "dtype": "u32",
+   "count": 747
+  },
+  "refWeights": {
+   "offset": 27520,
+   "dtype": "f32",
+   "count": 747
+  },
+  "refOffsets": {
+   "offset": 30512,
+   "dtype": "f32",
+   "count": 747
+  }
+ }
+}

@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/elvs_short_side_do",
+ "category": "hair",
+ "name": "elvs_thejournalist1",
+ "uuid": "e4c2ee37-6c0a-48d8-89a1-847073e73470",
+ "tags": [
+  "hair",
+  "female hair",
+  "toon stylized"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1841,
+ "faceCount": 3499,
+ "triangleFaces": 3499,
+ "scale": [
+  [
+   11998,
+   5399,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/hair/elvs_short_side_do.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "decimatedFrom": 50274,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 98660,
+ "binary": "elvs_short_side_do.ps2.bin",
+ "byteLength": 223044,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 5523
+  },
+  "uvs": {
+   "offset": 22096,
+   "dtype": "f32",
+   "count": 3682
+  },
+  "faceVerts": {
+   "offset": 36832,
+   "dtype": "u32",
+   "count": 13996
+  },
+  "faceUvs": {
+   "offset": 92816,
+   "dtype": "u32",
+   "count": 13996
+  },
+  "refVerts": {
+   "offset": 148800,
+   "dtype": "u32",
+   "count": 5523
+  },
+  "refWeights": {
+   "offset": 170896,
+   "dtype": "f32",
+   "count": 5523
+  },
+  "refOffsets": {
+   "offset": 192992,
+   "dtype": "f32",
+   "count": 5523
+  },
+  "deleteVerts": {
+   "offset": 215088,
+   "dtype": "u32",
+   "count": 145
+  },
+  "sourceProxyVertex": {
+   "offset": 215680,
+   "dtype": "u32",
+   "count": 1841
+  }
+ }
+}

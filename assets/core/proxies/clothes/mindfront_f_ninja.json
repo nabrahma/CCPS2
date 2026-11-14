@@ -1,0 +1,93 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_f_ninja",
+ "category": "clothes",
+ "name": "F_Ninja",
+ "uuid": "f9bf5690-1f67-455a-8c82-c28f075796d7",
+ "tags": [
+  "female",
+  "work",
+  "sport"
+ ],
+ "zDepth": 50,
+ "vertexCount": 15769,
+ "faceCount": 14246,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 0.0,
+  "diffuseTexture": "textures/clothes/mindfront_f_ninja.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "mindfront_f_ninja.bin",
+ "byteLength": 1360080,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 47307
+  },
+  "uvs": {
+   "offset": 189232,
+   "dtype": "f32",
+   "count": 29686
+  },
+  "faceVerts": {
+   "offset": 307984,
+   "dtype": "u32",
+   "count": 56984
+  },
+  "faceUvs": {
+   "offset": 535920,
+   "dtype": "u32",
+   "count": 56984
+  },
+  "refVerts": {
+   "offset": 763856,
+   "dtype": "u32",
+   "count": 47307
+  },
+  "refWeights": {
+   "offset": 953088,
+   "dtype": "f32",
+   "count": 47307
+  },
+  "refOffsets": {
+   "offset": 1142320,
+   "dtype": "f32",
+   "count": 47307
+  },
+  "deleteVerts": {
+   "offset": 1331552,
+   "dtype": "u32",
+   "count": 7132
+  }
+ }
+}

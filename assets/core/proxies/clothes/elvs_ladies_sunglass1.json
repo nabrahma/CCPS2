@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_ladies_sunglass1",
+ "category": "clothes",
+ "name": "ladies_sunglass1",
+ "uuid": "9898dde0-cc8f-4d5a-add2-1ac1b6c64f72",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 19062,
+ "faceCount": 18775,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_ladies_sunglass1.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_ladies_sunglass1.bin",
+ "byteLength": 1760536,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 57186
+  },
+  "uvs": {
+   "offset": 228752,
+   "dtype": "f32",
+   "count": 61182
+  },
+  "faceVerts": {
+   "offset": 473488,
+   "dtype": "u32",
+   "count": 75100
+  },
+  "faceUvs": {
+   "offset": 773888,
+   "dtype": "u32",
+   "count": 75100
+  },
+  "refVerts": {
+   "offset": 1074288,
+   "dtype": "u32",
+   "count": 57186
+  },
+  "refWeights": {
+   "offset": 1303040,
+   "dtype": "f32",
+   "count": 57186
+  },
+  "refOffsets": {
+   "offset": 1531792,
+   "dtype": "f32",
+   "count": 57186
+  }
+ }
+}

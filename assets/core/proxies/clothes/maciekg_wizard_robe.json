@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/maciekg_wizard_robe",
+ "category": "clothes",
+ "name": "mage_robe",
+ "uuid": "65266f4a-84aa-479a-a10d-75703a346d0a",
+ "tags": [
+  "robe"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1993,
+ "faceCount": 1952,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/maciekg_wizard_robe.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "maciekg_wizard_robe.bin",
+ "byteLength": 190424,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 5979
+  },
+  "uvs": {
+   "offset": 23920,
+   "dtype": "f32",
+   "count": 4520
+  },
+  "faceVerts": {
+   "offset": 42000,
+   "dtype": "u32",
+   "count": 7808
+  },
+  "faceUvs": {
+   "offset": 73232,
+   "dtype": "u32",
+   "count": 7808
+  },
+  "refVerts": {
+   "offset": 104464,
+   "dtype": "u32",
+   "count": 5979
+  },
+  "refWeights": {
+   "offset": 128384,
+   "dtype": "f32",
+   "count": 5979
+  },
+  "refOffsets": {
+   "offset": 152304,
+   "dtype": "f32",
+   "count": 5979
+  },
+  "deleteVerts": {
+   "offset": 176224,
+   "dtype": "u32",
+   "count": 3550
+  }
+ }
+}

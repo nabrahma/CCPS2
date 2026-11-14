@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/ews_industrial_piercing_left_ear_",
+ "category": "clothes",
+ "name": "Industrial_Left_Ear",
+ "uuid": "bf5b7545-fc0a-463a-b7db-9aad9b3e625d",
+ "tags": [
+  "industrial",
+  "piercing",
+  "ring",
+  "metal"
+ ],
+ "zDepth": 50,
+ "vertexCount": 52,
+ "faceCount": 100,
+ "triangleFaces": 100,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/ews_industrial_piercing_left_ear_.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 52,
+ "hiddenFaces": "none",
+ "originalTriangles": 100,
+ "binary": "ews_industrial_piercing_left_ear_.ps2.bin",
+ "byteLength": 5936,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 156
+  },
+  "uvs": {
+   "offset": 624,
+   "dtype": "f32",
+   "count": 8
+  },
+  "faceVerts": {
+   "offset": 656,
+   "dtype": "u32",
+   "count": 400
+  },
+  "faceUvs": {
+   "offset": 2256,
+   "dtype": "u32",
+   "count": 400
+  },
+  "refVerts": {
+   "offset": 3856,
+   "dtype": "u32",
+   "count": 156
+  },
+  "refWeights": {
+   "offset": 4480,
+   "dtype": "f32",
+   "count": 156
+  },
+  "refOffsets": {
+   "offset": 5104,
+   "dtype": "f32",
+   "count": 156
+  },
+  "sourceProxyVertex": {
+   "offset": 5728,
+   "dtype": "u32",
+   "count": 52
+  }
+ }
+}

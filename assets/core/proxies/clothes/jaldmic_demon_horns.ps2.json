@@ -1,0 +1,90 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/jaldmic_demon_horns",
+ "category": "clothes",
+ "name": "DevilWomanHorns",
+ "uuid": "42637e26-af4c-4889-ad46-a0c6d0b78461",
+ "tags": [
+  "jaldmic",
+  "tail"
+ ],
+ "zDepth": 69,
+ "vertexCount": 260,
+ "faceCount": 500,
+ "triangleFaces": 500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.13983
+  ],
+  [
+   791,
+   881,
+   0.2315
+  ],
+  [
+   962,
+   5320,
+   0.19038
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1
+ },
+ "slot": "accessory",
+ "decimatedFrom": 274,
+ "hiddenFaces": "none",
+ "originalTriangles": 528,
+ "binary": "jaldmic_demon_horns.ps2.bin",
+ "byteLength": 32944,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 780
+  },
+  "uvs": {
+   "offset": 3120,
+   "dtype": "f32",
+   "count": 856
+  },
+  "faceVerts": {
+   "offset": 6544,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "faceUvs": {
+   "offset": 14544,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "refVerts": {
+   "offset": 22544,
+   "dtype": "u32",
+   "count": 780
+  },
+  "refWeights": {
+   "offset": 25664,
+   "dtype": "f32",
+   "count": 780
+  },
+  "refOffsets": {
+   "offset": 28784,
+   "dtype": "f32",
+   "count": 780
+  },
+  "sourceProxyVertex": {
+   "offset": 31904,
+   "dtype": "u32",
+   "count": 260
+  }
+ }
+}

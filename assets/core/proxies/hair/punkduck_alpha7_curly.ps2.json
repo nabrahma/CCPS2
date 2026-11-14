@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/punkduck_alpha7_curly",
+ "category": "hair",
+ "name": "curly",
+ "uuid": "9234f5ca-2662-4d3a-a387-67989f6f5972",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 2015,
+ "faceCount": 3500,
+ "triangleFaces": 3500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/hair/punkduck_alpha7_curly.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "decimatedFrom": 6068,
+ "hiddenFaces": "none",
+ "originalTriangles": 11304,
+ "binary": "punkduck_alpha7_curly.ps2.bin",
+ "byteLength": 218172,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 6045
+  },
+  "uvs": {
+   "offset": 24192,
+   "dtype": "f32",
+   "count": 334
+  },
+  "faceVerts": {
+   "offset": 25536,
+   "dtype": "u32",
+   "count": 14000
+  },
+  "faceUvs": {
+   "offset": 81536,
+   "dtype": "u32",
+   "count": 14000
+  },
+  "refVerts": {
+   "offset": 137536,
+   "dtype": "u32",
+   "count": 6045
+  },
+  "refWeights": {
+   "offset": 161728,
+   "dtype": "f32",
+   "count": 6045
+  },
+  "refOffsets": {
+   "offset": 185920,
+   "dtype": "f32",
+   "count": 6045
+  },
+  "sourceProxyVertex": {
+   "offset": 210112,
+   "dtype": "u32",
+   "count": 2015
+  }
+ }
+}

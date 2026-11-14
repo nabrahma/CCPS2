@@ -1,0 +1,83 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/elvs_inverted_curly_bob",
+ "category": "hair",
+ "name": "elvs_inverted_curlybob1",
+ "uuid": "d690c78c-1f00-43c9-9cd0-58353483fd71",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 2340,
+ "faceCount": 1490,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/elvs_inverted_curly_bob.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "elvs_inverted_curly_bob.bin",
+ "byteLength": 178720,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 7020
+  },
+  "uvs": {
+   "offset": 28080,
+   "dtype": "f32",
+   "count": 4680
+  },
+  "faceVerts": {
+   "offset": 46800,
+   "dtype": "u32",
+   "count": 5960
+  },
+  "faceUvs": {
+   "offset": 70640,
+   "dtype": "u32",
+   "count": 5960
+  },
+  "refVerts": {
+   "offset": 94480,
+   "dtype": "u32",
+   "count": 7020
+  },
+  "refWeights": {
+   "offset": 122560,
+   "dtype": "f32",
+   "count": 7020
+  },
+  "refOffsets": {
+   "offset": 150640,
+   "dtype": "f32",
+   "count": 7020
+  }
+ }
+}

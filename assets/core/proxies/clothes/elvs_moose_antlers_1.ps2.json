@@ -1,0 +1,98 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_moose_antlers_1",
+ "category": "clothes",
+ "name": "elvs_moose_antlers1",
+ "uuid": "c62eca29-6565-4b20-a1f4-eeda7cf1ef34",
+ "tags": [
+  "unisex",
+  "fantasy",
+  "play",
+  "helmet",
+  "moose"
+ ],
+ "zDepth": 50,
+ "vertexCount": 264,
+ "faceCount": 500,
+ "triangleFaces": 500,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_moose_antlers_1.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 616,
+ "hiddenFaces": "none",
+ "originalTriangles": 1204,
+ "binary": "elvs_moose_antlers_1.ps2.bin",
+ "byteLength": 30880,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 792
+  },
+  "uvs": {
+   "offset": 3168,
+   "dtype": "f32",
+   "count": 288
+  },
+  "faceVerts": {
+   "offset": 4320,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "faceUvs": {
+   "offset": 12320,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "refVerts": {
+   "offset": 20320,
+   "dtype": "u32",
+   "count": 792
+  },
+  "refWeights": {
+   "offset": 23488,
+   "dtype": "f32",
+   "count": 792
+  },
+  "refOffsets": {
+   "offset": 26656,
+   "dtype": "f32",
+   "count": 792
+  },
+  "sourceProxyVertex": {
+   "offset": 29824,
+   "dtype": "u32",
+   "count": 264
+  }
+ }
+}

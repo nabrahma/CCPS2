@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_twisted_pearl_necklace",
+ "category": "clothes",
+ "name": "twisted-pearl-necklace",
+ "uuid": "ba2e6c41-22d7-4b61-baa2-afba40d67f0a",
+ "tags": [
+  "jewelry",
+  "feamle"
+ ],
+ "zDepth": 60,
+ "vertexCount": 174,
+ "faceCount": 405,
+ "triangleFaces": 405,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_twisted_pearl_necklace.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 24780,
+ "hiddenFaces": "none",
+ "originalTriangles": 46240,
+ "binary": "punkduck_twisted_pearl_necklace.ps2.bin",
+ "byteLength": 23032,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 522
+  },
+  "uvs": {
+   "offset": 2096,
+   "dtype": "f32",
+   "count": 246
+  },
+  "faceVerts": {
+   "offset": 3088,
+   "dtype": "u32",
+   "count": 1620
+  },
+  "faceUvs": {
+   "offset": 9568,
+   "dtype": "u32",
+   "count": 1620
+  },
+  "refVerts": {
+   "offset": 16048,
+   "dtype": "u32",
+   "count": 522
+  },
+  "refWeights": {
+   "offset": 18144,
+   "dtype": "f32",
+   "count": 522
+  },
+  "refOffsets": {
+   "offset": 20240,
+   "dtype": "f32",
+   "count": 522
+  },
+  "sourceProxyVertex": {
+   "offset": 22336,
+   "dtype": "u32",
+   "count": 174
+  }
+ }
+}

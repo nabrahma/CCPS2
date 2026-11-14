@@ -1,0 +1,110 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/donitz_monk_robe_hood_off",
+ "category": "clothes",
+ "name": "Monks Hood Off",
+ "uuid": "bed9a0ae-743c-49bd-8205-4bdc3501cd83",
+ "tags": [
+  "male",
+  "fantasy",
+  "profession",
+  "vintage",
+  "hat",
+  "hood",
+  "medieval",
+  "monk",
+  "priest",
+  "renaissance",
+  "robe",
+  "wizard"
+ ],
+ "zDepth": 63,
+ "vertexCount": 352,
+ "faceCount": 700,
+ "triangleFaces": 700,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.31474
+  ],
+  [
+   1524,
+   4370,
+   0.5723600000000001
+  ],
+  [
+   1892,
+   3946,
+   0.19557000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/donitz_monk_robe_hood_off.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "decimatedFrom": 4536,
+ "hiddenFaces": "computed",
+ "originalTriangles": 9054,
+ "binary": "donitz_monk_robe_hood_off.ps2.bin",
+ "byteLength": 43824,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1056
+  },
+  "uvs": {
+   "offset": 4224,
+   "dtype": "f32",
+   "count": 776
+  },
+  "faceVerts": {
+   "offset": 7328,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "faceUvs": {
+   "offset": 18528,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "refVerts": {
+   "offset": 29728,
+   "dtype": "u32",
+   "count": 1056
+  },
+  "refWeights": {
+   "offset": 33952,
+   "dtype": "f32",
+   "count": 1056
+  },
+  "refOffsets": {
+   "offset": 38176,
+   "dtype": "f32",
+   "count": 1056
+  },
+  "coveredVerts": {
+   "offset": 42400,
+   "dtype": "u32",
+   "count": 2
+  },
+  "sourceProxyVertex": {
+   "offset": 42416,
+   "dtype": "u32",
+   "count": 352
+  }
+ }
+}

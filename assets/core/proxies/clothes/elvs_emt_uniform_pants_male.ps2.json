@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_emt_uniform_pants_male",
+ "category": "clothes",
+ "name": "rescueteam-pants-male",
+ "uuid": "c7360f1f-006d-4684-990b-823887407b63",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1513,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_emt_uniform_pants_male.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 4117,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 7708,
+ "binary": "elvs_emt_uniform_pants_male.ps2.bin",
+ "byteLength": 177732,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4539
+  },
+  "uvs": {
+   "offset": 18160,
+   "dtype": "f32",
+   "count": 3318
+  },
+  "faceVerts": {
+   "offset": 31440,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 71440,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 111440,
+   "dtype": "u32",
+   "count": 4539
+  },
+  "refWeights": {
+   "offset": 129600,
+   "dtype": "f32",
+   "count": 4539
+  },
+  "refOffsets": {
+   "offset": 147760,
+   "dtype": "f32",
+   "count": 4539
+  },
+  "deleteVerts": {
+   "offset": 165920,
+   "dtype": "u32",
+   "count": 1437
+  },
+  "sourceProxyVertex": {
+   "offset": 171680,
+   "dtype": "u32",
+   "count": 1513
+  }
+ }
+}

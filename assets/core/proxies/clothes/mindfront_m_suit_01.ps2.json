@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_m_suit_01",
+ "category": "clothes",
+ "name": "M_Suit_01",
+ "uuid": "5af26e4f-a123-4818-bcc4-7dd2546ebbc0",
+ "tags": [
+  "male",
+  "elegant"
+ ],
+ "zDepth": 47,
+ "vertexCount": 1548,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 0,
+  "diffuseTexture": "textures/clothes/mindfront_m_suit_01.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 4883,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 9170,
+ "binary": "mindfront_m_suit_01.ps2.bin",
+ "byteLength": 187920,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4644
+  },
+  "uvs": {
+   "offset": 18576,
+   "dtype": "f32",
+   "count": 3300
+  },
+  "faceVerts": {
+   "offset": 31776,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 71776,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 111776,
+   "dtype": "u32",
+   "count": 4644
+  },
+  "refWeights": {
+   "offset": 130352,
+   "dtype": "f32",
+   "count": 4644
+  },
+  "refOffsets": {
+   "offset": 148928,
+   "dtype": "f32",
+   "count": 4644
+  },
+  "deleteVerts": {
+   "offset": 167504,
+   "dtype": "u32",
+   "count": 3554
+  },
+  "sourceProxyVertex": {
+   "offset": 181728,
+   "dtype": "u32",
+   "count": 1548
+  }
+ }
+}

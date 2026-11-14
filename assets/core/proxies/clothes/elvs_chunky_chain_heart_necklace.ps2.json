@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_chunky_chain_heart_necklace",
+ "category": "clothes",
+ "name": "heartneck2",
+ "uuid": "9a2fcb97-ccfb-4ffc-91c7-6803e0b0327c",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 342,
+ "faceCount": 581,
+ "triangleFaces": 581,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.6392,
+   0.6392,
+   0.6392
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_chunky_chain_heart_necklace.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 48777,
+ "hiddenFaces": "none",
+ "originalTriangles": 78650,
+ "binary": "elvs_chunky_chain_heart_necklace.ps2.bin",
+ "byteLength": 42376,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1026
+  },
+  "uvs": {
+   "offset": 4112,
+   "dtype": "f32",
+   "count": 1490
+  },
+  "faceVerts": {
+   "offset": 10080,
+   "dtype": "u32",
+   "count": 2324
+  },
+  "faceUvs": {
+   "offset": 19376,
+   "dtype": "u32",
+   "count": 2324
+  },
+  "refVerts": {
+   "offset": 28672,
+   "dtype": "u32",
+   "count": 1026
+  },
+  "refWeights": {
+   "offset": 32784,
+   "dtype": "f32",
+   "count": 1026
+  },
+  "refOffsets": {
+   "offset": 36896,
+   "dtype": "f32",
+   "count": 1026
+  },
+  "sourceProxyVertex": {
+   "offset": 41008,
+   "dtype": "u32",
+   "count": 342
+  }
+ }
+}

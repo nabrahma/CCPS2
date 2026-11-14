@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/maciekg_leather_helmet",
+ "category": "clothes",
+ "name": "Leather_Helmet",
+ "uuid": "9e2f4185-6a4d-4963-8eda-17f97a69b876",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 495,
+ "faceCount": 464,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/maciekg_leather_helmet.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "binary": "maciekg_leather_helmet.bin",
+ "byteLength": 47364,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1485
+  },
+  "uvs": {
+   "offset": 5952,
+   "dtype": "f32",
+   "count": 1132
+  },
+  "faceVerts": {
+   "offset": 10480,
+   "dtype": "u32",
+   "count": 1856
+  },
+  "faceUvs": {
+   "offset": 17904,
+   "dtype": "u32",
+   "count": 1856
+  },
+  "refVerts": {
+   "offset": 25328,
+   "dtype": "u32",
+   "count": 1485
+  },
+  "refWeights": {
+   "offset": 31280,
+   "dtype": "f32",
+   "count": 1485
+  },
+  "refOffsets": {
+   "offset": 37232,
+   "dtype": "f32",
+   "count": 1485
+  },
+  "deleteVerts": {
+   "offset": 43184,
+   "dtype": "u32",
+   "count": 1045
+  }
+ }
+}

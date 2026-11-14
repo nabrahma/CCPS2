@@ -1,0 +1,96 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_double_hoops",
+ "category": "clothes",
+ "name": "doublehoops_elv1",
+ "uuid": "969b4c6b-7ae3-46dd-b06f-b54a08c0d51d",
+ "tags": [
+  "jewelry",
+  "earrings",
+  "hoops"
+ ],
+ "zDepth": 69,
+ "vertexCount": 197,
+ "faceCount": 331,
+ "triangleFaces": 331,
+ "scale": [
+  [
+   11998,
+   5399,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_double_hoops.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 4974,
+ "hiddenFaces": "none",
+ "originalTriangles": 9960,
+ "binary": "elvs_double_hoops.ps2.bin",
+ "byteLength": 22436,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 591
+  },
+  "uvs": {
+   "offset": 2368,
+   "dtype": "f32",
+   "count": 394
+  },
+  "faceVerts": {
+   "offset": 3952,
+   "dtype": "u32",
+   "count": 1324
+  },
+  "faceUvs": {
+   "offset": 9248,
+   "dtype": "u32",
+   "count": 1324
+  },
+  "refVerts": {
+   "offset": 14544,
+   "dtype": "u32",
+   "count": 591
+  },
+  "refWeights": {
+   "offset": 16912,
+   "dtype": "f32",
+   "count": 591
+  },
+  "refOffsets": {
+   "offset": 19280,
+   "dtype": "f32",
+   "count": 591
+  },
+  "sourceProxyVertex": {
+   "offset": 21648,
+   "dtype": "u32",
+   "count": 197
+  }
+ }
+}

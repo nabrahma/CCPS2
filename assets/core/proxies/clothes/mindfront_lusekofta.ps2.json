@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_lusekofta",
+ "category": "clothes",
+ "name": "F_Lusekofta",
+ "uuid": "2bcb5b02-5016-488e-95fe-f47108331f97",
+ "tags": [
+  "female",
+  "sweater",
+  "cardigan"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1218,
+ "faceCount": 2200,
+ "triangleFaces": 2200,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/mindfront_lusekofta.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "outer",
+ "decimatedFrom": 1422,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 2608,
+ "binary": "mindfront_lusekofta.ps2.bin",
+ "byteLength": 150328,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3654
+  },
+  "uvs": {
+   "offset": 14624,
+   "dtype": "f32",
+   "count": 2114
+  },
+  "faceVerts": {
+   "offset": 23088,
+   "dtype": "u32",
+   "count": 8800
+  },
+  "faceUvs": {
+   "offset": 58288,
+   "dtype": "u32",
+   "count": 8800
+  },
+  "refVerts": {
+   "offset": 93488,
+   "dtype": "u32",
+   "count": 3654
+  },
+  "refWeights": {
+   "offset": 108112,
+   "dtype": "f32",
+   "count": 3654
+  },
+  "refOffsets": {
+   "offset": 122736,
+   "dtype": "f32",
+   "count": 3654
+  },
+  "deleteVerts": {
+   "offset": 137360,
+   "dtype": "u32",
+   "count": 2022
+  },
+  "sourceProxyVertex": {
+   "offset": 145456,
+   "dtype": "u32",
+   "count": 1218
+  }
+ }
+}

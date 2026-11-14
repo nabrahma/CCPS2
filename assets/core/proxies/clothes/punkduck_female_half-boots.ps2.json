@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_female_half-boots",
+ "category": "clothes",
+ "name": "HalfBoots",
+ "uuid": "3629017d-661a-45fa-9d96-4e4c308fb110",
+ "tags": [
+  "shoes",
+  "boots"
+ ],
+ "zDepth": 52,
+ "vertexCount": 474,
+ "faceCount": 900,
+ "triangleFaces": 900,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22048
+  ],
+  [
+   962,
+   5320,
+   0.18461000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_female_half-boots.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "decimatedFrom": 2356,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 4632,
+ "binary": "punkduck_female_half-boots.ps2.bin",
+ "byteLength": 67000,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1422
+  },
+  "uvs": {
+   "offset": 5696,
+   "dtype": "f32",
+   "count": 778
+  },
+  "faceVerts": {
+   "offset": 8816,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "faceUvs": {
+   "offset": 23216,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "refVerts": {
+   "offset": 37616,
+   "dtype": "u32",
+   "count": 1422
+  },
+  "refWeights": {
+   "offset": 43312,
+   "dtype": "f32",
+   "count": 1422
+  },
+  "refOffsets": {
+   "offset": 49008,
+   "dtype": "f32",
+   "count": 1422
+  },
+  "deleteVerts": {
+   "offset": 54704,
+   "dtype": "u32",
+   "count": 2598
+  },
+  "sourceProxyVertex": {
+   "offset": 65104,
+   "dtype": "u32",
+   "count": 474
+  }
+ }
+}

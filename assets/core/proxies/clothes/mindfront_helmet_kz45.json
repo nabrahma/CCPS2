@@ -1,0 +1,86 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_helmet_kz45",
+ "category": "clothes",
+ "name": "Helmet_KZ45",
+ "uuid": "ef9c2ee8-b53d-4406-9964-2a261c69290d",
+ "tags": [
+  "hats"
+ ],
+ "zDepth": 69,
+ "vertexCount": 9663,
+ "faceCount": 9498,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/mindfront_helmet_kz45.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "binary": "mindfront_helmet_kz45.bin",
+ "byteLength": 853476,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 28989
+  },
+  "uvs": {
+   "offset": 115968,
+   "dtype": "f32",
+   "count": 21418
+  },
+  "faceVerts": {
+   "offset": 201648,
+   "dtype": "u32",
+   "count": 37992
+  },
+  "faceUvs": {
+   "offset": 353616,
+   "dtype": "u32",
+   "count": 37992
+  },
+  "refVerts": {
+   "offset": 505584,
+   "dtype": "u32",
+   "count": 28989
+  },
+  "refWeights": {
+   "offset": 621552,
+   "dtype": "f32",
+   "count": 28989
+  },
+  "refOffsets": {
+   "offset": 737520,
+   "dtype": "f32",
+   "count": 28989
+  }
+ }
+}

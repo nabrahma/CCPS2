@@ -5,7 +5,7 @@
  * garment: at build time for the CC0 library, at import time for the user's own.
  */
 import { computeTriangleNormals } from '../mesh/normals';
-import { simplifyRenderMesh } from '../mesh/simplify';
+import { simplifyRenderMesh, simplifySloppyMesh } from '../mesh/simplify';
 import { buildRenderTopology, gather3 } from '../scene/render-mesh';
 import type { ProxyAsset } from './proxy';
 
@@ -41,6 +41,8 @@ export interface DecimatedProxy {
   triangles: number;
   originalTriangles: number;
   flipped: number;
+  /** Reduced by position clustering (D-150): its UV islands, and so its seams and hems, may not survive. */
+  clustered: boolean;
 }
 
 /**
@@ -116,6 +118,7 @@ export async function decimateProxy(proxy: ProxyAsset, slot: string): Promise<De
   const positions = gather3(proxy.restPositions, topo.sourceVertex, new Float32Array(topo.sourceVertex.length * 3));
   const normals = gather3(smooth, topo.sourceVertex, new Float32Array(topo.sourceVertex.length * 3));
   let indices = topo.indices;
+  let clustered = false;
   let flipped = 0;
   if (target < originalTriangles) {
     const base = { positions, uvs: topo.uvs, normals, indices, targetTriangles: target };
@@ -127,7 +130,37 @@ export async function decimateProxy(proxy: ProxyAsset, slot: string): Promise<De
     if (tooMany()) r = await simplifyRenderMesh({ ...base, flags: [] });
     if (tooMany()) {
       const pruned = await simplifyRenderMesh({ ...base, flags: ['Prune'], targetError: 0.015 });
-      r = await simplifyRenderMesh({ ...base, indices: pruned.indices, flags: [] });
+      const prunedResult = await simplifyRenderMesh({ ...base, indices: pruned.indices, flags: [] });
+      // A garment that is nothing but small pieces (nails, piercings) would be pruned away: keep it
+      // whole instead, over its budget (the catalog marks it overBudget).
+      if (prunedResult.indices.length / 3 >= Math.min(originalTriangles, 150)) r = prunedResult;
+    }
+    // Dense community garments (D-150) cut into many UV islands still stop far above their budget:
+    // let collapses cross attribute seams, and if that is not enough either, cluster by position.
+    const farOver = () => slot !== 'teeth' && r.indices.length / 3 > target * 1.5;
+    if (farOver()) {
+      const permissive = await simplifyRenderMesh({ ...base, flags: ['Permissive'] });
+      if (permissive.indices.length < r.indices.length) r = permissive;
+    }
+    if (farOver()) {
+      // Lock the vertices on UV seams first, so the islands (and the seams and hems the garment look
+      // draws along them) survive; cluster freely only if that cannot get near the budget either.
+      const uses = new Map<number, number>();
+      for (let v = 0; v < topo.sourceVertex.length; v++) uses.set(topo.sourceVertex[v]!, (uses.get(topo.sourceVertex[v]!) ?? 0) + 1);
+      const lock = new Uint8Array(topo.sourceVertex.length);
+      for (let v = 0; v < lock.length; v++) lock[v] = uses.get(topo.sourceVertex[v]!)! > 1 ? 1 : 0;
+      const ok = (x: { indices: Uint32Array }) => x.indices.length / 3 >= Math.min(originalTriangles, 150);
+      const locked = await simplifySloppyMesh({ ...base, lock });
+      if (ok(locked) && locked.indices.length / 3 <= target * 1.5) {
+        r = locked;
+        clustered = true;
+      } else {
+        const sloppy = await simplifySloppyMesh(base);
+        if (ok(sloppy)) {
+          r = sloppy;
+          clustered = true;
+        }
+      }
     }
     if (r.indices.length / 3 < Math.min(originalTriangles, 150)) {
       throw new Error(`decimation of ${proxy.id} collapsed to ${r.indices.length / 3} triangles`);
@@ -193,5 +226,6 @@ export async function decimateProxy(proxy: ProxyAsset, slot: string): Promise<De
     triangles: faceVerts.length / 4,
     originalTriangles,
     flipped,
+    clustered,
   };
 }

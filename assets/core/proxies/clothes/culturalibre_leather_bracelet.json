@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_leather_bracelet",
+ "category": "clothes",
+ "name": "leather_bracelet",
+ "uuid": "d10ebc82-8fd0-44f9-8596-29123c6d5c66",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 6442,
+ "faceCount": 12884,
+ "triangleFaces": 12884,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/culturalibre_leather_bracelet.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "culturalibre_leather_bracelet.bin",
+ "byteLength": 840312,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 19326
+  },
+  "uvs": {
+   "offset": 77312,
+   "dtype": "f32",
+   "count": 29694
+  },
+  "faceVerts": {
+   "offset": 196096,
+   "dtype": "u32",
+   "count": 51536
+  },
+  "faceUvs": {
+   "offset": 402240,
+   "dtype": "u32",
+   "count": 51536
+  },
+  "refVerts": {
+   "offset": 608384,
+   "dtype": "u32",
+   "count": 19326
+  },
+  "refWeights": {
+   "offset": 685696,
+   "dtype": "f32",
+   "count": 19326
+  },
+  "refOffsets": {
+   "offset": 763008,
+   "dtype": "f32",
+   "count": 19326
+  }
+ }
+}

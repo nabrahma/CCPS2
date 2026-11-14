@@ -1,0 +1,99 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_braided_anklet1",
+ "category": "clothes",
+ "name": "elvs_braided_anklet1",
+ "uuid": "5d94a465-faba-4af8-b356-76bdc73955fd",
+ "tags": [
+  "unisex",
+  "casual",
+  "festive",
+  "contemporary",
+  "jewelry",
+  "anklet"
+ ],
+ "zDepth": 50,
+ "vertexCount": 109,
+ "faceCount": 357,
+ "triangleFaces": 357,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_braided_anklet1.jpg",
+  "textureSize": [
+   480,
+   480
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 1890,
+ "hiddenFaces": "none",
+ "originalTriangles": 3780,
+ "binary": "elvs_braided_anklet1.ps2.bin",
+ "byteLength": 17908,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 327
+  },
+  "uvs": {
+   "offset": 1312,
+   "dtype": "f32",
+   "count": 200
+  },
+  "faceVerts": {
+   "offset": 2112,
+   "dtype": "u32",
+   "count": 1428
+  },
+  "faceUvs": {
+   "offset": 7824,
+   "dtype": "u32",
+   "count": 1428
+  },
+  "refVerts": {
+   "offset": 13536,
+   "dtype": "u32",
+   "count": 327
+  },
+  "refWeights": {
+   "offset": 14848,
+   "dtype": "f32",
+   "count": 327
+  },
+  "refOffsets": {
+   "offset": 16160,
+   "dtype": "f32",
+   "count": 327
+  },
+  "sourceProxyVertex": {
+   "offset": 17472,
+   "dtype": "u32",
+   "count": 109
+  }
+ }
+}

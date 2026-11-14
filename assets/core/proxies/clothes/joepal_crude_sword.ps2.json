@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/joepal_crude_sword",
+ "category": "clothes",
+ "name": "CrudeSword",
+ "uuid": "1cd0f3b6-37b6-426a-8dde-8008dbab57e5",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 258,
+ "faceCount": 476,
+ "triangleFaces": 476,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.1916,
+   0.1916,
+   0.1916
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/joepal_crude_sword.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 258,
+ "hiddenFaces": "computed",
+ "originalTriangles": 476,
+ "binary": "joepal_crude_sword.ps2.bin",
+ "byteLength": 31064,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 774
+  },
+  "uvs": {
+   "offset": 3104,
+   "dtype": "f32",
+   "count": 582
+  },
+  "faceVerts": {
+   "offset": 5440,
+   "dtype": "u32",
+   "count": 1904
+  },
+  "faceUvs": {
+   "offset": 13056,
+   "dtype": "u32",
+   "count": 1904
+  },
+  "refVerts": {
+   "offset": 20672,
+   "dtype": "u32",
+   "count": 774
+  },
+  "refWeights": {
+   "offset": 23776,
+   "dtype": "f32",
+   "count": 774
+  },
+  "refOffsets": {
+   "offset": 26880,
+   "dtype": "f32",
+   "count": 774
+  },
+  "coveredVerts": {
+   "offset": 29984,
+   "dtype": "u32",
+   "count": 12
+  },
+  "sourceProxyVertex": {
+   "offset": 30032,
+   "dtype": "u32",
+   "count": 258
+  }
+ }
+}

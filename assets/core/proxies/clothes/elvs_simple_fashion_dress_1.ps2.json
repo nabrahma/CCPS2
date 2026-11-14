@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_simple_fashion_dress_1",
+ "category": "clothes",
+ "name": "elv_simple_fashiondress1a",
+ "uuid": "9599bf60-aa2e-4981-8e35-6af7ccf3f2f8",
+ "tags": [
+  "dress",
+  "ladies ware",
+  "fashion"
+ ],
+ "zDepth": 53,
+ "vertexCount": 980,
+ "faceCount": 1800,
+ "triangleFaces": 1800,
+ "scale": [
+  [
+   10589,
+   3924,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.5779299999999999
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.1109,
+   0.19
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_simple_fashion_dress_1.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 980,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 1800,
+ "binary": "elvs_simple_fashion_dress_1.ps2.bin",
+ "byteLength": 117952,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2940
+  },
+  "uvs": {
+   "offset": 11760,
+   "dtype": "f32",
+   "count": 2218
+  },
+  "faceVerts": {
+   "offset": 20640,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "faceUvs": {
+   "offset": 49440,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "refVerts": {
+   "offset": 78240,
+   "dtype": "u32",
+   "count": 2940
+  },
+  "refWeights": {
+   "offset": 90000,
+   "dtype": "f32",
+   "count": 2940
+  },
+  "refOffsets": {
+   "offset": 101760,
+   "dtype": "f32",
+   "count": 2940
+  },
+  "deleteVerts": {
+   "offset": 113520,
+   "dtype": "u32",
+   "count": 128
+  },
+  "sourceProxyVertex": {
+   "offset": 114032,
+   "dtype": "u32",
+   "count": 980
+  }
+ }
+}

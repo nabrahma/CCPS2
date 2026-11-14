@@ -1,0 +1,86 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_bracelet_infinity_love",
+ "category": "clothes",
+ "name": "Infinity-Love-Bracelet",
+ "uuid": "32574bf3-5ce2-43bf-bdce-de04c3dd293b",
+ "tags": [
+  "jewelry"
+ ],
+ "zDepth": 50,
+ "vertexCount": 11266,
+ "faceCount": 11268,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_bracelet_infinity_love.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "punkduck_bracelet_infinity_love.bin",
+ "byteLength": 1007016,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 33798
+  },
+  "uvs": {
+   "offset": 135200,
+   "dtype": "f32",
+   "count": 26410
+  },
+  "faceVerts": {
+   "offset": 240848,
+   "dtype": "u32",
+   "count": 45072
+  },
+  "faceUvs": {
+   "offset": 421136,
+   "dtype": "u32",
+   "count": 45072
+  },
+  "refVerts": {
+   "offset": 601424,
+   "dtype": "u32",
+   "count": 33798
+  },
+  "refWeights": {
+   "offset": 736624,
+   "dtype": "f32",
+   "count": 33798
+  },
+  "refOffsets": {
+   "offset": 871824,
+   "dtype": "f32",
+   "count": 33798
+  }
+ }
+}

@@ -1,0 +1,88 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_retro_polka_dot_skirt",
+ "category": "clothes",
+ "name": "PolkadotSkirt",
+ "uuid": "056eff2e-5a2e-48ec-a891-75c0b5e2168c",
+ "tags": [
+  "female",
+  "skirt",
+  "vintage"
+ ],
+ "zDepth": 50,
+ "vertexCount": 972,
+ "faceCount": 924,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_retro_polka_dot_skirt.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "punkduck_retro_polka_dot_skirt.bin",
+ "byteLength": 85248,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2916
+  },
+  "uvs": {
+   "offset": 11664,
+   "dtype": "f32",
+   "count": 2254
+  },
+  "faceVerts": {
+   "offset": 20688,
+   "dtype": "u32",
+   "count": 3696
+  },
+  "faceUvs": {
+   "offset": 35472,
+   "dtype": "u32",
+   "count": 3696
+  },
+  "refVerts": {
+   "offset": 50256,
+   "dtype": "u32",
+   "count": 2916
+  },
+  "refWeights": {
+   "offset": 61920,
+   "dtype": "f32",
+   "count": 2916
+  },
+  "refOffsets": {
+   "offset": 73584,
+   "dtype": "f32",
+   "count": 2916
+  }
+ }
+}

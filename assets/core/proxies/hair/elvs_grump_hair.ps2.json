@@ -1,0 +1,98 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/elvs_grump_hair",
+ "category": "hair",
+ "name": "elvs_grumphair",
+ "uuid": "d6509a32-fc0f-45cf-90b2-ed2121330d51",
+ "tags": [
+  "male",
+  "formal",
+  "profession",
+  "contemporary",
+  "hair",
+  "comb_over"
+ ],
+ "zDepth": 50,
+ "vertexCount": 2914,
+ "faceCount": 3500,
+ "triangleFaces": 3500,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.31594000000000005
+  ],
+  [
+   1524,
+   4370,
+   0.57703
+  ],
+  [
+   1892,
+   3946,
+   0.19743
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/hair/elvs_grump_hair.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "decimatedFrom": 9522,
+ "hiddenFaces": "none",
+ "originalTriangles": 12332,
+ "binary": "elvs_grump_hair.ps2.bin",
+ "byteLength": 268728,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 8742
+  },
+  "uvs": {
+   "offset": 34976,
+   "dtype": "f32",
+   "count": 1292
+  },
+  "faceVerts": {
+   "offset": 40144,
+   "dtype": "u32",
+   "count": 14000
+  },
+  "faceUvs": {
+   "offset": 96144,
+   "dtype": "u32",
+   "count": 14000
+  },
+  "refVerts": {
+   "offset": 152144,
+   "dtype": "u32",
+   "count": 8742
+  },
+  "refWeights": {
+   "offset": 187120,
+   "dtype": "f32",
+   "count": 8742
+  },
+  "refOffsets": {
+   "offset": 222096,
+   "dtype": "f32",
+   "count": 8742
+  },
+  "sourceProxyVertex": {
+   "offset": 257072,
+   "dtype": "u32",
+   "count": 2914
+  }
+ }
+}

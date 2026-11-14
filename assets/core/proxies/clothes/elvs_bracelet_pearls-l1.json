@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_bracelet_pearls-l1",
+ "category": "clothes",
+ "name": "pearl_braceletL1elv",
+ "uuid": "8d9cb306-b98f-4dc9-bf42-331ec67d3cad",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 6900,
+ "faceCount": 6840,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_bracelet_pearls-l1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_bracelet_pearls-l1.bin",
+ "byteLength": 659376,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 20700
+  },
+  "uvs": {
+   "offset": 82800,
+   "dtype": "f32",
+   "count": 27324
+  },
+  "faceVerts": {
+   "offset": 192096,
+   "dtype": "u32",
+   "count": 27360
+  },
+  "faceUvs": {
+   "offset": 301536,
+   "dtype": "u32",
+   "count": 27360
+  },
+  "refVerts": {
+   "offset": 410976,
+   "dtype": "u32",
+   "count": 20700
+  },
+  "refWeights": {
+   "offset": 493776,
+   "dtype": "f32",
+   "count": 20700
+  },
+  "refOffsets": {
+   "offset": 576576,
+   "dtype": "f32",
+   "count": 20700
+  }
+ }
+}

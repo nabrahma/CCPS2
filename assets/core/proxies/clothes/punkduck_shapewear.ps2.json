@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_shapewear",
+ "category": "clothes",
+ "name": "shapewear",
+ "uuid": "14614338-9aee-4d35-9830-b67bf22bd232",
+ "tags": [
+  "female",
+  "lingerie"
+ ],
+ "zDepth": 50,
+ "vertexCount": 762,
+ "faceCount": 1428,
+ "triangleFaces": 1428,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_shapewear.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 762,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 1428,
+ "binary": "punkduck_shapewear.ps2.bin",
+ "byteLength": 91032,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2286
+  },
+  "uvs": {
+   "offset": 9152,
+   "dtype": "f32",
+   "count": 842
+  },
+  "faceVerts": {
+   "offset": 12528,
+   "dtype": "u32",
+   "count": 5712
+  },
+  "faceUvs": {
+   "offset": 35376,
+   "dtype": "u32",
+   "count": 5712
+  },
+  "refVerts": {
+   "offset": 58224,
+   "dtype": "u32",
+   "count": 2286
+  },
+  "refWeights": {
+   "offset": 67376,
+   "dtype": "f32",
+   "count": 2286
+  },
+  "refOffsets": {
+   "offset": 76528,
+   "dtype": "f32",
+   "count": 2286
+  },
+  "deleteVerts": {
+   "offset": 85680,
+   "dtype": "u32",
+   "count": 573
+  },
+  "sourceProxyVertex": {
+   "offset": 87984,
+   "dtype": "u32",
+   "count": 762
+  }
+ }
+}

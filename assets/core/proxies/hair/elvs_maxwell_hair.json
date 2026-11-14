@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/elvs_maxwell_hair",
+ "category": "hair",
+ "name": "maxwell_hair_mh",
+ "uuid": "cd6b67d9-0868-438b-b55c-5e727746eeb1",
+ "tags": [
+  "hair",
+  "mens",
+  "mens hair",
+  "fashion hair",
+  "modern"
+ ],
+ "zDepth": 57,
+ "vertexCount": 765,
+ "faceCount": 1468,
+ "triangleFaces": 1468,
+ "scale": [
+  [
+   11998,
+   5399,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24097999999999997
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.611764705882,
+   0.611764705882,
+   0.611764705882
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/elvs_maxwell_hair.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "elvs_maxwell_hair.bin",
+ "byteLength": 93100,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2295
+  },
+  "uvs": {
+   "offset": 9184,
+   "dtype": "f32",
+   "count": 2348
+  },
+  "faceVerts": {
+   "offset": 18576,
+   "dtype": "u32",
+   "count": 5872
+  },
+  "faceUvs": {
+   "offset": 42064,
+   "dtype": "u32",
+   "count": 5872
+  },
+  "refVerts": {
+   "offset": 65552,
+   "dtype": "u32",
+   "count": 2295
+  },
+  "refWeights": {
+   "offset": 74736,
+   "dtype": "f32",
+   "count": 2295
+  },
+  "refOffsets": {
+   "offset": 83920,
+   "dtype": "f32",
+   "count": 2295
+  }
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_gored_elephant_pants",
+ "category": "clothes",
+ "name": "elvs_gored_elephantpant1",
+ "uuid": "ab5f0496-0cf6-47ea-8db5-f12086325756",
+ "tags": [
+  "female",
+  "fantasy",
+  "festive",
+  "vintage",
+  "pants",
+  "disco"
+ ],
+ "zDepth": 50,
+ "vertexCount": 6879,
+ "faceCount": 13604,
+ "triangleFaces": 13604,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_gored_elephant_pants.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "elvs_gored_elephant_pants.bin",
+ "byteLength": 879592,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 20637
+  },
+  "uvs": {
+   "offset": 82560,
+   "dtype": "f32",
+   "count": 27112
+  },
+  "faceVerts": {
+   "offset": 191008,
+   "dtype": "u32",
+   "count": 54416
+  },
+  "faceUvs": {
+   "offset": 408672,
+   "dtype": "u32",
+   "count": 54416
+  },
+  "refVerts": {
+   "offset": 626336,
+   "dtype": "u32",
+   "count": 20637
+  },
+  "refWeights": {
+   "offset": 708896,
+   "dtype": "f32",
+   "count": 20637
+  },
+  "refOffsets": {
+   "offset": 791456,
+   "dtype": "f32",
+   "count": 20637
+  },
+  "deleteVerts": {
+   "offset": 874016,
+   "dtype": "u32",
+   "count": 1394
+  }
+ }
+}

@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_childrens_costume_wings1",
+ "category": "clothes",
+ "name": "wingcostume_child1",
+ "uuid": "e7d18dbd-d7cf-4224-bee7-032970c402d6",
+ "tags": [],
+ "zDepth": 69,
+ "vertexCount": 10722,
+ "faceCount": 10092,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1394
+  ],
+  [
+   791,
+   881,
+   0.21438000000000001
+  ],
+  [
+   962,
+   5320,
+   0.18581000000000003
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.2456,
+   0.5325
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_childrens_costume_wings1.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_childrens_costume_wings1.bin",
+ "byteLength": 982888,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 32166
+  },
+  "uvs": {
+   "offset": 128672,
+   "dtype": "f32",
+   "count": 36314
+  },
+  "faceVerts": {
+   "offset": 273936,
+   "dtype": "u32",
+   "count": 40368
+  },
+  "faceUvs": {
+   "offset": 435408,
+   "dtype": "u32",
+   "count": 40368
+  },
+  "refVerts": {
+   "offset": 596880,
+   "dtype": "u32",
+   "count": 32166
+  },
+  "refWeights": {
+   "offset": 725552,
+   "dtype": "f32",
+   "count": 32166
+  },
+  "refOffsets": {
+   "offset": 854224,
+   "dtype": "f32",
+   "count": 32166
+  }
+ }
+}

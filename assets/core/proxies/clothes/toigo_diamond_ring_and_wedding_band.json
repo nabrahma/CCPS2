@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_diamond_ring_and_wedding_band",
+ "category": "clothes",
+ "name": "Diamond_Ring+Wedding_Band",
+ "uuid": "089a5538-9cac-4b1a-9d51-c3c77d59af9d",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 17330,
+ "faceCount": 17328,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 0.5,
+  "diffuseTexture": "textures/clothes/toigo_diamond_ring_and_wedding_band.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "toigo_diamond_ring_and_wedding_band.bin",
+ "byteLength": 1525128,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 51990
+  },
+  "uvs": {
+   "offset": 207968,
+   "dtype": "f32",
+   "count": 34692
+  },
+  "faceVerts": {
+   "offset": 346736,
+   "dtype": "u32",
+   "count": 69312
+  },
+  "faceUvs": {
+   "offset": 623984,
+   "dtype": "u32",
+   "count": 69312
+  },
+  "refVerts": {
+   "offset": 901232,
+   "dtype": "u32",
+   "count": 51990
+  },
+  "refWeights": {
+   "offset": 1109200,
+   "dtype": "f32",
+   "count": 51990
+  },
+  "refOffsets": {
+   "offset": 1317168,
+   "dtype": "f32",
+   "count": 51990
+  }
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/jaldmic_ankh_collar",
+ "category": "clothes",
+ "name": "Ank_Collar",
+ "uuid": "39ed7b40-a4f3-44e2-9483-58d6e66ad782",
+ "tags": [
+  "jaldmic",
+  "collar"
+ ],
+ "zDepth": 50,
+ "vertexCount": 248,
+ "faceCount": 500,
+ "triangleFaces": 500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.13983
+  ],
+  [
+   791,
+   881,
+   0.2315
+  ],
+  [
+   962,
+   5320,
+   0.19038
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1
+ },
+ "slot": "accessory",
+ "decimatedFrom": 568,
+ "hiddenFaces": "none",
+ "originalTriangles": 1140,
+ "binary": "jaldmic_ankh_collar.ps2.bin",
+ "byteLength": 33520,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 744
+  },
+  "uvs": {
+   "offset": 2976,
+   "dtype": "f32",
+   "count": 1156
+  },
+  "faceVerts": {
+   "offset": 7600,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "faceUvs": {
+   "offset": 15600,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "refVerts": {
+   "offset": 23600,
+   "dtype": "u32",
+   "count": 744
+  },
+  "refWeights": {
+   "offset": 26576,
+   "dtype": "f32",
+   "count": 744
+  },
+  "refOffsets": {
+   "offset": 29552,
+   "dtype": "f32",
+   "count": 744
+  },
+  "sourceProxyVertex": {
+   "offset": 32528,
+   "dtype": "u32",
+   "count": 248
+  }
+ }
+}

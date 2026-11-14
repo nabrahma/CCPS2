@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_medieval_dress",
+ "category": "clothes",
+ "name": "MedievalDress",
+ "uuid": "872e6703-949d-44d1-bdfe-b882f3d0ac3d",
+ "tags": [
+  "female",
+  "dress"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1348,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_medieval_dress.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 4024,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 7852,
+ "binary": "punkduck_medieval_dress.ps2.bin",
+ "byteLength": 168032,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4044
+  },
+  "uvs": {
+   "offset": 16176,
+   "dtype": "f32",
+   "count": 3004
+  },
+  "faceVerts": {
+   "offset": 28192,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 68192,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 108192,
+   "dtype": "u32",
+   "count": 4044
+  },
+  "refWeights": {
+   "offset": 124368,
+   "dtype": "f32",
+   "count": 4044
+  },
+  "refOffsets": {
+   "offset": 140544,
+   "dtype": "f32",
+   "count": 4044
+  },
+  "deleteVerts": {
+   "offset": 156720,
+   "dtype": "u32",
+   "count": 1479
+  },
+  "sourceProxyVertex": {
+   "offset": 162640,
+   "dtype": "u32",
+   "count": 1348
+  }
+ }
+}

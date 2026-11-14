@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_halter_style_pantsuit1",
+ "category": "clothes",
+ "name": "halterpantsuit4",
+ "uuid": "c715529f-2b9e-4608-8015-e3f0be9bcb54",
+ "tags": [
+  "pants suit",
+  "ladiesware",
+  "female",
+  "pant",
+  "halter pant"
+ ],
+ "zDepth": 50,
+ "vertexCount": 5138,
+ "faceCount": 10040,
+ "triangleFaces": 10040,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.137
+  ],
+  [
+   791,
+   881,
+   0.21892999999999999
+  ],
+  [
+   962,
+   5320,
+   0.17938
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.3961,
+   0.0,
+   0.7922
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_halter_style_pantsuit1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "elvs_halter_style_pantsuit1.bin",
+ "byteLength": 652032,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 15414
+  },
+  "uvs": {
+   "offset": 61664,
+   "dtype": "f32",
+   "count": 19614
+  },
+  "faceVerts": {
+   "offset": 140128,
+   "dtype": "u32",
+   "count": 40160
+  },
+  "faceUvs": {
+   "offset": 300768,
+   "dtype": "u32",
+   "count": 40160
+  },
+  "refVerts": {
+   "offset": 461408,
+   "dtype": "u32",
+   "count": 15414
+  },
+  "refWeights": {
+   "offset": 523072,
+   "dtype": "f32",
+   "count": 15414
+  },
+  "refOffsets": {
+   "offset": 584736,
+   "dtype": "f32",
+   "count": 15414
+  },
+  "deleteVerts": {
+   "offset": 646400,
+   "dtype": "u32",
+   "count": 1408
+  }
+ }
+}

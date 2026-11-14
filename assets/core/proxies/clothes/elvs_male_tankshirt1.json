@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_male_tankshirt1",
+ "category": "clothes",
+ "name": "mens_tanks_elv1f",
+ "uuid": "88faa3da-8dc9-47b0-a978-d44e803e1419",
+ "tags": [
+  "shirt",
+  "menswear",
+  "fashion",
+  "traditional",
+  "sleeveless"
+ ],
+ "zDepth": 47,
+ "vertexCount": 2936,
+ "faceCount": 2840,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   10589,
+   3924,
+   0.31594000000000005
+  ],
+  [
+   1524,
+   4370,
+   0.57703
+  ],
+  [
+   1892,
+   3946,
+   0.19743
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.03204,
+   0.06279
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_male_tankshirt1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "elvs_male_tankshirt1.bin",
+ "byteLength": 260108,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 8808
+  },
+  "uvs": {
+   "offset": 35232,
+   "dtype": "f32",
+   "count": 6184
+  },
+  "faceVerts": {
+   "offset": 59968,
+   "dtype": "u32",
+   "count": 11360
+  },
+  "faceUvs": {
+   "offset": 105408,
+   "dtype": "u32",
+   "count": 11360
+  },
+  "refVerts": {
+   "offset": 150848,
+   "dtype": "u32",
+   "count": 8808
+  },
+  "refWeights": {
+   "offset": 186080,
+   "dtype": "f32",
+   "count": 8808
+  },
+  "refOffsets": {
+   "offset": 221312,
+   "dtype": "f32",
+   "count": 8808
+  },
+  "deleteVerts": {
+   "offset": 256544,
+   "dtype": "u32",
+   "count": 891
+  }
+ }
+}

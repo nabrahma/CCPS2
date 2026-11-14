@@ -1,0 +1,103 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_swimwear_micro_shorts",
+ "category": "clothes",
+ "name": "elv_microshorts1",
+ "uuid": "60663c92-4601-460e-a062-08b24e1f4778",
+ "tags": [
+  "bandeau",
+  "swimwear",
+  "female",
+  "ladiesware",
+  "gathered"
+ ],
+ "zDepth": 47,
+ "vertexCount": 876,
+ "faceCount": 1599,
+ "triangleFaces": 1599,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.137
+  ],
+  [
+   791,
+   881,
+   0.21892999999999999
+  ],
+  [
+   962,
+   5320,
+   0.17938
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_swimwear_micro_shorts.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 2208,
+ "hiddenFaces": "computed",
+ "originalTriangles": 4161,
+ "binary": "elvs_swimwear_micro_shorts.ps2.bin",
+ "byteLength": 104192,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2628
+  },
+  "uvs": {
+   "offset": 10512,
+   "dtype": "f32",
+   "count": 1760
+  },
+  "faceVerts": {
+   "offset": 17552,
+   "dtype": "u32",
+   "count": 6396
+  },
+  "faceUvs": {
+   "offset": 43136,
+   "dtype": "u32",
+   "count": 6396
+  },
+  "refVerts": {
+   "offset": 68720,
+   "dtype": "u32",
+   "count": 2628
+  },
+  "refWeights": {
+   "offset": 79232,
+   "dtype": "f32",
+   "count": 2628
+  },
+  "refOffsets": {
+   "offset": 89744,
+   "dtype": "f32",
+   "count": 2628
+  },
+  "coveredVerts": {
+   "offset": 100256,
+   "dtype": "u32",
+   "count": 106
+  },
+  "sourceProxyVertex": {
+   "offset": 100688,
+   "dtype": "u32",
+   "count": 876
+  }
+ }
+}

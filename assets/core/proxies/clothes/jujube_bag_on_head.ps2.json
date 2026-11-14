@@ -6,9 +6,9 @@
  "uuid": "c12ad7ff-71a0-4bf3-97eb-4a3a9ddfa7cf",
  "tags": [],
  "zDepth": 50,
- "vertexCount": 288,
- "faceCount": 499,
- "triangleFaces": 499,
+ "vertexCount": 387,
+ "faceCount": 699,
+ "triangleFaces": 699,
  "scale": [
   [
    5399,
@@ -27,57 +27,57 @@
   ]
  ],
  "material": null,
- "slot": "accessory",
+ "slot": "hat",
  "decimatedFrom": 5665,
  "hiddenFaces": "computed",
  "originalTriangles": 11264,
  "binary": "jujube_bag_on_head.ps2.bin",
- "byteLength": 35616,
+ "byteLength": 47996,
  "buffers": {
   "restPositions": {
    "offset": 0,
    "dtype": "f32",
-   "count": 864
+   "count": 1161
   },
   "uvs": {
-   "offset": 3456,
+   "offset": 4656,
    "dtype": "f32",
-   "count": 568
+   "count": 762
   },
   "faceVerts": {
-   "offset": 5728,
+   "offset": 7712,
    "dtype": "u32",
-   "count": 1996
+   "count": 2796
   },
   "faceUvs": {
-   "offset": 13712,
+   "offset": 18896,
    "dtype": "u32",
-   "count": 1996
+   "count": 2796
   },
   "refVerts": {
-   "offset": 21696,
+   "offset": 30080,
    "dtype": "u32",
-   "count": 864
+   "count": 1161
   },
   "refWeights": {
-   "offset": 25152,
+   "offset": 34736,
    "dtype": "f32",
-   "count": 864
+   "count": 1161
   },
   "refOffsets": {
-   "offset": 28608,
+   "offset": 39392,
    "dtype": "f32",
-   "count": 864
+   "count": 1161
   },
   "coveredVerts": {
-   "offset": 32064,
+   "offset": 44048,
    "dtype": "u32",
    "count": 599
   },
   "sourceProxyVertex": {
-   "offset": 34464,
+   "offset": 46448,
    "dtype": "u32",
-   "count": 288
+   "count": 387
   }
  }
 }

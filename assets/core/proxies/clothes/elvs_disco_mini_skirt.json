@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_disco_mini_skirt",
+ "category": "clothes",
+ "name": "elvs_disco_mini1",
+ "uuid": "373a6f75-e11c-4207-a457-1cf63180ebb6",
+ "tags": [
+  "female",
+  "formal",
+  "festive",
+  "vintage",
+  "skirt",
+  "disco"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1334,
+ "faceCount": 2600,
+ "triangleFaces": 2600,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_disco_mini_skirt.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "elvs_disco_mini_skirt.bin",
+ "byteLength": 168632,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4002
+  },
+  "uvs": {
+   "offset": 16016,
+   "dtype": "f32",
+   "count": 5344
+  },
+  "faceVerts": {
+   "offset": 37392,
+   "dtype": "u32",
+   "count": 10400
+  },
+  "faceUvs": {
+   "offset": 78992,
+   "dtype": "u32",
+   "count": 10400
+  },
+  "refVerts": {
+   "offset": 120592,
+   "dtype": "u32",
+   "count": 4002
+  },
+  "refWeights": {
+   "offset": 136608,
+   "dtype": "f32",
+   "count": 4002
+  },
+  "refOffsets": {
+   "offset": 152624,
+   "dtype": "f32",
+   "count": 4002
+  }
+ }
+}

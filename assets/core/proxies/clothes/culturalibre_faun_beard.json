@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_faun_beard",
+ "category": "clothes",
+ "name": "faun_beard",
+ "uuid": "834742f2-c4e7-4196-a7fc-a70bbdcec449",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 5218,
+ "faceCount": 5216,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/culturalibre_faun_beard.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "culturalibre_faun_beard.bin",
+ "byteLength": 464424,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 15654
+  },
+  "uvs": {
+   "offset": 62624,
+   "dtype": "f32",
+   "count": 11754
+  },
+  "faceVerts": {
+   "offset": 109648,
+   "dtype": "u32",
+   "count": 20864
+  },
+  "faceUvs": {
+   "offset": 193104,
+   "dtype": "u32",
+   "count": 20864
+  },
+  "refVerts": {
+   "offset": 276560,
+   "dtype": "u32",
+   "count": 15654
+  },
+  "refWeights": {
+   "offset": 339184,
+   "dtype": "f32",
+   "count": 15654
+  },
+  "refOffsets": {
+   "offset": 401808,
+   "dtype": "f32",
+   "count": 15654
+  }
+ }
+}

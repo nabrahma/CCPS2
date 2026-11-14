@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/joepal_crude_low_socks",
+ "category": "clothes",
+ "name": "CrudeLowSocks",
+ "uuid": "ac3d437f-da58-45ce-97cc-0666ba8ead50",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 260,
+ "faceCount": 248,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.662,
+   0.662,
+   0.662
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/joepal_crude_low_socks.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "joepal_crude_low_socks.bin",
+ "byteLength": 32760,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 780
+  },
+  "uvs": {
+   "offset": 3120,
+   "dtype": "f32",
+   "count": 624
+  },
+  "faceVerts": {
+   "offset": 5616,
+   "dtype": "u32",
+   "count": 992
+  },
+  "faceUvs": {
+   "offset": 9584,
+   "dtype": "u32",
+   "count": 992
+  },
+  "refVerts": {
+   "offset": 13552,
+   "dtype": "u32",
+   "count": 780
+  },
+  "refWeights": {
+   "offset": 16672,
+   "dtype": "f32",
+   "count": 780
+  },
+  "refOffsets": {
+   "offset": 19792,
+   "dtype": "f32",
+   "count": 780
+  },
+  "deleteVerts": {
+   "offset": 22912,
+   "dtype": "u32",
+   "count": 2462
+  }
+ }
+}

@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_spaghetti_strap_tank_top",
+ "category": "clothes",
+ "name": "spaghetti-top",
+ "uuid": "1d0e6b12-46bf-4047-96dd-f4e4a14c4c15",
+ "tags": [
+  "female",
+  "shirt"
+ ],
+ "zDepth": 50,
+ "vertexCount": 983,
+ "faceCount": 1800,
+ "triangleFaces": 1800,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_spaghetti_strap_tank_top.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 997,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 1828,
+ "binary": "punkduck_spaghetti_strap_tank_top.ps2.bin",
+ "byteLength": 119852,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2949
+  },
+  "uvs": {
+   "offset": 11808,
+   "dtype": "f32",
+   "count": 2134
+  },
+  "faceVerts": {
+   "offset": 20352,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "faceUvs": {
+   "offset": 49152,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "refVerts": {
+   "offset": 77952,
+   "dtype": "u32",
+   "count": 2949
+  },
+  "refWeights": {
+   "offset": 89760,
+   "dtype": "f32",
+   "count": 2949
+  },
+  "refOffsets": {
+   "offset": 101568,
+   "dtype": "f32",
+   "count": 2949
+  },
+  "deleteVerts": {
+   "offset": 113376,
+   "dtype": "u32",
+   "count": 636
+  },
+  "sourceProxyVertex": {
+   "offset": 115920,
+   "dtype": "u32",
+   "count": 983
+  }
+ }
+}

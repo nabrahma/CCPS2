@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_lace-choker",
+ "category": "clothes",
+ "name": "LaceChoker",
+ "uuid": "e9f248be-097d-424a-a7e4-37cedb34f07a",
+ "tags": [
+  "female",
+  "choker"
+ ],
+ "zDepth": 50,
+ "vertexCount": 254,
+ "faceCount": 507,
+ "triangleFaces": 507,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_lace-choker.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 408,
+ "hiddenFaces": "none",
+ "originalTriangles": 714,
+ "binary": "punkduck_lace-choker.ps2.bin",
+ "byteLength": 31240,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 762
+  },
+  "uvs": {
+   "offset": 3056,
+   "dtype": "f32",
+   "count": 442
+  },
+  "faceVerts": {
+   "offset": 4832,
+   "dtype": "u32",
+   "count": 2028
+  },
+  "faceUvs": {
+   "offset": 12944,
+   "dtype": "u32",
+   "count": 2028
+  },
+  "refVerts": {
+   "offset": 21056,
+   "dtype": "u32",
+   "count": 762
+  },
+  "refWeights": {
+   "offset": 24112,
+   "dtype": "f32",
+   "count": 762
+  },
+  "refOffsets": {
+   "offset": 27168,
+   "dtype": "f32",
+   "count": 762
+  },
+  "sourceProxyVertex": {
+   "offset": 30224,
+   "dtype": "u32",
+   "count": 254
+  }
+ }
+}

@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/culturalibre_hair_11",
+ "category": "hair",
+ "name": "hair_01",
+ "uuid": "",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1830,
+ "faceCount": 3499,
+ "triangleFaces": 3499,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.4,
+   0.4,
+   0.4
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/hair/culturalibre_hair_11.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "decimatedFrom": 22427,
+ "hiddenFaces": "none",
+ "originalTriangles": 44046,
+ "binary": "culturalibre_hair_11.ps2.bin",
+ "byteLength": 225832,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 5490
+  },
+  "uvs": {
+   "offset": 21968,
+   "dtype": "f32",
+   "count": 4666
+  },
+  "faceVerts": {
+   "offset": 40640,
+   "dtype": "u32",
+   "count": 13996
+  },
+  "faceUvs": {
+   "offset": 96624,
+   "dtype": "u32",
+   "count": 13996
+  },
+  "refVerts": {
+   "offset": 152608,
+   "dtype": "u32",
+   "count": 5490
+  },
+  "refWeights": {
+   "offset": 174576,
+   "dtype": "f32",
+   "count": 5490
+  },
+  "refOffsets": {
+   "offset": 196544,
+   "dtype": "f32",
+   "count": 5490
+  },
+  "sourceProxyVertex": {
+   "offset": 218512,
+   "dtype": "u32",
+   "count": 1830
+  }
+ }
+}

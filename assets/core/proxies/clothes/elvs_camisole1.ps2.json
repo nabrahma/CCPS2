@@ -1,0 +1,103 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_camisole1",
+ "category": "clothes",
+ "name": "minibowcamisole",
+ "uuid": "3a1e38f9-e6eb-4319-baa3-74ef3eb33404",
+ "tags": [
+  "camisole",
+  "lingerie",
+  "female",
+  "ladiesware",
+  "scalloped"
+ ],
+ "zDepth": 43,
+ "vertexCount": 869,
+ "faceCount": 1730,
+ "triangleFaces": 1730,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.137
+  ],
+  [
+   791,
+   881,
+   0.21892999999999999
+  ],
+  [
+   962,
+   5320,
+   0.17938
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_camisole1.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 13490,
+ "hiddenFaces": "computed",
+ "originalTriangles": 26091,
+ "binary": "elvs_camisole1.ps2.bin",
+ "byteLength": 107556,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2607
+  },
+  "uvs": {
+   "offset": 10432,
+   "dtype": "f32",
+   "count": 1738
+  },
+  "faceVerts": {
+   "offset": 17392,
+   "dtype": "u32",
+   "count": 6920
+  },
+  "faceUvs": {
+   "offset": 45072,
+   "dtype": "u32",
+   "count": 6920
+  },
+  "refVerts": {
+   "offset": 72752,
+   "dtype": "u32",
+   "count": 2607
+  },
+  "refWeights": {
+   "offset": 83184,
+   "dtype": "f32",
+   "count": 2607
+  },
+  "refOffsets": {
+   "offset": 93616,
+   "dtype": "f32",
+   "count": 2607
+  },
+  "coveredVerts": {
+   "offset": 104048,
+   "dtype": "u32",
+   "count": 5
+  },
+  "sourceProxyVertex": {
+   "offset": 104080,
+   "dtype": "u32",
+   "count": 869
+  }
+ }
+}

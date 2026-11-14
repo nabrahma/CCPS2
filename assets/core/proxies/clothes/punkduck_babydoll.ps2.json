@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_babydoll",
+ "category": "clothes",
+ "name": "Babydoll",
+ "uuid": "f5c21d97-c81f-44ad-ba58-71ac68bd63ba",
+ "tags": [
+  "female",
+  "lingerie"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1224,
+ "faceCount": 2128,
+ "triangleFaces": 2128,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_babydoll.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 1224,
+ "hiddenFaces": "none",
+ "originalTriangles": 2128,
+ "binary": "punkduck_babydoll.ps2.bin",
+ "byteLength": 141936,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3672
+  },
+  "uvs": {
+   "offset": 14688,
+   "dtype": "f32",
+   "count": 2548
+  },
+  "faceVerts": {
+   "offset": 24880,
+   "dtype": "u32",
+   "count": 8512
+  },
+  "faceUvs": {
+   "offset": 58928,
+   "dtype": "u32",
+   "count": 8512
+  },
+  "refVerts": {
+   "offset": 92976,
+   "dtype": "u32",
+   "count": 3672
+  },
+  "refWeights": {
+   "offset": 107664,
+   "dtype": "f32",
+   "count": 3672
+  },
+  "refOffsets": {
+   "offset": 122352,
+   "dtype": "f32",
+   "count": 3672
+  },
+  "sourceProxyVertex": {
+   "offset": 137040,
+   "dtype": "u32",
+   "count": 1224
+  }
+ }
+}

@@ -92,6 +92,43 @@ export async function simplifyRenderMesh(input: SimplifyInput): Promise<Simplify
   return { indices: out, error, flipped: flipped.length, baselineFlipped: baseline.length, passes: pass + 1 };
 }
 
+/**
+ * Last resort for meshes the attribute-aware simplifier cannot bring to their
+ * budget (dense community garments cut into many UV islands): meshoptimizer's
+ * sloppy simplifier, which clusters by position and always reaches the target.
+ * Output vertices are still a subset of the input vertices; triangles that
+ * span UV islands can smear their texture, so this runs only when needed.
+ */
+export async function simplifySloppyMesh(input: Pick<SimplifyInput, 'positions' | 'normals' | 'indices' | 'targetTriangles' | 'lock'>): Promise<SimplifyResult> {
+  await MeshoptSimplifier.ready;
+  const [raw, error] = MeshoptSimplifier.simplifySloppy(input.indices, input.positions, 3, input.lock ?? null, Math.min(input.targetTriangles * 3, input.indices.length), 1.0);
+  // Clustering can merge the two sides of a thin shell (a helmet, a glove, a chain link) and leave
+  // triangles wound the other way: turn every one that faces against the source's smooth normals
+  // back, and drop triangles that collapsed to a line.
+  const P = input.positions;
+  const kept: number[] = [];
+  for (let t = 0; t < raw.length; t += 3) {
+    const a = raw[t]!;
+    const b = raw[t + 1]!;
+    const c = raw[t + 2]!;
+    if (a === b || b === c || a === c) continue;
+    const ux = P[b * 3]! - P[a * 3]!, uy = P[b * 3 + 1]! - P[a * 3 + 1]!, uz = P[b * 3 + 2]! - P[a * 3 + 2]!;
+    const vx = P[c * 3]! - P[a * 3]!, vy = P[c * 3 + 1]! - P[a * 3 + 1]!, vz = P[c * 3 + 2]! - P[a * 3 + 2]!;
+    const nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx;
+    if (nx * nx + ny * ny + nz * nz < 1e-20) continue;
+    kept.push(a, b, c);
+  }
+  const out = Uint32Array.from(kept);
+  for (const t of flippedAgainst(P, input.normals, out)) {
+    const b = out[t * 3 + 1]!;
+    out[t * 3 + 1] = out[t * 3 + 2]!;
+    out[t * 3 + 2] = b;
+  }
+  const baseline = flippedAgainst(input.positions, input.normals, input.indices);
+  const flipped = flippedAgainst(input.positions, input.normals, out).length;
+  return { indices: out, error, flipped: Math.max(0, flipped - baseline.length), baselineFlipped: baseline.length, passes: 1 };
+}
+
 /** Triangles whose face normal points against the reference normals at their corners. */
 export function flippedAgainst(positions: Float32Array, normals: Float32Array, indices: Uint32Array): number[] {
   const out: number[] = [];

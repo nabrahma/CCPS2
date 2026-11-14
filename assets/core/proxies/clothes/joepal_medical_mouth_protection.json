@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/joepal_medical_mouth_protection",
+ "category": "clothes",
+ "name": "Munskydd",
+ "uuid": "1d067d89-9e27-4ed8-baa8-2e1a398e6408",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 139,
+ "faceCount": 102,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.14243
+  ],
+  [
+   791,
+   881,
+   0.22040000000000004
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/joepal_medical_mouth_protection.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "joepal_medical_mouth_protection.bin",
+ "byteLength": 12792,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 417
+  },
+  "uvs": {
+   "offset": 1680,
+   "dtype": "f32",
+   "count": 294
+  },
+  "faceVerts": {
+   "offset": 2864,
+   "dtype": "u32",
+   "count": 408
+  },
+  "faceUvs": {
+   "offset": 4496,
+   "dtype": "u32",
+   "count": 408
+  },
+  "refVerts": {
+   "offset": 6128,
+   "dtype": "u32",
+   "count": 417
+  },
+  "refWeights": {
+   "offset": 7808,
+   "dtype": "f32",
+   "count": 417
+  },
+  "refOffsets": {
+   "offset": 9488,
+   "dtype": "f32",
+   "count": 417
+  },
+  "deleteVerts": {
+   "offset": 11168,
+   "dtype": "u32",
+   "count": 406
+  }
+ }
+}

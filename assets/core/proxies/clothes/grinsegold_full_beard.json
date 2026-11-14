@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/grinsegold_full_beard",
+ "category": "clothes",
+ "name": "Full_beard",
+ "uuid": "f06387f9-3365-493d-bee6-72bc33013936",
+ "tags": [
+  "male",
+  "beard"
+ ],
+ "zDepth": 50,
+ "vertexCount": 423,
+ "faceCount": 374,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 0.0,
+  "diffuseTexture": "textures/clothes/grinsegold_full_beard.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "grinsegold_full_beard.bin",
+ "byteLength": 35876,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1269
+  },
+  "uvs": {
+   "offset": 5088,
+   "dtype": "f32",
+   "count": 890
+  },
+  "faceVerts": {
+   "offset": 8656,
+   "dtype": "u32",
+   "count": 1496
+  },
+  "faceUvs": {
+   "offset": 14640,
+   "dtype": "u32",
+   "count": 1496
+  },
+  "refVerts": {
+   "offset": 20624,
+   "dtype": "u32",
+   "count": 1269
+  },
+  "refWeights": {
+   "offset": 25712,
+   "dtype": "f32",
+   "count": 1269
+  },
+  "refOffsets": {
+   "offset": 30800,
+   "dtype": "f32",
+   "count": 1269
+  }
+ }
+}

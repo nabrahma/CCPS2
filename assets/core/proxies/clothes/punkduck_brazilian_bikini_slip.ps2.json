@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_brazilian_bikini_slip",
+ "category": "clothes",
+ "name": "BrazBikiniSlip",
+ "uuid": "7ae0fee5-4936-4b1d-b619-da9237f89c75",
+ "tags": [
+  "female",
+  "bikini",
+  "swimwear"
+ ],
+ "zDepth": 50,
+ "vertexCount": 935,
+ "faceCount": 1600,
+ "triangleFaces": 1600,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_brazilian_bikini_slip.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 1113,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 1956,
+ "binary": "punkduck_brazilian_bikini_slip.ps2.bin",
+ "byteLength": 108908,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2805
+  },
+  "uvs": {
+   "offset": 11232,
+   "dtype": "f32",
+   "count": 2150
+  },
+  "faceVerts": {
+   "offset": 19840,
+   "dtype": "u32",
+   "count": 6400
+  },
+  "faceUvs": {
+   "offset": 45440,
+   "dtype": "u32",
+   "count": 6400
+  },
+  "refVerts": {
+   "offset": 71040,
+   "dtype": "u32",
+   "count": 2805
+  },
+  "refWeights": {
+   "offset": 82272,
+   "dtype": "f32",
+   "count": 2805
+  },
+  "refOffsets": {
+   "offset": 93504,
+   "dtype": "f32",
+   "count": 2805
+  },
+  "deleteVerts": {
+   "offset": 104736,
+   "dtype": "u32",
+   "count": 106
+  },
+  "sourceProxyVertex": {
+   "offset": 105168,
+   "dtype": "u32",
+   "count": 935
+  }
+ }
+}

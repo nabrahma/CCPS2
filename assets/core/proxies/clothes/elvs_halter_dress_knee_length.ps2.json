@@ -1,0 +1,103 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_halter_dress_knee_length",
+ "category": "clothes",
+ "name": "elvs_short_halterdress1",
+ "uuid": "ce2da037-10ae-44ff-9291-5cb52f9d79f6",
+ "tags": [
+  "dress",
+  "ladiesware",
+  "female",
+  "halter",
+  "halter dress"
+ ],
+ "zDepth": 47,
+ "vertexCount": 1380,
+ "faceCount": 2499,
+ "triangleFaces": 2499,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.3961,
+   0,
+   0.7922
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_halter_dress_knee_length.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 5036,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 9596,
+ "binary": "elvs_halter_dress_knee_length.ps2.bin",
+ "byteLength": 163856,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4140
+  },
+  "uvs": {
+   "offset": 16560,
+   "dtype": "f32",
+   "count": 2760
+  },
+  "faceVerts": {
+   "offset": 27600,
+   "dtype": "u32",
+   "count": 9996
+  },
+  "faceUvs": {
+   "offset": 67584,
+   "dtype": "u32",
+   "count": 9996
+  },
+  "refVerts": {
+   "offset": 107568,
+   "dtype": "u32",
+   "count": 4140
+  },
+  "refWeights": {
+   "offset": 124128,
+   "dtype": "f32",
+   "count": 4140
+  },
+  "refOffsets": {
+   "offset": 140688,
+   "dtype": "f32",
+   "count": 4140
+  },
+  "deleteVerts": {
+   "offset": 157248,
+   "dtype": "u32",
+   "count": 271
+  },
+  "sourceProxyVertex": {
+   "offset": 158336,
+   "dtype": "u32",
+   "count": 1380
+  }
+ }
+}

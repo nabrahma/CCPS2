@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_wooden_bow",
+ "category": "clothes",
+ "name": "wooden_bow",
+ "uuid": "becde6ca-0267-44c1-a5f9-a4c2fcc5c1ff",
+ "tags": [],
+ "zDepth": 70,
+ "vertexCount": 258,
+ "faceCount": 500,
+ "triangleFaces": 500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.6,
+   0.6,
+   0.6
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/culturalibre_wooden_bow.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 374,
+ "hiddenFaces": "computed",
+ "originalTriangles": 732,
+ "binary": "culturalibre_wooden_bow.ps2.bin",
+ "byteLength": 33992,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 774
+  },
+  "uvs": {
+   "offset": 3104,
+   "dtype": "f32",
+   "count": 1122
+  },
+  "faceVerts": {
+   "offset": 7600,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "faceUvs": {
+   "offset": 15600,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "refVerts": {
+   "offset": 23600,
+   "dtype": "u32",
+   "count": 774
+  },
+  "refWeights": {
+   "offset": 26704,
+   "dtype": "f32",
+   "count": 774
+  },
+  "refOffsets": {
+   "offset": 29808,
+   "dtype": "f32",
+   "count": 774
+  },
+  "coveredVerts": {
+   "offset": 32912,
+   "dtype": "u32",
+   "count": 11
+  },
+  "sourceProxyVertex": {
+   "offset": 32960,
+   "dtype": "u32",
+   "count": 258
+  }
+ }
+}

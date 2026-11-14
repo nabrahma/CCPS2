@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_knitted_sweater_01",
+ "category": "clothes",
+ "name": "Knitted_Sweater_01",
+ "uuid": "487befe5-d566-496b-ace1-25a8456e134e",
+ "tags": [
+  "sweater"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1355,
+ "faceCount": 1314,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27574000000000004
+  ],
+  [
+   1524,
+   4370,
+   0.57433
+  ],
+  [
+   1892,
+   3946,
+   0.18303000000000003
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/mindfront_knitted_sweater_01.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "outer",
+ "binary": "mindfront_knitted_sweater_01.bin",
+ "byteLength": 128768,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4065
+  },
+  "uvs": {
+   "offset": 16272,
+   "dtype": "f32",
+   "count": 3166
+  },
+  "faceVerts": {
+   "offset": 28944,
+   "dtype": "u32",
+   "count": 5256
+  },
+  "faceUvs": {
+   "offset": 49968,
+   "dtype": "u32",
+   "count": 5256
+  },
+  "refVerts": {
+   "offset": 70992,
+   "dtype": "u32",
+   "count": 4065
+  },
+  "refWeights": {
+   "offset": 87264,
+   "dtype": "f32",
+   "count": 4065
+  },
+  "refOffsets": {
+   "offset": 103536,
+   "dtype": "f32",
+   "count": 4065
+  },
+  "deleteVerts": {
+   "offset": 119808,
+   "dtype": "u32",
+   "count": 2240
+  }
+ }
+}

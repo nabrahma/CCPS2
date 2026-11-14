@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_male_swim_shorts1",
+ "category": "clothes",
+ "name": "elvs_male_shorts1",
+ "uuid": "9f77bb95-bcb6-42e8-8472-8ba4ceffca88",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 517,
+ "faceCount": 964,
+ "triangleFaces": 964,
+ "scale": [
+  [
+   11133,
+   11141,
+   0.14763
+  ],
+  [
+   11025,
+   11460,
+   0.74151
+  ],
+  [
+   11130,
+   11135,
+   0.15612
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.866666666667,
+   0.866666666667,
+   0.866666666667
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_male_swim_shorts1.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 517,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 964,
+ "binary": "elvs_male_swim_shorts1.ps2.bin",
+ "byteLength": 62804,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1551
+  },
+  "uvs": {
+   "offset": 6208,
+   "dtype": "f32",
+   "count": 1128
+  },
+  "faceVerts": {
+   "offset": 10720,
+   "dtype": "u32",
+   "count": 3856
+  },
+  "faceUvs": {
+   "offset": 26144,
+   "dtype": "u32",
+   "count": 3856
+  },
+  "refVerts": {
+   "offset": 41568,
+   "dtype": "u32",
+   "count": 1551
+  },
+  "refWeights": {
+   "offset": 47776,
+   "dtype": "f32",
+   "count": 1551
+  },
+  "refOffsets": {
+   "offset": 53984,
+   "dtype": "f32",
+   "count": 1551
+  },
+  "deleteVerts": {
+   "offset": 60192,
+   "dtype": "u32",
+   "count": 135
+  },
+  "sourceProxyVertex": {
+   "offset": 60736,
+   "dtype": "u32",
+   "count": 517
+  }
+ }
+}

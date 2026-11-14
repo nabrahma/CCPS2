@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/rehmanpolanski_viking_tunic",
+ "category": "clothes",
+ "name": "TunicViking",
+ "uuid": "e40a5c02-44b6-4c89-9bb0-781ef87e9973",
+ "tags": [
+  "tunic",
+  "viking"
+ ],
+ "zDepth": 50,
+ "vertexCount": 962,
+ "faceCount": 1800,
+ "triangleFaces": 1800,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/rehmanpolanski_viking_tunic.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 3346,
+ "hiddenFaces": "computed",
+ "originalTriangles": 6568,
+ "binary": "rehmanpolanski_viking_tunic.ps2.bin",
+ "byteLength": 126760,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2886
+  },
+  "uvs": {
+   "offset": 11552,
+   "dtype": "f32",
+   "count": 2386
+  },
+  "faceVerts": {
+   "offset": 21104,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "faceUvs": {
+   "offset": 49904,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "refVerts": {
+   "offset": 78704,
+   "dtype": "u32",
+   "count": 2886
+  },
+  "refWeights": {
+   "offset": 90256,
+   "dtype": "f32",
+   "count": 2886
+  },
+  "refOffsets": {
+   "offset": 101808,
+   "dtype": "f32",
+   "count": 2886
+  },
+  "coveredVerts": {
+   "offset": 113360,
+   "dtype": "u32",
+   "count": 2385
+  },
+  "sourceProxyVertex": {
+   "offset": 122912,
+   "dtype": "u32",
+   "count": 962
+  }
+ }
+}

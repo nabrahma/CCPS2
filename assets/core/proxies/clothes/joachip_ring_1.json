@@ -1,0 +1,88 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/joachip_ring_1",
+ "category": "clothes",
+ "name": "Ring_1",
+ "uuid": "571d13ed-691c-4459-ad75-2ea1e56e9cae",
+ "tags": [
+  "unisex",
+  "formal",
+  "jewelry"
+ ],
+ "zDepth": 35,
+ "vertexCount": 336,
+ "faceCount": 332,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   8938,
+   10548,
+   0.00426
+  ],
+  [
+   9881,
+   10318,
+   0.00035000000000000005
+  ],
+  [
+   9864,
+   10267,
+   0.00613
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/joachip_ring_1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "joachip_ring_1.bin",
+ "byteLength": 29872,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1008
+  },
+  "uvs": {
+   "offset": 4032,
+   "dtype": "f32",
+   "count": 778
+  },
+  "faceVerts": {
+   "offset": 7152,
+   "dtype": "u32",
+   "count": 1328
+  },
+  "faceUvs": {
+   "offset": 12464,
+   "dtype": "u32",
+   "count": 1328
+  },
+  "refVerts": {
+   "offset": 17776,
+   "dtype": "u32",
+   "count": 1008
+  },
+  "refWeights": {
+   "offset": 21808,
+   "dtype": "f32",
+   "count": 1008
+  },
+  "refOffsets": {
+   "offset": 25840,
+   "dtype": "f32",
+   "count": 1008
+  }
+ }
+}

@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_skirt_native_american_fashion",
+ "category": "clothes",
+ "name": "NamFashionSkirt",
+ "uuid": "f6baed28-bffb-49b5-bf2b-eafba1713387",
+ "tags": [
+  "female",
+  "skirt"
+ ],
+ "zDepth": 50,
+ "vertexCount": 5444,
+ "faceCount": 5102,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_skirt_native_american_fashion.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "punkduck_skirt_native_american_fashion.bin",
+ "byteLength": 480848,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 16332
+  },
+  "uvs": {
+   "offset": 65328,
+   "dtype": "f32",
+   "count": 13836
+  },
+  "faceVerts": {
+   "offset": 120672,
+   "dtype": "u32",
+   "count": 20408
+  },
+  "faceUvs": {
+   "offset": 202304,
+   "dtype": "u32",
+   "count": 20408
+  },
+  "refVerts": {
+   "offset": 283936,
+   "dtype": "u32",
+   "count": 16332
+  },
+  "refWeights": {
+   "offset": 349264,
+   "dtype": "f32",
+   "count": 16332
+  },
+  "refOffsets": {
+   "offset": 414592,
+   "dtype": "f32",
+   "count": 16332
+  },
+  "deleteVerts": {
+   "offset": 479920,
+   "dtype": "u32",
+   "count": 232
+  }
+ }
+}

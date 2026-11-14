@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/matcreator_mc-scifi-armor_guardian",
+ "category": "clothes",
+ "name": "MC-SciFi-Armor_Guardian",
+ "uuid": "d468d850-1f3c-41d5-b5c1-3432f26b1f3e",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1254,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.029970000000000004
+  ],
+  [
+   1524,
+   4370,
+   0.05706
+  ],
+  [
+   1892,
+   3946,
+   0.018310000000000003
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/matcreator_mc-scifi-armor_guardian.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 9014,
+ "hiddenFaces": "computed",
+ "originalTriangles": 18020,
+ "binary": "matcreator_mc-scifi-armor_guardian.ps2.bin",
+ "byteLength": 163768,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3762
+  },
+  "uvs": {
+   "offset": 15056,
+   "dtype": "f32",
+   "count": 2700
+  },
+  "faceVerts": {
+   "offset": 25856,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 65856,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 105856,
+   "dtype": "u32",
+   "count": 3762
+  },
+  "refWeights": {
+   "offset": 120912,
+   "dtype": "f32",
+   "count": 3762
+  },
+  "refOffsets": {
+   "offset": 135968,
+   "dtype": "f32",
+   "count": 3762
+  },
+  "coveredVerts": {
+   "offset": 151024,
+   "dtype": "u32",
+   "count": 1932
+  },
+  "sourceProxyVertex": {
+   "offset": 158752,
+   "dtype": "u32",
+   "count": 1254
+  }
+ }
+}

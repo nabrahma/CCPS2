@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_static_wings5_fairy_moth1",
+ "category": "clothes",
+ "name": "fairy_buttflywing2",
+ "uuid": "d7239c8e-a35d-4a42-a44b-a35f9e6ed198",
+ "tags": [
+  "wings",
+  "costume",
+  "fantasy",
+  "roleplay"
+ ],
+ "zDepth": 69,
+ "vertexCount": 13298,
+ "faceCount": 27276,
+ "triangleFaces": 27276,
+ "scale": [
+  [
+   10589,
+   3924,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.5779299999999999
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_static_wings5_fairy_moth1.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_static_wings5_fairy_moth1.bin",
+ "byteLength": 1731528,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 39894
+  },
+  "uvs": {
+   "offset": 159584,
+   "dtype": "f32",
+   "count": 55092
+  },
+  "faceVerts": {
+   "offset": 379952,
+   "dtype": "u32",
+   "count": 109104
+  },
+  "faceUvs": {
+   "offset": 816368,
+   "dtype": "u32",
+   "count": 109104
+  },
+  "refVerts": {
+   "offset": 1252784,
+   "dtype": "u32",
+   "count": 39894
+  },
+  "refWeights": {
+   "offset": 1412368,
+   "dtype": "f32",
+   "count": 39894
+  },
+  "refOffsets": {
+   "offset": 1571952,
+   "dtype": "f32",
+   "count": 39894
+  }
+ }
+}

@@ -38,7 +38,7 @@ import { ExpressionsPanel } from '../panels/ExpressionsPanel';
 import { EyesControls, MouthControls, PaintedPart } from '../panels/FacePartsSection';
 import { GarmentInspector } from '../Inspector';
 import { VisibilityToggle } from '../workspace/Dock';
-import { plain } from '../../state/names';
+import { garmentName, plain } from '../../state/names';
 import { TintRow } from '../panels/HairPanel';
 import { SliderPanel } from '../panels/SliderPanel';
 
@@ -100,6 +100,8 @@ export function FacePanel() {
 
 const tagged = (tag: string) => (e: CreatorEntry) => e.tags.includes(tag);
 
+const isFacialHair = tagged('facial-hair');
+
 const HAIR_FACETS: LibraryFacet[] = [
   { id: 'short', label: 'Short', test: tagged('short') },
   { id: 'medium', label: 'Medium', test: tagged('medium') },
@@ -137,6 +139,10 @@ export function HairStep() {
         <p className="hint">
           <strong>Editable</strong> styles are PS2CC's own hair cards: reshape them in Hair Studio. <strong>Mesh</strong> styles come from MakeHuman's community: a fixed shape you can tint.
         </p>
+      </Section>
+      <Section title="Facial hair" open={false} testId="hair-facial-section">
+        <p className="hint">Beards and moustaches, worn like a garment: click again to take one off. Its colour is under Clothes.</p>
+        <LibraryGrid categories={['garments']} filter={isFacialHair} tools={false} testId="hair-facial" />
       </Section>
       {hair.mode === 'cards' && (
         <>
@@ -198,6 +204,8 @@ export function HairStep() {
 
 // ------------------------------------------------------------------ Clothes
 
+const SLOTS = new Set(['top', 'outer', 'bottom', 'full', 'shoes', 'gloves', 'hat', 'accessory']);
+
 const SLOT_FACETS: LibraryFacet[] = (
   [
     ['top', 'Tops'],
@@ -206,11 +214,18 @@ const SLOT_FACETS: LibraryFacet[] = (
     ['full', 'Suits and dresses'],
     ['shoes', 'Shoes'],
     ['gloves', 'Gloves'],
-    ['hat', 'Hats'],
-    ['accessory', 'Accessories'],
+    ['hat', 'Hats and helmets'],
+    ['accessory', 'All accessories'],
+    ['glasses', 'Glasses'],
+    ['jewellery', 'Jewellery'],
+    ['mask', 'Masks'],
+    ['fantasy', 'Horns, tails, wings and nails'],
+    ['gear', 'Weapons and gear'],
     ['yours', 'Yours'],
   ] as const
-).map(([id, label]) => ({ id, label, test: id === 'yours' ? tagged('yours') : (e: CreatorEntry) => e.tags[0] === id }));
+).map(([id, label]) => ({ id, label, test: SLOTS.has(id) ? (e: CreatorEntry) => e.tags[0] === id : tagged(id) }));
+
+const notFacialHair = (e: CreatorEntry) => !isFacialHair(e);
 
 export function ClothesPanel() {
   const studio = useStudio();
@@ -251,7 +266,7 @@ export function ClothesPanel() {
         {worn.length === 0 && <p className="muted">Nothing yet: pick an outfit or garments below.</p>}
         {worn.map((g) => {
           const key = `garment:${g.slot}:${g.asset}`;
-          const name = studio.assets.hasProxy(g.asset) ? plain(studio.assets.proxyInfo(g.asset).name) : 'Missing garment';
+          const name = studio.assets.hasProxy(g.asset) ? garmentName(g.asset, studio.assets.proxyInfo(g.asset).name) : 'Missing garment';
           const open = ui.selected === key;
           return (
             <div className={open ? 'worn-item-wrap open' : 'worn-item-wrap'} key={g.asset} data-testid="worn-garment" data-part={key}>
@@ -283,7 +298,7 @@ export function ClothesPanel() {
         <LibraryGrid categories={['outfits']} tools={false} testId="wardrobe-outfits" />
       </Section>
       <Section title="Garments">
-        <LibraryGrid categories={['garments']} facets={SLOT_FACETS} allLabel="All garments" testId="wardrobe-garments" limit={24} />
+        <LibraryGrid categories={['garments']} filter={notFacialHair} facets={SLOT_FACETS} allLabel="All garments" testId="wardrobe-garments" limit={24} />
       </Section>
       <Section title="Materials" testId="wardrobe-materials-section">
         <p className="hint">Click a material to dress {materialTarget(studio) ? 'the open (or outermost) garment' : 'a garment once one is worn'} in it.</p>
@@ -344,6 +359,7 @@ const SKIN_FACETS: LibraryFacet[] = [
   { id: 'young', label: 'Young', test: tagged('young') },
   { id: 'middle-aged', label: 'Middle-aged', test: tagged('middle-aged') },
   { id: 'old', label: 'Old', test: tagged('old') },
+  { id: 'fantasy', label: 'Fantasy and horror', test: tagged('fantasy') },
   { id: 'yours', label: 'Yours', test: tagged('yours') },
 ];
 

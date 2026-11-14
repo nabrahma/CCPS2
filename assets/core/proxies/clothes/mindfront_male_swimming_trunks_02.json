@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_male_swimming_trunks_02",
+ "category": "clothes",
+ "name": "M_Swimming_trunks_02",
+ "uuid": "22824269-01b9-435d-a83e-4f6c4f05ad59",
+ "tags": [
+  "male",
+  "swimwear"
+ ],
+ "zDepth": 47,
+ "vertexCount": 681,
+ "faceCount": 624,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   13868,
+   14308,
+   1.1086600000000002
+  ],
+  [
+   881,
+   13137,
+   1.74451
+  ],
+  [
+   10854,
+   10981,
+   0.23046000000000003
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/mindfront_male_swimming_trunks_02.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "mindfront_male_swimming_trunks_02.bin",
+ "byteLength": 61028,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2043
+  },
+  "uvs": {
+   "offset": 8176,
+   "dtype": "f32",
+   "count": 1570
+  },
+  "faceVerts": {
+   "offset": 14464,
+   "dtype": "u32",
+   "count": 2496
+  },
+  "faceUvs": {
+   "offset": 24448,
+   "dtype": "u32",
+   "count": 2496
+  },
+  "refVerts": {
+   "offset": 34432,
+   "dtype": "u32",
+   "count": 2043
+  },
+  "refWeights": {
+   "offset": 42608,
+   "dtype": "f32",
+   "count": 2043
+  },
+  "refOffsets": {
+   "offset": 50784,
+   "dtype": "f32",
+   "count": 2043
+  },
+  "deleteVerts": {
+   "offset": 58960,
+   "dtype": "u32",
+   "count": 517
+  }
+ }
+}

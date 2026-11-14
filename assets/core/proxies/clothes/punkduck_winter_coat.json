@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_winter_coat",
+ "category": "clothes",
+ "name": "Coat",
+ "uuid": "36f5ecf8-6b3c-49bb-9a84-2aefee6225d7",
+ "tags": [
+  "female",
+  "coat"
+ ],
+ "zDepth": 50,
+ "vertexCount": 3737,
+ "faceCount": 3700,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_winter_coat.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "outer",
+ "binary": "punkduck_winter_coat.bin",
+ "byteLength": 343912,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 11211
+  },
+  "uvs": {
+   "offset": 44848,
+   "dtype": "f32",
+   "count": 9494
+  },
+  "faceVerts": {
+   "offset": 82832,
+   "dtype": "u32",
+   "count": 14800
+  },
+  "faceUvs": {
+   "offset": 142032,
+   "dtype": "u32",
+   "count": 14800
+  },
+  "refVerts": {
+   "offset": 201232,
+   "dtype": "u32",
+   "count": 11211
+  },
+  "refWeights": {
+   "offset": 246080,
+   "dtype": "f32",
+   "count": 11211
+  },
+  "refOffsets": {
+   "offset": 290928,
+   "dtype": "f32",
+   "count": 11211
+  },
+  "deleteVerts": {
+   "offset": 335776,
+   "dtype": "u32",
+   "count": 2034
+  }
+ }
+}

@@ -1,0 +1,93 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_wetsuit",
+ "category": "clothes",
+ "name": "wetsuit",
+ "uuid": "bc2e6998-1410-41a5-b609-340fc274f141",
+ "tags": [
+  "sport",
+  "swimming",
+  "triathlon"
+ ],
+ "zDepth": 60,
+ "vertexCount": 2549,
+ "faceCount": 2501,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_wetsuit.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "punkduck_wetsuit.bin",
+ "byteLength": 243048,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 7647
+  },
+  "uvs": {
+   "offset": 30592,
+   "dtype": "f32",
+   "count": 6316
+  },
+  "faceVerts": {
+   "offset": 55856,
+   "dtype": "u32",
+   "count": 10004
+  },
+  "faceUvs": {
+   "offset": 95872,
+   "dtype": "u32",
+   "count": 10004
+  },
+  "refVerts": {
+   "offset": 135888,
+   "dtype": "u32",
+   "count": 7647
+  },
+  "refWeights": {
+   "offset": 166480,
+   "dtype": "f32",
+   "count": 7647
+  },
+  "refOffsets": {
+   "offset": 197072,
+   "dtype": "f32",
+   "count": 7647
+  },
+  "deleteVerts": {
+   "offset": 227664,
+   "dtype": "u32",
+   "count": 3846
+  }
+ }
+}

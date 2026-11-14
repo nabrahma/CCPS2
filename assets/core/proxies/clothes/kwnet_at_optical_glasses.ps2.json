@@ -1,0 +1,96 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/kwnet_at_optical_glasses",
+ "category": "clothes",
+ "name": "m_opticals01",
+ "uuid": "b07f6b23-b0bb-4d4f-8c41-9dede8349474",
+ "tags": [
+  "glasses",
+  "male",
+  "accessory"
+ ],
+ "zDepth": 50,
+ "vertexCount": 232,
+ "faceCount": 466,
+ "triangleFaces": 466,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.2688,
+   0.2688,
+   0.2688
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 0,
+  "diffuseTexture": "textures/clothes/kwnet_at_optical_glasses.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 3138,
+ "hiddenFaces": "none",
+ "originalTriangles": 6196,
+ "binary": "kwnet_at_optical_glasses.ps2.bin",
+ "byteLength": 28528,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 696
+  },
+  "uvs": {
+   "offset": 2784,
+   "dtype": "f32",
+   "count": 386
+  },
+  "faceVerts": {
+   "offset": 4336,
+   "dtype": "u32",
+   "count": 1864
+  },
+  "faceUvs": {
+   "offset": 11792,
+   "dtype": "u32",
+   "count": 1864
+  },
+  "refVerts": {
+   "offset": 19248,
+   "dtype": "u32",
+   "count": 696
+  },
+  "refWeights": {
+   "offset": 22032,
+   "dtype": "f32",
+   "count": 696
+  },
+  "refOffsets": {
+   "offset": 24816,
+   "dtype": "f32",
+   "count": 696
+  },
+  "sourceProxyVertex": {
+   "offset": 27600,
+   "dtype": "u32",
+   "count": 232
+  }
+ }
+}

@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_diver_suit",
+ "category": "clothes",
+ "name": "Diver_Suit",
+ "uuid": "053cc1be-c62d-487f-b11d-2d64ed58e4a1",
+ "tags": [
+  "sport",
+  "unsorted"
+ ],
+ "zDepth": 38,
+ "vertexCount": 1444,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_diver_suit.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 6336,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 11742,
+ "binary": "punkduck_diver_suit.ps2.bin",
+ "byteLength": 194400,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4332
+  },
+  "uvs": {
+   "offset": 17328,
+   "dtype": "f32",
+   "count": 2326
+  },
+  "faceVerts": {
+   "offset": 26640,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 66640,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 106640,
+   "dtype": "u32",
+   "count": 4332
+  },
+  "refWeights": {
+   "offset": 123968,
+   "dtype": "f32",
+   "count": 4332
+  },
+  "refOffsets": {
+   "offset": 141296,
+   "dtype": "f32",
+   "count": 4332
+  },
+  "deleteVerts": {
+   "offset": 158624,
+   "dtype": "u32",
+   "count": 7499
+  },
+  "sourceProxyVertex": {
+   "offset": 188624,
+   "dtype": "u32",
+   "count": 1444
+  }
+ }
+}

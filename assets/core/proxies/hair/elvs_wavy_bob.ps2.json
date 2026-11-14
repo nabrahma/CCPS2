@@ -1,0 +1,96 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/elvs_wavy_bob",
+ "category": "hair",
+ "name": "elvscurly_bob1",
+ "uuid": "21427a4e-7c3e-43e4-bd17-ee48a74d3bc3",
+ "tags": [
+  "hair",
+  "bob",
+  "curly",
+  "female"
+ ],
+ "zDepth": 50,
+ "vertexCount": 3606,
+ "faceCount": 4288,
+ "triangleFaces": 4288,
+ "scale": [
+  [
+   11998,
+   5399,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/hair/elvs_wavy_bob.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "decimatedFrom": 3606,
+ "hiddenFaces": "none",
+ "originalTriangles": 4288,
+ "binary": "elvs_wavy_bob.ps2.bin",
+ "byteLength": 336712,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 10818
+  },
+  "uvs": {
+   "offset": 43280,
+   "dtype": "f32",
+   "count": 2986
+  },
+  "faceVerts": {
+   "offset": 55232,
+   "dtype": "u32",
+   "count": 17152
+  },
+  "faceUvs": {
+   "offset": 123840,
+   "dtype": "u32",
+   "count": 17152
+  },
+  "refVerts": {
+   "offset": 192448,
+   "dtype": "u32",
+   "count": 10818
+  },
+  "refWeights": {
+   "offset": 235728,
+   "dtype": "f32",
+   "count": 10818
+  },
+  "refOffsets": {
+   "offset": 279008,
+   "dtype": "f32",
+   "count": 10818
+  },
+  "sourceProxyVertex": {
+   "offset": 322288,
+   "dtype": "u32",
+   "count": 3606
+  }
+ }
+}

@@ -29,6 +29,8 @@ class Mhclo:
     scale: list[tuple[int, int, float]] | None  # per axis (v1, v2, denominator in metres)
     delete_verts: list[int] = field(default_factory=list)
     license_lines: list[str] = field(default_factory=list)
+    # Shear boxes only: (v1, v2, source span with its sign), to check the rest body spans the same way.
+    shear_signs: list | None = None
 
 
 def parse_mhclo(path: Path) -> Mhclo:
@@ -43,6 +45,8 @@ def parse_mhclo(path: Path) -> Mhclo:
     offs: list[tuple[float, float, float]] = []
     scale: list = [None, None, None]
     has_scale = False
+    # MakeClothes' shear boxes, by side ("" for plain shear_x, "l_", "r_").
+    shears: dict[str, list] = {}
     delete = np.zeros(19158, dtype=bool)
     lic: list[str] = []
     status = None
@@ -79,8 +83,10 @@ def parse_mhclo(path: Path) -> Mhclo:
                 axis = {"x_scale": 0, "y_scale": 1, "z_scale": 2}[key]
                 scale[axis] = (int(words[1]), int(words[2]), float(words[3]) * DM_TO_M)
                 has_scale = True
-            elif key.endswith(("shear_x", "shear_y", "shear_z")):
-                raise UnsupportedProxy(f"{path.name}: shear transforms are not supported")
+            elif key in ("shear_x", "shear_y", "shear_z", "l_shear_x", "l_shear_y", "l_shear_z", "r_shear_x", "r_shear_y", "r_shear_z"):
+                side = key[: -len("shear_x")]
+                axis = "xyz".index(key[-1])
+                shears.setdefault(side, [None, None, None])[axis] = (int(words[1]), int(words[2]), float(words[3]), float(words[4]))
             elif key in ("vertexboneweights_file", "uvLayer", "max_pole", "special_pose", "version",
                          "description", "author", "license", "homepage", "basemesh",
                          "backface_culling", "transparent", "author:", "license:"):
@@ -113,6 +119,21 @@ def parse_mhclo(path: Path) -> Mhclo:
                         delete[v1] = True
                     v0 = v1
 
+    if not has_scale and shears:
+        # TMatrix.getMatrix: scale data first, then shear, left shear, right shear. Its shear matrix is the
+        # affine map from a box with corners at the given coordinates to the box between the two reference
+        # vertices on each axis; both boxes are axis-aligned, so the map is the per-axis ratio of the spans,
+        # which is a scale with the source span as its denominator.
+        box = shears.get("") or shears.get("l_") or shears.get("r_")
+        if box is None or any(b is None for b in box):
+            raise UnsupportedProxy(f"{path.name}: incomplete shear data")
+        scale = [(v1, v2, abs(a - b) * DM_TO_M) for v1, v2, a, b in box]
+        if any(den == 0 for _, _, den in scale):
+            raise UnsupportedProxy(f"{path.name}: zero shear span")
+        has_scale = True
+        shear_signs = [(v1, v2, a - b) for v1, v2, a, b in box]
+    else:
+        shear_signs = None
     if has_scale and any(s is None for s in scale):
         raise UnsupportedProxy(f"{path.name}: incomplete scale data")
     if z_depth == -1:
@@ -130,6 +151,7 @@ def parse_mhclo(path: Path) -> Mhclo:
         weights=weights,
         offsets_m=offsets,
         scale=scale if has_scale else None,
+        shear_signs=shear_signs,
         delete_verts=np.nonzero(delete)[0].tolist(),
         license_lines=lic,
     )

@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_ladies_tank1",
+ "category": "clothes",
+ "name": "ladiestank1elv",
+ "uuid": "22d83009-cd75-45e4-947b-cb43889f62b4",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 441,
+ "faceCount": 1293,
+ "triangleFaces": 1293,
+ "scale": [
+  [
+   13868,
+   14308,
+   0.95666
+  ],
+  [
+   881,
+   13137,
+   1.6005099999999999
+  ],
+  [
+   10854,
+   10981,
+   0.22246
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_ladies_tank1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 31491,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 62624,
+ "binary": "elvs_ladies_tank1.ps2.bin",
+ "byteLength": 71540,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1323
+  },
+  "uvs": {
+   "offset": 5296,
+   "dtype": "f32",
+   "count": 882
+  },
+  "faceVerts": {
+   "offset": 8832,
+   "dtype": "u32",
+   "count": 5172
+  },
+  "faceUvs": {
+   "offset": 29520,
+   "dtype": "u32",
+   "count": 5172
+  },
+  "refVerts": {
+   "offset": 50208,
+   "dtype": "u32",
+   "count": 1323
+  },
+  "refWeights": {
+   "offset": 55504,
+   "dtype": "f32",
+   "count": 1323
+  },
+  "refOffsets": {
+   "offset": 60800,
+   "dtype": "f32",
+   "count": 1323
+  },
+  "deleteVerts": {
+   "offset": 66096,
+   "dtype": "u32",
+   "count": 920
+  },
+  "sourceProxyVertex": {
+   "offset": 69776,
+   "dtype": "u32",
+   "count": 441
+  }
+ }
+}

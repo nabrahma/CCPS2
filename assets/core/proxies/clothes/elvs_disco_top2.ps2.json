@@ -1,0 +1,104 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_disco_top2",
+ "category": "clothes",
+ "name": "elvs_discotop2",
+ "uuid": "d224473f-2bdb-4af7-80ed-f599cefd7a1b",
+ "tags": [
+  "female",
+  "formal",
+  "festive",
+  "vintage",
+  "shirt",
+  "disco"
+ ],
+ "zDepth": 55,
+ "vertexCount": 940,
+ "faceCount": 1800,
+ "triangleFaces": 1800,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_disco_top2.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 3029,
+ "hiddenFaces": "computed",
+ "originalTriangles": 5892,
+ "binary": "elvs_disco_top2.ps2.bin",
+ "byteLength": 115472,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2820
+  },
+  "uvs": {
+   "offset": 11280,
+   "dtype": "f32",
+   "count": 1948
+  },
+  "faceVerts": {
+   "offset": 19072,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "faceUvs": {
+   "offset": 47872,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "refVerts": {
+   "offset": 76672,
+   "dtype": "u32",
+   "count": 2820
+  },
+  "refWeights": {
+   "offset": 87952,
+   "dtype": "f32",
+   "count": 2820
+  },
+  "refOffsets": {
+   "offset": 99232,
+   "dtype": "f32",
+   "count": 2820
+  },
+  "coveredVerts": {
+   "offset": 110512,
+   "dtype": "u32",
+   "count": 300
+  },
+  "sourceProxyVertex": {
+   "offset": 111712,
+   "dtype": "u32",
+   "count": 940
+  }
+ }
+}

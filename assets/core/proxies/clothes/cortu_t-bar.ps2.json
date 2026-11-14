@@ -6,9 +6,9 @@
  "uuid": "259db21e-4ffb-4785-b29a-34b63f5295b1",
  "tags": [],
  "zDepth": 50,
- "vertexCount": 290,
- "faceCount": 500,
- "triangleFaces": 500,
+ "vertexCount": 392,
+ "faceCount": 704,
+ "triangleFaces": 704,
  "scale": [
   [
    5399,
@@ -41,57 +41,57 @@
    1024
   ]
  },
- "slot": "accessory",
+ "slot": "shoes",
  "decimatedFrom": 392,
  "hiddenFaces": "makehuman",
  "originalTriangles": 704,
  "binary": "cortu_t-bar.ps2.bin",
- "byteLength": 41384,
+ "byteLength": 53600,
  "buffers": {
   "restPositions": {
    "offset": 0,
    "dtype": "f32",
-   "count": 870
+   "count": 1176
   },
   "uvs": {
-   "offset": 3488,
+   "offset": 4704,
    "dtype": "f32",
-   "count": 406
+   "count": 510
   },
   "faceVerts": {
-   "offset": 5120,
+   "offset": 6752,
    "dtype": "u32",
-   "count": 2000
+   "count": 2816
   },
   "faceUvs": {
-   "offset": 13120,
+   "offset": 18016,
    "dtype": "u32",
-   "count": 2000
+   "count": 2816
   },
   "refVerts": {
-   "offset": 21120,
+   "offset": 29280,
    "dtype": "u32",
-   "count": 870
+   "count": 1176
   },
   "refWeights": {
-   "offset": 24608,
+   "offset": 33984,
    "dtype": "f32",
-   "count": 870
+   "count": 1176
   },
   "refOffsets": {
-   "offset": 28096,
+   "offset": 38688,
    "dtype": "f32",
-   "count": 870
+   "count": 1176
   },
   "deleteVerts": {
-   "offset": 31584,
+   "offset": 43392,
    "dtype": "u32",
    "count": 2160
   },
   "sourceProxyVertex": {
-   "offset": 40224,
+   "offset": 52032,
    "dtype": "u32",
-   "count": 290
+   "count": 392
   }
  }
 }

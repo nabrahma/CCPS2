@@ -8,9 +8,9 @@
   "shoes"
  ],
  "zDepth": 50,
- "vertexCount": 1217,
- "faceCount": 2418,
- "triangleFaces": 2418,
+ "vertexCount": 178,
+ "faceCount": 684,
+ "triangleFaces": 684,
  "scale": [
   [
    5399,
@@ -48,52 +48,52 @@
  "hiddenFaces": "computed",
  "originalTriangles": 57600,
  "binary": "toigo_flats.ps2.bin",
- "byteLength": 156644,
+ "byteLength": 36872,
  "buffers": {
   "restPositions": {
    "offset": 0,
    "dtype": "f32",
-   "count": 3651
+   "count": 534
   },
   "uvs": {
-   "offset": 14608,
+   "offset": 2144,
    "dtype": "f32",
-   "count": 2760
+   "count": 192
   },
   "faceVerts": {
-   "offset": 25648,
+   "offset": 2912,
    "dtype": "u32",
-   "count": 9672
+   "count": 2736
   },
   "faceUvs": {
-   "offset": 64336,
+   "offset": 13856,
    "dtype": "u32",
-   "count": 9672
+   "count": 2736
   },
   "refVerts": {
-   "offset": 103024,
+   "offset": 24800,
    "dtype": "u32",
-   "count": 3651
+   "count": 534
   },
   "refWeights": {
-   "offset": 117632,
+   "offset": 26944,
    "dtype": "f32",
-   "count": 3651
+   "count": 534
   },
   "refOffsets": {
-   "offset": 132240,
+   "offset": 29088,
    "dtype": "f32",
-   "count": 3651
+   "count": 534
   },
   "coveredVerts": {
-   "offset": 146848,
+   "offset": 31232,
    "dtype": "u32",
    "count": 1230
   },
   "sourceProxyVertex": {
-   "offset": 151776,
+   "offset": 36160,
    "dtype": "u32",
-   "count": 1217
+   "count": 178
   }
  }
 }

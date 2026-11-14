@@ -1,0 +1,93 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/elvs_micky_afro",
+ "category": "hair",
+ "name": "elvs_mickey_afro",
+ "uuid": "f36d4b2b-c4d6-438e-8962-cacb4cfc8558",
+ "tags": [
+  "female",
+  "casual",
+  "leisure",
+  "contemporary",
+  "hair",
+  "afro",
+  "buns",
+  "hair",
+  "updo"
+ ],
+ "zDepth": 50,
+ "vertexCount": 866,
+ "faceCount": 1675,
+ "triangleFaces": 1675,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/elvs_micky_afro.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "elvs_micky_afro.bin",
+ "byteLength": 110104,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2598
+  },
+  "uvs": {
+   "offset": 10400,
+   "dtype": "f32",
+   "count": 3728
+  },
+  "faceVerts": {
+   "offset": 25312,
+   "dtype": "u32",
+   "count": 6700
+  },
+  "faceUvs": {
+   "offset": 52112,
+   "dtype": "u32",
+   "count": 6700
+  },
+  "refVerts": {
+   "offset": 78912,
+   "dtype": "u32",
+   "count": 2598
+  },
+  "refWeights": {
+   "offset": 89312,
+   "dtype": "f32",
+   "count": 2598
+  },
+  "refOffsets": {
+   "offset": 99712,
+   "dtype": "f32",
+   "count": 2598
+  }
+ }
+}

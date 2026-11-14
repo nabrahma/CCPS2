@@ -1,0 +1,88 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/jaldmic_m1911a1",
+ "category": "clothes",
+ "name": "Colt_M1911A1",
+ "uuid": "0e08ac7d-183c-47ef-ab8d-547328f0d967",
+ "tags": [
+  "jaldmic",
+  "weapon",
+  "pistol"
+ ],
+ "zDepth": 50,
+ "vertexCount": 3725,
+ "faceCount": 3499,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.013980000000000001
+  ],
+  [
+   791,
+   881,
+   0.023150000000000004
+  ],
+  [
+   962,
+   5320,
+   0.01904
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/jaldmic_m1911a1.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "jaldmic_m1911a1.bin",
+ "byteLength": 333244,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 11175
+  },
+  "uvs": {
+   "offset": 44704,
+   "dtype": "f32",
+   "count": 10616
+  },
+  "faceVerts": {
+   "offset": 87168,
+   "dtype": "u32",
+   "count": 13996
+  },
+  "faceUvs": {
+   "offset": 143152,
+   "dtype": "u32",
+   "count": 13996
+  },
+  "refVerts": {
+   "offset": 199136,
+   "dtype": "u32",
+   "count": 11175
+  },
+  "refWeights": {
+   "offset": 243840,
+   "dtype": "f32",
+   "count": 11175
+  },
+  "refOffsets": {
+   "offset": 288544,
+   "dtype": "f32",
+   "count": 11175
+  }
+ }
+}

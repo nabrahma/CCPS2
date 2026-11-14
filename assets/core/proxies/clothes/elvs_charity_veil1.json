@@ -1,0 +1,90 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_charity_veil1",
+ "category": "clothes",
+ "name": "elvs_charity_veil_m1a_over",
+ "uuid": "ef5c72a7-d412-4386-9dce-3f6aa8504307",
+ "tags": [
+  "female",
+  "formal",
+  "traditional",
+  "hat",
+  "veil"
+ ],
+ "zDepth": 55,
+ "vertexCount": 2147,
+ "faceCount": 4109,
+ "triangleFaces": 4109,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_charity_veil1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "binary": "elvs_charity_veil1.bin",
+ "byteLength": 268132,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 6441
+  },
+  "uvs": {
+   "offset": 25776,
+   "dtype": "f32",
+   "count": 8386
+  },
+  "faceVerts": {
+   "offset": 59328,
+   "dtype": "u32",
+   "count": 16436
+  },
+  "faceUvs": {
+   "offset": 125072,
+   "dtype": "u32",
+   "count": 16436
+  },
+  "refVerts": {
+   "offset": 190816,
+   "dtype": "u32",
+   "count": 6441
+  },
+  "refWeights": {
+   "offset": 216592,
+   "dtype": "f32",
+   "count": 6441
+  },
+  "refOffsets": {
+   "offset": 242368,
+   "dtype": "f32",
+   "count": 6441
+  }
+ }
+}

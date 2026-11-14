@@ -1,0 +1,103 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_racing_fire_suit_male1",
+ "category": "clothes",
+ "name": "elvs_race_suit_male1",
+ "uuid": "9e917db9-44df-44bb-a148-7db1d65cfc00",
+ "tags": [
+  "male",
+  "casual",
+  "sport",
+  "contemporary",
+  "racing"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1294,
+ "faceCount": 2498,
+ "triangleFaces": 2498,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.31594000000000005
+  ],
+  [
+   1524,
+   4370,
+   0.57703
+  ],
+  [
+   1892,
+   3946,
+   0.19743
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_racing_fire_suit_male1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 13072,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 25925,
+ "binary": "elvs_racing_fire_suit_male1.ps2.bin",
+ "byteLength": 174920,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3882
+  },
+  "uvs": {
+   "offset": 15536,
+   "dtype": "f32",
+   "count": 3362
+  },
+  "faceVerts": {
+   "offset": 28992,
+   "dtype": "u32",
+   "count": 9992
+  },
+  "faceUvs": {
+   "offset": 68960,
+   "dtype": "u32",
+   "count": 9992
+  },
+  "refVerts": {
+   "offset": 108928,
+   "dtype": "u32",
+   "count": 3882
+  },
+  "refWeights": {
+   "offset": 124464,
+   "dtype": "f32",
+   "count": 3882
+  },
+  "refOffsets": {
+   "offset": 140000,
+   "dtype": "f32",
+   "count": 3882
+  },
+  "deleteVerts": {
+   "offset": 155536,
+   "dtype": "u32",
+   "count": 3552
+  },
+  "sourceProxyVertex": {
+   "offset": 169744,
+   "dtype": "u32",
+   "count": 1294
+  }
+ }
+}

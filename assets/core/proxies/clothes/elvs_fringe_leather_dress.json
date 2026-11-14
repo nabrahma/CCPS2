@@ -1,0 +1,96 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_fringe_leather_dress",
+ "category": "clothes",
+ "name": "elvs_leather_fringedress1",
+ "uuid": "75123f98-a0e5-405e-8800-a28dca321bf5",
+ "tags": [
+  "female",
+  "fantasy",
+  "festive",
+  "vintage",
+  "dress",
+  "dress"
+ ],
+ "zDepth": 52,
+ "vertexCount": 8515,
+ "faceCount": 11762,
+ "triangleFaces": 11762,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_fringe_leather_dress.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "elvs_fringe_leather_dress.bin",
+ "byteLength": 912864,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 25545
+  },
+  "uvs": {
+   "offset": 102192,
+   "dtype": "f32",
+   "count": 30302
+  },
+  "faceVerts": {
+   "offset": 223408,
+   "dtype": "u32",
+   "count": 47048
+  },
+  "faceUvs": {
+   "offset": 411600,
+   "dtype": "u32",
+   "count": 47048
+  },
+  "refVerts": {
+   "offset": 599792,
+   "dtype": "u32",
+   "count": 25545
+  },
+  "refWeights": {
+   "offset": 701984,
+   "dtype": "f32",
+   "count": 25545
+  },
+  "refOffsets": {
+   "offset": 804176,
+   "dtype": "f32",
+   "count": 25545
+  },
+  "deleteVerts": {
+   "offset": 906368,
+   "dtype": "u32",
+   "count": 1624
+  }
+ }
+}

@@ -6,9 +6,9 @@
  "uuid": "4df50120-3004-4a0a-b47e-d01bdb50610c",
  "tags": [],
  "zDepth": 70,
- "vertexCount": 622,
- "faceCount": 1396,
- "triangleFaces": 1396,
+ "vertexCount": 298,
+ "faceCount": 836,
+ "triangleFaces": 836,
  "scale": [
   [
    5399,
@@ -46,52 +46,52 @@
  "hiddenFaces": "makehuman",
  "originalTriangles": 30768,
  "binary": "culturalibre_male_boots.ps2.bin",
- "byteLength": 95000,
+ "byteLength": 57944,
  "buffers": {
   "restPositions": {
    "offset": 0,
    "dtype": "f32",
-   "count": 1866
+   "count": 894
   },
   "uvs": {
-   "offset": 7472,
+   "offset": 3584,
    "dtype": "f32",
-   "count": 1726
+   "count": 1156
   },
   "faceVerts": {
-   "offset": 14384,
+   "offset": 8208,
    "dtype": "u32",
-   "count": 5584
+   "count": 3344
   },
   "faceUvs": {
-   "offset": 36720,
+   "offset": 21584,
    "dtype": "u32",
-   "count": 5584
+   "count": 3344
   },
   "refVerts": {
-   "offset": 59056,
+   "offset": 34960,
    "dtype": "u32",
-   "count": 1866
+   "count": 894
   },
   "refWeights": {
-   "offset": 66528,
+   "offset": 38544,
    "dtype": "f32",
-   "count": 1866
+   "count": 894
   },
   "refOffsets": {
-   "offset": 74000,
+   "offset": 42128,
    "dtype": "f32",
-   "count": 1866
+   "count": 894
   },
   "deleteVerts": {
-   "offset": 81472,
+   "offset": 45712,
    "dtype": "u32",
    "count": 2758
   },
   "sourceProxyVertex": {
-   "offset": 92512,
+   "offset": 56752,
    "dtype": "u32",
-   "count": 622
+   "count": 298
   }
  }
 }

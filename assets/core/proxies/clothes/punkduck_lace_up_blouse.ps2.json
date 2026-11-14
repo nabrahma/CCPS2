@@ -1,0 +1,96 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_lace_up_blouse",
+ "category": "clothes",
+ "name": "lace_up_blouse",
+ "uuid": "5bd8b521-afc8-471f-bdaf-81e4acf37eb0",
+ "tags": [
+  "costume",
+  "female",
+  "blouse"
+ ],
+ "zDepth": 60,
+ "vertexCount": 985,
+ "faceCount": 1800,
+ "triangleFaces": 1800,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_lace_up_blouse.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 2562,
+ "hiddenFaces": "none",
+ "originalTriangles": 4954,
+ "binary": "punkduck_lace_up_blouse.ps2.bin",
+ "byteLength": 118596,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2955
+  },
+  "uvs": {
+   "offset": 11824,
+   "dtype": "f32",
+   "count": 2438
+  },
+  "faceVerts": {
+   "offset": 21584,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "faceUvs": {
+   "offset": 50384,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "refVerts": {
+   "offset": 79184,
+   "dtype": "u32",
+   "count": 2955
+  },
+  "refWeights": {
+   "offset": 91008,
+   "dtype": "f32",
+   "count": 2955
+  },
+  "refOffsets": {
+   "offset": 102832,
+   "dtype": "f32",
+   "count": 2955
+  },
+  "sourceProxyVertex": {
+   "offset": 114656,
+   "dtype": "u32",
+   "count": 985
+  }
+ }
+}

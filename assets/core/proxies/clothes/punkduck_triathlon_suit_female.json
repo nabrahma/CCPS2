@@ -1,0 +1,93 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_triathlon_suit_female",
+ "category": "clothes",
+ "name": "triathlon_suit",
+ "uuid": "ce221b65-75f5-4715-82a9-0c992d169f9e",
+ "tags": [
+  "sport",
+  "triathlon",
+  "bike"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1535,
+ "faceCount": 1440,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_triathlon_suit_female.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "punkduck_triathlon_suit_female.bin",
+ "byteLength": 138896,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4605
+  },
+  "uvs": {
+   "offset": 18432,
+   "dtype": "f32",
+   "count": 3510
+  },
+  "faceVerts": {
+   "offset": 32480,
+   "dtype": "u32",
+   "count": 5760
+  },
+  "faceUvs": {
+   "offset": 55520,
+   "dtype": "u32",
+   "count": 5760
+  },
+  "refVerts": {
+   "offset": 78560,
+   "dtype": "u32",
+   "count": 4605
+  },
+  "refWeights": {
+   "offset": 96992,
+   "dtype": "f32",
+   "count": 4605
+  },
+  "refOffsets": {
+   "offset": 115424,
+   "dtype": "f32",
+   "count": 4605
+  },
+  "deleteVerts": {
+   "offset": 133856,
+   "dtype": "u32",
+   "count": 1260
+  }
+ }
+}

@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mtknife_low_mini_skirt",
+ "category": "clothes",
+ "name": "low_mini_skirt",
+ "uuid": "dff0711b-6b83-41b7-898d-12b98acce4a0",
+ "tags": [
+  "female",
+  "skirt"
+ ],
+ "zDepth": 50,
+ "vertexCount": 432,
+ "faceCount": 864,
+ "triangleFaces": 864,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.23354
+  ],
+  [
+   1524,
+   4370,
+   0.46003
+  ],
+  [
+   1892,
+   3946,
+   0.16333
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/mtknife_low_mini_skirt.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 432,
+ "hiddenFaces": "computed",
+ "originalTriangles": 864,
+ "binary": "mtknife_low_mini_skirt.ps2.bin",
+ "byteLength": 54240,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1296
+  },
+  "uvs": {
+   "offset": 5184,
+   "dtype": "f32",
+   "count": 888
+  },
+  "faceVerts": {
+   "offset": 8736,
+   "dtype": "u32",
+   "count": 3456
+  },
+  "faceUvs": {
+   "offset": 22560,
+   "dtype": "u32",
+   "count": 3456
+  },
+  "refVerts": {
+   "offset": 36384,
+   "dtype": "u32",
+   "count": 1296
+  },
+  "refWeights": {
+   "offset": 41568,
+   "dtype": "f32",
+   "count": 1296
+  },
+  "refOffsets": {
+   "offset": 46752,
+   "dtype": "f32",
+   "count": 1296
+  },
+  "coveredVerts": {
+   "offset": 51936,
+   "dtype": "u32",
+   "count": 142
+  },
+  "sourceProxyVertex": {
+   "offset": 52512,
+   "dtype": "u32",
+   "count": 432
+  }
+ }
+}

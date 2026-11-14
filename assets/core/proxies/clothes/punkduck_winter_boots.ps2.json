@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_winter_boots",
+ "category": "clothes",
+ "name": "WinterBoots",
+ "uuid": "bfb0b3e2-3160-4cfb-9f71-fba092125919",
+ "tags": [
+  "female",
+  "boots"
+ ],
+ "zDepth": 50,
+ "vertexCount": 580,
+ "faceCount": 900,
+ "triangleFaces": 900,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_winter_boots.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "decimatedFrom": 2152,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 4044,
+ "binary": "punkduck_winter_boots.ps2.bin",
+ "byteLength": 71632,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1740
+  },
+  "uvs": {
+   "offset": 6960,
+   "dtype": "f32",
+   "count": 838
+  },
+  "faceVerts": {
+   "offset": 10320,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "faceUvs": {
+   "offset": 24720,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "refVerts": {
+   "offset": 39120,
+   "dtype": "u32",
+   "count": 1740
+  },
+  "refWeights": {
+   "offset": 46080,
+   "dtype": "f32",
+   "count": 1740
+  },
+  "refOffsets": {
+   "offset": 53040,
+   "dtype": "f32",
+   "count": 1740
+  },
+  "deleteVerts": {
+   "offset": 60000,
+   "dtype": "u32",
+   "count": 2326
+  },
+  "sourceProxyVertex": {
+   "offset": 69312,
+   "dtype": "u32",
+   "count": 580
+  }
+ }
+}

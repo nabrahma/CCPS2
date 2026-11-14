@@ -1,0 +1,103 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_pleated_plaid_mini_skirt",
+ "category": "clothes",
+ "name": "pleated_skirtelv1",
+ "uuid": "b161178a-530e-4bd9-982f-bb4a5712bfbc",
+ "tags": [
+  "skirt",
+  "ladies ware",
+  "pleated",
+  "short skirt",
+  "female"
+ ],
+ "zDepth": 47,
+ "vertexCount": 447,
+ "faceCount": 1361,
+ "triangleFaces": 1361,
+ "scale": [
+  [
+   10589,
+   3924,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.5779299999999999
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_pleated_plaid_mini_skirt.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 11836,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 22973,
+ "binary": "elvs_pleated_plaid_mini_skirt.ps2.bin",
+ "byteLength": 70940,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1341
+  },
+  "uvs": {
+   "offset": 5376,
+   "dtype": "f32",
+   "count": 894
+  },
+  "faceVerts": {
+   "offset": 8960,
+   "dtype": "u32",
+   "count": 5444
+  },
+  "faceUvs": {
+   "offset": 30736,
+   "dtype": "u32",
+   "count": 5444
+  },
+  "refVerts": {
+   "offset": 52512,
+   "dtype": "u32",
+   "count": 1341
+  },
+  "refWeights": {
+   "offset": 57888,
+   "dtype": "f32",
+   "count": 1341
+  },
+  "refOffsets": {
+   "offset": 63264,
+   "dtype": "f32",
+   "count": 1341
+  },
+  "deleteVerts": {
+   "offset": 68640,
+   "dtype": "u32",
+   "count": 128
+  },
+  "sourceProxyVertex": {
+   "offset": 69152,
+   "dtype": "u32",
+   "count": 447
+  }
+ }
+}

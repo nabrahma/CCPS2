@@ -1,0 +1,93 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_ballet_dress_the_swan",
+ "category": "clothes",
+ "name": "Ballet_dress_The_Swan",
+ "uuid": "940b101c-0726-498d-8bf8-35ddcac50d14",
+ "tags": [
+  "female",
+  "ballet",
+  "work"
+ ],
+ "zDepth": 47,
+ "vertexCount": 2448,
+ "faceCount": 2180,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 0.0,
+  "diffuseTexture": "textures/clothes/mindfront_ballet_dress_the_swan.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "mindfront_ballet_dress_the_swan.bin",
+ "byteLength": 211928,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 7344
+  },
+  "uvs": {
+   "offset": 29376,
+   "dtype": "f32",
+   "count": 5274
+  },
+  "faceVerts": {
+   "offset": 50480,
+   "dtype": "u32",
+   "count": 8720
+  },
+  "faceUvs": {
+   "offset": 85360,
+   "dtype": "u32",
+   "count": 8720
+  },
+  "refVerts": {
+   "offset": 120240,
+   "dtype": "u32",
+   "count": 7344
+  },
+  "refWeights": {
+   "offset": 149616,
+   "dtype": "f32",
+   "count": 7344
+  },
+  "refOffsets": {
+   "offset": 178992,
+   "dtype": "f32",
+   "count": 7344
+  },
+  "deleteVerts": {
+   "offset": 208368,
+   "dtype": "u32",
+   "count": 890
+  }
+ }
+}

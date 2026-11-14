@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_halterneck_romper",
+ "category": "clothes",
+ "name": "Romper",
+ "uuid": "534b8c54-50de-4a1f-ab49-763248549469",
+ "tags": [
+  "female",
+  "dress"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1577,
+ "faceCount": 1499,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_halterneck_romper.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "punkduck_halterneck_romper.bin",
+ "byteLength": 141832,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4731
+  },
+  "uvs": {
+   "offset": 18928,
+   "dtype": "f32",
+   "count": 3718
+  },
+  "faceVerts": {
+   "offset": 33808,
+   "dtype": "u32",
+   "count": 5996
+  },
+  "faceUvs": {
+   "offset": 57792,
+   "dtype": "u32",
+   "count": 5996
+  },
+  "refVerts": {
+   "offset": 81776,
+   "dtype": "u32",
+   "count": 4731
+  },
+  "refWeights": {
+   "offset": 100704,
+   "dtype": "f32",
+   "count": 4731
+  },
+  "refOffsets": {
+   "offset": 119632,
+   "dtype": "f32",
+   "count": 4731
+  },
+  "deleteVerts": {
+   "offset": 138560,
+   "dtype": "u32",
+   "count": 818
+  }
+ }
+}

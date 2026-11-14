@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_static_wings2_dragon1",
+ "category": "clothes",
+ "name": "elvs_dragonwing1",
+ "uuid": "ed400597-8fbb-4be4-a7fd-3508634311da",
+ "tags": [
+  "wings",
+  "fantasy",
+  "roleplay",
+  "dragon"
+ ],
+ "zDepth": 69,
+ "vertexCount": 505,
+ "faceCount": 402,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_static_wings2_dragon1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_static_wings2_dragon1.bin",
+ "byteLength": 43644,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1515
+  },
+  "uvs": {
+   "offset": 6064,
+   "dtype": "f32",
+   "count": 1632
+  },
+  "faceVerts": {
+   "offset": 12592,
+   "dtype": "u32",
+   "count": 1608
+  },
+  "faceUvs": {
+   "offset": 19024,
+   "dtype": "u32",
+   "count": 1608
+  },
+  "refVerts": {
+   "offset": 25456,
+   "dtype": "u32",
+   "count": 1515
+  },
+  "refWeights": {
+   "offset": 31520,
+   "dtype": "f32",
+   "count": 1515
+  },
+  "refOffsets": {
+   "offset": 37584,
+   "dtype": "f32",
+   "count": 1515
+  }
+ }
+}

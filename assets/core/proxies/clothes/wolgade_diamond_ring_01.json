@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/wolgade_diamond_ring_01",
+ "category": "clothes",
+ "name": "diamond_ring_01",
+ "uuid": "e569a52a-1639-4444-817d-1ad6fb56f1ed",
+ "tags": [
+  "jewelry",
+  "female"
+ ],
+ "zDepth": 50,
+ "vertexCount": 9202,
+ "faceCount": 9200,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   8938,
+   10548,
+   0.04258000000000001
+  ],
+  [
+   9881,
+   10318,
+   0.0034500000000000004
+  ],
+  [
+   9864,
+   10267,
+   0.061329999999999996
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.3733,
+   0.03482
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/wolgade_diamond_ring_01.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "wolgade_diamond_ring_01.bin",
+ "byteLength": 809992,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 27606
+  },
+  "uvs": {
+   "offset": 110432,
+   "dtype": "f32",
+   "count": 18468
+  },
+  "faceVerts": {
+   "offset": 184304,
+   "dtype": "u32",
+   "count": 36800
+  },
+  "faceUvs": {
+   "offset": 331504,
+   "dtype": "u32",
+   "count": 36800
+  },
+  "refVerts": {
+   "offset": 478704,
+   "dtype": "u32",
+   "count": 27606
+  },
+  "refWeights": {
+   "offset": 589136,
+   "dtype": "f32",
+   "count": 27606
+  },
+  "refOffsets": {
+   "offset": 699568,
+   "dtype": "f32",
+   "count": 27606
+  }
+ }
+}

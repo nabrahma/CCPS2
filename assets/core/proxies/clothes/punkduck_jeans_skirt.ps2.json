@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_jeans_skirt",
+ "category": "clothes",
+ "name": "JeansSkirt",
+ "uuid": "12772bd6-8cfd-4215-94a9-3447ce47b4f8",
+ "tags": [
+  "female",
+  "skirt",
+  "jeans"
+ ],
+ "zDepth": 50,
+ "vertexCount": 834,
+ "faceCount": 1458,
+ "triangleFaces": 1458,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_jeans_skirt.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 834,
+ "hiddenFaces": "computed",
+ "originalTriangles": 1458,
+ "binary": "punkduck_jeans_skirt.ps2.bin",
+ "byteLength": 98296,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2502
+  },
+  "uvs": {
+   "offset": 10016,
+   "dtype": "f32",
+   "count": 1802
+  },
+  "faceVerts": {
+   "offset": 17232,
+   "dtype": "u32",
+   "count": 5832
+  },
+  "faceUvs": {
+   "offset": 40560,
+   "dtype": "u32",
+   "count": 5832
+  },
+  "refVerts": {
+   "offset": 63888,
+   "dtype": "u32",
+   "count": 2502
+  },
+  "refWeights": {
+   "offset": 73904,
+   "dtype": "f32",
+   "count": 2502
+  },
+  "refOffsets": {
+   "offset": 83920,
+   "dtype": "f32",
+   "count": 2502
+  },
+  "coveredVerts": {
+   "offset": 93936,
+   "dtype": "u32",
+   "count": 255
+  },
+  "sourceProxyVertex": {
+   "offset": 94960,
+   "dtype": "u32",
+   "count": 834
+  }
+ }
+}

@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_male_muscle_shirt1",
+ "category": "clothes",
+ "name": "mens_tanks_elvmuscle1f",
+ "uuid": "9102aa51-2ec4-45b2-a77a-8dadfc86e938",
+ "tags": [
+  "shirt",
+  "menswear",
+  "fashion",
+  "traditional",
+  "sleeveless"
+ ],
+ "zDepth": 47,
+ "vertexCount": 3236,
+ "faceCount": 3128,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   10589,
+   3924,
+   0.31594000000000005
+  ],
+  [
+   1524,
+   4370,
+   0.57703
+  ],
+  [
+   1892,
+   3946,
+   0.19743
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.03204,
+   0.06279
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_male_muscle_shirt1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "elvs_male_muscle_shirt1.bin",
+ "byteLength": 286852,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 9708
+  },
+  "uvs": {
+   "offset": 38832,
+   "dtype": "f32",
+   "count": 6810
+  },
+  "faceVerts": {
+   "offset": 66080,
+   "dtype": "u32",
+   "count": 12512
+  },
+  "faceUvs": {
+   "offset": 116128,
+   "dtype": "u32",
+   "count": 12512
+  },
+  "refVerts": {
+   "offset": 166176,
+   "dtype": "u32",
+   "count": 9708
+  },
+  "refWeights": {
+   "offset": 205008,
+   "dtype": "f32",
+   "count": 9708
+  },
+  "refOffsets": {
+   "offset": 243840,
+   "dtype": "f32",
+   "count": 9708
+  },
+  "deleteVerts": {
+   "offset": 282672,
+   "dtype": "u32",
+   "count": 1045
+  }
+ }
+}

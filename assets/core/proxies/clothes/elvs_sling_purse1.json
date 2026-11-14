@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_sling_purse1",
+ "category": "clothes",
+ "name": "slingpurse_elv1b",
+ "uuid": "d803066f-ef21-4b1a-a71b-b0215e1a78aa",
+ "tags": [
+  "bag",
+  "purse"
+ ],
+ "zDepth": 57,
+ "vertexCount": 25733,
+ "faceCount": 25540,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   13868,
+   14308,
+   0.95666
+  ],
+  [
+   881,
+   13137,
+   1.6005099999999999
+  ],
+  [
+   10854,
+   10981,
+   0.22246
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_sling_purse1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_sling_purse1.bin",
+ "byteLength": 2325708,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 77199
+  },
+  "uvs": {
+   "offset": 308800,
+   "dtype": "f32",
+   "count": 68308
+  },
+  "faceVerts": {
+   "offset": 582032,
+   "dtype": "u32",
+   "count": 102160
+  },
+  "faceUvs": {
+   "offset": 990672,
+   "dtype": "u32",
+   "count": 102160
+  },
+  "refVerts": {
+   "offset": 1399312,
+   "dtype": "u32",
+   "count": 77199
+  },
+  "refWeights": {
+   "offset": 1708112,
+   "dtype": "f32",
+   "count": 77199
+  },
+  "refOffsets": {
+   "offset": 2016912,
+   "dtype": "f32",
+   "count": 77199
+  }
+ }
+}

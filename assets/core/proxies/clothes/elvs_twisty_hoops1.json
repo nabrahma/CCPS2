@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_twisty_hoops1",
+ "category": "clothes",
+ "name": "twisty_hoops1",
+ "uuid": "816a9389-205b-4332-8f5f-c823550e274e",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1152,
+ "faceCount": 1152,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_twisty_hoops1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_twisty_hoops1.bin",
+ "byteLength": 129024,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3456
+  },
+  "uvs": {
+   "offset": 13824,
+   "dtype": "f32",
+   "count": 9216
+  },
+  "faceVerts": {
+   "offset": 50688,
+   "dtype": "u32",
+   "count": 4608
+  },
+  "faceUvs": {
+   "offset": 69120,
+   "dtype": "u32",
+   "count": 4608
+  },
+  "refVerts": {
+   "offset": 87552,
+   "dtype": "u32",
+   "count": 3456
+  },
+  "refWeights": {
+   "offset": 101376,
+   "dtype": "f32",
+   "count": 3456
+  },
+  "refOffsets": {
+   "offset": 115200,
+   "dtype": "f32",
+   "count": 3456
+  }
+ }
+}

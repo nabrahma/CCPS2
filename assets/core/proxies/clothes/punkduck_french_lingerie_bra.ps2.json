@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_french_lingerie_bra",
+ "category": "clothes",
+ "name": "frenchbra",
+ "uuid": "ed895717-aea4-4c76-8daf-7679c3754b33",
+ "tags": [
+  "female",
+  "lingerie"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1092,
+ "faceCount": 1774,
+ "triangleFaces": 1774,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_french_lingerie_bra.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 1092,
+ "hiddenFaces": "none",
+ "originalTriangles": 1774,
+ "binary": "punkduck_french_lingerie_bra.ps2.bin",
+ "byteLength": 123472,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3276
+  },
+  "uvs": {
+   "offset": 13104,
+   "dtype": "f32",
+   "count": 2480
+  },
+  "faceVerts": {
+   "offset": 23024,
+   "dtype": "u32",
+   "count": 7096
+  },
+  "faceUvs": {
+   "offset": 51408,
+   "dtype": "u32",
+   "count": 7096
+  },
+  "refVerts": {
+   "offset": 79792,
+   "dtype": "u32",
+   "count": 3276
+  },
+  "refWeights": {
+   "offset": 92896,
+   "dtype": "f32",
+   "count": 3276
+  },
+  "refOffsets": {
+   "offset": 106000,
+   "dtype": "f32",
+   "count": 3276
+  },
+  "sourceProxyVertex": {
+   "offset": 119104,
+   "dtype": "u32",
+   "count": 1092
+  }
+ }
+}

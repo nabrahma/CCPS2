@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_motorcycle_helmet",
+ "category": "clothes",
+ "name": "motorcyclehelmet",
+ "uuid": "",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 358,
+ "faceCount": 672,
+ "triangleFaces": 672,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/culturalibre_motorcycle_helmet.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "decimatedFrom": 22306,
+ "hiddenFaces": "computed",
+ "originalTriangles": 44608,
+ "binary": "culturalibre_motorcycle_helmet.ps2.bin",
+ "byteLength": 46456,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1074
+  },
+  "uvs": {
+   "offset": 4304,
+   "dtype": "f32",
+   "count": 494
+  },
+  "faceVerts": {
+   "offset": 6288,
+   "dtype": "u32",
+   "count": 2688
+  },
+  "faceUvs": {
+   "offset": 17040,
+   "dtype": "u32",
+   "count": 2688
+  },
+  "refVerts": {
+   "offset": 27792,
+   "dtype": "u32",
+   "count": 1074
+  },
+  "refWeights": {
+   "offset": 32096,
+   "dtype": "f32",
+   "count": 1074
+  },
+  "refOffsets": {
+   "offset": 36400,
+   "dtype": "f32",
+   "count": 1074
+  },
+  "coveredVerts": {
+   "offset": 40704,
+   "dtype": "u32",
+   "count": 1077
+  },
+  "sourceProxyVertex": {
+   "offset": 45024,
+   "dtype": "u32",
+   "count": 358
+  }
+ }
+}

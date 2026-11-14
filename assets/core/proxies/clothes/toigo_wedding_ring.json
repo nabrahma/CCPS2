@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_wedding_ring",
+ "category": "clothes",
+ "name": "WeddingRing",
+ "uuid": "f5d1b92c-17c4-48a4-ab36-14feebe1deb9",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 280,
+ "faceCount": 280,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/toigo_wedding_ring.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "toigo_wedding_ring.bin",
+ "byteLength": 25040,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 840
+  },
+  "uvs": {
+   "offset": 3360,
+   "dtype": "f32",
+   "count": 660
+  },
+  "faceVerts": {
+   "offset": 6000,
+   "dtype": "u32",
+   "count": 1120
+  },
+  "faceUvs": {
+   "offset": 10480,
+   "dtype": "u32",
+   "count": 1120
+  },
+  "refVerts": {
+   "offset": 14960,
+   "dtype": "u32",
+   "count": 840
+  },
+  "refWeights": {
+   "offset": 18320,
+   "dtype": "f32",
+   "count": 840
+  },
+  "refOffsets": {
+   "offset": 21680,
+   "dtype": "f32",
+   "count": 840
+  }
+ }
+}

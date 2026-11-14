@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/madmanny_tight_leather_boots",
+ "category": "clothes",
+ "name": "exy_leather_boots",
+ "uuid": "d1c57de2-16aa-4a60-9005-35ea3c580c12",
+ "tags": [],
+ "zDepth": 43,
+ "vertexCount": 588,
+ "faceCount": 900,
+ "triangleFaces": 900,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.3995,
+   0.3995,
+   0.3995
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/madmanny_tight_leather_boots.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "decimatedFrom": 928,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 1504,
+ "binary": "madmanny_tight_leather_boots.ps2.bin",
+ "byteLength": 75296,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1764
+  },
+  "uvs": {
+   "offset": 7056,
+   "dtype": "f32",
+   "count": 1258
+  },
+  "faceVerts": {
+   "offset": 12096,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "faceUvs": {
+   "offset": 26496,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "refVerts": {
+   "offset": 40896,
+   "dtype": "u32",
+   "count": 1764
+  },
+  "refWeights": {
+   "offset": 47952,
+   "dtype": "f32",
+   "count": 1764
+  },
+  "refOffsets": {
+   "offset": 55008,
+   "dtype": "f32",
+   "count": 1764
+  },
+  "deleteVerts": {
+   "offset": 62064,
+   "dtype": "u32",
+   "count": 2718
+  },
+  "sourceProxyVertex": {
+   "offset": 72944,
+   "dtype": "u32",
+   "count": 588
+  }
+ }
+}

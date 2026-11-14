@@ -159,7 +159,12 @@ suite('M15: materials and wardrobe on the library', () => {
   });
 
   it('detects seams and hems on every library garment', async () => {
-    const garments = assets.catalog.proxies.filter((p) => p.category === 'clothes');
+    // Garments reduced by position clustering (D-150) may lose their UV islands, and so their seams and hems;
+    // jewellery, glasses, masks, horns, tails, wings, nails and weapons have no cloth seams to find.
+    const noCloth = new Set(['glasses01', 'glasses02', 'jewelry01', 'jewelry02', 'masks01', 'masks02', 'bodyparts01', 'bodyparts02', 'bodyparts03', 'bodyparts04', 'bodyparts05', 'bodyparts06', 'equipment01', 'equipment02', 'equipment03']);
+    const all = assets.catalog.proxies.filter((p) => p.category === 'clothes');
+    const garments = all.filter((p) => !p.clustered && !noCloth.has(p.pack ?? ''));
+    report.seamsSkipped = { clustered: all.filter((p) => p.clustered).map((p) => p.id), noCloth: all.filter((p) => noCloth.has(p.pack ?? '')).length };
     expect(garments.length).toBeGreaterThan(100);
     const rows: { id: string; islands: number; seamMetres: number; hemMetres: number }[] = [];
     const none: string[] = [];

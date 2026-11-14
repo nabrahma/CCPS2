@@ -8,9 +8,9 @@
   "hats"
  ],
  "zDepth": 50,
- "vertexCount": 901,
- "faceCount": 1794,
- "triangleFaces": 1794,
+ "vertexCount": 302,
+ "faceCount": 606,
+ "triangleFaces": 606,
  "scale": [
   [
    5399,
@@ -48,47 +48,47 @@
  "hiddenFaces": "none",
  "originalTriangles": 7168,
  "binary": "grinsegold_uncle_joshis_hat.ps2.bin",
- "byteLength": 123700,
+ "byteLength": 37544,
  "buffers": {
   "restPositions": {
    "offset": 0,
    "dtype": "f32",
-   "count": 2703
+   "count": 906
   },
   "uvs": {
-   "offset": 10816,
+   "offset": 3632,
    "dtype": "f32",
-   "count": 4856
+   "count": 604
   },
   "faceVerts": {
-   "offset": 30240,
+   "offset": 6048,
    "dtype": "u32",
-   "count": 7176
+   "count": 2424
   },
   "faceUvs": {
-   "offset": 58944,
+   "offset": 15744,
    "dtype": "u32",
-   "count": 7176
+   "count": 2424
   },
   "refVerts": {
-   "offset": 87648,
+   "offset": 25440,
    "dtype": "u32",
-   "count": 2703
+   "count": 906
   },
   "refWeights": {
-   "offset": 98464,
+   "offset": 29072,
    "dtype": "f32",
-   "count": 2703
+   "count": 906
   },
   "refOffsets": {
-   "offset": 109280,
+   "offset": 32704,
    "dtype": "f32",
-   "count": 2703
+   "count": 906
   },
   "sourceProxyVertex": {
-   "offset": 120096,
+   "offset": 36336,
    "dtype": "u32",
-   "count": 901
+   "count": 302
   }
  }
 }

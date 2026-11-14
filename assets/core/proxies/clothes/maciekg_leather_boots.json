@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/maciekg_leather_boots",
+ "category": "clothes",
+ "name": "leather_boots",
+ "uuid": "6f5e5700-d230-4b94-8f9e-f7b9e1937040",
+ "tags": [
+  "boots"
+ ],
+ "zDepth": 50,
+ "vertexCount": 696,
+ "faceCount": 636,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5903333425521851,
+   0.4399999976158142,
+   0.33799999952316284
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/maciekg_leather_boots.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "binary": "maciekg_leather_boots.bin",
+ "byteLength": 69672,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2088
+  },
+  "uvs": {
+   "offset": 8352,
+   "dtype": "f32",
+   "count": 1732
+  },
+  "faceVerts": {
+   "offset": 15280,
+   "dtype": "u32",
+   "count": 2544
+  },
+  "faceUvs": {
+   "offset": 25456,
+   "dtype": "u32",
+   "count": 2544
+  },
+  "refVerts": {
+   "offset": 35632,
+   "dtype": "u32",
+   "count": 2088
+  },
+  "refWeights": {
+   "offset": 43984,
+   "dtype": "f32",
+   "count": 2088
+  },
+  "refOffsets": {
+   "offset": 52336,
+   "dtype": "f32",
+   "count": 2088
+  },
+  "deleteVerts": {
+   "offset": 60688,
+   "dtype": "u32",
+   "count": 2246
+  }
+ }
+}

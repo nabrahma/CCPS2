@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_brass_circlet_crown",
+ "category": "clothes",
+ "name": "brass_circlet_crown",
+ "uuid": "5588e303-ebc8-449e-b5fa-f44deabaa290",
+ "tags": [
+  "jewelry",
+  "female"
+ ],
+ "zDepth": 50,
+ "vertexCount": 2262,
+ "faceCount": 2346,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_brass_circlet_crown.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "punkduck_brass_circlet_crown.bin",
+ "byteLength": 210920,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 6786
+  },
+  "uvs": {
+   "offset": 27152,
+   "dtype": "f32",
+   "count": 6810
+  },
+  "faceVerts": {
+   "offset": 54400,
+   "dtype": "u32",
+   "count": 9384
+  },
+  "faceUvs": {
+   "offset": 91936,
+   "dtype": "u32",
+   "count": 9384
+  },
+  "refVerts": {
+   "offset": 129472,
+   "dtype": "u32",
+   "count": 6786
+  },
+  "refWeights": {
+   "offset": 156624,
+   "dtype": "f32",
+   "count": 6786
+  },
+  "refOffsets": {
+   "offset": 183776,
+   "dtype": "f32",
+   "count": 6786
+  }
+ }
+}

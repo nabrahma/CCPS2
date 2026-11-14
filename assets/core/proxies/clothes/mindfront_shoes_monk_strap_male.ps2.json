@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_shoes_monk_strap_male",
+ "category": "clothes",
+ "name": "Shoes_Monk_Strap_male",
+ "uuid": "195bee90-fd64-4473-8ec3-a243912bace4",
+ "tags": [
+  "shoes",
+  "male",
+  "elegant"
+ ],
+ "zDepth": 43,
+ "vertexCount": 607,
+ "faceCount": 1150,
+ "triangleFaces": 1150,
+ "scale": [
+  [
+   12839,
+   12860,
+   0.07045
+  ],
+  [
+   12828,
+   12888,
+   0.058750000000000004
+  ],
+  [
+   11609,
+   12442,
+   0.2539
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/mindfront_shoes_monk_strap_male.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "decimatedFrom": 6904,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 13332,
+ "binary": "mindfront_shoes_monk_strap_male.ps2.bin",
+ "byteLength": 82604,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1821
+  },
+  "uvs": {
+   "offset": 7296,
+   "dtype": "f32",
+   "count": 1260
+  },
+  "faceVerts": {
+   "offset": 12336,
+   "dtype": "u32",
+   "count": 4600
+  },
+  "faceUvs": {
+   "offset": 30736,
+   "dtype": "u32",
+   "count": 4600
+  },
+  "refVerts": {
+   "offset": 49136,
+   "dtype": "u32",
+   "count": 1821
+  },
+  "refWeights": {
+   "offset": 56432,
+   "dtype": "f32",
+   "count": 1821
+  },
+  "refOffsets": {
+   "offset": 63728,
+   "dtype": "f32",
+   "count": 1821
+  },
+  "deleteVerts": {
+   "offset": 71024,
+   "dtype": "u32",
+   "count": 2286
+  },
+  "sourceProxyVertex": {
+   "offset": 80176,
+   "dtype": "u32",
+   "count": 607
+  }
+ }
+}

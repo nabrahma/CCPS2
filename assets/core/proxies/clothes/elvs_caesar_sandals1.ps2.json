@@ -1,0 +1,103 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_caesar_sandals1",
+ "category": "clothes",
+ "name": "elvs_mh_cesaersandalf1",
+ "uuid": "03f16eb0-d534-4fc6-836c-d9354524e847",
+ "tags": [
+  "sandal",
+  "ladiesware",
+  "female",
+  "shoe",
+  "ceasar"
+ ],
+ "zDepth": 57,
+ "vertexCount": 300,
+ "faceCount": 811,
+ "triangleFaces": 811,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_caesar_sandals1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "decimatedFrom": 47344,
+ "hiddenFaces": "computed",
+ "originalTriangles": 91704,
+ "binary": "elvs_caesar_sandals1.ps2.bin",
+ "byteLength": 44832,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 900
+  },
+  "uvs": {
+   "offset": 3600,
+   "dtype": "f32",
+   "count": 558
+  },
+  "faceVerts": {
+   "offset": 5840,
+   "dtype": "u32",
+   "count": 3244
+  },
+  "faceUvs": {
+   "offset": 18816,
+   "dtype": "u32",
+   "count": 3244
+  },
+  "refVerts": {
+   "offset": 31792,
+   "dtype": "u32",
+   "count": 900
+  },
+  "refWeights": {
+   "offset": 35392,
+   "dtype": "f32",
+   "count": 900
+  },
+  "refOffsets": {
+   "offset": 38992,
+   "dtype": "f32",
+   "count": 900
+  },
+  "coveredVerts": {
+   "offset": 42592,
+   "dtype": "u32",
+   "count": 260
+  },
+  "sourceProxyVertex": {
+   "offset": 43632,
+   "dtype": "u32",
+   "count": 300
+  }
+ }
+}

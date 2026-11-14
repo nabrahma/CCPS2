@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/dressupdoc_maryjane1",
+ "category": "clothes",
+ "name": "DUDoc_maryjane1",
+ "uuid": "40ce4db2-87c6-46c3-a3b1-ad55fdd77cef",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 740,
+ "faceCount": 692,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 0.0,
+  "diffuseTexture": "textures/clothes/dressupdoc_maryjane1.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "binary": "dressupdoc_maryjane1.bin",
+ "byteLength": 64448,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2220
+  },
+  "uvs": {
+   "offset": 8880,
+   "dtype": "f32",
+   "count": 1696
+  },
+  "faceVerts": {
+   "offset": 15664,
+   "dtype": "u32",
+   "count": 2768
+  },
+  "faceUvs": {
+   "offset": 26736,
+   "dtype": "u32",
+   "count": 2768
+  },
+  "refVerts": {
+   "offset": 37808,
+   "dtype": "u32",
+   "count": 2220
+  },
+  "refWeights": {
+   "offset": 46688,
+   "dtype": "f32",
+   "count": 2220
+  },
+  "refOffsets": {
+   "offset": 55568,
+   "dtype": "f32",
+   "count": 2220
+  }
+ }
+}

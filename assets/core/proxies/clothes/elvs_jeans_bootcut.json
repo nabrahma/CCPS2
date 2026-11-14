@@ -1,0 +1,90 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_jeans_bootcut",
+ "category": "clothes",
+ "name": "mens_elv_jeans1f",
+ "uuid": "dc8f2b18-cfcc-4565-aec1-cecf0d1a1256",
+ "tags": [
+  "pant",
+  "menswear",
+  "fashion",
+  "traditional",
+  "jeans"
+ ],
+ "zDepth": 50,
+ "vertexCount": 3109,
+ "faceCount": 2854,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   11133,
+   11141,
+   0.14762999999999998
+  ],
+  [
+   11025,
+   11460,
+   0.74151
+  ],
+  [
+   11130,
+   11135,
+   0.15612
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_jeans_bootcut.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "binary": "elvs_jeans_bootcut.bin",
+ "byteLength": 272396,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 9327
+  },
+  "uvs": {
+   "offset": 37312,
+   "dtype": "f32",
+   "count": 7954
+  },
+  "faceVerts": {
+   "offset": 69136,
+   "dtype": "u32",
+   "count": 11416
+  },
+  "faceUvs": {
+   "offset": 114800,
+   "dtype": "u32",
+   "count": 11416
+  },
+  "refVerts": {
+   "offset": 160464,
+   "dtype": "u32",
+   "count": 9327
+  },
+  "refWeights": {
+   "offset": 197776,
+   "dtype": "f32",
+   "count": 9327
+  },
+  "refOffsets": {
+   "offset": 235088,
+   "dtype": "f32",
+   "count": 9327
+  }
+ }
+}

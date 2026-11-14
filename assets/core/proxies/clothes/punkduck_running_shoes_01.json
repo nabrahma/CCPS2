@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_running_shoes_01",
+ "category": "clothes",
+ "name": "RunningShoes",
+ "uuid": "e57655db-9408-43ed-a795-971c115219fe",
+ "tags": [
+  "shoes",
+  "sport"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1630,
+ "faceCount": 1396,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_running_shoes_01.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "binary": "punkduck_running_shoes_01.bin",
+ "byteLength": 146432,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4890
+  },
+  "uvs": {
+   "offset": 19568,
+   "dtype": "f32",
+   "count": 3840
+  },
+  "faceVerts": {
+   "offset": 34928,
+   "dtype": "u32",
+   "count": 5584
+  },
+  "faceUvs": {
+   "offset": 57264,
+   "dtype": "u32",
+   "count": 5584
+  },
+  "refVerts": {
+   "offset": 79600,
+   "dtype": "u32",
+   "count": 4890
+  },
+  "refWeights": {
+   "offset": 99168,
+   "dtype": "f32",
+   "count": 4890
+  },
+  "refOffsets": {
+   "offset": 118736,
+   "dtype": "f32",
+   "count": 4890
+  },
+  "deleteVerts": {
+   "offset": 138304,
+   "dtype": "u32",
+   "count": 2032
+  }
+ }
+}

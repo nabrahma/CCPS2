@@ -1,0 +1,98 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_scruffy_beard1",
+ "category": "clothes",
+ "name": "elvs_beard1_longscruffy3",
+ "uuid": "8eeb3ebc-71dd-45a5-8d03-129add4daa47",
+ "tags": [
+  "male",
+  "casual",
+  "leisure",
+  "contemporary",
+  "beard"
+ ],
+ "zDepth": 55,
+ "vertexCount": 322,
+ "faceCount": 500,
+ "triangleFaces": 500,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.31594000000000005
+  ],
+  [
+   1524,
+   4370,
+   0.57703
+  ],
+  [
+   1892,
+   3946,
+   0.19743
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_scruffy_beard1.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 468,
+ "hiddenFaces": "none",
+ "originalTriangles": 792,
+ "binary": "elvs_scruffy_beard1.ps2.bin",
+ "byteLength": 35432,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 966
+  },
+  "uvs": {
+   "offset": 3872,
+   "dtype": "f32",
+   "count": 662
+  },
+  "faceVerts": {
+   "offset": 6528,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "faceUvs": {
+   "offset": 14528,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "refVerts": {
+   "offset": 22528,
+   "dtype": "u32",
+   "count": 966
+  },
+  "refWeights": {
+   "offset": 26400,
+   "dtype": "f32",
+   "count": 966
+  },
+  "refOffsets": {
+   "offset": 30272,
+   "dtype": "f32",
+   "count": 966
+  },
+  "sourceProxyVertex": {
+   "offset": 34144,
+   "dtype": "u32",
+   "count": 322
+  }
+ }
+}

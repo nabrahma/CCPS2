@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/rehmanpolanski_viking_boots",
+ "category": "clothes",
+ "name": "BootsViking",
+ "uuid": "d6e867c7-05a4-47d0-8eaf-fa17cc70317f",
+ "tags": [
+  "boots",
+  "viking"
+ ],
+ "zDepth": 50,
+ "vertexCount": 3196,
+ "faceCount": 3160,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/rehmanpolanski_viking_boots.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "binary": "rehmanpolanski_viking_boots.bin",
+ "byteLength": 287392,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 9588
+  },
+  "uvs": {
+   "offset": 38352,
+   "dtype": "f32",
+   "count": 8216
+  },
+  "faceVerts": {
+   "offset": 71216,
+   "dtype": "u32",
+   "count": 12640
+  },
+  "faceUvs": {
+   "offset": 121776,
+   "dtype": "u32",
+   "count": 12640
+  },
+  "refVerts": {
+   "offset": 172336,
+   "dtype": "u32",
+   "count": 9588
+  },
+  "refWeights": {
+   "offset": 210688,
+   "dtype": "f32",
+   "count": 9588
+  },
+  "refOffsets": {
+   "offset": 249040,
+   "dtype": "f32",
+   "count": 9588
+  }
+ }
+}

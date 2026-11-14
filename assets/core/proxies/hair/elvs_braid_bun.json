@@ -1,0 +1,88 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/elvs_braid_bun",
+ "category": "hair",
+ "name": "elvs_braid_bun_q1",
+ "uuid": "908b1deb-5f06-4a45-a168-a992bd7c3a39",
+ "tags": [
+  "female",
+  "casual",
+  "contemporary",
+  "hair"
+ ],
+ "zDepth": 50,
+ "vertexCount": 10572,
+ "faceCount": 10508,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/elvs_braid_bun.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "elvs_braid_bun.bin",
+ "byteLength": 931952,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 31716
+  },
+  "uvs": {
+   "offset": 126864,
+   "dtype": "f32",
+   "count": 22058
+  },
+  "faceVerts": {
+   "offset": 215104,
+   "dtype": "u32",
+   "count": 42032
+  },
+  "faceUvs": {
+   "offset": 383232,
+   "dtype": "u32",
+   "count": 42032
+  },
+  "refVerts": {
+   "offset": 551360,
+   "dtype": "u32",
+   "count": 31716
+  },
+  "refWeights": {
+   "offset": 678224,
+   "dtype": "f32",
+   "count": 31716
+  },
+  "refOffsets": {
+   "offset": 805088,
+   "dtype": "f32",
+   "count": 31716
+  }
+ }
+}

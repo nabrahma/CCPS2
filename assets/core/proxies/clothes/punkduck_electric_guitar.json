@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_electric_guitar",
+ "category": "clothes",
+ "name": "ElectricGuitar",
+ "uuid": "abd6cdf1-812f-4170-974b-cdd873e0e6c0",
+ "tags": [
+  "carried",
+  "guitar"
+ ],
+ "zDepth": 100,
+ "vertexCount": 4621,
+ "faceCount": 3850,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_electric_guitar.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "punkduck_electric_guitar.bin",
+ "byteLength": 386444,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 13863
+  },
+  "uvs": {
+   "offset": 55456,
+   "dtype": "f32",
+   "count": 10354
+  },
+  "faceVerts": {
+   "offset": 96880,
+   "dtype": "u32",
+   "count": 15400
+  },
+  "faceUvs": {
+   "offset": 158480,
+   "dtype": "u32",
+   "count": 15400
+  },
+  "refVerts": {
+   "offset": 220080,
+   "dtype": "u32",
+   "count": 13863
+  },
+  "refWeights": {
+   "offset": 275536,
+   "dtype": "f32",
+   "count": 13863
+  },
+  "refOffsets": {
+   "offset": 330992,
+   "dtype": "f32",
+   "count": 13863
+  }
+ }
+}

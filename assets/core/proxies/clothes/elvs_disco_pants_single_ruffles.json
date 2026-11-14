@@ -1,0 +1,96 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_disco_pants_single_ruffles",
+ "category": "clothes",
+ "name": "elvs_discopant_sruffle1",
+ "uuid": "3113f5d5-e358-4de1-8f6e-541dfab990b6",
+ "tags": [
+  "female",
+  "casual",
+  "festive",
+  "vintage",
+  "pants",
+  "disco"
+ ],
+ "zDepth": 50,
+ "vertexCount": 5206,
+ "faceCount": 10290,
+ "triangleFaces": 10290,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_disco_pants_single_ruffles.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "elvs_disco_pants_single_ruffles.bin",
+ "byteLength": 667272,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 15618
+  },
+  "uvs": {
+   "offset": 62480,
+   "dtype": "f32",
+   "count": 20624
+  },
+  "faceVerts": {
+   "offset": 144976,
+   "dtype": "u32",
+   "count": 41160
+  },
+  "faceUvs": {
+   "offset": 309616,
+   "dtype": "u32",
+   "count": 41160
+  },
+  "refVerts": {
+   "offset": 474256,
+   "dtype": "u32",
+   "count": 15618
+  },
+  "refWeights": {
+   "offset": 536736,
+   "dtype": "f32",
+   "count": 15618
+  },
+  "refOffsets": {
+   "offset": 599216,
+   "dtype": "f32",
+   "count": 15618
+  },
+  "deleteVerts": {
+   "offset": 661696,
+   "dtype": "u32",
+   "count": 1394
+  }
+ }
+}

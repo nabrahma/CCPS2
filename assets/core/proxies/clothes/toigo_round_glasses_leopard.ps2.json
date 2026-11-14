@@ -1,0 +1,99 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/toigo_round_glasses_leopard",
+ "category": "clothes",
+ "name": "RoundGlasses_leopard",
+ "uuid": "7a778792-b9bf-4c56-998e-45d4998becc3",
+ "tags": [
+  "glasses"
+ ],
+ "zDepth": 69,
+ "vertexCount": 735,
+ "faceCount": 704,
+ "triangleFaces": 704,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 0,
+  "diffuseTexture": "textures/clothes/toigo_round_glasses_leopard.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 4008,
+ "hiddenFaces": "computed",
+ "originalTriangles": 4396,
+ "binary": "toigo_round_glasses_leopard.ps2.bin",
+ "byteLength": 64364,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2205
+  },
+  "uvs": {
+   "offset": 8832,
+   "dtype": "f32",
+   "count": 880
+  },
+  "faceVerts": {
+   "offset": 12352,
+   "dtype": "u32",
+   "count": 2816
+  },
+  "faceUvs": {
+   "offset": 23616,
+   "dtype": "u32",
+   "count": 2816
+  },
+  "refVerts": {
+   "offset": 34880,
+   "dtype": "u32",
+   "count": 2205
+  },
+  "refWeights": {
+   "offset": 43712,
+   "dtype": "f32",
+   "count": 2205
+  },
+  "refOffsets": {
+   "offset": 52544,
+   "dtype": "f32",
+   "count": 2205
+  },
+  "coveredVerts": {
+   "offset": 61376,
+   "dtype": "u32",
+   "count": 12
+  },
+  "sourceProxyVertex": {
+   "offset": 61424,
+   "dtype": "u32",
+   "count": 735
+  }
+ }
+}

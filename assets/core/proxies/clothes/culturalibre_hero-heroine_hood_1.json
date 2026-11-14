@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_hero-heroine_hood_1",
+ "category": "clothes",
+ "name": "hero-heroine_hood_1",
+ "uuid": "7ad6c5a9-4442-420d-8c1e-9074e62a3446",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1502,
+ "faceCount": 1502,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/culturalibre_hero-heroine_hood_1.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "culturalibre_hero-heroine_hood_1.bin",
+ "byteLength": 138764,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4506
+  },
+  "uvs": {
+   "offset": 18032,
+   "dtype": "f32",
+   "count": 3448
+  },
+  "faceVerts": {
+   "offset": 31824,
+   "dtype": "u32",
+   "count": 6008
+  },
+  "faceUvs": {
+   "offset": 55856,
+   "dtype": "u32",
+   "count": 6008
+  },
+  "refVerts": {
+   "offset": 79888,
+   "dtype": "u32",
+   "count": 4506
+  },
+  "refWeights": {
+   "offset": 97920,
+   "dtype": "f32",
+   "count": 4506
+  },
+  "refOffsets": {
+   "offset": 115952,
+   "dtype": "f32",
+   "count": 4506
+  },
+  "deleteVerts": {
+   "offset": 133984,
+   "dtype": "u32",
+   "count": 1195
+  }
+ }
+}

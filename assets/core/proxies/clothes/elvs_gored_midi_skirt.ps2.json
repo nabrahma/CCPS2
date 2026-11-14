@@ -1,0 +1,104 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_gored_midi_skirt",
+ "category": "clothes",
+ "name": "elvs_gored_midiskirt1",
+ "uuid": "1e8a3f5f-e0cf-4631-8dbd-761700a9d69a",
+ "tags": [
+  "female",
+  "formal",
+  "festive",
+  "contemporary",
+  "skirt",
+  "gored"
+ ],
+ "zDepth": 55,
+ "vertexCount": 854,
+ "faceCount": 1599,
+ "triangleFaces": 1599,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_gored_midi_skirt.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 5016,
+ "hiddenFaces": "computed",
+ "originalTriangles": 9837,
+ "binary": "elvs_gored_midi_skirt.ps2.bin",
+ "byteLength": 104904,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2562
+  },
+  "uvs": {
+   "offset": 10256,
+   "dtype": "f32",
+   "count": 2060
+  },
+  "faceVerts": {
+   "offset": 18496,
+   "dtype": "u32",
+   "count": 6396
+  },
+  "faceUvs": {
+   "offset": 44080,
+   "dtype": "u32",
+   "count": 6396
+  },
+  "refVerts": {
+   "offset": 69664,
+   "dtype": "u32",
+   "count": 2562
+  },
+  "refWeights": {
+   "offset": 79920,
+   "dtype": "f32",
+   "count": 2562
+  },
+  "refOffsets": {
+   "offset": 90176,
+   "dtype": "f32",
+   "count": 2562
+  },
+  "coveredVerts": {
+   "offset": 100432,
+   "dtype": "u32",
+   "count": 264
+  },
+  "sourceProxyVertex": {
+   "offset": 101488,
+   "dtype": "u32",
+   "count": 854
+  }
+ }
+}

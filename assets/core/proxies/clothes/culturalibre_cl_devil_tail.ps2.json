@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_cl_devil_tail",
+ "category": "clothes",
+ "name": "cl_devil_tail",
+ "uuid": "dba3d661-9797-49de-be05-0ccda03498ca",
+ "tags": [
+  "devil",
+  "tail"
+ ],
+ "zDepth": 70,
+ "vertexCount": 241,
+ "faceCount": 472,
+ "triangleFaces": 472,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/culturalibre_cl_devil_tail.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 241,
+ "hiddenFaces": "none",
+ "originalTriangles": 472,
+ "binary": "culturalibre_cl_devil_tail.ps2.bin",
+ "byteLength": 28580,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 723
+  },
+  "uvs": {
+   "offset": 2896,
+   "dtype": "f32",
+   "count": 232
+  },
+  "faceVerts": {
+   "offset": 3824,
+   "dtype": "u32",
+   "count": 1888
+  },
+  "faceUvs": {
+   "offset": 11376,
+   "dtype": "u32",
+   "count": 1888
+  },
+  "refVerts": {
+   "offset": 18928,
+   "dtype": "u32",
+   "count": 723
+  },
+  "refWeights": {
+   "offset": 21824,
+   "dtype": "f32",
+   "count": 723
+  },
+  "refOffsets": {
+   "offset": 24720,
+   "dtype": "f32",
+   "count": 723
+  },
+  "sourceProxyVertex": {
+   "offset": 27616,
+   "dtype": "u32",
+   "count": 241
+  }
+ }
+}

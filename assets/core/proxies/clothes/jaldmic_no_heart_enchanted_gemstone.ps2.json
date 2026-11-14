@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/jaldmic_no_heart_enchanted_gemstone",
+ "category": "clothes",
+ "name": "care_bears_no_heart_enchanted_gemstone",
+ "uuid": "86ef6476-6706-4ee3-a615-1e53995eff91",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 230,
+ "faceCount": 441,
+ "triangleFaces": 441,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.02928
+  ],
+  [
+   1524,
+   4370,
+   0.057240000000000006
+  ],
+  [
+   1892,
+   3946,
+   0.01833
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/jaldmic_no_heart_enchanted_gemstone.jpg",
+  "textureSize": [
+   1024,
+   512
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 2436,
+ "hiddenFaces": "none",
+ "originalTriangles": 4864,
+ "binary": "jaldmic_no_heart_enchanted_gemstone.ps2.bin",
+ "byteLength": 27944,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 690
+  },
+  "uvs": {
+   "offset": 2768,
+   "dtype": "f32",
+   "count": 460
+  },
+  "faceVerts": {
+   "offset": 4608,
+   "dtype": "u32",
+   "count": 1764
+  },
+  "faceUvs": {
+   "offset": 11664,
+   "dtype": "u32",
+   "count": 1764
+  },
+  "refVerts": {
+   "offset": 18720,
+   "dtype": "u32",
+   "count": 690
+  },
+  "refWeights": {
+   "offset": 21488,
+   "dtype": "f32",
+   "count": 690
+  },
+  "refOffsets": {
+   "offset": 24256,
+   "dtype": "f32",
+   "count": 690
+  },
+  "sourceProxyVertex": {
+   "offset": 27024,
+   "dtype": "u32",
+   "count": 230
+  }
+ }
+}

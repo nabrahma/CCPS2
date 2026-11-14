@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_sport_bra",
+ "category": "clothes",
+ "name": "sport-bra01",
+ "uuid": "4f32090b-ce79-4fe5-988a-48d21a464d7a",
+ "tags": [
+  "female",
+  "sport",
+  "underwear"
+ ],
+ "zDepth": 50,
+ "vertexCount": 982,
+ "faceCount": 1800,
+ "triangleFaces": 1800,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.803921568627,
+   0.803921568627,
+   0.803921568627
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_sport_bra.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 1000,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 1836,
+ "binary": "punkduck_sport_bra.ps2.bin",
+ "byteLength": 119624,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2946
+  },
+  "uvs": {
+   "offset": 11792,
+   "dtype": "f32",
+   "count": 2432
+  },
+  "faceVerts": {
+   "offset": 21520,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "faceUvs": {
+   "offset": 50320,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "refVerts": {
+   "offset": 79120,
+   "dtype": "u32",
+   "count": 2946
+  },
+  "refWeights": {
+   "offset": 90912,
+   "dtype": "f32",
+   "count": 2946
+  },
+  "refOffsets": {
+   "offset": 102704,
+   "dtype": "f32",
+   "count": 2946
+  },
+  "deleteVerts": {
+   "offset": 114496,
+   "dtype": "u32",
+   "count": 300
+  },
+  "sourceProxyVertex": {
+   "offset": 115696,
+   "dtype": "u32",
+   "count": 982
+  }
+ }
+}

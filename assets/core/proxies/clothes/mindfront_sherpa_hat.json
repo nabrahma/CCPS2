@@ -1,0 +1,86 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_sherpa_hat",
+ "category": "clothes",
+ "name": "Sherpa_Hat",
+ "uuid": "fb1a6e72-58d9-4ec1-8ced-d10ae958cff8",
+ "tags": [
+  "hats"
+ ],
+ "zDepth": 61,
+ "vertexCount": 1071,
+ "faceCount": 1016,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/mindfront_sherpa_hat.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "binary": "mindfront_sherpa_hat.bin",
+ "byteLength": 94308,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3213
+  },
+  "uvs": {
+   "offset": 12864,
+   "dtype": "f32",
+   "count": 2588
+  },
+  "faceVerts": {
+   "offset": 23216,
+   "dtype": "u32",
+   "count": 4064
+  },
+  "faceUvs": {
+   "offset": 39472,
+   "dtype": "u32",
+   "count": 4064
+  },
+  "refVerts": {
+   "offset": 55728,
+   "dtype": "u32",
+   "count": 3213
+  },
+  "refWeights": {
+   "offset": 68592,
+   "dtype": "f32",
+   "count": 3213
+  },
+  "refOffsets": {
+   "offset": 81456,
+   "dtype": "f32",
+   "count": 3213
+  }
+ }
+}

@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_evening_gown",
+ "category": "clothes",
+ "name": "EveningGown",
+ "uuid": "80d15d7d-4aef-495a-9ab0-4b5c08c777bf",
+ "tags": [
+  "female",
+  "gown"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1418,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_evening_gown.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 2743,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 5150,
+ "binary": "punkduck_evening_gown.ps2.bin",
+ "byteLength": 163656,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4254
+  },
+  "uvs": {
+   "offset": 17024,
+   "dtype": "f32",
+   "count": 1622
+  },
+  "faceVerts": {
+   "offset": 23520,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 63520,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 103520,
+   "dtype": "u32",
+   "count": 4254
+  },
+  "refWeights": {
+   "offset": 120544,
+   "dtype": "f32",
+   "count": 4254
+  },
+  "refOffsets": {
+   "offset": 137568,
+   "dtype": "f32",
+   "count": 4254
+  },
+  "deleteVerts": {
+   "offset": 154592,
+   "dtype": "u32",
+   "count": 845
+  },
+  "sourceProxyVertex": {
+   "offset": 157984,
+   "dtype": "u32",
+   "count": 1418
+  }
+ }
+}

@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_unicorn_horn_1",
+ "category": "clothes",
+ "name": "elvs_unicorn_horn3",
+ "uuid": "956bf276-bc5a-471c-abee-e5fad559b1cd",
+ "tags": [
+  "unisex",
+  "fantasy",
+  "play",
+  "contemporary",
+  "hat",
+  "unicorn"
+ ],
+ "zDepth": 50,
+ "vertexCount": 2450,
+ "faceCount": 2436,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_unicorn_horn_1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_unicorn_horn_1.bin",
+ "byteLength": 219208,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 7350
+  },
+  "uvs": {
+   "offset": 29408,
+   "dtype": "f32",
+   "count": 5906
+  },
+  "faceVerts": {
+   "offset": 53040,
+   "dtype": "u32",
+   "count": 9744
+  },
+  "faceUvs": {
+   "offset": 92016,
+   "dtype": "u32",
+   "count": 9744
+  },
+  "refVerts": {
+   "offset": 130992,
+   "dtype": "u32",
+   "count": 7350
+  },
+  "refWeights": {
+   "offset": 160400,
+   "dtype": "f32",
+   "count": 7350
+  },
+  "refOffsets": {
+   "offset": 189808,
+   "dtype": "f32",
+   "count": 7350
+  }
+ }
+}

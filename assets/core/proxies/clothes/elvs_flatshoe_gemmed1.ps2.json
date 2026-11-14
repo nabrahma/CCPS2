@@ -1,0 +1,103 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_flatshoe_gemmed1",
+ "category": "clothes",
+ "name": "elvs_basic_flatshoe3c",
+ "uuid": "df5c72b7-76d9-43ea-9828-1de91cec25f4",
+ "tags": [
+  "shoe",
+  "flats",
+  "ladies ware",
+  "dress shoe",
+  "no sock"
+ ],
+ "zDepth": 57,
+ "vertexCount": 225,
+ "faceCount": 769,
+ "triangleFaces": 769,
+ "scale": [
+  [
+   12839,
+   12860,
+   0.06145000000000003
+  ],
+  [
+   12828,
+   12888,
+   0.051449999999999996
+  ],
+  [
+   11609,
+   12442,
+   0.20750000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_flatshoe_gemmed1.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "decimatedFrom": 9830,
+ "hiddenFaces": "computed",
+ "originalTriangles": 18580,
+ "binary": "elvs_flatshoe_gemmed1.ps2.bin",
+ "byteLength": 40628,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 675
+  },
+  "uvs": {
+   "offset": 2704,
+   "dtype": "f32",
+   "count": 412
+  },
+  "faceVerts": {
+   "offset": 4352,
+   "dtype": "u32",
+   "count": 3076
+  },
+  "faceUvs": {
+   "offset": 16656,
+   "dtype": "u32",
+   "count": 3076
+  },
+  "refVerts": {
+   "offset": 28960,
+   "dtype": "u32",
+   "count": 675
+  },
+  "refWeights": {
+   "offset": 31664,
+   "dtype": "f32",
+   "count": 675
+  },
+  "refOffsets": {
+   "offset": 34368,
+   "dtype": "f32",
+   "count": 675
+  },
+  "coveredVerts": {
+   "offset": 37072,
+   "dtype": "u32",
+   "count": 664
+  },
+  "sourceProxyVertex": {
+   "offset": 39728,
+   "dtype": "u32",
+   "count": 225
+  }
+ }
+}

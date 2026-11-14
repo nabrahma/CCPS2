@@ -1,0 +1,88 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_riding_helmet",
+ "category": "clothes",
+ "name": "riding_helmet",
+ "uuid": "c4585426-aa52-4a3c-b6ed-ed103115bb60",
+ "tags": [
+  "riding",
+  "female",
+  "helmet"
+ ],
+ "zDepth": 50,
+ "vertexCount": 2714,
+ "faceCount": 2678,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_riding_helmet.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "binary": "punkduck_riding_helmet.bin",
+ "byteLength": 243352,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 8142
+  },
+  "uvs": {
+   "offset": 32576,
+   "dtype": "f32",
+   "count": 6840
+  },
+  "faceVerts": {
+   "offset": 59936,
+   "dtype": "u32",
+   "count": 10712
+  },
+  "faceUvs": {
+   "offset": 102784,
+   "dtype": "u32",
+   "count": 10712
+  },
+  "refVerts": {
+   "offset": 145632,
+   "dtype": "u32",
+   "count": 8142
+  },
+  "refWeights": {
+   "offset": 178208,
+   "dtype": "f32",
+   "count": 8142
+  },
+  "refOffsets": {
+   "offset": 210784,
+   "dtype": "f32",
+   "count": 8142
+  }
+ }
+}

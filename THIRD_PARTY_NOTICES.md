@@ -22,7 +22,9 @@ Unmodified MakeHuman code is run at development time to generate test fixtures (
 
 ## Character assets
 
-Most files in `assets/core` come from MakeHuman's asset packs: CC0-1.0, with a few under CC-BY-4.0. [assets/core/LICENSES.json](assets/core/LICENSES.json) lists the source, licence and attribution of every file.
+Most files in `assets/core` come from MakeHuman's [asset packs](https://static.makehumancommunity.org/assets/assetpacks/index.html), under CC0-1.0 or CC-BY-4.0. [assets/core/LICENSES.json](assets/core/LICENSES.json) lists the source, licence and attribution of every file, and Help → Credits in the app shows the same list.
+
+The CC-BY-4.0 hair, garments and accessories are by Elvaerwyn, punkduck, Mindfront, culturalibre, JALdMIC, MaciekG, grinsegold, DressUpDoc, DredNicolson, callharvey3d, MTKnife, Joel Palmius, janexx, madmanny, Mathias_Gredal, scailman, scsouza, sonicteam998, TioMegamanX, WojackOWL and EWS, shared through the MakeHuman community asset repository ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). PS2CC converted them to its proxy format, reduced their textures and decimated their meshes to PS2 budgets; the decimated files are marked "decimated by PS2CC" in LICENSES.json.
 
 The material library, `assets/core/materials/`, is made from CC0 materials from [Poly Haven](https://polyhaven.com) (Rob Tuytel; colormass and Rico Cilliers) and [ambientCG](https://ambientcg.com) (Lennart Demes). PS2CC converted them to era diffuses and resized their maps; each file's source page is in LICENSES.json. CC0 asks for no credit; it is given anyway.
 

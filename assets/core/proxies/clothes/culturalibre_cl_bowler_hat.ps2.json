@@ -1,0 +1,99 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_cl_bowler_hat",
+ "category": "clothes",
+ "name": "cl_bowler_hat",
+ "uuid": "f6064f3e-0594-408f-8401-20af56624cc0",
+ "tags": [
+  "hat"
+ ],
+ "zDepth": 50,
+ "vertexCount": 352,
+ "faceCount": 700,
+ "triangleFaces": 700,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/culturalibre_cl_bowler_hat.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "decimatedFrom": 1186,
+ "hiddenFaces": "computed",
+ "originalTriangles": 2368,
+ "binary": "culturalibre_cl_bowler_hat.ps2.bin",
+ "byteLength": 47088,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1056
+  },
+  "uvs": {
+   "offset": 4224,
+   "dtype": "f32",
+   "count": 1360
+  },
+  "faceVerts": {
+   "offset": 9664,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "faceUvs": {
+   "offset": 20864,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "refVerts": {
+   "offset": 32064,
+   "dtype": "u32",
+   "count": 1056
+  },
+  "refWeights": {
+   "offset": 36288,
+   "dtype": "f32",
+   "count": 1056
+  },
+  "refOffsets": {
+   "offset": 40512,
+   "dtype": "f32",
+   "count": 1056
+  },
+  "coveredVerts": {
+   "offset": 44736,
+   "dtype": "u32",
+   "count": 233
+  },
+  "sourceProxyVertex": {
+   "offset": 45680,
+   "dtype": "u32",
+   "count": 352
+  }
+ }
+}

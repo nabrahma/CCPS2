@@ -1,0 +1,90 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_bow_front_bra",
+ "category": "clothes",
+ "name": "mhbow_braelv1",
+ "uuid": "73e0ee44-f6bc-4a9c-ac58-3ae93f6bae08",
+ "tags": [
+  "bra",
+  "fashion",
+  "bow",
+  "ladies",
+  "lingerie"
+ ],
+ "zDepth": 47,
+ "vertexCount": 5339,
+ "faceCount": 9116,
+ "triangleFaces": 9116,
+ "scale": [
+  [
+   10589,
+   3924,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.5779299999999999
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.3816,
+   0.03912,
+   0.08334
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_bow_front_bra.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "elvs_bow_front_bra.bin",
+ "byteLength": 617012,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 16017
+  },
+  "uvs": {
+   "offset": 64080,
+   "dtype": "f32",
+   "count": 17246
+  },
+  "faceVerts": {
+   "offset": 133072,
+   "dtype": "u32",
+   "count": 36464
+  },
+  "faceUvs": {
+   "offset": 278928,
+   "dtype": "u32",
+   "count": 36464
+  },
+  "refVerts": {
+   "offset": 424784,
+   "dtype": "u32",
+   "count": 16017
+  },
+  "refWeights": {
+   "offset": 488864,
+   "dtype": "f32",
+   "count": 16017
+  },
+  "refOffsets": {
+   "offset": 552944,
+   "dtype": "f32",
+   "count": 16017
+  }
+ }
+}

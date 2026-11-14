@@ -6,9 +6,9 @@
  "uuid": "abba331b-2a0b-4c22-ae4c-267b181c9f63",
  "tags": [],
  "zDepth": 50,
- "vertexCount": 291,
- "faceCount": 500,
- "triangleFaces": 500,
+ "vertexCount": 941,
+ "faceCount": 1800,
+ "triangleFaces": 1800,
  "scale": [
   [
    5399,
@@ -41,57 +41,57 @@
    1024
   ]
  },
- "slot": "accessory",
+ "slot": "top",
  "decimatedFrom": 1371,
  "hiddenFaces": "makehuman",
  "originalTriangles": 2660,
  "binary": "wdg_mycenaean_tunic.ps2.bin",
- "byteLength": 43324,
+ "byteLength": 124276,
  "buffers": {
   "restPositions": {
    "offset": 0,
    "dtype": "f32",
-   "count": 873
+   "count": 2823
   },
   "uvs": {
-   "offset": 3504,
+   "offset": 11296,
    "dtype": "f32",
-   "count": 636
+   "count": 2032
   },
   "faceVerts": {
-   "offset": 6048,
+   "offset": 19424,
    "dtype": "u32",
-   "count": 2000
+   "count": 7200
   },
   "faceUvs": {
-   "offset": 14048,
+   "offset": 48224,
    "dtype": "u32",
-   "count": 2000
+   "count": 7200
   },
   "refVerts": {
-   "offset": 22048,
+   "offset": 77024,
    "dtype": "u32",
-   "count": 873
+   "count": 2823
   },
   "refWeights": {
-   "offset": 25552,
+   "offset": 88320,
    "dtype": "f32",
-   "count": 873
+   "count": 2823
   },
   "refOffsets": {
-   "offset": 29056,
+   "offset": 99616,
    "dtype": "f32",
-   "count": 873
+   "count": 2823
   },
   "deleteVerts": {
-   "offset": 32560,
+   "offset": 110912,
    "dtype": "u32",
    "count": 2399
   },
   "sourceProxyVertex": {
-   "offset": 42160,
+   "offset": 120512,
    "dtype": "u32",
-   "count": 291
+   "count": 941
   }
  }
 }

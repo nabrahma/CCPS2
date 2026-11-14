@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/drednicolson_asymmetric_tunic_and_sash",
+ "category": "clothes",
+ "name": "Asymmetric_Tunic_and_Sash",
+ "uuid": "97826d32-b48d-4d12-b2f1-44dde5117331",
+ "tags": [
+  "asymmetric",
+  "female"
+ ],
+ "zDepth": 52,
+ "vertexCount": 2223,
+ "faceCount": 2128,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/drednicolson_asymmetric_tunic_and_sash.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "drednicolson_asymmetric_tunic_and_sash.bin",
+ "byteLength": 198144,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 6669
+  },
+  "uvs": {
+   "offset": 26688,
+   "dtype": "f32",
+   "count": 4932
+  },
+  "faceVerts": {
+   "offset": 46416,
+   "dtype": "u32",
+   "count": 8512
+  },
+  "faceUvs": {
+   "offset": 80464,
+   "dtype": "u32",
+   "count": 8512
+  },
+  "refVerts": {
+   "offset": 114512,
+   "dtype": "u32",
+   "count": 6669
+  },
+  "refWeights": {
+   "offset": 141200,
+   "dtype": "f32",
+   "count": 6669
+  },
+  "refOffsets": {
+   "offset": 167888,
+   "dtype": "f32",
+   "count": 6669
+  },
+  "deleteVerts": {
+   "offset": 194576,
+   "dtype": "u32",
+   "count": 892
+  }
+ }
+}

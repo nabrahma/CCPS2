@@ -6,9 +6,9 @@
  "uuid": "c9fd381c-d10b-4c53-ba98-8c9cb88cb700",
  "tags": [],
  "zDepth": 50,
- "vertexCount": 719,
- "faceCount": 1362,
- "triangleFaces": 1362,
+ "vertexCount": 416,
+ "faceCount": 838,
+ "triangleFaces": 838,
  "scale": [
   [
    5399,
@@ -46,52 +46,52 @@
  "hiddenFaces": "makehuman",
  "originalTriangles": 14864,
  "binary": "toigo_ballet_flats_with_bows.ps2.bin",
- "byteLength": 94220,
+ "byteLength": 57952,
  "buffers": {
   "restPositions": {
    "offset": 0,
    "dtype": "f32",
-   "count": 2157
+   "count": 1248
   },
   "uvs": {
-   "offset": 8640,
+   "offset": 4992,
    "dtype": "f32",
-   "count": 1378
+   "count": 456
   },
   "faceVerts": {
-   "offset": 14160,
+   "offset": 6816,
    "dtype": "u32",
-   "count": 5448
+   "count": 3352
   },
   "faceUvs": {
-   "offset": 35952,
+   "offset": 20224,
    "dtype": "u32",
-   "count": 5448
+   "count": 3352
   },
   "refVerts": {
-   "offset": 57744,
+   "offset": 33632,
    "dtype": "u32",
-   "count": 2157
+   "count": 1248
   },
   "refWeights": {
-   "offset": 66384,
+   "offset": 38624,
    "dtype": "f32",
-   "count": 2157
+   "count": 1248
   },
   "refOffsets": {
-   "offset": 75024,
+   "offset": 43616,
    "dtype": "f32",
-   "count": 2157
+   "count": 1248
   },
   "deleteVerts": {
-   "offset": 83664,
+   "offset": 48608,
    "dtype": "u32",
    "count": 1919
   },
   "sourceProxyVertex": {
-   "offset": 91344,
+   "offset": 56288,
    "dtype": "u32",
-   "count": 719
+   "count": 416
   }
  }
 }

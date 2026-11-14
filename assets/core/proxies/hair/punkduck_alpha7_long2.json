@@ -1,0 +1,83 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/punkduck_alpha7_long2",
+ "category": "hair",
+ "name": "long2_alpha7",
+ "uuid": "8fbefaec-564e-4dfa-8c34-6f64da188c58",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1988,
+ "faceCount": 1798,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.529411764706,
+   0.333333333333,
+   0.243137254902
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/punkduck_alpha7_long2.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "punkduck_alpha7_long2.bin",
+ "byteLength": 173648,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 5964
+  },
+  "uvs": {
+   "offset": 23856,
+   "dtype": "f32",
+   "count": 5172
+  },
+  "faceVerts": {
+   "offset": 44544,
+   "dtype": "u32",
+   "count": 7192
+  },
+  "faceUvs": {
+   "offset": 73312,
+   "dtype": "u32",
+   "count": 7192
+  },
+  "refVerts": {
+   "offset": 102080,
+   "dtype": "u32",
+   "count": 5964
+  },
+  "refWeights": {
+   "offset": 125936,
+   "dtype": "f32",
+   "count": 5964
+  },
+  "refOffsets": {
+   "offset": 149792,
+   "dtype": "f32",
+   "count": 5964
+  }
+ }
+}

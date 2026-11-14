@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_pencil_skirt",
+ "category": "clothes",
+ "name": "elvs_disco_pencilskirt1",
+ "uuid": "52c82a27-eb13-4ac4-b7d5-6b465e9e8785",
+ "tags": [
+  "female",
+  "formal",
+  "festive",
+  "vintage",
+  "skirt",
+  "disco"
+ ],
+ "zDepth": 50,
+ "vertexCount": 2329,
+ "faceCount": 4552,
+ "triangleFaces": 4552,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_pencil_skirt.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "elvs_pencil_skirt.bin",
+ "byteLength": 294556,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 6987
+  },
+  "uvs": {
+   "offset": 27952,
+   "dtype": "f32",
+   "count": 9272
+  },
+  "faceVerts": {
+   "offset": 65040,
+   "dtype": "u32",
+   "count": 18208
+  },
+  "faceUvs": {
+   "offset": 137872,
+   "dtype": "u32",
+   "count": 18208
+  },
+  "refVerts": {
+   "offset": 210704,
+   "dtype": "u32",
+   "count": 6987
+  },
+  "refWeights": {
+   "offset": 238656,
+   "dtype": "f32",
+   "count": 6987
+  },
+  "refOffsets": {
+   "offset": 266608,
+   "dtype": "f32",
+   "count": 6987
+  }
+ }
+}

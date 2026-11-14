@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_emt_uniform_pants_female",
+ "category": "clothes",
+ "name": "rescueteam-pants-female",
+ "uuid": "dce407f6-13c9-49bd-ba23-251298f8ef46",
+ "tags": [
+  "female",
+  "pants",
+  "uniform"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1513,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_emt_uniform_pants_female.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 4117,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 7708,
+ "binary": "elvs_emt_uniform_pants_female.ps2.bin",
+ "byteLength": 177060,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4539
+  },
+  "uvs": {
+   "offset": 18160,
+   "dtype": "f32",
+   "count": 3324
+  },
+  "faceVerts": {
+   "offset": 31456,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 71456,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 111456,
+   "dtype": "u32",
+   "count": 4539
+  },
+  "refWeights": {
+   "offset": 129616,
+   "dtype": "f32",
+   "count": 4539
+  },
+  "refOffsets": {
+   "offset": 147776,
+   "dtype": "f32",
+   "count": 4539
+  },
+  "deleteVerts": {
+   "offset": 165936,
+   "dtype": "u32",
+   "count": 1268
+  },
+  "sourceProxyVertex": {
+   "offset": 171008,
+   "dtype": "u32",
+   "count": 1513
+  }
+ }
+}

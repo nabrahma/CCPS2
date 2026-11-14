@@ -1,0 +1,94 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_glasses_modern_form",
+ "category": "clothes",
+ "name": "glasses",
+ "uuid": "ea2671ff-2998-4863-b0f1-e87b870cf58e",
+ "tags": [
+  "glasses"
+ ],
+ "zDepth": 50,
+ "vertexCount": 277,
+ "faceCount": 534,
+ "triangleFaces": 534,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0,
+   0,
+   0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_glasses_modern_form.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 2300,
+ "hiddenFaces": "none",
+ "originalTriangles": 4520,
+ "binary": "punkduck_glasses_modern_form.ps2.bin",
+ "byteLength": 34340,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 831
+  },
+  "uvs": {
+   "offset": 3328,
+   "dtype": "f32",
+   "count": 706
+  },
+  "faceVerts": {
+   "offset": 6160,
+   "dtype": "u32",
+   "count": 2136
+  },
+  "faceUvs": {
+   "offset": 14704,
+   "dtype": "u32",
+   "count": 2136
+  },
+  "refVerts": {
+   "offset": 23248,
+   "dtype": "u32",
+   "count": 831
+  },
+  "refWeights": {
+   "offset": 26576,
+   "dtype": "f32",
+   "count": 831
+  },
+  "refOffsets": {
+   "offset": 29904,
+   "dtype": "f32",
+   "count": 831
+  },
+  "sourceProxyVertex": {
+   "offset": 33232,
+   "dtype": "u32",
+   "count": 277
+  }
+ }
+}

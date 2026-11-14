@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/callharvey3d_harvey_pskirt01",
+ "category": "clothes",
+ "name": "Harvey_PSkirt01",
+ "uuid": "ea165e1d-4000-43fb-b3b0-90f368382900",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 468,
+ "faceCount": 864,
+ "triangleFaces": 864,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/callharvey3d_harvey_pskirt01.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 468,
+ "hiddenFaces": "computed",
+ "originalTriangles": 864,
+ "binary": "callharvey3d_harvey_pskirt01.ps2.bin",
+ "byteLength": 56352,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1404
+  },
+  "uvs": {
+   "offset": 5616,
+   "dtype": "f32",
+   "count": 888
+  },
+  "faceVerts": {
+   "offset": 9168,
+   "dtype": "u32",
+   "count": 3456
+  },
+  "faceUvs": {
+   "offset": 22992,
+   "dtype": "u32",
+   "count": 3456
+  },
+  "refVerts": {
+   "offset": 36816,
+   "dtype": "u32",
+   "count": 1404
+  },
+  "refWeights": {
+   "offset": 42432,
+   "dtype": "f32",
+   "count": 1404
+  },
+  "refOffsets": {
+   "offset": 48048,
+   "dtype": "f32",
+   "count": 1404
+  },
+  "coveredVerts": {
+   "offset": 53664,
+   "dtype": "u32",
+   "count": 204
+  },
+  "sourceProxyVertex": {
+   "offset": 54480,
+   "dtype": "u32",
+   "count": 468
+  }
+ }
+}

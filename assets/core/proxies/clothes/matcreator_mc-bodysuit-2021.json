@@ -1,0 +1,96 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/matcreator_mc-bodysuit-2021",
+ "category": "clothes",
+ "name": "MC-BodySuit-2021",
+ "uuid": "7906c5b3-f389-44bb-ae62-1df0e0bc99cd",
+ "tags": [
+  "male",
+  "casual",
+  "leisure",
+  "traditional",
+  "pants",
+  "bodysuit"
+ ],
+ "zDepth": 50,
+ "vertexCount": 27871,
+ "faceCount": 27676,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.029970000000000004
+  ],
+  [
+   1524,
+   4370,
+   0.05706
+  ],
+  [
+   1892,
+   3946,
+   0.018310000000000003
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/matcreator_mc-bodysuit-2021.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "matcreator_mc-bodysuit-2021.bin",
+ "byteLength": 2505048,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 83613
+  },
+  "uvs": {
+   "offset": 334464,
+   "dtype": "f32",
+   "count": 64552
+  },
+  "faceVerts": {
+   "offset": 592672,
+   "dtype": "u32",
+   "count": 110704
+  },
+  "faceUvs": {
+   "offset": 1035488,
+   "dtype": "u32",
+   "count": 110704
+  },
+  "refVerts": {
+   "offset": 1478304,
+   "dtype": "u32",
+   "count": 83613
+  },
+  "refWeights": {
+   "offset": 1812768,
+   "dtype": "f32",
+   "count": 83613
+  },
+  "refOffsets": {
+   "offset": 2147232,
+   "dtype": "f32",
+   "count": 83613
+  },
+  "deleteVerts": {
+   "offset": 2481696,
+   "dtype": "u32",
+   "count": 5838
+  }
+ }
+}

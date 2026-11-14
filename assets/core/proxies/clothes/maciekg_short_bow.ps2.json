@@ -1,0 +1,99 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/maciekg_short_bow",
+ "category": "clothes",
+ "name": "bow",
+ "uuid": "83c33053-501d-4223-b400-89d1f7c2e5ef",
+ "tags": [
+  "weapon"
+ ],
+ "zDepth": 50,
+ "vertexCount": 262,
+ "faceCount": 500,
+ "triangleFaces": 500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/maciekg_short_bow.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 620,
+ "hiddenFaces": "computed",
+ "originalTriangles": 1216,
+ "binary": "maciekg_short_bow.ps2.bin",
+ "byteLength": 33048,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 786
+  },
+  "uvs": {
+   "offset": 3152,
+   "dtype": "f32",
+   "count": 836
+  },
+  "faceVerts": {
+   "offset": 6496,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "faceUvs": {
+   "offset": 14496,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "refVerts": {
+   "offset": 22496,
+   "dtype": "u32",
+   "count": 786
+  },
+  "refWeights": {
+   "offset": 25648,
+   "dtype": "f32",
+   "count": 786
+  },
+  "refOffsets": {
+   "offset": 28800,
+   "dtype": "f32",
+   "count": 786
+  },
+  "coveredVerts": {
+   "offset": 31952,
+   "dtype": "u32",
+   "count": 10
+  },
+  "sourceProxyVertex": {
+   "offset": 32000,
+   "dtype": "u32",
+   "count": 262
+  }
+ }
+}

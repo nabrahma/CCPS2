@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_hand_claws",
+ "category": "clothes",
+ "name": "hand_claws",
+ "uuid": "80e18424-6387-4ad1-b122-827fb454f037",
+ "tags": [
+  "superhero",
+  "weapon"
+ ],
+ "zDepth": 50,
+ "vertexCount": 7157,
+ "faceCount": 14123,
+ "triangleFaces": 14123,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/culturalibre_hand_claws.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "culturalibre_hand_claws.bin",
+ "byteLength": 946188,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 21471
+  },
+  "uvs": {
+   "offset": 85888,
+   "dtype": "f32",
+   "count": 37674
+  },
+  "faceVerts": {
+   "offset": 236592,
+   "dtype": "u32",
+   "count": 56492
+  },
+  "faceUvs": {
+   "offset": 462560,
+   "dtype": "u32",
+   "count": 56492
+  },
+  "refVerts": {
+   "offset": 688528,
+   "dtype": "u32",
+   "count": 21471
+  },
+  "refWeights": {
+   "offset": 774416,
+   "dtype": "f32",
+   "count": 21471
+  },
+  "refOffsets": {
+   "offset": 860304,
+   "dtype": "f32",
+   "count": 21471
+  }
+ }
+}

@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_hero_kalistick",
+ "category": "clothes",
+ "name": "hero_kalistick",
+ "uuid": "bfe65f50-ceaa-4161-8386-8fea63a7042e",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 162,
+ "faceCount": 320,
+ "triangleFaces": 320,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/culturalibre_hero_kalistick.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 162,
+ "hiddenFaces": "computed",
+ "originalTriangles": 320,
+ "binary": "culturalibre_hero_kalistick.ps2.bin",
+ "byteLength": 18760,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 486
+  },
+  "uvs": {
+   "offset": 1952,
+   "dtype": "f32",
+   "count": 8
+  },
+  "faceVerts": {
+   "offset": 1984,
+   "dtype": "u32",
+   "count": 1280
+  },
+  "faceUvs": {
+   "offset": 7104,
+   "dtype": "u32",
+   "count": 1280
+  },
+  "refVerts": {
+   "offset": 12224,
+   "dtype": "u32",
+   "count": 486
+  },
+  "refWeights": {
+   "offset": 14176,
+   "dtype": "f32",
+   "count": 486
+  },
+  "refOffsets": {
+   "offset": 16128,
+   "dtype": "f32",
+   "count": 486
+  },
+  "coveredVerts": {
+   "offset": 18080,
+   "dtype": "u32",
+   "count": 5
+  },
+  "sourceProxyVertex": {
+   "offset": 18112,
+   "dtype": "u32",
+   "count": 162
+  }
+ }
+}

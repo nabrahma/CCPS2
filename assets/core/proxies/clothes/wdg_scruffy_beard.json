@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/wdg_scruffy_beard",
+ "category": "clothes",
+ "name": "Scruffy_Beard",
+ "uuid": "da615c94-627d-4669-bff0-80db829e556d",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 2300,
+ "faceCount": 1380,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/wdg_scruffy_beard.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "wdg_scruffy_beard.bin",
+ "byteLength": 172960,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 6900
+  },
+  "uvs": {
+   "offset": 27600,
+   "dtype": "f32",
+   "count": 4600
+  },
+  "faceVerts": {
+   "offset": 46000,
+   "dtype": "u32",
+   "count": 5520
+  },
+  "faceUvs": {
+   "offset": 68080,
+   "dtype": "u32",
+   "count": 5520
+  },
+  "refVerts": {
+   "offset": 90160,
+   "dtype": "u32",
+   "count": 6900
+  },
+  "refWeights": {
+   "offset": 117760,
+   "dtype": "f32",
+   "count": 6900
+  },
+  "refOffsets": {
+   "offset": 145360,
+   "dtype": "f32",
+   "count": 6900
+  }
+ }
+}

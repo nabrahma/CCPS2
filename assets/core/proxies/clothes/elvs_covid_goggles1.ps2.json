@@ -1,0 +1,99 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_covid_goggles1",
+ "category": "clothes",
+ "name": "elvs_covid_goggles_uni1",
+ "uuid": "77b63425-a49e-46c2-b487-672e073d3261",
+ "tags": [
+  "unisex",
+  "casual",
+  "profession",
+  "contemporary",
+  "extension",
+  "glasses"
+ ],
+ "zDepth": 60,
+ "vertexCount": 260,
+ "faceCount": 500,
+ "triangleFaces": 500,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_covid_goggles1.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 1450,
+ "hiddenFaces": "none",
+ "originalTriangles": 2880,
+ "binary": "elvs_covid_goggles1.ps2.bin",
+ "byteLength": 32416,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 780
+  },
+  "uvs": {
+   "offset": 3120,
+   "dtype": "f32",
+   "count": 724
+  },
+  "faceVerts": {
+   "offset": 6016,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "faceUvs": {
+   "offset": 14016,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "refVerts": {
+   "offset": 22016,
+   "dtype": "u32",
+   "count": 780
+  },
+  "refWeights": {
+   "offset": 25136,
+   "dtype": "f32",
+   "count": 780
+  },
+  "refOffsets": {
+   "offset": 28256,
+   "dtype": "f32",
+   "count": 780
+  },
+  "sourceProxyVertex": {
+   "offset": 31376,
+   "dtype": "u32",
+   "count": 260
+  }
+ }
+}

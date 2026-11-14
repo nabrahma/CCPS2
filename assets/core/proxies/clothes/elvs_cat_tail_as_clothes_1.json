@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_cat_tail_as_clothes_1",
+ "category": "clothes",
+ "name": "cat_tail_1b",
+ "uuid": "afa51e56-b56f-45ff-965c-1d28b1c78f8c",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 457,
+ "faceCount": 448,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_cat_tail_as_clothes_1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_cat_tail_as_clothes_1.bin",
+ "byteLength": 41596,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1371
+  },
+  "uvs": {
+   "offset": 5488,
+   "dtype": "f32",
+   "count": 1328
+  },
+  "faceVerts": {
+   "offset": 10800,
+   "dtype": "u32",
+   "count": 1792
+  },
+  "faceUvs": {
+   "offset": 17968,
+   "dtype": "u32",
+   "count": 1792
+  },
+  "refVerts": {
+   "offset": 25136,
+   "dtype": "u32",
+   "count": 1371
+  },
+  "refWeights": {
+   "offset": 30624,
+   "dtype": "f32",
+   "count": 1371
+  },
+  "refOffsets": {
+   "offset": 36112,
+   "dtype": "f32",
+   "count": 1371
+  }
+ }
+}

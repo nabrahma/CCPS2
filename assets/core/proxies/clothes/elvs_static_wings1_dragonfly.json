@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_static_wings1_dragonfly",
+ "category": "clothes",
+ "name": "dragonfly_wings1",
+ "uuid": "76323b60-f2fd-485c-aa73-5880cf4d5cf7",
+ "tags": [
+  "wings",
+  "fantasy",
+  "roleplay",
+  "insect"
+ ],
+ "zDepth": 69,
+ "vertexCount": 6812,
+ "faceCount": 6792,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_static_wings1_dragonfly.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_static_wings1_dragonfly.bin",
+ "byteLength": 602656,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 20436
+  },
+  "uvs": {
+   "offset": 81744,
+   "dtype": "f32",
+   "count": 14584
+  },
+  "faceVerts": {
+   "offset": 140080,
+   "dtype": "u32",
+   "count": 27168
+  },
+  "faceUvs": {
+   "offset": 248752,
+   "dtype": "u32",
+   "count": 27168
+  },
+  "refVerts": {
+   "offset": 357424,
+   "dtype": "u32",
+   "count": 20436
+  },
+  "refWeights": {
+   "offset": 439168,
+   "dtype": "f32",
+   "count": 20436
+  },
+  "refOffsets": {
+   "offset": 520912,
+   "dtype": "f32",
+   "count": 20436
+  }
+ }
+}

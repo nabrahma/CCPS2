@@ -1,0 +1,103 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_male_trouser_with_chain",
+ "category": "clothes",
+ "name": "mens_trouser_f_elv_chr",
+ "uuid": "28cba974-9ec5-4bad-bb66-e064d11a9a78",
+ "tags": [
+  "pant",
+  "menswear",
+  "fashion",
+  "traditional",
+  "trouser"
+ ],
+ "zDepth": 47,
+ "vertexCount": 883,
+ "faceCount": 1587,
+ "triangleFaces": 1587,
+ "scale": [
+  [
+   11133,
+   11141,
+   0.14762999999999998
+  ],
+  [
+   11025,
+   11460,
+   0.74151
+  ],
+  [
+   11130,
+   11135,
+   0.15612
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.0551,
+   0.2102,
+   0.242
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_male_trouser_with_chain.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 7505,
+ "hiddenFaces": "computed",
+ "originalTriangles": 14484,
+ "binary": "elvs_male_trouser_with_chain.ps2.bin",
+ "byteLength": 109580,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2649
+  },
+  "uvs": {
+   "offset": 10608,
+   "dtype": "f32",
+   "count": 2082
+  },
+  "faceVerts": {
+   "offset": 18944,
+   "dtype": "u32",
+   "count": 6348
+  },
+  "faceUvs": {
+   "offset": 44336,
+   "dtype": "u32",
+   "count": 6348
+  },
+  "refVerts": {
+   "offset": 69728,
+   "dtype": "u32",
+   "count": 2649
+  },
+  "refWeights": {
+   "offset": 80336,
+   "dtype": "f32",
+   "count": 2649
+  },
+  "refOffsets": {
+   "offset": 90944,
+   "dtype": "f32",
+   "count": 2649
+  },
+  "coveredVerts": {
+   "offset": 101552,
+   "dtype": "u32",
+   "count": 1122
+  },
+  "sourceProxyVertex": {
+   "offset": 106048,
+   "dtype": "u32",
+   "count": 883
+  }
+ }
+}

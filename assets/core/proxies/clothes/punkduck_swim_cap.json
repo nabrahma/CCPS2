@@ -1,0 +1,93 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_swim_cap",
+ "category": "clothes",
+ "name": "swim-cap",
+ "uuid": "6b3e6f4f-d4ea-4158-8c22-e04cac81bdcb",
+ "tags": [
+  "sport",
+  "swimming",
+  "triathlon"
+ ],
+ "zDepth": 50,
+ "vertexCount": 493,
+ "faceCount": 462,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_swim_cap.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "binary": "punkduck_swim_cap.bin",
+ "byteLength": 46092,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1479
+  },
+  "uvs": {
+   "offset": 5920,
+   "dtype": "f32",
+   "count": 1120
+  },
+  "faceVerts": {
+   "offset": 10400,
+   "dtype": "u32",
+   "count": 1848
+  },
+  "faceUvs": {
+   "offset": 17792,
+   "dtype": "u32",
+   "count": 1848
+  },
+  "refVerts": {
+   "offset": 25184,
+   "dtype": "u32",
+   "count": 1479
+  },
+  "refWeights": {
+   "offset": 31104,
+   "dtype": "f32",
+   "count": 1479
+  },
+  "refOffsets": {
+   "offset": 37024,
+   "dtype": "f32",
+   "count": 1479
+  },
+  "deleteVerts": {
+   "offset": 42944,
+   "dtype": "u32",
+   "count": 787
+  }
+ }
+}

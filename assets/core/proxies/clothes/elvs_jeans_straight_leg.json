@@ -1,0 +1,90 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_jeans_straight_leg",
+ "category": "clothes",
+ "name": "mens_elv_jeans2slf",
+ "uuid": "b7b1736a-b8d4-43b5-aa2a-d546eb02caca",
+ "tags": [
+  "jeans",
+  "menswear",
+  "fashion",
+  "traditional",
+  "casual"
+ ],
+ "zDepth": 47,
+ "vertexCount": 3109,
+ "faceCount": 2854,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   11133,
+   11141,
+   0.14762999999999998
+  ],
+  [
+   11025,
+   11460,
+   0.74151
+  ],
+  [
+   11130,
+   11135,
+   0.15612
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_jeans_straight_leg.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "elvs_jeans_straight_leg.bin",
+ "byteLength": 272396,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 9327
+  },
+  "uvs": {
+   "offset": 37312,
+   "dtype": "f32",
+   "count": 7954
+  },
+  "faceVerts": {
+   "offset": 69136,
+   "dtype": "u32",
+   "count": 11416
+  },
+  "faceUvs": {
+   "offset": 114800,
+   "dtype": "u32",
+   "count": 11416
+  },
+  "refVerts": {
+   "offset": 160464,
+   "dtype": "u32",
+   "count": 9327
+  },
+  "refWeights": {
+   "offset": 197776,
+   "dtype": "f32",
+   "count": 9327
+  },
+  "refOffsets": {
+   "offset": 235088,
+   "dtype": "f32",
+   "count": 9327
+  }
+ }
+}

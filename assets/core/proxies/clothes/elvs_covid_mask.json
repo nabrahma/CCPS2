@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_covid_mask",
+ "category": "clothes",
+ "name": "elvs_covidmask1_uni",
+ "uuid": "fab8933f-c1f8-4384-bf0c-92e952bb019c",
+ "tags": [
+  "unisex",
+  "casual",
+  "contemporary",
+  "extension",
+  "mask"
+ ],
+ "zDepth": 50,
+ "vertexCount": 2064,
+ "faceCount": 1844,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_covid_mask.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_covid_mask.bin",
+ "byteLength": 180204,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 6192
+  },
+  "uvs": {
+   "offset": 24768,
+   "dtype": "f32",
+   "count": 4572
+  },
+  "faceVerts": {
+   "offset": 43056,
+   "dtype": "u32",
+   "count": 7376
+  },
+  "faceUvs": {
+   "offset": 72560,
+   "dtype": "u32",
+   "count": 7376
+  },
+  "refVerts": {
+   "offset": 102064,
+   "dtype": "u32",
+   "count": 6192
+  },
+  "refWeights": {
+   "offset": 126832,
+   "dtype": "f32",
+   "count": 6192
+  },
+  "refOffsets": {
+   "offset": 151600,
+   "dtype": "f32",
+   "count": 6192
+  },
+  "deleteVerts": {
+   "offset": 176368,
+   "dtype": "u32",
+   "count": 959
+  }
+ }
+}

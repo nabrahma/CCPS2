@@ -1,0 +1,94 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_fashion_stylized_qipoa",
+ "category": "clothes",
+ "name": "westernized_quipoa",
+ "uuid": "edb940e3-3dfb-4471-84a1-e4069f123a8b",
+ "tags": [
+  "dress",
+  "asian",
+  "ladies",
+  "fashion"
+ ],
+ "zDepth": 53,
+ "vertexCount": 19301,
+ "faceCount": 39027,
+ "triangleFaces": 39027,
+ "scale": [
+  [
+   10589,
+   3924,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.5779299999999999
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_fashion_stylized_qipoa.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "elvs_fashion_stylized_qipoa.bin",
+ "byteLength": 2494708,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 57903
+  },
+  "uvs": {
+   "offset": 231616,
+   "dtype": "f32",
+   "count": 79584
+  },
+  "faceVerts": {
+   "offset": 549952,
+   "dtype": "u32",
+   "count": 156108
+  },
+  "faceUvs": {
+   "offset": 1174384,
+   "dtype": "u32",
+   "count": 156108
+  },
+  "refVerts": {
+   "offset": 1798816,
+   "dtype": "u32",
+   "count": 57903
+  },
+  "refWeights": {
+   "offset": 2030432,
+   "dtype": "f32",
+   "count": 57903
+  },
+  "refOffsets": {
+   "offset": 2262048,
+   "dtype": "f32",
+   "count": 57903
+  },
+  "deleteVerts": {
+   "offset": 2493664,
+   "dtype": "u32",
+   "count": 261
+  }
+ }
+}

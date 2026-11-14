@@ -1,0 +1,93 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_female_knee_boots",
+ "category": "clothes",
+ "name": "KneeBoots",
+ "uuid": "df41caed-ec8b-48fa-8a70-67812aad2d83",
+ "tags": [
+  "shoes",
+  "boots",
+  "female"
+ ],
+ "zDepth": 53,
+ "vertexCount": 1786,
+ "faceCount": 1748,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22048
+  ],
+  [
+   962,
+   5320,
+   0.18461000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_female_knee_boots.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "binary": "punkduck_female_knee_boots.bin",
+ "byteLength": 171000,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 5358
+  },
+  "uvs": {
+   "offset": 21440,
+   "dtype": "f32",
+   "count": 4528
+  },
+  "faceVerts": {
+   "offset": 39552,
+   "dtype": "u32",
+   "count": 6992
+  },
+  "faceUvs": {
+   "offset": 67520,
+   "dtype": "u32",
+   "count": 6992
+  },
+  "refVerts": {
+   "offset": 95488,
+   "dtype": "u32",
+   "count": 5358
+  },
+  "refWeights": {
+   "offset": 116928,
+   "dtype": "f32",
+   "count": 5358
+  },
+  "refOffsets": {
+   "offset": 138368,
+   "dtype": "f32",
+   "count": 5358
+  },
+  "deleteVerts": {
+   "offset": 159808,
+   "dtype": "u32",
+   "count": 2798
+  }
+ }
+}

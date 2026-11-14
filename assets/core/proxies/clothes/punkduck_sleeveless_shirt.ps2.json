@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_sleeveless_shirt",
+ "category": "clothes",
+ "name": "Sleeveless",
+ "uuid": "d81d2cec-7bf3-4247-92dc-185aa64e4941",
+ "tags": [
+  "female",
+  "shirt"
+ ],
+ "zDepth": 50,
+ "vertexCount": 989,
+ "faceCount": 1800,
+ "triangleFaces": 1800,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_sleeveless_shirt.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 1657,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 3136,
+ "binary": "punkduck_sleeveless_shirt.ps2.bin",
+ "byteLength": 121748,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2967
+  },
+  "uvs": {
+   "offset": 11872,
+   "dtype": "f32",
+   "count": 2276
+  },
+  "faceVerts": {
+   "offset": 20976,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "faceUvs": {
+   "offset": 49776,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "refVerts": {
+   "offset": 78576,
+   "dtype": "u32",
+   "count": 2967
+  },
+  "refWeights": {
+   "offset": 90448,
+   "dtype": "f32",
+   "count": 2967
+  },
+  "refOffsets": {
+   "offset": 102320,
+   "dtype": "f32",
+   "count": 2967
+  },
+  "deleteVerts": {
+   "offset": 114192,
+   "dtype": "u32",
+   "count": 897
+  },
+  "sourceProxyVertex": {
+   "offset": 117792,
+   "dtype": "u32",
+   "count": 989
+  }
+ }
+}

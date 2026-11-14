@@ -1,0 +1,90 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_goth_statement_necklace1",
+ "category": "clothes",
+ "name": "elvs_goth_neckdrape2",
+ "uuid": "92a7c611-1ce9-46c2-99f0-870d3d6837e5",
+ "tags": [
+  "necklace",
+  "ladiesware",
+  "female",
+  "goth",
+  "statement necklace"
+ ],
+ "zDepth": 69,
+ "vertexCount": 30660,
+ "faceCount": 30562,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_goth_statement_necklace1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_goth_statement_necklace1.bin",
+ "byteLength": 2741632,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 91980
+  },
+  "uvs": {
+   "offset": 367920,
+   "dtype": "f32",
+   "count": 72990
+  },
+  "faceVerts": {
+   "offset": 659888,
+   "dtype": "u32",
+   "count": 122248
+  },
+  "faceUvs": {
+   "offset": 1148880,
+   "dtype": "u32",
+   "count": 122248
+  },
+  "refVerts": {
+   "offset": 1637872,
+   "dtype": "u32",
+   "count": 91980
+  },
+  "refWeights": {
+   "offset": 2005792,
+   "dtype": "f32",
+   "count": 91980
+  },
+  "refOffsets": {
+   "offset": 2373712,
+   "dtype": "f32",
+   "count": 91980
+  }
+ }
+}

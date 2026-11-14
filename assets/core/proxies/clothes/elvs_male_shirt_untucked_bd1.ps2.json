@@ -1,0 +1,103 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_male_shirt_untucked_bd1",
+ "category": "clothes",
+ "name": "mens_shirt_untuck_elvbhp1f",
+ "uuid": "f1a4e71c-d014-48e8-91cb-798121cf7cda",
+ "tags": [
+  "shirt",
+  "menswear",
+  "fashion",
+  "traditional",
+  "untucked"
+ ],
+ "zDepth": 47,
+ "vertexCount": 820,
+ "faceCount": 1424,
+ "triangleFaces": 1424,
+ "scale": [
+  [
+   10589,
+   3924,
+   0.31594000000000005
+  ],
+  [
+   1524,
+   4370,
+   0.57703
+  ],
+  [
+   1892,
+   3946,
+   0.19743
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_male_shirt_untucked_bd1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 4685,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 8056,
+ "binary": "elvs_male_shirt_untucked_bd1.ps2.bin",
+ "byteLength": 102800,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2460
+  },
+  "uvs": {
+   "offset": 9840,
+   "dtype": "f32",
+   "count": 1480
+  },
+  "faceVerts": {
+   "offset": 15760,
+   "dtype": "u32",
+   "count": 5696
+  },
+  "faceUvs": {
+   "offset": 38544,
+   "dtype": "u32",
+   "count": 5696
+  },
+  "refVerts": {
+   "offset": 61328,
+   "dtype": "u32",
+   "count": 2460
+  },
+  "refWeights": {
+   "offset": 71168,
+   "dtype": "f32",
+   "count": 2460
+  },
+  "refOffsets": {
+   "offset": 81008,
+   "dtype": "f32",
+   "count": 2460
+  },
+  "deleteVerts": {
+   "offset": 90848,
+   "dtype": "u32",
+   "count": 2168
+  },
+  "sourceProxyVertex": {
+   "offset": 99520,
+   "dtype": "u32",
+   "count": 820
+  }
+ }
+}

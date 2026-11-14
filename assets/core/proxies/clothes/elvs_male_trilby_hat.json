@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_male_trilby_hat",
+ "category": "clothes",
+ "name": "m_trilby_hat",
+ "uuid": "7003f656-298e-433c-af81-df137486a974",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 14924,
+ "faceCount": 14301,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_male_trilby_hat.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "binary": "elvs_male_trilby_hat.bin",
+ "byteLength": 1331664,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 44772
+  },
+  "uvs": {
+   "offset": 179088,
+   "dtype": "f32",
+   "count": 39364
+  },
+  "faceVerts": {
+   "offset": 336544,
+   "dtype": "u32",
+   "count": 57204
+  },
+  "faceUvs": {
+   "offset": 565360,
+   "dtype": "u32",
+   "count": 57204
+  },
+  "refVerts": {
+   "offset": 794176,
+   "dtype": "u32",
+   "count": 44772
+  },
+  "refWeights": {
+   "offset": 973264,
+   "dtype": "f32",
+   "count": 44772
+  },
+  "refOffsets": {
+   "offset": 1152352,
+   "dtype": "f32",
+   "count": 44772
+  },
+  "deleteVerts": {
+   "offset": 1331440,
+   "dtype": "u32",
+   "count": 56
+  }
+ }
+}

@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/matcreator_mc-scifi-armor_helios",
+ "category": "clothes",
+ "name": "MC-SciFi-Armor_Helios",
+ "uuid": "dc0150b7-85ef-4ab4-8183-d02e103b89b1",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 788,
+ "faceCount": 2372,
+ "triangleFaces": 2372,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.029970000000000004
+  ],
+  [
+   1524,
+   4370,
+   0.05706
+  ],
+  [
+   1892,
+   3946,
+   0.018310000000000003
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/matcreator_mc-scifi-armor_helios.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 71242,
+ "hiddenFaces": "computed",
+ "originalTriangles": 142468,
+ "binary": "matcreator_mc-scifi-armor_helios.ps2.bin",
+ "byteLength": 133984,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2364
+  },
+  "uvs": {
+   "offset": 9456,
+   "dtype": "f32",
+   "count": 1576
+  },
+  "faceVerts": {
+   "offset": 15760,
+   "dtype": "u32",
+   "count": 9488
+  },
+  "faceUvs": {
+   "offset": 53712,
+   "dtype": "u32",
+   "count": 9488
+  },
+  "refVerts": {
+   "offset": 91664,
+   "dtype": "u32",
+   "count": 2364
+  },
+  "refWeights": {
+   "offset": 101120,
+   "dtype": "f32",
+   "count": 2364
+  },
+  "refOffsets": {
+   "offset": 110576,
+   "dtype": "f32",
+   "count": 2364
+  },
+  "coveredVerts": {
+   "offset": 120032,
+   "dtype": "u32",
+   "count": 2699
+  },
+  "sourceProxyVertex": {
+   "offset": 130832,
+   "dtype": "u32",
+   "count": 788
+  }
+ }
+}

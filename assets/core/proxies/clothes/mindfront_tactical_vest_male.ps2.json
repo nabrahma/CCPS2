@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_tactical_vest_male",
+ "category": "clothes",
+ "name": "Tactical_Vest_male",
+ "uuid": "483aa284-01f3-4237-bd2b-b2f95b3bf87a",
+ "tags": [
+  "work",
+  "sport",
+  "male"
+ ],
+ "zDepth": 61,
+ "vertexCount": 778,
+ "faceCount": 1939,
+ "triangleFaces": 1939,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.31594000000000005
+  ],
+  [
+   1524,
+   4370,
+   0.57703
+  ],
+  [
+   1892,
+   3946,
+   0.19743
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 0,
+  "diffuseTexture": "textures/clothes/mindfront_tactical_vest_male.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "outer",
+ "decimatedFrom": 19896,
+ "hiddenFaces": "computed",
+ "originalTriangles": 37056,
+ "binary": "mindfront_tactical_vest_male.ps2.bin",
+ "byteLength": 109352,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2334
+  },
+  "uvs": {
+   "offset": 9344,
+   "dtype": "f32",
+   "count": 1532
+  },
+  "faceVerts": {
+   "offset": 15472,
+   "dtype": "u32",
+   "count": 7756
+  },
+  "faceUvs": {
+   "offset": 46496,
+   "dtype": "u32",
+   "count": 7756
+  },
+  "refVerts": {
+   "offset": 77520,
+   "dtype": "u32",
+   "count": 2334
+  },
+  "refWeights": {
+   "offset": 86864,
+   "dtype": "f32",
+   "count": 2334
+  },
+  "refOffsets": {
+   "offset": 96208,
+   "dtype": "f32",
+   "count": 2334
+  },
+  "coveredVerts": {
+   "offset": 105552,
+   "dtype": "u32",
+   "count": 169
+  },
+  "sourceProxyVertex": {
+   "offset": 106240,
+   "dtype": "u32",
+   "count": 778
+  }
+ }
+}

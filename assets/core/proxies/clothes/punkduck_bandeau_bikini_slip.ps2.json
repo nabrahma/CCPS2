@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_bandeau_bikini_slip",
+ "category": "clothes",
+ "name": "bandbikinislip",
+ "uuid": "51b35fd9-975c-4113-a261-d449191437f4",
+ "tags": [
+  "female",
+  "bikini"
+ ],
+ "zDepth": 50,
+ "vertexCount": 667,
+ "faceCount": 1144,
+ "triangleFaces": 1144,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_bandeau_bikini_slip.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 667,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 1144,
+ "binary": "punkduck_bandeau_bikini_slip.ps2.bin",
+ "byteLength": 75212,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2001
+  },
+  "uvs": {
+   "offset": 8016,
+   "dtype": "f32",
+   "count": 858
+  },
+  "faceVerts": {
+   "offset": 11456,
+   "dtype": "u32",
+   "count": 4576
+  },
+  "faceUvs": {
+   "offset": 29760,
+   "dtype": "u32",
+   "count": 4576
+  },
+  "refVerts": {
+   "offset": 48064,
+   "dtype": "u32",
+   "count": 2001
+  },
+  "refWeights": {
+   "offset": 56080,
+   "dtype": "f32",
+   "count": 2001
+  },
+  "refOffsets": {
+   "offset": 64096,
+   "dtype": "f32",
+   "count": 2001
+  },
+  "deleteVerts": {
+   "offset": 72112,
+   "dtype": "u32",
+   "count": 106
+  },
+  "sourceProxyVertex": {
+   "offset": 72544,
+   "dtype": "u32",
+   "count": 667
+  }
+ }
+}

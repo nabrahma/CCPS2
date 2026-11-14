@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_off-shoulder_long-sleeve_top",
+ "category": "clothes",
+ "name": "offshoulder_top",
+ "uuid": "64c9428a-c3b7-4d10-ba8a-ec016e009d47",
+ "tags": [
+  "female",
+  "shirt"
+ ],
+ "zDepth": 50,
+ "vertexCount": 2358,
+ "faceCount": 2248,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_off-shoulder_long-sleeve_top.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "punkduck_off-shoulder_long-sleeve_top.bin",
+ "byteLength": 206984,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 7074
+  },
+  "uvs": {
+   "offset": 28304,
+   "dtype": "f32",
+   "count": 5460
+  },
+  "faceVerts": {
+   "offset": 50144,
+   "dtype": "u32",
+   "count": 8992
+  },
+  "faceUvs": {
+   "offset": 86112,
+   "dtype": "u32",
+   "count": 8992
+  },
+  "refVerts": {
+   "offset": 122080,
+   "dtype": "u32",
+   "count": 7074
+  },
+  "refWeights": {
+   "offset": 150384,
+   "dtype": "f32",
+   "count": 7074
+  },
+  "refOffsets": {
+   "offset": 178688,
+   "dtype": "f32",
+   "count": 7074
+  }
+ }
+}

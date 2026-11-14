@@ -1,0 +1,104 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_sporty_tracksuit_hoodie_dress1",
+ "category": "clothes",
+ "name": "elvs_hoodie_dress_sw1",
+ "uuid": "f04a0494-22ba-46b8-9c7e-08c9dc987b32",
+ "tags": [
+  "female",
+  "casual",
+  "sport",
+  "contemporary",
+  "dress",
+  "hoodie"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1141,
+ "faceCount": 2199,
+ "triangleFaces": 2199,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_sporty_tracksuit_hoodie_dress1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "outer",
+ "decimatedFrom": 5551,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 10784,
+ "binary": "elvs_sporty_tracksuit_hoodie_dress1.ps2.bin",
+ "byteLength": 151860,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3423
+  },
+  "uvs": {
+   "offset": 13696,
+   "dtype": "f32",
+   "count": 2558
+  },
+  "faceVerts": {
+   "offset": 23936,
+   "dtype": "u32",
+   "count": 8796
+  },
+  "faceUvs": {
+   "offset": 59120,
+   "dtype": "u32",
+   "count": 8796
+  },
+  "refVerts": {
+   "offset": 94304,
+   "dtype": "u32",
+   "count": 3423
+  },
+  "refWeights": {
+   "offset": 108000,
+   "dtype": "f32",
+   "count": 3423
+  },
+  "refOffsets": {
+   "offset": 121696,
+   "dtype": "f32",
+   "count": 3423
+  },
+  "deleteVerts": {
+   "offset": 135392,
+   "dtype": "u32",
+   "count": 2973
+  },
+  "sourceProxyVertex": {
+   "offset": 147296,
+   "dtype": "u32",
+   "count": 1141
+  }
+ }
+}

@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/drednicolson_short-tail_camo_tee",
+ "category": "clothes",
+ "name": "short_tail_camo_tee",
+ "uuid": "b5c5efbe-18f7-426a-a046-ade069f0a30e",
+ "tags": [
+  "casual",
+  "female"
+ ],
+ "zDepth": 47,
+ "vertexCount": 1918,
+ "faceCount": 1873,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/drednicolson_short-tail_camo_tee.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "drednicolson_short-tail_camo_tee.bin",
+ "byteLength": 177704,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 5754
+  },
+  "uvs": {
+   "offset": 23024,
+   "dtype": "f32",
+   "count": 5212
+  },
+  "faceVerts": {
+   "offset": 43872,
+   "dtype": "u32",
+   "count": 7492
+  },
+  "faceUvs": {
+   "offset": 73840,
+   "dtype": "u32",
+   "count": 7492
+  },
+  "refVerts": {
+   "offset": 103808,
+   "dtype": "u32",
+   "count": 5754
+  },
+  "refWeights": {
+   "offset": 126832,
+   "dtype": "f32",
+   "count": 5754
+  },
+  "refOffsets": {
+   "offset": 149856,
+   "dtype": "f32",
+   "count": 5754
+  },
+  "deleteVerts": {
+   "offset": 172880,
+   "dtype": "u32",
+   "count": 1206
+  }
+ }
+}

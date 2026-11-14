@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_comfortable_sneakers",
+ "category": "clothes",
+ "name": "Sneakers",
+ "uuid": "69f92a91-a59d-4a79-a819-4435b6797719",
+ "tags": [
+  "female",
+  "shoes"
+ ],
+ "zDepth": 50,
+ "vertexCount": 604,
+ "faceCount": 900,
+ "triangleFaces": 900,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.752941176471,
+   0.76862745098
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_comfortable_sneakers.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "decimatedFrom": 932,
+ "hiddenFaces": "computed",
+ "originalTriangles": 1556,
+ "binary": "punkduck_comfortable_sneakers.ps2.bin",
+ "byteLength": 67200,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1812
+  },
+  "uvs": {
+   "offset": 7248,
+   "dtype": "f32",
+   "count": 1334
+  },
+  "faceVerts": {
+   "offset": 12592,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "faceUvs": {
+   "offset": 26992,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "refVerts": {
+   "offset": 41392,
+   "dtype": "u32",
+   "count": 1812
+  },
+  "refWeights": {
+   "offset": 48640,
+   "dtype": "f32",
+   "count": 1812
+  },
+  "refOffsets": {
+   "offset": 55888,
+   "dtype": "f32",
+   "count": 1812
+  },
+  "coveredVerts": {
+   "offset": 63136,
+   "dtype": "u32",
+   "count": 411
+  },
+  "sourceProxyVertex": {
+   "offset": 64784,
+   "dtype": "u32",
+   "count": 604
+  }
+ }
+}

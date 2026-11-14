@@ -1,0 +1,99 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_wireless_headset",
+ "category": "clothes",
+ "name": "Headset",
+ "uuid": "9e99e97f-5cdc-44fc-8794-336123097634",
+ "tags": [
+  "carried"
+ ],
+ "zDepth": 50,
+ "vertexCount": 209,
+ "faceCount": 473,
+ "triangleFaces": 473,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_wireless_headset.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 1758,
+ "hiddenFaces": "computed",
+ "originalTriangles": 3432,
+ "binary": "punkduck_wireless_headset.ps2.bin",
+ "byteLength": 29300,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 627
+  },
+  "uvs": {
+   "offset": 2512,
+   "dtype": "f32",
+   "count": 418
+  },
+  "faceVerts": {
+   "offset": 4192,
+   "dtype": "u32",
+   "count": 1892
+  },
+  "faceUvs": {
+   "offset": 11760,
+   "dtype": "u32",
+   "count": 1892
+  },
+  "refVerts": {
+   "offset": 19328,
+   "dtype": "u32",
+   "count": 627
+  },
+  "refWeights": {
+   "offset": 21840,
+   "dtype": "f32",
+   "count": 627
+  },
+  "refOffsets": {
+   "offset": 24352,
+   "dtype": "f32",
+   "count": 627
+  },
+  "coveredVerts": {
+   "offset": 26864,
+   "dtype": "u32",
+   "count": 398
+  },
+  "sourceProxyVertex": {
+   "offset": 28464,
+   "dtype": "u32",
+   "count": 209
+  }
+ }
+}

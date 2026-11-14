@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_french_lingerie_stockings",
+ "category": "clothes",
+ "name": "fr_stockings",
+ "uuid": "4c95bf19-0e7b-481d-a78b-45eeaef48715",
+ "tags": [
+  "female",
+  "lingerie"
+ ],
+ "zDepth": 10,
+ "vertexCount": 1974,
+ "faceCount": 1952,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_french_lingerie_stockings.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "punkduck_french_lingerie_stockings.bin",
+ "byteLength": 176024,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 5922
+  },
+  "uvs": {
+   "offset": 23696,
+   "dtype": "f32",
+   "count": 4696
+  },
+  "faceVerts": {
+   "offset": 42480,
+   "dtype": "u32",
+   "count": 7808
+  },
+  "faceUvs": {
+   "offset": 73712,
+   "dtype": "u32",
+   "count": 7808
+  },
+  "refVerts": {
+   "offset": 104944,
+   "dtype": "u32",
+   "count": 5922
+  },
+  "refWeights": {
+   "offset": 128640,
+   "dtype": "f32",
+   "count": 5922
+  },
+  "refOffsets": {
+   "offset": 152336,
+   "dtype": "f32",
+   "count": 5922
+  }
+ }
+}

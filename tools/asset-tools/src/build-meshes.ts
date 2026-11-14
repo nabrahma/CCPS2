@@ -190,10 +190,12 @@ async function main(): Promise<void> {
     entry.originalTriangles = r.originalTriangles;
     entry.triangles = r.triangles;
     (entry as Record<string, unknown>).overBudget = r.triangles > (isMouth ? SLOT_BUDGET[entry.category]! : isHair ? 3500 : 2500);
+    if (r.clustered) (entry as Record<string, unknown>).clustered = true;
+    else delete (entry as Record<string, unknown>).clustered;
     for (const ext of ['json', 'bin']) {
       files.push({ file: `${outRel}.${ext}`, asset: entry.id, from: full.replace(/\.json$/, `.${ext}`) });
     }
-    garmentReport.push({ id: entry.id, slot: entry.slot, from: r.originalTriangles, to: r.triangles, flipped: r.flipped,
+    garmentReport.push({ id: entry.id, slot: entry.slot, from: r.originalTriangles, to: r.triangles, flipped: r.flipped, clustered: r.clustered,
       hiddenFaces: (entry as Record<string, unknown>).hiddenFaces, coveredVertices: covered?.length });
   }
   const over = garmentReport.filter((g) => (g.flipped as number) > 0);

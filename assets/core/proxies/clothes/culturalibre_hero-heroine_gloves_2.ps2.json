@@ -9,9 +9,9 @@
   "superhero"
  ],
  "zDepth": 50,
- "vertexCount": 700,
- "faceCount": 1392,
- "triangleFaces": 1392,
+ "vertexCount": 146,
+ "faceCount": 550,
+ "triangleFaces": 550,
  "scale": [
   [
    5399,
@@ -49,52 +49,52 @@
  "hiddenFaces": "makehuman",
  "originalTriangles": 14464,
  "binary": "culturalibre_hero-heroine_gloves_2.ps2.bin",
- "byteLength": 101296,
+ "byteLength": 41512,
  "buffers": {
   "restPositions": {
    "offset": 0,
    "dtype": "f32",
-   "count": 2100
+   "count": 438
   },
   "uvs": {
-   "offset": 8400,
+   "offset": 1760,
    "dtype": "f32",
-   "count": 1258
+   "count": 244
   },
   "faceVerts": {
-   "offset": 13440,
+   "offset": 2736,
    "dtype": "u32",
-   "count": 5568
+   "count": 2200
   },
   "faceUvs": {
-   "offset": 35712,
+   "offset": 11536,
    "dtype": "u32",
-   "count": 5568
+   "count": 2200
   },
   "refVerts": {
-   "offset": 57984,
+   "offset": 20336,
    "dtype": "u32",
-   "count": 2100
+   "count": 438
   },
   "refWeights": {
-   "offset": 66384,
+   "offset": 22096,
    "dtype": "f32",
-   "count": 2100
+   "count": 438
   },
   "refOffsets": {
-   "offset": 74784,
+   "offset": 23856,
    "dtype": "f32",
-   "count": 2100
+   "count": 438
   },
   "deleteVerts": {
-   "offset": 83184,
+   "offset": 25616,
    "dtype": "u32",
    "count": 3826
   },
   "sourceProxyVertex": {
-   "offset": 98496,
+   "offset": 40928,
    "dtype": "u32",
-   "count": 700
+   "count": 146
   }
  }
 }

@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/elvs_hazel_hair",
+ "category": "hair",
+ "name": "elvs_hazel_hair",
+ "uuid": "5a7ea57b-9527-4539-9652-2523964b7f21",
+ "tags": [
+  "female",
+  "casual",
+  "leisure",
+  "contemporary",
+  "hair",
+  "ladies",
+  "long",
+  "wavy",
+  "fashion"
+ ],
+ "zDepth": 55,
+ "vertexCount": 3153,
+ "faceCount": 3499,
+ "triangleFaces": 3499,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/hair/elvs_hazel_hair.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "decimatedFrom": 3494,
+ "hiddenFaces": "none",
+ "originalTriangles": 4181,
+ "binary": "elvs_hazel_hair.ps2.bin",
+ "byteLength": 300708,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 9459
+  },
+  "uvs": {
+   "offset": 37840,
+   "dtype": "f32",
+   "count": 6190
+  },
+  "faceVerts": {
+   "offset": 62608,
+   "dtype": "u32",
+   "count": 13996
+  },
+  "faceUvs": {
+   "offset": 118592,
+   "dtype": "u32",
+   "count": 13996
+  },
+  "refVerts": {
+   "offset": 174576,
+   "dtype": "u32",
+   "count": 9459
+  },
+  "refWeights": {
+   "offset": 212416,
+   "dtype": "f32",
+   "count": 9459
+  },
+  "refOffsets": {
+   "offset": 250256,
+   "dtype": "f32",
+   "count": 9459
+  },
+  "sourceProxyVertex": {
+   "offset": 288096,
+   "dtype": "u32",
+   "count": 3153
+  }
+ }
+}

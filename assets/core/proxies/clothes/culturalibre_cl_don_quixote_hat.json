@@ -1,0 +1,86 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_cl_don_quixote_hat",
+ "category": "clothes",
+ "name": "cl_don_quixote_hat",
+ "uuid": "79473b0f-5d45-4b0f-b423-105f0f1103a0",
+ "tags": [
+  "hat"
+ ],
+ "zDepth": 70,
+ "vertexCount": 1438,
+ "faceCount": 2872,
+ "triangleFaces": 2872,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/culturalibre_cl_don_quixote_hat.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "binary": "culturalibre_cl_don_quixote_hat.bin",
+ "byteLength": 193784,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4314
+  },
+  "uvs": {
+   "offset": 17264,
+   "dtype": "f32",
+   "count": 8208
+  },
+  "faceVerts": {
+   "offset": 50096,
+   "dtype": "u32",
+   "count": 11488
+  },
+  "faceUvs": {
+   "offset": 96048,
+   "dtype": "u32",
+   "count": 11488
+  },
+  "refVerts": {
+   "offset": 142000,
+   "dtype": "u32",
+   "count": 4314
+  },
+  "refWeights": {
+   "offset": 159264,
+   "dtype": "f32",
+   "count": 4314
+  },
+  "refOffsets": {
+   "offset": 176528,
+   "dtype": "f32",
+   "count": 4314
+  }
+ }
+}

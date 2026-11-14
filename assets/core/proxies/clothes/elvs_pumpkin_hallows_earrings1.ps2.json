@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_pumpkin_hallows_earrings1",
+ "category": "clothes",
+ "name": "pumkin_earrings_mh",
+ "uuid": "a8e38344-b954-4291-883d-48d222677dbc",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 204,
+ "faceCount": 439,
+ "triangleFaces": 439,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_pumpkin_hallows_earrings1.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 17446,
+ "hiddenFaces": "none",
+ "originalTriangles": 18230,
+ "binary": "elvs_pumpkin_hallows_earrings1.ps2.bin",
+ "byteLength": 26160,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 612
+  },
+  "uvs": {
+   "offset": 2448,
+   "dtype": "f32",
+   "count": 374
+  },
+  "faceVerts": {
+   "offset": 3952,
+   "dtype": "u32",
+   "count": 1756
+  },
+  "faceUvs": {
+   "offset": 10976,
+   "dtype": "u32",
+   "count": 1756
+  },
+  "refVerts": {
+   "offset": 18000,
+   "dtype": "u32",
+   "count": 612
+  },
+  "refWeights": {
+   "offset": 20448,
+   "dtype": "f32",
+   "count": 612
+  },
+  "refOffsets": {
+   "offset": 22896,
+   "dtype": "f32",
+   "count": 612
+  },
+  "sourceProxyVertex": {
+   "offset": 25344,
+   "dtype": "u32",
+   "count": 204
+  }
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_male_classic_jeans",
+ "category": "clothes",
+ "name": "male-classic-jeans",
+ "uuid": "a032f862-1c55-4cd7-848f-3776bc5cf2a2",
+ "tags": [
+  "jeans",
+  "pants",
+  "male"
+ ],
+ "zDepth": 52,
+ "vertexCount": 1138,
+ "faceCount": 1638,
+ "triangleFaces": 1638,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_male_classic_jeans.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 2614,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 4590,
+ "binary": "punkduck_male_classic_jeans.ps2.bin",
+ "byteLength": 126136,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3414
+  },
+  "uvs": {
+   "offset": 13664,
+   "dtype": "f32",
+   "count": 2354
+  },
+  "faceVerts": {
+   "offset": 23088,
+   "dtype": "u32",
+   "count": 6552
+  },
+  "faceUvs": {
+   "offset": 49296,
+   "dtype": "u32",
+   "count": 6552
+  },
+  "refVerts": {
+   "offset": 75504,
+   "dtype": "u32",
+   "count": 3414
+  },
+  "refWeights": {
+   "offset": 89168,
+   "dtype": "f32",
+   "count": 3414
+  },
+  "refOffsets": {
+   "offset": 102832,
+   "dtype": "f32",
+   "count": 3414
+  },
+  "deleteVerts": {
+   "offset": 116496,
+   "dtype": "u32",
+   "count": 1272
+  },
+  "sourceProxyVertex": {
+   "offset": 121584,
+   "dtype": "u32",
+   "count": 1138
+  }
+ }
+}

@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_high_neck_crop_top",
+ "category": "clothes",
+ "name": "HighNeckCropTop",
+ "uuid": "e25e0f5d-1c73-43b4-89a8-6e884370ea56",
+ "tags": [
+  "female",
+  "top"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1202,
+ "faceCount": 1141,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_high_neck_crop_top.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "punkduck_high_neck_crop_top.bin",
+ "byteLength": 110072,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3606
+  },
+  "uvs": {
+   "offset": 14432,
+   "dtype": "f32",
+   "count": 2886
+  },
+  "faceVerts": {
+   "offset": 25984,
+   "dtype": "u32",
+   "count": 4564
+  },
+  "faceUvs": {
+   "offset": 44240,
+   "dtype": "u32",
+   "count": 4564
+  },
+  "refVerts": {
+   "offset": 62496,
+   "dtype": "u32",
+   "count": 3606
+  },
+  "refWeights": {
+   "offset": 76928,
+   "dtype": "f32",
+   "count": 3606
+  },
+  "refOffsets": {
+   "offset": 91360,
+   "dtype": "f32",
+   "count": 3606
+  },
+  "deleteVerts": {
+   "offset": 105792,
+   "dtype": "u32",
+   "count": 1070
+  }
+ }
+}

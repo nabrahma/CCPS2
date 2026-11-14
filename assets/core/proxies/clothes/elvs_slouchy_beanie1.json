@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_slouchy_beanie1",
+ "category": "clothes",
+ "name": "elvs_beanie_slouch",
+ "uuid": "8f6273b7-b36c-4887-bb78-a30ced5958c2",
+ "tags": [
+  "unisex",
+  "casual",
+  "leisure",
+  "contemporary",
+  "hat",
+  "beanie"
+ ],
+ "zDepth": 69,
+ "vertexCount": 615,
+ "faceCount": 590,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.31594000000000005
+  ],
+  [
+   1524,
+   4370,
+   0.57703
+  ],
+  [
+   1892,
+   3946,
+   0.19743
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_slouchy_beanie1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "binary": "elvs_slouchy_beanie1.bin",
+ "byteLength": 53732,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1845
+  },
+  "uvs": {
+   "offset": 7392,
+   "dtype": "f32",
+   "count": 1324
+  },
+  "faceVerts": {
+   "offset": 12688,
+   "dtype": "u32",
+   "count": 2360
+  },
+  "faceUvs": {
+   "offset": 22128,
+   "dtype": "u32",
+   "count": 2360
+  },
+  "refVerts": {
+   "offset": 31568,
+   "dtype": "u32",
+   "count": 1845
+  },
+  "refWeights": {
+   "offset": 38960,
+   "dtype": "f32",
+   "count": 1845
+  },
+  "refOffsets": {
+   "offset": 46352,
+   "dtype": "f32",
+   "count": 1845
+  }
+ }
+}

@@ -1,0 +1,88 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_cl_spiral_bracelets",
+ "category": "clothes",
+ "name": "cl_spiral_bracelets",
+ "uuid": "01b3edc8-5e13-48b1-8210-17ab1ddc158b",
+ "tags": [
+  "bracelet",
+  "female",
+  "fantasy"
+ ],
+ "zDepth": 50,
+ "vertexCount": 2052,
+ "faceCount": 2048,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/culturalibre_cl_spiral_bracelets.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "culturalibre_cl_spiral_bracelets.bin",
+ "byteLength": 189680,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 6156
+  },
+  "uvs": {
+   "offset": 24624,
+   "dtype": "f32",
+   "count": 6412
+  },
+  "faceVerts": {
+   "offset": 50272,
+   "dtype": "u32",
+   "count": 8192
+  },
+  "faceUvs": {
+   "offset": 83040,
+   "dtype": "u32",
+   "count": 8192
+  },
+  "refVerts": {
+   "offset": 115808,
+   "dtype": "u32",
+   "count": 6156
+  },
+  "refWeights": {
+   "offset": 140432,
+   "dtype": "f32",
+   "count": 6156
+  },
+  "refOffsets": {
+   "offset": 165056,
+   "dtype": "f32",
+   "count": 6156
+  }
+ }
+}

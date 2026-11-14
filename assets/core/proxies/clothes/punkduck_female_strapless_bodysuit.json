@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_female_strapless_bodysuit",
+ "category": "clothes",
+ "name": "StraplessBodySuit",
+ "uuid": "610883ce-6292-4741-a1bb-a77201126451",
+ "tags": [
+  "female",
+  "lingerie"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1547,
+ "faceCount": 1492,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_female_strapless_bodysuit.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "punkduck_female_strapless_bodysuit.bin",
+ "byteLength": 140080,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4641
+  },
+  "uvs": {
+   "offset": 18576,
+   "dtype": "f32",
+   "count": 3488
+  },
+  "faceVerts": {
+   "offset": 32528,
+   "dtype": "u32",
+   "count": 5968
+  },
+  "faceUvs": {
+   "offset": 56400,
+   "dtype": "u32",
+   "count": 5968
+  },
+  "refVerts": {
+   "offset": 80272,
+   "dtype": "u32",
+   "count": 4641
+  },
+  "refWeights": {
+   "offset": 98848,
+   "dtype": "f32",
+   "count": 4641
+  },
+  "refOffsets": {
+   "offset": 117424,
+   "dtype": "f32",
+   "count": 4641
+  },
+  "deleteVerts": {
+   "offset": 136000,
+   "dtype": "u32",
+   "count": 1020
+  }
+ }
+}

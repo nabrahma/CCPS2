@@ -1,0 +1,94 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_pearl_anklet_1",
+ "category": "clothes",
+ "name": "elvs_anklet_pearls1",
+ "uuid": "7c58023f-f69c-4be4-a66d-6ee008435d70",
+ "tags": [
+  "unisex",
+  "formal",
+  "festive",
+  "contemporary",
+  "jewelry",
+  "anklet"
+ ],
+ "zDepth": 50,
+ "vertexCount": 308,
+ "faceCount": 500,
+ "triangleFaces": 500,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.45,
+   0.45
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1
+ },
+ "slot": "accessory",
+ "decimatedFrom": 3477,
+ "hiddenFaces": "none",
+ "originalTriangles": 6840,
+ "binary": "elvs_pearl_anklet_1.ps2.bin",
+ "byteLength": 33040,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 924
+  },
+  "uvs": {
+   "offset": 3696,
+   "dtype": "f32",
+   "count": 256
+  },
+  "faceVerts": {
+   "offset": 4720,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "faceUvs": {
+   "offset": 12720,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "refVerts": {
+   "offset": 20720,
+   "dtype": "u32",
+   "count": 924
+  },
+  "refWeights": {
+   "offset": 24416,
+   "dtype": "f32",
+   "count": 924
+  },
+  "refOffsets": {
+   "offset": 28112,
+   "dtype": "f32",
+   "count": 924
+  },
+  "sourceProxyVertex": {
+   "offset": 31808,
+   "dtype": "u32",
+   "count": 308
+  }
+ }
+}

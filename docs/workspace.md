@@ -39,8 +39,9 @@ Clicking a part in the viewport opens its category. A garment opens in Clothes w
 
 - **Body and Face:** a search box and a region menu (All regions, a single region such as Nose or Torso, or Favourite sliders), then Symmetry, Every slider (all of MakeHuman's sliders and their full range) and Randomize.
 - **Library grids** (body presets, hairstyles, outfits, garments, skins, materials): a search box, one filter menu and a star for favourites only.
-  - Hair filters by Short, Medium, Long, Editable (hair cards), Mesh (MakeHuman) or Yours.
-  - Garments filter by slot, and skins by gender and age.
+  - Hair filters by Short, Medium, Long, Editable (hair cards), Mesh (MakeHuman) or Yours. Beards and moustaches are under Hair → Facial hair.
+  - Garments filter by slot, or by kind of accessory: glasses, jewellery, masks, horns, tails, wings and nails, or weapons and gear.
+  - Skins filter by gender and age, or Fantasy and horror.
   - Your own entries show **Edit** and **Delete** when the pointer is over them.
 - **Clothes:** each worn garment is a row. Click it to open its settings (tint, grime, materials, paint, Garment and Texture Studio). Its eye hides it in the viewport, and × takes it off.
 - **Hair** and **Eyes** have an eye button beside their title that hides them in the viewport. Neither eye button changes the character or the export.

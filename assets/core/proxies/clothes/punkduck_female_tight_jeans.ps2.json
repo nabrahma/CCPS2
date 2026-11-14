@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_female_tight_jeans",
+ "category": "clothes",
+ "name": "Tightjeans",
+ "uuid": "2eb68cfa-7624-481c-a3e4-ba0695fd1dd2",
+ "tags": [
+  "female",
+  "pants",
+  "jeans"
+ ],
+ "zDepth": 51,
+ "vertexCount": 1087,
+ "faceCount": 1598,
+ "triangleFaces": 1598,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_female_tight_jeans.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 2394,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 4216,
+ "binary": "punkduck_female_tight_jeans.ps2.bin",
+ "byteLength": 121708,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3261
+  },
+  "uvs": {
+   "offset": 13056,
+   "dtype": "f32",
+   "count": 2124
+  },
+  "faceVerts": {
+   "offset": 21552,
+   "dtype": "u32",
+   "count": 6392
+  },
+  "faceUvs": {
+   "offset": 47120,
+   "dtype": "u32",
+   "count": 6392
+  },
+  "refVerts": {
+   "offset": 72688,
+   "dtype": "u32",
+   "count": 3261
+  },
+  "refWeights": {
+   "offset": 85744,
+   "dtype": "f32",
+   "count": 3261
+  },
+  "refOffsets": {
+   "offset": 98800,
+   "dtype": "f32",
+   "count": 3261
+  },
+  "deleteVerts": {
+   "offset": 111856,
+   "dtype": "u32",
+   "count": 1376
+  },
+  "sourceProxyVertex": {
+   "offset": 117360,
+   "dtype": "u32",
+   "count": 1087
+  }
+ }
+}

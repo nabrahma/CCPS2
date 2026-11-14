@@ -1,0 +1,88 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_cardigan_long_open_front",
+ "category": "clothes",
+ "name": "F_Cardigan_Long_Open_Front",
+ "uuid": "b6da3d03-34a9-4fd6-9b12-7a29c43caa8f",
+ "tags": [
+  "female",
+  "sweater",
+  "cardigan"
+ ],
+ "zDepth": 50,
+ "vertexCount": 4569,
+ "faceCount": 4492,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 0.0,
+  "diffuseTexture": "textures/clothes/mindfront_cardigan_long_open_front.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "outer",
+ "binary": "mindfront_cardigan_long_open_front.bin",
+ "byteLength": 411308,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 13707
+  },
+  "uvs": {
+   "offset": 54832,
+   "dtype": "f32",
+   "count": 12060
+  },
+  "faceVerts": {
+   "offset": 103072,
+   "dtype": "u32",
+   "count": 17968
+  },
+  "faceUvs": {
+   "offset": 174944,
+   "dtype": "u32",
+   "count": 17968
+  },
+  "refVerts": {
+   "offset": 246816,
+   "dtype": "u32",
+   "count": 13707
+  },
+  "refWeights": {
+   "offset": 301648,
+   "dtype": "f32",
+   "count": 13707
+  },
+  "refOffsets": {
+   "offset": 356480,
+   "dtype": "f32",
+   "count": 13707
+  }
+ }
+}

@@ -78,10 +78,104 @@
    "gloss": 0.08
   }
  ],
+ "seamsSkipped": {
+  "clustered": [
+   "mh:clothes/culturalibre_male_boots",
+   "mh:clothes/grinsegold_female_pirate_boots",
+   "mh:clothes/toigo_ballet_flats_with_bows",
+   "mh:clothes/toigo_flats",
+   "mh:clothes/toigo_stiletto_booties",
+   "mh:clothes/grinsegold_uncle_joshis_hat",
+   "mh:clothes/culturalibre_hero-heroine_gloves_2",
+   "mh:clothes/culturalibre_hero-heroine_gloves_3",
+   "mh:clothes/culturalibre_hero-heroine_gloves_4",
+   "mh:clothes/elvs_ladies_tank1",
+   "mh:clothes/elvs_male_trouser_short_2",
+   "mh:clothes/elvs_retro_girly_shorts1",
+   "mh:clothes/culturalibre_sneakers",
+   "mh:clothes/elvs_caesar_sandals1",
+   "mh:clothes/elvs_flatshoe_bow1",
+   "mh:clothes/elvs_flatshoe_buckle_1",
+   "mh:clothes/elvs_flatshoe_gemmed1",
+   "mh:clothes/elvs_male_flip_flop_sandals1",
+   "mh:clothes/elvs_zombie_killer_sneakers",
+   "mh:clothes/punkduck_cycling_shoes",
+   "mh:clothes/elvs_knee_high_heel_boots1",
+   "mh:clothes/elvs_wedge_tall_boots1",
+   "mh:clothes/mindfront_shoes_biker_boots_female",
+   "mh:clothes/mindfront_shoes_biker_boots_male",
+   "mh:clothes/punkduck_medieval_boots",
+   "mh:clothes/matcreator_mc-scifi-armor_helios",
+   "mh:clothes/matcreator_mc-scifi-armor_jupiter7",
+   "mh:clothes/rehmanpolanski_viking_boots",
+   "mh:clothes/elvs_crochet_baby_doll",
+   "mh:clothes/elvs_fashion_stylized_qipoa",
+   "mh:clothes/elvs_goddess_dress8",
+   "mh:clothes/elvs_ladies_apron",
+   "mh:clothes/elvs_pleated_plaid_mini_skirt",
+   "mh:clothes/culturalibre_motorcycle_helmet",
+   "mh:clothes/culturalibre_warrior_helmet",
+   "mh:clothes/mrgreaterthan_m1_helmet",
+   "mh:clothes/elvs_male_trilby_hat",
+   "mh:clothes/culturalibre_warrior_helmet_02",
+   "mh:clothes/drednicolson_pith_helmet",
+   "mh:clothes/mindfront_helmet_kz45",
+   "mh:clothes/punkduck_riding_helmet",
+   "mh:clothes/elvs_bow_front_bra",
+   "mh:clothes/punkduck_french_lingerie_suspender_belt",
+   "mh:clothes/elvs_all_tied_up_bikini",
+   "mh:clothes/elvs_camisole1",
+   "mh:clothes/kwnet_at_optical_glasses",
+   "mh:clothes/spamrakuen_sagerfrogs_glasses_02",
+   "mh:clothes/spamrakuen_sagerfrogs_glasses_03",
+   "mh:clothes/spamrakuen_sagerfrogs_glasses_04",
+   "mh:clothes/elvs_ladies_sunglass1",
+   "mh:clothes/toigo_pearl_necklace",
+   "mh:clothes/culturalibre_cl_spiral_bracelets",
+   "mh:clothes/culturalibre_leather_bracelet",
+   "mh:clothes/elvs_braided_anklet1",
+   "mh:clothes/elvs_chunky_chain_anklet",
+   "mh:clothes/elvs_circle_chain_anklet1",
+   "mh:clothes/elvs_double_hoops",
+   "mh:clothes/elvs_f_earring_array1_l",
+   "mh:clothes/elvs_goth_statement_necklace1",
+   "mh:clothes/elvs_interlocking_rings_anklet1",
+   "mh:clothes/elvs_m_facial_jewel_array1",
+   "mh:clothes/elvs_pumpkin_hallows_earrings1",
+   "mh:clothes/elvs_twisty_hoops1",
+   "mh:clothes/jaldmic_no_heart_enchanted_gemstone",
+   "mh:clothes/punkduck_bracelet_infinity_love",
+   "mh:clothes/punkduck_brass_circlet_crown",
+   "mh:clothes/punkduck_necklace_native_american_fashion_",
+   "mh:clothes/punkduck_spike_collar",
+   "mh:clothes/punkduck_twisted_pearl_necklace",
+   "mh:clothes/culturalibre_hero_mask_1",
+   "mh:clothes/culturalibre_hero_mask_2",
+   "mh:clothes/elvs_plague_doctor_mask",
+   "mh:clothes/gredal_gas_mask",
+   "mh:clothes/elvs_childrens_costume_wings1",
+   "mh:clothes/elvs_dual_fanned_wings_collaberation",
+   "mh:clothes/elvs_static_wings3_butterfly1",
+   "mh:clothes/elvs_static_wings4_bone_wings1",
+   "mh:clothes/elvs_static_wings5_fairy_moth1",
+   "mh:clothes/culturalibre_faun_beard",
+   "mh:clothes/culturalibre_hand_claws",
+   "mh:clothes/jaldmic_akm_base",
+   "mh:clothes/jaldmic_l1a1",
+   "mh:clothes/elvs_sling_purse1",
+   "mh:clothes/mindfront_tactical_vest_female",
+   "mh:clothes/mindfront_tactical_vest_male",
+   "mh:clothes/punkduck_diver_scuba_rig",
+   "mh:clothes/punkduck_electric_guitar",
+   "mh:clothes/punkduck_handbag01",
+   "mh:clothes/punkduck_wireless_headset"
+  ],
+  "noCloth": 133
+ },
  "seams": {
-  "garments": 121,
-  "withSeams": 121,
-  "withHems": 106,
+  "garments": 334,
+  "withSeams": 323,
+  "withHems": 305,
   "none": [],
   "perGarment": [
    {
@@ -297,7 +391,7 @@
    {
     "id": "mh:clothes/cortu_t-bar",
     "islands": 8,
-    "seamMetres": 1.935,
+    "seamMetres": 1.936,
     "hemMetres": 1.506
    },
    {
@@ -355,18 +449,6 @@
     "hemMetres": 0.558
    },
    {
-    "id": "mh:clothes/culturalibre_male_boots",
-    "islands": 8,
-    "seamMetres": 2.599,
-    "hemMetres": 0
-   },
-   {
-    "id": "mh:clothes/grinsegold_female_pirate_boots",
-    "islands": 34,
-    "seamMetres": 9.616,
-    "hemMetres": 0.476
-   },
-   {
     "id": "mh:clothes/scailman_gogo_platform_boots",
     "islands": 20,
     "seamMetres": 7.286,
@@ -397,22 +479,10 @@
     "hemMetres": 0.787
    },
    {
-    "id": "mh:clothes/toigo_ballet_flats_with_bows",
-    "islands": 13,
-    "seamMetres": 1.81,
-    "hemMetres": 1.168
-   },
-   {
     "id": "mh:clothes/toigo_ballet_flats_with_flowers",
     "islands": 12,
     "seamMetres": 1.818,
     "hemMetres": 0.927
-   },
-   {
-    "id": "mh:clothes/toigo_flats",
-    "islands": 26,
-    "seamMetres": 7.183,
-    "hemMetres": 0
    },
    {
     "id": "mh:clothes/toigo_mj_cloth_shoes",
@@ -421,16 +491,16 @@
     "hemMetres": 1.352
    },
    {
-    "id": "mh:clothes/toigo_stiletto_booties",
-    "islands": 10,
-    "seamMetres": 2.357,
-    "hemMetres": 0.363
-   },
-   {
     "id": "mh:clothes/toigo_female_double-breasted_suit",
     "islands": 38,
     "seamMetres": 8.431,
     "hemMetres": 9.093
+   },
+   {
+    "id": "mh:clothes/toigo_female_suit",
+    "islands": 17,
+    "seamMetres": 6.322,
+    "hemMetres": 7.779
    },
    {
     "id": "mh:clothes/toigo_female_suit_2",
@@ -583,12 +653,6 @@
     "hemMetres": 2.151
    },
    {
-    "id": "mh:clothes/grinsegold_uncle_joshis_hat",
-    "islands": 382,
-    "seamMetres": 14.226,
-    "hemMetres": 0.029
-   },
-   {
     "id": "mh:clothes/joepal_xmas_cap",
     "islands": 5,
     "seamMetres": 1.073,
@@ -597,8 +661,8 @@
    {
     "id": "mh:clothes/jujube_bag_on_head",
     "islands": 2,
-    "seamMetres": 1.668,
-    "hemMetres": 1.681
+    "seamMetres": 1.674,
+    "hemMetres": 1.477
    },
    {
     "id": "mh:clothes/jujube_newsboy_cap",
@@ -616,24 +680,6 @@
     "id": "mh:clothes/culturalibre_hero-heroine_gloves_1",
     "islands": 4,
     "seamMetres": 5.218,
-    "hemMetres": 0
-   },
-   {
-    "id": "mh:clothes/culturalibre_hero-heroine_gloves_2",
-    "islands": 10,
-    "seamMetres": 4.779,
-    "hemMetres": 0
-   },
-   {
-    "id": "mh:clothes/culturalibre_hero-heroine_gloves_3",
-    "islands": 6,
-    "seamMetres": 4.577,
-    "hemMetres": 0
-   },
-   {
-    "id": "mh:clothes/culturalibre_hero-heroine_gloves_4",
-    "islands": 6,
-    "seamMetres": 4.999,
     "hemMetres": 0
    },
    {
@@ -741,7 +787,7 @@
    {
     "id": "mh:clothes/wdg_mycenaean_tunic",
     "islands": 2,
-    "seamMetres": 2.488,
+    "seamMetres": 2.505,
     "hemMetres": 2.293
    },
    {
@@ -779,6 +825,1332 @@
     "islands": 8,
     "seamMetres": 6.926,
     "hemMetres": 5.279
+   },
+   {
+    "id": "mh:clothes/elvs_hooded_sweat_jacket1",
+    "islands": 48,
+    "seamMetres": 26.579,
+    "hemMetres": 2.196
+   },
+   {
+    "id": "mh:clothes/elvs_male_boho_top1",
+    "islands": 30,
+    "seamMetres": 3.912,
+    "hemMetres": 2.565
+   },
+   {
+    "id": "mh:clothes/elvs_male_shirt_tie_tucked1",
+    "islands": 11,
+    "seamMetres": 4.161,
+    "hemMetres": 2.156
+   },
+   {
+    "id": "mh:clothes/elvs_male_shirt_untucked_bd1",
+    "islands": 20,
+    "seamMetres": 3.255,
+    "hemMetres": 2.972
+   },
+   {
+    "id": "mh:clothes/ews_striped_shirt",
+    "islands": 29,
+    "seamMetres": 9.787,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/janexx_old_female_sweater",
+    "islands": 4,
+    "seamMetres": 3.129,
+    "hemMetres": 2.114
+   },
+   {
+    "id": "mh:clothes/mindfront_cardigan_long_open_front",
+    "islands": 9,
+    "seamMetres": 2.677,
+    "hemMetres": 4.614
+   },
+   {
+    "id": "mh:clothes/mindfront_knitted_sweater_01",
+    "islands": 2,
+    "seamMetres": 2.973,
+    "hemMetres": 1.798
+   },
+   {
+    "id": "mh:clothes/mindfront_knitted_sweater_02",
+    "islands": 2,
+    "seamMetres": 2.913,
+    "hemMetres": 1.844
+   },
+   {
+    "id": "mh:clothes/mindfront_lusekofta",
+    "islands": 12,
+    "seamMetres": 2.308,
+    "hemMetres": 4.07
+   },
+   {
+    "id": "mh:clothes/punkduck_lace_up_blouse",
+    "islands": 10,
+    "seamMetres": 5.548,
+    "hemMetres": 3.962
+   },
+   {
+    "id": "mh:clothes/punkduck_off-shoulder_long-sleeve_top",
+    "islands": 11,
+    "seamMetres": 3.399,
+    "hemMetres": 3.621
+   },
+   {
+    "id": "mh:clothes/drednicolson_asymmetric_tunic_and_sash",
+    "islands": 5,
+    "seamMetres": 2.976,
+    "hemMetres": 4.687
+   },
+   {
+    "id": "mh:clothes/drednicolson_short-tail_camo_tee",
+    "islands": 8,
+    "seamMetres": 3.838,
+    "hemMetres": 1.97
+   },
+   {
+    "id": "mh:clothes/elvs_disco_top2",
+    "islands": 2,
+    "seamMetres": 0.395,
+    "hemMetres": 3.074
+   },
+   {
+    "id": "mh:clothes/elvs_disco_top_1_butterfly",
+    "islands": 3,
+    "seamMetres": 0.898,
+    "hemMetres": 4.2
+   },
+   {
+    "id": "mh:clothes/elvs_lara_tank1",
+    "islands": 2,
+    "seamMetres": 0.922,
+    "hemMetres": 2.606
+   },
+   {
+    "id": "mh:clothes/elvs_male_athletic_tank1",
+    "islands": 14,
+    "seamMetres": 0.57,
+    "hemMetres": 8.215
+   },
+   {
+    "id": "mh:clothes/elvs_male_logo_tshirt1",
+    "islands": 6,
+    "seamMetres": 5.17,
+    "hemMetres": 2.033
+   },
+   {
+    "id": "mh:clothes/elvs_male_muscle_shirt1",
+    "islands": 2,
+    "seamMetres": 0.847,
+    "hemMetres": 2.29
+   },
+   {
+    "id": "mh:clothes/elvs_male_tankshirt1",
+    "islands": 2,
+    "seamMetres": 0.654,
+    "hemMetres": 2.413
+   },
+   {
+    "id": "mh:clothes/elvs_ruffle_sleeve_peasant_blouse_1",
+    "islands": 2,
+    "seamMetres": 1.234,
+    "hemMetres": 2.711
+   },
+   {
+    "id": "mh:clothes/mindfront_tank_top_01",
+    "islands": 2,
+    "seamMetres": 0.674,
+    "hemMetres": 2.906
+   },
+   {
+    "id": "mh:clothes/punkduck_high_neck_crop_top",
+    "islands": 3,
+    "seamMetres": 0.993,
+    "hemMetres": 2.132
+   },
+   {
+    "id": "mh:clothes/punkduck_retro_top",
+    "islands": 3,
+    "seamMetres": 1.15,
+    "hemMetres": 2.415
+   },
+   {
+    "id": "mh:clothes/punkduck_sleeveless_crop_top",
+    "islands": 2,
+    "seamMetres": 0.482,
+    "hemMetres": 2.525
+   },
+   {
+    "id": "mh:clothes/punkduck_sleeveless_shirt",
+    "islands": 15,
+    "seamMetres": 1.698,
+    "hemMetres": 2.915
+   },
+   {
+    "id": "mh:clothes/punkduck_spaghetti_strap_tank_top",
+    "islands": 9,
+    "seamMetres": 0.667,
+    "hemMetres": 3.293
+   },
+   {
+    "id": "mh:clothes/punkduck_tube_top",
+    "islands": 2,
+    "seamMetres": 0.455,
+    "hemMetres": 1.634
+   },
+   {
+    "id": "mh:clothes/punkduck_v_neck_top",
+    "islands": 8,
+    "seamMetres": 0.905,
+    "hemMetres": 3.488
+   },
+   {
+    "id": "mh:clothes/elvs_disco_pants_double_ruffles",
+    "islands": 1,
+    "seamMetres": 6.091,
+    "hemMetres": 4.584
+   },
+   {
+    "id": "mh:clothes/elvs_disco_pants_single_ruffles",
+    "islands": 1,
+    "seamMetres": 4.412,
+    "hemMetres": 2.741
+   },
+   {
+    "id": "mh:clothes/elvs_disco_pants_skinny",
+    "islands": 1,
+    "seamMetres": 4.36,
+    "hemMetres": 1.396
+   },
+   {
+    "id": "mh:clothes/elvs_gored_elephant_pants",
+    "islands": 1,
+    "seamMetres": 6.796,
+    "hemMetres": 3.366
+   },
+   {
+    "id": "mh:clothes/elvs_jeans_bootcut",
+    "islands": 89,
+    "seamMetres": 9.09,
+    "hemMetres": 4.525
+   },
+   {
+    "id": "mh:clothes/elvs_jeans_straight_leg",
+    "islands": 100,
+    "seamMetres": 9.167,
+    "hemMetres": 4.427
+   },
+   {
+    "id": "mh:clothes/elvs_male_trouser",
+    "islands": 64,
+    "seamMetres": 8.647,
+    "hemMetres": 1.787
+   },
+   {
+    "id": "mh:clothes/elvs_male_trouser_with_chain",
+    "islands": 33,
+    "seamMetres": 5.931,
+    "hemMetres": 4.679
+   },
+   {
+    "id": "mh:clothes/mindfront_female_trousers_1",
+    "islands": 13,
+    "seamMetres": 4.006,
+    "hemMetres": 3.91
+   },
+   {
+    "id": "mh:clothes/mindfront_male_trousers_1",
+    "islands": 13,
+    "seamMetres": 3.478,
+    "hemMetres": 3.614
+   },
+   {
+    "id": "mh:clothes/mindfront_male_trousers_2",
+    "islands": 9,
+    "seamMetres": 4.182,
+    "hemMetres": 1.997
+   },
+   {
+    "id": "mh:clothes/punkduck_female_tight_jeans",
+    "islands": 21,
+    "seamMetres": 2.52,
+    "hemMetres": 9.219
+   },
+   {
+    "id": "mh:clothes/punkduck_male_classic_jeans",
+    "islands": 28,
+    "seamMetres": 2.638,
+    "hemMetres": 10.212
+   },
+   {
+    "id": "mh:clothes/elvs_male_swim_shorts1",
+    "islands": 2,
+    "seamMetres": 1.368,
+    "hemMetres": 2.115
+   },
+   {
+    "id": "mh:clothes/elvs_male_trouser_short_1",
+    "islands": 108,
+    "seamMetres": 5.8,
+    "hemMetres": 4.706
+   },
+   {
+    "id": "mh:clothes/mindfront_male_swimming_trunks_01",
+    "islands": 4,
+    "seamMetres": 1.519,
+    "hemMetres": 2.045
+   },
+   {
+    "id": "mh:clothes/mindfront_male_swimming_trunks_02",
+    "islands": 6,
+    "seamMetres": 0.911,
+    "hemMetres": 2.559
+   },
+   {
+    "id": "mh:clothes/mindfront_male_swimming_trunks_03",
+    "islands": 11,
+    "seamMetres": 0.815,
+    "hemMetres": 2.069
+   },
+   {
+    "id": "mh:clothes/punkduck_female_short_jeans",
+    "islands": 25,
+    "seamMetres": 2.378,
+    "hemMetres": 7.092
+   },
+   {
+    "id": "mh:clothes/callharvey3d_harvey_saddleshoes1",
+    "islands": 12,
+    "seamMetres": 3.522,
+    "hemMetres": 1.284
+   },
+   {
+    "id": "mh:clothes/dressupdoc_balletflat1",
+    "islands": 6,
+    "seamMetres": 1.285,
+    "hemMetres": 1.447
+   },
+   {
+    "id": "mh:clothes/dressupdoc_domsjeans1",
+    "islands": 6,
+    "seamMetres": 1.286,
+    "hemMetres": 1.447
+   },
+   {
+    "id": "mh:clothes/dressupdoc_maryjane1",
+    "islands": 6,
+    "seamMetres": 1.285,
+    "hemMetres": 1.447
+   },
+   {
+    "id": "mh:clothes/dressupdoc_sandals1",
+    "islands": 6,
+    "seamMetres": 1.285,
+    "hemMetres": 1.447
+   },
+   {
+    "id": "mh:clothes/elvs_basic_felt_elf_shoes",
+    "islands": 33,
+    "seamMetres": 11.508,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/elvs_flatshoe_plain1",
+    "islands": 8,
+    "seamMetres": 0,
+    "hemMetres": 8.616
+   },
+   {
+    "id": "mh:clothes/elvs_flatshoe_pointy1",
+    "islands": 8,
+    "seamMetres": 0,
+    "hemMetres": 9.798
+   },
+   {
+    "id": "mh:clothes/mindfront_shoes_monk_strap_female",
+    "islands": 36,
+    "seamMetres": 6.818,
+    "hemMetres": 2.315
+   },
+   {
+    "id": "mh:clothes/mindfront_shoes_monk_strap_male",
+    "islands": 35,
+    "seamMetres": 6.709,
+    "hemMetres": 2.212
+   },
+   {
+    "id": "mh:clothes/mindfront_shoes_oxford_female",
+    "islands": 20,
+    "seamMetres": 2.809,
+    "hemMetres": 2.039
+   },
+   {
+    "id": "mh:clothes/mindfront_shoes_oxford_male",
+    "islands": 21,
+    "seamMetres": 2.866,
+    "hemMetres": 2.222
+   },
+   {
+    "id": "mh:clothes/punkduck_comfortable_sneakers",
+    "islands": 14,
+    "seamMetres": 1.227,
+    "hemMetres": 3.865
+   },
+   {
+    "id": "mh:clothes/punkduck_running_shoes_01",
+    "islands": 23,
+    "seamMetres": 2.911,
+    "hemMetres": 1.727
+   },
+   {
+    "id": "mh:clothes/punkduck_tennis_shoes",
+    "islands": 35,
+    "seamMetres": 4.51,
+    "hemMetres": 2.502
+   },
+   {
+    "id": "mh:clothes/maciekg_leather_boots",
+    "islands": 14,
+    "seamMetres": 2.853,
+    "hemMetres": 2.032
+   },
+   {
+    "id": "mh:clothes/madmanny_tight_leather_boots",
+    "islands": 10,
+    "seamMetres": 0.934,
+    "hemMetres": 7.799
+   },
+   {
+    "id": "mh:clothes/punkduck_female_half-boots",
+    "islands": 26,
+    "seamMetres": 5.478,
+    "hemMetres": 0.441
+   },
+   {
+    "id": "mh:clothes/punkduck_female_knee_boots",
+    "islands": 22,
+    "seamMetres": 5.14,
+    "hemMetres": 0.664
+   },
+   {
+    "id": "mh:clothes/punkduck_riding_boots",
+    "islands": 18,
+    "seamMetres": 5.176,
+    "hemMetres": 0.698
+   },
+   {
+    "id": "mh:clothes/punkduck_winter_boots",
+    "islands": 26,
+    "seamMetres": 7.014,
+    "hemMetres": 3.376
+   },
+   {
+    "id": "mh:clothes/scailman_low-heeled_boots",
+    "islands": 26,
+    "seamMetres": 7.35,
+    "hemMetres": 0.73
+   },
+   {
+    "id": "mh:clothes/culturalibre_hero_suit_1",
+    "islands": 1,
+    "seamMetres": 6.817,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/culturalibre_hero_suit_2",
+    "islands": 1,
+    "seamMetres": 4.883,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/culturalibre_heroine_suit_2",
+    "islands": 7,
+    "seamMetres": 7.013,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/donitz_monk_robe",
+    "islands": 10,
+    "seamMetres": 6.818,
+    "hemMetres": 7.765
+   },
+   {
+    "id": "mh:clothes/donitz_monk_robe_hood",
+    "islands": 1,
+    "seamMetres": 1.898,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/donitz_monk_robe_hood_down",
+    "islands": 1,
+    "seamMetres": 1.832,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/donitz_monk_robe_hood_off",
+    "islands": 1,
+    "seamMetres": 1.399,
+    "hemMetres": 0.125
+   },
+   {
+    "id": "mh:clothes/joachip_cyborg_suit",
+    "islands": 616,
+    "seamMetres": 152.409,
+    "hemMetres": 2.774
+   },
+   {
+    "id": "mh:clothes/matcreator_mc-bodysuit-2021",
+    "islands": 9,
+    "seamMetres": 5.799,
+    "hemMetres": 3.196
+   },
+   {
+    "id": "mh:clothes/matcreator_mc-scifi-armor_guardian",
+    "islands": 4,
+    "seamMetres": 3.554,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/matcreator_mc-skinsuit_2022",
+    "islands": 1,
+    "seamMetres": 4.173,
+    "hemMetres": 0.709
+   },
+   {
+    "id": "mh:clothes/rehmanpolanski_viking_pants",
+    "islands": 1,
+    "seamMetres": 1.534,
+    "hemMetres": 1.525
+   },
+   {
+    "id": "mh:clothes/rehmanpolanski_viking_tunic",
+    "islands": 11,
+    "seamMetres": 7.44,
+    "hemMetres": 1.721
+   },
+   {
+    "id": "mh:clothes/thegreatengineer_galactic_warrior_uniform",
+    "islands": 13,
+    "seamMetres": 10.615,
+    "hemMetres": 6.416
+   },
+   {
+    "id": "mh:clothes/elvs_emt_uniform_jacket_female",
+    "islands": 86,
+    "seamMetres": 17.738,
+    "hemMetres": 10.759
+   },
+   {
+    "id": "mh:clothes/elvs_emt_uniform_jacket_male",
+    "islands": 86,
+    "seamMetres": 17.911,
+    "hemMetres": 10.859
+   },
+   {
+    "id": "mh:clothes/elvs_emt_uniform_pants_female",
+    "islands": 50,
+    "seamMetres": 11.075,
+    "hemMetres": 7.946
+   },
+   {
+    "id": "mh:clothes/elvs_emt_uniform_pants_male",
+    "islands": 50,
+    "seamMetres": 11.796,
+    "hemMetres": 8.469
+   },
+   {
+    "id": "mh:clothes/elvs_halter_style_pantsuit1",
+    "islands": 2,
+    "seamMetres": 4.983,
+    "hemMetres": 4.544
+   },
+   {
+    "id": "mh:clothes/elvs_male_coveralls_1",
+    "islands": 12,
+    "seamMetres": 5.616,
+    "hemMetres": 2.917
+   },
+   {
+    "id": "mh:clothes/elvs_racing_fire_suit_female1",
+    "islands": 4,
+    "seamMetres": 13.67,
+    "hemMetres": 3.936
+   },
+   {
+    "id": "mh:clothes/elvs_racing_fire_suit_male1",
+    "islands": 11,
+    "seamMetres": 17.289,
+    "hemMetres": 4.69
+   },
+   {
+    "id": "mh:clothes/elvs_sporty_tracksuit_hoodie_dress1",
+    "islands": 9,
+    "seamMetres": 13.046,
+    "hemMetres": 5.56
+   },
+   {
+    "id": "mh:clothes/grinsegold_mars_suit",
+    "islands": 45,
+    "seamMetres": 16.576,
+    "hemMetres": 20.06
+   },
+   {
+    "id": "mh:clothes/maciekg_wizard_robe",
+    "islands": 4,
+    "seamMetres": 4.818,
+    "hemMetres": 2.056
+   },
+   {
+    "id": "mh:clothes/mindfront_f_ninja",
+    "islands": 69,
+    "seamMetres": 7.315,
+    "hemMetres": 12.511
+   },
+   {
+    "id": "mh:clothes/mindfront_m_suit_01",
+    "islands": 32,
+    "seamMetres": 10.327,
+    "hemMetres": 8.618
+   },
+   {
+    "id": "mh:clothes/punkduck_diver_suit",
+    "islands": 30,
+    "seamMetres": 9.938,
+    "hemMetres": 9.67
+   },
+   {
+    "id": "mh:clothes/punkduck_short_bodysuit_female",
+    "islands": 10,
+    "seamMetres": 4.982,
+    "hemMetres": 1.905
+   },
+   {
+    "id": "mh:clothes/punkduck_tennis_dress",
+    "islands": 6,
+    "seamMetres": 2.79,
+    "hemMetres": 2.816
+   },
+   {
+    "id": "mh:clothes/punkduck_triathlon_suit_female",
+    "islands": 1,
+    "seamMetres": 0.904,
+    "hemMetres": 3.7
+   },
+   {
+    "id": "mh:clothes/punkduck_wetsuit",
+    "islands": 16,
+    "seamMetres": 11.057,
+    "hemMetres": 1.132
+   },
+   {
+    "id": "mh:clothes/tiomegamanx_skintight_body_suit_female",
+    "islands": 9,
+    "seamMetres": 8.596,
+    "hemMetres": 0.34
+   },
+   {
+    "id": "mh:clothes/culturalibre_hero_suit_4",
+    "islands": 1,
+    "seamMetres": 3.343,
+    "hemMetres": 1.227
+   },
+   {
+    "id": "mh:clothes/culturalibre_heroine_suit_5",
+    "islands": 3,
+    "seamMetres": 4.739,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/culturalibre_heroine_suit_6",
+    "islands": 16,
+    "seamMetres": 10.387,
+    "hemMetres": 0.382
+   },
+   {
+    "id": "mh:clothes/culturalibre_male_sport_suit",
+    "islands": 3,
+    "seamMetres": 4.015,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/culturalibre_heroine_suit_1",
+    "islands": 3,
+    "seamMetres": 7.102,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/culturalibre_heroine_suit_3",
+    "islands": 1,
+    "seamMetres": 3.813,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/culturalibre_heroine_suit_4",
+    "islands": 20,
+    "seamMetres": 10.068,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/elvs_double_handkerchief_halter_dress",
+    "islands": 1,
+    "seamMetres": 1.978,
+    "hemMetres": 14.31
+   },
+   {
+    "id": "mh:clothes/elvs_frilled_party_dress",
+    "islands": 6,
+    "seamMetres": 3.098,
+    "hemMetres": 3.741
+   },
+   {
+    "id": "mh:clothes/elvs_fringe_hippy_dress",
+    "islands": 202,
+    "seamMetres": 1.898,
+    "hemMetres": 84.255
+   },
+   {
+    "id": "mh:clothes/elvs_fringe_leather_dress",
+    "islands": 237,
+    "seamMetres": 3.292,
+    "hemMetres": 44.752
+   },
+   {
+    "id": "mh:clothes/elvs_fringe_off_shoulder_dress",
+    "islands": 586,
+    "seamMetres": 6.196,
+    "hemMetres": 110.155
+   },
+   {
+    "id": "mh:clothes/elvs_goddess_dress1",
+    "islands": 4,
+    "seamMetres": 1.06,
+    "hemMetres": 9.097
+   },
+   {
+    "id": "mh:clothes/elvs_goddess_dress2",
+    "islands": 4,
+    "seamMetres": 1.016,
+    "hemMetres": 5.689
+   },
+   {
+    "id": "mh:clothes/elvs_goddess_dress3",
+    "islands": 1,
+    "seamMetres": 0.278,
+    "hemMetres": 6.05
+   },
+   {
+    "id": "mh:clothes/elvs_goddess_dress4",
+    "islands": 1,
+    "seamMetres": 2.071,
+    "hemMetres": 9.96
+   },
+   {
+    "id": "mh:clothes/elvs_goddess_dress5",
+    "islands": 4,
+    "seamMetres": 1.398,
+    "hemMetres": 7.24
+   },
+   {
+    "id": "mh:clothes/elvs_goddess_dress6",
+    "islands": 2,
+    "seamMetres": 1.264,
+    "hemMetres": 10.06
+   },
+   {
+    "id": "mh:clothes/elvs_goddess_dress7",
+    "islands": 5,
+    "seamMetres": 3.773,
+    "hemMetres": 4.008
+   },
+   {
+    "id": "mh:clothes/elvs_halter_dress_knee_length",
+    "islands": 4,
+    "seamMetres": 0,
+    "hemMetres": 9.691
+   },
+   {
+    "id": "mh:clothes/elvs_halter_dress_long",
+    "islands": 4,
+    "seamMetres": 0.594,
+    "hemMetres": 19.851
+   },
+   {
+    "id": "mh:clothes/elvs_halter_dress_mini",
+    "islands": 3,
+    "seamMetres": 0.562,
+    "hemMetres": 9.115
+   },
+   {
+    "id": "mh:clothes/elvs_halter_dress_tiered",
+    "islands": 1,
+    "seamMetres": 3.279,
+    "hemMetres": 14.555
+   },
+   {
+    "id": "mh:clothes/elvs_sarong_cover_up",
+    "islands": 4,
+    "seamMetres": 1.496,
+    "hemMetres": 4.517
+   },
+   {
+    "id": "mh:clothes/elvs_simple_60s_dress",
+    "islands": 2,
+    "seamMetres": 3.309,
+    "hemMetres": 3.255
+   },
+   {
+    "id": "mh:clothes/elvs_simple_fashion_dress_1",
+    "islands": 10,
+    "seamMetres": 4.162,
+    "hemMetres": 4.193
+   },
+   {
+    "id": "mh:clothes/elvs_simple_fashion_dress_2",
+    "islands": 2,
+    "seamMetres": 1.882,
+    "hemMetres": 3.221
+   },
+   {
+    "id": "mh:clothes/mindfront_ballet_dress_the_swan",
+    "islands": 10,
+    "seamMetres": 1.641,
+    "hemMetres": 16.378
+   },
+   {
+    "id": "mh:clothes/mindfront_f_dress_01",
+    "islands": 4,
+    "seamMetres": 2.733,
+    "hemMetres": 2.96
+   },
+   {
+    "id": "mh:clothes/mindfront_f_dress_02",
+    "islands": 3,
+    "seamMetres": 1.856,
+    "hemMetres": 3.259
+   },
+   {
+    "id": "mh:clothes/mindfront_f_dress_03",
+    "islands": 9,
+    "seamMetres": 2.928,
+    "hemMetres": 12.967
+   },
+   {
+    "id": "mh:clothes/mindfront_f_dress_04",
+    "islands": 10,
+    "seamMetres": 0.694,
+    "hemMetres": 5.704
+   },
+   {
+    "id": "mh:clothes/mindfront_f_dress_05",
+    "islands": 4,
+    "seamMetres": 3.437,
+    "hemMetres": 6.98
+   },
+   {
+    "id": "mh:clothes/mindfront_f_dress_06",
+    "islands": 2,
+    "seamMetres": 1.026,
+    "hemMetres": 3.642
+   },
+   {
+    "id": "mh:clothes/mindfront_f_dress_07",
+    "islands": 4,
+    "seamMetres": 1.86,
+    "hemMetres": 5.874
+   },
+   {
+    "id": "mh:clothes/mindfront_f_dress_08",
+    "islands": 6,
+    "seamMetres": 2.756,
+    "hemMetres": 5.153
+   },
+   {
+    "id": "mh:clothes/mindfront_f_dress_09",
+    "islands": 8,
+    "seamMetres": 4.807,
+    "hemMetres": 3.302
+   },
+   {
+    "id": "mh:clothes/mindfront_f_dress_10",
+    "islands": 7,
+    "seamMetres": 5.644,
+    "hemMetres": 7.672
+   },
+   {
+    "id": "mh:clothes/mindfront_f_dress_11",
+    "islands": 13,
+    "seamMetres": 6.089,
+    "hemMetres": 2.554
+   },
+   {
+    "id": "mh:clothes/punkduck_black_cocktail_dress",
+    "islands": 4,
+    "seamMetres": 0.918,
+    "hemMetres": 3.129
+   },
+   {
+    "id": "mh:clothes/punkduck_evening_gown",
+    "islands": 264,
+    "seamMetres": 11.865,
+    "hemMetres": 3.171
+   },
+   {
+    "id": "mh:clothes/punkduck_figure_skating_dress",
+    "islands": 14,
+    "seamMetres": 2.902,
+    "hemMetres": 7.129
+   },
+   {
+    "id": "mh:clothes/punkduck_medieval_dress",
+    "islands": 8,
+    "seamMetres": 6.706,
+    "hemMetres": 3.668
+   },
+   {
+    "id": "mh:clothes/punkduck_middle_length_qipao",
+    "islands": 41,
+    "seamMetres": 8.308,
+    "hemMetres": 4.523
+   },
+   {
+    "id": "mh:clothes/punkduck_tube_dress",
+    "islands": 2,
+    "seamMetres": 1.331,
+    "hemMetres": 1.894
+   },
+   {
+    "id": "mh:clothes/punkduck_winter_coat",
+    "islands": 27,
+    "seamMetres": 20.517,
+    "hemMetres": 3.534
+   },
+   {
+    "id": "mh:clothes/callharvey3d_harvey_pskirt01",
+    "islands": 2,
+    "seamMetres": 1.351,
+    "hemMetres": 1.95
+   },
+   {
+    "id": "mh:clothes/elvs_asymmetrical_skirt",
+    "islands": 17,
+    "seamMetres": 3.829,
+    "hemMetres": 1.964
+   },
+   {
+    "id": "mh:clothes/elvs_disco_mini_skirt",
+    "islands": 5,
+    "seamMetres": 2.679,
+    "hemMetres": 1.668
+   },
+   {
+    "id": "mh:clothes/elvs_gored_midi_skirt",
+    "islands": 1,
+    "seamMetres": 9.237,
+    "hemMetres": 3.954
+   },
+   {
+    "id": "mh:clothes/elvs_pencil_skirt",
+    "islands": 1,
+    "seamMetres": 2.571,
+    "hemMetres": 2.132
+   },
+   {
+    "id": "mh:clothes/mtknife_low_mini_skirt",
+    "islands": 74,
+    "seamMetres": 4.488,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/mtknife_pleated_mini_skirt",
+    "islands": 2,
+    "seamMetres": 0.79,
+    "hemMetres": 8.742
+   },
+   {
+    "id": "mh:clothes/punkduck_black_mini_skirt",
+    "islands": 7,
+    "seamMetres": 1.308,
+    "hemMetres": 1.887
+   },
+   {
+    "id": "mh:clothes/punkduck_jeans_skirt",
+    "islands": 11,
+    "seamMetres": 0.902,
+    "hemMetres": 3.146
+   },
+   {
+    "id": "mh:clothes/punkduck_retro_polka_dot_skirt",
+    "islands": 9,
+    "seamMetres": 1.905,
+    "hemMetres": 2.707
+   },
+   {
+    "id": "mh:clothes/punkduck_skirt_native_american_fashion",
+    "islands": 7,
+    "seamMetres": 3.899,
+    "hemMetres": 1.901
+   },
+   {
+    "id": "mh:clothes/scsouza_mini_denin_skirt",
+    "islands": 4,
+    "seamMetres": 0.796,
+    "hemMetres": 1.937
+   },
+   {
+    "id": "mh:clothes/sonicteam998_maria_skirt",
+    "islands": 9,
+    "seamMetres": 1.905,
+    "hemMetres": 2.707
+   },
+   {
+    "id": "mh:clothes/culturalibre_skull_helmet",
+    "islands": 119,
+    "seamMetres": 25.418,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/grinsegold_corinthian_helmet",
+    "islands": 1,
+    "seamMetres": 0.462,
+    "hemMetres": 1.166
+   },
+   {
+    "id": "mh:clothes/javherre_casco_caballero_templario_templar_knight_helmet",
+    "islands": 1,
+    "seamMetres": 0.554,
+    "hemMetres": 1.009
+   },
+   {
+    "id": "mh:clothes/culturalibre_cl_bowler_hat",
+    "islands": 31,
+    "seamMetres": 8.486,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/culturalibre_cl_don_quixote_hat",
+    "islands": 6,
+    "seamMetres": 6.903,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/elvs_basic_brave_feathers1",
+    "islands": 66,
+    "seamMetres": 3.569,
+    "hemMetres": 4.804
+   },
+   {
+    "id": "mh:clothes/elvs_charity_veil1",
+    "islands": 1,
+    "seamMetres": 0,
+    "hemMetres": 1.983
+   },
+   {
+    "id": "mh:clothes/elvs_dirty_lil_maid_bonnet",
+    "islands": 3,
+    "seamMetres": 0,
+    "hemMetres": 1.479
+   },
+   {
+    "id": "mh:clothes/elvs_male_flat_cap1",
+    "islands": 27,
+    "seamMetres": 4.055,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/elvs_santa_hat",
+    "islands": 51,
+    "seamMetres": 5.89,
+    "hemMetres": 0.463
+   },
+   {
+    "id": "mh:clothes/elvs_slouchy_beanie1",
+    "islands": 1,
+    "seamMetres": 0,
+    "hemMetres": 0.647
+   },
+   {
+    "id": "mh:clothes/elvs_tophat1",
+    "islands": 36,
+    "seamMetres": 6.476,
+    "hemMetres": 3.603
+   },
+   {
+    "id": "mh:clothes/elvs_unisex_chef_hat_1",
+    "islands": 2,
+    "seamMetres": 0.59,
+    "hemMetres": 0.463
+   },
+   {
+    "id": "mh:clothes/elvs_witchy_hallows_hat1",
+    "islands": 10,
+    "seamMetres": 0,
+    "hemMetres": 10.7
+   },
+   {
+    "id": "mh:clothes/maciekg_wizard_hat",
+    "islands": 6,
+    "seamMetres": 2.259,
+    "hemMetres": 0.444
+   },
+   {
+    "id": "mh:clothes/mindfront_fishing_hat_01",
+    "islands": 6,
+    "seamMetres": 2.703,
+    "hemMetres": 1.596
+   },
+   {
+    "id": "mh:clothes/mindfront_knitted_hat_01",
+    "islands": 1,
+    "seamMetres": 0,
+    "hemMetres": 0.541
+   },
+   {
+    "id": "mh:clothes/mindfront_patrol_cap",
+    "islands": 6,
+    "seamMetres": 1.739,
+    "hemMetres": 0.561
+   },
+   {
+    "id": "mh:clothes/mindfront_sherpa_hat",
+    "islands": 6,
+    "seamMetres": 2.104,
+    "hemMetres": 1.87
+   },
+   {
+    "id": "mh:clothes/punkduck_sun_visor_sports_visor",
+    "islands": 4,
+    "seamMetres": 1.308,
+    "hemMetres": 0.16
+   },
+   {
+    "id": "mh:clothes/punkduck_swim_cap",
+    "islands": 2,
+    "seamMetres": 0.389,
+    "hemMetres": 0.542
+   },
+   {
+    "id": "mh:clothes/jaldmic_m1951_72",
+    "islands": 184,
+    "seamMetres": 13.295,
+    "hemMetres": 0
+   },
+   {
+    "id": "mh:clothes/maciekg_horned_helmet",
+    "islands": 12,
+    "seamMetres": 1.462,
+    "hemMetres": 0.727
+   },
+   {
+    "id": "mh:clothes/maciekg_leather_helmet",
+    "islands": 4,
+    "seamMetres": 0.927,
+    "hemMetres": 0.679
+   },
+   {
+    "id": "mh:clothes/punkduck_bicycle_helmet_time_trial_aero_helmet",
+    "islands": 11,
+    "seamMetres": 1.645,
+    "hemMetres": 0.8
+   },
+   {
+    "id": "mh:clothes/elvs_bow_bottom_panty",
+    "islands": 14,
+    "seamMetres": 0,
+    "hemMetres": 8.762
+   },
+   {
+    "id": "mh:clothes/elvs_crude_bootyshorts",
+    "islands": 2,
+    "seamMetres": 0.304,
+    "hemMetres": 2.058
+   },
+   {
+    "id": "mh:clothes/elvs_lace_panty",
+    "islands": 5,
+    "seamMetres": 0,
+    "hemMetres": 3.147
+   },
+   {
+    "id": "mh:clothes/jaldmic_stockings",
+    "islands": 61,
+    "seamMetres": 15.117,
+    "hemMetres": 1.053
+   },
+   {
+    "id": "mh:clothes/mindfront_bikini_01",
+    "islands": 7,
+    "seamMetres": 0.736,
+    "hemMetres": 3.808
+   },
+   {
+    "id": "mh:clothes/punkduck_babydoll",
+    "islands": 7,
+    "seamMetres": 0.796,
+    "hemMetres": 7.307
+   },
+   {
+    "id": "mh:clothes/punkduck_bandeau_bikini_bra",
+    "islands": 9,
+    "seamMetres": 0.692,
+    "hemMetres": 1.949
+   },
+   {
+    "id": "mh:clothes/punkduck_bandeau_bikini_slip",
+    "islands": 10,
+    "seamMetres": 0.162,
+    "hemMetres": 2.32
+   },
+   {
+    "id": "mh:clothes/punkduck_bandeau_bra",
+    "islands": 17,
+    "seamMetres": 3.565,
+    "hemMetres": 3.637
+   },
+   {
+    "id": "mh:clothes/punkduck_bikini02_bra",
+    "islands": 15,
+    "seamMetres": 0.107,
+    "hemMetres": 4.355
+   },
+   {
+    "id": "mh:clothes/punkduck_bikini02_slip",
+    "islands": 14,
+    "seamMetres": 0.077,
+    "hemMetres": 4.228
+   },
+   {
+    "id": "mh:clothes/punkduck_brazilian_bikini_bra",
+    "islands": 35,
+    "seamMetres": 2.704,
+    "hemMetres": 1.277
+   },
+   {
+    "id": "mh:clothes/punkduck_brazilian_bikini_slip",
+    "islands": 22,
+    "seamMetres": 1.289,
+    "hemMetres": 2.569
+   },
+   {
+    "id": "mh:clothes/punkduck_french_lingerie_bra",
+    "islands": 35,
+    "seamMetres": 5.074,
+    "hemMetres": 8.107
+   },
+   {
+    "id": "mh:clothes/punkduck_french_lingerie_mini_briefs",
+    "islands": 15,
+    "seamMetres": 0.24,
+    "hemMetres": 7
+   },
+   {
+    "id": "mh:clothes/punkduck_french_lingerie_stockings",
+    "islands": 4,
+    "seamMetres": 2.435,
+    "hemMetres": 1.038
+   },
+   {
+    "id": "mh:clothes/punkduck_frill_bikini_bottom",
+    "islands": 6,
+    "seamMetres": 1.526,
+    "hemMetres": 3.094
+   },
+   {
+    "id": "mh:clothes/punkduck_frill_bikini_top",
+    "islands": 8,
+    "seamMetres": 1.208,
+    "hemMetres": 2.479
+   },
+   {
+    "id": "mh:clothes/punkduck_sport_bra",
+    "islands": 10,
+    "seamMetres": 3.63,
+    "hemMetres": 2.967
+   },
+   {
+    "id": "mh:clothes/punkduck_sport_briefs",
+    "islands": 4,
+    "seamMetres": 1.016,
+    "hemMetres": 2.034
+   },
+   {
+    "id": "mh:clothes/elvs_bandeau_swimwear_top_1",
+    "islands": 4,
+    "seamMetres": 4.42,
+    "hemMetres": 1.676
+   },
+   {
+    "id": "mh:clothes/elvs_swimwear_micro_shorts",
+    "islands": 21,
+    "seamMetres": 0.785,
+    "hemMetres": 3.623
+   },
+   {
+    "id": "mh:clothes/elvs_vintage_swimwear1_50s_strapless",
+    "islands": 1,
+    "seamMetres": 0,
+    "hemMetres": 3.145
+   },
+   {
+    "id": "mh:clothes/joepal_plain_bra",
+    "islands": 2,
+    "seamMetres": 0.102,
+    "hemMetres": 3.432
+   },
+   {
+    "id": "mh:clothes/mindfront_f_one-piece_swimsuit_01",
+    "islands": 8,
+    "seamMetres": 1.071,
+    "hemMetres": 4.061
+   },
+   {
+    "id": "mh:clothes/punkduck_female_strapless_bodysuit",
+    "islands": 2,
+    "seamMetres": 0.686,
+    "hemMetres": 2.047
+   },
+   {
+    "id": "mh:clothes/punkduck_halterneck_romper",
+    "islands": 10,
+    "seamMetres": 3.279,
+    "hemMetres": 3.218
+   },
+   {
+    "id": "mh:clothes/punkduck_one_piece_bikini01",
+    "islands": 12,
+    "seamMetres": 4.866,
+    "hemMetres": 4.086
+   },
+   {
+    "id": "mh:clothes/punkduck_shapewear",
+    "islands": 2,
+    "seamMetres": 0.479,
+    "hemMetres": 1.982
+   },
+   {
+    "id": "mh:clothes/joepal_crude_high_socks",
+    "islands": 2,
+    "seamMetres": 1.391,
+    "hemMetres": 0.751
+   },
+   {
+    "id": "mh:clothes/joepal_crude_low_socks",
+    "islands": 4,
+    "seamMetres": 1.323,
+    "hemMetres": 0.472
+   },
+   {
+    "id": "mh:clothes/toigo_lace_frill_socks",
+    "islands": 8,
+    "seamMetres": 1.289,
+    "hemMetres": 2.565
+   },
+   {
+    "id": "mh:clothes/toigo_leg_warmer_socks",
+    "islands": 4,
+    "seamMetres": 1.106,
+    "hemMetres": 0.621
    },
    {
     "id": "ps2cc:clothes/rollneck_sweater",

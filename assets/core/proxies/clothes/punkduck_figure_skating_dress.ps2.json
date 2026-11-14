@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_figure_skating_dress",
+ "category": "clothes",
+ "name": "figure_skating_dress",
+ "uuid": "1791e999-27ad-42bd-b73a-644bc5d42681",
+ "tags": [
+  "female",
+  "sport"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1457,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_figure_skating_dress.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 2344,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 4274,
+ "binary": "punkduck_figure_skating_dress.ps2.bin",
+ "byteLength": 172740,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4371
+  },
+  "uvs": {
+   "offset": 17488,
+   "dtype": "f32",
+   "count": 3258
+  },
+  "faceVerts": {
+   "offset": 30528,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 70528,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 110528,
+   "dtype": "u32",
+   "count": 4371
+  },
+  "refWeights": {
+   "offset": 128016,
+   "dtype": "f32",
+   "count": 4371
+  },
+  "refOffsets": {
+   "offset": 145504,
+   "dtype": "f32",
+   "count": 4371
+  },
+  "deleteVerts": {
+   "offset": 162992,
+   "dtype": "u32",
+   "count": 980
+  },
+  "sourceProxyVertex": {
+   "offset": 166912,
+   "dtype": "u32",
+   "count": 1457
+  }
+ }
+}

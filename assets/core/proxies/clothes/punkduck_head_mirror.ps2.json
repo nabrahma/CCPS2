@@ -1,0 +1,102 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_head_mirror",
+ "category": "clothes",
+ "name": "headmirror",
+ "uuid": "ea28578a-6c0b-4310-ad65-c5c0c4220727",
+ "tags": [
+  "unisex",
+  "profession",
+  "contemporary",
+  "carried-item"
+ ],
+ "zDepth": 50,
+ "vertexCount": 341,
+ "faceCount": 658,
+ "triangleFaces": 658,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27574000000000004
+  ],
+  [
+   1524,
+   4370,
+   0.57433
+  ],
+  [
+   1892,
+   3946,
+   0.18303000000000003
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_head_mirror.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 1022,
+ "hiddenFaces": "computed",
+ "originalTriangles": 2020,
+ "binary": "punkduck_head_mirror.ps2.bin",
+ "byteLength": 42548,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1023
+  },
+  "uvs": {
+   "offset": 4096,
+   "dtype": "f32",
+   "count": 916
+  },
+  "faceVerts": {
+   "offset": 7760,
+   "dtype": "u32",
+   "count": 2632
+  },
+  "faceUvs": {
+   "offset": 18288,
+   "dtype": "u32",
+   "count": 2632
+  },
+  "refVerts": {
+   "offset": 28816,
+   "dtype": "u32",
+   "count": 1023
+  },
+  "refWeights": {
+   "offset": 32912,
+   "dtype": "f32",
+   "count": 1023
+  },
+  "refOffsets": {
+   "offset": 37008,
+   "dtype": "f32",
+   "count": 1023
+  },
+  "coveredVerts": {
+   "offset": 41104,
+   "dtype": "u32",
+   "count": 17
+  },
+  "sourceProxyVertex": {
+   "offset": 41184,
+   "dtype": "u32",
+   "count": 341
+  }
+ }
+}

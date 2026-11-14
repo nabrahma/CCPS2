@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/matcreator_mc-scifi-armor_jupiter7",
+ "category": "clothes",
+ "name": "MC-SciFi-Armor_Jupiter7",
+ "uuid": "c58cb3bf-0fd4-43c6-9272-e0588021216f",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1476,
+ "faceCount": 2748,
+ "triangleFaces": 2748,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.029970000000000004
+  ],
+  [
+   1524,
+   4370,
+   0.05706
+  ],
+  [
+   1892,
+   3946,
+   0.018310000000000003
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/matcreator_mc-scifi-armor_jupiter7.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 13315,
+ "hiddenFaces": "computed",
+ "originalTriangles": 26598,
+ "binary": "matcreator_mc-scifi-armor_jupiter7.ps2.bin",
+ "byteLength": 194624,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4428
+  },
+  "uvs": {
+   "offset": 17712,
+   "dtype": "f32",
+   "count": 4874
+  },
+  "faceVerts": {
+   "offset": 37216,
+   "dtype": "u32",
+   "count": 10992
+  },
+  "faceUvs": {
+   "offset": 81184,
+   "dtype": "u32",
+   "count": 10992
+  },
+  "refVerts": {
+   "offset": 125152,
+   "dtype": "u32",
+   "count": 4428
+  },
+  "refWeights": {
+   "offset": 142864,
+   "dtype": "f32",
+   "count": 4428
+  },
+  "refOffsets": {
+   "offset": 160576,
+   "dtype": "f32",
+   "count": 4428
+  },
+  "coveredVerts": {
+   "offset": 178288,
+   "dtype": "u32",
+   "count": 2608
+  },
+  "sourceProxyVertex": {
+   "offset": 188720,
+   "dtype": "u32",
+   "count": 1476
+  }
+ }
+}

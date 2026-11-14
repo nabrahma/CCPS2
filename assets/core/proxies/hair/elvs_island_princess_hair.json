@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/elvs_island_princess_hair",
+ "category": "hair",
+ "name": "elvs_island_princess1",
+ "uuid": "a23c6954-5359-46ea-a930-96a4f747f3fc",
+ "tags": [
+  "hair",
+  "female",
+  "long hair",
+  "island",
+  "straight hair"
+ ],
+ "zDepth": 53,
+ "vertexCount": 5865,
+ "faceCount": 4477,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   11998,
+   5399,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/elvs_island_princess_hair.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "elvs_island_princess_hair.bin",
+ "byteLength": 480748,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 17595
+  },
+  "uvs": {
+   "offset": 70384,
+   "dtype": "f32",
+   "count": 13986
+  },
+  "faceVerts": {
+   "offset": 126336,
+   "dtype": "u32",
+   "count": 17908
+  },
+  "faceUvs": {
+   "offset": 197968,
+   "dtype": "u32",
+   "count": 17908
+  },
+  "refVerts": {
+   "offset": 269600,
+   "dtype": "u32",
+   "count": 17595
+  },
+  "refWeights": {
+   "offset": 339984,
+   "dtype": "f32",
+   "count": 17595
+  },
+  "refOffsets": {
+   "offset": 410368,
+   "dtype": "f32",
+   "count": 17595
+  }
+ }
+}

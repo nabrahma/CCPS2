@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_tube_dress",
+ "category": "clothes",
+ "name": "TubeDress",
+ "uuid": "217f85f6-5872-4a89-89d1-ff389fcc7c86",
+ "tags": [
+  "female",
+  "dress"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1342,
+ "faceCount": 1298,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_tube_dress.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "punkduck_tube_dress.bin",
+ "byteLength": 121044,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4026
+  },
+  "uvs": {
+   "offset": 16112,
+   "dtype": "f32",
+   "count": 2846
+  },
+  "faceVerts": {
+   "offset": 27504,
+   "dtype": "u32",
+   "count": 5192
+  },
+  "faceUvs": {
+   "offset": 48272,
+   "dtype": "u32",
+   "count": 5192
+  },
+  "refVerts": {
+   "offset": 69040,
+   "dtype": "u32",
+   "count": 4026
+  },
+  "refWeights": {
+   "offset": 85152,
+   "dtype": "f32",
+   "count": 4026
+  },
+  "refOffsets": {
+   "offset": 101264,
+   "dtype": "f32",
+   "count": 4026
+  },
+  "deleteVerts": {
+   "offset": 117376,
+   "dtype": "u32",
+   "count": 917
+  }
+ }
+}

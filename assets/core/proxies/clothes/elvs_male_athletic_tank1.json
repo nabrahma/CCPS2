@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_male_athletic_tank1",
+ "category": "clothes",
+ "name": "m_wifebeater_elv1",
+ "uuid": "3077e09d-1175-4b99-a97a-4436d6f9c54d",
+ "tags": [],
+ "zDepth": 60,
+ "vertexCount": 58081,
+ "faceCount": 56002,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.392156862745,
+   0.392156862745,
+   0.392156862745
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_male_athletic_tank1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "elvs_male_athletic_tank1.bin",
+ "byteLength": 5200332,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 174243
+  },
+  "uvs": {
+   "offset": 696976,
+   "dtype": "f32",
+   "count": 155092
+  },
+  "faceVerts": {
+   "offset": 1317344,
+   "dtype": "u32",
+   "count": 224008
+  },
+  "faceUvs": {
+   "offset": 2213376,
+   "dtype": "u32",
+   "count": 224008
+  },
+  "refVerts": {
+   "offset": 3109408,
+   "dtype": "u32",
+   "count": 174243
+  },
+  "refWeights": {
+   "offset": 3806384,
+   "dtype": "f32",
+   "count": 174243
+  },
+  "refOffsets": {
+   "offset": 4503360,
+   "dtype": "f32",
+   "count": 174243
+  }
+ }
+}

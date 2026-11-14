@@ -1,0 +1,93 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/ews_hoop_earrings",
+ "category": "clothes",
+ "name": "Hoop_Earrings",
+ "uuid": "47d9b18e-3c34-46fb-8f0e-452031aa3781",
+ "tags": [
+  "earrings",
+  "accessory",
+  "jewelry"
+ ],
+ "zDepth": 50,
+ "vertexCount": 272,
+ "faceCount": 272,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.7096,
+   0.5662
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/ews_hoop_earrings.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "ews_hoop_earrings.bin",
+ "byteLength": 22108,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 816
+  },
+  "uvs": {
+   "offset": 3264,
+   "dtype": "f32",
+   "count": 84
+  },
+  "faceVerts": {
+   "offset": 3600,
+   "dtype": "u32",
+   "count": 1088
+  },
+  "faceUvs": {
+   "offset": 7952,
+   "dtype": "u32",
+   "count": 1088
+  },
+  "refVerts": {
+   "offset": 12304,
+   "dtype": "u32",
+   "count": 816
+  },
+  "refWeights": {
+   "offset": 15568,
+   "dtype": "f32",
+   "count": 816
+  },
+  "refOffsets": {
+   "offset": 18832,
+   "dtype": "f32",
+   "count": 816
+  },
+  "deleteVerts": {
+   "offset": 22096,
+   "dtype": "u32",
+   "count": 3
+  }
+ }
+}

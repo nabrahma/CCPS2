@@ -1,0 +1,90 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/elvs_that_80s_babe_hair",
+ "category": "hair",
+ "name": "elvs_that80sbabe_m1",
+ "uuid": "0d8b3c55-a569-4642-aa15-91d0b36cceb5",
+ "tags": [
+  "male",
+  "casual",
+  "leisure",
+  "traditional",
+  "hair",
+  "long_hair"
+ ],
+ "zDepth": 52,
+ "vertexCount": 4583,
+ "faceCount": 6004,
+ "triangleFaces": 6004,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.31594000000000005
+  ],
+  [
+   1524,
+   4370,
+   0.57703
+  ],
+  [
+   1892,
+   3946,
+   0.19743
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/elvs_that_80s_babe_hair.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "elvs_that_80s_babe_hair.bin",
+ "byteLength": 459892,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 13749
+  },
+  "uvs": {
+   "offset": 55008,
+   "dtype": "f32",
+   "count": 11936
+  },
+  "faceVerts": {
+   "offset": 102752,
+   "dtype": "u32",
+   "count": 24016
+  },
+  "faceUvs": {
+   "offset": 198816,
+   "dtype": "u32",
+   "count": 24016
+  },
+  "refVerts": {
+   "offset": 294880,
+   "dtype": "u32",
+   "count": 13749
+  },
+  "refWeights": {
+   "offset": 349888,
+   "dtype": "f32",
+   "count": 13749
+  },
+  "refOffsets": {
+   "offset": 404896,
+   "dtype": "f32",
+   "count": 13749
+  }
+ }
+}

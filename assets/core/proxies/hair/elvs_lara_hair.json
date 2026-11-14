@@ -1,0 +1,90 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/elvs_lara_hair",
+ "category": "hair",
+ "name": "elvs_laracroft_hair1a",
+ "uuid": "3f6ffb24-ef3e-463f-98c4-ec30ded38484",
+ "tags": [
+  "female",
+  "casual",
+  "leisure",
+  "contemporary",
+  "hair",
+  "braid"
+ ],
+ "zDepth": 50,
+ "vertexCount": 16032,
+ "faceCount": 13908,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/elvs_lara_hair.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "elvs_lara_hair.bin",
+ "byteLength": 1353472,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 48096
+  },
+  "uvs": {
+   "offset": 192384,
+   "dtype": "f32",
+   "count": 34720
+  },
+  "faceVerts": {
+   "offset": 331264,
+   "dtype": "u32",
+   "count": 55632
+  },
+  "faceUvs": {
+   "offset": 553792,
+   "dtype": "u32",
+   "count": 55632
+  },
+  "refVerts": {
+   "offset": 776320,
+   "dtype": "u32",
+   "count": 48096
+  },
+  "refWeights": {
+   "offset": 968704,
+   "dtype": "f32",
+   "count": 48096
+  },
+  "refOffsets": {
+   "offset": 1161088,
+   "dtype": "f32",
+   "count": 48096
+  }
+ }
+}

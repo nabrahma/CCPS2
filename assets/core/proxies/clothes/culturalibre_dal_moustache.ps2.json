@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_dal_moustache",
+ "category": "clothes",
+ "name": "dali_moustache",
+ "uuid": "d71d8bdb-315b-4c3a-af66-b51893360aaf",
+ "tags": [
+  "surrealism",
+  "moustache"
+ ],
+ "zDepth": 50,
+ "vertexCount": 268,
+ "faceCount": 500,
+ "triangleFaces": 500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 0,
+  "diffuseTexture": "textures/clothes/culturalibre_dal_moustache.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 872,
+ "hiddenFaces": "none",
+ "originalTriangles": 1672,
+ "binary": "culturalibre_dal_moustache.ps2.bin",
+ "byteLength": 33520,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 804
+  },
+  "uvs": {
+   "offset": 3216,
+   "dtype": "f32",
+   "count": 894
+  },
+  "faceVerts": {
+   "offset": 6800,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "faceUvs": {
+   "offset": 14800,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "refVerts": {
+   "offset": 22800,
+   "dtype": "u32",
+   "count": 804
+  },
+  "refWeights": {
+   "offset": 26016,
+   "dtype": "f32",
+   "count": 804
+  },
+  "refOffsets": {
+   "offset": 29232,
+   "dtype": "f32",
+   "count": 804
+  },
+  "sourceProxyVertex": {
+   "offset": 32448,
+   "dtype": "u32",
+   "count": 268
+  }
+ }
+}

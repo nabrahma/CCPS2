@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/rehmanpolanski_viking_pants",
+ "category": "clothes",
+ "name": "PantsViking",
+ "uuid": "f1ea1784-35f2-41e9-ae8f-e9f2bafcbb60",
+ "tags": [
+  "pants",
+  "viking"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1312,
+ "faceCount": 1272,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/rehmanpolanski_viking_pants.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "rehmanpolanski_viking_pants.bin",
+ "byteLength": 114960,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3936
+  },
+  "uvs": {
+   "offset": 15744,
+   "dtype": "f32",
+   "count": 2820
+  },
+  "faceVerts": {
+   "offset": 27024,
+   "dtype": "u32",
+   "count": 5088
+  },
+  "faceUvs": {
+   "offset": 47376,
+   "dtype": "u32",
+   "count": 5088
+  },
+  "refVerts": {
+   "offset": 67728,
+   "dtype": "u32",
+   "count": 3936
+  },
+  "refWeights": {
+   "offset": 83472,
+   "dtype": "f32",
+   "count": 3936
+  },
+  "refOffsets": {
+   "offset": 99216,
+   "dtype": "f32",
+   "count": 3936
+  }
+ }
+}

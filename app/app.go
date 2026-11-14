@@ -54,7 +54,7 @@ type AppInfo struct {
 	Pid int `json:"pid"`
 }
 
-const appVersion = "0.21.0"
+const appVersion = "0.22.0"
 
 func newApp(layout *paths.Layout, log *logging.Logger) *App {
 	return &App{

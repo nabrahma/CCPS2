@@ -41,7 +41,7 @@
    1024
   ]
  },
- "slot": "accessory",
+ "slot": "top",
  "binary": "wdg_mycenaean_tunic.bin",
  "byteLength": 130476,
  "buffers": {

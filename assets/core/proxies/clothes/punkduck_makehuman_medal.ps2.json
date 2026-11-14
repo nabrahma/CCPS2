@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_makehuman_medal",
+ "category": "clothes",
+ "name": "MakeHuman-Medal",
+ "uuid": "06a2c723-af90-4b07-af9f-c4c79b22edaa",
+ "tags": [
+  "sport",
+  "jewelry"
+ ],
+ "zDepth": 60,
+ "vertexCount": 377,
+ "faceCount": 700,
+ "triangleFaces": 700,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_makehuman_medal.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 963,
+ "hiddenFaces": "none",
+ "originalTriangles": 1780,
+ "binary": "punkduck_makehuman_medal.ps2.bin",
+ "byteLength": 45716,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1131
+  },
+  "uvs": {
+   "offset": 4528,
+   "dtype": "f32",
+   "count": 922
+  },
+  "faceVerts": {
+   "offset": 8224,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "faceUvs": {
+   "offset": 19424,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "refVerts": {
+   "offset": 30624,
+   "dtype": "u32",
+   "count": 1131
+  },
+  "refWeights": {
+   "offset": 35152,
+   "dtype": "f32",
+   "count": 1131
+  },
+  "refOffsets": {
+   "offset": 39680,
+   "dtype": "f32",
+   "count": 1131
+  },
+  "sourceProxyVertex": {
+   "offset": 44208,
+   "dtype": "u32",
+   "count": 377
+  }
+ }
+}

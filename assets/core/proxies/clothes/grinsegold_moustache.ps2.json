@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/grinsegold_moustache",
+ "category": "clothes",
+ "name": "Moustache",
+ "uuid": "8dbdff2d-495f-4dd6-8f27-5898ae4a3ad9",
+ "tags": [
+  "male",
+  "beard"
+ ],
+ "zDepth": 50,
+ "vertexCount": 81,
+ "faceCount": 120,
+ "triangleFaces": 120,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 0,
+  "diffuseTexture": "textures/clothes/grinsegold_moustache.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 81,
+ "hiddenFaces": "computed",
+ "originalTriangles": 120,
+ "binary": "grinsegold_moustache.ps2.bin",
+ "byteLength": 8756,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 243
+  },
+  "uvs": {
+   "offset": 976,
+   "dtype": "f32",
+   "count": 162
+  },
+  "faceVerts": {
+   "offset": 1632,
+   "dtype": "u32",
+   "count": 480
+  },
+  "faceUvs": {
+   "offset": 3552,
+   "dtype": "u32",
+   "count": 480
+  },
+  "refVerts": {
+   "offset": 5472,
+   "dtype": "u32",
+   "count": 243
+  },
+  "refWeights": {
+   "offset": 6448,
+   "dtype": "f32",
+   "count": 243
+  },
+  "refOffsets": {
+   "offset": 7424,
+   "dtype": "f32",
+   "count": 243
+  },
+  "coveredVerts": {
+   "offset": 8400,
+   "dtype": "u32",
+   "count": 7
+  },
+  "sourceProxyVertex": {
+   "offset": 8432,
+   "dtype": "u32",
+   "count": 81
+  }
+ }
+}

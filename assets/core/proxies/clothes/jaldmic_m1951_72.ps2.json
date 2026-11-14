@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/jaldmic_m1951_72",
+ "category": "clothes",
+ "name": "M1951-72",
+ "uuid": "174d48dc-68ae-479c-900b-3d519841ac61",
+ "tags": [
+  "hats",
+  "helmet",
+  "jaldmic"
+ ],
+ "zDepth": 50,
+ "vertexCount": 408,
+ "faceCount": 816,
+ "triangleFaces": 816,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.013980000000000001
+  ],
+  [
+   791,
+   881,
+   0.023150000000000004
+  ],
+  [
+   962,
+   5320,
+   0.01904
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/jaldmic_m1951_72.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "decimatedFrom": 2374,
+ "hiddenFaces": "computed",
+ "originalTriangles": 4748,
+ "binary": "jaldmic_m1951_72.ps2.bin",
+ "byteLength": 57456,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1224
+  },
+  "uvs": {
+   "offset": 4896,
+   "dtype": "f32",
+   "count": 2228
+  },
+  "faceVerts": {
+   "offset": 13808,
+   "dtype": "u32",
+   "count": 3264
+  },
+  "faceUvs": {
+   "offset": 26864,
+   "dtype": "u32",
+   "count": 3264
+  },
+  "refVerts": {
+   "offset": 39920,
+   "dtype": "u32",
+   "count": 1224
+  },
+  "refWeights": {
+   "offset": 44816,
+   "dtype": "f32",
+   "count": 1224
+  },
+  "refOffsets": {
+   "offset": 49712,
+   "dtype": "f32",
+   "count": 1224
+  },
+  "coveredVerts": {
+   "offset": 54608,
+   "dtype": "u32",
+   "count": 301
+  },
+  "sourceProxyVertex": {
+   "offset": 55824,
+   "dtype": "u32",
+   "count": 408
+  }
+ }
+}

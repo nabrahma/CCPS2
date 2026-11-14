@@ -4,7 +4,7 @@
  * user's, with what picking each one does, its thumbnail subject, and the
  * Asset Studio that edits it. Favourites and user tags are kept in settings.
  */
-import { MESH_HAIR, meshHairName, plain, skinFacts } from './names';
+import { garmentKind, garmentName, MESH_HAIR, meshHairName, skinFacts } from './names';
 import { create } from 'zustand';
 import {
   applyOutfit,
@@ -294,11 +294,12 @@ export function libraryEntries(studio: Studio, category: LibraryCategory): Creat
         .map((p) => {
           const slot = (p.slot ?? 'accessory') as GarmentSlotName;
           const user = p.tags.includes('user');
+          const kind = garmentKind(p.pack);
           return {
             id: `garment:${p.id}`,
             category,
-            name: plain(p.name),
-            tags: [slot, ...(user ? ['yours'] : [])],
+            name: garmentName(p.id, p.name),
+            tags: [slot, ...(kind ? [kind] : []), ...(user ? ['yours'] : [])],
             user,
             subject: { kind: 'garment', garment: garmentToWear(studio, p.id, slot) },
             thumbId: `garment:${p.id}`,
@@ -362,7 +363,7 @@ export function libraryEntries(studio: Studio, category: LibraryCategory): Creat
           id: `skin:${s.id}`,
           category,
           name: skinFacts(s.id).name,
-          tags: [skinFacts(s.id).gender, skinFacts(s.id).age].filter((t): t is NonNullable<typeof t> => t !== null),
+          tags: [skinFacts(s.id).gender, skinFacts(s.id).age, s.pack === 'skins03' ? 'fantasy' : null].filter((t): t is NonNullable<typeof t> => t !== null),
           user: false,
           subject: { kind: 'skin', base: s.id } as ThumbSubject,
           thumbId: `skin:${s.id}`,

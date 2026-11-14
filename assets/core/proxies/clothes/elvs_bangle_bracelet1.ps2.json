@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_bangle_bracelet1",
+ "category": "clothes",
+ "name": "Simple_bangle1elv",
+ "uuid": "5f8970bb-46bd-4cdd-a220-d45a6870dd4d",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 303,
+ "faceCount": 500,
+ "triangleFaces": 500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_bangle_bracelet1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 18734,
+ "hiddenFaces": "computed",
+ "originalTriangles": 36256,
+ "binary": "elvs_bangle_bracelet1.ps2.bin",
+ "byteLength": 34284,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 909
+  },
+  "uvs": {
+   "offset": 3648,
+   "dtype": "f32",
+   "count": 606
+  },
+  "faceVerts": {
+   "offset": 6080,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "faceUvs": {
+   "offset": 14080,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "refVerts": {
+   "offset": 22080,
+   "dtype": "u32",
+   "count": 909
+  },
+  "refWeights": {
+   "offset": 25728,
+   "dtype": "f32",
+   "count": 909
+  },
+  "refOffsets": {
+   "offset": 29376,
+   "dtype": "f32",
+   "count": 909
+  },
+  "coveredVerts": {
+   "offset": 33024,
+   "dtype": "u32",
+   "count": 12
+  },
+  "sourceProxyVertex": {
+   "offset": 33072,
+   "dtype": "u32",
+   "count": 303
+  }
+ }
+}

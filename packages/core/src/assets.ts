@@ -37,11 +37,17 @@ export interface CatalogProxy {
   originalTriangles?: number;
   /** Still above the PS2 per-garment target after decimation. */
   overBudget?: boolean;
+  /** Reduced by position clustering to reach its budget (D-150): it may have lost its seams and hems. */
+  clustered?: boolean;
   /** Garments: where hidden body faces come from (MakeHuman delete_verts or computed at build time). */
   hiddenFaces?: 'makehuman' | 'computed' | 'none';
   slot: string | null;
   tags: string[];
   licence: string;
+  /** The MakeHuman asset pack it came from (built-in assets only), e.g. "hair02". */
+  pack?: string;
+  /** Its author, as the asset pack credits them. */
+  author?: string;
   /** Garments made in Garment Studio (Part 2 F18): look, fur and tint applied when put on. */
   defaults?: GarmentDefaults;
 }
@@ -53,6 +59,8 @@ export interface CatalogSkin {
   textureSize: [number, number];
   tags: string[];
   licence: string;
+  pack?: string;
+  author?: string;
 }
 
 export interface CatalogEyeColour {

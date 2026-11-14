@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_goggles",
+ "category": "clothes",
+ "name": "goggles",
+ "uuid": "1bbf85cc-2cdc-48b1-8cac-ee58e0d567bb",
+ "tags": [
+  "sport",
+  "swimming",
+  "triathlon"
+ ],
+ "zDepth": 60,
+ "vertexCount": 288,
+ "faceCount": 605,
+ "triangleFaces": 605,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_goggles.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 1034,
+ "hiddenFaces": "computed",
+ "originalTriangles": 2060,
+ "binary": "punkduck_goggles.ps2.bin",
+ "byteLength": 38496,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 864
+  },
+  "uvs": {
+   "offset": 3456,
+   "dtype": "f32",
+   "count": 990
+  },
+  "faceVerts": {
+   "offset": 7424,
+   "dtype": "u32",
+   "count": 2420
+  },
+  "faceUvs": {
+   "offset": 17104,
+   "dtype": "u32",
+   "count": 2420
+  },
+  "refVerts": {
+   "offset": 26784,
+   "dtype": "u32",
+   "count": 864
+  },
+  "refWeights": {
+   "offset": 30240,
+   "dtype": "f32",
+   "count": 864
+  },
+  "refOffsets": {
+   "offset": 33696,
+   "dtype": "f32",
+   "count": 864
+  },
+  "coveredVerts": {
+   "offset": 37152,
+   "dtype": "u32",
+   "count": 46
+  },
+  "sourceProxyVertex": {
+   "offset": 37344,
+   "dtype": "u32",
+   "count": 288
+  }
+ }
+}

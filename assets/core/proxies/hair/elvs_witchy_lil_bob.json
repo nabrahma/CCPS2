@@ -1,0 +1,83 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/elvs_witchy_lil_bob",
+ "category": "hair",
+ "name": "witchybob_elv2",
+ "uuid": "9421e564-0699-4b3f-8f86-db822b47120d",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1349,
+ "faceCount": 1513,
+ "triangleFaces": 1513,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/elvs_witchy_lil_bob.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "elvs_witchy_lil_bob.bin",
+ "byteLength": 126572,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4047
+  },
+  "uvs": {
+   "offset": 16192,
+   "dtype": "f32",
+   "count": 3346
+  },
+  "faceVerts": {
+   "offset": 29584,
+   "dtype": "u32",
+   "count": 6052
+  },
+  "faceUvs": {
+   "offset": 53792,
+   "dtype": "u32",
+   "count": 6052
+  },
+  "refVerts": {
+   "offset": 78000,
+   "dtype": "u32",
+   "count": 4047
+  },
+  "refWeights": {
+   "offset": 94192,
+   "dtype": "f32",
+   "count": 4047
+  },
+  "refOffsets": {
+   "offset": 110384,
+   "dtype": "f32",
+   "count": 4047
+  }
+ }
+}

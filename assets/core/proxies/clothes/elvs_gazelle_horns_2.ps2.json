@@ -1,0 +1,99 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_gazelle_horns_2",
+ "category": "clothes",
+ "name": "elvs_gazelle_horns2",
+ "uuid": "92798366-5f62-4a37-ae2f-2b26bf2a01f2",
+ "tags": [
+  "unisex",
+  "fantasy",
+  "play",
+  "contemporary",
+  "hat",
+  "gazelle"
+ ],
+ "zDepth": 50,
+ "vertexCount": 284,
+ "faceCount": 500,
+ "triangleFaces": 500,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_gazelle_horns_2.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 1922,
+ "hiddenFaces": "none",
+ "originalTriangles": 3776,
+ "binary": "elvs_gazelle_horns_2.ps2.bin",
+ "byteLength": 32448,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 852
+  },
+  "uvs": {
+   "offset": 3408,
+   "dtype": "f32",
+   "count": 420
+  },
+  "faceVerts": {
+   "offset": 5088,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "faceUvs": {
+   "offset": 13088,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "refVerts": {
+   "offset": 21088,
+   "dtype": "u32",
+   "count": 852
+  },
+  "refWeights": {
+   "offset": 24496,
+   "dtype": "f32",
+   "count": 852
+  },
+  "refOffsets": {
+   "offset": 27904,
+   "dtype": "f32",
+   "count": 852
+  },
+  "sourceProxyVertex": {
+   "offset": 31312,
+   "dtype": "u32",
+   "count": 284
+  }
+ }
+}

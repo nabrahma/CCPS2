@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/ews_3d_glasses",
+ "category": "clothes",
+ "name": "3dglasses",
+ "uuid": "4751ae95-6854-4c8f-b223-c7302e3e06f3",
+ "tags": [
+  "glasses",
+  "accessory"
+ ],
+ "zDepth": 50,
+ "vertexCount": 72,
+ "faceCount": 140,
+ "triangleFaces": 140,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/ews_3d_glasses.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 72,
+ "hiddenFaces": "computed",
+ "originalTriangles": 140,
+ "binary": "ews_3d_glasses.ps2.bin",
+ "byteLength": 8528,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 216
+  },
+  "uvs": {
+   "offset": 864,
+   "dtype": "f32",
+   "count": 72
+  },
+  "faceVerts": {
+   "offset": 1152,
+   "dtype": "u32",
+   "count": 560
+  },
+  "faceUvs": {
+   "offset": 3392,
+   "dtype": "u32",
+   "count": 560
+  },
+  "refVerts": {
+   "offset": 5632,
+   "dtype": "u32",
+   "count": 216
+  },
+  "refWeights": {
+   "offset": 6496,
+   "dtype": "f32",
+   "count": 216
+  },
+  "refOffsets": {
+   "offset": 7360,
+   "dtype": "f32",
+   "count": 216
+  },
+  "coveredVerts": {
+   "offset": 8224,
+   "dtype": "u32",
+   "count": 3
+  },
+  "sourceProxyVertex": {
+   "offset": 8240,
+   "dtype": "u32",
+   "count": 72
+  }
+ }
+}

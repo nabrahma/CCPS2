@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_static_wings4_bone_wings1",
+ "category": "clothes",
+ "name": "bonewings1",
+ "uuid": "373ea207-5cc9-43db-a26e-538e3f8dc8be",
+ "tags": [
+  "wings",
+  "fantasy",
+  "roleplay",
+  "skeletal"
+ ],
+ "zDepth": 69,
+ "vertexCount": 10268,
+ "faceCount": 10164,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.78431372549,
+   0.521568627451,
+   0.388235294118
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_static_wings4_bone_wings1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_static_wings4_bone_wings1.bin",
+ "byteLength": 945200,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 30804
+  },
+  "uvs": {
+   "offset": 123216,
+   "dtype": "f32",
+   "count": 31772
+  },
+  "faceVerts": {
+   "offset": 250304,
+   "dtype": "u32",
+   "count": 40656
+  },
+  "faceUvs": {
+   "offset": 412928,
+   "dtype": "u32",
+   "count": 40656
+  },
+  "refVerts": {
+   "offset": 575552,
+   "dtype": "u32",
+   "count": 30804
+  },
+  "refWeights": {
+   "offset": 698768,
+   "dtype": "f32",
+   "count": 30804
+  },
+  "refOffsets": {
+   "offset": 821984,
+   "dtype": "f32",
+   "count": 30804
+  }
+ }
+}

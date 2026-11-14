@@ -1,0 +1,99 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_fishing_hat_01",
+ "category": "clothes",
+ "name": "Fishing_Hat_01",
+ "uuid": "44182a63-a602-4e26-ae21-1522400c2c08",
+ "tags": [
+  "hats"
+ ],
+ "zDepth": 57,
+ "vertexCount": 399,
+ "faceCount": 700,
+ "triangleFaces": 700,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/mindfront_fishing_hat_01.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "decimatedFrom": 1293,
+ "hiddenFaces": "computed",
+ "originalTriangles": 2488,
+ "binary": "mindfront_fishing_hat_01.ps2.bin",
+ "byteLength": 47772,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1197
+  },
+  "uvs": {
+   "offset": 4800,
+   "dtype": "f32",
+   "count": 1000
+  },
+  "faceVerts": {
+   "offset": 8800,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "faceUvs": {
+   "offset": 20000,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "refVerts": {
+   "offset": 31200,
+   "dtype": "u32",
+   "count": 1197
+  },
+  "refWeights": {
+   "offset": 36000,
+   "dtype": "f32",
+   "count": 1197
+  },
+  "refOffsets": {
+   "offset": 40800,
+   "dtype": "f32",
+   "count": 1197
+  },
+  "coveredVerts": {
+   "offset": 45600,
+   "dtype": "u32",
+   "count": 143
+  },
+  "sourceProxyVertex": {
+   "offset": 46176,
+   "dtype": "u32",
+   "count": 399
+  }
+ }
+}

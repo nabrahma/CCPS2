@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_knee_high_heel_boots1",
+ "category": "clothes",
+ "name": "elvs_heelboot1",
+ "uuid": "c34bd052-09f3-48f1-834b-4807cfd7f164",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 37166,
+ "faceCount": 36738,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_knee_high_heel_boots1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "binary": "elvs_knee_high_heel_boots1.bin",
+ "byteLength": 3427616,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 111498
+  },
+  "uvs": {
+   "offset": 446000,
+   "dtype": "f32",
+   "count": 113960
+  },
+  "faceVerts": {
+   "offset": 901840,
+   "dtype": "u32",
+   "count": 146952
+  },
+  "faceUvs": {
+   "offset": 1489648,
+   "dtype": "u32",
+   "count": 146952
+  },
+  "refVerts": {
+   "offset": 2077456,
+   "dtype": "u32",
+   "count": 111498
+  },
+  "refWeights": {
+   "offset": 2523456,
+   "dtype": "f32",
+   "count": 111498
+  },
+  "refOffsets": {
+   "offset": 2969456,
+   "dtype": "f32",
+   "count": 111498
+  },
+  "deleteVerts": {
+   "offset": 3415456,
+   "dtype": "u32",
+   "count": 3040
+  }
+ }
+}

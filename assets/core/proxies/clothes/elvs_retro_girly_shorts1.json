@@ -1,0 +1,90 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_retro_girly_shorts1",
+ "category": "clothes",
+ "name": "retro_girlyshort1",
+ "uuid": "0a9231b3-9940-444b-b594-4969c8681b32",
+ "tags": [
+  "shorts",
+  "ribbon",
+  "vintage",
+  "retro",
+  "ladies ware"
+ ],
+ "zDepth": 53,
+ "vertexCount": 14548,
+ "faceCount": 28815,
+ "triangleFaces": 28815,
+ "scale": [
+  [
+   11133,
+   11141,
+   0.11273
+  ],
+  [
+   11025,
+   11460,
+   0.6390100000000001
+  ],
+  [
+   11130,
+   11135,
+   0.13772
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.6392,
+   0.0,
+   0.2029
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_retro_girly_shorts1.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "elvs_retro_girly_shorts1.bin",
+ "byteLength": 1811680,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 43644
+  },
+  "uvs": {
+   "offset": 174576,
+   "dtype": "f32",
+   "count": 47822
+  },
+  "faceVerts": {
+   "offset": 365872,
+   "dtype": "u32",
+   "count": 115260
+  },
+  "faceUvs": {
+   "offset": 826912,
+   "dtype": "u32",
+   "count": 115260
+  },
+  "refVerts": {
+   "offset": 1287952,
+   "dtype": "u32",
+   "count": 43644
+  },
+  "refWeights": {
+   "offset": 1462528,
+   "dtype": "f32",
+   "count": 43644
+  },
+  "refOffsets": {
+   "offset": 1637104,
+   "dtype": "f32",
+   "count": 43644
+  }
+ }
+}

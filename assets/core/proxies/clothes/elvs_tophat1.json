@@ -1,0 +1,86 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_tophat1",
+ "category": "clothes",
+ "name": "tophat1",
+ "uuid": "f86e0295-c6f4-450d-a76d-4282d60f10a7",
+ "tags": [
+  "hat"
+ ],
+ "zDepth": 50,
+ "vertexCount": 622,
+ "faceCount": 584,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_tophat1.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "binary": "elvs_tophat1.bin",
+ "byteLength": 57048,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1866
+  },
+  "uvs": {
+   "offset": 7472,
+   "dtype": "f32",
+   "count": 2120
+  },
+  "faceVerts": {
+   "offset": 15952,
+   "dtype": "u32",
+   "count": 2336
+  },
+  "faceUvs": {
+   "offset": 25296,
+   "dtype": "u32",
+   "count": 2336
+  },
+  "refVerts": {
+   "offset": 34640,
+   "dtype": "u32",
+   "count": 1866
+  },
+  "refWeights": {
+   "offset": 42112,
+   "dtype": "f32",
+   "count": 1866
+  },
+  "refOffsets": {
+   "offset": 49584,
+   "dtype": "f32",
+   "count": 1866
+  }
+ }
+}

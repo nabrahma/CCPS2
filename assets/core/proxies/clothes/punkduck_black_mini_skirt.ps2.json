@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_black_mini_skirt",
+ "category": "clothes",
+ "name": "miniskirt",
+ "uuid": "b321a4b2-b351-4cba-83df-e25232136ec9",
+ "tags": [
+  "female",
+  "skirt"
+ ],
+ "zDepth": 50,
+ "vertexCount": 705,
+ "faceCount": 1308,
+ "triangleFaces": 1308,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_black_mini_skirt.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 705,
+ "hiddenFaces": "computed",
+ "originalTriangles": 1308,
+ "binary": "punkduck_black_mini_skirt.ps2.bin",
+ "byteLength": 86068,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2115
+  },
+  "uvs": {
+   "offset": 8464,
+   "dtype": "f32",
+   "count": 1538
+  },
+  "faceVerts": {
+   "offset": 14624,
+   "dtype": "u32",
+   "count": 5232
+  },
+  "faceUvs": {
+   "offset": 35552,
+   "dtype": "u32",
+   "count": 5232
+  },
+  "refVerts": {
+   "offset": 56480,
+   "dtype": "u32",
+   "count": 2115
+  },
+  "refWeights": {
+   "offset": 64944,
+   "dtype": "f32",
+   "count": 2115
+  },
+  "refOffsets": {
+   "offset": 73408,
+   "dtype": "f32",
+   "count": 2115
+  },
+  "coveredVerts": {
+   "offset": 81872,
+   "dtype": "u32",
+   "count": 341
+  },
+  "sourceProxyVertex": {
+   "offset": 83248,
+   "dtype": "u32",
+   "count": 705
+  }
+ }
+}

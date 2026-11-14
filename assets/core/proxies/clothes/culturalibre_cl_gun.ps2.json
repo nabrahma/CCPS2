@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_cl_gun",
+ "category": "clothes",
+ "name": "CL_gun",
+ "uuid": "922c0180-8d32-4274-91a8-d3a693d600a3",
+ "tags": [
+  "gun",
+  "weapon"
+ ],
+ "zDepth": 50,
+ "vertexCount": 290,
+ "faceCount": 500,
+ "triangleFaces": 500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8829,
+   0.8829,
+   0.8829
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/culturalibre_cl_gun.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 2549,
+ "hiddenFaces": "computed",
+ "originalTriangles": 4926,
+ "binary": "culturalibre_cl_gun.ps2.bin",
+ "byteLength": 35608,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 870
+  },
+  "uvs": {
+   "offset": 3488,
+   "dtype": "f32",
+   "count": 1074
+  },
+  "faceVerts": {
+   "offset": 7792,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "faceUvs": {
+   "offset": 15792,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "refVerts": {
+   "offset": 23792,
+   "dtype": "u32",
+   "count": 870
+  },
+  "refWeights": {
+   "offset": 27280,
+   "dtype": "f32",
+   "count": 870
+  },
+  "refOffsets": {
+   "offset": 30768,
+   "dtype": "f32",
+   "count": 870
+  },
+  "coveredVerts": {
+   "offset": 34256,
+   "dtype": "u32",
+   "count": 45
+  },
+  "sourceProxyVertex": {
+   "offset": 34448,
+   "dtype": "u32",
+   "count": 290
+  }
+ }
+}

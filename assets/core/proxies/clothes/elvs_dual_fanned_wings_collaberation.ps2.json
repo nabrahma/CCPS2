@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_dual_fanned_wings_collaberation",
+ "category": "clothes",
+ "name": "dual_fanned_wings_v",
+ "uuid": "4523e36e-a36a-44c3-ad63-26c6eefe3d9f",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 179,
+ "faceCount": 388,
+ "triangleFaces": 388,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_dual_fanned_wings_collaberation.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 17612,
+ "hiddenFaces": "computed",
+ "originalTriangles": 31864,
+ "binary": "elvs_dual_fanned_wings_collaberation.ps2.bin",
+ "byteLength": 22540,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 537
+  },
+  "uvs": {
+   "offset": 2160,
+   "dtype": "f32",
+   "count": 184
+  },
+  "faceVerts": {
+   "offset": 2896,
+   "dtype": "u32",
+   "count": 1552
+  },
+  "faceUvs": {
+   "offset": 9104,
+   "dtype": "u32",
+   "count": 1552
+  },
+  "refVerts": {
+   "offset": 15312,
+   "dtype": "u32",
+   "count": 537
+  },
+  "refWeights": {
+   "offset": 17472,
+   "dtype": "f32",
+   "count": 537
+  },
+  "refOffsets": {
+   "offset": 19632,
+   "dtype": "f32",
+   "count": 537
+  },
+  "coveredVerts": {
+   "offset": 21792,
+   "dtype": "u32",
+   "count": 8
+  },
+  "sourceProxyVertex": {
+   "offset": 21824,
+   "dtype": "u32",
+   "count": 179
+  }
+ }
+}

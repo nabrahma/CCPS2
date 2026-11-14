@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_medieval_boots",
+ "category": "clothes",
+ "name": "MedievalBoots",
+ "uuid": "90a8da1e-6c82-4a8a-9002-ee578825ad76",
+ "tags": [
+  "female",
+  "boots"
+ ],
+ "zDepth": 49,
+ "vertexCount": 3632,
+ "faceCount": 3442,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_medieval_boots.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "binary": "punkduck_medieval_boots.bin",
+ "byteLength": 326144,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 10896
+  },
+  "uvs": {
+   "offset": 43584,
+   "dtype": "f32",
+   "count": 8228
+  },
+  "faceVerts": {
+   "offset": 76496,
+   "dtype": "u32",
+   "count": 13768
+  },
+  "faceUvs": {
+   "offset": 131568,
+   "dtype": "u32",
+   "count": 13768
+  },
+  "refVerts": {
+   "offset": 186640,
+   "dtype": "u32",
+   "count": 10896
+  },
+  "refWeights": {
+   "offset": 230224,
+   "dtype": "f32",
+   "count": 10896
+  },
+  "refOffsets": {
+   "offset": 273808,
+   "dtype": "f32",
+   "count": 10896
+  },
+  "deleteVerts": {
+   "offset": 317392,
+   "dtype": "u32",
+   "count": 2188
+  }
+ }
+}

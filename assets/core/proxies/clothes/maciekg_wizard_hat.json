@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/maciekg_wizard_hat",
+ "category": "clothes",
+ "name": "wizard_hat",
+ "uuid": "275c6d8f-6359-4dfa-ba92-f7dd9f5f8b6b",
+ "tags": [
+  "hats"
+ ],
+ "zDepth": 50,
+ "vertexCount": 245,
+ "faceCount": 236,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/maciekg_wizard_hat.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "binary": "maciekg_wizard_hat.bin",
+ "byteLength": 22532,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 735
+  },
+  "uvs": {
+   "offset": 2944,
+   "dtype": "f32",
+   "count": 638
+  },
+  "faceVerts": {
+   "offset": 5504,
+   "dtype": "u32",
+   "count": 944
+  },
+  "faceUvs": {
+   "offset": 9280,
+   "dtype": "u32",
+   "count": 944
+  },
+  "refVerts": {
+   "offset": 13056,
+   "dtype": "u32",
+   "count": 735
+  },
+  "refWeights": {
+   "offset": 16000,
+   "dtype": "f32",
+   "count": 735
+  },
+  "refOffsets": {
+   "offset": 18944,
+   "dtype": "f32",
+   "count": 735
+  },
+  "deleteVerts": {
+   "offset": 21888,
+   "dtype": "u32",
+   "count": 161
+  }
+ }
+}

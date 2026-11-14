@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_male_sport_suit",
+ "category": "clothes",
+ "name": "cl_male_sport_suit",
+ "uuid": "6c9bfacc-3ed1-44f4-91f3-4fed5be89948",
+ "tags": [
+  "sport",
+  "male"
+ ],
+ "zDepth": 50,
+ "vertexCount": 3374,
+ "faceCount": 3382,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.6,
+   0.6,
+   0.6
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/culturalibre_male_sport_suit.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "culturalibre_male_sport_suit.bin",
+ "byteLength": 309004,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 10122
+  },
+  "uvs": {
+   "offset": 40496,
+   "dtype": "f32",
+   "count": 7712
+  },
+  "faceVerts": {
+   "offset": 71344,
+   "dtype": "u32",
+   "count": 13528
+  },
+  "faceUvs": {
+   "offset": 125456,
+   "dtype": "u32",
+   "count": 13528
+  },
+  "refVerts": {
+   "offset": 179568,
+   "dtype": "u32",
+   "count": 10122
+  },
+  "refWeights": {
+   "offset": 220064,
+   "dtype": "f32",
+   "count": 10122
+  },
+  "refOffsets": {
+   "offset": 260560,
+   "dtype": "f32",
+   "count": 10122
+  },
+  "deleteVerts": {
+   "offset": 301056,
+   "dtype": "u32",
+   "count": 1987
+  }
+ }
+}

@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_hooded_sweat_jacket1",
+ "category": "clothes",
+ "name": "ladieshoodiedown1",
+ "uuid": "5d8b6290-71e2-4c35-a651-0e2e199e208c",
+ "tags": [],
+ "zDepth": 61,
+ "vertexCount": 9935,
+ "faceCount": 9787,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.4023,
+   0.08955,
+   0.3928
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_hooded_sweat_jacket1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "outer",
+ "binary": "elvs_hooded_sweat_jacket1.bin",
+ "byteLength": 923028,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 29805
+  },
+  "uvs": {
+   "offset": 119232,
+   "dtype": "f32",
+   "count": 33230
+  },
+  "faceVerts": {
+   "offset": 252160,
+   "dtype": "u32",
+   "count": 39148
+  },
+  "faceUvs": {
+   "offset": 408752,
+   "dtype": "u32",
+   "count": 39148
+  },
+  "refVerts": {
+   "offset": 565344,
+   "dtype": "u32",
+   "count": 29805
+  },
+  "refWeights": {
+   "offset": 684576,
+   "dtype": "f32",
+   "count": 29805
+  },
+  "refOffsets": {
+   "offset": 803808,
+   "dtype": "f32",
+   "count": 29805
+  }
+ }
+}

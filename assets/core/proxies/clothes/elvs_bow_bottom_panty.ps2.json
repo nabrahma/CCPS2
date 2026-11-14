@@ -1,0 +1,98 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_bow_bottom_panty",
+ "category": "clothes",
+ "name": "mh_bowginch_elv1",
+ "uuid": "54dc1753-f890-41e4-a9f8-d16d657696c2",
+ "tags": [
+  "underwear",
+  "fashion",
+  "bow",
+  "ladies",
+  "lingerie"
+ ],
+ "zDepth": 47,
+ "vertexCount": 1399,
+ "faceCount": 2092,
+ "triangleFaces": 2092,
+ "scale": [
+  [
+   10589,
+   3924,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.5779299999999999
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.3816,
+   0.03912,
+   0.08334
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_bow_bottom_panty.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 2523,
+ "hiddenFaces": "none",
+ "originalTriangles": 3863,
+ "binary": "elvs_bow_bottom_panty.ps2.bin",
+ "byteLength": 150940,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4197
+  },
+  "uvs": {
+   "offset": 16800,
+   "dtype": "f32",
+   "count": 2798
+  },
+  "faceVerts": {
+   "offset": 28000,
+   "dtype": "u32",
+   "count": 8368
+  },
+  "faceUvs": {
+   "offset": 61472,
+   "dtype": "u32",
+   "count": 8368
+  },
+  "refVerts": {
+   "offset": 94944,
+   "dtype": "u32",
+   "count": 4197
+  },
+  "refWeights": {
+   "offset": 111744,
+   "dtype": "f32",
+   "count": 4197
+  },
+  "refOffsets": {
+   "offset": 128544,
+   "dtype": "f32",
+   "count": 4197
+  },
+  "sourceProxyVertex": {
+   "offset": 145344,
+   "dtype": "u32",
+   "count": 1399
+  }
+ }
+}

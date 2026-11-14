@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_warrior_helmet_02",
+ "category": "clothes",
+ "name": "warrior_helmet_02",
+ "uuid": "8ebb4828-2319-4b4c-ab3a-331957f4b64f",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 3609,
+ "faceCount": 7131,
+ "triangleFaces": 7131,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.4,
+   0.4,
+   0.4
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/culturalibre_warrior_helmet_02.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "binary": "culturalibre_warrior_helmet_02.bin",
+ "byteLength": 482276,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 10827
+  },
+  "uvs": {
+   "offset": 43312,
+   "dtype": "f32",
+   "count": 19318
+  },
+  "faceVerts": {
+   "offset": 120592,
+   "dtype": "u32",
+   "count": 28524
+  },
+  "faceUvs": {
+   "offset": 234688,
+   "dtype": "u32",
+   "count": 28524
+  },
+  "refVerts": {
+   "offset": 348784,
+   "dtype": "u32",
+   "count": 10827
+  },
+  "refWeights": {
+   "offset": 392096,
+   "dtype": "f32",
+   "count": 10827
+  },
+  "refOffsets": {
+   "offset": 435408,
+   "dtype": "f32",
+   "count": 10827
+  },
+  "deleteVerts": {
+   "offset": 478720,
+   "dtype": "u32",
+   "count": 889
+  }
+ }
+}

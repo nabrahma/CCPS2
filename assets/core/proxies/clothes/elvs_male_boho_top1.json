@@ -1,0 +1,90 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_male_boho_top1",
+ "category": "clothes",
+ "name": "mens_boho_top1elv",
+ "uuid": "8b224217-ad54-48aa-b1dd-9e5dcb1d3716",
+ "tags": [
+  "shirt",
+  "menswear",
+  "fashion",
+  "bohemian",
+  "loose fit"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1770,
+ "faceCount": 1711,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   10589,
+   3924,
+   0.31594000000000005
+  ],
+  [
+   1524,
+   4370,
+   0.57703
+  ],
+  [
+   1892,
+   3946,
+   0.19743
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.762,
+   0.6818,
+   0.8
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_male_boho_top1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "elvs_male_boho_top1.bin",
+ "byteLength": 157160,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 5310
+  },
+  "uvs": {
+   "offset": 21248,
+   "dtype": "f32",
+   "count": 4356
+  },
+  "faceVerts": {
+   "offset": 38672,
+   "dtype": "u32",
+   "count": 6844
+  },
+  "faceUvs": {
+   "offset": 66048,
+   "dtype": "u32",
+   "count": 6844
+  },
+  "refVerts": {
+   "offset": 93424,
+   "dtype": "u32",
+   "count": 5310
+  },
+  "refWeights": {
+   "offset": 114672,
+   "dtype": "f32",
+   "count": 5310
+  },
+  "refOffsets": {
+   "offset": 135920,
+   "dtype": "f32",
+   "count": 5310
+  }
+ }
+}

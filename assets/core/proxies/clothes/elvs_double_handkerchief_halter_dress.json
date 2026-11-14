@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_double_handkerchief_halter_dress",
+ "category": "clothes",
+ "name": "doublechiefhalterdress1",
+ "uuid": "b35d9b73-6aa5-4db7-9181-26d9908af05d",
+ "tags": [
+  "dress",
+  "ladiesware",
+  "female",
+  "halter",
+  "halter dress"
+ ],
+ "zDepth": 47,
+ "vertexCount": 11218,
+ "faceCount": 21954,
+ "triangleFaces": 21954,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.3843,
+   0.0,
+   0.3922
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_double_handkerchief_halter_dress.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "elvs_double_handkerchief_halter_dress.bin",
+ "byteLength": 1415292,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 33654
+  },
+  "uvs": {
+   "offset": 134624,
+   "dtype": "f32",
+   "count": 43296
+  },
+  "faceVerts": {
+   "offset": 307808,
+   "dtype": "u32",
+   "count": 87816
+  },
+  "faceUvs": {
+   "offset": 659072,
+   "dtype": "u32",
+   "count": 87816
+  },
+  "refVerts": {
+   "offset": 1010336,
+   "dtype": "u32",
+   "count": 33654
+  },
+  "refWeights": {
+   "offset": 1144960,
+   "dtype": "f32",
+   "count": 33654
+  },
+  "refOffsets": {
+   "offset": 1279584,
+   "dtype": "f32",
+   "count": 33654
+  },
+  "deleteVerts": {
+   "offset": 1414208,
+   "dtype": "u32",
+   "count": 271
+  }
+ }
+}

@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_dirty_lil_maid_bonnet",
+ "category": "clothes",
+ "name": "elv_maidonnet1",
+ "uuid": "70d53780-b8db-4c8a-94d3-c99e54151040",
+ "tags": [],
+ "zDepth": 69,
+ "vertexCount": 428,
+ "faceCount": 699,
+ "triangleFaces": 699,
+ "scale": [
+  [
+   11998,
+   5399,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_dirty_lil_maid_bonnet.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "decimatedFrom": 1866,
+ "hiddenFaces": "none",
+ "originalTriangles": 3118,
+ "binary": "elvs_dirty_lil_maid_bonnet.ps2.bin",
+ "byteLength": 48048,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1284
+  },
+  "uvs": {
+   "offset": 5136,
+   "dtype": "f32",
+   "count": 856
+  },
+  "faceVerts": {
+   "offset": 8560,
+   "dtype": "u32",
+   "count": 2796
+  },
+  "faceUvs": {
+   "offset": 19744,
+   "dtype": "u32",
+   "count": 2796
+  },
+  "refVerts": {
+   "offset": 30928,
+   "dtype": "u32",
+   "count": 1284
+  },
+  "refWeights": {
+   "offset": 36064,
+   "dtype": "f32",
+   "count": 1284
+  },
+  "refOffsets": {
+   "offset": 41200,
+   "dtype": "f32",
+   "count": 1284
+  },
+  "sourceProxyVertex": {
+   "offset": 46336,
+   "dtype": "u32",
+   "count": 428
+  }
+ }
+}

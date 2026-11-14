@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/spamrakuen_tbm_glasses_frames_01",
+ "category": "clothes",
+ "name": "TBM Glasses Frames 01",
+ "uuid": "bae3499e-496d-486a-99c0-ecc8d6c5550f",
+ "tags": [
+  "unisex",
+  "formal",
+  "contemporary",
+  "glasses"
+ ],
+ "zDepth": 50,
+ "vertexCount": 406,
+ "faceCount": 404,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.13983
+  ],
+  [
+   791,
+   881,
+   0.2315
+  ],
+  [
+   962,
+   5320,
+   0.19038
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/spamrakuen_tbm_glasses_frames_01.jpg",
+  "textureSize": [
+   32,
+   32
+  ]
+ },
+ "slot": "accessory",
+ "binary": "spamrakuen_tbm_glasses_frames_01.bin",
+ "byteLength": 34520,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1218
+  },
+  "uvs": {
+   "offset": 4880,
+   "dtype": "f32",
+   "count": 518
+  },
+  "faceVerts": {
+   "offset": 6960,
+   "dtype": "u32",
+   "count": 1616
+  },
+  "faceUvs": {
+   "offset": 13424,
+   "dtype": "u32",
+   "count": 1616
+  },
+  "refVerts": {
+   "offset": 19888,
+   "dtype": "u32",
+   "count": 1218
+  },
+  "refWeights": {
+   "offset": 24768,
+   "dtype": "f32",
+   "count": 1218
+  },
+  "refOffsets": {
+   "offset": 29648,
+   "dtype": "f32",
+   "count": 1218
+  }
+ }
+}

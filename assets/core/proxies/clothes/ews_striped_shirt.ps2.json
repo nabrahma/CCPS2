@@ -1,0 +1,103 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/ews_striped_shirt",
+ "category": "clothes",
+ "name": "Striped_Shirt",
+ "uuid": "54ebbc4c-b33e-47ca-aa4a-a541d6b01af9",
+ "tags": [
+  "striped",
+  "shirt",
+  "long sleeve",
+  "crop top",
+  "female"
+ ],
+ "zDepth": 50,
+ "vertexCount": 896,
+ "faceCount": 1800,
+ "triangleFaces": 1800,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/ews_striped_shirt.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 3936,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 7880,
+ "binary": "ews_striped_shirt.ps2.bin",
+ "byteLength": 116896,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2688
+  },
+  "uvs": {
+   "offset": 10752,
+   "dtype": "f32",
+   "count": 1392
+  },
+  "faceVerts": {
+   "offset": 16320,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "faceUvs": {
+   "offset": 45120,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "refVerts": {
+   "offset": 73920,
+   "dtype": "u32",
+   "count": 2688
+  },
+  "refWeights": {
+   "offset": 84672,
+   "dtype": "f32",
+   "count": 2688
+  },
+  "refOffsets": {
+   "offset": 95424,
+   "dtype": "f32",
+   "count": 2688
+  },
+  "deleteVerts": {
+   "offset": 106176,
+   "dtype": "u32",
+   "count": 1784
+  },
+  "sourceProxyVertex": {
+   "offset": 113312,
+   "dtype": "u32",
+   "count": 896
+  }
+ }
+}

@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/elvs_lady_hippy_hair",
+ "category": "hair",
+ "name": "elvs_ladies_hippyhair1",
+ "uuid": "fa449896-5d3d-4e97-afb4-e3c2c7b3abc1",
+ "tags": [
+  "hair",
+  "female",
+  "long hair",
+  "hippy",
+  "straight hair"
+ ],
+ "zDepth": 53,
+ "vertexCount": 3241,
+ "faceCount": 3499,
+ "triangleFaces": 3499,
+ "scale": [
+  [
+   11998,
+   5399,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/hair/elvs_lady_hippy_hair.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "decimatedFrom": 4001,
+ "hiddenFaces": "none",
+ "originalTriangles": 5020,
+ "binary": "elvs_lady_hippy_hair.ps2.bin",
+ "byteLength": 301108,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 9723
+  },
+  "uvs": {
+   "offset": 38896,
+   "dtype": "f32",
+   "count": 5146
+  },
+  "faceVerts": {
+   "offset": 59488,
+   "dtype": "u32",
+   "count": 13996
+  },
+  "faceUvs": {
+   "offset": 115472,
+   "dtype": "u32",
+   "count": 13996
+  },
+  "refVerts": {
+   "offset": 171456,
+   "dtype": "u32",
+   "count": 9723
+  },
+  "refWeights": {
+   "offset": 210352,
+   "dtype": "f32",
+   "count": 9723
+  },
+  "refOffsets": {
+   "offset": 249248,
+   "dtype": "f32",
+   "count": 9723
+  },
+  "sourceProxyVertex": {
+   "offset": 288144,
+   "dtype": "u32",
+   "count": 3241
+  }
+ }
+}

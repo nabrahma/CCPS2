@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_f_dress_02",
+ "category": "clothes",
+ "name": "F_Dress_02",
+ "uuid": "7bcec065-8e3b-49ba-a5c2-c9167b97f16c",
+ "tags": [
+  "female",
+  "casual"
+ ],
+ "zDepth": 47,
+ "vertexCount": 1310,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   13868,
+   14308,
+   0.95666
+  ],
+  [
+   881,
+   13137,
+   1.6005099999999999
+  ],
+  [
+   10854,
+   10981,
+   0.22246000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 0,
+  "diffuseTexture": "textures/clothes/mindfront_f_dress_02.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 1697,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 3274,
+ "binary": "mindfront_f_dress_02.ps2.bin",
+ "byteLength": 164296,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3930
+  },
+  "uvs": {
+   "offset": 15728,
+   "dtype": "f32",
+   "count": 2778
+  },
+  "faceVerts": {
+   "offset": 26848,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 66848,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 106848,
+   "dtype": "u32",
+   "count": 3930
+  },
+  "refWeights": {
+   "offset": 122576,
+   "dtype": "f32",
+   "count": 3930
+  },
+  "refOffsets": {
+   "offset": 138304,
+   "dtype": "f32",
+   "count": 3930
+  },
+  "deleteVerts": {
+   "offset": 154032,
+   "dtype": "u32",
+   "count": 1254
+  },
+  "sourceProxyVertex": {
+   "offset": 159056,
+   "dtype": "u32",
+   "count": 1310
+  }
+ }
+}

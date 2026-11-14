@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/scsouza_mini_denin_skirt",
+ "category": "clothes",
+ "name": "skirt_mini",
+ "uuid": "fe7bec80-b5aa-4ab6-9617-52705c28ebc6",
+ "tags": [
+  "female",
+  "skirt"
+ ],
+ "zDepth": 50,
+ "vertexCount": 216,
+ "faceCount": 360,
+ "triangleFaces": 360,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22048
+  ],
+  [
+   962,
+   5320,
+   0.18461000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/scsouza_mini_denin_skirt.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 216,
+ "hiddenFaces": "computed",
+ "originalTriangles": 360,
+ "binary": "scsouza_mini_denin_skirt.ps2.bin",
+ "byteLength": 25360,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 648
+  },
+  "uvs": {
+   "offset": 2592,
+   "dtype": "f32",
+   "count": 480
+  },
+  "faceVerts": {
+   "offset": 4512,
+   "dtype": "u32",
+   "count": 1440
+  },
+  "faceUvs": {
+   "offset": 10272,
+   "dtype": "u32",
+   "count": 1440
+  },
+  "refVerts": {
+   "offset": 16032,
+   "dtype": "u32",
+   "count": 648
+  },
+  "refWeights": {
+   "offset": 18624,
+   "dtype": "f32",
+   "count": 648
+  },
+  "refOffsets": {
+   "offset": 21216,
+   "dtype": "f32",
+   "count": 648
+  },
+  "coveredVerts": {
+   "offset": 23808,
+   "dtype": "u32",
+   "count": 171
+  },
+  "sourceProxyVertex": {
+   "offset": 24496,
+   "dtype": "u32",
+   "count": 216
+  }
+ }
+}

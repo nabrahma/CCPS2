@@ -1,0 +1,86 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_spike_collar",
+ "category": "clothes",
+ "name": "spike_collar",
+ "uuid": "8fbdb400-338c-4a23-b3cf-9e1b370026a7",
+ "tags": [
+  "jewelry"
+ ],
+ "zDepth": 50,
+ "vertexCount": 2319,
+ "faceCount": 2116,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_spike_collar.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "punkduck_spike_collar.bin",
+ "byteLength": 200612,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 6957
+  },
+  "uvs": {
+   "offset": 27840,
+   "dtype": "f32",
+   "count": 5386
+  },
+  "faceVerts": {
+   "offset": 49392,
+   "dtype": "u32",
+   "count": 8464
+  },
+  "faceUvs": {
+   "offset": 83248,
+   "dtype": "u32",
+   "count": 8464
+  },
+  "refVerts": {
+   "offset": 117104,
+   "dtype": "u32",
+   "count": 6957
+  },
+  "refWeights": {
+   "offset": 144944,
+   "dtype": "f32",
+   "count": 6957
+  },
+  "refOffsets": {
+   "offset": 172784,
+   "dtype": "f32",
+   "count": 6957
+  }
+ }
+}

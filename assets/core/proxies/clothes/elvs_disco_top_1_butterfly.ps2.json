@@ -1,0 +1,104 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_disco_top_1_butterfly",
+ "category": "clothes",
+ "name": "elvs_butterflydiscotop1",
+ "uuid": "ed57f28a-d6d2-4a46-b77c-bfc23288e02a",
+ "tags": [
+  "female",
+  "formal",
+  "festive",
+  "vintage",
+  "shirt",
+  "disco"
+ ],
+ "zDepth": 70,
+ "vertexCount": 959,
+ "faceCount": 1800,
+ "triangleFaces": 1800,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_disco_top_1_butterfly.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 2529,
+ "hiddenFaces": "computed",
+ "originalTriangles": 4860,
+ "binary": "elvs_disco_top_1_butterfly.ps2.bin",
+ "byteLength": 117612,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2877
+  },
+  "uvs": {
+   "offset": 11520,
+   "dtype": "f32",
+   "count": 2016
+  },
+  "faceVerts": {
+   "offset": 19584,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "faceUvs": {
+   "offset": 48384,
+   "dtype": "u32",
+   "count": 7200
+  },
+  "refVerts": {
+   "offset": 77184,
+   "dtype": "u32",
+   "count": 2877
+  },
+  "refWeights": {
+   "offset": 88704,
+   "dtype": "f32",
+   "count": 2877
+  },
+  "refOffsets": {
+   "offset": 100224,
+   "dtype": "f32",
+   "count": 2877
+  },
+  "coveredVerts": {
+   "offset": 111744,
+   "dtype": "u32",
+   "count": 507
+  },
+  "sourceProxyVertex": {
+   "offset": 113776,
+   "dtype": "u32",
+   "count": 959
+  }
+ }
+}

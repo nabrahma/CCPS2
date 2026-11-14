@@ -1,0 +1,93 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_brazilian_bikini_bra",
+ "category": "clothes",
+ "name": "BrazBikiniBra",
+ "uuid": "ab2f6400-0f91-4fb9-9598-a7e2e485d6cc",
+ "tags": [
+  "female",
+  "bikini",
+  "swimwear"
+ ],
+ "zDepth": 50,
+ "vertexCount": 2285,
+ "faceCount": 2148,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_brazilian_bikini_bra.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "punkduck_brazilian_bikini_bra.bin",
+ "byteLength": 202568,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 6855
+  },
+  "uvs": {
+   "offset": 27424,
+   "dtype": "f32",
+   "count": 5850
+  },
+  "faceVerts": {
+   "offset": 50832,
+   "dtype": "u32",
+   "count": 8592
+  },
+  "faceUvs": {
+   "offset": 85200,
+   "dtype": "u32",
+   "count": 8592
+  },
+  "refVerts": {
+   "offset": 119568,
+   "dtype": "u32",
+   "count": 6855
+  },
+  "refWeights": {
+   "offset": 146992,
+   "dtype": "f32",
+   "count": 6855
+  },
+  "refOffsets": {
+   "offset": 174416,
+   "dtype": "f32",
+   "count": 6855
+  },
+  "deleteVerts": {
+   "offset": 201840,
+   "dtype": "u32",
+   "count": 182
+  }
+ }
+}

@@ -1,0 +1,86 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/o4saken_chinesebob01",
+ "category": "hair",
+ "name": "o4saken_chinesebob01",
+ "uuid": "1a306cac-88a3-447b-9b62-c96a0eb9aed9",
+ "tags": [
+  "female",
+  "bob"
+ ],
+ "zDepth": 50,
+ "vertexCount": 12521,
+ "faceCount": 5054,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/hair/o4saken_chinesebob01.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "binary": "o4saken_chinesebob01.bin",
+ "byteLength": 863132,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 37563
+  },
+  "uvs": {
+   "offset": 150256,
+   "dtype": "f32",
+   "count": 25094
+  },
+  "faceVerts": {
+   "offset": 250640,
+   "dtype": "u32",
+   "count": 20216
+  },
+  "faceUvs": {
+   "offset": 331504,
+   "dtype": "u32",
+   "count": 20216
+  },
+  "refVerts": {
+   "offset": 412368,
+   "dtype": "u32",
+   "count": 37563
+  },
+  "refWeights": {
+   "offset": 562624,
+   "dtype": "f32",
+   "count": 37563
+  },
+  "refOffsets": {
+   "offset": 712880,
+   "dtype": "f32",
+   "count": 37563
+  }
+ }
+}

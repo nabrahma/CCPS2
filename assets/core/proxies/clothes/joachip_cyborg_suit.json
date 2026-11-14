@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/joachip_cyborg_suit",
+ "category": "clothes",
+ "name": "Cyborg_suit",
+ "uuid": "619601fb-53bc-46c9-90fe-5afe70a522ed",
+ "tags": [
+  "unisex",
+  "fantasy",
+  "profession",
+  "future",
+  "dress"
+ ],
+ "zDepth": 102,
+ "vertexCount": 944,
+ "faceCount": 2380,
+ "triangleFaces": 2380,
+ "scale": [
+  [
+   13868,
+   14308,
+   0.09567
+  ],
+  [
+   881,
+   13137,
+   0.16005000000000003
+  ],
+  [
+   10854,
+   10981,
+   0.022250000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/joachip_cyborg_suit.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "joachip_cyborg_suit.bin",
+ "byteLength": 178024,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2832
+  },
+  "uvs": {
+   "offset": 11328,
+   "dtype": "f32",
+   "count": 8328
+  },
+  "faceVerts": {
+   "offset": 44640,
+   "dtype": "u32",
+   "count": 9520
+  },
+  "faceUvs": {
+   "offset": 82720,
+   "dtype": "u32",
+   "count": 9520
+  },
+  "refVerts": {
+   "offset": 120800,
+   "dtype": "u32",
+   "count": 2832
+  },
+  "refWeights": {
+   "offset": 132128,
+   "dtype": "f32",
+   "count": 2832
+  },
+  "refOffsets": {
+   "offset": 143456,
+   "dtype": "f32",
+   "count": 2832
+  },
+  "deleteVerts": {
+   "offset": 154784,
+   "dtype": "u32",
+   "count": 5810
+  }
+ }
+}

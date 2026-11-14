@@ -1,0 +1,103 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/donitz_monk_robe",
+ "category": "clothes",
+ "name": "Monks Robe",
+ "uuid": "ef100b5a-b07c-4d31-bb7e-82b7c33ff44c",
+ "tags": [
+  "male",
+  "casual",
+  "profession",
+  "vintage",
+  "dress",
+  "monk",
+  "robe",
+  "medieval",
+  "fantasy",
+  "hood",
+  "renaissance",
+  "priest",
+  "wizard"
+ ],
+ "zDepth": 60,
+ "vertexCount": 10233,
+ "faceCount": 9910,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.31474
+  ],
+  [
+   1524,
+   4370,
+   0.5723600000000001
+  ],
+  [
+   1892,
+   3946,
+   0.19557000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/donitz_monk_robe.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "donitz_monk_robe.bin",
+ "byteLength": 906968,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 30699
+  },
+  "uvs": {
+   "offset": 122800,
+   "dtype": "f32",
+   "count": 22070
+  },
+  "faceVerts": {
+   "offset": 211088,
+   "dtype": "u32",
+   "count": 39640
+  },
+  "faceUvs": {
+   "offset": 369648,
+   "dtype": "u32",
+   "count": 39640
+  },
+  "refVerts": {
+   "offset": 528208,
+   "dtype": "u32",
+   "count": 30699
+  },
+  "refWeights": {
+   "offset": 651008,
+   "dtype": "f32",
+   "count": 30699
+  },
+  "refOffsets": {
+   "offset": 773808,
+   "dtype": "f32",
+   "count": 30699
+  },
+  "deleteVerts": {
+   "offset": 896608,
+   "dtype": "u32",
+   "count": 2590
+  }
+ }
+}

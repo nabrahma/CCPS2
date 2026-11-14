@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_heart_belly_jewel",
+ "category": "clothes",
+ "name": "belly_jewel1",
+ "uuid": "fa1af435-7153-43ac-912e-914b75e52c15",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 117,
+ "faceCount": 115,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   13868,
+   14308,
+   0.96806
+  ],
+  [
+   881,
+   13137,
+   1.6655100000000003
+  ],
+  [
+   10854,
+   10981,
+   0.24356
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_heart_belly_jewel.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_heart_belly_jewel.bin",
+ "byteLength": 10780,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 351
+  },
+  "uvs": {
+   "offset": 1408,
+   "dtype": "f32",
+   "count": 368
+  },
+  "faceVerts": {
+   "offset": 2880,
+   "dtype": "u32",
+   "count": 460
+  },
+  "faceUvs": {
+   "offset": 4720,
+   "dtype": "u32",
+   "count": 460
+  },
+  "refVerts": {
+   "offset": 6560,
+   "dtype": "u32",
+   "count": 351
+  },
+  "refWeights": {
+   "offset": 7968,
+   "dtype": "f32",
+   "count": 351
+  },
+  "refOffsets": {
+   "offset": 9376,
+   "dtype": "f32",
+   "count": 351
+  }
+ }
+}

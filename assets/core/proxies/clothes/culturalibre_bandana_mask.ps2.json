@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_bandana_mask",
+ "category": "clothes",
+ "name": "bandana_mask",
+ "uuid": "4d26543b-b72c-414e-a1ae-820a2cebd8c4",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 363,
+ "faceCount": 712,
+ "triangleFaces": 712,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.6,
+   0.6,
+   0.6
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/culturalibre_bandana_mask.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 720,
+ "hiddenFaces": "computed",
+ "originalTriangles": 1428,
+ "binary": "culturalibre_bandana_mask.ps2.bin",
+ "byteLength": 45468,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1089
+  },
+  "uvs": {
+   "offset": 4368,
+   "dtype": "f32",
+   "count": 458
+  },
+  "faceVerts": {
+   "offset": 6208,
+   "dtype": "u32",
+   "count": 2848
+  },
+  "faceUvs": {
+   "offset": 17600,
+   "dtype": "u32",
+   "count": 2848
+  },
+  "refVerts": {
+   "offset": 28992,
+   "dtype": "u32",
+   "count": 1089
+  },
+  "refWeights": {
+   "offset": 33360,
+   "dtype": "f32",
+   "count": 1089
+  },
+  "refOffsets": {
+   "offset": 37728,
+   "dtype": "f32",
+   "count": 1089
+  },
+  "coveredVerts": {
+   "offset": 42096,
+   "dtype": "u32",
+   "count": 479
+  },
+  "sourceProxyVertex": {
+   "offset": 44016,
+   "dtype": "u32",
+   "count": 363
+  }
+ }
+}

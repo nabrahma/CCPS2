@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_asymmetrical_skirt",
+ "category": "clothes",
+ "name": "asym_skirt3",
+ "uuid": "898259b2-3465-48e5-92d0-1d020271d6ba",
+ "tags": [],
+ "zDepth": 47,
+ "vertexCount": 1444,
+ "faceCount": 1373,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.6264,
+   0.5867
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_asymmetrical_skirt.jpg",
+  "textureSize": [
+   1024,
+   732
+  ]
+ },
+ "slot": "bottom",
+ "binary": "elvs_asymmetrical_skirt.bin",
+ "byteLength": 127724,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4332
+  },
+  "uvs": {
+   "offset": 17328,
+   "dtype": "f32",
+   "count": 3302
+  },
+  "faceVerts": {
+   "offset": 30544,
+   "dtype": "u32",
+   "count": 5492
+  },
+  "faceUvs": {
+   "offset": 52512,
+   "dtype": "u32",
+   "count": 5492
+  },
+  "refVerts": {
+   "offset": 74480,
+   "dtype": "u32",
+   "count": 4332
+  },
+  "refWeights": {
+   "offset": 91808,
+   "dtype": "f32",
+   "count": 4332
+  },
+  "refOffsets": {
+   "offset": 109136,
+   "dtype": "f32",
+   "count": 4332
+  },
+  "deleteVerts": {
+   "offset": 126464,
+   "dtype": "u32",
+   "count": 315
+  }
+ }
+}

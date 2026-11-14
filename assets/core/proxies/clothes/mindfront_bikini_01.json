@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_bikini_01",
+ "category": "clothes",
+ "name": "F_Bikini_01",
+ "uuid": "aa1c5580-9d7d-44e3-8fc2-c11113d880b2",
+ "tags": [
+  "female",
+  "swimwear"
+ ],
+ "zDepth": 39,
+ "vertexCount": 1847,
+ "faceCount": 1702,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   13868,
+   14308,
+   0.95666
+  ],
+  [
+   881,
+   13137,
+   1.6005099999999999
+  ],
+  [
+   10854,
+   10981,
+   0.22246000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/mindfront_bikini_01.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "mindfront_bikini_01.bin",
+ "byteLength": 161376,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 5541
+  },
+  "uvs": {
+   "offset": 22176,
+   "dtype": "f32",
+   "count": 3964
+  },
+  "faceVerts": {
+   "offset": 38032,
+   "dtype": "u32",
+   "count": 6808
+  },
+  "faceUvs": {
+   "offset": 65264,
+   "dtype": "u32",
+   "count": 6808
+  },
+  "refVerts": {
+   "offset": 92496,
+   "dtype": "u32",
+   "count": 5541
+  },
+  "refWeights": {
+   "offset": 114672,
+   "dtype": "f32",
+   "count": 5541
+  },
+  "refOffsets": {
+   "offset": 136848,
+   "dtype": "f32",
+   "count": 5541
+  },
+  "deleteVerts": {
+   "offset": 159024,
+   "dtype": "u32",
+   "count": 588
+  }
+ }
+}

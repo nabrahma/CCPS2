@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_fringe_hippy_dress",
+ "category": "clothes",
+ "name": "elvs_fringe_dress1",
+ "uuid": "8c217ca7-bb6d-4ce2-bd51-9dd9d7ce9a41",
+ "tags": [
+  "female",
+  "formal",
+  "festive",
+  "vintage",
+  "dress",
+  "fringe club"
+ ],
+ "zDepth": 35,
+ "vertexCount": 6203,
+ "faceCount": 6768,
+ "triangleFaces": 6768,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_fringe_hippy_dress.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "elvs_fringe_hippy_dress.bin",
+ "byteLength": 591396,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 18609
+  },
+  "uvs": {
+   "offset": 74448,
+   "dtype": "f32",
+   "count": 19260
+  },
+  "faceVerts": {
+   "offset": 151488,
+   "dtype": "u32",
+   "count": 27072
+  },
+  "faceUvs": {
+   "offset": 259776,
+   "dtype": "u32",
+   "count": 27072
+  },
+  "refVerts": {
+   "offset": 368064,
+   "dtype": "u32",
+   "count": 18609
+  },
+  "refWeights": {
+   "offset": 442512,
+   "dtype": "f32",
+   "count": 18609
+  },
+  "refOffsets": {
+   "offset": 516960,
+   "dtype": "f32",
+   "count": 18609
+  }
+ }
+}

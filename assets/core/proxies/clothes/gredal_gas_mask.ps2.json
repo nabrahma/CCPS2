@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/gredal_gas_mask",
+ "category": "clothes",
+ "name": "Gas Mask",
+ "uuid": "ce66273a-ff33-4672-9600-82e2f6024ea4",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 206,
+ "faceCount": 453,
+ "triangleFaces": 453,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.137
+  ],
+  [
+   791,
+   881,
+   0.21892
+  ],
+  [
+   962,
+   5320,
+   0.17938
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/gredal_gas_mask.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 2361,
+ "hiddenFaces": "computed",
+ "originalTriangles": 4714,
+ "binary": "gredal_gas_mask.ps2.bin",
+ "byteLength": 31544,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 618
+  },
+  "uvs": {
+   "offset": 2480,
+   "dtype": "f32",
+   "count": 412
+  },
+  "faceVerts": {
+   "offset": 4128,
+   "dtype": "u32",
+   "count": 1812
+  },
+  "faceUvs": {
+   "offset": 11376,
+   "dtype": "u32",
+   "count": 1812
+  },
+  "refVerts": {
+   "offset": 18624,
+   "dtype": "u32",
+   "count": 618
+  },
+  "refWeights": {
+   "offset": 21104,
+   "dtype": "f32",
+   "count": 618
+  },
+  "refOffsets": {
+   "offset": 23584,
+   "dtype": "f32",
+   "count": 618
+  },
+  "coveredVerts": {
+   "offset": 26064,
+   "dtype": "u32",
+   "count": 1164
+  },
+  "sourceProxyVertex": {
+   "offset": 30720,
+   "dtype": "u32",
+   "count": 206
+  }
+ }
+}

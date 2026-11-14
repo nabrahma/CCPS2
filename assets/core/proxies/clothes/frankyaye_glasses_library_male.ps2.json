@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/frankyaye_glasses_library_male",
+ "category": "clothes",
+ "name": "Glasses_Library_Male",
+ "uuid": "fcbd2e69-252a-4543-8816-7e4879a4e5da",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 313,
+ "faceCount": 500,
+ "triangleFaces": 500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0,
+   0,
+   0
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/frankyaye_glasses_library_male.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 816,
+ "hiddenFaces": "none",
+ "originalTriangles": 1412,
+ "binary": "frankyaye_glasses_library_male.ps2.bin",
+ "byteLength": 37428,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 939
+  },
+  "uvs": {
+   "offset": 3760,
+   "dtype": "f32",
+   "count": 1284
+  },
+  "faceVerts": {
+   "offset": 8896,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "faceUvs": {
+   "offset": 16896,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "refVerts": {
+   "offset": 24896,
+   "dtype": "u32",
+   "count": 939
+  },
+  "refWeights": {
+   "offset": 28656,
+   "dtype": "f32",
+   "count": 939
+  },
+  "refOffsets": {
+   "offset": 32416,
+   "dtype": "f32",
+   "count": 939
+  },
+  "sourceProxyVertex": {
+   "offset": 36176,
+   "dtype": "u32",
+   "count": 313
+  }
+ }
+}

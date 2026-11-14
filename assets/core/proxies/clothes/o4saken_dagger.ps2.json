@@ -1,0 +1,94 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/o4saken_dagger",
+ "category": "clothes",
+ "name": "Dagger",
+ "uuid": "37a4e1d2-69f0-4c4a-9e43-5557f83708cf",
+ "tags": [
+  "dagger"
+ ],
+ "zDepth": 57,
+ "vertexCount": 271,
+ "faceCount": 499,
+ "triangleFaces": 499,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/o4saken_dagger.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 1595,
+ "hiddenFaces": "none",
+ "originalTriangles": 3026,
+ "binary": "o4saken_dagger.ps2.bin",
+ "byteLength": 33052,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 813
+  },
+  "uvs": {
+   "offset": 3264,
+   "dtype": "f32",
+   "count": 736
+  },
+  "faceVerts": {
+   "offset": 6208,
+   "dtype": "u32",
+   "count": 1996
+  },
+  "faceUvs": {
+   "offset": 14192,
+   "dtype": "u32",
+   "count": 1996
+  },
+  "refVerts": {
+   "offset": 22176,
+   "dtype": "u32",
+   "count": 813
+  },
+  "refWeights": {
+   "offset": 25440,
+   "dtype": "f32",
+   "count": 813
+  },
+  "refOffsets": {
+   "offset": 28704,
+   "dtype": "f32",
+   "count": 813
+  },
+  "sourceProxyVertex": {
+   "offset": 31968,
+   "dtype": "u32",
+   "count": 271
+  }
+ }
+}

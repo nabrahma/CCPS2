@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_tennis_racket",
+ "category": "clothes",
+ "name": "tennisracket",
+ "uuid": "372c6078-5595-481c-8241-872cd3d99d9b",
+ "tags": [
+  "sport",
+  "carried"
+ ],
+ "zDepth": 69,
+ "vertexCount": 360,
+ "faceCount": 500,
+ "triangleFaces": 500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_tennis_racket.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 1181,
+ "hiddenFaces": "computed",
+ "originalTriangles": 2068,
+ "binary": "punkduck_tennis_racket.ps2.bin",
+ "byteLength": 38592,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1080
+  },
+  "uvs": {
+   "offset": 4320,
+   "dtype": "f32",
+   "count": 950
+  },
+  "faceVerts": {
+   "offset": 8128,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "faceUvs": {
+   "offset": 16128,
+   "dtype": "u32",
+   "count": 2000
+  },
+  "refVerts": {
+   "offset": 24128,
+   "dtype": "u32",
+   "count": 1080
+  },
+  "refWeights": {
+   "offset": 28448,
+   "dtype": "f32",
+   "count": 1080
+  },
+  "refOffsets": {
+   "offset": 32768,
+   "dtype": "f32",
+   "count": 1080
+  },
+  "coveredVerts": {
+   "offset": 37088,
+   "dtype": "u32",
+   "count": 14
+  },
+  "sourceProxyVertex": {
+   "offset": 37152,
+   "dtype": "u32",
+   "count": 360
+  }
+ }
+}

@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_tennis_shoes",
+ "category": "clothes",
+ "name": "TennisShoes",
+ "uuid": "6d72ef6a-7827-49fe-8af4-26824e4bdd8c",
+ "tags": [
+  "shoes",
+  "sport"
+ ],
+ "zDepth": 45,
+ "vertexCount": 519,
+ "faceCount": 900,
+ "triangleFaces": 900,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_tennis_shoes.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "decimatedFrom": 1946,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 3340,
+ "binary": "punkduck_tennis_shoes.ps2.bin",
+ "byteLength": 67820,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1557
+  },
+  "uvs": {
+   "offset": 6240,
+   "dtype": "f32",
+   "count": 746
+  },
+  "faceVerts": {
+   "offset": 9232,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "faceUvs": {
+   "offset": 23632,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "refVerts": {
+   "offset": 38032,
+   "dtype": "u32",
+   "count": 1557
+  },
+  "refWeights": {
+   "offset": 44272,
+   "dtype": "f32",
+   "count": 1557
+  },
+  "refOffsets": {
+   "offset": 50512,
+   "dtype": "f32",
+   "count": 1557
+  },
+  "deleteVerts": {
+   "offset": 56752,
+   "dtype": "u32",
+   "count": 2246
+  },
+  "sourceProxyVertex": {
+   "offset": 65744,
+   "dtype": "u32",
+   "count": 519
+  }
+ }
+}

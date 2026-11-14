@@ -23,7 +23,7 @@
       "ps2cc:clothes/cargo_trousers",
       "mh:clothes/toigo_ankle_boots_female",
       "ps2cc:clothes/wristbands",
-      "mh:clothes/aethelraed_unraed_cloche_hat"
+      "mh:clothes/jujube_bag_on_head"
     ],
     "layers": [
       "scalpHair",
@@ -48,7 +48,7 @@
     "meanDifferenceFromBase": 0.04311427696078431
   },
   "garmentStudio": {
-    "saved": "user:garment/Loose_tee_421977b7",
+    "saved": "user:garment/Loose_tee_8dca4798",
     "triangles": 1800
   },
   "materialStudio": {

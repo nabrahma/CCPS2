@@ -1,0 +1,104 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_unisex_chef_hat_1",
+ "category": "clothes",
+ "name": "elvs_unisex_chef_hat1",
+ "uuid": "c6546707-2f5b-4f50-8f5c-512cb7b99e3f",
+ "tags": [
+  "unisex",
+  "formal",
+  "profession",
+  "traditional",
+  "hat",
+  "toque"
+ ],
+ "zDepth": 50,
+ "vertexCount": 355,
+ "faceCount": 699,
+ "triangleFaces": 699,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27574000000000004
+  ],
+  [
+   1524,
+   4370,
+   0.57433
+  ],
+  [
+   1892,
+   3946,
+   0.18303000000000003
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_unisex_chef_hat_1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "decimatedFrom": 4125,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 8160,
+ "binary": "elvs_unisex_chef_hat_1.ps2.bin",
+ "byteLength": 44380,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1065
+  },
+  "uvs": {
+   "offset": 4272,
+   "dtype": "f32",
+   "count": 730
+  },
+  "faceVerts": {
+   "offset": 7200,
+   "dtype": "u32",
+   "count": 2796
+  },
+  "faceUvs": {
+   "offset": 18384,
+   "dtype": "u32",
+   "count": 2796
+  },
+  "refVerts": {
+   "offset": 29568,
+   "dtype": "u32",
+   "count": 1065
+  },
+  "refWeights": {
+   "offset": 33840,
+   "dtype": "f32",
+   "count": 1065
+  },
+  "refOffsets": {
+   "offset": 38112,
+   "dtype": "f32",
+   "count": 1065
+  },
+  "deleteVerts": {
+   "offset": 42384,
+   "dtype": "u32",
+   "count": 141
+  },
+  "sourceProxyVertex": {
+   "offset": 42960,
+   "dtype": "u32",
+   "count": 355
+  }
+ }
+}

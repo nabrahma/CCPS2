@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_ladies_apron",
+ "category": "clothes",
+ "name": "elvs_lady_apron1",
+ "uuid": "948f6a42-1f1b-4c1c-9c4f-fc807a5b1e34",
+ "tags": [],
+ "zDepth": 61,
+ "vertexCount": 28698,
+ "faceCount": 27297,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   13868,
+   14308,
+   0.95666
+  ],
+  [
+   881,
+   13137,
+   1.6005099999999999
+  ],
+  [
+   10854,
+   10981,
+   0.22246
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_ladies_apron.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_ladies_apron.bin",
+ "byteLength": 2554984,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 86094
+  },
+  "uvs": {
+   "offset": 344384,
+   "dtype": "f32",
+   "count": 75988
+  },
+  "faceVerts": {
+   "offset": 648336,
+   "dtype": "u32",
+   "count": 109188
+  },
+  "faceUvs": {
+   "offset": 1085088,
+   "dtype": "u32",
+   "count": 109188
+  },
+  "refVerts": {
+   "offset": 1521840,
+   "dtype": "u32",
+   "count": 86094
+  },
+  "refWeights": {
+   "offset": 1866224,
+   "dtype": "f32",
+   "count": 86094
+  },
+  "refOffsets": {
+   "offset": 2210608,
+   "dtype": "f32",
+   "count": 86094
+  }
+ }
+}

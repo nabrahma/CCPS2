@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/grinsegold_mars_suit",
+ "category": "clothes",
+ "name": "Mars-Suit",
+ "uuid": "d754e1d9-8b9d-4cf5-a1ef-300e6e5747ba",
+ "tags": [
+  "uniform/armor"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1758,
+ "faceCount": 1685,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.31594000000000005
+  ],
+  [
+   1524,
+   4370,
+   0.57703
+  ],
+  [
+   1892,
+   3946,
+   0.19743
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/grinsegold_mars_suit.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "grinsegold_mars_suit.bin",
+ "byteLength": 188832,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 5274
+  },
+  "uvs": {
+   "offset": 21104,
+   "dtype": "f32",
+   "count": 4522
+  },
+  "faceVerts": {
+   "offset": 39200,
+   "dtype": "u32",
+   "count": 6740
+  },
+  "faceUvs": {
+   "offset": 66160,
+   "dtype": "u32",
+   "count": 6740
+  },
+  "refVerts": {
+   "offset": 93120,
+   "dtype": "u32",
+   "count": 5274
+  },
+  "refWeights": {
+   "offset": 114224,
+   "dtype": "f32",
+   "count": 5274
+  },
+  "refOffsets": {
+   "offset": 135328,
+   "dtype": "f32",
+   "count": 5274
+  },
+  "deleteVerts": {
+   "offset": 156432,
+   "dtype": "u32",
+   "count": 8100
+  }
+ }
+}

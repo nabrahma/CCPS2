@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_basic_brave_feathers1",
+ "category": "clothes",
+ "name": "brave_feathers",
+ "uuid": "eab00fbc-6857-459e-a0d0-e77c659c92f3",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 441,
+ "faceCount": 699,
+ "triangleFaces": 699,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.5169
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_basic_brave_feathers1.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "decimatedFrom": 3418,
+ "hiddenFaces": "computed",
+ "originalTriangles": 5852,
+ "binary": "elvs_basic_brave_feathers1.ps2.bin",
+ "byteLength": 51316,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1323
+  },
+  "uvs": {
+   "offset": 5296,
+   "dtype": "f32",
+   "count": 1484
+  },
+  "faceVerts": {
+   "offset": 11232,
+   "dtype": "u32",
+   "count": 2796
+  },
+  "faceUvs": {
+   "offset": 22416,
+   "dtype": "u32",
+   "count": 2796
+  },
+  "refVerts": {
+   "offset": 33600,
+   "dtype": "u32",
+   "count": 1323
+  },
+  "refWeights": {
+   "offset": 38896,
+   "dtype": "f32",
+   "count": 1323
+  },
+  "refOffsets": {
+   "offset": 44192,
+   "dtype": "f32",
+   "count": 1323
+  },
+  "coveredVerts": {
+   "offset": 49488,
+   "dtype": "u32",
+   "count": 16
+  },
+  "sourceProxyVertex": {
+   "offset": 49552,
+   "dtype": "u32",
+   "count": 441
+  }
+ }
+}

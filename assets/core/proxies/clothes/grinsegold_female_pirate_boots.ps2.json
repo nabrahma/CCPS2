@@ -8,9 +8,9 @@
   "shoes"
  ],
  "zDepth": 50,
- "vertexCount": 985,
- "faceCount": 1950,
- "triangleFaces": 1950,
+ "vertexCount": 250,
+ "faceCount": 773,
+ "triangleFaces": 773,
  "scale": [
   [
    5399,
@@ -48,52 +48,52 @@
  "hiddenFaces": "makehuman",
  "originalTriangles": 63552,
  "binary": "grinsegold_female_pirate_boots.ps2.bin",
- "byteLength": 133188,
+ "byteLength": 49768,
  "buffers": {
   "restPositions": {
    "offset": 0,
    "dtype": "f32",
-   "count": 2955
+   "count": 750
   },
   "uvs": {
-   "offset": 11824,
+   "offset": 3008,
    "dtype": "f32",
-   "count": 2278
+   "count": 390
   },
   "faceVerts": {
-   "offset": 20944,
+   "offset": 4576,
    "dtype": "u32",
-   "count": 7800
+   "count": 3092
   },
   "faceUvs": {
-   "offset": 52144,
+   "offset": 16944,
    "dtype": "u32",
-   "count": 7800
+   "count": 3092
   },
   "refVerts": {
-   "offset": 83344,
+   "offset": 29312,
    "dtype": "u32",
-   "count": 2955
+   "count": 750
   },
   "refWeights": {
-   "offset": 95168,
+   "offset": 32320,
    "dtype": "f32",
-   "count": 2955
+   "count": 750
   },
   "refOffsets": {
-   "offset": 106992,
+   "offset": 35328,
    "dtype": "f32",
-   "count": 2955
+   "count": 750
   },
   "deleteVerts": {
-   "offset": 118816,
+   "offset": 38336,
    "dtype": "u32",
    "count": 2606
   },
   "sourceProxyVertex": {
-   "offset": 129248,
+   "offset": 48768,
    "dtype": "u32",
-   "count": 985
+   "count": 250
   }
  }
 }

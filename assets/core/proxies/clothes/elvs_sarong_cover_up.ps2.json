@@ -1,0 +1,103 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_sarong_cover_up",
+ "category": "clothes",
+ "name": "sarong_coverup1",
+ "uuid": "59a347d2-4022-4000-ab26-218c685ac445",
+ "tags": [
+  "sarong",
+  "wrap",
+  "ladies wear",
+  "summer",
+  "cover up"
+ ],
+ "zDepth": 47,
+ "vertexCount": 908,
+ "faceCount": 1600,
+ "triangleFaces": 1600,
+ "scale": [
+  [
+   13868,
+   14308,
+   0.95666
+  ],
+  [
+   881,
+   13137,
+   1.6005099999999999
+  ],
+  [
+   10854,
+   10981,
+   0.22246
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.6392,
+   0.6392,
+   0.6392
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_sarong_cover_up.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 1573,
+ "hiddenFaces": "computed",
+ "originalTriangles": 2930,
+ "binary": "elvs_sarong_cover_up.ps2.bin",
+ "byteLength": 109952,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2724
+  },
+  "uvs": {
+   "offset": 10896,
+   "dtype": "f32",
+   "count": 1918
+  },
+  "faceVerts": {
+   "offset": 18576,
+   "dtype": "u32",
+   "count": 6400
+  },
+  "faceUvs": {
+   "offset": 44176,
+   "dtype": "u32",
+   "count": 6400
+  },
+  "refVerts": {
+   "offset": 69776,
+   "dtype": "u32",
+   "count": 2724
+  },
+  "refWeights": {
+   "offset": 80672,
+   "dtype": "f32",
+   "count": 2724
+  },
+  "refOffsets": {
+   "offset": 91568,
+   "dtype": "f32",
+   "count": 2724
+  },
+  "coveredVerts": {
+   "offset": 102464,
+   "dtype": "u32",
+   "count": 962
+  },
+  "sourceProxyVertex": {
+   "offset": 106320,
+   "dtype": "u32",
+   "count": 908
+  }
+ }
+}

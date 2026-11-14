@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_tank_top_01",
+ "category": "clothes",
+ "name": "Tank_Top_01",
+ "uuid": "1f0d4a7c-303f-451c-8488-67f29e2aead9",
+ "tags": [
+  "casual",
+  "sport"
+ ],
+ "zDepth": 47,
+ "vertexCount": 903,
+ "faceCount": 836,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27574000000000004
+  ],
+  [
+   1524,
+   4370,
+   0.57433
+  ],
+  [
+   1892,
+   3946,
+   0.18303000000000003
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 0.0,
+  "diffuseTexture": "textures/clothes/mindfront_tank_top_01.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "mindfront_tank_top_01.bin",
+ "byteLength": 82992,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2709
+  },
+  "uvs": {
+   "offset": 10848,
+   "dtype": "f32",
+   "count": 2226
+  },
+  "faceVerts": {
+   "offset": 19760,
+   "dtype": "u32",
+   "count": 3344
+  },
+  "faceUvs": {
+   "offset": 33136,
+   "dtype": "u32",
+   "count": 3344
+  },
+  "refVerts": {
+   "offset": 46512,
+   "dtype": "u32",
+   "count": 2709
+  },
+  "refWeights": {
+   "offset": 57360,
+   "dtype": "f32",
+   "count": 2709
+  },
+  "refOffsets": {
+   "offset": 68208,
+   "dtype": "f32",
+   "count": 2709
+  },
+  "deleteVerts": {
+   "offset": 79056,
+   "dtype": "u32",
+   "count": 984
+  }
+ }
+}

@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_heroine_suit_6",
+ "category": "clothes",
+ "name": "heroine_suit_6",
+ "uuid": "f9602013-97f6-4fc5-a38d-30391d093ce4",
+ "tags": [
+  "hero",
+  "comic"
+ ],
+ "zDepth": 30,
+ "vertexCount": 7873,
+ "faceCount": 7850,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/culturalibre_heroine_suit_6.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "culturalibre_heroine_suit_6.bin",
+ "byteLength": 742936,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 23619
+  },
+  "uvs": {
+   "offset": 94480,
+   "dtype": "f32",
+   "count": 18490
+  },
+  "faceVerts": {
+   "offset": 168448,
+   "dtype": "u32",
+   "count": 31400
+  },
+  "faceUvs": {
+   "offset": 294048,
+   "dtype": "u32",
+   "count": 31400
+  },
+  "refVerts": {
+   "offset": 419648,
+   "dtype": "u32",
+   "count": 23619
+  },
+  "refWeights": {
+   "offset": 514128,
+   "dtype": "f32",
+   "count": 23619
+  },
+  "refOffsets": {
+   "offset": 608608,
+   "dtype": "f32",
+   "count": 23619
+  },
+  "deleteVerts": {
+   "offset": 703088,
+   "dtype": "u32",
+   "count": 9962
+  }
+ }
+}

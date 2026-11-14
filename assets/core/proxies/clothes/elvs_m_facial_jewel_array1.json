@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_m_facial_jewel_array1",
+ "category": "clothes",
+ "name": "malefacejewels1",
+ "uuid": "44fc7088-223c-4bf4-a16a-a75156e37036",
+ "tags": [
+  "face jewelry",
+  "male jewelry"
+ ],
+ "zDepth": 50,
+ "vertexCount": 14648,
+ "faceCount": 14474,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.0549,
+   0.6392,
+   0.04314
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_m_facial_jewel_array1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_m_facial_jewel_array1.bin",
+ "byteLength": 1346992,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 43944
+  },
+  "uvs": {
+   "offset": 175776,
+   "dtype": "f32",
+   "count": 45178
+  },
+  "faceVerts": {
+   "offset": 356496,
+   "dtype": "u32",
+   "count": 57896
+  },
+  "faceUvs": {
+   "offset": 588080,
+   "dtype": "u32",
+   "count": 57896
+  },
+  "refVerts": {
+   "offset": 819664,
+   "dtype": "u32",
+   "count": 43944
+  },
+  "refWeights": {
+   "offset": 995440,
+   "dtype": "f32",
+   "count": 43944
+  },
+  "refOffsets": {
+   "offset": 1171216,
+   "dtype": "f32",
+   "count": 43944
+  }
+ }
+}

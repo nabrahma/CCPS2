@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_handbag01",
+ "category": "clothes",
+ "name": "Handbag",
+ "uuid": "385a0e8c-7c5e-4db7-b112-af8ca9efe8ff",
+ "tags": [
+  "bag",
+  "carried"
+ ],
+ "zDepth": 69,
+ "vertexCount": 316,
+ "faceCount": 640,
+ "triangleFaces": 640,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22048
+  ],
+  [
+   962,
+   5320,
+   0.18461000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_handbag01.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 1803,
+ "hiddenFaces": "none",
+ "originalTriangles": 3460,
+ "binary": "punkduck_handbag01.ps2.bin",
+ "byteLength": 41728,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 948
+  },
+  "uvs": {
+   "offset": 3792,
+   "dtype": "f32",
+   "count": 1202
+  },
+  "faceVerts": {
+   "offset": 8608,
+   "dtype": "u32",
+   "count": 2560
+  },
+  "faceUvs": {
+   "offset": 18848,
+   "dtype": "u32",
+   "count": 2560
+  },
+  "refVerts": {
+   "offset": 29088,
+   "dtype": "u32",
+   "count": 948
+  },
+  "refWeights": {
+   "offset": 32880,
+   "dtype": "f32",
+   "count": 948
+  },
+  "refOffsets": {
+   "offset": 36672,
+   "dtype": "f32",
+   "count": 948
+  },
+  "sourceProxyVertex": {
+   "offset": 40464,
+   "dtype": "u32",
+   "count": 316
+  }
+ }
+}

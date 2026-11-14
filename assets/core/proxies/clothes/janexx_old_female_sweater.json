@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/janexx_old_female_sweater",
+ "category": "clothes",
+ "name": "Worn out sweater",
+ "uuid": "1d6a10a7-8b30-44d8-931b-9ab5b86f1411",
+ "tags": [
+  "female",
+  "casual",
+  "leisure",
+  "contemporary",
+  "shirt",
+  "swater",
+  "pullover"
+ ],
+ "zDepth": 53,
+ "vertexCount": 1602,
+ "faceCount": 1556,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27675
+  ],
+  [
+   1524,
+   4370,
+   0.57206
+  ],
+  [
+   1892,
+   3946,
+   0.17066
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/janexx_old_female_sweater.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "outer",
+ "binary": "janexx_old_female_sweater.bin",
+ "byteLength": 140536,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4806
+  },
+  "uvs": {
+   "offset": 19232,
+   "dtype": "f32",
+   "count": 3456
+  },
+  "faceVerts": {
+   "offset": 33056,
+   "dtype": "u32",
+   "count": 6224
+  },
+  "faceUvs": {
+   "offset": 57952,
+   "dtype": "u32",
+   "count": 6224
+  },
+  "refVerts": {
+   "offset": 82848,
+   "dtype": "u32",
+   "count": 4806
+  },
+  "refWeights": {
+   "offset": 102080,
+   "dtype": "f32",
+   "count": 4806
+  },
+  "refOffsets": {
+   "offset": 121312,
+   "dtype": "f32",
+   "count": 4806
+  }
+ }
+}

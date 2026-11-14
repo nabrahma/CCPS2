@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/jaldmic_akm_base",
+ "category": "clothes",
+ "name": "AKM",
+ "uuid": "8cc6c74c-7e90-4a28-90c0-6efa3cc3724a",
+ "tags": [
+  "russian",
+  "weapon"
+ ],
+ "zDepth": 69,
+ "vertexCount": 9891,
+ "faceCount": 19509,
+ "triangleFaces": 19509,
+ "scale": [
+  [
+   8938,
+   10548,
+   0.00466
+  ],
+  [
+   9881,
+   10318,
+   0.00042
+  ],
+  [
+   9864,
+   10267,
+   0.00652
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/jaldmic_akm_base.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "jaldmic_akm_base.bin",
+ "byteLength": 1280132,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 29673
+  },
+  "uvs": {
+   "offset": 118704,
+   "dtype": "f32",
+   "count": 45260
+  },
+  "faceVerts": {
+   "offset": 299744,
+   "dtype": "u32",
+   "count": 78036
+  },
+  "faceUvs": {
+   "offset": 611888,
+   "dtype": "u32",
+   "count": 78036
+  },
+  "refVerts": {
+   "offset": 924032,
+   "dtype": "u32",
+   "count": 29673
+  },
+  "refWeights": {
+   "offset": 1042736,
+   "dtype": "f32",
+   "count": 29673
+  },
+  "refOffsets": {
+   "offset": 1161440,
+   "dtype": "f32",
+   "count": 29673
+  }
+ }
+}

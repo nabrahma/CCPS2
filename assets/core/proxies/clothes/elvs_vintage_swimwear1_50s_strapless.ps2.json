@@ -1,0 +1,103 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_vintage_swimwear1_50s_strapless",
+ "category": "clothes",
+ "name": "vintagesuit1_50selv",
+ "uuid": "cd95e3ec-56b9-40f9-bb26-f2d3a9a23a46",
+ "tags": [
+  "one piece",
+  "vintage",
+  "ladies wear",
+  "summer",
+  "swimwear"
+ ],
+ "zDepth": 31,
+ "vertexCount": 1049,
+ "faceCount": 1984,
+ "triangleFaces": 1984,
+ "scale": [
+  [
+   13868,
+   14308,
+   0.95666
+  ],
+  [
+   881,
+   13137,
+   1.6005099999999999
+  ],
+  [
+   10854,
+   10981,
+   0.22246
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.6392,
+   0.6392,
+   0.6392
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_vintage_swimwear1_50s_strapless.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 1049,
+ "hiddenFaces": "computed",
+ "originalTriangles": 1984,
+ "binary": "elvs_vintage_swimwear1_50s_strapless.ps2.bin",
+ "byteLength": 129364,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3147
+  },
+  "uvs": {
+   "offset": 12592,
+   "dtype": "f32",
+   "count": 2098
+  },
+  "faceVerts": {
+   "offset": 20992,
+   "dtype": "u32",
+   "count": 7936
+  },
+  "faceUvs": {
+   "offset": 52736,
+   "dtype": "u32",
+   "count": 7936
+  },
+  "refVerts": {
+   "offset": 84480,
+   "dtype": "u32",
+   "count": 3147
+  },
+  "refWeights": {
+   "offset": 97072,
+   "dtype": "f32",
+   "count": 3147
+  },
+  "refOffsets": {
+   "offset": 109664,
+   "dtype": "f32",
+   "count": 3147
+  },
+  "coveredVerts": {
+   "offset": 122256,
+   "dtype": "u32",
+   "count": 725
+  },
+  "sourceProxyVertex": {
+   "offset": 125168,
+   "dtype": "u32",
+   "count": 1049
+  }
+ }
+}

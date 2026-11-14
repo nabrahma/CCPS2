@@ -1,0 +1,98 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mrgreaterthan_m1_helmet",
+ "category": "clothes",
+ "name": "M1Helmet",
+ "uuid": "64ee81e1-d061-48bb-ad16-f192583cb43d",
+ "tags": [
+  "unisex",
+  "profession",
+  "vintage",
+  "helmet",
+  "army",
+  "military",
+  "vietnam",
+  "wwii"
+ ],
+ "zDepth": 50,
+ "vertexCount": 34680,
+ "faceCount": 36146,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.14266
+  ],
+  [
+   791,
+   881,
+   0.24408
+  ],
+  [
+   962,
+   5320,
+   0.20138
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/mrgreaterthan_m1_helmet.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "binary": "mrgreaterthan_m1_helmet.bin",
+ "byteLength": 3344012,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 104040
+  },
+  "uvs": {
+   "offset": 416160,
+   "dtype": "f32",
+   "count": 130564
+  },
+  "faceVerts": {
+   "offset": 938416,
+   "dtype": "u32",
+   "count": 144584
+  },
+  "faceUvs": {
+   "offset": 1516752,
+   "dtype": "u32",
+   "count": 144584
+  },
+  "refVerts": {
+   "offset": 2095088,
+   "dtype": "u32",
+   "count": 104040
+  },
+  "refWeights": {
+   "offset": 2511248,
+   "dtype": "f32",
+   "count": 104040
+  },
+  "refOffsets": {
+   "offset": 2927408,
+   "dtype": "f32",
+   "count": 104040
+  },
+  "deleteVerts": {
+   "offset": 3343568,
+   "dtype": "u32",
+   "count": 111
+  }
+ }
+}

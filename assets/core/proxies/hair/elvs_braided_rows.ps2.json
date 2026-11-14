@@ -1,0 +1,102 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/elvs_braided_rows",
+ "category": "hair",
+ "name": "cornrowsofelv5",
+ "uuid": "8aa002be-46e0-4fe4-b61b-c238e1c98898",
+ "tags": [
+  "quad",
+  "braids",
+  "hair",
+  "beads",
+  "cornrows"
+ ],
+ "zDepth": 57,
+ "vertexCount": 1613,
+ "faceCount": 3341,
+ "triangleFaces": 3341,
+ "scale": [
+  [
+   11998,
+   5399,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.741,
+   0.6957,
+   0.7879
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/hair/elvs_braided_rows.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "decimatedFrom": 21742,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 40928,
+ "binary": "elvs_braided_rows.ps2.bin",
+ "byteLength": 203204,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4839
+  },
+  "uvs": {
+   "offset": 19360,
+   "dtype": "f32",
+   "count": 2966
+  },
+  "faceVerts": {
+   "offset": 31232,
+   "dtype": "u32",
+   "count": 13364
+  },
+  "faceUvs": {
+   "offset": 84688,
+   "dtype": "u32",
+   "count": 13364
+  },
+  "refVerts": {
+   "offset": 138144,
+   "dtype": "u32",
+   "count": 4839
+  },
+  "refWeights": {
+   "offset": 157504,
+   "dtype": "f32",
+   "count": 4839
+  },
+  "refOffsets": {
+   "offset": 176864,
+   "dtype": "f32",
+   "count": 4839
+  },
+  "deleteVerts": {
+   "offset": 196224,
+   "dtype": "u32",
+   "count": 130
+  },
+  "sourceProxyVertex": {
+   "offset": 196752,
+   "dtype": "u32",
+   "count": 1613
+  }
+ }
+}

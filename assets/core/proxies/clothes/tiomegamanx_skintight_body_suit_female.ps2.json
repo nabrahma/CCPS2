@@ -1,0 +1,99 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/tiomegamanx_skintight_body_suit_female",
+ "category": "clothes",
+ "name": "bodysuit",
+ "uuid": "22756851-de96-423e-9003-1c3e3e92b569",
+ "tags": [
+  "zero suit"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1267,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/tiomegamanx_skintight_body_suit_female.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 8081,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 16128,
+ "binary": "tiomegamanx_skintight_body_suit_female.ps2.bin",
+ "byteLength": 197996,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3801
+  },
+  "uvs": {
+   "offset": 15216,
+   "dtype": "f32",
+   "count": 3054
+  },
+  "faceVerts": {
+   "offset": 27440,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 67440,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 107440,
+   "dtype": "u32",
+   "count": 3801
+  },
+  "refWeights": {
+   "offset": 122656,
+   "dtype": "f32",
+   "count": 3801
+  },
+  "refOffsets": {
+   "offset": 137872,
+   "dtype": "f32",
+   "count": 3801
+  },
+  "deleteVerts": {
+   "offset": 153088,
+   "dtype": "u32",
+   "count": 9960
+  },
+  "sourceProxyVertex": {
+   "offset": 192928,
+   "dtype": "u32",
+   "count": 1267
+  }
+ }
+}

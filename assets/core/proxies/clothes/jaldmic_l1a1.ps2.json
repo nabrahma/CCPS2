@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/jaldmic_l1a1",
+ "category": "clothes",
+ "name": "L1A1",
+ "uuid": "ac0b3d1e-efcc-451a-b252-8eb725d4d74a",
+ "tags": [
+  "jaldmic",
+  "weapon"
+ ],
+ "zDepth": 69,
+ "vertexCount": 145,
+ "faceCount": 444,
+ "triangleFaces": 444,
+ "scale": [
+  [
+   8938,
+   10548,
+   0.00466
+  ],
+  [
+   9881,
+   10318,
+   0.00042
+  ],
+  [
+   9864,
+   10267,
+   0.00652
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/jaldmic_l1a1.png",
+  "textureSize": [
+   1024,
+   512
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 31972,
+ "hiddenFaces": "computed",
+ "originalTriangles": 63128,
+ "binary": "jaldmic_l1a1.ps2.bin",
+ "byteLength": 23428,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 435
+  },
+  "uvs": {
+   "offset": 1744,
+   "dtype": "f32",
+   "count": 290
+  },
+  "faceVerts": {
+   "offset": 2912,
+   "dtype": "u32",
+   "count": 1776
+  },
+  "faceUvs": {
+   "offset": 10016,
+   "dtype": "u32",
+   "count": 1776
+  },
+  "refVerts": {
+   "offset": 17120,
+   "dtype": "u32",
+   "count": 435
+  },
+  "refWeights": {
+   "offset": 18864,
+   "dtype": "f32",
+   "count": 435
+  },
+  "refOffsets": {
+   "offset": 20608,
+   "dtype": "f32",
+   "count": 435
+  },
+  "coveredVerts": {
+   "offset": 22352,
+   "dtype": "u32",
+   "count": 121
+  },
+  "sourceProxyVertex": {
+   "offset": 22848,
+   "dtype": "u32",
+   "count": 145
+  }
+ }
+}

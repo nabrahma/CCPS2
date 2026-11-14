@@ -1,0 +1,104 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_zombie_killer_sneakers",
+ "category": "clothes",
+ "name": "elvs_zombiekiller_sneakers1",
+ "uuid": "b26034df-e821-461a-8765-b85b94562670",
+ "tags": [
+  "female",
+  "casual",
+  "sport",
+  "contemporary",
+  "shoes",
+  "shoe"
+ ],
+ "zDepth": 50,
+ "vertexCount": 210,
+ "faceCount": 712,
+ "triangleFaces": 712,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_zombie_killer_sneakers.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "decimatedFrom": 77240,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 153938,
+ "binary": "elvs_zombie_killer_sneakers.ps2.bin",
+ "byteLength": 43112,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 630
+  },
+  "uvs": {
+   "offset": 2528,
+   "dtype": "f32",
+   "count": 216
+  },
+  "faceVerts": {
+   "offset": 3392,
+   "dtype": "u32",
+   "count": 2848
+  },
+  "faceUvs": {
+   "offset": 14784,
+   "dtype": "u32",
+   "count": 2848
+  },
+  "refVerts": {
+   "offset": 26176,
+   "dtype": "u32",
+   "count": 630
+  },
+  "refWeights": {
+   "offset": 28704,
+   "dtype": "f32",
+   "count": 630
+  },
+  "refOffsets": {
+   "offset": 31232,
+   "dtype": "f32",
+   "count": 630
+  },
+  "deleteVerts": {
+   "offset": 33760,
+   "dtype": "u32",
+   "count": 2126
+  },
+  "sourceProxyVertex": {
+   "offset": 42272,
+   "dtype": "u32",
+   "count": 210
+  }
+ }
+}

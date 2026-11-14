@@ -1,0 +1,88 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/spamrakuen_sagerfrogs_glasses_04",
+ "category": "clothes",
+ "name": "Sagerfrog's Glasses 04",
+ "uuid": "4293dead-1c0f-4820-b432-465f5d9c184a",
+ "tags": [
+  "unisex",
+  "contemporary",
+  "glasses"
+ ],
+ "zDepth": 50,
+ "vertexCount": 890,
+ "faceCount": 868,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.13983
+  ],
+  [
+   791,
+   881,
+   0.2315
+  ],
+  [
+   962,
+   5320,
+   0.19038
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/spamrakuen_sagerfrogs_glasses_04.png",
+  "textureSize": [
+   32,
+   32
+  ]
+ },
+ "slot": "accessory",
+ "binary": "spamrakuen_sagerfrogs_glasses_04.bin",
+ "byteLength": 76296,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2670
+  },
+  "uvs": {
+   "offset": 10688,
+   "dtype": "f32",
+   "count": 1444
+  },
+  "faceVerts": {
+   "offset": 16464,
+   "dtype": "u32",
+   "count": 3472
+  },
+  "faceUvs": {
+   "offset": 30352,
+   "dtype": "u32",
+   "count": 3472
+  },
+  "refVerts": {
+   "offset": 44240,
+   "dtype": "u32",
+   "count": 2670
+  },
+  "refWeights": {
+   "offset": 54928,
+   "dtype": "f32",
+   "count": 2670
+  },
+  "refOffsets": {
+   "offset": 65616,
+   "dtype": "f32",
+   "count": 2670
+  }
+ }
+}

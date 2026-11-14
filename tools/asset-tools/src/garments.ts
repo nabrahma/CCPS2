@@ -10,6 +10,7 @@ export interface DecimatedGarment {
   vertices: number;
   originalTriangles: number;
   flipped: number;
+  clustered: boolean;
   sha: { json: string; bin: string };
 }
 
@@ -44,5 +45,5 @@ export async function decimateGarment(proxy: ProxyAsset, slot: string, base: str
   delete (meta as Record<string, unknown>).byteLength;
   delete (meta as Record<string, unknown>).buffers;
   const sha = w.write(base, meta);
-  return { triangles: d.triangles, vertices: d.kept.length, originalTriangles: d.originalTriangles, flipped: d.flipped, sha };
+  return { triangles: d.triangles, vertices: d.kept.length, originalTriangles: d.originalTriangles, flipped: d.flipped, clustered: d.clustered, sha };
 }

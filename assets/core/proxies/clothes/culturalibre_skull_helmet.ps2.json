@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_skull_helmet",
+ "category": "clothes",
+ "name": "skull_helmet",
+ "uuid": "9dc24b9a-5f04-4f9a-a23a-d6a4dd34ff49",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 400,
+ "faceCount": 796,
+ "triangleFaces": 796,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/culturalibre_skull_helmet.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "decimatedFrom": 4254,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 8504,
+ "binary": "culturalibre_skull_helmet.ps2.bin",
+ "byteLength": 65472,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1200
+  },
+  "uvs": {
+   "offset": 4800,
+   "dtype": "f32",
+   "count": 1982
+  },
+  "faceVerts": {
+   "offset": 12736,
+   "dtype": "u32",
+   "count": 3184
+  },
+  "faceUvs": {
+   "offset": 25472,
+   "dtype": "u32",
+   "count": 3184
+  },
+  "refVerts": {
+   "offset": 38208,
+   "dtype": "u32",
+   "count": 1200
+  },
+  "refWeights": {
+   "offset": 43008,
+   "dtype": "f32",
+   "count": 1200
+  },
+  "refOffsets": {
+   "offset": 47808,
+   "dtype": "f32",
+   "count": 1200
+  },
+  "deleteVerts": {
+   "offset": 52608,
+   "dtype": "u32",
+   "count": 2816
+  },
+  "sourceProxyVertex": {
+   "offset": 63872,
+   "dtype": "u32",
+   "count": 400
+  }
+ }
+}

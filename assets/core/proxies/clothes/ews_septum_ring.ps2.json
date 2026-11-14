@@ -1,0 +1,98 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/ews_septum_ring",
+ "category": "clothes",
+ "name": "Septum_Ring",
+ "uuid": "8b003702-6177-4973-a73d-c6a8dc5bf838",
+ "tags": [
+  "septum",
+  "piercing",
+  "ring",
+  "nose",
+  "metal"
+ ],
+ "zDepth": 50,
+ "vertexCount": 96,
+ "faceCount": 192,
+ "triangleFaces": 192,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/ews_septum_ring.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 96,
+ "hiddenFaces": "none",
+ "originalTriangles": 192,
+ "binary": "ews_septum_ring.ps2.bin",
+ "byteLength": 12144,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 288
+  },
+  "uvs": {
+   "offset": 1152,
+   "dtype": "f32",
+   "count": 250
+  },
+  "faceVerts": {
+   "offset": 2160,
+   "dtype": "u32",
+   "count": 768
+  },
+  "faceUvs": {
+   "offset": 5232,
+   "dtype": "u32",
+   "count": 768
+  },
+  "refVerts": {
+   "offset": 8304,
+   "dtype": "u32",
+   "count": 288
+  },
+  "refWeights": {
+   "offset": 9456,
+   "dtype": "f32",
+   "count": 288
+  },
+  "refOffsets": {
+   "offset": 10608,
+   "dtype": "f32",
+   "count": 288
+  },
+  "sourceProxyVertex": {
+   "offset": 11760,
+   "dtype": "u32",
+   "count": 96
+  }
+ }
+}

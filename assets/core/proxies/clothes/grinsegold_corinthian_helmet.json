@@ -1,0 +1,88 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/grinsegold_corinthian_helmet",
+ "category": "clothes",
+ "name": "Corinthian_helmet",
+ "uuid": "cd953d64-8de8-4064-84ee-56f7a6591748",
+ "tags": [
+  "male",
+  "hats",
+  "u r hacked!"
+ ],
+ "zDepth": 50,
+ "vertexCount": 166,
+ "faceCount": 148,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.3555,
+   0.1928
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/grinsegold_corinthian_helmet.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "binary": "grinsegold_corinthian_helmet.bin",
+ "byteLength": 14344,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 498
+  },
+  "uvs": {
+   "offset": 2000,
+   "dtype": "f32",
+   "count": 402
+  },
+  "faceVerts": {
+   "offset": 3616,
+   "dtype": "u32",
+   "count": 592
+  },
+  "faceUvs": {
+   "offset": 5984,
+   "dtype": "u32",
+   "count": 592
+  },
+  "refVerts": {
+   "offset": 8352,
+   "dtype": "u32",
+   "count": 498
+  },
+  "refWeights": {
+   "offset": 10352,
+   "dtype": "f32",
+   "count": 498
+  },
+  "refOffsets": {
+   "offset": 12352,
+   "dtype": "f32",
+   "count": 498
+  }
+ }
+}

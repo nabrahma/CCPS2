@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_shoes_biker_boots_male",
+ "category": "clothes",
+ "name": "Shoes_Biker_Boots_male",
+ "uuid": "77e603aa-a077-41c0-830b-850e304f2013",
+ "tags": [
+  "shoes",
+  "male"
+ ],
+ "zDepth": 57,
+ "vertexCount": 8110,
+ "faceCount": 7922,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   12839,
+   12860,
+   0.07045
+  ],
+  [
+   12828,
+   12888,
+   0.058750000000000004
+  ],
+  [
+   11609,
+   12442,
+   0.2539
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 0.0,
+  "diffuseTexture": "textures/clothes/mindfront_shoes_biker_boots_male.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "binary": "mindfront_shoes_biker_boots_male.bin",
+ "byteLength": 726168,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 24330
+  },
+  "uvs": {
+   "offset": 97328,
+   "dtype": "f32",
+   "count": 18512
+  },
+  "faceVerts": {
+   "offset": 171376,
+   "dtype": "u32",
+   "count": 31688
+  },
+  "faceUvs": {
+   "offset": 298128,
+   "dtype": "u32",
+   "count": 31688
+  },
+  "refVerts": {
+   "offset": 424880,
+   "dtype": "u32",
+   "count": 24330
+  },
+  "refWeights": {
+   "offset": 522208,
+   "dtype": "f32",
+   "count": 24330
+  },
+  "refOffsets": {
+   "offset": 619536,
+   "dtype": "f32",
+   "count": 24330
+  },
+  "deleteVerts": {
+   "offset": 716864,
+   "dtype": "u32",
+   "count": 2326
+  }
+ }
+}

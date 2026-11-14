@@ -1,0 +1,92 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_frill_bikini_top",
+ "category": "clothes",
+ "name": "frill-bikini-top",
+ "uuid": "8332261e-2151-42b9-97eb-69ebfbd2cce4",
+ "tags": [
+  "female",
+  "bikini"
+ ],
+ "zDepth": 50,
+ "vertexCount": 772,
+ "faceCount": 712,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_frill_bikini_top.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "punkduck_frill_bikini_top.bin",
+ "byteLength": 68392,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2316
+  },
+  "uvs": {
+   "offset": 9264,
+   "dtype": "f32",
+   "count": 1832
+  },
+  "faceVerts": {
+   "offset": 16592,
+   "dtype": "u32",
+   "count": 2848
+  },
+  "faceUvs": {
+   "offset": 27984,
+   "dtype": "u32",
+   "count": 2848
+  },
+  "refVerts": {
+   "offset": 39376,
+   "dtype": "u32",
+   "count": 2316
+  },
+  "refWeights": {
+   "offset": 48640,
+   "dtype": "f32",
+   "count": 2316
+  },
+  "refOffsets": {
+   "offset": 57904,
+   "dtype": "f32",
+   "count": 2316
+  },
+  "deleteVerts": {
+   "offset": 67168,
+   "dtype": "u32",
+   "count": 306
+  }
+ }
+}

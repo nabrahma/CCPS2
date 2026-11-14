@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_bandeau_bra",
+ "category": "clothes",
+ "name": "bandeau_bra",
+ "uuid": "cb2e4830-ee98-411f-aba0-f7cc7edcbaa0",
+ "tags": [
+  "female",
+  "lingerie"
+ ],
+ "zDepth": 50,
+ "vertexCount": 759,
+ "faceCount": 1410,
+ "triangleFaces": 1410,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.509803921569,
+   0.509803921569,
+   0.509803921569
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_bandeau_bra.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 759,
+ "hiddenFaces": "computed",
+ "originalTriangles": 1410,
+ "binary": "punkduck_bandeau_bra.ps2.bin",
+ "byteLength": 93756,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2277
+  },
+  "uvs": {
+   "offset": 9120,
+   "dtype": "f32",
+   "count": 2118
+  },
+  "faceVerts": {
+   "offset": 17600,
+   "dtype": "u32",
+   "count": 5640
+  },
+  "faceUvs": {
+   "offset": 40160,
+   "dtype": "u32",
+   "count": 5640
+  },
+  "refVerts": {
+   "offset": 62720,
+   "dtype": "u32",
+   "count": 2277
+  },
+  "refWeights": {
+   "offset": 71840,
+   "dtype": "f32",
+   "count": 2277
+  },
+  "refOffsets": {
+   "offset": 80960,
+   "dtype": "f32",
+   "count": 2277
+  },
+  "coveredVerts": {
+   "offset": 90080,
+   "dtype": "u32",
+   "count": 158
+  },
+  "sourceProxyVertex": {
+   "offset": 90720,
+   "dtype": "u32",
+   "count": 759
+  }
+ }
+}

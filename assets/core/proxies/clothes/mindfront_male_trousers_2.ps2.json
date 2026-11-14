@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_male_trousers_2",
+ "category": "clothes",
+ "name": "M_Trousers_02",
+ "uuid": "2ffb06f9-e71b-435e-838d-29411372cb6d",
+ "tags": [
+  "male",
+  "trousers",
+  "pants"
+ ],
+ "zDepth": 47,
+ "vertexCount": 899,
+ "faceCount": 1600,
+ "triangleFaces": 1600,
+ "scale": [
+  [
+   11133,
+   11141,
+   0.14763
+  ],
+  [
+   11025,
+   11460,
+   0.74151
+  ],
+  [
+   11130,
+   11135,
+   0.15612
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/mindfront_male_trousers_2.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 7391,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 14584,
+ "binary": "mindfront_male_trousers_2.ps2.bin",
+ "byteLength": 111420,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2697
+  },
+  "uvs": {
+   "offset": 10800,
+   "dtype": "f32",
+   "count": 2004
+  },
+  "faceVerts": {
+   "offset": 18816,
+   "dtype": "u32",
+   "count": 6400
+  },
+  "faceUvs": {
+   "offset": 44416,
+   "dtype": "u32",
+   "count": 6400
+  },
+  "refVerts": {
+   "offset": 70016,
+   "dtype": "u32",
+   "count": 2697
+  },
+  "refWeights": {
+   "offset": 80816,
+   "dtype": "f32",
+   "count": 2697
+  },
+  "refOffsets": {
+   "offset": 91616,
+   "dtype": "f32",
+   "count": 2697
+  },
+  "deleteVerts": {
+   "offset": 102416,
+   "dtype": "u32",
+   "count": 1352
+  },
+  "sourceProxyVertex": {
+   "offset": 107824,
+   "dtype": "u32",
+   "count": 899
+  }
+ }
+}

@@ -6,9 +6,9 @@
  "uuid": "ef014318-ca73-425f-baff-b880ddeb0614",
  "tags": [],
  "zDepth": 50,
- "vertexCount": 3327,
- "faceCount": 6244,
- "triangleFaces": 6244,
+ "vertexCount": 183,
+ "faceCount": 1382,
+ "triangleFaces": 1382,
  "scale": [
   [
    5399,
@@ -45,47 +45,47 @@
  "hiddenFaces": "none",
  "originalTriangles": 14688,
  "binary": "culturalibre_hair_06.ps2.bin",
- "byteLength": 379292,
+ "byteLength": 55164,
  "buffers": {
   "restPositions": {
    "offset": 0,
    "dtype": "f32",
-   "count": 9981
+   "count": 549
   },
   "uvs": {
-   "offset": 39936,
+   "offset": 2208,
    "dtype": "f32",
-   "count": 1606
+   "count": 342
   },
   "faceVerts": {
-   "offset": 46368,
+   "offset": 3584,
    "dtype": "u32",
-   "count": 24976
+   "count": 5528
   },
   "faceUvs": {
-   "offset": 146272,
+   "offset": 25696,
    "dtype": "u32",
-   "count": 24976
+   "count": 5528
   },
   "refVerts": {
-   "offset": 246176,
+   "offset": 47808,
    "dtype": "u32",
-   "count": 9981
+   "count": 549
   },
   "refWeights": {
-   "offset": 286112,
+   "offset": 50016,
    "dtype": "f32",
-   "count": 9981
+   "count": 549
   },
   "refOffsets": {
-   "offset": 326048,
+   "offset": 52224,
    "dtype": "f32",
-   "count": 9981
+   "count": 549
   },
   "sourceProxyVertex": {
-   "offset": 365984,
+   "offset": 54432,
    "dtype": "u32",
-   "count": 3327
+   "count": 183
   }
  }
 }

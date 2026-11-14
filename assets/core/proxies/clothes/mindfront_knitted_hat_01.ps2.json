@@ -1,0 +1,99 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_knitted_hat_01",
+ "category": "clothes",
+ "name": "Knitted_Hat_01",
+ "uuid": "42dd33a1-a821-4b6b-98a8-eec9ff1c9c06",
+ "tags": [
+  "hats"
+ ],
+ "zDepth": 61,
+ "vertexCount": 233,
+ "faceCount": 448,
+ "triangleFaces": 448,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/mindfront_knitted_hat_01.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "decimatedFrom": 233,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 448,
+ "binary": "mindfront_knitted_hat_01.ps2.bin",
+ "byteLength": 30132,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 699
+  },
+  "uvs": {
+   "offset": 2800,
+   "dtype": "f32",
+   "count": 466
+  },
+  "faceVerts": {
+   "offset": 4672,
+   "dtype": "u32",
+   "count": 1792
+  },
+  "faceUvs": {
+   "offset": 11840,
+   "dtype": "u32",
+   "count": 1792
+  },
+  "refVerts": {
+   "offset": 19008,
+   "dtype": "u32",
+   "count": 699
+  },
+  "refWeights": {
+   "offset": 21808,
+   "dtype": "f32",
+   "count": 699
+  },
+  "refOffsets": {
+   "offset": 24608,
+   "dtype": "f32",
+   "count": 699
+  },
+  "deleteVerts": {
+   "offset": 27408,
+   "dtype": "u32",
+   "count": 447
+  },
+  "sourceProxyVertex": {
+   "offset": 29200,
+   "dtype": "u32",
+   "count": 233
+  }
+ }
+}

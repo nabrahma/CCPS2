@@ -301,3 +301,19 @@ Two fixes reported after the first release.
   - The other specs now go through the categories.
   - The M16 library test now checks the grids inside the panels: look-matched thumbnails, a favourite that survives a reload, and the filter.
   - Full browser suite: 53 passed. The desktop test passes, and typecheck and lint are clean.
+
+## 0.22.0: Every MakeHuman hair, garment and skin pack (D-150)
+
+- **Assets:** 38 more of MakeHuman's asset packs, CC0 and CC-BY, pinned by SHA-256.
+  - Hair: 70 meshes (was 35), with plain names and lengths.
+  - Garments and accessories: 507 from MakeHuman (was 121): tops, trousers, shorts, dresses, suits, swimwear, shoes, boots, hats, helmets, glasses, jewellery, masks, beards and moustaches, horns, tails, wings, nails, weapons and gear.
+  - Skins: 66 (was 53), with fantasy and horror ones (zombie, alien, orc, elf). Eye colours: 22 (was 9).
+  - Excluded: content-policy items, items copying other works' characters, and an annotated UV-guide skin.
+  - CC-BY authors are credited in `LICENSES.json`, Help → Credits and THIRD_PARTY_NOTICES.md.
+- **Compiler:** MakeClothes' shear boxes are read (50 items needed them); a texture with a broken optional PNG chunk is read without it; the proxy stage keeps the catalog sections other steps write; slots are matched on words, without author prefixes.
+- **Decimation:** too-dense items are simplified across seams, then by position clustering with seam vertices locked and reversed triangles turned back. Over budget: 14 items (was 104 after the import). 93 items are `clustered` and lose automatic seams and hems (TODO_ART).
+- **Editor:** garment names come from the file without the author ("Men's trouser with chain"); Clothes filters by kind of accessory; Hair has Facial hair; Skin has Fantasy and horror.
+- **Tested:**
+  - Every new item was rendered on the default character and looked at; 41 accessories again at full body; the 14 old items whose decimation changed were rendered too.
+  - Core: 237 passed. `pokethrough.test.ts` keeps its 200 bodies on the M4 packs and wears each of the 384 added garments on further bodies; six known fit issues are listed in TODO_ART. `m15.test.ts` checks seams on every garment that is not clustered and has cloth.
+  - Asset tools: 25 passed. Full browser suite: 52 passed, and M7 (export) failed on teeth left at full resolution by a partial rebuild; after rebuilding them it passes.

@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_necklace_native_american_fashion_",
+ "category": "clothes",
+ "name": "NamFashionNecklace",
+ "uuid": "16ba145d-f7ad-45de-a356-7b7cbded5be9",
+ "tags": [
+  "female",
+  "jewelry"
+ ],
+ "zDepth": 58,
+ "vertexCount": 3686,
+ "faceCount": 3482,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_necklace_native_american_fashion_.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "punkduck_necklace_native_american_fashion_.bin",
+ "byteLength": 326392,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 11058
+  },
+  "uvs": {
+   "offset": 44240,
+   "dtype": "f32",
+   "count": 9504
+  },
+  "faceVerts": {
+   "offset": 82256,
+   "dtype": "u32",
+   "count": 13928
+  },
+  "faceUvs": {
+   "offset": 137968,
+   "dtype": "u32",
+   "count": 13928
+  },
+  "refVerts": {
+   "offset": 193680,
+   "dtype": "u32",
+   "count": 11058
+  },
+  "refWeights": {
+   "offset": 237920,
+   "dtype": "f32",
+   "count": 11058
+  },
+  "refOffsets": {
+   "offset": 282160,
+   "dtype": "f32",
+   "count": 11058
+  }
+ }
+}

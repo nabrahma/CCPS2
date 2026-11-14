@@ -1,0 +1,100 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_riding_boots",
+ "category": "clothes",
+ "name": "riding_boots",
+ "uuid": "7b175dc0-bdf5-4f89-80a7-1e86201217fb",
+ "tags": [
+  "riding",
+  "female"
+ ],
+ "zDepth": 45,
+ "vertexCount": 496,
+ "faceCount": 900,
+ "triangleFaces": 900,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_riding_boots.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "decimatedFrom": 1946,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 3800,
+ "binary": "punkduck_riding_boots.ps2.bin",
+ "byteLength": 69600,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1488
+  },
+  "uvs": {
+   "offset": 5952,
+   "dtype": "f32",
+   "count": 832
+  },
+  "faceVerts": {
+   "offset": 9280,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "faceUvs": {
+   "offset": 23680,
+   "dtype": "u32",
+   "count": 3600
+  },
+  "refVerts": {
+   "offset": 38080,
+   "dtype": "u32",
+   "count": 1488
+  },
+  "refWeights": {
+   "offset": 44032,
+   "dtype": "f32",
+   "count": 1488
+  },
+  "refOffsets": {
+   "offset": 49984,
+   "dtype": "f32",
+   "count": 1488
+  },
+  "deleteVerts": {
+   "offset": 55936,
+   "dtype": "u32",
+   "count": 2918
+  },
+  "sourceProxyVertex": {
+   "offset": 67616,
+   "dtype": "u32",
+   "count": 496
+  }
+ }
+}

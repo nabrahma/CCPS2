@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/grinsegold_wig_bun_blonde_braids",
+ "category": "hair",
+ "name": "Wig_bun_blonde",
+ "uuid": "7d2ca6e1-1945-49b8-9766-3fa21ce1e9ff",
+ "tags": [
+  "hair",
+  "wig",
+  "female"
+ ],
+ "zDepth": 50,
+ "vertexCount": 2637,
+ "faceCount": 3500,
+ "triangleFaces": 3500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 0,
+  "diffuseTexture": "textures/hair/grinsegold_wig_bun_blonde_braids.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "decimatedFrom": 3573,
+ "hiddenFaces": "none",
+ "originalTriangles": 5372,
+ "binary": "grinsegold_wig_bun_blonde_braids.ps2.bin",
+ "byteLength": 252020,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 7911
+  },
+  "uvs": {
+   "offset": 31648,
+   "dtype": "f32",
+   "count": 718
+  },
+  "faceVerts": {
+   "offset": 34528,
+   "dtype": "u32",
+   "count": 14000
+  },
+  "faceUvs": {
+   "offset": 90528,
+   "dtype": "u32",
+   "count": 14000
+  },
+  "refVerts": {
+   "offset": 146528,
+   "dtype": "u32",
+   "count": 7911
+  },
+  "refWeights": {
+   "offset": 178176,
+   "dtype": "f32",
+   "count": 7911
+  },
+  "refOffsets": {
+   "offset": 209824,
+   "dtype": "f32",
+   "count": 7911
+  },
+  "sourceProxyVertex": {
+   "offset": 241472,
+   "dtype": "u32",
+   "count": 2637
+  }
+ }
+}

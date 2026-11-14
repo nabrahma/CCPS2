@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_candy_cane_necklace",
+ "category": "clothes",
+ "name": "cc_necklace1",
+ "uuid": "a30b001b-3680-4091-a3e4-cf077337ec7f",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 1890,
+ "faceCount": 1788,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_candy_cane_necklace.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_candy_cane_necklace.bin",
+ "byteLength": 169928,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 5670
+  },
+  "uvs": {
+   "offset": 22688,
+   "dtype": "f32",
+   "count": 5492
+  },
+  "faceVerts": {
+   "offset": 44656,
+   "dtype": "u32",
+   "count": 7152
+  },
+  "faceUvs": {
+   "offset": 73264,
+   "dtype": "u32",
+   "count": 7152
+  },
+  "refVerts": {
+   "offset": 101872,
+   "dtype": "u32",
+   "count": 5670
+  },
+  "refWeights": {
+   "offset": 124560,
+   "dtype": "f32",
+   "count": 5670
+  },
+  "refOffsets": {
+   "offset": 147248,
+   "dtype": "f32",
+   "count": 5670
+  }
+ }
+}

@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_heroine_mask_1",
+ "category": "clothes",
+ "name": "heroine_mask_1",
+ "uuid": "08369dc7-d1ca-4d5d-a158-bf46ea999266",
+ "tags": [],
+ "zDepth": 30,
+ "vertexCount": 320,
+ "faceCount": 648,
+ "triangleFaces": 648,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/culturalibre_heroine_mask_1.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 2462,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 4932,
+ "binary": "culturalibre_heroine_mask_1.ps2.bin",
+ "byteLength": 44704,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 960
+  },
+  "uvs": {
+   "offset": 3840,
+   "dtype": "f32",
+   "count": 504
+  },
+  "faceVerts": {
+   "offset": 5856,
+   "dtype": "u32",
+   "count": 2592
+  },
+  "faceUvs": {
+   "offset": 16224,
+   "dtype": "u32",
+   "count": 2592
+  },
+  "refVerts": {
+   "offset": 26592,
+   "dtype": "u32",
+   "count": 960
+  },
+  "refWeights": {
+   "offset": 30432,
+   "dtype": "f32",
+   "count": 960
+  },
+  "refOffsets": {
+   "offset": 34272,
+   "dtype": "f32",
+   "count": 960
+  },
+  "deleteVerts": {
+   "offset": 38112,
+   "dtype": "u32",
+   "count": 1328
+  },
+  "sourceProxyVertex": {
+   "offset": 43424,
+   "dtype": "u32",
+   "count": 320
+  }
+ }
+}

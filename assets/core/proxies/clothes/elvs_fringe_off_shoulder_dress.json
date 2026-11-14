@@ -1,0 +1,96 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_fringe_off_shoulder_dress",
+ "category": "clothes",
+ "name": "elvs_offshoulder_fringedress2_p",
+ "uuid": "5ae376f7-8223-42d4-86b0-c4200cab7f37",
+ "tags": [
+  "unisex",
+  "fantasy",
+  "festive",
+  "contemporary",
+  "dress",
+  "dress"
+ ],
+ "zDepth": 50,
+ "vertexCount": 13590,
+ "faceCount": 14733,
+ "triangleFaces": 14733,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_fringe_off_shoulder_dress.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "elvs_fringe_off_shoulder_dress.bin",
+ "byteLength": 1295716,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 40770
+  },
+  "uvs": {
+   "offset": 163088,
+   "dtype": "f32",
+   "count": 42532
+  },
+  "faceVerts": {
+   "offset": 333216,
+   "dtype": "u32",
+   "count": 58932
+  },
+  "faceUvs": {
+   "offset": 568944,
+   "dtype": "u32",
+   "count": 58932
+  },
+  "refVerts": {
+   "offset": 804672,
+   "dtype": "u32",
+   "count": 40770
+  },
+  "refWeights": {
+   "offset": 967760,
+   "dtype": "f32",
+   "count": 40770
+  },
+  "refOffsets": {
+   "offset": 1130848,
+   "dtype": "f32",
+   "count": 40770
+  },
+  "deleteVerts": {
+   "offset": 1293936,
+   "dtype": "u32",
+   "count": 445
+  }
+ }
+}

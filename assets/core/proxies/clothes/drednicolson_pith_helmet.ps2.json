@@ -1,0 +1,99 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/drednicolson_pith_helmet",
+ "category": "clothes",
+ "name": "pith_helmet",
+ "uuid": "ce6947aa-f251-466c-8a66-59513e07dcf8",
+ "tags": [
+  "hats"
+ ],
+ "zDepth": 64,
+ "vertexCount": 285,
+ "faceCount": 668,
+ "triangleFaces": 668,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/drednicolson_pith_helmet.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "decimatedFrom": 2380,
+ "hiddenFaces": "computed",
+ "originalTriangles": 4676,
+ "binary": "drednicolson_pith_helmet.ps2.bin",
+ "byteLength": 40036,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 855
+  },
+  "uvs": {
+   "offset": 3424,
+   "dtype": "f32",
+   "count": 826
+  },
+  "faceVerts": {
+   "offset": 6736,
+   "dtype": "u32",
+   "count": 2672
+  },
+  "faceUvs": {
+   "offset": 17424,
+   "dtype": "u32",
+   "count": 2672
+  },
+  "refVerts": {
+   "offset": 28112,
+   "dtype": "u32",
+   "count": 855
+  },
+  "refWeights": {
+   "offset": 31536,
+   "dtype": "f32",
+   "count": 855
+  },
+  "refOffsets": {
+   "offset": 34960,
+   "dtype": "f32",
+   "count": 855
+  },
+  "coveredVerts": {
+   "offset": 38384,
+   "dtype": "u32",
+   "count": 127
+  },
+  "sourceProxyVertex": {
+   "offset": 38896,
+   "dtype": "u32",
+   "count": 285
+  }
+ }
+}

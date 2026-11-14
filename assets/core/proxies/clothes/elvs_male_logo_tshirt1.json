@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_male_logo_tshirt1",
+ "category": "clothes",
+ "name": "mens_teeshirt1j",
+ "uuid": "8b516c4d-20ab-45a5-b3c7-1d71e5e429e3",
+ "tags": [],
+ "zDepth": 53,
+ "vertexCount": 5245,
+ "faceCount": 10281,
+ "triangleFaces": 10281,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_male_logo_tshirt1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "binary": "elvs_male_logo_tshirt1.bin",
+ "byteLength": 657072,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 15735
+  },
+  "uvs": {
+   "offset": 62944,
+   "dtype": "f32",
+   "count": 17926
+  },
+  "faceVerts": {
+   "offset": 134656,
+   "dtype": "u32",
+   "count": 41124
+  },
+  "faceUvs": {
+   "offset": 299152,
+   "dtype": "u32",
+   "count": 41124
+  },
+  "refVerts": {
+   "offset": 463648,
+   "dtype": "u32",
+   "count": 15735
+  },
+  "refWeights": {
+   "offset": 526592,
+   "dtype": "f32",
+   "count": 15735
+  },
+  "refOffsets": {
+   "offset": 589536,
+   "dtype": "f32",
+   "count": 15735
+  },
+  "deleteVerts": {
+   "offset": 652480,
+   "dtype": "u32",
+   "count": 1148
+  }
+ }
+}

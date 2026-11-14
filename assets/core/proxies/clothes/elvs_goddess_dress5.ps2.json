@@ -1,0 +1,104 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_goddess_dress5",
+ "category": "clothes",
+ "name": "elvs_goddess_dress5",
+ "uuid": "5f6c3738-30ee-449f-a594-c9230c0d081c",
+ "tags": [
+  "female",
+  "fantasy",
+  "festive",
+  "vintage",
+  "dress",
+  "goddess"
+ ],
+ "zDepth": 55,
+ "vertexCount": 1266,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_goddess_dress5.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 11898,
+ "hiddenFaces": "computed",
+ "originalTriangles": 23275,
+ "binary": "elvs_goddess_dress5.ps2.bin",
+ "byteLength": 159864,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3798
+  },
+  "uvs": {
+   "offset": 15200,
+   "dtype": "f32",
+   "count": 2642
+  },
+  "faceVerts": {
+   "offset": 25776,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 65776,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 105776,
+   "dtype": "u32",
+   "count": 3798
+  },
+  "refWeights": {
+   "offset": 120976,
+   "dtype": "f32",
+   "count": 3798
+  },
+  "refOffsets": {
+   "offset": 136176,
+   "dtype": "f32",
+   "count": 3798
+  },
+  "coveredVerts": {
+   "offset": 151376,
+   "dtype": "u32",
+   "count": 853
+  },
+  "sourceProxyVertex": {
+   "offset": 154800,
+   "dtype": "u32",
+   "count": 1266
+  }
+ }
+}

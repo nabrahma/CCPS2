@@ -1,0 +1,90 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_male_flat_cap1",
+ "category": "clothes",
+ "name": "elvs_male_flat_cap1",
+ "uuid": "f79e78b5-1ddc-4379-9875-6dce96f7968e",
+ "tags": [
+  "cap",
+  "hat",
+  "mensware",
+  "flat_cap",
+  "traditional"
+ ],
+ "zDepth": 61,
+ "vertexCount": 1337,
+ "faceCount": 1316,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   10589,
+   3924,
+   0.32272999999999996
+  ],
+  [
+   1524,
+   4370,
+   0.5704700000000001
+  ],
+  [
+   1892,
+   3946,
+   0.19556
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.1493,
+   0.1437,
+   0.1479
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_male_flat_cap1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "binary": "elvs_male_flat_cap1.bin",
+ "byteLength": 122844,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4011
+  },
+  "uvs": {
+   "offset": 16048,
+   "dtype": "f32",
+   "count": 4134
+  },
+  "faceVerts": {
+   "offset": 32592,
+   "dtype": "u32",
+   "count": 5264
+  },
+  "faceUvs": {
+   "offset": 53648,
+   "dtype": "u32",
+   "count": 5264
+  },
+  "refVerts": {
+   "offset": 74704,
+   "dtype": "u32",
+   "count": 4011
+  },
+  "refWeights": {
+   "offset": 90752,
+   "dtype": "f32",
+   "count": 4011
+  },
+  "refOffsets": {
+   "offset": 106800,
+   "dtype": "f32",
+   "count": 4011
+  }
+ }
+}

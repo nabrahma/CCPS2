@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_bicycle_helmet_time_trial_aero_helmet",
+ "category": "clothes",
+ "name": "BikeHelmet",
+ "uuid": "480252d6-8572-4648-921e-792bb532d3c5",
+ "tags": [
+  "sport",
+  "triathlon",
+  "helmet"
+ ],
+ "zDepth": 50,
+ "vertexCount": 396,
+ "faceCount": 700,
+ "triangleFaces": 700,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_bicycle_helmet_time_trial_aero_helmet.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "hat",
+ "decimatedFrom": 2131,
+ "hiddenFaces": "computed",
+ "originalTriangles": 4170,
+ "binary": "punkduck_bicycle_helmet_time_trial_aero_helmet.ps2.bin",
+ "byteLength": 48656,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1188
+  },
+  "uvs": {
+   "offset": 4752,
+   "dtype": "f32",
+   "count": 958
+  },
+  "faceVerts": {
+   "offset": 8592,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "faceUvs": {
+   "offset": 19792,
+   "dtype": "u32",
+   "count": 2800
+  },
+  "refVerts": {
+   "offset": 30992,
+   "dtype": "u32",
+   "count": 1188
+  },
+  "refWeights": {
+   "offset": 35744,
+   "dtype": "f32",
+   "count": 1188
+  },
+  "refOffsets": {
+   "offset": 40496,
+   "dtype": "f32",
+   "count": 1188
+  },
+  "coveredVerts": {
+   "offset": 45248,
+   "dtype": "u32",
+   "count": 454
+  },
+  "sourceProxyVertex": {
+   "offset": 47072,
+   "dtype": "u32",
+   "count": 396
+  }
+ }
+}

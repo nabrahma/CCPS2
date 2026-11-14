@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/sonicteam998_maria_skirt",
+ "category": "clothes",
+ "name": "mariaskirt",
+ "uuid": "056eff2e-5a2e-48ec-a891-75c0b5e2168c",
+ "tags": [
+  "female",
+  "skirt",
+  "sonic"
+ ],
+ "zDepth": 50,
+ "vertexCount": 848,
+ "faceCount": 1600,
+ "triangleFaces": 1600,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/sonicteam998_maria_skirt.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "decimatedFrom": 972,
+ "hiddenFaces": "computed",
+ "originalTriangles": 1848,
+ "binary": "sonicteam998_maria_skirt.ps2.bin",
+ "byteLength": 104384,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2544
+  },
+  "uvs": {
+   "offset": 10176,
+   "dtype": "f32",
+   "count": 1940
+  },
+  "faceVerts": {
+   "offset": 17936,
+   "dtype": "u32",
+   "count": 6400
+  },
+  "faceUvs": {
+   "offset": 43536,
+   "dtype": "u32",
+   "count": 6400
+  },
+  "refVerts": {
+   "offset": 69136,
+   "dtype": "u32",
+   "count": 2544
+  },
+  "refWeights": {
+   "offset": 79312,
+   "dtype": "f32",
+   "count": 2544
+  },
+  "refOffsets": {
+   "offset": 89488,
+   "dtype": "f32",
+   "count": 2544
+  },
+  "coveredVerts": {
+   "offset": 99664,
+   "dtype": "u32",
+   "count": 330
+  },
+  "sourceProxyVertex": {
+   "offset": 100992,
+   "dtype": "u32",
+   "count": 848
+  }
+ }
+}

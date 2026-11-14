@@ -1,0 +1,95 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_racing_fire_suit_female1",
+ "category": "clothes",
+ "name": "elvs_race_suit_female1",
+ "uuid": "267c893e-7f64-4b2c-8d87-c5501a834a40",
+ "tags": [
+  "female",
+  "sport",
+  "contemporary",
+  "racing",
+  "fire suit"
+ ],
+ "zDepth": 50,
+ "vertexCount": 9486,
+ "faceCount": 18809,
+ "triangleFaces": 18809,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_racing_fire_suit_female1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "binary": "elvs_racing_fire_suit_female1.bin",
+ "byteLength": 1229464,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 28458
+  },
+  "uvs": {
+   "offset": 113840,
+   "dtype": "f32",
+   "count": 39542
+  },
+  "faceVerts": {
+   "offset": 272016,
+   "dtype": "u32",
+   "count": 75236
+  },
+  "faceUvs": {
+   "offset": 572960,
+   "dtype": "u32",
+   "count": 75236
+  },
+  "refVerts": {
+   "offset": 873904,
+   "dtype": "u32",
+   "count": 28458
+  },
+  "refWeights": {
+   "offset": 987744,
+   "dtype": "f32",
+   "count": 28458
+  },
+  "refOffsets": {
+   "offset": 1101584,
+   "dtype": "f32",
+   "count": 28458
+  },
+  "deleteVerts": {
+   "offset": 1215424,
+   "dtype": "u32",
+   "count": 3510
+  }
+ }
+}

@@ -1,0 +1,86 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_pearl-chain_earrings",
+ "category": "clothes",
+ "name": "pearl-chain-earrings",
+ "uuid": "2bba516f-88c3-44b8-a536-60e3a542c607",
+ "tags": [
+  "jewelry"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1076,
+ "faceCount": 1036,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.827450980392,
+   0.827450980392,
+   0.827450980392
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_pearl-chain_earrings.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "punkduck_pearl-chain_earrings.bin",
+ "byteLength": 97008,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3228
+  },
+  "uvs": {
+   "offset": 12912,
+   "dtype": "f32",
+   "count": 3052
+  },
+  "faceVerts": {
+   "offset": 25120,
+   "dtype": "u32",
+   "count": 4144
+  },
+  "faceUvs": {
+   "offset": 41696,
+   "dtype": "u32",
+   "count": 4144
+  },
+  "refVerts": {
+   "offset": 58272,
+   "dtype": "u32",
+   "count": 3228
+  },
+  "refWeights": {
+   "offset": 71184,
+   "dtype": "f32",
+   "count": 3228
+  },
+  "refOffsets": {
+   "offset": 84096,
+   "dtype": "f32",
+   "count": 3228
+  }
+ }
+}

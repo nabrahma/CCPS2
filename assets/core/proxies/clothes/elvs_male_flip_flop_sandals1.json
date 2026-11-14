@@ -1,0 +1,88 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_male_flip_flop_sandals1",
+ "category": "clothes",
+ "name": "maleflipflops1",
+ "uuid": "0c7c63c1-4697-46ff-a5c6-39e046cfd400",
+ "tags": [
+  "casual",
+  "shoe",
+  "male"
+ ],
+ "zDepth": 57,
+ "vertexCount": 11716,
+ "faceCount": 11704,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   12839,
+   12860,
+   0.07045000000000001
+  ],
+  [
+   12828,
+   12888,
+   0.05874999999999995
+  ],
+  [
+   11609,
+   12442,
+   0.2539
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_male_flip_flop_sandals1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "shoes",
+ "binary": "elvs_male_flip_flop_sandals1.bin",
+ "byteLength": 1091648,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 35148
+  },
+  "uvs": {
+   "offset": 140592,
+   "dtype": "f32",
+   "count": 38686
+  },
+  "faceVerts": {
+   "offset": 295344,
+   "dtype": "u32",
+   "count": 46816
+  },
+  "faceUvs": {
+   "offset": 482608,
+   "dtype": "u32",
+   "count": 46816
+  },
+  "refVerts": {
+   "offset": 669872,
+   "dtype": "u32",
+   "count": 35148
+  },
+  "refWeights": {
+   "offset": 810464,
+   "dtype": "f32",
+   "count": 35148
+  },
+  "refOffsets": {
+   "offset": 951056,
+   "dtype": "f32",
+   "count": 35148
+  }
+ }
+}

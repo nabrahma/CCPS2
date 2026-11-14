@@ -1,0 +1,103 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_male_coveralls_1",
+ "category": "clothes",
+ "name": "elvs_male_mechanics_coverall1a",
+ "uuid": "8f743346-7cc2-4198-b8bb-e789ce36b1e3",
+ "tags": [
+  "male",
+  "casual",
+  "profession",
+  "contemporary",
+  "overall"
+ ],
+ "zDepth": 55,
+ "vertexCount": 1431,
+ "faceCount": 2631,
+ "triangleFaces": 2631,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.31594000000000005
+  ],
+  [
+   1524,
+   4370,
+   0.57703
+  ],
+  [
+   1892,
+   3946,
+   0.19743
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_male_coveralls_1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 17890,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 34633,
+ "binary": "elvs_male_coveralls_1.ps2.bin",
+ "byteLength": 184700,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 4293
+  },
+  "uvs": {
+   "offset": 17184,
+   "dtype": "f32",
+   "count": 2758
+  },
+  "faceVerts": {
+   "offset": 28224,
+   "dtype": "u32",
+   "count": 10524
+  },
+  "faceUvs": {
+   "offset": 70320,
+   "dtype": "u32",
+   "count": 10524
+  },
+  "refVerts": {
+   "offset": 112416,
+   "dtype": "u32",
+   "count": 4293
+  },
+  "refWeights": {
+   "offset": 129600,
+   "dtype": "f32",
+   "count": 4293
+  },
+  "refOffsets": {
+   "offset": 146784,
+   "dtype": "f32",
+   "count": 4293
+  },
+  "deleteVerts": {
+   "offset": 163968,
+   "dtype": "u32",
+   "count": 3750
+  },
+  "sourceProxyVertex": {
+   "offset": 178976,
+   "dtype": "u32",
+   "count": 1431
+  }
+ }
+}

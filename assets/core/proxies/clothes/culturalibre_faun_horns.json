@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_faun_horns",
+ "category": "clothes",
+ "name": "faun_horns",
+ "uuid": "3d14bfdd-dfd0-4d11-bff4-a0aa04000253",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 6338,
+ "faceCount": 6240,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/culturalibre_faun_horns.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "culturalibre_faun_horns.bin",
+ "byteLength": 554632,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 19014
+  },
+  "uvs": {
+   "offset": 76064,
+   "dtype": "f32",
+   "count": 12676
+  },
+  "faceVerts": {
+   "offset": 126768,
+   "dtype": "u32",
+   "count": 24960
+  },
+  "faceUvs": {
+   "offset": 226608,
+   "dtype": "u32",
+   "count": 24960
+  },
+  "refVerts": {
+   "offset": 326448,
+   "dtype": "u32",
+   "count": 19014
+  },
+  "refWeights": {
+   "offset": 402512,
+   "dtype": "f32",
+   "count": 19014
+  },
+  "refOffsets": {
+   "offset": 478576,
+   "dtype": "f32",
+   "count": 19014
+  }
+ }
+}

@@ -6,9 +6,9 @@
  "uuid": "6b8ad957-2812-44e3-a9a0-ddc9cf0d2704",
  "tags": [],
  "zDepth": 50,
- "vertexCount": 2157,
- "faceCount": 4292,
- "triangleFaces": 4292,
+ "vertexCount": 402,
+ "faceCount": 830,
+ "triangleFaces": 830,
  "scale": [
   [
    5399,
@@ -46,52 +46,52 @@
  "hiddenFaces": "makehuman",
  "originalTriangles": 44664,
  "binary": "toigo_stiletto_booties.ps2.bin",
- "byteLength": 273988,
+ "byteLength": 58168,
  "buffers": {
   "restPositions": {
    "offset": 0,
    "dtype": "f32",
-   "count": 6471
+   "count": 1206
   },
   "uvs": {
-   "offset": 25888,
+   "offset": 4832,
    "dtype": "f32",
-   "count": 3906
+   "count": 460
   },
   "faceVerts": {
-   "offset": 41520,
+   "offset": 6672,
    "dtype": "u32",
-   "count": 17168
+   "count": 3320
   },
   "faceUvs": {
-   "offset": 110192,
+   "offset": 19952,
    "dtype": "u32",
-   "count": 17168
+   "count": 3320
   },
   "refVerts": {
-   "offset": 178864,
+   "offset": 33232,
    "dtype": "u32",
-   "count": 6471
+   "count": 1206
   },
   "refWeights": {
-   "offset": 204752,
+   "offset": 38064,
    "dtype": "f32",
-   "count": 6471
+   "count": 1206
   },
   "refOffsets": {
-   "offset": 230640,
+   "offset": 42896,
    "dtype": "f32",
-   "count": 6471
+   "count": 1206
   },
   "deleteVerts": {
-   "offset": 256528,
+   "offset": 47728,
    "dtype": "u32",
    "count": 2206
   },
   "sourceProxyVertex": {
-   "offset": 265360,
+   "offset": 56560,
    "dtype": "u32",
-   "count": 2157
+   "count": 402
   }
  }
 }

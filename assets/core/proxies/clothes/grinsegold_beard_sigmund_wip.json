@@ -1,0 +1,84 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/grinsegold_beard_sigmund_wip",
+ "category": "clothes",
+ "name": "Beard_Sigmund",
+ "uuid": "b42fafa9-aca5-43ba-8ce0-8fdd4933bb71",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 503,
+ "faceCount": 439,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 0.0,
+  "diffuseTexture": "textures/clothes/grinsegold_beard_sigmund_wip.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "grinsegold_beard_sigmund_wip.bin",
+ "byteLength": 42516,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 1509
+  },
+  "uvs": {
+   "offset": 6048,
+   "dtype": "f32",
+   "count": 1070
+  },
+  "faceVerts": {
+   "offset": 10336,
+   "dtype": "u32",
+   "count": 1756
+  },
+  "faceUvs": {
+   "offset": 17360,
+   "dtype": "u32",
+   "count": 1756
+  },
+  "refVerts": {
+   "offset": 24384,
+   "dtype": "u32",
+   "count": 1509
+  },
+  "refWeights": {
+   "offset": 30432,
+   "dtype": "f32",
+   "count": 1509
+  },
+  "refOffsets": {
+   "offset": 36480,
+   "dtype": "f32",
+   "count": 1509
+  }
+ }
+}

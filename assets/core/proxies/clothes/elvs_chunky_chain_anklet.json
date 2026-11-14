@@ -1,0 +1,91 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_chunky_chain_anklet",
+ "category": "clothes",
+ "name": "anklet1_quad",
+ "uuid": "c880198d-5829-45fc-ac57-4fb69fad6c6c",
+ "tags": [
+  "unisex",
+  "casual",
+  "festive",
+  "contemporary",
+  "jewelry",
+  "ankle bracelet"
+ ],
+ "zDepth": 50,
+ "vertexCount": 6930,
+ "faceCount": 4200,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_chunky_chain_anklet.jpg",
+  "textureSize": [
+   480,
+   480
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_chunky_chain_anklet.bin",
+ "byteLength": 495864,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 20790
+  },
+  "uvs": {
+   "offset": 83168,
+   "dtype": "f32",
+   "count": 7200
+  },
+  "faceVerts": {
+   "offset": 111968,
+   "dtype": "u32",
+   "count": 16800
+  },
+  "faceUvs": {
+   "offset": 179168,
+   "dtype": "u32",
+   "count": 16800
+  },
+  "refVerts": {
+   "offset": 246368,
+   "dtype": "u32",
+   "count": 20790
+  },
+  "refWeights": {
+   "offset": 329536,
+   "dtype": "f32",
+   "count": 20790
+  },
+  "refOffsets": {
+   "offset": 412704,
+   "dtype": "f32",
+   "count": 20790
+  }
+ }
+}

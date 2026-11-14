@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mtknife_pleated_mini_skirt",
+ "category": "clothes",
+ "name": "Pleated_miniskirt",
+ "uuid": "6d5946cf-48cf-4e7d-82d3-c1a1ff244f90",
+ "tags": [
+  "female",
+  "skirt",
+  "miniskirt",
+  "pleated"
+ ],
+ "zDepth": 50,
+ "vertexCount": 2034,
+ "faceCount": 3732,
+ "triangleFaces": 3732,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22048
+  ],
+  [
+   962,
+   5320,
+   0.18461000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/mtknife_pleated_mini_skirt.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "mtknife_pleated_mini_skirt.bin",
+ "byteLength": 246232,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 6102
+  },
+  "uvs": {
+   "offset": 24416,
+   "dtype": "f32",
+   "count": 7286
+  },
+  "faceVerts": {
+   "offset": 53568,
+   "dtype": "u32",
+   "count": 14928
+  },
+  "faceUvs": {
+   "offset": 113280,
+   "dtype": "u32",
+   "count": 14928
+  },
+  "refVerts": {
+   "offset": 172992,
+   "dtype": "u32",
+   "count": 6102
+  },
+  "refWeights": {
+   "offset": 197408,
+   "dtype": "f32",
+   "count": 6102
+  },
+  "refOffsets": {
+   "offset": 221824,
+   "dtype": "f32",
+   "count": 6102
+  }
+ }
+}

@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/rehmanpolanski_beard_viking",
+ "category": "clothes",
+ "name": "BeardViking",
+ "uuid": "8106723f-d0e0-4b3b-8014-dcab3e636a71",
+ "tags": [
+  "beard",
+  "viking"
+ ],
+ "zDepth": 50,
+ "vertexCount": 6557,
+ "faceCount": 2841,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/rehmanpolanski_beard_viking.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "rehmanpolanski_beard_viking.bin",
+ "byteLength": 458172,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 19671
+  },
+  "uvs": {
+   "offset": 78688,
+   "dtype": "f32",
+   "count": 13128
+  },
+  "faceVerts": {
+   "offset": 131200,
+   "dtype": "u32",
+   "count": 11364
+  },
+  "faceUvs": {
+   "offset": 176656,
+   "dtype": "u32",
+   "count": 11364
+  },
+  "refVerts": {
+   "offset": 222112,
+   "dtype": "u32",
+   "count": 19671
+  },
+  "refWeights": {
+   "offset": 300800,
+   "dtype": "f32",
+   "count": 19671
+  },
+  "refOffsets": {
+   "offset": 379488,
+   "dtype": "f32",
+   "count": 19671
+  }
+ }
+}

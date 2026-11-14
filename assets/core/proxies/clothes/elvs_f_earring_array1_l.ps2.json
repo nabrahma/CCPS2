@@ -1,0 +1,96 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_f_earring_array1_l",
+ "category": "clothes",
+ "name": "full_ears2",
+ "uuid": "de0b83cb-ccd2-4848-99fb-2d97dbf1dbce",
+ "tags": [
+  "earrings",
+  "jewelry",
+  "ladies"
+ ],
+ "zDepth": 31,
+ "vertexCount": 144,
+ "faceCount": 359,
+ "triangleFaces": 359,
+ "scale": [
+  [
+   11998,
+   5399,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_f_earring_array1_l.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 61551,
+ "hiddenFaces": "none",
+ "originalTriangles": 120432,
+ "binary": "elvs_f_earring_array1_l.ps2.bin",
+ "byteLength": 20128,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 432
+  },
+  "uvs": {
+   "offset": 1728,
+   "dtype": "f32",
+   "count": 288
+  },
+  "faceVerts": {
+   "offset": 2880,
+   "dtype": "u32",
+   "count": 1436
+  },
+  "faceUvs": {
+   "offset": 8624,
+   "dtype": "u32",
+   "count": 1436
+  },
+  "refVerts": {
+   "offset": 14368,
+   "dtype": "u32",
+   "count": 432
+  },
+  "refWeights": {
+   "offset": 16096,
+   "dtype": "f32",
+   "count": 432
+  },
+  "refOffsets": {
+   "offset": 17824,
+   "dtype": "f32",
+   "count": 432
+  },
+  "sourceProxyVertex": {
+   "offset": 19552,
+   "dtype": "u32",
+   "count": 144
+  }
+ }
+}

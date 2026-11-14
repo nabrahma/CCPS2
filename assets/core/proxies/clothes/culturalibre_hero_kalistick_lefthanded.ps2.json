@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_hero_kalistick_lefthanded",
+ "category": "clothes",
+ "name": "hero_kalistick_lefthanded",
+ "uuid": "79a2b262-98dc-49ea-adb8-1726bb42eb94",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 162,
+ "faceCount": 320,
+ "triangleFaces": 320,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1434
+  ],
+  [
+   791,
+   881,
+   0.24098000000000003
+  ],
+  [
+   962,
+   5320,
+   0.20001000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/culturalibre_hero_kalistick_lefthanded.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 162,
+ "hiddenFaces": "computed",
+ "originalTriangles": 320,
+ "binary": "culturalibre_hero_kalistick_lefthanded.ps2.bin",
+ "byteLength": 20536,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 486
+  },
+  "uvs": {
+   "offset": 1952,
+   "dtype": "f32",
+   "count": 452
+  },
+  "faceVerts": {
+   "offset": 3760,
+   "dtype": "u32",
+   "count": 1280
+  },
+  "faceUvs": {
+   "offset": 8880,
+   "dtype": "u32",
+   "count": 1280
+  },
+  "refVerts": {
+   "offset": 14000,
+   "dtype": "u32",
+   "count": 486
+  },
+  "refWeights": {
+   "offset": 15952,
+   "dtype": "f32",
+   "count": 486
+  },
+  "refOffsets": {
+   "offset": 17904,
+   "dtype": "f32",
+   "count": 486
+  },
+  "coveredVerts": {
+   "offset": 19856,
+   "dtype": "u32",
+   "count": 5
+  },
+  "sourceProxyVertex": {
+   "offset": 19888,
+   "dtype": "u32",
+   "count": 162
+  }
+ }
+}

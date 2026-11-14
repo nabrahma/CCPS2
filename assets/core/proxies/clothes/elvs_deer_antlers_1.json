@@ -1,0 +1,90 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_deer_antlers_1",
+ "category": "clothes",
+ "name": "elvs_antlers1",
+ "uuid": "2ab942d8-d458-4097-bc0b-28c8bb29004e",
+ "tags": [
+  "unisex",
+  "fantasy",
+  "festive",
+  "helmet",
+  "horns"
+ ],
+ "zDepth": 50,
+ "vertexCount": 5892,
+ "faceCount": 11584,
+ "triangleFaces": 11584,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_deer_antlers_1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "elvs_deer_antlers_1.bin",
+ "byteLength": 705296,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 17676
+  },
+  "uvs": {
+   "offset": 70704,
+   "dtype": "f32",
+   "count": 12948
+  },
+  "faceVerts": {
+   "offset": 122496,
+   "dtype": "u32",
+   "count": 46336
+  },
+  "faceUvs": {
+   "offset": 307840,
+   "dtype": "u32",
+   "count": 46336
+  },
+  "refVerts": {
+   "offset": 493184,
+   "dtype": "u32",
+   "count": 17676
+  },
+  "refWeights": {
+   "offset": 563888,
+   "dtype": "f32",
+   "count": 17676
+  },
+  "refOffsets": {
+   "offset": 634592,
+   "dtype": "f32",
+   "count": 17676
+  }
+ }
+}

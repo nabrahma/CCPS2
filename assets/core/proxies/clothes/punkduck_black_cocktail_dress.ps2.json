@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_black_cocktail_dress",
+ "category": "clothes",
+ "name": "Cocktaildress",
+ "uuid": "254f01e9-0c34-47fe-a0a2-e3825d849f73",
+ "tags": [
+  "female",
+  "dress",
+  "gown"
+ ],
+ "zDepth": 50,
+ "vertexCount": 1319,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_black_cocktail_dress.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 1772,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 3406,
+ "binary": "punkduck_black_cocktail_dress.ps2.bin",
+ "byteLength": 160828,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3957
+  },
+  "uvs": {
+   "offset": 15840,
+   "dtype": "f32",
+   "count": 2700
+  },
+  "faceVerts": {
+   "offset": 26640,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 66640,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 106640,
+   "dtype": "u32",
+   "count": 3957
+  },
+  "refWeights": {
+   "offset": 122480,
+   "dtype": "f32",
+   "count": 3957
+  },
+  "refOffsets": {
+   "offset": 138320,
+   "dtype": "f32",
+   "count": 3957
+  },
+  "deleteVerts": {
+   "offset": 154160,
+   "dtype": "u32",
+   "count": 346
+  },
+  "sourceProxyVertex": {
+   "offset": 155552,
+   "dtype": "u32",
+   "count": 1319
+  }
+ }
+}

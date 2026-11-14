@@ -1,0 +1,103 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_crochet_baby_doll",
+ "category": "clothes",
+ "name": "babydoll_elvruff1a",
+ "uuid": "c723e47b-56cd-47b9-8f84-d9cddbdacac9",
+ "tags": [
+  "dress",
+  "babydoll",
+  "ruffle",
+  "ladies ware",
+  "mini dress"
+ ],
+ "zDepth": 53,
+ "vertexCount": 1034,
+ "faceCount": 2268,
+ "triangleFaces": 2268,
+ "scale": [
+  [
+   10589,
+   3924,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.5779299999999999
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.5459,
+   0.563
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_crochet_baby_doll.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 22973,
+ "hiddenFaces": "computed",
+ "originalTriangles": 45701,
+ "binary": "elvs_crochet_baby_doll.ps2.bin",
+ "byteLength": 134776,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3102
+  },
+  "uvs": {
+   "offset": 12416,
+   "dtype": "f32",
+   "count": 2068
+  },
+  "faceVerts": {
+   "offset": 20688,
+   "dtype": "u32",
+   "count": 9072
+  },
+  "faceUvs": {
+   "offset": 56976,
+   "dtype": "u32",
+   "count": 9072
+  },
+  "refVerts": {
+   "offset": 93264,
+   "dtype": "u32",
+   "count": 3102
+  },
+  "refWeights": {
+   "offset": 105680,
+   "dtype": "f32",
+   "count": 3102
+  },
+  "refOffsets": {
+   "offset": 118096,
+   "dtype": "f32",
+   "count": 3102
+  },
+  "coveredVerts": {
+   "offset": 130512,
+   "dtype": "u32",
+   "count": 31
+  },
+  "sourceProxyVertex": {
+   "offset": 130640,
+   "dtype": "u32",
+   "count": 1034
+  }
+ }
+}

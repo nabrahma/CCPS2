@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/culturalibre_suitcase",
+ "category": "clothes",
+ "name": "suitcase",
+ "uuid": "9ba6152f-18b4-45fd-8978-7ce717ac7879",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 132,
+ "faceCount": 228,
+ "triangleFaces": 228,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.6,
+   0.6,
+   0.6
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/culturalibre_suitcase.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "decimatedFrom": 132,
+ "hiddenFaces": "computed",
+ "originalTriangles": 228,
+ "binary": "culturalibre_suitcase.ps2.bin",
+ "byteLength": 15504,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 396
+  },
+  "uvs": {
+   "offset": 1584,
+   "dtype": "f32",
+   "count": 306
+  },
+  "faceVerts": {
+   "offset": 2816,
+   "dtype": "u32",
+   "count": 912
+  },
+  "faceUvs": {
+   "offset": 6464,
+   "dtype": "u32",
+   "count": 912
+  },
+  "refVerts": {
+   "offset": 10112,
+   "dtype": "u32",
+   "count": 396
+  },
+  "refWeights": {
+   "offset": 11696,
+   "dtype": "f32",
+   "count": 396
+  },
+  "refOffsets": {
+   "offset": 13280,
+   "dtype": "f32",
+   "count": 396
+  },
+  "coveredVerts": {
+   "offset": 14864,
+   "dtype": "u32",
+   "count": 28
+  },
+  "sourceProxyVertex": {
+   "offset": 14976,
+   "dtype": "u32",
+   "count": 132
+  }
+ }
+}

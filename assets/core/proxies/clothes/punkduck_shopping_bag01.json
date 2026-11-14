@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_shopping_bag01",
+ "category": "clothes",
+ "name": "ShoppingBag",
+ "uuid": "af17f1b2-2027-42a7-abb4-1a3bf668b7a4",
+ "tags": [
+  "bag",
+  "carried"
+ ],
+ "zDepth": 69,
+ "vertexCount": 701,
+ "faceCount": 668,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22048
+  ],
+  [
+   962,
+   5320,
+   0.18461000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_shopping_bag01.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "punkduck_shopping_bag01.bin",
+ "byteLength": 61692,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2103
+  },
+  "uvs": {
+   "offset": 8416,
+   "dtype": "f32",
+   "count": 1662
+  },
+  "faceVerts": {
+   "offset": 15072,
+   "dtype": "u32",
+   "count": 2672
+  },
+  "faceUvs": {
+   "offset": 25760,
+   "dtype": "u32",
+   "count": 2672
+  },
+  "refVerts": {
+   "offset": 36448,
+   "dtype": "u32",
+   "count": 2103
+  },
+  "refWeights": {
+   "offset": 44864,
+   "dtype": "f32",
+   "count": 2103
+  },
+  "refOffsets": {
+   "offset": 53280,
+   "dtype": "f32",
+   "count": 2103
+  }
+ }
+}

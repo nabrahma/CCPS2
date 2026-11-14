@@ -1,0 +1,94 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/o4saken_curly01",
+ "category": "hair",
+ "name": "o4saken_curly01",
+ "uuid": "ba9ec978-a9b3-4859-a8a7-1729c2dcf2dc",
+ "tags": [
+  "female",
+  "curly"
+ ],
+ "zDepth": 50,
+ "vertexCount": 4653,
+ "faceCount": 4083,
+ "triangleFaces": 4083,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.498039215686,
+   0.498039215686,
+   0.498039215686
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/hair/o4saken_curly01.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "decimatedFrom": 122875,
+ "hiddenFaces": "none",
+ "originalTriangles": 120022,
+ "binary": "o4saken_curly01.ps2.bin",
+ "byteLength": 380756,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 13959
+  },
+  "uvs": {
+   "offset": 55840,
+   "dtype": "f32",
+   "count": 2032
+  },
+  "faceVerts": {
+   "offset": 63968,
+   "dtype": "u32",
+   "count": 16332
+  },
+  "faceUvs": {
+   "offset": 129296,
+   "dtype": "u32",
+   "count": 16332
+  },
+  "refVerts": {
+   "offset": 194624,
+   "dtype": "u32",
+   "count": 13959
+  },
+  "refWeights": {
+   "offset": 250464,
+   "dtype": "f32",
+   "count": 13959
+  },
+  "refOffsets": {
+   "offset": 306304,
+   "dtype": "f32",
+   "count": 13959
+  },
+  "sourceProxyVertex": {
+   "offset": 362144,
+   "dtype": "u32",
+   "count": 4653
+  }
+ }
+}

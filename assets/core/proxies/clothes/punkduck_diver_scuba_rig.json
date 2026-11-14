@@ -1,0 +1,87 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_diver_scuba_rig",
+ "category": "clothes",
+ "name": "Diver_Scuba_Rig",
+ "uuid": "f475aef3-110a-4fcd-a2b7-87bb5cf04516",
+ "tags": [
+  "sport",
+  "unsorted"
+ ],
+ "zDepth": 38,
+ "vertexCount": 3123,
+ "faceCount": 2838,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.148
+  ],
+  [
+   791,
+   881,
+   0.23298000000000002
+  ],
+  [
+   962,
+   5320,
+   0.19221
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/punkduck_diver_scuba_rig.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "punkduck_diver_scuba_rig.bin",
+ "byteLength": 272356,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 9369
+  },
+  "uvs": {
+   "offset": 37488,
+   "dtype": "f32",
+   "count": 7900
+  },
+  "faceVerts": {
+   "offset": 69088,
+   "dtype": "u32",
+   "count": 11352
+  },
+  "faceUvs": {
+   "offset": 114496,
+   "dtype": "u32",
+   "count": 11352
+  },
+  "refVerts": {
+   "offset": 159904,
+   "dtype": "u32",
+   "count": 9369
+  },
+  "refWeights": {
+   "offset": 197392,
+   "dtype": "f32",
+   "count": 9369
+  },
+  "refOffsets": {
+   "offset": 234880,
+   "dtype": "f32",
+   "count": 9369
+  }
+ }
+}

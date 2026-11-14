@@ -1,0 +1,89 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/wolgade_female_fingernails",
+ "category": "clothes",
+ "name": "female_fingernails",
+ "uuid": "9f2d071d-b151-4b93-aee5-b39f79713c70",
+ "tags": [],
+ "zDepth": 50,
+ "vertexCount": 168,
+ "faceCount": 92,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22048
+  ],
+  [
+   962,
+   5320,
+   0.18461000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "transparent": false,
+  "backfaceCull": true,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/wolgade_female_fingernails.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "accessory",
+ "binary": "wolgade_female_fingernails.bin",
+ "byteLength": 13088,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 504
+  },
+  "uvs": {
+   "offset": 2016,
+   "dtype": "f32",
+   "count": 352
+  },
+  "faceVerts": {
+   "offset": 3424,
+   "dtype": "u32",
+   "count": 368
+  },
+  "faceUvs": {
+   "offset": 4896,
+   "dtype": "u32",
+   "count": 368
+  },
+  "refVerts": {
+   "offset": 6368,
+   "dtype": "u32",
+   "count": 504
+  },
+  "refWeights": {
+   "offset": 8384,
+   "dtype": "f32",
+   "count": 504
+  },
+  "refOffsets": {
+   "offset": 10400,
+   "dtype": "f32",
+   "count": 504
+  },
+  "deleteVerts": {
+   "offset": 12416,
+   "dtype": "u32",
+   "count": 168
+  }
+ }
+}

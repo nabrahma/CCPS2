@@ -1,0 +1,90 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_crude_bootyshorts",
+ "category": "clothes",
+ "name": "elvs_bootyshorts2a",
+ "uuid": "c6c2fc00-d2ac-4866-90f1-7ccc98b7f483",
+ "tags": [
+  "shorts",
+  "pant",
+  "ladies ware",
+  "bootyshort",
+  "fashion"
+ ],
+ "zDepth": 47,
+ "vertexCount": 265,
+ "faceCount": 230,
+ "triangleFaces": 0,
+ "scale": [
+  [
+   10589,
+   3924,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.5779299999999999
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1.0,
+  "diffuseTexture": "textures/clothes/elvs_crude_bootyshorts.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "bottom",
+ "binary": "elvs_crude_bootyshorts.bin",
+ "byteLength": 22620,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 795
+  },
+  "uvs": {
+   "offset": 3184,
+   "dtype": "f32",
+   "count": 632
+  },
+  "faceVerts": {
+   "offset": 5712,
+   "dtype": "u32",
+   "count": 920
+  },
+  "faceUvs": {
+   "offset": 9392,
+   "dtype": "u32",
+   "count": 920
+  },
+  "refVerts": {
+   "offset": 13072,
+   "dtype": "u32",
+   "count": 795
+  },
+  "refWeights": {
+   "offset": 16256,
+   "dtype": "f32",
+   "count": 795
+  },
+  "refOffsets": {
+   "offset": 19440,
+   "dtype": "f32",
+   "count": 795
+  }
+ }
+}

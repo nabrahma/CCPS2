@@ -1,0 +1,99 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/punkduck_short_bodysuit_female",
+ "category": "clothes",
+ "name": "shortbodysuit",
+ "uuid": "fa96ded1-9bd9-4903-b216-bb2f1647f9e1",
+ "tags": [
+  "bodysuit"
+ ],
+ "zDepth": 60,
+ "vertexCount": 1305,
+ "faceCount": 2500,
+ "triangleFaces": 2500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": true,
+  "backfaceCull": true,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/punkduck_short_bodysuit_female.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "full",
+ "decimatedFrom": 1914,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 3718,
+ "binary": "punkduck_short_bodysuit_female.ps2.bin",
+ "byteLength": 169412,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 3915
+  },
+  "uvs": {
+   "offset": 15664,
+   "dtype": "f32",
+   "count": 3006
+  },
+  "faceVerts": {
+   "offset": 27696,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "faceUvs": {
+   "offset": 67696,
+   "dtype": "u32",
+   "count": 10000
+  },
+  "refVerts": {
+   "offset": 107696,
+   "dtype": "u32",
+   "count": 3915
+  },
+  "refWeights": {
+   "offset": 123360,
+   "dtype": "f32",
+   "count": 3915
+  },
+  "refOffsets": {
+   "offset": 139024,
+   "dtype": "f32",
+   "count": 3915
+  },
+  "deleteVerts": {
+   "offset": 154688,
+   "dtype": "u32",
+   "count": 2374
+  },
+  "sourceProxyVertex": {
+   "offset": 164192,
+   "dtype": "u32",
+   "count": 1305
+  }
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/mindfront_tactical_vest_female",
+ "category": "clothes",
+ "name": "Tactical_Vest_female",
+ "uuid": "7d1ebe6b-c354-4700-adde-c386af796959",
+ "tags": [
+  "work",
+  "sport",
+  "female"
+ ],
+ "zDepth": 61,
+ "vertexCount": 829,
+ "faceCount": 1988,
+ "triangleFaces": 1988,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   1,
+   1,
+   1
+  ],
+  "transparent": false,
+  "backfaceCull": false,
+  "opacity": 0,
+  "diffuseTexture": "textures/clothes/mindfront_tactical_vest_female.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "outer",
+ "decimatedFrom": 19896,
+ "hiddenFaces": "computed",
+ "originalTriangles": 37056,
+ "binary": "mindfront_tactical_vest_female.ps2.bin",
+ "byteLength": 113508,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2487
+  },
+  "uvs": {
+   "offset": 9952,
+   "dtype": "f32",
+   "count": 1604
+  },
+  "faceVerts": {
+   "offset": 16368,
+   "dtype": "u32",
+   "count": 7952
+  },
+  "faceUvs": {
+   "offset": 48176,
+   "dtype": "u32",
+   "count": 7952
+  },
+  "refVerts": {
+   "offset": 79984,
+   "dtype": "u32",
+   "count": 2487
+  },
+  "refWeights": {
+   "offset": 89936,
+   "dtype": "f32",
+   "count": 2487
+  },
+  "refOffsets": {
+   "offset": 99888,
+   "dtype": "f32",
+   "count": 2487
+  },
+  "coveredVerts": {
+   "offset": 109840,
+   "dtype": "u32",
+   "count": 85
+  },
+  "sourceProxyVertex": {
+   "offset": 110192,
+   "dtype": "u32",
+   "count": 829
+  }
+ }
+}

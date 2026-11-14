@@ -1,8 +1,63 @@
 {
+  "bodyparts01": {
+    "sha256": "518efd209dbd7a4c9722cf00f7fd47fd077cf1bbd7ddc37cb83741e0041d25be",
+    "size": 829685,
+    "url": "https://files.makehumancommunity.org/asset_packs/bodyparts01/bodyparts01_cc0.zip"
+  },
+  "bodyparts02": {
+    "sha256": "4c2980f9ec4ed236326f80c8c9ea88c12bf012e1534497771356586261562a29",
+    "size": 10831558,
+    "url": "https://files.makehumancommunity.org/asset_packs/bodyparts02/bodyparts02_cc-by.zip"
+  },
+  "bodyparts03": {
+    "sha256": "4361079ac034f85732473cac6065f06535801332dc18bbebb8b690f1161336b8",
+    "size": 38804877,
+    "url": "https://files.makehumancommunity.org/asset_packs/bodyparts03/bodyparts03_cc-by.zip"
+  },
+  "bodyparts04": {
+    "sha256": "60ae7536f143d087a7e3ae9b05ef86b628ccfbc63f0e3cd10694defb3974b025",
+    "size": 4560444,
+    "url": "https://files.makehumancommunity.org/asset_packs/bodyparts04/bodyparts04_cc0.zip"
+  },
+  "bodyparts05": {
+    "sha256": "262bba42246f85b2a91f493dd920296b258a3b4544eb495c91c4d08e57c528fd",
+    "size": 6616507,
+    "url": "https://files.makehumancommunity.org/asset_packs/bodyparts05/bodyparts05_cc0.zip"
+  },
+  "bodyparts06": {
+    "sha256": "09ed71439c853eac01a92f6e4463f15d0701f08b7d9ff777771d10c3e590e770",
+    "size": 13015417,
+    "url": "https://files.makehumancommunity.org/asset_packs/bodyparts06/bodyparts06_cc-by.zip"
+  },
   "dress01": {
     "sha256": "f49ba54a3c93acd3c3307cc5a96cfc65daf8abfed9212a7e580791d821c9e93a",
     "size": 46598791,
     "url": "https://files.makehumancommunity.org/asset_packs/dress01/dress01_cc0.zip"
+  },
+  "dress02": {
+    "sha256": "981f8b91d640415e7658ad700e987ecf28d5eb4e7337c02b715211ea483071b7",
+    "size": 153083646,
+    "url": "https://files.makehumancommunity.org/asset_packs/dress02/dress02_cc-by.zip"
+  },
+  "dress03": {
+    "sha256": "d35487edda8347ac8d0250207007c18056d7aaac404e91946bf9cf1399f2bcd8",
+    "size": 486395821,
+    "url": "https://files.makehumancommunity.org/asset_packs/dress03/dress03_cc-by.zip"
+  },
+  "equipment01": {
+    "sha256": "d8afa9d98c52f0a5e92a0d3e9f691f5699dd878499d9f6681740d38ca2640236",
+    "size": 18111388,
+    "url": "https://files.makehumancommunity.org/asset_packs/equipment01/equipment01_cc0.zip"
+  },
+  "equipment02": {
+    "sha256": "9f3f95128e242c815e38887fdbb1b4321f96326a53cd40ec8434409a25bd1bb8",
+    "size": 13391666,
+    "url": "https://files.makehumancommunity.org/asset_packs/equipment02/equipment02_cc-by.zip"
+  },
+  "equipment03": {
+    "sha256": "9513ab6059363778f8f657375dee56f6329b86b0fb3ccad04f8c42dbd658420a",
+    "size": 128076568,
+    "url": "https://files.makehumancommunity.org/asset_packs/equipment03/equipment03_cc-by.zip"
   },
   "eyebrows01": {
     "sha256": "5425891dce613bef85c7117f7843cd49d57d1fb28127e76d77d2a2eaccb4fe78",
@@ -14,6 +69,16 @@
     "size": 3493692,
     "url": "https://files.makehumancommunity.org/asset_packs/eyelashes01/eyelashes01_cc0.zip"
   },
+  "glasses01": {
+    "sha256": "f215c58e09e31b7ee568c814067cb47704cee6da1f6fc01cffb8e9fca37bafdd",
+    "size": 5782729,
+    "url": "https://files.makehumancommunity.org/asset_packs/glasses01/glasses01_cc0.zip"
+  },
+  "glasses02": {
+    "sha256": "0db9680c53ba604f8f37915e678377bb30b6d6839f168d3d8a9a0539715ebb7a",
+    "size": 3301552,
+    "url": "https://files.makehumancommunity.org/asset_packs/glasses02/glasses02_ccby.zip"
+  },
   "gloves01": {
     "sha256": "ecdaee1d02749d17352791d415cb622a883350cc8a4b90eda3725aef35d9afb2",
     "size": 3192691,
@@ -24,10 +89,45 @@
     "size": 227775853,
     "url": "https://files.makehumancommunity.org/asset_packs/hair01/hair01_cc0.zip"
   },
+  "hair02": {
+    "sha256": "c681e5efd37df4007a52253a8d071aedbfe3b614f199d8dae4ae76d5bd7d95c9",
+    "size": 72283345,
+    "url": "https://files.makehumancommunity.org/asset_packs/hair02/hair02_ccby.zip"
+  },
+  "hair03": {
+    "sha256": "776c277cb6bcebc32907e05fa94d119e48742cdc1c34183996fc3e65e17a2740",
+    "size": 40087657,
+    "url": "https://files.makehumancommunity.org/asset_packs/hair03/hair03_ccby.zip"
+  },
   "hats01": {
     "sha256": "97b70d7bd90e74ee87a49faeb7c4a1b2762b311902974db575851daaae05b50e",
     "size": 6636192,
     "url": "https://files.makehumancommunity.org/asset_packs/hats01/hats01_cc0.zip"
+  },
+  "hats02": {
+    "sha256": "838b9b51ba31d27f21198ad4506eb9b23e1c03eb246fe68f26da99e26b40e1aa",
+    "size": 24018546,
+    "url": "https://files.makehumancommunity.org/asset_packs/hats02/hats02_cc0.zip"
+  },
+  "hats03": {
+    "sha256": "2702d58fa04e57235881551c45adcda36a6eafde8043c2695375bc0b4b79f550",
+    "size": 76001637,
+    "url": "https://files.makehumancommunity.org/asset_packs/hats03/hats03_cc-by.zip"
+  },
+  "hats04": {
+    "sha256": "7badd55ce80df6ed2528cc9c95bd2843ee5721b33eca15bf503c120ecbfbe2dc",
+    "size": 17907587,
+    "url": "https://files.makehumancommunity.org/asset_packs/hats04/hats04_cc-by.zip"
+  },
+  "jewelry01": {
+    "sha256": "46673f27a65f4b9756a823313d487a220a04dd366df704dc3bd4eeba3fc6cb40",
+    "size": 10748516,
+    "url": "https://files.makehumancommunity.org/asset_packs/jewelry01/jewelry01_cc0.zip"
+  },
+  "jewelry02": {
+    "sha256": "b5c842d40b4783dc2ae08890d78e70fc8422a22f2bd9c522835a5d9aeb438e3b",
+    "size": 46689940,
+    "url": "https://files.makehumancommunity.org/asset_packs/jewelry02/jewelry02_cc-by.zip"
   },
   "leeperrysmith_col": {
     "sha256": "e976d73b31407f8d0967412bf468019ed26a5d5a32cf5811aabff7e816458a65",
@@ -58,6 +158,16 @@
     "sha256": "c4675523714854d86b2fc1315bae152646254b0badfce8e9ad0cf624d9ef5689",
     "size": 820410,
     "url": "https://files.makehumancommunity.org/asset_packs/makehuman_system_poses/makehuman_system_poses_cc0.zip"
+  },
+  "masks01": {
+    "sha256": "868e0e92cd84d34abf225f68a99e00c1ca5d9c14a4f558ed62cdaeb77b806206",
+    "size": 4296547,
+    "url": "https://files.makehumancommunity.org/asset_packs/masks01/masks01_cc0.zip"
+  },
+  "masks02": {
+    "sha256": "ece01ba5d303f7f3c7e8b4f8944284cd5d69f314c1b30d84bbfe63ef5c7748f2",
+    "size": 18149664,
+    "url": "https://files.makehumancommunity.org/asset_packs/masks02/masks02_ccby.zip"
   },
   "mat_brown_leather_albedo": {
     "sha256": "b0de2403a31efa31e501b0028c0bd8e504d5bd6318f4a5ce90c550c3067f96d8",
@@ -199,15 +309,45 @@
     "size": 21908723,
     "url": "https://files.makehumancommunity.org/asset_packs/pants01/pants01_cc0.zip"
   },
+  "pants02": {
+    "sha256": "9dbcd65e03ab100977079b6960e91c334bed92e948aeda5423f11997a133904a",
+    "size": 131847848,
+    "url": "https://files.makehumancommunity.org/asset_packs/pants02/pants02_ccby.zip"
+  },
+  "pants03": {
+    "sha256": "8753f0cd79a9987a6f490ec5621a4a392df90647ca504fa2c1a500f9c3c2f26a",
+    "size": 48825857,
+    "url": "https://files.makehumancommunity.org/asset_packs/pants03/pants03_ccby.zip"
+  },
   "shirts01": {
     "sha256": "a5a723b0e84a109bb190fcfeac7f1de4138d875da3e30fe5b3340eac9f38bcd3",
     "size": 24479483,
     "url": "https://files.makehumancommunity.org/asset_packs/shirts01/shirts01_cc0.zip"
   },
+  "shirts02": {
+    "sha256": "d711ca9f73212de855257ac08422e1e0ccb802e5231315c2a360d0fcfea5033e",
+    "size": 175395076,
+    "url": "https://files.makehumancommunity.org/asset_packs/shirts02/shirts02_ccby.zip"
+  },
+  "shirts03": {
+    "sha256": "b3ff3596723dbc87cb07389895da760b667cf413f2c67869ccb0cdfb82a79a8a",
+    "size": 71659687,
+    "url": "https://files.makehumancommunity.org/asset_packs/shirts03/shirts03_ccby.zip"
+  },
   "shoes01": {
     "sha256": "ded3f70428505eabbf1f6d7b5f61196a7366ef20757103d276ad0ed336c35ada",
     "size": 82953569,
     "url": "https://files.makehumancommunity.org/asset_packs/shoes01/shoes01_cc0.zip"
+  },
+  "shoes02": {
+    "sha256": "1b544d87dd8b3d3a9c8317e4f059be456491be979cbc9984fc53f403046f5061",
+    "size": 105745850,
+    "url": "https://files.makehumancommunity.org/asset_packs/shoes02/shoes02_ccby.zip"
+  },
+  "shoes03": {
+    "sha256": "7818b43a520a90bb0286aaa1e137ddb9bbe59640c3edbdf4d9d849064ec2761b",
+    "size": 50300350,
+    "url": "https://files.makehumancommunity.org/asset_packs/shoes03/shoes03_ccby.zip"
   },
   "skins01": {
     "sha256": "7495ab99287053bd19ff1636114e64b608994d9f7437fea6cc75ea387f96dba9",
@@ -219,19 +359,69 @@
     "size": 76112708,
     "url": "https://files.makehumancommunity.org/asset_packs/skins02/skins02_cc0.zip"
   },
+  "skins03": {
+    "sha256": "be159362000e008d996366e3dd5977a40854e20ac6da98be267560c31f7e3fc5",
+    "size": 136827522,
+    "url": "https://files.makehumancommunity.org/asset_packs/skins03/skins03_cc0.zip"
+  },
   "skirts01": {
     "sha256": "293fa0c15e28e8dcea8dfff20cae31aa4b0d1268a6e6ba0a53a92ebb0f36c882",
     "size": 29554534,
     "url": "https://files.makehumancommunity.org/asset_packs/skirts01/skirts01_cc0.zip"
+  },
+  "skirts02": {
+    "sha256": "20958a4669d88efc8295e2a4f5c97677f97ca47607478ee99e1a141525cff5b3",
+    "size": 55608660,
+    "url": "https://files.makehumancommunity.org/asset_packs/skirts02/skirts02_cc-by.zip"
   },
   "suits01": {
     "sha256": "2b1d8676f3863b188e9eea98c1d8f234543d54c440e791d92b819f8ee1861f19",
     "size": 42624017,
     "url": "https://files.makehumancommunity.org/asset_packs/suits01/suits01_cc0.zip"
   },
+  "suits02": {
+    "sha256": "437f4d7ab92b698c1fb1047e7d62b22c11f195b2473e936118661dc8e6b7eb7a",
+    "size": 192511027,
+    "url": "https://files.makehumancommunity.org/asset_packs/suits02/suits02_cc0.zip"
+  },
+  "suits03": {
+    "sha256": "74ace28794d27186a3f3ee26058f16906fe3c46f9f7e35a9ac7f622cd5e821eb",
+    "size": 105317876,
+    "url": "https://files.makehumancommunity.org/asset_packs/suits03/suits03_cc-by.zip"
+  },
+  "suits04": {
+    "sha256": "dc69d8c6e7e47ab269dc21ad7a240772d0fd622a722465eaf5e7a0f5195f8ba4",
+    "size": 2187391,
+    "url": "https://files.makehumancommunity.org/asset_packs/suits04/suits04_cc-by.zip"
+  },
+  "suits05": {
+    "sha256": "4c377179b108a8600d74685d390a7b1d088a86ad77f518d03ca2f134d4256631",
+    "size": 1309332,
+    "url": "https://files.makehumancommunity.org/asset_packs/suits05/suits05_cc0.zip"
+  },
+  "system_eye_materials01": {
+    "sha256": "acad4636c08ff96ac8a27775cfa071052c8cba9b21e0029b649bdd6ec7aeb332",
+    "size": 14310685,
+    "url": "https://files.makehumancommunity.org/asset_packs/system_eye_materials01/system_eye_materials01_cc0.zip"
+  },
   "underwear01": {
     "sha256": "8c3b51cf18d26ea096cb92b79a7a379d1a00273ef029b5779715486180fd47d5",
     "size": 60561755,
     "url": "https://files.makehumancommunity.org/asset_packs/underwear01/underwear01_cc0.zip"
+  },
+  "underwear02": {
+    "sha256": "4ee841470047da9bca63a99af7f1e7c16bae7248b2904b2e0618985f3f50ef8e",
+    "size": 105440890,
+    "url": "https://files.makehumancommunity.org/asset_packs/underwear02/underwear02_cc0.zip"
+  },
+  "underwear03": {
+    "sha256": "2dfe0594808d0d296649c613d764bb1192c3a59f6c78f6f58ace32aa966c59f6",
+    "size": 39976527,
+    "url": "https://files.makehumancommunity.org/asset_packs/underwear03/underwear03_cc-by.zip"
+  },
+  "underwear04": {
+    "sha256": "ea033122a9e43fb145760f7c399d2c8632a281d4ece948d5685c58301aef142c",
+    "size": 5619580,
+    "url": "https://files.makehumancommunity.org/asset_packs/underwear04/underwear04_cc0.zip"
   }
 }

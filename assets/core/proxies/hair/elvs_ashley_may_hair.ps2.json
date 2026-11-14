@@ -1,0 +1,97 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:hair/elvs_ashley_may_hair",
+ "category": "hair",
+ "name": "elvs_ashley_mayhair1",
+ "uuid": "9558bac4-c22f-40ef-918f-0f8a8a6ce91c",
+ "tags": [
+  "hair",
+  "ladies hair",
+  "female",
+  "short hair",
+  "feathered hair"
+ ],
+ "zDepth": 57,
+ "vertexCount": 2722,
+ "faceCount": 3500,
+ "triangleFaces": 3500,
+ "scale": [
+  [
+   5399,
+   11998,
+   0.1398
+  ],
+  [
+   791,
+   881,
+   0.22028
+  ],
+  [
+   962,
+   5320,
+   0.18441000000000002
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.64,
+   0.64,
+   0.64
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/hair/elvs_ashley_may_hair.png",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "decimatedFrom": 6254,
+ "hiddenFaces": "none",
+ "originalTriangles": 8467,
+ "binary": "elvs_ashley_may_hair.ps2.bin",
+ "byteLength": 265560,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 8166
+  },
+  "uvs": {
+   "offset": 32672,
+   "dtype": "f32",
+   "count": 2994
+  },
+  "faceVerts": {
+   "offset": 44656,
+   "dtype": "u32",
+   "count": 14000
+  },
+  "faceUvs": {
+   "offset": 100656,
+   "dtype": "u32",
+   "count": 14000
+  },
+  "refVerts": {
+   "offset": 156656,
+   "dtype": "u32",
+   "count": 8166
+  },
+  "refWeights": {
+   "offset": 189328,
+   "dtype": "f32",
+   "count": 8166
+  },
+  "refOffsets": {
+   "offset": 222000,
+   "dtype": "f32",
+   "count": 8166
+  },
+  "sourceProxyVertex": {
+   "offset": 254672,
+   "dtype": "u32",
+   "count": 2722
+  }
+ }
+}

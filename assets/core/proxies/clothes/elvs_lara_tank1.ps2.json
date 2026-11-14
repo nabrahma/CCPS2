@@ -1,0 +1,104 @@
+{
+ "format": "ps2cc.proxy/1",
+ "id": "mh:clothes/elvs_lara_tank1",
+ "category": "clothes",
+ "name": "elvs_lara_top1",
+ "uuid": "0e6dc790-7b4b-4cfa-86f2-332e704780d9",
+ "tags": [
+  "female",
+  "casual",
+  "sport",
+  "contemporary",
+  "shirt",
+  "sleeveless"
+ ],
+ "zDepth": 50,
+ "vertexCount": 680,
+ "faceCount": 1288,
+ "triangleFaces": 1288,
+ "scale": [
+  [
+   3924,
+   10589,
+   0.27814
+  ],
+  [
+   1524,
+   4370,
+   0.57793
+  ],
+  [
+   1892,
+   3946,
+   0.17223
+  ]
+ ],
+ "material": {
+  "diffuseColor": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "transparent": true,
+  "backfaceCull": false,
+  "opacity": 1,
+  "diffuseTexture": "textures/clothes/elvs_lara_tank1.jpg",
+  "textureSize": [
+   1024,
+   1024
+  ]
+ },
+ "slot": "top",
+ "decimatedFrom": 680,
+ "hiddenFaces": "makehuman",
+ "originalTriangles": 1288,
+ "binary": "elvs_lara_tank1.ps2.bin",
+ "byteLength": 83632,
+ "buffers": {
+  "restPositions": {
+   "offset": 0,
+   "dtype": "f32",
+   "count": 2040
+  },
+  "uvs": {
+   "offset": 8160,
+   "dtype": "f32",
+   "count": 1450
+  },
+  "faceVerts": {
+   "offset": 13968,
+   "dtype": "u32",
+   "count": 5152
+  },
+  "faceUvs": {
+   "offset": 34576,
+   "dtype": "u32",
+   "count": 5152
+  },
+  "refVerts": {
+   "offset": 55184,
+   "dtype": "u32",
+   "count": 2040
+  },
+  "refWeights": {
+   "offset": 63344,
+   "dtype": "f32",
+   "count": 2040
+  },
+  "refOffsets": {
+   "offset": 71504,
+   "dtype": "f32",
+   "count": 2040
+  },
+  "deleteVerts": {
+   "offset": 79664,
+   "dtype": "u32",
+   "count": 310
+  },
+  "sourceProxyVertex": {
+   "offset": 80912,
+   "dtype": "u32",
+   "count": 680
+  }
+ }
+}
