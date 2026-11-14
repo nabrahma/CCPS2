@@ -29,9 +29,13 @@ It needs no Blender, no Python and no network connection to run.
 
 ## Status
 
-All planned milestones are built and tested, and the project is young. It is Windows only. There are no prebuilt downloads yet, so you build it from source. [docs/milestones/STATUS.md](docs/milestones/STATUS.md) lists what each milestone covers and how it was tested, and [TODO_ART.md](TODO_ART.md) lists the known gaps in art.
+All planned milestones are built and tested, and the project is young. It is Windows only. [docs/milestones/STATUS.md](docs/milestones/STATUS.md) lists what each milestone covers and how it was tested, and [TODO_ART.md](TODO_ART.md) lists the known gaps in art.
 
 Custom garment import has been tested with generated garments, but not yet with a wide range of hand-modelled files. Reports are very welcome.
+
+## Download
+
+Get the installer from [Releases](https://github.com/nabrahma/CCPS2/releases/latest): `PS2CC-<version>-windows-x64-setup.exe` (Windows 10 or 11, 64-bit). It installs the app and its character assets, about 330 MB, and adds Start menu and desktop shortcuts. The installer is not code-signed, so Windows SmartScreen may warn you: choose **More info → Run anyway**. For Unity, also download `com.ps2cc.importer.zip` (see [Use it in Unity](#use-it-in-unity)).
 
 ## Build from source
 
@@ -55,7 +59,7 @@ If `mingw-w64` is not at `C:\mingw64`, set `PS2CC_CC` to its `gcc.exe`.
 
 PS2CC targets Unity 6 with URP.
 
-1. In Unity, open **Package Manager → Add package from disk** and choose `unity/com.ps2cc.importer/package.json`.
+1. Unzip `com.ps2cc.importer.zip` from the release (or use `unity/com.ps2cc.importer` in a clone). In Unity, open **Package Manager → Add package from disk** and choose its `package.json`.
 2. In PS2CC, open **Export**, choose your Unity project and click **Export to Unity**.
 
 The character imports as a Humanoid prefab, ready for retargeted animation.
