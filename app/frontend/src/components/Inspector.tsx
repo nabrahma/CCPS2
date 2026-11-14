@@ -1,69 +1,14 @@
 import { useState } from 'react';
 import type { GarmentSlot, ScenePart } from '@ps2cc/core';
-import { useStudio, useStudioVersion } from '../state/hooks';
+import { useStudio } from '../state/hooks';
 import { useUi } from '../state/ui';
 import { exportUvTemplate } from '../uvTemplate';
 import { TintRow } from './panels/HairPanel';
 import { PainterLink } from './PainterLink';
 import { GarmentLookEditor } from './panels/GarmentLookEditor';
 
-/** Right-hand context inspector (PRD 7): details of the part clicked in the viewport. */
-export function Inspector() {
-  const studio = useStudio();
-  useStudioVersion();
-  const ui = useUi();
-  const part = studio.scene.parts.find((p) => p.key === ui.selected) ?? null;
-  const doc = studio.engine.doc;
-  return (
-    <div className="inspector">
-      <p className="card-label">Inspector</p>
-      {!part && <h2 className="inspector-title">Click any part of the character</h2>}
-      {part && (
-        <div className="inspector-body">
-          <h2 className="inspector-title">{part.label}</h2>
-          <dl className="facts">
-            <dt>Asset</dt>
-            <dd title={part.assetId}>{part.assetId}</dd>
-            <dt>Triangles</dt>
-            <dd>{part.triangleCount.toLocaleString()}</dd>
-            <dt>Draw order</dt>
-            <dd>{part.zDepth}</dd>
-          </dl>
-          {part.kind === 'body' && (
-            <>
-              <p>
-                Skin: <strong>{doc.skin.base.replace('mh:skins/', '')}</strong>
-              </p>
-              <button onClick={() => ui.setTab('appearance')}>Change skin…</button>
-              <button onClick={() => ui.openStudio({ kind: 'texture', target: 'skin' })}>Edit in Texture Studio…</button>
-              <button onClick={() => ui.setTab('export')}>Body mesh tier…</button>
-            </>
-          )}
-          {part.kind === 'garment' && <GarmentInspector partKey={part.key} />}
-          {part.kind === 'hair' && (
-            <>
-              <button onClick={() => ui.setTab('hair')}>Change hair…</button>
-              <button onClick={() => ui.openStudio({ kind: 'hair', target: null })}>Edit in Hair Studio…</button>
-            </>
-          )}
-          {(part.kind === 'garment' || part.kind === 'hair') && <UvTemplateButton part={part} />}
-          {(part.kind === 'eyes' || part.kind === 'eyebrows' || part.kind === 'eyelashes') && (
-            <button onClick={() => ui.setTab('appearance')}>Edit in Appearance…</button>
-          )}
-        </div>
-      )}
-      <section className="drop-hint">
-        <h3>Drop files</h3>
-        <p className="muted">
-          Drop a PNG or JPG on a garment to texture it, or anywhere else to choose where it goes. Drop an OBJ, FBX or GLB to import a garment.
-        </p>
-      </section>
-    </div>
-  );
-}
-
 /** PRD F4: export the part's UV wireframe over its current texture as a 1024 px PNG. */
-function UvTemplateButton({ part }: { part: ScenePart }) {
+export function UvTemplateButton({ part }: { part: ScenePart }) {
   const studio = useStudio();
   const ui = useUi();
   const [busy, setBusy] = useState(false);
@@ -85,7 +30,8 @@ function UvTemplateButton({ part }: { part: ScenePart }) {
   );
 }
 
-function GarmentInspector({ partKey }: { partKey: string }) {
+/** A worn garment's settings (Clothes): tint, grime, materials, paint and its studios. */
+export function GarmentInspector({ partKey }: { partKey: string }) {
   const studio = useStudio();
   const select = useUi((s) => s.select);
   const garment = studio.engine.doc.garments.find((g) => `garment:${g.slot}:${g.asset}` === partKey);

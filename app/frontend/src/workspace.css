@@ -224,55 +224,6 @@
   color: #fff;
 }
 
-.step-strip {
-  position: absolute;
-  left: 50%;
-  bottom: 14px;
-  z-index: 2;
-  display: flex;
-  gap: 2px;
-  padding: 3px;
-  transform: translateX(-50%);
-  background: var(--glass);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-panel);
-  backdrop-filter: blur(10px);
-}
-
-.step {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  height: 32px;
-  padding: 0 12px;
-  background: none;
-  border: none;
-  border-radius: var(--radius-control);
-  color: #b4b4bc;
-  white-space: nowrap;
-}
-
-.step:hover:not(:disabled) {
-  background: var(--panel-3);
-  color: #fff;
-}
-
-.step .step-number {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-}
-
-.step.active {
-  background: var(--accent-soft);
-  color: #fff;
-}
-
-.step.active .step-number {
-  color: var(--accent);
-}
-
 /* ---------- dock ---------- */
 .dock {
   grid-area: dock;
@@ -284,50 +235,11 @@
   border-left: 1px solid var(--line);
 }
 
-.dock-tabs {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-bottom: 1px solid var(--line);
-}
-
-.dock-tab {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  height: 36px;
-  padding: 0;
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
-  border-radius: 0;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.dock-tab:hover:not(:disabled) {
-  background: var(--panel-2);
-  color: var(--text);
-}
-
-.dock-tab.active {
-  border-bottom-color: var(--accent);
-  color: var(--text);
-}
-
 .dock-body {
   flex: 1;
   display: flex;
   flex-direction: column;
   min-height: 0;
-}
-
-.dock-tree {
-  flex: 0 0 auto;
-  max-height: 38%;
-  overflow-y: auto;
-  padding: 4px 0;
-  border-bottom: 1px solid var(--line);
 }
 
 .dock-panel {
@@ -356,80 +268,6 @@
 .inspector {
   padding: 8px 0;
   overflow: visible;
-}
-
-/* ---------- parts tree ---------- */
-.parts-tree {
-  font-size: 12.5px;
-  user-select: none;
-}
-
-.tree-row {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  height: 24px;
-  padding-right: 8px;
-  color: #cfcfd6;
-}
-
-.tree-row:hover {
-  background: var(--panel-2);
-}
-
-.tree-row.active {
-  background: var(--accent-soft);
-  box-shadow: inset 2px 0 0 var(--accent);
-  color: #fff;
-}
-
-.tree-row.muted {
-  color: var(--muted);
-}
-
-.tree-row .glyph {
-  color: var(--muted);
-}
-
-.tree-twist,
-.tree-label,
-.tree-eye {
-  height: 22px;
-  padding: 0;
-  background: none !important;
-  border: none;
-  border-radius: 0;
-}
-
-.tree-twist {
-  width: 16px;
-  color: var(--muted);
-  font-size: 10px;
-}
-
-.tree-label {
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  padding: 0 4px;
-  text-align: left;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.tree-eye {
-  display: grid;
-  place-items: center;
-  width: 22px;
-  color: #9b9ba5;
-}
-
-.tree-eye:hover {
-  color: #fff;
-}
-
-.tree-eye.off {
-  color: #55555e;
 }
 
 /* ---------- status bar ---------- */
@@ -639,10 +477,6 @@
   .tb-group select[aria-label='Render background'] {
     display: none;
   }
-
-  .step .step-label {
-    display: none;
-  }
 }
 
 @media (max-width: 1360px) {
@@ -653,11 +487,6 @@
   .topbar .seg button {
     padding: 0 6px;
   }
-}
-
-.tree-twist {
-  font-size: 12px;
-  color: #a9a9b2;
 }
 
 .tb-select {
@@ -718,4 +547,295 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+}
+
+/* ---------- the editor (D-149): a rail of categories and the chosen one's panel ---------- */
+.shell {
+  grid-template-columns: minmax(0, 1fr) 440px;
+}
+
+@media (max-width: 1500px) {
+  .shell {
+    grid-template-columns: minmax(0, 1fr) 400px;
+  }
+}
+
+.dock {
+  flex-direction: row;
+}
+
+.cat-rail {
+  flex: 0 0 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 6px 4px;
+  overflow-y: auto;
+  border-right: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.cat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-height: 46px;
+  padding: 6px 0 5px;
+  border: none;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--muted);
+  font-size: 10.5px;
+  line-height: 1.1;
+}
+
+.cat .glyph {
+  width: 17px;
+  height: 17px;
+}
+
+.cat:hover:not(:disabled) {
+  background: var(--panel-2);
+  color: var(--text);
+}
+
+.cat.active {
+  background: var(--accent-soft);
+  color: var(--text);
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+
+.cat.active .glyph {
+  color: var(--accent);
+}
+
+.cat.gap {
+  margin-top: 8px;
+}
+
+.cat-spacer {
+  flex: 1;
+  min-height: 8px;
+}
+
+.dock-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.cat-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.cat-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.cat-head h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.cat-head p {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.cat-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 8px 16px 18px;
+}
+
+.icon.vis {
+  padding: 4px;
+  border: none;
+  background: none;
+  color: var(--muted);
+}
+
+.icon.vis:hover:not(:disabled) {
+  color: var(--text);
+}
+
+.icon.vis.off {
+  color: #5d5d66;
+}
+
+/* A toolbar line: search and a menu, or a few switches and a button. */
+.tool-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tool-line .search {
+  flex: 1;
+  min-width: 0;
+}
+
+.tool-line select {
+  flex: 0 0 auto;
+  max-width: 45%;
+}
+
+.cat-body .panel-tools {
+  top: -8px;
+}
+
+.library-tools {
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.library-tools .search {
+  flex: 1;
+  min-width: 0;
+}
+
+.library-tools select {
+  flex: 0 0 auto;
+  max-width: 48%;
+}
+
+.icon.fav-toggle {
+  padding: 4px 6px;
+  border-color: var(--line);
+  background: none;
+  color: var(--muted);
+}
+
+.icon.fav-toggle.on {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Edit and Delete appear on a card when the pointer is over it. */
+.library-card {
+  position: relative;
+}
+
+.library-card .card-actions-mini {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+
+.library-card:hover .card-actions-mini,
+.library-card:focus-within .card-actions-mini {
+  opacity: 1;
+}
+
+.library-card .card-actions-mini button {
+  background: var(--glass);
+}
+
+/* What the character wears: a row each, opening to its settings. */
+.worn-item-wrap {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  margin: 4px 0;
+}
+
+.worn-item-wrap.open {
+  border-color: var(--line-strong);
+}
+
+.worn-item-wrap .worn-row .worn-item {
+  margin: 0;
+  border: none;
+}
+
+.worn-item-wrap .twist {
+  display: inline-block;
+  width: 10px;
+  color: var(--muted);
+}
+
+.worn-item-wrap .garment-inspector {
+  padding: 4px 10px 10px;
+}
+
+.worn-item-wrap .worn-row .icon {
+  border: none;
+  background: none;
+}
+
+/* Folded-away settings. */
+details.more {
+  margin-top: 10px;
+  border-top: 1px solid var(--line);
+  padding-top: 6px;
+}
+
+details.more > summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 3px 0;
+}
+
+.layer-switch {
+  grid-template-columns: minmax(0, 1fr) 110px 28px;
+}
+
+.creator-step .studio-link {
+  margin-top: 12px;
+}
+
+.creator-step > .painted-part:first-child {
+  border-top: none;
+}
+
+/* Short windows: a tighter rail, so every category fits without scrolling. */
+@media (max-height: 820px) {
+  .cat {
+    min-height: 38px;
+    padding: 4px 0 3px;
+    gap: 2px;
+  }
+
+  .cat.gap {
+    margin-top: 4px;
+  }
+
+  .cat-head {
+    padding: 10px 16px 8px;
+  }
+}
+
+.library-thumb {
+  position: relative;
+}
+
+.thumb-badge {
+  position: absolute;
+  left: 4px;
+  bottom: 4px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: var(--glass);
+  color: #c9c9d1;
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+  pointer-events: none;
 }

@@ -14,7 +14,9 @@ import { waitForTestHooks, type TestWindow } from './skin-helpers';
 test('imports a garment through the dialog, wears it and deletes it', async ({ page }) => {
   await boot(page);
   await waitForTestHooks(page);
-  await page.getByRole('tab', { name: 'Wardrobe' }).click();
+  await page.getByRole('tab', { name: 'Clothes' }).click();
+  // Importing and the base body are folded under Your own garments.
+  await page.locator('summary', { hasText: 'Your own garments' }).click();
 
   // The base body downloads as OBJ in the browser build (the desktop app asks where to save it).
   const [download] = await Promise.all([page.waitForEvent('download'), page.getByTestId('garment-export-body').click()]);

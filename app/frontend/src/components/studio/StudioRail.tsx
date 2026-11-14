@@ -43,7 +43,7 @@ function HairStudioPanel() {
     <>
       <p className="hint">
         {cards
-          ? 'Comb, puff and smooth the guides with the brushes over the viewport, then save the style: it joins the hairstyles in 02 Hair.'
+          ? 'Comb, puff and smooth the guides with the brushes over the viewport, then save the style: it joins the hairstyles in Hair.'
           : 'Groom brushes work on card hair: choose Card hair to comb a style.'}
       </p>
       <HairPanel />
@@ -108,7 +108,7 @@ function TextureStudioPanel() {
         <p className="hint">
           {garment
             ? 'Saves the garment as it looks now (materials, seams, decals, paint, tint and grime in one texture) as a new garment in the Wardrobe, and wears it.'
-            : 'Saves the skin as it looks now (the base and every layer) as a new skin in 04 Appearance, and switches to it.'}
+            : 'Saves the skin as it looks now (the base and every layer) as a new skin in Skin, and switches to it.'}
         </p>
         <div className="picker-row">
           <label htmlFor="texture-save-name">Name</label>

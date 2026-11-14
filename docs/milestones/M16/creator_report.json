@@ -4,7 +4,8 @@
       "step_01_create",
       "step_02_hair",
       "step_03_wardrobe",
-      "step_04_appearance",
+      "step_04_skin",
+      "step_04_makeup",
       "step_05_look",
       "step_06_export"
     ],
@@ -32,9 +33,9 @@
       "mouth",
       "brows",
       "lashes",
-      "lips",
       "freckles",
-      "darkCircles"
+      "darkCircles",
+      "lips"
     ]
   },
   "hairStudio": {
@@ -47,7 +48,7 @@
     "meanDifferenceFromBase": 0.04311427696078431
   },
   "garmentStudio": {
-    "saved": "user:garment/Loose_tee_cbc18e04",
+    "saved": "user:garment/Loose_tee_421977b7",
     "triangles": 1800
   },
   "materialStudio": {
@@ -62,20 +63,20 @@
   },
   "library": {
     "thumbBrightness": {
-      "studio": 0.1785699522766818,
-      "night": 0.19054348468400217
+      "studio": 0.17933040804284733,
+      "night": 0.19103662463687512
     },
     "viewportBrightness": {
       "studio": 0.18430641904411718,
       "night": 0.20611146274517206
     },
     "entries": {
-      "bodies": 5,
-      "hair": 49,
-      "garments": 121,
-      "outfits": 2,
-      "skins": 53,
-      "materials": 11
+      "create-presets": 5,
+      "hair-styles": 18,
+      "wardrobe-garments": 24,
+      "wardrobe-outfits": 2,
+      "appearance-skins": 12,
+      "wardrobe-materials": 11
     }
   }
 }

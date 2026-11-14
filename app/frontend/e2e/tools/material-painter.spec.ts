@@ -106,7 +106,7 @@ test('Texture Studio: skin and garment painted in Material Painter come back', a
     });
 
     // ------------------------------------------------------------ 1. skin
-    await page.getByTestId('step-appearance').click();
+    await page.getByTestId('cat-skin').click();
     await page.getByTestId('open-texture-studio').click();
     await page.getByTestId('paint-open-skin').click();
     await expect(page.getByTestId('paint-open-skin')).toHaveText('Paint again in Material Painter', { timeout: 180_000 });

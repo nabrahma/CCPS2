@@ -1,13 +1,10 @@
 /**
- * The Character Creator (Part 2 F20): six steps in the left rail, each the
- * simple controls of one part of the character. The deep editors are in the
- * Asset Studio, opened from any step with "Edit in … Studio".
- *
- * 01 Create: base, body and face. 02 Hair. 03 Wardrobe. 04 Appearance: skin,
- * eyes, makeup and details. 05 Look: quality profile, look and lighting.
- * 06 Export.
+ * The editor's category panels (D-149): one per part of the character, each
+ * with only that part's controls, the common ones first and the rest folded
+ * away. The deep editors are in the Asset Studio, opened from a panel's
+ * "Edit in … Studio".
  */
-import { useMemo, useRef, useState, type ReactNode } from 'react';
+import { useRef, type ReactNode } from 'react';
 import {
   bodyMeshFor,
   HAIR_COLOUR_PRESETS,
@@ -35,10 +32,13 @@ import { backend } from '../../backend';
 import { useStudio, useStudioVersion } from '../../state/hooks';
 import { materialTarget, refreshUserLibrary, type CreatorEntry } from '../../state/library';
 import { useUi } from '../../state/ui';
-import { LibraryGrid, Thumb } from '../library/LibraryGrid';
+import { LibraryGrid, Thumb, type LibraryFacet } from '../library/LibraryGrid';
 import { ExportPanel } from '../panels/ExportPanel';
 import { ExpressionsPanel } from '../panels/ExpressionsPanel';
-import { FacePartsSection } from '../panels/FacePartsSection';
+import { EyesControls, MouthControls, PaintedPart } from '../panels/FacePartsSection';
+import { GarmentInspector } from '../Inspector';
+import { VisibilityToggle } from '../workspace/Dock';
+import { plain } from '../../state/names';
 import { TintRow } from '../panels/HairPanel';
 import { SliderPanel } from '../panels/SliderPanel';
 
@@ -59,15 +59,11 @@ function StudioButton({ label, testId, onClick, hint }: { label: string; testId:
   );
 }
 
-// ------------------------------------------------------------------ 01 Create
+// ------------------------------------------------------------------ Body and Face
 
-export function CreateStep() {
+export function BodyPanel() {
   const studio = useStudio();
   const ui = useUi();
-  // Body or face, one region, or the favourites: chosen here or in the parts tree.
-  const focus = ui.sliderFocus;
-  const sub = focus.sub;
-  const setSub = (s: 'body' | 'face') => ui.focusSliders({ sub: s });
   const savePreset = async () => {
     const name = window.prompt('Save these sliders as a preset named', studio.engine.doc.name)?.trim();
     if (!name) return;
@@ -80,41 +76,38 @@ export function CreateStep() {
     }
   };
   return (
-    <div className="slider-panel creator-step" data-testid="step-panel-create">
-      {!focus.group && !focus.favourites && (
-      <Section title="Base" testId="create-base">
-        <p className="hint">Start from a body preset, then shape it below.</p>
+    <div className="creator-step" data-testid="step-panel-body">
+      <Section title="Start from" testId="create-base">
         <LibraryGrid categories={['bodies']} tools={false} testId="create-presets" />
         <button className="link" onClick={() => void savePreset()} data-testid="create-save-preset">
-          Save sliders as a preset…
+          Save these sliders as a preset…
         </button>
       </Section>
-      )}
-      <div className="toggle-row" role="tablist" aria-label="Sliders">
-        {(['body', 'face'] as const).map((t) => (
-          <button key={t} role="tab" aria-selected={sub === t && !focus.favourites} className={sub === t && !focus.favourites ? 'chip active' : 'chip'} onClick={() => setSub(t)} data-testid={`create-${t}`}>
-            {t === 'body' ? 'Body' : 'Face'}
-          </button>
-        ))}
-        {focus.group && (
-          <button className="chip active" onClick={() => setSub(sub)} title="Show every group" data-testid="create-group">
-            {focus.group} ×
-          </button>
-        )}
-        {focus.favourites && (
-          <button className="chip active" onClick={() => setSub(sub)} title="Show every slider" data-testid="create-favourites">
-            Favourites ×
-          </button>
-        )}
-      </div>
-      <div role="tabpanel" aria-label={focus.favourites ? 'Favourite sliders' : sub === 'body' ? 'Body' : 'Face'}>
-        <SliderPanel tab={sub} group={focus.group} favourites={focus.favourites} key={`${sub}|${focus.group}|${focus.favourites}`} />
-      </div>
+      <SliderPanel tab="body" />
     </div>
   );
 }
 
-// ------------------------------------------------------------------ 02 Hair
+export function FacePanel() {
+  return (
+    <div className="creator-step" data-testid="step-panel-face">
+      <SliderPanel tab="face" />
+    </div>
+  );
+}
+
+// ------------------------------------------------------------------ Hair
+
+const tagged = (tag: string) => (e: CreatorEntry) => e.tags.includes(tag);
+
+const HAIR_FACETS: LibraryFacet[] = [
+  { id: 'short', label: 'Short', test: tagged('short') },
+  { id: 'medium', label: 'Medium', test: tagged('medium') },
+  { id: 'long', label: 'Long', test: tagged('long') },
+  { id: 'editable', label: 'Editable (hair cards)', test: tagged('editable') },
+  { id: 'mesh', label: 'Mesh (MakeHuman)', test: tagged('mesh') },
+  { id: 'yours', label: 'Yours', test: tagged('yours') },
+];
 
 export function HairStep() {
   const studio = useStudio();
@@ -140,7 +133,10 @@ export function HairStep() {
   return (
     <div className="slider-panel creator-step" data-testid="step-panel-hair">
       <Section title="Hairstyle">
-        <LibraryGrid categories={['hair']} testId="hair-styles" limit={16} />
+        <LibraryGrid categories={['hair']} testId="hair-styles" limit={18} facets={HAIR_FACETS} allLabel="All styles" />
+        <p className="hint">
+          <strong>Editable</strong> styles are PS2CC's own hair cards: reshape them in Hair Studio. <strong>Mesh</strong> styles come from MakeHuman's community: a fixed shape you can tint.
+        </p>
       </Section>
       {hair.mode === 'cards' && (
         <>
@@ -200,27 +196,27 @@ export function HairStep() {
   );
 }
 
-// ------------------------------------------------------------------ 03 Wardrobe
+// ------------------------------------------------------------------ Clothes
 
-const SLOTS: { id: GarmentSlotName | 'all'; label: string }[] = [
-  { id: 'all', label: 'All' },
-  { id: 'top', label: 'Tops' },
-  { id: 'outer', label: 'Outer' },
-  { id: 'bottom', label: 'Bottoms' },
-  { id: 'full', label: 'Suits & dresses' },
-  { id: 'shoes', label: 'Shoes' },
-  { id: 'gloves', label: 'Gloves' },
-  { id: 'hat', label: 'Hats' },
-  { id: 'accessory', label: 'Accessories' },
-];
+const SLOT_FACETS: LibraryFacet[] = (
+  [
+    ['top', 'Tops'],
+    ['outer', 'Outerwear'],
+    ['bottom', 'Bottoms'],
+    ['full', 'Suits and dresses'],
+    ['shoes', 'Shoes'],
+    ['gloves', 'Gloves'],
+    ['hat', 'Hats'],
+    ['accessory', 'Accessories'],
+    ['yours', 'Yours'],
+  ] as const
+).map(([id, label]) => ({ id, label, test: id === 'yours' ? tagged('yours') : (e: CreatorEntry) => e.tags[0] === id }));
 
-export function WardrobeStep() {
+export function ClothesPanel() {
   const studio = useStudio();
   useStudioVersion();
   const ui = useUi();
-  const [slot, setSlot] = useState<GarmentSlotName | 'all'>('all');
   const worn = studio.engine.doc.garments;
-  const filter = useMemo(() => (slot === 'all' ? undefined : (e: CreatorEntry) => e.tags[0] === slot), [slot]);
   const importGarment = async () => {
     try {
       const path = await backend.pickGarmentFile();
@@ -249,23 +245,23 @@ export function WardrobeStep() {
   };
   const user = studio.assets.catalog.proxies.filter((p) => p.category === 'clothes' && p.tags.includes('user'));
   return (
-    <div className="slider-panel creator-step" data-testid="step-panel-wardrobe">
-      {worn.length > 0 && (
-        <div className="worn">
-          <h3>Wearing</h3>
-          {worn.map((g) => {
-            const key = `garment:${g.slot}:${g.asset}`;
-            const name = studio.assets.hasProxy(g.asset) ? studio.assets.proxyInfo(g.asset).name.replace(/_/g, ' ') : 'Missing garment';
-            return (
-              <div className="worn-row" key={g.asset}>
-                <button className="worn-item" onClick={() => ui.select(key)} title="Tint, grime, materials and paint (Inspector)">
-                  {name} <span className="muted">({g.slot})</span>
+    <div className="creator-step" data-testid="step-panel-wardrobe">
+      <div className="worn">
+        <h3>Wearing</h3>
+        {worn.length === 0 && <p className="muted">Nothing yet: pick an outfit or garments below.</p>}
+        {worn.map((g) => {
+          const key = `garment:${g.slot}:${g.asset}`;
+          const name = studio.assets.hasProxy(g.asset) ? plain(studio.assets.proxyInfo(g.asset).name) : 'Missing garment';
+          const open = ui.selected === key;
+          return (
+            <div className={open ? 'worn-item-wrap open' : 'worn-item-wrap'} key={g.asset} data-testid="worn-garment" data-part={key}>
+              <div className="worn-row">
+                <button className="worn-item" onClick={() => ui.select(open ? null : key)} aria-expanded={open} title="Its colour, grime, materials and paint" data-testid="worn-open">
+                  <span className="twist">{open ? '▾' : '▸'}</span> {name} <span className="muted">{SLOT_LABEL[g.slot]}</span>
                 </button>
-                <button onClick={() => ui.openStudio({ kind: 'garment', target: key })} title="Reshape it in Garment Studio" data-testid="worn-edit">
-                  Edit
-                </button>
+                <VisibilityToggle partKey={key} label={name} />
                 <button
-                  className="asset-delete"
+                  className="icon"
                   aria-label={`Take off ${name}`}
                   title="Take it off"
                   onClick={() => studio.engine.update('Remove garment', (d) => void (d.garments = d.garments.filter((x) => x.asset !== g.asset)))}
@@ -273,28 +269,24 @@ export function WardrobeStep() {
                   ×
                 </button>
               </div>
-            );
-          })}
+              {open && <GarmentInspector partKey={key} />}
+            </div>
+          );
+        })}
+        {worn.length > 0 && (
           <button className="link" onClick={() => void saveOutfit()} data-testid="save-outfit">
             Save as outfit…
           </button>
-        </div>
-      )}
+        )}
+      </div>
       <Section title="Outfits">
         <LibraryGrid categories={['outfits']} tools={false} testId="wardrobe-outfits" />
       </Section>
       <Section title="Garments">
-        <div className="toggle-row wrap">
-          {SLOTS.map((s) => (
-            <button key={s.id} className={slot === s.id ? 'chip active' : 'chip'} onClick={() => setSlot(s.id)} data-testid={`wardrobe-slot-${s.id}`}>
-              {s.label}
-            </button>
-          ))}
-        </div>
-        <LibraryGrid categories={['garments']} filter={filter} testId="wardrobe-garments" limit={24} key={slot} />
+        <LibraryGrid categories={['garments']} facets={SLOT_FACETS} allLabel="All garments" testId="wardrobe-garments" limit={24} />
       </Section>
       <Section title="Materials" testId="wardrobe-materials-section">
-        <p className="hint">Click a material to dress {materialTarget(studio) ? 'the selected (or outermost) garment' : 'a garment once one is worn'} in it. Finer work (zones, seams, decals) is in Texture Studio.</p>
+        <p className="hint">Click a material to dress {materialTarget(studio) ? 'the open (or outermost) garment' : 'a garment once one is worn'} in it.</p>
         <LibraryGrid categories={['materials']} tools={false} testId="wardrobe-materials" limit={12} />
         <StudioButton
           label="Make a material in Material Studio"
@@ -306,7 +298,7 @@ export function WardrobeStep() {
           }}
         />
       </Section>
-      <Section title="Your own garments">
+      <Section title="Your own garments" open={false}>
         <div className="garment-tools">
           <button data-testid="garment-import" title="Import an OBJ, FBX or GLB modelled around the base body" onClick={() => void importGarment()}>
             Import garment…
@@ -318,7 +310,7 @@ export function WardrobeStep() {
         <ul className="asset-list">
           {user.map((p) => (
             <li key={p.id} className="asset-row">
-              <span className="asset-name">{p.name.replace(/_/g, ' ')}</span>
+              <span className="asset-name">{plain(p.name)}</span>
               <button
                 className="asset-delete"
                 title={`Delete ${p.name} from the library`}
@@ -341,10 +333,19 @@ export function WardrobeStep() {
   );
 }
 
-// ------------------------------------------------------------------ 04 Appearance
+// ------------------------------------------------------------------ Skin, eyes, brows, lashes, makeup, mouth
 
 const MAKEUP: LayerKind[] = ['lips', 'eyeliner', 'blush'];
 const DETAILS: LayerKind[] = ['freckles', 'stubble', 'darkCircles', 'eyeBags', 'dirt', 'bruises', 'sweat', 'pores', 'stubbleHair'];
+
+const SKIN_FACETS: LibraryFacet[] = [
+  { id: 'female', label: 'Female', test: tagged('female') },
+  { id: 'male', label: 'Male', test: tagged('male') },
+  { id: 'young', label: 'Young', test: tagged('young') },
+  { id: 'middle-aged', label: 'Middle-aged', test: tagged('middle-aged') },
+  { id: 'old', label: 'Old', test: tagged('old') },
+  { id: 'yours', label: 'Yours', test: tagged('yours') },
+];
 
 /** One skin layer kind as an on/off switch, its strength and (makeup) its colour. */
 function LayerSwitch({ kind }: { kind: LayerKind }) {
@@ -369,7 +370,7 @@ function LayerSwitch({ kind }: { kind: LayerKind }) {
       merge,
     );
   return (
-    <div className="layer-switch" data-testid={`appearance-${kind}`}>
+    <div className={on ? 'layer-switch on' : 'layer-switch'} data-testid={`appearance-${kind}`}>
       <label className="check">
         <input type="checkbox" checked={on} onChange={(e) => toggle(e.target.checked)} data-testid={`appearance-${kind}-on`} /> {spec.label}
       </label>
@@ -401,7 +402,7 @@ function LayerSwitch({ kind }: { kind: LayerKind }) {
   );
 }
 
-export function AppearanceStep() {
+export function SkinStep() {
   const studio = useStudio();
   useStudioVersion();
   const ui = useUi();
@@ -417,18 +418,12 @@ export function AppearanceStep() {
     }
   };
   return (
-    <div className="slider-panel creator-step" data-testid="step-panel-appearance">
-      <Section title="Skin">
-        <LibraryGrid categories={['skins']} testId="appearance-skins" limit={12} />
+    <div className="creator-step" data-testid="step-panel-appearance">
+      <Section title="Skin texture">
+        <LibraryGrid categories={['skins']} testId="appearance-skins" limit={12} facets={SKIN_FACETS} allLabel="All skins" />
         <button className="link" onClick={() => void importSkin()} title="A full-body skin painted on the MakeHuman (hm08) UV layout">
-          Import skin…
+          Import a skin…
         </button>
-      </Section>
-      <FacePartsSection />
-      <Section title="Makeup">
-        {MAKEUP.map((k) => (
-          <LayerSwitch key={k} kind={k} />
-        ))}
       </Section>
       <Section title="Details">
         {DETAILS.map((k) => (
@@ -438,14 +433,57 @@ export function AppearanceStep() {
       <StudioButton
         label="Edit in Texture Studio"
         testId="open-texture-studio"
-        hint="Every skin layer and its settings, face photos, painting (here or in Material Painter); save the skin as a new library skin"
+        hint="Every skin layer and its settings, face photos, painting; save the skin as a new library skin"
         onClick={() => ui.openStudio({ kind: 'texture', target: 'skin' })}
       />
     </div>
   );
 }
 
-// ------------------------------------------------------------------ 05 Look
+export function EyesPanel() {
+  return (
+    <div className="creator-step" data-testid="step-panel-eyes">
+      <EyesControls />
+    </div>
+  );
+}
+
+export function BrowsPanel() {
+  return (
+    <div className="creator-step" data-testid="step-panel-brows">
+      <PaintedPart kind="brows" mesh="eyebrows" label="Eyebrows" />
+    </div>
+  );
+}
+
+export function LashesPanel() {
+  return (
+    <div className="creator-step" data-testid="step-panel-lashes">
+      <PaintedPart kind="lashes" mesh="eyelashes" label="Eyelashes" />
+    </div>
+  );
+}
+
+export function MakeupPanel() {
+  return (
+    <div className="creator-step" data-testid="step-panel-makeup">
+      {MAKEUP.map((k) => (
+        <LayerSwitch key={k} kind={k} />
+      ))}
+      <p className="hint">Each is painted on the skin. Their finer settings are in Texture Studio.</p>
+    </div>
+  );
+}
+
+export function MouthPanel() {
+  return (
+    <div className="creator-step" data-testid="step-panel-mouth">
+      <MouthControls />
+    </div>
+  );
+}
+
+// ------------------------------------------------------------------ Look
 
 /** Part 1's lighting presets, then the graded Part 2 looks (F14). */
 const PART1_LOOKS: LightingPresetId[] = ['studio', 'flashlight', 'overcast', 'night'];
@@ -554,7 +592,7 @@ export function LookStep() {
   );
 }
 
-// ------------------------------------------------------------------ 06 Export
+// ------------------------------------------------------------------ Export
 
 export function ExportStep() {
   return (

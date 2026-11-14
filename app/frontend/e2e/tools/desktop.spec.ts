@@ -93,8 +93,7 @@ async function exportDigest(page: Page): Promise<{ glb: string; message: string 
 
 /** Move a body slider with the keyboard, like a user (marks the character as changed). */
 async function nudgeSlider(page: Page, index: number, presses: number): Promise<void> {
-  await page.getByRole('tab', { name: 'Create' }).click();
-  await page.getByTestId('create-body').click();
+  await page.getByRole('tab', { name: 'Body', exact: true }).click();
   const slider = page.locator('.slider-row input[type="range"]').nth(index);
   await slider.focus();
   for (let i = 0; i < presses; i++) await slider.press('ArrowRight');
@@ -178,7 +177,7 @@ test('desktop: first run, save, character browser, round trip and crash recovery
 
     // ---------------------------------------------------------------- custom garment (M10)
     await page.evaluate(async (p) => (window as unknown as TestWindow).__ps2cc.openPath(p), docPath); // the duplicate is open now
-    await page.getByRole('tab', { name: 'Wardrobe' }).click();
+    await page.getByRole('tab', { name: 'Clothes' }).click();
     const shirtPath = resolve(APP, '../tests/fixtures/garments/test_shirt.obj');
     await page.evaluate((path) => (window as unknown as TestWindow).__ps2ccTest.useUi.getState().openGarmentImport({ path }), shirtPath);
     await expect(page.getByTestId('garment-import-status')).toContainText('10,944 triangles');

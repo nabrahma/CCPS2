@@ -25,7 +25,7 @@ With Classic (per-vertex) lighting a catch-light is painted into the texture. Pe
 
 ## Eyebrows and eyelashes (0.20.0)
 
-Brows and lashes are painted on the skin, as the era's games did them. There is no brow or lash geometry, so nothing shows as a cut-out strip up close (D-146). They are in **04 Appearance**, under Eyes & brows:
+Brows and lashes are painted on the skin, as the era's games did them. There is no brow or lash geometry, so nothing shows as a cut-out strip up close (D-146). They each have their own category in the editor, **Brows** and **Lashes**:
 
 - **Eyebrows:** they sit where MakeHuman's eyebrow mesh did, and are drawn hair by hair over a soft fill. The hairs grow the way real brows do (D-148):
   - upright at the inner end;
@@ -54,7 +54,7 @@ To get the dark, smoky faces of the era's horror games, combine:
 
 Both are drawn at the skin composite's full 2048 px around the eyes, not at the 1024 px of the other painted layers. At 1024 px a brow is only about 30 by 5 texels. They move with the face in expressions and go into the exported head texture like any skin layer.
 
-A character saved with MakeHuman's brow or lash mesh keeps it. 04 Appearance then offers **Use painted**, which removes the mesh and turns the painted layer on, in one undo step. Card brows (M12) still load on such characters, but new characters don't get them.
+A character saved with MakeHuman's brow or lash mesh keeps it. Brows and Lashes then offer **Use painted**, which removes the mesh and turns the painted layer on, in one undo step. Card brows (M12) still load on such characters, but new characters don't get them.
 
 ![Painted brows and lashes](milestones/Face/painted_front.png)
 

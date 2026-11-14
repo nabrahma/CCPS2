@@ -1,16 +1,16 @@
 /** UI-only state (no character data): tabs, view options, selection, toasts. */
 import { create } from 'zustand';
-import type { AtlasRegion, DecalKind, LibraryCategory, LightingModel, Look, PhotoCheck, ShadowMode } from '@ps2cc/core';
+import type { AtlasRegion, DecalKind, LightingModel, Look, PhotoCheck, ShadowMode } from '@ps2cc/core';
 import type { GarmentFile } from '../backend';
 import { DEFAULT_POST, type CameraPresetId, type LightingPresetId, type PostSettings, type ShadingMode } from '@ps2cc/viewport';
 
 export type BackgroundId = 'preset' | 'black' | 'grey' | 'image';
 
-/** The Character Creator's six steps (Part 2 F20). */
-export type TabId = 'create' | 'hair' | 'wardrobe' | 'appearance' | 'look' | 'export';
+/** The editor's categories (D-149): one per part of the character, each with its own panel. */
+export type TabId = 'body' | 'face' | 'skin' | 'eyes' | 'brows' | 'lashes' | 'makeup' | 'mouth' | 'hair' | 'clothes' | 'look' | 'export';
 
-/** The right dock's tabs (M18): the parts tree and controls, the library, the Asset Studio, settings. */
-export type DockTab = 'modify' | 'library' | 'studio' | 'settings';
+/** What the dock shows: a category's panel, the Asset Studio, or settings. */
+export type DockTab = 'modify' | 'studio' | 'settings';
 
 /** The Asset Studio's editors (Part 2 F20). */
 export type StudioKind = 'hair' | 'texture' | 'garment' | 'material';
@@ -59,9 +59,8 @@ export interface UiState {
   symmetry: boolean;
   search: string;
   locks: Set<string>;
+  /** The part clicked in the viewport (a garment's settings open in Clothes). */
   selected: string | null;
-  /** What the right column shows. */
-  railMode: 'controls' | 'inspect';
   shading: ShadingMode;
   wireOverlay: boolean;
   lighting: LightingPresetId;
@@ -80,16 +79,13 @@ export interface UiState {
   assetStudio: AssetStudioState | null;
   openStudio(v: AssetStudioState): void;
   closeStudio(): void;
-  /** The library browser's category; null closes it (back to Modify). */
-  library: { category: LibraryCategory } | null;
-  setLibrary(v: { category: LibraryCategory } | null): void;
-  /** The right dock's open tab (M18). */
+  /** What the dock shows. */
   dockTab: DockTab;
   setDockTab(v: DockTab): void;
-  /** Parts hidden in the viewport (the parts tree's checkboxes); not saved, not exported. */
+  /** Parts hidden in the viewport (the eye buttons); not saved, not exported. */
   hiddenParts: string[];
   toggleHidden(key: string): void;
-  /** 01 Create: body or face sliders, one slider group (the parts tree), or the favourite sliders. */
+  /** Body and Face: one slider region, or the favourite sliders. */
   sliderFocus: { sub: 'body' | 'face'; group: string | null; favourites: boolean };
   focusSliders(v: { sub: 'body' | 'face'; group?: string | null; favourites?: boolean }): void;
   /** Garment looks (Part 2 F18): what a click or drag on the selected garment does (null: nothing). */
@@ -116,7 +112,6 @@ export interface UiState {
   creditsOpen: boolean;
   setCreditsOpen(v: boolean): void;
   setTab(tab: TabId): void;
-  setRailMode(mode: 'controls' | 'inspect'): void;
   setCurated(v: boolean): void;
   setSymmetry(v: boolean): void;
   setSearch(v: string): void;
@@ -145,13 +140,12 @@ export type GarmentTool =
 let toastId = 0;
 
 export const useUi = create<UiState>((set) => ({
-  tab: 'create',
+  tab: 'body',
   curated: true,
   symmetry: true,
   search: '',
   locks: new Set(),
   selected: null,
-  railMode: 'controls',
   shading: 'ps2',
   wireOverlay: false,
   lighting: 'studio',
@@ -171,18 +165,15 @@ export const useUi = create<UiState>((set) => ({
       hairStudio: v.kind === 'hair',
       garmentStudio: v.kind === 'garment' ? v.target : null,
       garmentTool: null,
-      railMode: 'controls',
     }),
   closeStudio: () => set({ assetStudio: null, hairStudio: false, garmentStudio: null, garmentTool: null, dockTab: 'modify' }),
-  library: null,
-  setLibrary: (library) => set(library ? { library, dockTab: 'library' } : { library: null, dockTab: 'modify' }),
   dockTab: 'modify',
-  setDockTab: (dockTab) => set((s) => ({ dockTab, library: dockTab === 'library' ? (s.library ?? { category: 'bodies' }) : s.library })),
+  setDockTab: (dockTab) => set(dockTab === 'studio' ? { dockTab } : { dockTab, assetStudio: null, hairStudio: false, garmentStudio: null, garmentTool: null }),
   hiddenParts: [],
   toggleHidden: (key) => set((s) => ({ hiddenParts: s.hiddenParts.includes(key) ? s.hiddenParts.filter((k) => k !== key) : [...s.hiddenParts, key] })),
   sliderFocus: { sub: 'body', group: null, favourites: false },
   focusSliders: (v) =>
-    set({ ...(v.group ? { camera: v.sub === 'face' ? 'face' : 'full' } : {}), sliderFocus: { sub: v.sub, group: v.group ?? null, favourites: v.favourites ?? false }, tab: 'create', railMode: 'controls', dockTab: 'modify', assetStudio: null, hairStudio: false, garmentStudio: null, garmentTool: null }),
+    set({ ...(v.group ? { camera: v.sub === 'face' ? 'face' : 'full' } : {}), sliderFocus: { sub: v.sub, group: v.group ?? null, favourites: v.favourites ?? false }, tab: v.sub, dockTab: 'modify', assetStudio: null, hairStudio: false, garmentStudio: null, garmentTool: null }),
   garmentTool: null,
   setGarmentTool: (garmentTool) => set({ garmentTool }),
   garmentStudio: null,
@@ -190,7 +181,7 @@ export const useUi = create<UiState>((set) => ({
   setGarmentStudio: (garmentStudio) =>
     set(
       garmentStudio
-        ? { garmentStudio, assetStudio: { kind: 'garment', target: garmentStudio }, hairStudio: false, garmentTool: null, railMode: 'controls', dockTab: 'studio' }
+        ? { garmentStudio, assetStudio: { kind: 'garment', target: garmentStudio }, hairStudio: false, garmentTool: null, dockTab: 'studio' }
         : { garmentStudio: null, assetStudio: null, garmentTool: null, dockTab: 'modify' },
     ),
   background: 'preset',
@@ -206,9 +197,18 @@ export const useUi = create<UiState>((set) => ({
   creditsOpen: false,
   setCreditsOpen: (creditsOpen) => set({ creditsOpen }),
   photo: null,
-  // A creator step closes the Asset Studio.
-  setTab: (tab) => set({ tab, search: '', railMode: 'controls', dockTab: 'modify', assetStudio: null, hairStudio: false, garmentStudio: null, garmentTool: null }),
-  setRailMode: (railMode) => set({ railMode }),
+  // A category closes the Asset Studio; Body and Face keep their slider region only between themselves.
+  setTab: (tab) =>
+    set((s) => ({
+      tab,
+      search: '',
+      sliderFocus: tab === 'body' || tab === 'face' ? { sub: tab, group: s.sliderFocus.sub === tab ? s.sliderFocus.group : null, favourites: false } : s.sliderFocus,
+      dockTab: 'modify',
+      assetStudio: null,
+      hairStudio: false,
+      garmentStudio: null,
+      garmentTool: null,
+    })),
   setCurated: (curated) => set({ curated }),
   setSymmetry: (symmetry) => set({ symmetry }),
   setSearch: (search) => set({ search }),
@@ -219,8 +219,13 @@ export const useUi = create<UiState>((set) => ({
       else locks.add(id);
       return { locks };
     }),
-  // Choosing a part opens its details; clearing the selection leaves the column alone.
-  select: (selected) => set((s) => ({ selected, railMode: selected ? 'inspect' : s.railMode, dockTab: selected && !s.assetStudio ? 'modify' : s.dockTab })),
+  // Clicking a part in the viewport opens its category (a garment: Clothes, with its settings).
+  select: (selected) =>
+    set((s) => {
+      const tab = selected ? categoryOfPart(selected) : null;
+      if (!tab || s.assetStudio) return { selected };
+      return { selected, tab, dockTab: 'modify' };
+    }),
   setView: (patch) => set(patch),
   info: (message) => set((s) => ({ toasts: [...s.toasts, { id: ++toastId, kind: 'info', message }] })),
   error: (message, err) =>
@@ -241,3 +246,15 @@ export const useUi = create<UiState>((set) => ({
   openAtlasEditor: (atlasEditor) => set({ atlasEditor }),
   setPhoto: (photo) => set({ photo }),
 }));
+
+/** The category that edits a part of the scene (its key, as the viewport and scene name parts). */
+export function categoryOfPart(key: string): TabId | null {
+  if (key.startsWith('garment:') || key.startsWith('fur:')) return 'clothes';
+  if (key === 'hair') return 'hair';
+  if (key === 'body') return 'skin';
+  if (key === 'eyes') return 'eyes';
+  if (key === 'eyebrows' || key === 'browCards') return 'brows';
+  if (key === 'eyelashes') return 'lashes';
+  if (key === 'teeth' || key === 'tongue') return 'mouth';
+  return null;
+}

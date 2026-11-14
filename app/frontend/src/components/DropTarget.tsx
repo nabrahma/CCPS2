@@ -89,7 +89,7 @@ export function DropTarget({ children }: { children: ReactNode }) {
   const handle = (files: File[], paths: string[], x: number, y: number) => {
     // A mesh can only be a garment (PRD F4).
     if (paths.length === 1 && /\.(obj|fbx|glb)$/i.test(paths[0]!)) {
-      ui.setTab('wardrobe');
+      ui.setTab('clothes');
       ui.openGarmentImport({ path: paths[0]! });
       return;
     }

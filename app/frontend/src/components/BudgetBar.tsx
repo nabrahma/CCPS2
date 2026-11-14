@@ -37,7 +37,7 @@ export function BudgetBar() {
           Textures <b>{(b.textureBytes / (1024 * 1024)).toFixed(1)} MB</b>
         </span>
         <span title="Export skeleton (GameEngine, no face bones)">Bones <b>{studio.engine.skeleton.rig.boneCount}</b></span>
-        <span title="Expression blendshapes baked at export (06 Export)" data-testid="budget-blendshapes">
+        <span title="Expression blendshapes baked at export (Export)" data-testid="budget-blendshapes">
           Blendshapes <b>{studio.engine.doc.expressionsToBake.length}</b>
         </span>
       </span>

@@ -1,16 +1,28 @@
 /**
- * The viewport (M18): the character, the camera bar (top left), the
- * Character Creator's six steps (bottom), and the studios' tools over it.
+ * The viewport (M18): the character, the camera bar (top left), and the
+ * studios' tools over it.
  * How it draws is set in the top bar.
  */
 import { useEffect, useRef } from 'react';
 import { CAMERA_PRESETS, type CameraPresetId } from '@ps2cc/viewport';
 import { useStudio, useStudioVersion } from '../state/hooks';
-import { useUi } from '../state/ui';
+import { useUi, type TabId } from '../state/ui';
 import { HairStudio } from './HairStudio';
 import { GarmentLookTool } from './GarmentLookTool';
 import { GarmentStudio } from './GarmentStudio';
-import { TABS } from './workspace/steps';
+
+/** The camera each category opens with (none: it stays where it is). */
+const CATEGORY_CAMERA: Partial<Record<TabId, CameraPresetId>> = {
+  body: 'full',
+  face: 'face',
+  eyes: 'face',
+  brows: 'face',
+  lashes: 'face',
+  makeup: 'face',
+  mouth: 'face',
+  hair: 'bust',
+  clothes: 'full',
+};
 
 /** Short names for the camera bar; the full name is the button's tooltip. */
 const CAMERA_LABELS: Record<CameraPresetId, string> = { full: 'Full', bust: 'Bust', face: 'Face', threeQuarter: '3/4', profile: 'Profile', back: 'Back' };
@@ -46,18 +58,33 @@ export function ViewportPanel() {
     vp.refresh();
   }, [studio, ui.shading, ui.wireOverlay, ui.lighting, ui.customLook, ui.lightingModel, ui.shadowMode, ui.post, ui.turntable, ui.poseTest, ui.background, ui.hiddenParts]);
 
-  // The camera follows the parts tree: a face region frames the face, a body region the whole body.
+  // The camera follows the slider region: a face region frames the face, a body region the whole body.
   const focusGroup = ui.sliderFocus.group;
   useEffect(() => {
     if (focusGroup) studio.viewport?.setCameraPreset(ui.camera);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [focusGroup]);
 
+  // Opening a category frames its part: the face for the eyes, brows, lashes, makeup and mouth,
+  // the bust for the hair, the whole body for the body and clothes (D-149).
+  const tab = ui.tab;
+  const first = useRef(true);
+  useEffect(() => {
+    if (first.current) {
+      first.current = false;
+      return;
+    }
+    const preset = CATEGORY_CAMERA[tab];
+    if (!preset || useUi.getState().dockTab !== 'modify') return;
+    useUi.getState().setView({ camera: preset });
+    studio.viewport?.setCameraPreset(preset);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tab]);
+
   const camera = (id: CameraPresetId) => {
     ui.setView({ camera: id });
     studio.viewport?.setCameraPreset(id);
   };
-  const inCreator = ui.assetStudio === null;
 
   return (
     <div className="viewport">
@@ -82,20 +109,6 @@ export function ViewportPanel() {
           </label>
         </div>
       </div>
-      {inCreator && (
-        <nav className="step-strip" role="tablist" aria-label="Character Creator">
-          {TABS.map((t) => {
-            const on = ui.tab === t.id && ui.dockTab === 'modify' && ui.railMode === 'controls';
-            return (
-              <button key={t.id} role="tab" aria-selected={on} aria-label={t.label} title={`${t.step} ${t.label}: ${t.hint}`} className={on ? 'step active' : 'step'} onClick={() => ui.setTab(t.id)} data-testid={`step-${t.id}`}>
-                <span className="step-number">{t.step}</span>
-                {t.icon}
-                <span className="step-label">{t.label}</span>
-              </button>
-            );
-          })}
-        </nav>
-      )}
       {ui.hairStudio && studio.engine.doc.hair.mode === 'cards' && studio.scene.cardHair && <HairStudio canvas={canvasRef.current} />}
       {ui.garmentTool && !ui.garmentStudio && <GarmentLookTool canvas={canvasRef.current} />}
       {ui.garmentStudio && <GarmentStudio key={ui.garmentStudio} canvas={canvasRef.current} partKey={ui.garmentStudio} />}

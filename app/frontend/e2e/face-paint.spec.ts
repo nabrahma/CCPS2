@@ -1,7 +1,7 @@
 /**
  * Painted eyebrows and eyelashes (D-146): new characters have them on the
- * skin and no brow or lash geometry; 04 Appearance turns them on and off and
- * sets them; a character saved with the old meshes switches with one click.
+ * skin and no brow or lash geometry; the Brows and Lashes panels turn them
+ * on and off and set them; a character saved with the old meshes switches with one click.
  * Writes review images to docs/milestones/Face/.
  */
 import { mkdirSync } from 'node:fs';
@@ -25,7 +25,7 @@ const frame = async (page: Page, name: string, f: { targetHeight: number; span: 
 const layer = (page: Page, kind: string) =>
   page.evaluate((kind) => (window as unknown as TestWindow).__ps2cc.engine.doc.skin.layers.find((l) => l.kind === kind) ?? null, kind);
 
-test('painted brows and lashes: no geometry, set in 04 Appearance, old meshes switch in one click', async ({ page }) => {
+test('painted brows and lashes: no geometry, each in its own panel, old meshes switch in one click', async ({ page }) => {
   test.setTimeout(300_000);
   mkdirSync(OUT, { recursive: true });
   await boot(page);
@@ -42,14 +42,14 @@ test('painted brows and lashes: no geometry, set in 04 Appearance, old meshes sw
   await frame(page, 'painted_threeQuarter', { targetHeight: 0.92, span: 0.2, yaw: Math.PI / 4, pitch: 0.02 });
   await frame(page, 'painted_eye', { targetHeight: 0.935, span: 0.075, yaw: 0.2, pitch: 0 });
 
-  // The parts tree still lists them, and opens their settings.
-  await page.getByTestId('tree-painted-brows').click();
-  await expect(page.getByRole('tabpanel', { name: 'Appearance' })).toBeVisible();
-
-  // 04 Appearance: their settings.
+  // Brows and Lashes each have their own place in the editor, with their settings.
+  await page.getByTestId('cat-brows').click();
+  await expect(page.getByRole('tabpanel', { name: 'Brows' })).toBeVisible();
   await expect(page.getByTestId('face-brows-on')).toBeChecked();
   await page.getByTestId('face-brows-thickness').fill('1.6');
   expect((await layer(page, 'brows'))?.params.thickness).toBe(1.6);
+  await page.getByTestId('cat-lashes').click();
+  await expect(page.getByRole('tabpanel', { name: 'Lashes' })).toBeVisible();
   await page.getByTestId('face-lashes-length').fill('1.5');
   expect((await layer(page, 'lashes'))?.params.length).toBe(1.5);
   await frame(page, 'painted_thick_long', { targetHeight: 0.92, span: 0.2, yaw: 0, pitch: 0 });
@@ -67,8 +67,9 @@ test('painted brows and lashes: no geometry, set in 04 Appearance, old meshes sw
   });
   expect(await page.evaluate(() => (window as unknown as TestWindow).__ps2cc.scene.parts.some((p) => p.key === 'eyebrows'))).toBe(true);
   await frame(page, 'old_meshes_front', { targetHeight: 0.92, span: 0.2, yaw: 0, pitch: 0 });
-  await page.getByTestId('face-brows-to-painted').click();
   await page.getByTestId('face-lashes-to-painted').click();
+  await page.getByTestId('cat-brows').click();
+  await page.getByTestId('face-brows-to-painted').click();
   await page.evaluate(() => (window as unknown as TestWindow).__ps2cc.settled());
   const after = await page.evaluate(() => {
     const s = (window as unknown as TestWindow).__ps2cc;
@@ -81,9 +82,9 @@ test('painted brows and lashes: no geometry, set in 04 Appearance, old meshes sw
   expect((await layer(page, 'brows'))?.enabled).toBe(true);
   expect((await layer(page, 'lashes'))?.enabled).toBe(true);
   await expect(page.getByTestId('face-brows-to-painted')).toBeHidden();
-  // One undo puts the lash mesh back.
+  // One undo puts the brow mesh back.
   await page.evaluate(() => (window as unknown as TestWindow).__ps2cc.engine.undo());
-  expect(await page.evaluate(() => (window as unknown as TestWindow).__ps2cc.engine.doc.eyelashes.asset)).toBe('mh:eyelashes/eyelashes01');
+  expect(await page.evaluate(() => (window as unknown as TestWindow).__ps2cc.engine.doc.eyebrows.asset)).toBe('mh:eyebrows/eyebrow001');
   await page.getByTestId('face-brows').scrollIntoViewIfNeeded();
   await page.waitForTimeout(250);
   await page.screenshot({ path: resolve(OUT, 'ui_appearance_brows.png') });
@@ -95,7 +96,7 @@ test('brow and lash presets, the brow brush, and a dark smoky look', async ({ pa
   await boot(page);
   await waitForTestHooks(page);
   await page.getByLabel('Light').selectOption('studio');
-  await page.getByTestId('tree-painted-brows').click();
+  await page.getByTestId('cat-brows').click();
 
   // Presets set the shape and hair settings and keep the colour.
   await page.getByTestId('face-brows-color').fill('#1c1411');
@@ -103,7 +104,9 @@ test('brow and lash presets, the brow brush, and a dark smoky look', async ({ pa
   let brows = await layer(page, 'brows');
   expect(brows?.params.fill).toBe(0.7);
   expect(brows?.params.color).toBe('#1c1411');
+  await page.getByTestId('cat-lashes').click();
   await page.getByTestId('face-lashes-preset').selectOption('smoky');
+  await page.getByTestId('cat-brows').click();
   expect((await layer(page, 'lashes'))?.params.smudge).toBe(0.65);
   await frame(page, 'preset_soft_smoky_front', { targetHeight: 0.92, span: 0.2, yaw: 0, pitch: 0 });
   await frame(page, 'preset_soft_smoky_eye', { targetHeight: 0.935, span: 0.075, yaw: 0.2, pitch: 0 });
