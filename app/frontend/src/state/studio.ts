@@ -486,6 +486,7 @@ export class Studio {
 
   newCharacter(): void {
     this.engine.load(this.newDocument());
+    this.currentPath = null;
     this.savedText = serializeCharacter(this.engine.doc as CharacterDoc);
     this.bump();
   }
@@ -494,9 +495,10 @@ export class Studio {
    * Load a character document. `unsaved` keeps it marked as changed (a
    * restored autosave is not the saved file).
    */
-  loadText(text: string, opts: { unsaved?: boolean } = {}): void {
+  loadText(text: string, opts: { unsaved?: boolean; path?: string } = {}): void {
     const doc = parseCharacter(JSON.parse(text));
     this.engine.load(doc);
+    this.currentPath = opts.path || null;
     this.savedText = opts.unsaved ? '' : serializeCharacter(this.engine.doc as CharacterDoc);
     this.bump();
     const missing = doc.garments.filter((g) => !this.assets.hasProxy(g.asset));
@@ -505,8 +507,15 @@ export class Studio {
 
   /** Open a saved character by path (character browser). */
   async openPath(path: string): Promise<void> {
-    this.loadText(await backend.load(path));
+    this.loadText(await backend.load(path), { path });
   }
+
+  /**
+   * The file the character came from or was last saved as: Ctrl+S saves over
+   * it, wherever it is (M18). Null for a new character, which is saved into
+   * the data folder under its name.
+   */
+  currentPath: string | null = null;
 
   /** Thumbnail for the character browser: the full-body camera, 256 x 320, written beside the renders. */
   async saveThumbnail(): Promise<void> {
@@ -519,8 +528,9 @@ export class Studio {
 
   async save(as = false): Promise<string | null> {
     const text = serializeCharacter(this.engine.doc as CharacterDoc);
-    const path = as ? await backend.saveAs(text, this.engine.doc.name) : await backend.save(text);
+    const path = as ? await backend.saveAs(text, this.engine.doc.name) : await backend.save(text, this.currentPath);
     if (!path) return null;
+    if (as || this.currentPath) this.currentPath = path;
     this.savedText = text;
     this.bump();
     // The character browser shows a thumbnail per saved character (desktop only; browser mode would download it).
@@ -529,9 +539,9 @@ export class Studio {
   }
 
   async open(): Promise<boolean> {
-    const text = await backend.open();
-    if (!text) return false;
-    this.loadText(text);
+    const opened = await backend.open();
+    if (!opened) return false;
+    this.loadText(opened.doc, { path: opened.path });
     return true;
   }
 
@@ -540,6 +550,7 @@ export class Studio {
     doc.id = crypto.randomUUID();
     doc.name = `${doc.name} copy`;
     this.engine.load(doc);
+    this.currentPath = null;
     this.savedText = '';
     this.bump();
   }

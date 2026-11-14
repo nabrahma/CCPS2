@@ -55,6 +55,9 @@ export function resolveAssetUrl(assetBaseUrl: string, path: string): string {
   return /^(https?:|blob:|data:|\/)/.test(path) ? path : `${assetBaseUrl.replace(/\/$/, '')}/${path}`;
 }
 
+/** The layer of parts the user hid (no camera or raycaster sees it). */
+const HIDDEN_LAYER = 1;
+
 /** Garment looks (Part 2 F18) are previewed at this size. */
 const GARMENT_PREVIEW_SIZE = 1024;
 
@@ -177,6 +180,12 @@ export class Viewport {
   exportSizePreview = true;
   /** The disc that catches the character's shadow (off for app-to-Unity parity renders, F22). */
   groundShadow = true;
+  /**
+   * Parts hidden by the user (the parts tree's checkboxes, M18): kept on a
+   * layer the cameras, picking and shadows do not see. The export is not
+   * affected.
+   */
+  hiddenParts: ReadonlySet<string> = new Set();
   stats: ViewportStats = { fps: 0, frameMs: 0, drawCalls: 0, triangles: 0 };
 
   constructor(
@@ -404,6 +413,12 @@ export class Viewport {
     const target = camera === this.camera ? this.controls.target.clone() : camera.position.clone().addScaledVector(camDir, 5);
     const light: LightState = { look, cameraPosition: camera.position, cameraDirection: camDir, cameraTarget: target, cameraRight: right, cameraUp: up, perPixel };
     const shadows = this.renderingFront || this.shading !== 'ps2' ? 'off' : this.shadows;
+    for (const [key, obj] of this.objects) {
+      const layer = this.hiddenParts.has(key) ? HIDDEN_LAYER : 0;
+      obj.mesh.layers.set(layer);
+      obj.soft?.layers.set(layer);
+      obj.wire?.layers.set(layer);
+    }
     this.renderShadows(light, shadows);
     // Spot light lives in world space; the character root is offset, so feed world positions.
     for (const obj of this.objects.values()) {
@@ -503,7 +518,7 @@ export class Viewport {
   private renderShadows(light: LightState, mode: ShadowMode): void {
     if (mode === 'off') return;
     const look = light.look;
-    const casters = [...this.objects.values()].filter((o) => o.mesh.visible).map((o) => ({ mesh: o.mesh, material: o.material }));
+    const casters = [...this.objects.entries()].filter(([key, o]) => o.mesh.visible && !this.hiddenParts.has(key)).map(([, o]) => ({ mesh: o.mesh, material: o.material }));
     if (casters.length === 0) return;
     const box = new THREE.Box3().setFromObject(this.root);
     if (box.isEmpty()) return;

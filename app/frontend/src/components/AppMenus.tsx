@@ -107,6 +107,9 @@ export function AppMenus() {
           Save sliders as preset…
         </button>
         <hr />
+        <button onClick={run(() => ui.setDataFolderOpen(true), 'Could not open the data folder settings')} data-testid="menu-data-folder">
+          Data folder…
+        </button>
         <button onClick={run(() => backend.openLogFolder(), 'Could not open logs')}>Open log folder</button>
       </Menu>
       <Menu id="edit" label="Edit" open={menu} setOpen={setMenu}>

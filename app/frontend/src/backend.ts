@@ -20,10 +20,31 @@ export interface AppInfo {
   pid?: number;
 }
 
+/** Where characters, the library and settings are kept (M18). */
+export interface DataFolder {
+  path: string;
+  default: string;
+  isDefault: boolean;
+  /** Set by PS2CC_HOME: not changeable in the app. */
+  fromEnv: boolean;
+  /** Why the chosen folder is not used this time ('' when it is). */
+  fallback: string;
+}
+
+/** What choosing a folder as the data folder would do. */
+export interface MovePlan {
+  root: string;
+  mode: 'copy' | 'use';
+  files: number;
+  bytes: number;
+}
+
 export interface CharacterInfo {
   name: string;
   path: string;
   modified: string;
+  /** A recent character saved outside the data folder. */
+  external?: boolean;
   /** Thumbnail URL on the app's asset server, when the character has one. */
   thumb?: string;
 }
@@ -93,7 +114,14 @@ interface GoApp {
   Log(level: string, message: string): Promise<void>;
   SaveCharacter(doc: string): Promise<string>;
   SaveCharacterAs(doc: string, name: string): Promise<string>;
-  OpenCharacter(): Promise<string>;
+  OpenCharacter(): Promise<{ path: string; doc: string } | null>;
+  SaveCharacterTo(path: string, doc: string): Promise<string>;
+  DataFolder(): Promise<DataFolder>;
+  ChooseDataFolder(): Promise<MovePlan | null>;
+  PlanDataFolder(dir: string): Promise<MovePlan>;
+  MoveDataFolder(dir: string): Promise<MovePlan>;
+  UseDefaultDataFolder(): Promise<void>;
+  Restart(): Promise<void>;
   LoadCharacter(path: string): Promise<string>;
   ListCharacters(): Promise<CharacterInfo[] | null>;
   Autosave(doc: string): Promise<string>;
@@ -136,6 +164,7 @@ interface GoApp {
 interface WailsRuntime {
   OnFileDrop(cb: (x: number, y: number, paths: string[]) => void, useDropTarget: boolean): void;
   OnFileDropOff(): void;
+  EventsOn?(name: string, cb: (...args: never[]) => void): () => void;
 }
 
 declare global {
@@ -177,9 +206,10 @@ export const backend = {
     if (g) void g.Log(level, message);
     else console[level === 'warn' ? 'warn' : level === 'error' ? 'error' : 'info'](`[ps2cc] ${message}`);
   },
-  async save(doc: string): Promise<string> {
+  /** Save a character: over `path` when it has one (opened or saved as), else into the data folder by its name. */
+  async save(doc: string, path: string | null = null): Promise<string> {
     const g = go();
-    if (g) return g.SaveCharacter(doc);
+    if (g) return path ? g.SaveCharacterTo(path, doc) : g.SaveCharacter(doc);
     localStorage.setItem('ps2cc:last', doc);
     return 'browser:localStorage';
   },
@@ -188,10 +218,39 @@ export const backend = {
     if (g) return g.SaveCharacterAs(doc, name);
     return backend.save(doc);
   },
-  async open(): Promise<string | null> {
+  /** Ask for a character file: its path and text, or null when cancelled. */
+  async open(): Promise<{ path: string; doc: string } | null> {
     const g = go();
-    if (g) return (await g.OpenCharacter()) || null;
-    return localStorage.getItem('ps2cc:last');
+    if (g) return (await g.OpenCharacter()) ?? null;
+    const doc = localStorage.getItem('ps2cc:last');
+    return doc ? { path: '', doc } : null;
+  },
+  async dataFolder(): Promise<DataFolder> {
+    const g = go();
+    if (g) return g.DataFolder();
+    return { path: 'browser storage', default: 'browser storage', isDefault: true, fromEnv: false, fallback: '' };
+  },
+  async chooseDataFolder(): Promise<MovePlan | null> {
+    const g = go();
+    return g ? ((await g.ChooseDataFolder()) ?? null) : browserOnly('Choosing a data folder');
+  },
+  async moveDataFolder(dir: string): Promise<MovePlan> {
+    const g = go();
+    return g ? g.MoveDataFolder(dir) : browserOnly('Moving the data folder');
+  },
+  async useDefaultDataFolder(): Promise<void> {
+    const g = go();
+    return g ? g.UseDefaultDataFolder() : browserOnly('Moving the data folder');
+  },
+  async restart(): Promise<void> {
+    const g = go();
+    return g ? g.Restart() : window.location.reload();
+  },
+  /** Copy progress while the data folder moves (desktop only). */
+  onDataFolderProgress(cb: (done: number, total: number) => void): () => void {
+    const rt = window.runtime;
+    if (!rt?.EventsOn) return () => undefined;
+    return rt.EventsOn('datafolder:progress', cb);
   },
   async load(path: string): Promise<string> {
     const g = go();

@@ -8,11 +8,12 @@ import { CreditsDialog } from './components/CreditsDialog';
 import { FirstRunSetup } from './components/FirstRunSetup';
 import { GarmentImportDialog } from './components/GarmentImportDialog';
 import { RecoveryPrompt } from './components/RecoveryPrompt';
-import { RightRail } from './components/RightRail';
-import { Sidebar } from './components/Sidebar';
+import { BudgetBar } from './components/BudgetBar';
+import { Dock } from './components/workspace/Dock';
+import { TopBar } from './components/workspace/TopBar';
 import { Toasts } from './components/Toasts';
 import { ViewportPanel } from './components/ViewportPanel';
-import { LibraryBrowser } from './components/library/LibraryBrowser';
+import { DataFolderDialog } from './components/DataFolderDialog';
 import { useShortcuts } from './shortcuts';
 import { loadLibraryPrefs, refreshUserLibrary } from './state/library';
 import { StudioContext } from './state/hooks';
@@ -37,6 +38,8 @@ export function App() {
         useUi.setState({ curated: settings.curatedView, symmetry: settings.symmetry });
         s.settings = settings;
         loadLibraryPrefs(settings);
+        // A data folder on a drive that is not connected: the app runs on the default one and says so.
+        void backend.dataFolder().then((f) => f.fallback && useUi.getState().error(`${f.fallback[0]!.toUpperCase()}${f.fallback.slice(1)}. Reconnect it and restart, or choose another in File → Data folder.`));
         void refreshUserLibrary(s);
         if (new URLSearchParams(window.location.search).has('e2e') || navigator.webdriver) {
           // Under test automation the GPU is SwiftShader (a CPU): tests start bakes themselves (studio.runBake) at small sizes,
@@ -92,23 +95,25 @@ function Shell() {
   useShortcuts();
   const browserOpen = useUi((s) => s.browserOpen);
   const setBrowserOpen = useUi((s) => s.setBrowserOpen);
-  const collapsed = useUi((s) => s.sidebarCollapsed);
   const creditsOpen = useUi((s) => s.creditsOpen);
   const setCreditsOpen = useUi((s) => s.setCreditsOpen);
   return (
-    <div className={collapsed ? 'shell sidebar-collapsed' : 'shell'}>
-      <Sidebar />
-      <DropTarget>
-        <ViewportPanel />
-      </DropTarget>
-      <RightRail />
+    <div className="shell">
+      <TopBar />
+      <main className="stage">
+        <DropTarget>
+          <ViewportPanel />
+        </DropTarget>
+      </main>
+      <Dock />
+      <BudgetBar />
       <Toasts />
       <RecoveryPrompt />
       <FirstRunSetup />
       {browserOpen && <CharacterBrowser onClose={() => setBrowserOpen(false)} />}
       {creditsOpen && <CreditsDialog onClose={() => setCreditsOpen(false)} />}
       <AtlasEditor />
-      <LibraryBrowser />
+      <DataFolderDialog />
       <GarmentImportDialog />
     </div>
   );

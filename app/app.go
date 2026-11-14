@@ -54,7 +54,7 @@ type AppInfo struct {
 	Pid int `json:"pid"`
 }
 
-const appVersion = "0.18.0"
+const appVersion = "0.19.0"
 
 func newApp(layout *paths.Layout, log *logging.Logger) *App {
 	return &App{
@@ -126,20 +126,28 @@ func (a *App) SaveCharacterAs(doc, suggestedName string) (string, error) {
 	if err := a.store.SaveAs(p, []byte(doc)); err != nil {
 		return "", err
 	}
+	if !strings.EqualFold(filepath.Ext(p), ".ps2char") {
+		p += ".ps2char"
+	}
+	a.remember(p)
 	return p, nil
 }
 
-// OpenCharacter shows an open dialog and returns the document text.
-func (a *App) OpenCharacter() (string, error) {
+// OpenCharacter shows an open dialog and returns the file and its text (nil when cancelled).
+func (a *App) OpenCharacter() (*OpenedCharacter, error) {
 	p, err := runtime.OpenFileDialog(a.ctx, runtime.OpenDialogOptions{
 		Title:            "Open character",
 		DefaultDirectory: a.layout.Characters,
 		Filters:          []runtime.FileFilter{{DisplayName: "PS2CC character (*.ps2char)", Pattern: "*.ps2char"}},
 	})
 	if err != nil || p == "" {
-		return "", err
+		return nil, err
 	}
-	return a.LoadCharacter(p)
+	doc, err := a.LoadCharacter(p)
+	if err != nil {
+		return nil, err
+	}
+	return &OpenedCharacter{Path: p, Doc: doc}, nil
 }
 
 // LoadCharacter reads a .ps2char from disk.
@@ -149,11 +157,19 @@ func (a *App) LoadCharacter(path string) (string, error) {
 		a.log.Errorf("load %s: %v", path, err)
 		return "", err
 	}
+	a.remember(path)
 	return string(data), nil
 }
 
 // ListCharacters lists saved characters for the browser.
-func (a *App) ListCharacters() ([]projects.CharacterInfo, error) { return a.store.List() }
+// Characters saved outside the data folder are listed too, from the recent files.
+func (a *App) ListCharacters() ([]projects.CharacterInfo, error) {
+	list, err := a.store.List()
+	if err != nil {
+		return nil, err
+	}
+	return append(list, a.recentOutside()...), nil
+}
 
 // Autosave writes a rotating autosave (10 kept per character).
 func (a *App) Autosave(doc string) (string, error) {

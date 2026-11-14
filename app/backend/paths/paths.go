@@ -18,6 +18,14 @@ type Layout struct {
 	Characters string
 	Settings   string // settings.json
 	Logs       string // %LOCALAPPDATA%\PS2CC\logs
+	// LocalAppData holds location.json, the pointer to a moved data folder.
+	LocalAppData string
+	// Default is the data folder when none was chosen (Documents\PS2CC).
+	Default string
+	// FromEnv is set when PS2CC_HOME chose the data folder (it cannot be moved in the app then).
+	FromEnv bool
+	// Fallback explains why the chosen data folder was not used this time (a drive not connected), or "".
+	Fallback string
 }
 
 // LibraryKinds are the library sub-folders from PRD 4.4.
@@ -33,21 +41,36 @@ func Resolve() (*Layout, error) {
 	if err != nil {
 		return nil, fmt.Errorf("home folder: %w", err)
 	}
-	root := os.Getenv("PS2CC_HOME")
-	if root == "" {
-		root = filepath.Join(home, "Documents", "PS2CC")
-	}
 	logRoot := os.Getenv("LOCALAPPDATA")
 	if logRoot == "" {
 		logRoot = filepath.Join(home, "AppData", "Local")
 	}
+	def := filepath.Join(home, "Documents", "PS2CC")
+	root, fromEnv, fallback := os.Getenv("PS2CC_HOME"), false, ""
+	if root != "" {
+		fromEnv = true
+	} else if chosen := readLocation(logRoot); chosen != "" {
+		// A data folder on a drive that is not connected must not stop the app: use the default this time.
+		if err := Usable(chosen); err != nil {
+			fallback = fmt.Sprintf("your data folder %s is not available (%v), so PS2CC is using %s this time", chosen, err, def)
+			root = def
+		} else {
+			root = chosen
+		}
+	} else {
+		root = def
+	}
 	l := &Layout{
-		CoreAssets: core,
-		Root:       root,
-		Library:    filepath.Join(root, "Library"),
-		Characters: filepath.Join(root, "Characters"),
-		Settings:   filepath.Join(root, "settings.json"),
-		Logs:       filepath.Join(logRoot, "PS2CC", "logs"),
+		LocalAppData: logRoot,
+		Default:      def,
+		FromEnv:      fromEnv,
+		Fallback:     fallback,
+		CoreAssets:   core,
+		Root:         root,
+		Library:      filepath.Join(root, "Library"),
+		Characters:   filepath.Join(root, "Characters"),
+		Settings:     filepath.Join(root, "settings.json"),
+		Logs:         filepath.Join(logRoot, "PS2CC", "logs"),
 	}
 	dirs := []string{l.Root, l.Library, l.Characters, l.Logs}
 	for _, k := range LibraryKinds {
