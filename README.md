@@ -6,12 +6,12 @@ PS2CC is a Windows desktop character creator with a late-PS2 / early-PS3 look. I
 
 It needs no Blender, no Python and no network connection to run.
 
-![PS2CC: a character in the viewport, with navigation on the left and the wardrobe on the right](docs/milestones/UI/wardrobe.png)
+![PS2CC: a face in the viewport, and the Brows panel of the editor with its brow brush](docs/milestones/UI/brows.png)
 
 ## What it does
 
 - **Workspace:** a big viewport and an editor with one category per part of the character (Body, Face, Skin, Eyes, Brows, Lashes, Makeup, Mouth, Hair, Clothes, Look, Export). Each category shows only its own controls and frames its part in the viewport. A status bar shows the budget. Save characters anywhere and move your data folder to any drive. See [docs/workspace.md](docs/workspace.md).
-- **Character Creator:** six steps (Create, Hair, Wardrobe, Appearance, Look, Export) with the simple controls, and a library of presets, hairstyles, garments, outfits, skins and materials shown as thumbnails under your look, with favourites, tags and search. The deep editors are in the **Asset Studio**: Hair, Texture, Garment and Material Studio, whose saved work joins the library. See [docs/creator-and-studio.md](docs/creator-and-studio.md).
+- **Character Creator:** the simple controls for each part, and a library of presets, hairstyles, garments, outfits, skins and materials shown as thumbnails under your look, with favourites, a filter and search. The deep editors are in the **Asset Studio**: Hair, Texture, Garment and Material Studio, whose saved work joins the library. See [docs/creator-and-studio.md](docs/creator-and-studio.md).
 - **Body and face:** MakeHuman's morph system, with curated sliders, symmetry, locks, randomize, undo, and your own presets.
 - **Quality profiles:** Classic, Enhanced and Hero set every budget at once (12k to 30k triangles, 512 to 2048 textures), with bodies from 8k triangles to the full MakeHuman mesh and a live budget meter for triangles, texture memory, bones and blendshapes.
 - **Wardrobe:** CC0 garments reduced to PS2 budgets, which refit to every body shape and hide the skin underneath. Drop a PNG on a garment to retexture it.
@@ -26,6 +26,34 @@ It needs no Blender, no Python and no network connection to run.
 - **PS2 preview:** per-vertex or per-pixel lighting with shadows, graded looks (fog, filmic curve, LUT, bloom, grain), low resolution, 16-bit dither and interlace effects, and textures shown at their export size. Looks save as `.ps2look` files for Unity.
 - **Baking:** a GPU ray tracer bakes occlusion, cavity and thickness from the whole character into its textures, the way the era's games baked shading. See [docs/look-foundation.md](docs/look-foundation.md).
 - **Unity export:** one FBX per character, with textures. The included Unity package sets up the Humanoid avatar, PS2 URP shaders that light the same way as the app, materials and a prefab. A PS2 Look component applies a saved look in your scene.
+
+## Screenshots
+
+All taken in the app.
+
+| <img src="docs/milestones/M15/cole_villageOvercast_full.png" alt="A man in a leather jacket and cargo trousers, full body"> | <img src="docs/milestones/M15/mara_villageOvercast_full.png" alt="A woman in a utility vest and trousers, full body"> |
+| :-: | :-: |
+| Cole: a leather jacket and cargo trousers | Mara: a utility vest over a roll-neck |
+
+| <img src="docs/milestones/M11/look_interiorFlashlight_hero_threeQuarter.png" alt="A man lit by a flashlight in the dark"> | <img src="docs/milestones/M11/look_foggyTown_hero_threeQuarter.png" alt="The same man in grey fog"> | <img src="docs/milestones/M11/look_villageOvercast_hero_threeQuarter.png" alt="The same man under an overcast sky"> |
+| :-: | :-: | :-: |
+| Interior flashlight | Foggy town | Village overcast |
+
+| <img src="docs/milestones/M11/bake_off_bust.png" alt="A bust without the bake"> | <img src="docs/milestones/M11/bake_on_bust.png" alt="The same bust with occlusion and cavity baked in"> |
+| :-: | :-: |
+| Before the bake | After: occlusion, cavity and thickness baked into the textures |
+
+| <img src="docs/milestones/Face/look_smoky_front.png" alt="A pale face with dark brows and smoky eyes, front"> | <img src="docs/milestones/Face/look_smoky_threeQuarter.png" alt="The same face from three-quarters"> | <img src="docs/milestones/Face/painted_eye.png" alt="A close-up of a brown eye, brow and lashes"> |
+| :-: | :-: | :-: |
+| Brows and lashes painted hair by hair | A smoky eye and thick brows | Up close |
+
+| <img src="docs/milestones/Hair/bob-fringe_threeQuarter.png" alt="A red bob with a fringe"> | <img src="docs/milestones/M12/ponytail_threeQuarter.png" alt="A ponytail"> | <img src="docs/milestones/M12/short-messy_threeQuarter.png" alt="Short messy hair"> |
+| :-: | :-: | :-: |
+| Card hair: a bob with a fringe | A ponytail | Short and messy |
+
+| <img src="docs/milestones/UI/mouth.png" alt="The Mouth panel, with the mouth open to show the teeth and tongue"> | <img src="docs/milestones/M12/ui_hair_studio.png" alt="Hair Studio with a bob being combed"> | <img src="docs/milestones/M16/ui_garment_studio.png" alt="Garment Studio with a T-shirt"> |
+| :-: | :-: | :-: |
+| Each part has its own panel; Mouth opens the mouth | Hair Studio: comb the guides with brushes | Garment Studio: reshape, crop and save garments |
 
 ## Status
 
