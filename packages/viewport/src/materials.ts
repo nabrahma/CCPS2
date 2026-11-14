@@ -186,16 +186,19 @@ varying float vHairLayer;
 
 // Read the map no sharper than the export (PRD F9). The mip chain stands in for the
 // exported size; when the camera is far enough away, normal mip selection wins.
+// One path for every pixel: the limit changes across the head (the face is denser), and a
+// branch there left neighbouring pixels without derivatives, which drew a dotted line of
+// garbage texels along the face zone's edge.
 vec4 sampleMap(vec2 uv) {
   // On the head (vHead: head-texture units per hm08 UV unit, F19), the head texture's density there.
   float limit = vHead > 0.0 ? uExportTexels.y * vHead : uExportTexels.x;
   vec2 size = vec2(textureSize(uMap, 0));
   float side = max(size.x, size.y);
-  if (limit <= 0.0 || limit >= side) return texture2D(uMap, uv);
   vec2 dx = dFdx(uv * size);
   vec2 dy = dFdy(uv * size);
   float lod = 0.5 * log2(max(max(dot(dx, dx), dot(dy, dy)), 1e-8));
-  return textureLod(uMap, uv, max(lod, log2(side / limit)));
+  float floorLod = limit > 0.0 && limit < side ? log2(side / limit) : 0.0;
+  return textureLod(uMap, uv, max(lod, floorLod));
 }
 
 // 4x4 ordered-dither threshold in (0, 1).

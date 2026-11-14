@@ -7,6 +7,7 @@
  */
 import type { SkinLayer, SkinStack } from '../character/doc';
 import type { BaseMesh } from '../mesh/basemesh';
+import { hashSeed } from '../random';
 import { computeQuadNormals } from '../mesh/normals';
 import type { RigDefinition } from '../skeleton/rig';
 import type { SparseWeights } from '../skeleton/weights';
@@ -15,7 +16,7 @@ import { DETAIL_TILE_METRES, detailTile, faceUvPerMetre } from './detail';
 import { faceFeatures, type FaceFeatures } from './features';
 import type { RgbaImage } from './image';
 import { BAKED_LAYER_CHANNEL, colorParam, numParam } from './layers';
-import { SkinLayout, type SurfaceMap } from './layout';
+import { SkinLayout, type SurfaceMap, type TexelWindow } from './layout';
 import { generateLayer, isProcedural } from './procedural';
 
 /** Composite resolution (PRD F6: "a WebGL render target at 2048 px"). */
@@ -24,6 +25,11 @@ export const SKIN_COMPOSITE_SIZE = 2048;
 export const PROCEDURAL_SIZE = 1024;
 /** Region masks resolution. */
 export const MASK_SIZE = 1024;
+/**
+ * Painted eyebrows and eyelashes are drawn at the composite's own size, in a window around
+ * the eyes only: at 1024 px a brow is about 30 x 5 texels, too few for hair strokes.
+ */
+const EYE_DETAIL_KINDS: ReadonlySet<SkinLayer['kind']> = new Set(['brows', 'lashes']);
 
 export type ResolvedSource = { kind: 'url'; url: string } | { kind: 'pixels'; image: RgbaImage } | { kind: 'adjust'; hsv: HsvAdjust } | DetailSource;
 
@@ -53,6 +59,9 @@ export class SkinComposer {
   readonly layout: SkinLayout;
   readonly features: FaceFeatures;
   private neutralMap: SurfaceMap | null = null;
+  private eyeMap: SurfaceMap | null = null;
+  /** The full-size brow and lash images, few (16 MB each). */
+  private readonly eyeCache = new Map<string, RgbaImage>();
   private maskImage: RgbaImage | null = null;
   private readonly cache = new Map<string, RgbaImage>();
 
@@ -69,6 +78,55 @@ export class SkinComposer {
       this.neutralMap = this.layout.surfaceMap(PROCEDURAL_SIZE, b.positions, normals);
     }
     return this.neutralMap;
+  }
+
+  /** The neutral surface around the eyes and brows at the composite's size (painted brows and lashes). */
+  get eyeSurface(): SurfaceMap {
+    if (!this.eyeMap) {
+      const b = this.base;
+      const normals = computeQuadNormals(b.positions, b.faceVerts, b.vertexCount);
+      const face = this.faceIslandId;
+      this.eyeMap = this.layout.surfaceMap(SKIN_COMPOSITE_SIZE, b.positions, normals, (i) => i.id === face, this.eyeWindow(SKIN_COMPOSITE_SIZE));
+    }
+    return this.eyeMap;
+  }
+
+  /** Texels of the face island around both eyes and brows, with a margin. */
+  private eyeWindow(size: number): TexelWindow {
+    const f = this.features;
+    const pos = this.base.positions;
+    const uv = this.base.uvs;
+    const [l, r] = f.eyes;
+    const hw = Math.max(l.halfWidth, r.halfWidth);
+    const xMax = Math.max(Math.abs(l.centre[0]), Math.abs(r.centre[0])) + 3.6 * hw;
+    const yLo = Math.min(l.centre[1], r.centre[1]) - 1.8 * hw;
+    const yHi = Math.max(l.centre[1], r.centre[1]) + 3.6 * hw;
+    const zLo = Math.min(l.centre[2], r.centre[2]) - 4 * hw;
+    let x0 = Infinity;
+    let y0 = Infinity;
+    let x1 = -Infinity;
+    let y1 = -Infinity;
+    const face = this.faceIslandId;
+    for (const t of this.layout.trianglesOf((i) => i.id === face)) {
+      const inside = t.verts.some((v) => Math.abs(pos[v * 3]!) <= xMax && pos[v * 3 + 1]! >= yLo && pos[v * 3 + 1]! <= yHi && pos[v * 3 + 2]! >= zLo);
+      if (!inside) continue;
+      for (const i of t.uvs) {
+        const x = uv[i * 2]! * size;
+        const y = (1 - uv[i * 2 + 1]!) * size;
+        x0 = Math.min(x0, x);
+        x1 = Math.max(x1, x);
+        y0 = Math.min(y0, y);
+        y1 = Math.max(y1, y);
+      }
+    }
+    const pad = 8;
+    const ax = Math.max(0, Math.floor(x0) - pad);
+    const ay = Math.max(0, Math.floor(y0) - pad);
+    return { x0: ax, y0: ay, width: Math.min(size, Math.ceil(x1) + pad) - ax, height: Math.min(size, Math.ceil(y1) + pad) - ay };
+  }
+
+  private get faceIslandId(): number {
+    return this.layout.islands.filter((i) => i.kind === 'head').sort((a, b) => b.faces.length - a.faces.length)[0]!.id;
   }
 
   get masks(): RgbaImage {
@@ -108,6 +166,21 @@ export class SkinComposer {
   /** Pixels of a procedural layer (cached by kind and parameters). */
   layerImage(layer: SkinLayer): RgbaImage {
     const key = proceduralKey(layer);
+    if (EYE_DETAIL_KINDS.has(layer.kind)) {
+      let img = this.eyeCache.get(key);
+      if (!img) {
+        img = generateLayer(layer, {
+          map: this.eyeSurface,
+          features: this.features,
+          islandKinds: this.layout.islands.map((i) => i.kind),
+          faceIsland: this.faceIslandId,
+          mouthIsland: this.mouthIsland,
+        });
+        this.eyeCache.set(key, img);
+        while (this.eyeCache.size > 4) this.eyeCache.delete(this.eyeCache.keys().next().value!);
+      }
+      return img;
+    }
     let img = this.cache.get(key);
     if (!img) {
       img = generateLayer(layer, {
@@ -198,5 +271,5 @@ function proceduralKey(layer: SkinLayer): string {
     .sort()
     .map((k) => `${k}=${layer.params[k]}`)
     .join(',');
-  return `${layer.kind}:${params}`;
+  return `${layer.kind}:${params}${layer.paint ? `:paint=${hashSeed(layer.paint)}` : ''}`;
 }

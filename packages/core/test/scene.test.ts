@@ -5,6 +5,7 @@ import { CharacterEngine } from '../src/character/engine';
 import { starterStyle } from '../src/hair';
 import { CharacterScene } from '../src/scene/character-scene';
 import { assetsAvailable, loadAssets } from './helpers';
+import { withMeshBrows } from './legacy';
 
 const suite = assetsAvailable ? describe : describe.skip;
 
@@ -15,7 +16,7 @@ suite('CharacterScene', () => {
   });
 
   it('assembles body, eyes, brows and lashes with feet on the ground', async () => {
-    const engine = new CharacterEngine(assets);
+    const engine = new CharacterEngine(assets, withMeshBrows(defaultCharacter()));
     const scene = new CharacterScene(engine);
     await scene.sync();
     const kinds = scene.parts.map((p) => p.kind);
@@ -48,7 +49,7 @@ suite('CharacterScene', () => {
   });
 
   it('refits proxies when the body changes', async () => {
-    const engine = new CharacterEngine(assets);
+    const engine = new CharacterEngine(assets, withMeshBrows(defaultCharacter()));
     const scene = new CharacterScene(engine);
     await scene.sync();
     const brows = scene.parts.find((p) => p.kind === 'eyebrows')!;

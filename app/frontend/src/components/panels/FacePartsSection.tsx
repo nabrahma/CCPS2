@@ -1,4 +1,5 @@
-import { DEFAULT_EYE_LOOK, IRIS_LIBRARY, type CatalogProxy, type EyeLook } from '@ps2cc/core';
+import { DEFAULT_EYE_LOOK, IRIS_LIBRARY, LAYER_PRESETS, layerKind, newLayer, presetParams, type CatalogProxy, type EyeLook, type ParamSpec } from '@ps2cc/core';
+import { BrowBrush } from './BrowBrush';
 import { useStudio, useStudioVersion } from '../../state/hooks';
 
 /** Eyes, eyebrows, eyelashes, teeth and tongue (PRD F3, Part 2 F19). */
@@ -11,8 +12,6 @@ export function FacePartsSection() {
     studio.engine.update(`Change ${field}`, (d) => {
       d[field] = { ...(d[field] ?? {}), asset };
     });
-  const opacity = (field: 'eyebrows' | 'eyelashes', v: number) =>
-    studio.engine.update(`${field} density`, (d) => void (d[field] = { ...d[field], opacity: v }), `density:${field}`);
 
   return (
     <details open className="slider-group">
@@ -21,24 +20,169 @@ export function FacePartsSection() {
       </summary>
       <Picker label="Eyes" value={doc.eyes.asset} items={of('eyes')} onChange={(a) => pick('eyes', a)} />
       <EyeControls />
-      <Picker label="Eyebrows" value={doc.eyebrows.asset} items={of('eyebrows')} onChange={(a) => pick('eyebrows', a)} allowNone />
-      <Picker label="Eyelashes" value={doc.eyelashes.asset} items={of('eyelashes')} onChange={(a) => pick('eyelashes', a)} allowNone />
+      <PaintedPart kind="brows" mesh="eyebrows" label="Eyebrows" />
+      <PaintedPart kind="lashes" mesh="eyelashes" label="Eyelashes" />
       <Picker label="Teeth" value={doc.teeth?.asset ?? null} items={of('teeth')} onChange={(a) => pick('teeth', a)} allowNone />
       <Picker label="Tongue" value={doc.tongue?.asset ?? null} items={of('tongue')} onChange={(a) => pick('tongue', a)} allowNone />
-      <div className="slider-row">
-        <label>Brow density</label>
-        <input
-          type="range"
-          min={0}
-          max={1}
-          step={0.01}
-          value={doc.eyebrows.opacity ?? 1}
-          onChange={(e) => opacity('eyebrows', Number(e.target.value))}
-          onPointerUp={() => studio.engine.endInteraction()}
-        />
-      </div>
       <p className="hint">Teeth and tongue together are at most 600 triangles; remove them to spend nothing on the mouth.</p>
     </details>
+  );
+}
+
+/**
+ * Eyebrows and eyelashes are painted on the skin (D-146): on or off, a preset,
+ * and their settings by group; the brows also have a brush for their outline
+ * (D-148). A character saved with MakeHuman's brow or lash mesh keeps it until
+ * you switch to painted.
+ */
+function PaintedPart({ kind, mesh, label }: { kind: 'brows' | 'lashes'; mesh: 'eyebrows' | 'eyelashes'; label: string }) {
+  const studio = useStudio();
+  useStudioVersion();
+  const doc = studio.engine.doc;
+  const spec = layerKind(kind);
+  const layer = doc.skin.layers.find((l) => l.kind === kind);
+  const on = Boolean(layer?.enabled);
+  const meshAsset = doc[mesh].asset;
+  const presets = LAYER_PRESETS[kind] ?? [];
+  const toggle = (v: boolean) =>
+    studio.engine.update(`${label} ${v ? 'on' : 'off'}`, (d) => {
+      const l = d.skin.layers.find((x) => x.kind === kind);
+      if (l) l.enabled = v;
+      else if (v) d.skin.layers.push(newLayer(kind));
+    });
+  const toPainted = () =>
+    studio.engine.update(`Painted ${label.toLowerCase()}`, (d) => {
+      d[mesh] = { ...d[mesh], asset: null };
+      if (mesh === 'eyebrows') delete d.eyebrows.cards;
+      const l = d.skin.layers.find((x) => x.kind === kind);
+      if (l) l.enabled = true;
+      else d.skin.layers.push(newLayer(kind));
+    });
+  const set = (key: string, value: number | string, name: string) =>
+    studio.engine.update(
+      `${label}: ${name}`,
+      (d) => {
+        const l = d.skin.layers.find((x) => x.kind === kind);
+        if (l) l.params = { ...l.params, [key]: value };
+      },
+      `${kind}:${key}`,
+    );
+  const applyPreset = (id: string) => {
+    const preset = presets.find((p) => p.id === id);
+    if (!preset) return;
+    studio.engine.update(`${label}: ${preset.label}`, (d) => {
+      const l = d.skin.layers.find((x) => x.kind === kind);
+      if (l) l.params = presetParams(l, preset);
+    });
+  };
+  const setPaint = (paint: string | null) =>
+    studio.engine.update(paint ? `${label}: brush` : `${label}: clear brush`, (d) => {
+      const l = d.skin.layers.find((x) => x.kind === kind);
+      if (!l) return;
+      if (paint) l.paint = paint;
+      else delete l.paint;
+    });
+  const control = (p: ParamSpec) =>
+    !layer ? null : p.type === 'color' ? (
+      <div className="picker-row" key={p.key}>
+        <label>{p.label}</label>
+        <input
+          type="color"
+          value={String(layer.params[p.key] ?? p.default)}
+          onChange={(e) => set(p.key, e.target.value, p.label)}
+          onBlur={() => studio.engine.endInteraction()}
+          data-testid={`face-${kind}-${p.key}`}
+        />
+      </div>
+    ) : (
+      <div className="slider-row" key={p.key}>
+        <label>{p.label}</label>
+        <input
+          type="range"
+          min={p.min}
+          max={p.max}
+          step={p.step}
+          value={Number(layer.params[p.key] ?? p.default)}
+          onChange={(e) => set(p.key, Number(e.target.value), p.label)}
+          onPointerUp={() => studio.engine.endInteraction()}
+          data-testid={`face-${kind}-${p.key}`}
+        />
+      </div>
+    );
+  const shown = spec.params.filter((p) => p.key !== 'seed');
+  const groups = [...new Set(shown.map((p) => p.group).filter((g): g is string => Boolean(g)))];
+  return (
+    <div className="painted-part" data-testid={`face-${kind}`}>
+      <label className="check">
+        <input type="checkbox" checked={on} onChange={(e) => toggle(e.target.checked)} data-testid={`face-${kind}-on`} /> {label}
+      </label>
+      {meshAsset && (
+        <div className="button-row">
+          <span className="muted">This character has the old {label.toLowerCase()} mesh.</span>
+          <button onClick={toPainted} data-testid={`face-${kind}-to-painted`}>
+            Use painted
+          </button>
+        </div>
+      )}
+      {on && layer && (
+        <>
+          {presets.length > 0 && (
+            <div className="picker-row">
+              <label>Preset</label>
+              <select value="" onChange={(e) => applyPreset(e.target.value)} data-testid={`face-${kind}-preset`}>
+                <option value="">Choose a starting point…</option>
+                {presets.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+          {shown.filter((p) => !p.group).map(control)}
+          <div className="slider-row">
+            <label>Opacity</label>
+            <input
+              type="range"
+              min={0}
+              max={1}
+              step={0.01}
+              value={layer.opacity}
+              onChange={(e) =>
+                studio.engine.update(
+                  `${label}: opacity`,
+                  (d) => {
+                    const l = d.skin.layers.find((x) => x.kind === kind);
+                    if (l) l.opacity = Number(e.target.value);
+                  },
+                  `${kind}:opacity`,
+                )
+              }
+              onPointerUp={() => studio.engine.endInteraction()}
+              data-testid={`face-${kind}-opacity`}
+            />
+          </div>
+          {kind === 'brows' && (
+            <details className="painted-group" open>
+              <summary>Brush</summary>
+              <BrowBrush layer={layer} features={studio.assets.skinComposer.features} onChange={setPaint} />
+            </details>
+          )}
+          {groups.map((g) => (
+            <details className="painted-group" key={g} open>
+              <summary>{g}</summary>
+              {shown.filter((p) => p.group === g).map(control)}
+            </details>
+          ))}
+          <div className="button-row">
+            <span className="muted">Seed {String(layer.params.seed ?? 1)}</span>
+            <button onClick={() => set('seed', Math.floor(Math.random() * 9998) + 1, 'new hairs')} data-testid={`face-${kind}-reseed`}>
+              New hairs
+            </button>
+          </div>
+        </>
+      )}
+    </div>
   );
 }
 

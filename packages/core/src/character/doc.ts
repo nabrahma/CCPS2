@@ -53,6 +53,8 @@ export interface SkinLayer {
     // Part 2 F19: the mouth interior darkening towards the throat, and painted eyebrows.
     | 'mouth'
     | 'brows'
+    // Painted eyelashes (D-146).
+    | 'lashes'
     // Part 2 F19 micro-detail: tileable pores and stubble hairs, masked per region.
     | 'pores'
     | 'stubbleHair'
@@ -69,6 +71,8 @@ export interface SkinLayer {
   mask: RegionMask;
   /** For kind 'image': library asset id of a PNG authored in hm08 UV space. */
   image?: string;
+  /** For kind 'brows': what the brow brush added and took away (painted-hair.ts BROW_GRID, hex). */
+  paint?: string;
   /** Kind-specific parameters (colour, hue shift, density...). */
   params: Record<string, number | string>;
 }
@@ -238,10 +242,11 @@ export function defaultCharacter(name = 'New character', profileId: QualityProfi
     modifiers: {},
     bodyMesh: bodyMeshFor(profileId), // leaves room for hair and clothes in the profile's budget (D-031, F13)
     // Part 2 F19: skin pores (micro-detail), and an open mouth reads as a mouth (dark towards the throat).
-    skin: { base: 'mh:skins/young_caucasian_male', layers: [newLayer('pores'), newLayer('mouth')], photo: null },
+    // Brows and lashes are painted on the skin, with no geometry (D-146).
+    skin: { base: 'mh:skins/young_caucasian_male', layers: [newLayer('pores'), newLayer('mouth'), newLayer('brows'), newLayer('lashes')], photo: null },
     eyes: { asset: 'mh:eyes/low-poly', look: { ...DEFAULT_EYE_LOOK } },
-    eyebrows: { asset: 'mh:eyebrows/eyebrow001', tint: { ...NEUTRAL_TINT, color: [1, 1, 1] }, opacity: 1 },
-    eyelashes: { asset: 'mh:eyelashes/eyelashes01', opacity: 1 },
+    eyebrows: { asset: null, tint: { ...NEUTRAL_TINT, color: [1, 1, 1] }, opacity: 1 },
+    eyelashes: { asset: null, opacity: 1 },
     // Part 2 F19: low-poly teeth and tongue, so an open mouth reads correctly.
     teeth: { asset: 'mh:teeth/teeth_base' },
     tongue: { asset: 'mh:tongue/tongue01' },

@@ -62,7 +62,7 @@ Hand-placed cards are stored with the style (`groom.cards` in `.ps2hair`), on th
 ## Fur trims and card brows
 
 - **Fur trims:** a garment's fur trim grows cards along its collar, cuffs or hem (`fur` in the garment). It exports as its own *Fur* material.
-- **Card brows:** these replace the eyebrow mesh with short cards grown on it (`eyebrows.cards`). They follow brow expressions like the mesh did.
+- **Card brows:** these replace the eyebrow mesh with short cards grown on it (`eyebrows.cards`). They follow brow expressions like the mesh did. Since 0.20.0 new characters have painted brows and no brow mesh (D-146), so card brows only grow on characters saved with the mesh.
 
 ## In Unity
 

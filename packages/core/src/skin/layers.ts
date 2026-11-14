@@ -4,12 +4,13 @@
  */
 import type { BlendMode, RegionMask, SidePhoto, SkinLayer, SkinStack } from '../character/doc';
 import { BLEND_MODES } from './blend';
+import { isBrowPaint } from './painted-hair';
 
 export type LayerKind = SkinLayer['kind'];
 
 export type ParamSpec =
-  | { key: string; label: string; type: 'number'; min: number; max: number; step: number; default: number }
-  | { key: string; label: string; type: 'color'; default: string };
+  | { key: string; label: string; type: 'number'; min: number; max: number; step: number; default: number; group?: string }
+  | { key: string; label: string; type: 'color'; default: string; group?: string };
 
 export interface LayerKindSpec {
   kind: LayerKind;
@@ -33,6 +34,8 @@ const num = (key: string, label: string, min: number, max: number, step: number,
   default: value,
 });
 const seed = num('seed', 'Seed', 1, 9999, 1, 1);
+/** A parameter shown under a heading in the panel. */
+const grouped = (group: string, p: ParamSpec): ParamSpec => ({ ...p, group });
 
 export const LAYER_KINDS: readonly LayerKindSpec[] = [
   {
@@ -152,11 +155,47 @@ export const LAYER_KINDS: readonly LayerKindSpec[] = [
     opacity: 0.85,
     mask: 'none',
     procedural: true,
+    // Shape, then the hair inside it (painted-hair.ts; D-148). The brow brush paints on top of the shape.
     params: [
-      color('color', 'Colour', '#3b2a20'),
-      num('thickness', 'Thickness', 0.5, 2, 0.01, 0.85),
-      num('arch', 'Arch', 0, 2, 0.01, 1),
-      num('density', 'Hair density', 0, 1, 0.01, 0.7),
+      color('color', 'Colour', '#2e221a'),
+      grouped('Shape', num('thickness', 'Thickness', 0.4, 2, 0.01, 1)),
+      grouped('Shape', num('arch', 'Arch height', 0, 2, 0.01, 1)),
+      grouped('Shape', num('peak', 'Arch position', 0, 1, 0.01, 0.5)),
+      grouped('Shape', num('height', 'Height', -1, 1, 0.01, 0)),
+      grouped('Shape', num('start', 'Inner start', -1, 1, 0.01, 0)),
+      grouped('Shape', num('tail', 'Tail length', 0.6, 1.3, 0.01, 1)),
+      grouped('Shape', num('drop', 'Tail drop', 0, 2, 0.01, 1)),
+      grouped('Shape', num('taper', 'Taper', 0, 1, 0.01, 0.7)),
+      grouped('Shape', num('softness', 'Edge softness', 0, 1, 0.01, 0.4)),
+      grouped('Shape', num('fade', 'Soft inner end', 0, 1, 0.01, 0.45)),
+      grouped('Hair', num('density', 'Hair density', 0, 1, 0.01, 0.7)),
+      grouped('Hair', num('fill', 'Fill (powder)', 0, 1, 0.01, 0.45)),
+      grouped('Hair', num('hairLength', 'Hair length', 0.5, 2, 0.01, 1)),
+      grouped('Hair', num('hairWidth', 'Hair thickness', 0.5, 2, 0.01, 1)),
+      grouped('Hair', num('lift', 'Brushed up', -1, 1, 0.01, 0)),
+      grouped('Hair', num('messy', 'Unruly', 0, 1, 0.01, 0.25)),
+      seed,
+    ],
+  },
+  {
+    // Painted lashes (D-146): a lash line with short strokes on the face texture, no geometry.
+    kind: 'lashes',
+    label: 'Painted eyelashes',
+    blend: 'normal',
+    opacity: 0.9,
+    mask: 'none',
+    procedural: true,
+    params: [
+      color('color', 'Colour', '#16100d'),
+      grouped('Upper lashes', num('length', 'Length', 0.3, 2, 0.01, 1)),
+      grouped('Upper lashes', num('density', 'Density', 0, 1, 0.01, 0.7)),
+      grouped('Upper lashes', num('curl', 'Flare outwards', 0, 1, 0.01, 0.5)),
+      grouped('Upper lashes', num('outer', 'Outer corner volume', 0, 1, 0.01, 0.5)),
+      grouped('Upper lashes', num('clump', 'Clumping', 0, 1, 0.01, 0.3)),
+      grouped('Upper lashes', num('thickness', 'Lash line', 0, 2, 0.01, 1)),
+      grouped('Upper lashes', num('smudge', 'Smoky shadow', 0, 1, 0.01, 0.15)),
+      grouped('Lower lashes', num('lower', 'Lower lashes', 0, 1, 0.01, 0.5)),
+      grouped('Lower lashes', num('lowerLength', 'Lower length', 0, 1.5, 0.01, 0.6)),
       seed,
     ],
   },
@@ -242,6 +281,47 @@ export const LAYER_KINDS: readonly LayerKindSpec[] = [
   },
 ];
 
+export interface LayerPreset {
+  id: string;
+  label: string;
+  /** Values for the kind's number parameters; the rest go back to their defaults. Colours are kept. */
+  params: Record<string, number>;
+}
+
+/** Starting points for the painted brows and lashes (D-148). */
+export const LAYER_PRESETS: Partial<Record<LayerKind, readonly LayerPreset[]>> = {
+  brows: [
+    { id: 'natural', label: 'Natural', params: {} },
+    {
+      id: 'soft',
+      label: 'Soft and full',
+      params: { thickness: 1.3, arch: 0.75, peak: 0.55, taper: 0.55, softness: 0.8, fade: 0.6, density: 0.85, fill: 0.7, hairLength: 1.1, messy: 0.3 },
+    },
+    { id: 'groomed', label: 'Groomed arch', params: { thickness: 0.85, arch: 1.5, peak: 0.6, drop: 1.2, taper: 0.85, softness: 0.2, fade: 0.35, density: 0.75, fill: 0.5, messy: 0.08 } },
+    { id: 'straight', label: 'Straight', params: { thickness: 1.1, arch: 0.25, peak: 0.6, drop: 0.5, taper: 0.6, softness: 0.4, density: 0.75, fill: 0.5 } },
+    { id: 'thin', label: 'Thin, pencilled', params: { thickness: 0.5, arch: 1.3, peak: 0.6, taper: 0.9, softness: 0.15, fade: 0.2, density: 0.45, fill: 0.8, hairLength: 0.7, messy: 0.05 } },
+    { id: 'bushy', label: 'Bushy', params: { thickness: 1.6, arch: 0.8, taper: 0.4, softness: 0.6, fade: 0.3, density: 1, fill: 0.4, hairLength: 1.45, hairWidth: 1.2, lift: 0.3, messy: 0.75 } },
+    { id: 'sparse', label: 'Sparse, fair', params: { thickness: 0.9, softness: 0.7, fade: 0.8, density: 0.3, fill: 0.15, hairLength: 0.9, hairWidth: 0.8, messy: 0.35 } },
+  ],
+  lashes: [
+    { id: 'natural', label: 'Natural', params: {} },
+    { id: 'smoky', label: 'Full and smoky', params: { length: 1.3, density: 0.95, curl: 0.6, outer: 0.8, clump: 0.55, thickness: 1.5, smudge: 0.65, lower: 0.75, lowerLength: 0.8 } },
+    { id: 'winged', label: 'Winged', params: { length: 1.2, density: 0.85, curl: 0.9, outer: 1, clump: 0.3, thickness: 1.6, smudge: 0.3, lower: 0.4, lowerLength: 0.5 } },
+    { id: 'clumped', label: 'Long and clumped', params: { length: 1.7, density: 0.8, curl: 0.55, outer: 0.6, clump: 0.9, thickness: 1.2, smudge: 0.2, lower: 0.6, lowerLength: 1 } },
+    { id: 'sparse', label: 'Sparse', params: { length: 0.8, density: 0.3, curl: 0.4, outer: 0.3, clump: 0.1, thickness: 0.6, smudge: 0, lower: 0.3, lowerLength: 0.4 } },
+  ],
+};
+
+/** A layer's parameters with a preset applied: its values, the defaults elsewhere, the colours and seed kept. */
+export function presetParams(layer: SkinLayer, preset: LayerPreset): SkinLayer['params'] {
+  const out: SkinLayer['params'] = {};
+  for (const p of layerKind(layer.kind).params) {
+    if (p.type === 'color' || p.key === 'seed') out[p.key] = layerParam(layer, p.key);
+    else out[p.key] = preset.params[p.key] ?? p.default;
+  }
+  return out;
+}
+
 /** Layer kinds the bake engine fills in, and which channel of its map each uses (r occlusion, g cavity, a light). */
 export const BAKED_LAYER_CHANNEL: Partial<Record<LayerKind, 0 | 1 | 3>> = { occlusion: 0, cavity: 1, lightBake: 3 };
 
@@ -314,6 +394,7 @@ export function sanitiseLayer(raw: unknown): SkinLayer | null {
     params: {},
   };
   if (spec.kind === 'image') layer.image = r.image;
+  if (spec.kind === 'brows' && isBrowPaint(r.paint)) layer.paint = r.paint;
   for (const p of spec.params) layer.params[p.key] = layerParam({ ...layer, params: (r.params ?? {}) as SkinLayer['params'] }, p.key);
   return layer;
 }

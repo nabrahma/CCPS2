@@ -8,6 +8,8 @@ export * from './features';
 export * from './noise';
 export * from './layers';
 export * from './procedural';
+export * from './painted-hair';
+export * from './strokes';
 export * from './compose';
 export * from './photo/delaunay';
 export * from './photo/warp';

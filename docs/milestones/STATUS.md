@@ -265,3 +265,21 @@ Two fixes reported after the first release.
   - two new browser tests in `e2e/ui-layout.spec.ts`. The menu test moves through the gap and over the viewport, then chooses New character. The bake test checks that nothing bakes after a change until Bake or Bake now is clicked, and that the auto-bake setting is saved;
   - the workspace, bake, export, round-trip and smoke tests pass (13 tests), and so does the desktop test;
   - Go tests, typecheck and lint pass.
+
+## 0.20.0: Painted brows and lashes, no dotted line on the face
+
+- **Painted brows and lashes (D-146).** New characters have no brow or lash geometry, so no cut-out strips. The brows are painted where MakeHuman's brow mesh sat, as a soft tone with hair strokes. The lashes are a dark upper lash line with short strokes and a soft lower line, along the eye's real rim. Both are drawn at 2048 px around the eyes. 04 Appearance sets them, and an older character with the meshes gets **Use painted**. Review images are in `docs/milestones/Face/`.
+- **Artistic control over brows and lashes (D-148).**
+  - Both are drawn hair by hair. The brows follow a real brow's flow, and the lashes are a curved fringe from the rim that can be clumped, with a smoky shadow.
+  - Presets, Colour and Opacity, and settings in groups (brow Shape and Hair; upper and lower lashes).
+  - A brow brush to add or erase brow on a front view, per side or on both.
+  - `look_smoky_*.png` shows a dark, smoky look built from these and the existing skin layers.
+- **The dotted line down the side of the face (D-147).** It was a shader fault in the viewport, along the edge of the denser face zone of the head texture, and showed on real GPUs only. Fixed, and exports were never affected.
+- **Tested:**
+  - `packages/core/test/painted-brows.test.ts`: defaults; the brow in the measured band on both sides and nothing below the eyes; the lashes within the eye's reach, darker on the upper lid.
+  - `e2e/face-paint.spec.ts`: no brow or lash parts; settings in 04 Appearance; Use painted on an older character, and one undo. It also checks presets (colour kept), the brow brush (erase and add, one undo step per stroke, Clear) and renders the smoky look.
+  - `painted-brows.test.ts` also checks the brow hair flow (inner end upright, lower rows above upper rows in angle, tail along the brow), the brush (adds on one side or both, erases, kept on load, changes the texture) and the presets.
+  - `e2e/tools/face-seam.spec.ts` on the real GPU: no stray pixels on the side of the head. The old shader gave 1,345.
+  - Older tests that check the mesh path (scene, blink and lashes, card brows) now ask for the meshes explicitly.
+  - The three-photo test's stand-in photos are now rendered with the painted brows and lashes. Without the meshes they had shown faces with no brows or lashes, and one set's lips then read 4.2 texels off. Worst set now 2.9 texels (limit 4).
+  - Full browser suite: 52 passed (one failure, fixed as above and rerun). The desktop test passes, and core 234, Go tests, typecheck and lint are clean.
