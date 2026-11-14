@@ -254,7 +254,7 @@ test('M15: Garment Studio round trip: crop, pocket and collar, save, wear, reuse
   await shot(page, 'garment_studio_saved.png');
   // Reuse: another character puts it on from the Wardrobe.
   await setCharacter(page, { ...NEUTRAL, gender: 0, weight: 0.3 }, { hair: bald, garments: [] });
-  await page.evaluate(() => (window as unknown as TestWindow).__ps2ccTest.useUi.getState().setTab('wardrobe' as never));
+  await page.evaluate(() => (window as unknown as TestWindow).__ps2ccTest.useUi.getState().setTab('clothes' as never));
   await page.getByText('Cropped shirt with collar').first().click();
   const reused = await page.evaluate(async () => {
     const s = (window as unknown as TestWindow).__ps2cc;

@@ -1,124 +1,146 @@
 /**
- * The right dock (M18): four tabs.
- * - Modify: the parts tree, and under it the controls of what is chosen (a
- *   creator step, a body region's sliders, or a part's details).
- * - Library: everything the creator can pick, as thumbnails under the look.
- * - Studio: the Asset Studio (Hair, Texture, Garment, Material Studio).
- * - Settings: the data folder, preferences and help.
+ * The right dock (D-149): a rail of categories, one per part of the
+ * character, and the panel of the chosen one. Like MetaHuman's categories or
+ * Blender's vertical property tabs: one place for each thing, and only that
+ * thing's controls on screen. The Asset Studio and Settings sit at the foot of
+ * the rail.
  */
 import type { ReactNode } from 'react';
-import { LIBRARY_CATEGORIES } from '@ps2cc/core';
 import { backend } from '../../backend';
 import { runSliderSweep } from '../../perf';
 import { useStudio, useStudioVersion } from '../../state/hooks';
-import { useUi, type DockTab } from '../../state/ui';
-import { AppearanceStep, CreateStep, ExportStep, HairStep, LookStep, WardrobeStep } from '../creator/Steps';
+import { useUi, type TabId } from '../../state/ui';
+import { BodyPanel, BrowsPanel, ClothesPanel, ExportStep, EyesPanel, FacePanel, HairStep, LashesPanel, LookStep, MakeupPanel, MouthPanel, SkinStep } from '../creator/Steps';
 import { DataFolderBody } from '../DataFolderDialog';
-import { GearIcon, LibraryIcon, SlidersIcon, StudioIcon } from '../icons';
-import { Inspector } from '../Inspector';
-import { LibraryGrid } from '../library/LibraryGrid';
+import { EyeIcon, GearIcon, StudioIcon } from '../icons';
 import { StudioRail } from '../studio/StudioRail';
-import { PartsTree } from './PartsTree';
-import { openStudioOf, STUDIOS, TABS } from './steps';
+import { CATEGORIES, openStudioOf, STUDIOS } from './steps';
 
-const DOCK_TABS: { id: DockTab; label: string; icon: ReactNode; testId: string; title: string }[] = [
-  { id: 'modify', label: 'Modify', icon: <SlidersIcon />, testId: 'dock-modify', title: 'The parts of the character and their controls' },
-  { id: 'library', label: 'Library', icon: <LibraryIcon />, testId: 'open-library', title: 'Presets, hairstyles, garments, outfits, skins and materials (Ctrl+L)' },
-  { id: 'studio', label: 'Studio', icon: <StudioIcon />, testId: 'open-asset-studio', title: 'Asset Studio: Hair, Texture, Garment and Material Studio' },
-  { id: 'settings', label: 'Settings', icon: <GearIcon />, testId: 'dock-settings', title: 'Data folder, preferences and help' },
-];
+const PANELS: Record<TabId, () => ReactNode> = {
+  body: () => <BodyPanel />,
+  face: () => <FacePanel />,
+  skin: () => <SkinStep />,
+  eyes: () => <EyesPanel />,
+  brows: () => <BrowsPanel />,
+  lashes: () => <LashesPanel />,
+  makeup: () => <MakeupPanel />,
+  mouth: () => <MouthPanel />,
+  hair: () => <HairStep />,
+  clothes: () => <ClothesPanel />,
+  look: () => <LookStep />,
+  export: () => <ExportStep />,
+};
+
+/** Categories whose part can be hidden in the viewport from the panel's title. */
+const PART_OF: Partial<Record<TabId, string>> = { hair: 'hair', eyes: 'eyes' };
 
 export function Dock() {
   const ui = useUi();
   const tab = ui.dockTab;
   return (
-    <aside className="dock" aria-label="Dock">
-      <div className="dock-tabs" role="tablist" aria-label="Dock">
-        {DOCK_TABS.map((t) => (
-          <button
-            key={t.id}
-            role="tab"
-            aria-selected={tab === t.id}
-            className={tab === t.id ? 'dock-tab active' : 'dock-tab'}
-            onClick={() => (t.id === 'studio' && !ui.assetStudio ? ui.setDockTab('studio') : ui.setDockTab(t.id))}
-            title={t.title}
-            data-testid={t.testId}
-          >
-            {t.icon}
-            <span>{t.label}</span>
-          </button>
-        ))}
+    <aside className="dock" aria-label="Editor">
+      <CategoryRail />
+      <div className="dock-main">
+        {tab === 'modify' && <CategoryPanel />}
+        {tab === 'studio' && <StudioTab />}
+        {tab === 'settings' && <SettingsTab />}
       </div>
-      {tab === 'modify' && <ModifyTab />}
-      {tab === 'library' && <LibraryTab />}
-      {tab === 'studio' && <StudioTab />}
-      {tab === 'settings' && <SettingsTab />}
     </aside>
   );
 }
 
-function ModifyTab() {
+function CategoryRail() {
   const ui = useUi();
-  const studio = useStudio();
-  useStudioVersion();
-  const step = TABS.find((t) => t.id === ui.tab);
-  const inspecting = ui.railMode === 'inspect' && ui.selected !== null && studio.scene.parts.some((p) => p.key === ui.selected);
+  let group: string | null = null;
   return (
-    <div className="dock-body modify">
-      <div className="dock-tree">
-        <PartsTree />
-      </div>
-      <section className="dock-panel">
-        {inspecting ? (
-          <div className="panel" data-testid="inspector-panel">
-            <Inspector />
-          </div>
-        ) : (
-          <>
-            <p className="card-label">
-              {step?.step} {step?.label}
-            </p>
-            <div className="panel" role="tabpanel" aria-label={step?.label ?? ''}>
-              {ui.tab === 'create' && <CreateStep />}
-              {ui.tab === 'hair' && <HairStep />}
-              {ui.tab === 'wardrobe' && <WardrobeStep />}
-              {ui.tab === 'appearance' && <AppearanceStep />}
-              {ui.tab === 'look' && <LookStep />}
-              {ui.tab === 'export' && <ExportStep />}
-            </div>
-          </>
-        )}
-      </section>
-    </div>
-  );
-}
-
-function LibraryTab() {
-  const ui = useUi();
-  const lookLabel = ui.customLook?.label ?? ui.lighting;
-  const category = ui.library?.category ?? 'bodies';
-  return (
-    <div className="dock-body library-dock" data-testid="library-browser">
-      <div className="library-head">
-        <p className="card-label">Library</p>
-        <span className="muted">under the {lookLabel} look</span>
-      </div>
-      <div className="toggle-row wrap" role="tablist" aria-label="Library category">
-        {LIBRARY_CATEGORIES.map((c) => (
+    <nav className="cat-rail" role="tablist" aria-orientation="vertical" aria-label="Character">
+      {CATEGORIES.map((c) => {
+        const gap = group !== null && group !== c.group;
+        group = c.group;
+        const on = ui.dockTab === 'modify' && ui.tab === c.id;
+        return (
           <button
             key={c.id}
             role="tab"
-            aria-selected={category === c.id}
-            className={category === c.id ? 'chip active' : 'chip'}
-            onClick={() => ui.setLibrary({ category: c.id })}
-            data-testid={`library-category-${c.id}`}
+            aria-selected={on}
+            aria-label={c.label}
+            title={`${c.label}: ${c.hint}`}
+            className={`cat${on ? ' active' : ''}${gap ? ' gap' : ''}`}
+            onClick={() => ui.setTab(c.id)}
+            data-testid={`cat-${c.id}`}
           >
-            {c.label}
+            {c.icon}
+            <span>{c.label}</span>
           </button>
-        ))}
+        );
+      })}
+      <span className="cat-spacer" />
+      <button
+        role="tab"
+        aria-selected={ui.dockTab === 'studio'}
+        aria-label="Studio"
+        title="Asset Studio: Hair, Texture, Garment and Material Studio"
+        className={`cat gap${ui.dockTab === 'studio' ? ' active' : ''}`}
+        onClick={() => ui.setDockTab('studio')}
+        data-testid="open-asset-studio"
+      >
+        <StudioIcon />
+        <span>Studio</span>
+      </button>
+      <button
+        role="tab"
+        aria-selected={ui.dockTab === 'settings'}
+        aria-label="Settings"
+        title="Data folder, preferences and help"
+        className={`cat${ui.dockTab === 'settings' ? ' active' : ''}`}
+        onClick={() => ui.setDockTab('settings')}
+        data-testid="dock-settings"
+      >
+        <GearIcon />
+        <span>Settings</span>
+      </button>
+    </nav>
+  );
+}
+
+function CategoryPanel() {
+  const ui = useUi();
+  const studio = useStudio();
+  useStudioVersion();
+  const c = CATEGORIES.find((x) => x.id === ui.tab) ?? CATEGORIES[0]!;
+  const part = PART_OF[c.id];
+  const present = part ? studio.scene.parts.some((p) => p.key === part) : false;
+  return (
+    <section className="cat-panel" role="tabpanel" aria-label={c.label} data-testid={`panel-${c.id}`}>
+      <header className="cat-head">
+        <div>
+          <h2>{c.label}</h2>
+          <p>{c.hint}</p>
+        </div>
+        {part && present && <VisibilityToggle partKey={part} label={c.label} />}
+      </header>
+      <div className="cat-body" key={c.id}>
+        {PANELS[c.id]()}
       </div>
-      <LibraryGrid key={category} categories={[category]} size="large" testId="library-browser-grid" />
-    </div>
+    </section>
+  );
+}
+
+/** Hide a part in the viewport only (it is still exported). */
+export function VisibilityToggle({ partKey, label }: { partKey: string; label: string }) {
+  const hidden = useUi((s) => s.hiddenParts.includes(partKey));
+  const toggle = useUi((s) => s.toggleHidden);
+  return (
+    <button
+      className={hidden ? 'icon vis off' : 'icon vis'}
+      onClick={() => toggle(partKey)}
+      aria-label={hidden ? `Show ${label}` : `Hide ${label}`}
+      aria-pressed={!hidden}
+      title={hidden ? 'Hidden in the viewport (still exported)' : 'Hide in the viewport'}
+      data-testid={`vis-${partKey}`}
+    >
+      <EyeIcon off={hidden} />
+    </button>
   );
 }
 
@@ -127,25 +149,31 @@ function StudioTab() {
   const ui = useUi();
   if (!ui.assetStudio) {
     return (
-      <div className="dock-body" data-testid="studio-launcher">
-        <p className="card-label">Asset Studio</p>
-        <p className="hint">The deep editors. What you save here joins the library, and the creator's steps pick from it.</p>
-        <div className="studio-cards">
-          {STUDIOS.map((s) => (
-            <button key={s.id} className="studio-card" onClick={() => openStudioOf(studio, s.id)} data-testid={`studio-tab-${s.id}`}>
-              <strong>{s.label}</strong>
-              <span className="muted">{s.hint}</span>
-            </button>
-          ))}
+      <section className="cat-panel" data-testid="studio-launcher">
+        <header className="cat-head">
+          <div>
+            <h2>Asset Studio</h2>
+            <p>The deep editors. What you save joins the library.</p>
+          </div>
+        </header>
+        <div className="cat-body">
+          <div className="studio-cards">
+            {STUDIOS.map((s) => (
+              <button key={s.id} className="studio-card" onClick={() => openStudioOf(studio, s.id)} data-testid={`studio-tab-${s.id}`}>
+                <strong>{s.label}</strong>
+                <span className="muted">{s.hint}</span>
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
     );
   }
   return (
     <div className="dock-body studio-dock">
       <div className="studio-switch" role="tablist" aria-label="Asset Studio">
-        <button className="back" onClick={ui.closeStudio} aria-label="Back to Creator" title="Back to the Character Creator" data-testid="studio-back">
-          ‹ Creator
+        <button className="back" onClick={ui.closeStudio} aria-label="Back to Creator" title="Back to the character" data-testid="studio-back">
+          ‹ Back
         </button>
         {STUDIOS.map((s) => (
           <button
@@ -177,13 +205,19 @@ function SettingsTab() {
     ui.info(`${r.fps} fps while dragging sliders (${r.meets60fps ? 'meets' : 'below'} the 60 fps target) on ${r.gpu}. One update takes ${r.updateMs.p50} ms. Saved to the log.`);
   };
   return (
-    <div className="dock-body settings-dock" data-testid="settings-panel">
-      <div className="panel">
+    <section className="cat-panel" data-testid="settings-panel">
+      <header className="cat-head">
+        <div>
+          <h2>Settings</h2>
+          <p>Data folder, preferences and help</p>
+        </div>
+      </header>
+      <div className="cat-body">
         <DataFolderBody />
         <section className="settings-section">
           <h3>Sliders</h3>
           <label className="check">
-            <input type="checkbox" checked={ui.curated} onChange={(e) => ui.setCurated(e.target.checked)} /> Curated PS2 sliders (otherwise every MakeHuman slider)
+            <input type="checkbox" checked={!ui.curated} onChange={(e) => ui.setCurated(!e.target.checked)} /> Show every MakeHuman slider (otherwise the PS2 set)
           </label>
           <label className="check">
             <input type="checkbox" checked={ui.symmetry} onChange={(e) => ui.setSymmetry(e.target.checked)} /> Symmetry
@@ -209,6 +243,6 @@ function SettingsTab() {
           <p className="muted">PS2CC {studio.info.version}</p>
         </section>
       </div>
-    </div>
+    </section>
   );
 }

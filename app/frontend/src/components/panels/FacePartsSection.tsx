@@ -1,31 +1,64 @@
+import { useEffect, useState } from 'react';
 import { DEFAULT_EYE_LOOK, IRIS_LIBRARY, LAYER_PRESETS, layerKind, newLayer, presetParams, type CatalogProxy, type EyeLook, type ParamSpec } from '@ps2cc/core';
 import { BrowBrush } from './BrowBrush';
 import { useStudio, useStudioVersion } from '../../state/hooks';
+import { tidy } from '../../state/names';
 
-/** Eyes, eyebrows, eyelashes, teeth and tongue (PRD F3, Part 2 F19). */
-export function FacePartsSection() {
+function useFaceParts() {
   const studio = useStudio();
   useStudioVersion();
   const doc = studio.engine.doc;
   const of = (cat: CatalogProxy['category']) => studio.assets.catalog.proxies.filter((p) => p.category === cat);
-  const pick = (field: 'eyes' | 'eyebrows' | 'eyelashes' | 'teeth' | 'tongue', asset: string | null) =>
+  const pick = (field: 'eyes' | 'teeth' | 'tongue', asset: string | null) =>
     studio.engine.update(`Change ${field}`, (d) => {
       d[field] = { ...(d[field] ?? {}), asset };
     });
+  return { doc, of, pick };
+}
 
+/** The Eyes category (Part 2 F19): colour and iris first, the eyeball model last. */
+export function EyesControls() {
+  const { doc, of, pick } = useFaceParts();
   return (
-    <details open className="slider-group">
-      <summary>
-        <span>Eyes &amp; brows</span>
-      </summary>
-      <Picker label="Eyes" value={doc.eyes.asset} items={of('eyes')} onChange={(a) => pick('eyes', a)} />
+    <>
       <EyeControls />
-      <PaintedPart kind="brows" mesh="eyebrows" label="Eyebrows" />
-      <PaintedPart kind="lashes" mesh="eyelashes" label="Eyelashes" />
+      <details className="more">
+        <summary>Eyeball model</summary>
+        <Picker label="Model" value={doc.eyes.asset} items={of('eyes')} onChange={(a) => a && pick('eyes', a)} />
+        <p className="hint">The low-poly eyeball suits the era; the high-poly one is for close-ups.</p>
+      </details>
+    </>
+  );
+}
+
+/** The Mouth category: teeth and tongue, or none of either. The mouth opens while it is shown, to see them. */
+export function MouthControls() {
+  const { doc, of, pick } = useFaceParts();
+  const studio = useStudio();
+  const [open, setOpen] = useState(true);
+  useEffect(() => {
+    const scene = studio.scene;
+    const before = { ...scene.expressionPreview };
+    void scene
+      .setExpressionPreview(open ? { ...before, jawOpen: 0.55 } : Object.fromEntries(Object.entries(before).filter(([k]) => k !== 'jawOpen')))
+      .then(() => studio.viewport?.refresh())
+      .catch(() => undefined);
+    return () => {
+      void scene
+        .setExpressionPreview(Object.fromEntries(Object.entries(scene.expressionPreview).filter(([k]) => k !== 'jawOpen')))
+        .then(() => studio.viewport?.refresh())
+        .catch(() => undefined);
+    };
+  }, [open, studio]);
+  return (
+    <>
+      <label className="check">
+        <input type="checkbox" checked={open} onChange={(e) => setOpen(e.target.checked)} data-testid="mouth-open" /> Open the mouth to see them (preview only)
+      </label>
       <Picker label="Teeth" value={doc.teeth?.asset ?? null} items={of('teeth')} onChange={(a) => pick('teeth', a)} allowNone />
       <Picker label="Tongue" value={doc.tongue?.asset ?? null} items={of('tongue')} onChange={(a) => pick('tongue', a)} allowNone />
-      <p className="hint">Teeth and tongue together are at most 600 triangles; remove them to spend nothing on the mouth.</p>
-    </details>
+      <p className="hint">Teeth and tongue together are at most 600 triangles. Choose None for both to spend nothing on the mouth.</p>
+    </>
   );
 }
 
@@ -35,7 +68,7 @@ export function FacePartsSection() {
  * (D-148). A character saved with MakeHuman's brow or lash mesh keeps it until
  * you switch to painted.
  */
-function PaintedPart({ kind, mesh, label }: { kind: 'brows' | 'lashes'; mesh: 'eyebrows' | 'eyelashes'; label: string }) {
+export function PaintedPart({ kind, mesh, label }: { kind: 'brows' | 'lashes'; mesh: 'eyebrows' | 'eyelashes'; label: string }) {
   const studio = useStudio();
   useStudioVersion();
   const doc = studio.engine.doc;
@@ -114,7 +147,7 @@ function PaintedPart({ kind, mesh, label }: { kind: 'brows' | 'lashes'; mesh: 'e
   return (
     <div className="painted-part" data-testid={`face-${kind}`}>
       <label className="check">
-        <input type="checkbox" checked={on} onChange={(e) => toggle(e.target.checked)} data-testid={`face-${kind}-on`} /> {label}
+        <input type="checkbox" checked={on} onChange={(e) => toggle(e.target.checked)} data-testid={`face-${kind}-on`} /> Painted {label.toLowerCase()}
       </label>
       {meshAsset && (
         <div className="button-row">
@@ -194,7 +227,7 @@ function Picker(props: { label: string; value: string | null; items: CatalogProx
         {props.allowNone && <option value="">None</option>}
         {props.items.map((p) => (
           <option key={p.id} value={p.id}>
-            {p.name} ({p.triangles} tris)
+            {tidy(p.name)} ({p.triangles} triangles)
           </option>
         ))}
       </select>

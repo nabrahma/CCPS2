@@ -31,9 +31,6 @@ export function useShortcuts(): void {
       } else if (ctrl && e.key.toLowerCase() === 'o') {
         e.preventDefault();
         ui.setBrowserOpen(true);
-      } else if (ctrl && e.key.toLowerCase() === 'l') {
-        e.preventDefault();
-        ui.setLibrary(ui.library ? null : { category: 'bodies' });
       } else if (ctrl && e.key.toLowerCase() === 'e') {
         e.preventDefault();
         ui.setTab('export');

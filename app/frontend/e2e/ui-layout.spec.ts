@@ -1,8 +1,8 @@
 /**
- * The workspace (M18): the top bar, the viewport with its camera bar and the
- * six creator steps, the dock (Modify with the parts tree, Library, Studio,
- * Settings) and the status bar; and that nothing overflows or overlaps at the
- * smallest window. Writes review screenshots to docs/milestones/UI/.
+ * The workspace (M18, D-149): the top bar, the viewport with its camera bar,
+ * the editor (a rail of categories and the chosen one's panel) and the status
+ * bar; and that nothing overflows or overlaps at the smallest window. Writes
+ * review screenshots to docs/milestones/UI/.
  */
 import { resolve } from 'node:path';
 import { expect, test, type Page } from '@playwright/test';
@@ -15,60 +15,100 @@ const shot = async (page: Page, name: string) => {
   await page.screenshot({ path: resolve(MILESTONES, `UI/${name}.png`) });
 };
 
-test('workspace: steps, parts tree, dock tabs and headline', async ({ page }) => {
+const camera = (page: Page) => page.evaluate(() => (window as unknown as TestWindow).__ps2ccTest.useUi.getState().camera);
+
+test('workspace: one category at a time, each with only its own controls, framing its part', async ({ page }) => {
   await boot(page);
   await waitForTestHooks(page);
   await shot(page, 'body');
 
-  // The steps open their controls in the dock, one active at a time.
-  await page.getByRole('tab', { name: 'Hair', exact: true }).click();
-  await expect(page.getByRole('tab', { name: 'Hair', exact: true })).toHaveAttribute('aria-selected', 'true');
-  await expect(page.getByRole('tab', { name: 'Create' })).toHaveAttribute('aria-selected', 'false');
-  await expect(page.getByRole('tabpanel', { name: 'Hair' })).toBeVisible();
+  // Every category opens its own panel, one selected at a time.
+  for (const name of ['Body', 'Face', 'Skin', 'Eyes', 'Brows', 'Lashes', 'Makeup', 'Mouth', 'Hair', 'Clothes', 'Look', 'Export']) {
+    await page.getByRole('tab', { name, exact: true }).click();
+    await expect(page.getByRole('tab', { name, exact: true })).toHaveAttribute('aria-selected', 'true');
+    await expect(page.getByRole('tabpanel', { name, exact: true })).toBeVisible();
+    await expect(page.getByRole('tab', { selected: true })).toHaveCount(1);
+  }
 
-  // The parts tree: a face region shows its sliders only, and the step strip follows.
-  await page.getByRole('button', { name: 'Expand Head & face' }).click();
-  await page.getByTestId('tree-group-Nose').locator('.tree-label').click();
-  await expect(page.getByRole('tab', { name: 'Create' })).toHaveAttribute('aria-selected', 'true');
-  await expect(page.getByTestId('create-group')).toHaveText(/Nose/);
+  // Eyes, brows and lashes are separate places, and each shows only its part.
+  await page.getByRole('tab', { name: 'Eyes', exact: true }).click();
+  await expect(page.getByTestId('eye-colour')).toBeVisible();
+  await expect(page.getByTestId('face-brows')).toHaveCount(0);
+  await expect(page.getByTestId('appearance-skins')).toHaveCount(0);
+  expect(await camera(page)).toBe('face');
+  await shot(page, 'eyes');
+  await page.getByRole('tab', { name: 'Brows', exact: true }).click();
+  await expect(page.getByTestId('face-brows')).toBeVisible();
+  await expect(page.getByTestId('face-lashes')).toHaveCount(0);
+  await shot(page, 'brows');
+  await page.getByRole('tab', { name: 'Lashes', exact: true }).click();
+  await expect(page.getByTestId('face-lashes')).toBeVisible();
+
+  // Mouth opens the mouth (a preview only), so the teeth and tongue can be seen.
+  await page.getByRole('tab', { name: 'Mouth', exact: true }).click();
+  await expect.poll(() => page.evaluate(() => (window as unknown as TestWindow).__ps2cc.scene.expressionPreview.jawOpen ?? 0), { timeout: 120_000 }).toBeGreaterThan(0.3);
+  await page.evaluate(() => (window as unknown as TestWindow).__ps2cc.settled());
+  await shot(page, 'mouth');
+  await page.getByRole('tab', { name: 'Hair', exact: true }).click();
+  await expect.poll(() => page.evaluate(() => (window as unknown as TestWindow).__ps2cc.scene.expressionPreview.jawOpen ?? 0)).toBe(0);
+  expect(await camera(page)).toBe('bust');
+
+  // Body and Face: a region menu shows one region's sliders.
+  await page.getByRole('tab', { name: 'Face', exact: true }).click();
+  await page.getByTestId('region-face').selectOption('Nose');
   const groups = await page.getByRole('tabpanel', { name: 'Face' }).locator('.slider-group summary span').allTextContents();
   expect(groups).toEqual(['Nose']);
-  await shot(page, 'tree_region');
+  await shot(page, 'face_region');
 
   // A heart puts a slider in Favourite sliders.
   await page.getByTestId('slider-favourite').first().click();
-  await page.getByTestId('tree-favourites').locator('.tree-label').click();
-  await expect(page.getByRole('tabpanel', { name: 'Favourite sliders' }).locator('.slider-row')).toHaveCount(1);
+  await page.getByTestId('region-face').selectOption('\u2665');
+  await expect(page.getByRole('tabpanel', { name: 'Face' }).locator('.slider-row')).toHaveCount(1);
 
-  // A worn garment is a row of the tree: it opens its details, and its eye hides it in the viewport only.
+  // A worn garment is a row in Clothes: it opens its settings, and its eye hides it in the viewport only.
   await setCharacter(page, {}, { garments: [garment('mh:clothes/male_worksuit01', 'full')] });
-  const row = page.locator('[data-testid^="tree-part-garment:full"]');
-  await row.locator('.tree-label').click();
-  await expect(page.locator('.inspector-title')).toHaveText(/worksuit/i);
-  await shot(page, 'inspector');
-  await row.locator('.tree-eye').click();
+  await page.getByRole('tab', { name: 'Clothes', exact: true }).click();
+  const row = page.locator('[data-part^="garment:full"]');
+  await row.getByTestId('worn-open').click();
+  await expect(row.locator('.garment-inspector')).toBeVisible();
+  await shot(page, 'clothes_open');
+  await row.locator('.icon.vis').click();
   expect(await page.evaluate(() => [...(window as unknown as TestWindow).__ps2cc.viewport!.hiddenParts])).toEqual(['garment:full:mh:clothes/male_worksuit01']);
   expect(await page.evaluate(() => (window as unknown as TestWindow).__ps2cc.engine.doc.garments.length)).toBe(1);
-  await row.locator('.tree-eye').click();
+  await row.locator('.icon.vis').click();
   expect(await page.evaluate(() => (window as unknown as TestWindow).__ps2cc.viewport!.hiddenParts.size)).toBe(0);
 
-  // Choosing a step returns from the details.
-  await page.getByRole('tab', { name: 'Wardrobe' }).click();
-  await expect(page.locator('.inspector')).toHaveCount(0);
-  await shot(page, 'wardrobe');
+  // Clicking a part in the viewport opens its category.
+  await page.getByRole('tab', { name: 'Look', exact: true }).click();
+  await page.evaluate(() => (window as unknown as TestWindow).__ps2ccTest.useUi.getState().select('garment:full:mh:clothes/male_worksuit01'));
+  await expect(page.getByRole('tab', { name: 'Clothes', exact: true })).toHaveAttribute('aria-selected', 'true');
+  await expect(row.locator('.garment-inspector')).toBeVisible();
+  await page.evaluate(() => (window as unknown as TestWindow).__ps2ccTest.useUi.getState().select('eyes'));
+  await expect(page.getByRole('tab', { name: 'Eyes', exact: true })).toHaveAttribute('aria-selected', 'true');
 
-  // The dock's other tabs.
-  await page.getByTestId('open-library').click();
-  await expect(page.getByTestId('library-browser')).toBeVisible();
+  // The library grids: a search, one plain filter and a favourites star; no tag chips.
+  await page.getByRole('tab', { name: 'Hair', exact: true }).click();
+  const styles = page.getByTestId('hair-styles');
+  await styles.getByTestId('library-filter').selectOption('mesh');
+  await expect(styles.locator('[data-entry="hair:mesh:mh:hair/toigo_blunt_bob"] .library-name')).toHaveText('Blunt bob');
+  await styles.getByTestId('library-filter').selectOption('long');
+  const names = await styles.locator('.library-name').allTextContents();
+  expect(names).toEqual(expect.arrayContaining(['Ponytail', 'Long straight']));
+  expect(names).not.toContain('Blunt bob');
+  await expect(page.locator('[data-testid^="library-tag-"]')).toHaveCount(0);
+  await shot(page, 'hair');
+
+  // The rail's foot: the Asset Studio and Settings.
   await page.getByTestId('open-asset-studio').click();
   await expect(page.getByTestId('studio-launcher')).toBeVisible();
   await page.getByTestId('dock-settings').click();
   await expect(page.getByTestId('data-folder')).toBeVisible();
+  await expect(page.getByRole('tab', { selected: true })).toHaveCount(1);
   await shot(page, 'settings');
 
-  // The Export button goes to 06 Export.
+  // The Export button goes to Export.
   await page.getByRole('button', { name: 'Open export settings' }).click();
-  await expect(page.getByRole('tab', { name: 'Export' })).toHaveAttribute('aria-selected', 'true');
+  await expect(page.getByRole('tab', { name: 'Export', exact: true })).toHaveAttribute('aria-selected', 'true');
   await shot(page, 'export');
 
   // The name field is in the top bar; a dot shows unsaved changes.
@@ -97,12 +137,16 @@ test('smallest window: every panel fits and no toolbar covers another', async ({
     expect(r.right).toBeLessThanOrEqual(1280);
     expect(r.bottom).toBeLessThanOrEqual(42);
   }
-  // The camera bar and the step strip do not overlap, and the strip is inside the viewport.
-  const [cam, steps, stage, dock] = [await box('.vp-camera'), await box('.step-strip'), await box('.stage'), await box('.dock')];
-  expect(cam.y + cam.height).toBeLessThan(steps.y);
-  expect(steps.x).toBeGreaterThanOrEqual(stage.x);
-  expect(steps.x + steps.width).toBeLessThanOrEqual(dock.x);
-  expect(steps.height).toBeLessThan(44);
+  // The camera bar is inside the viewport; every category of the rail and its panel fit beside it.
+  const [cam, stage, dock, rail] = [await box('.vp-camera'), await box('.stage'), await box('.dock'), await box('.cat-rail')];
+  expect(cam.x).toBeGreaterThanOrEqual(stage.x);
+  expect(cam.x + cam.width).toBeLessThanOrEqual(dock.x);
+  for (const c of await page.locator('.cat-rail .cat').all()) {
+    const r = (await c.boundingBox())!;
+    expect(r.y + r.height).toBeLessThanOrEqual(rail.y + rail.height + 1);
+  }
+  const panel = await box('.cat-panel');
+  expect(panel.x + panel.width).toBeLessThanOrEqual(1280);
 });
 
 test('menus stay open on the way to an item; Esc and a click elsewhere close them', async ({ page }) => {

@@ -6,14 +6,18 @@ import { useUi } from '../../state/ui';
 import { HeartIcon, LockIcon, ResetIcon, ShuffleIcon } from '../icons';
 
 /**
- * Body/Face slider panel (PRD F1): curated or all, search, symmetry, reset,
- * lock, favourite, randomize. `group` shows one group (the parts tree's
- * regions); `favourites` shows the favourite sliders of both tabs.
+ * Body and Face sliders (PRD F1; D-149): search and a region menu on top;
+ * symmetry, favourites and randomize under them; then the sliders by region.
+ * Every slider has reset, lock (for randomize) and a heart (favourites).
  */
-export function SliderPanel({ tab, group = null, favourites = false }: { tab: SliderTab; group?: string | null; favourites?: boolean }) {
+export function SliderPanel({ tab }: { tab: SliderTab }) {
   const studio = useStudio();
   useStudioVersion();
   const ui = useUi();
+  const focus = ui.sliderFocus.sub === tab ? ui.sliderFocus : { sub: tab, group: null, favourites: false };
+  const group = focus.group;
+  const favourites = focus.favourites;
+  const regions = useMemo(() => [...new Set(studio.assets.sliders.search('', ui.curated).filter((s) => s.tab === tab).map((s) => s.group))], [studio, ui.curated, tab]);
   const favs = useLibrary((s) => s.favourites);
   const sliders = useMemo(() => {
     const liked = new Set(favs.filter((f) => f.startsWith('slider:')).map((f) => f.slice('slider:'.length)));
@@ -49,26 +53,40 @@ export function SliderPanel({ tab, group = null, favourites = false }: { tab: Sl
   return (
     <div className="slider-panel">
       <div className="panel-tools">
-        <input
-          className="search"
-          type="search"
-          placeholder="Search sliders…"
-          value={ui.search}
-          onChange={(e) => ui.setSearch(e.target.value)}
-          aria-label="Search sliders"
-        />
-        <div className="toggle-row">
-          <button className={ui.curated ? 'chip active' : 'chip'} onClick={() => ui.setCurated(true)}>
-            Curated
-          </button>
-          <button className={!ui.curated ? 'chip active' : 'chip'} onClick={() => ui.setCurated(false)}>
-            All
-          </button>
-          <label className="chip-check" title="Mirror left/right modifiers">
+        <div className="tool-line">
+          <input
+            className="search"
+            type="search"
+            placeholder="Search sliders…"
+            value={ui.search}
+            onChange={(e) => ui.setSearch(e.target.value)}
+            aria-label="Search sliders"
+          />
+          <select
+            value={favourites ? '♥' : (group ?? '')}
+            onChange={(e) => ui.focusSliders(e.target.value === '♥' ? { sub: tab, favourites: true } : { sub: tab, group: e.target.value || null })}
+            aria-label="Region"
+            data-testid={`region-${tab}`}
+          >
+            <option value="">All regions</option>
+            {regions.map((r) => (
+              <option key={r} value={r}>
+                {r}
+              </option>
+            ))}
+            <option value={'♥'}>Favourite sliders</option>
+          </select>
+        </div>
+        <div className="tool-line">
+          <label className="check" title="Move left and right together">
             <input type="checkbox" checked={ui.symmetry} onChange={(e) => ui.setSymmetry(e.target.checked)} /> Symmetry
           </label>
-          <button className="chip" onClick={() => randomize()} title="Randomize this tab within safe ranges (R)">
-            <ShuffleIcon /> Random
+          <label className="check" title="Every MakeHuman slider and its full range, not just the PS2 set">
+            <input type="checkbox" checked={!ui.curated} onChange={(e) => ui.setCurated(!e.target.checked)} data-testid="sliders-all" /> Every slider
+          </label>
+          <span className="tb-spacer" />
+          <button className="chip" onClick={() => randomize(group ?? undefined)} title="Randomize within safe ranges (R)">
+            <ShuffleIcon /> Randomize
           </button>
         </div>
       </div>

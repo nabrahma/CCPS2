@@ -1,17 +1,36 @@
-/** The Character Creator's steps and the Asset Studio's editors, shared by the step strip, the dock and the parts tree. */
+/** The editor's categories and the Asset Studio's editors, shared by the dock and the menus. */
 import type { ReactNode } from 'react';
 import type { Studio } from '../../state/studio';
 import { useUi, type StudioKind, type TabId } from '../../state/ui';
-import { BodyIcon, ExportIcon, HairIcon, LookIcon, SkinIcon, WardrobeIcon } from '../icons';
+import { BodyIcon, BrowsIcon, ExportIcon, EyesIcon, FaceIcon, HairIcon, LashesIcon, LookIcon, MakeupIcon, MouthIcon, SkinIcon, WardrobeIcon } from '../icons';
 
-/** The Character Creator's six steps (Part 2 F20), in order. */
-export const TABS: { id: TabId; step: string; label: string; icon: ReactNode; hint: string }[] = [
-  { id: 'create', step: '01', label: 'Create', icon: <BodyIcon />, hint: 'Base, body and face' },
-  { id: 'hair', step: '02', label: 'Hair', icon: <HairIcon />, hint: 'Hairstyle and colour' },
-  { id: 'wardrobe', step: '03', label: 'Wardrobe', icon: <WardrobeIcon />, hint: 'Garments, outfits and materials' },
-  { id: 'appearance', step: '04', label: 'Appearance', icon: <SkinIcon />, hint: 'Skin, eyes, makeup and details' },
-  { id: 'look', step: '05', label: 'Look', icon: <LookIcon />, hint: 'Quality profile, look and lighting' },
-  { id: 'export', step: '06', label: 'Export', icon: <ExportIcon />, hint: 'To Unity or a folder' },
+export interface Category {
+  id: TabId;
+  label: string;
+  /** One line under the panel's title: what is here. */
+  hint: string;
+  icon: ReactNode;
+  /** Categories are shown in groups, a gap between them. */
+  group: 'shape' | 'face' | 'style' | 'finish';
+}
+
+/**
+ * One category per part of the character, each with its own panel (D-149): a
+ * rail of categories like MetaHuman's, Blender's vertical property tabs.
+ */
+export const CATEGORIES: Category[] = [
+  { id: 'body', label: 'Body', hint: 'A starting body, then its shape', icon: <BodyIcon />, group: 'shape' },
+  { id: 'face', label: 'Face', hint: 'The shape of the head and face', icon: <FaceIcon />, group: 'shape' },
+  { id: 'skin', label: 'Skin', hint: 'Skin texture and details', icon: <SkinIcon />, group: 'face' },
+  { id: 'eyes', label: 'Eyes', hint: 'Iris, colour and the eyeball', icon: <EyesIcon />, group: 'face' },
+  { id: 'brows', label: 'Brows', hint: 'Painted eyebrows: shape, hair and a brush', icon: <BrowsIcon />, group: 'face' },
+  { id: 'lashes', label: 'Lashes', hint: 'Painted eyelashes', icon: <LashesIcon />, group: 'face' },
+  { id: 'makeup', label: 'Makeup', hint: 'Lips, eyeliner, eyeshadow and blush', icon: <MakeupIcon />, group: 'face' },
+  { id: 'mouth', label: 'Mouth', hint: 'Teeth and tongue', icon: <MouthIcon />, group: 'face' },
+  { id: 'hair', label: 'Hair', hint: 'Hairstyle and colour', icon: <HairIcon />, group: 'style' },
+  { id: 'clothes', label: 'Clothes', hint: 'Outfits, garments and materials', icon: <WardrobeIcon />, group: 'style' },
+  { id: 'look', label: 'Look', hint: 'Quality, lighting and the PS2 screen', icon: <LookIcon />, group: 'finish' },
+  { id: 'export', label: 'Export', hint: 'To Unity or a folder', icon: <ExportIcon />, group: 'finish' },
 ];
 
 /** The Asset Studio's editors (Part 2 F20). */

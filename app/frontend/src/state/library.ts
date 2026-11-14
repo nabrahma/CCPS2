@@ -4,6 +4,7 @@
  * user's, with what picking each one does, its thumbnail subject, and the
  * Asset Studio that edits it. Favourites and user tags are kept in settings.
  */
+import { MESH_HAIR, meshHairName, plain, skinFacts } from './names';
 import { create } from 'zustand';
 import {
   applyOutfit,
@@ -57,6 +58,8 @@ export interface CreatorEntry extends LibraryEntry {
   edit?: () => void;
   /** Delete it from the library (the user's own only). */
   remove?: () => Promise<void>;
+  /** A word on the thumbnail's corner (what kind it is, where kinds share a grid). */
+  badge?: string;
 }
 
 interface UserLibrary {
@@ -220,7 +223,7 @@ export function libraryEntries(studio: Studio, category: LibraryCategory): Creat
         id: `body:${preset.id}`,
         category,
         name: preset.label,
-        tags: [user ? 'user' : 'built-in', (preset.macros.gender ?? 0.5) >= 0.5 ? 'male' : 'female'],
+        tags: [(preset.macros.gender ?? 0.5) >= 0.5 ? 'male' : 'female', ...(user ? ['yours'] : [])],
         user,
         subject: { kind: 'preset', preset },
         thumbId: `body:${preset.id}`,
@@ -238,7 +241,7 @@ export function libraryEntries(studio: Studio, category: LibraryCategory): Creat
         id,
         category,
         name: style.name,
-        tags: [user ? 'user' : 'built-in', style.locks.enabled ? 'hair v2' : 'cards', style.length.sides >= 0.22 ? 'long' : style.length.sides <= 0.08 ? 'short' : 'medium'],
+        tags: [style.length.sides >= 0.22 ? 'long' : style.length.sides <= 0.08 ? 'short' : 'medium', 'editable', ...(user ? ['yours'] : [])],
         user,
         subject: hairSubject(doc, { mode: 'cards', style, atlas: null }),
         thumbId: `${id}|${colourKey}`,
@@ -255,8 +258,9 @@ export function libraryEntries(studio: Studio, category: LibraryCategory): Creat
         .map((p) => ({
           id: `hair:mesh:${p.id}`,
           category,
-          name: p.name.replace(/_/g, ' '),
-          tags: ['mesh', ...p.tags],
+          name: meshHairName(p.id, p.name),
+          tags: [MESH_HAIR[p.id]?.length ?? 'medium', 'mesh'],
+          badge: 'Mesh',
           user: false,
           subject: hairSubject(doc, { mode: 'mesh', asset: p.id }),
           thumbId: `hair:mesh:${p.id}`,
@@ -271,7 +275,7 @@ export function libraryEntries(studio: Studio, category: LibraryCategory): Creat
         id: 'hair:none',
         category,
         name: 'Bald',
-        tags: ['built-in'],
+        tags: ['short'],
         user: false,
         subject: hairSubject(doc, { mode: 'none' }),
         thumbId: 'hair:none',
@@ -293,8 +297,8 @@ export function libraryEntries(studio: Studio, category: LibraryCategory): Creat
           return {
             id: `garment:${p.id}`,
             category,
-            name: p.name.replace(/_/g, ' '),
-            tags: [slot, ...p.tags.filter((t) => t !== 'user'), ...(user ? ['user'] : []), ...(p.defaults?.look ? ['dressed'] : [])],
+            name: plain(p.name),
+            tags: [slot, ...(user ? ['yours'] : [])],
             user,
             subject: { kind: 'garment', garment: garmentToWear(studio, p.id, slot) },
             thumbId: `garment:${p.id}`,
@@ -320,7 +324,7 @@ export function libraryEntries(studio: Studio, category: LibraryCategory): Creat
             id: `outfit:${outfit.id}`,
             category,
             name: outfit.label,
-            tags: [user ? 'user' : 'built-in', ...new Set(wearable.map((g) => g.slot))],
+            tags: [...(user ? ['yours'] : [])],
             user,
             subject: { kind: 'outfit', garments: dressed } as ThumbSubject,
             thumbId: `outfit:${outfit.id}`,
@@ -341,7 +345,7 @@ export function libraryEntries(studio: Studio, category: LibraryCategory): Creat
             id: `skin:${s.id}`,
             category,
             name: s.name.replace(/\.(png|jpe?g)$/i, ''),
-            tags: ['user'],
+            tags: ['yours'],
             user: true,
             subject: { kind: 'skin', base: url } as ThumbSubject,
             thumbId: `skin:${s.id}`,
@@ -357,8 +361,8 @@ export function libraryEntries(studio: Studio, category: LibraryCategory): Creat
         ...assets.catalog.skins.map((s) => ({
           id: `skin:${s.id}`,
           category,
-          name: (s.id.split('/').pop() ?? s.id).replace(/_/g, ' '),
-          tags: s.tags,
+          name: skinFacts(s.id).name,
+          tags: [skinFacts(s.id).gender, skinFacts(s.id).age].filter((t): t is NonNullable<typeof t> => t !== null),
           user: false,
           subject: { kind: 'skin', base: s.id } as ThumbSubject,
           thumbId: `skin:${s.id}`,
@@ -380,7 +384,7 @@ export function libraryEntries(studio: Studio, category: LibraryCategory): Creat
             id: `material:${m.id}`,
             category,
             name: m.name,
-            tags: [m.kind, user ? 'user' : m.source.site],
+            tags: [m.kind, ...(user ? ['yours'] : [])],
             user,
             subject: { kind: 'material', id: m.id } as ThumbSubject,
             thumbId: `material:${m.id}`,

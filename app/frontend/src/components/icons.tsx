@@ -183,6 +183,39 @@ export const HeartIcon = ({ filled }: { filled: boolean }) => (
   </Glyph>
 );
 
+export const EyesIcon = () => (
+  <Glyph>
+    <path fillRule="evenodd" d="M8 3.5c3.2 0 5.6 2.2 6.8 4.5-1.2 2.3-3.6 4.5-6.8 4.5S2.4 10.3 1.2 8C2.4 5.7 4.8 3.5 8 3.5Zm0 1.6a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Zm0 1.6a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6Z" />
+  </Glyph>
+);
+
+export const BrowsIcon = () => (
+  <Glyph>
+    <path d="M1.2 9.6C3 6.1 6.4 4.6 10 5.1c2 .3 3.7 1.3 4.8 2.8l-1 .9c-1-1.1-2.3-1.8-3.9-2-2.9-.4-5.6.7-7.3 3.4z" />
+    <path d="M3 12.2h10v1.3H3z" opacity=".45" />
+  </Glyph>
+);
+
+export const LashesIcon = () => (
+  <Glyph>
+    <path d="M1.5 9.8c1.7-2 4-3.1 6.5-3.1s4.8 1.1 6.5 3.1l-1 .8C12 8.9 10.1 8 8 8s-4 .9-5.5 2.6z" />
+    <path d="m3.2 7.6-1.4-2 1-.7 1.4 2zm2.6-1.2-.7-2.3 1.2-.4.7 2.3zm2.8-.3V3.7h1.3v2.4zm2.6.6.9-2.2 1.2.5-.9 2.2zm2.1 1.5 1.5-1.8 1 .8-1.5 1.8z" />
+  </Glyph>
+);
+
+export const MakeupIcon = () => (
+  <Glyph>
+    <path d="M6 1.5h4v2.2L9.4 6H6.6L6 3.7z" />
+    <path d="M5.4 7h5.2v7.5H5.4z" />
+  </Glyph>
+);
+
+export const MouthIcon = () => (
+  <Glyph>
+    <path fillRule="evenodd" d="M1.5 7.2C3 5.6 5.4 4.8 8 4.8s5 .8 6.5 2.4C13.4 9.8 11 11.5 8 11.5S2.6 9.8 1.5 7.2Zm2.3.4c1.2.6 2.6.9 4.2.9s3-.3 4.2-.9c-1 1.6-2.5 2.5-4.2 2.5S4.8 9.2 3.8 7.6Z" />
+  </Glyph>
+);
+
 export function BrandMark() {
   return (
     <svg className="brand-mark" width="28" height="14" viewBox="0 0 28 14" fill="none" stroke="currentColor" strokeWidth="1.3" role="img" aria-label="PS2CC">

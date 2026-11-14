@@ -1,11 +1,11 @@
 /**
  * PRD Part 2 M16, the creator experience (F20):
  *
- * - a full character built through the Character Creator's six steps only
- *   (no Inspector, no Asset Studio, no test hook edits), then exported;
- * - each Asset Studio round trip (open from the creator, edit, save, reuse in
+ * - a full character built through the editor's category panels only (no
+ *   Asset Studio, no test hook edits), then exported (D-149);
+ * - each Asset Studio round trip (open from a panel, edit, save, reuse in
  *   another character): Hair, Texture, Garment and Material Studio;
- * - the library browser: look-matched thumbnails, favourites, tags, search.
+ * - the library grids: look-matched thumbnails, favourites, search, filters.
  */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -24,7 +24,7 @@ const settled = (page: Page) => page.evaluate(() => (window as unknown as TestWi
 const ui = (page: Page) =>
   page.evaluate(() => {
     const s = (window as unknown as TestWindow).__ps2ccTest.useUi.getState();
-    return { tab: s.tab, studio: s.assetStudio, railMode: s.railMode, selected: s.selected };
+    return { tab: s.tab, studio: s.assetStudio, selected: s.selected };
   });
 /** A library card in a grid, by entry id. */
 const card = (scope: Locator, entry: string) => scope.locator(`[data-entry="${entry}"]`);
@@ -45,7 +45,7 @@ async function bootCreator(page: Page): Promise<void> {
   await waitForTestHooks(page);
 }
 
-test('M16: a full character built through the six creator steps only, then exported', async ({ page }) => {
+test('M16: a full character built through the category panels only, then exported', async ({ page }) => {
   test.setTimeout(900_000);
   await bootCreator(page);
   const steps: string[] = [];
@@ -55,8 +55,8 @@ test('M16: a full character built through the six creator steps only, then expor
     steps.push(name);
   };
 
-  // 01 Create: a base preset, a body slider, a face slider.
-  await page.getByTestId('step-create').click();
+  // Body: a base preset and a body slider; Face: a face slider.
+  await page.getByTestId('cat-body').click();
   const presets = page.getByTestId('create-presets');
   await thumbsReady(presets, 3);
   await pick(presets, 'body:adult-female');
@@ -65,7 +65,7 @@ test('M16: a full character built through the six creator steps only, then expor
   const bodySlider = bodyPanel.locator('input[type="range"]').first();
   const bodyId = await bodySlider.getAttribute('id');
   await bodySlider.fill('0.62');
-  await page.getByTestId('create-face').click();
+  await page.getByTestId('cat-face').click();
   const faceSlider = page.getByRole('tabpanel', { name: 'Face' }).locator('input[type="range"]').first();
   const faceId = await faceSlider.getAttribute('id');
   await faceSlider.fill('0.3');
@@ -74,8 +74,8 @@ test('M16: a full character built through the six creator steps only, then expor
   expect(await sliderValue(faceId!)).toBeCloseTo(0.3, 2);
   await shot('step_01_create');
 
-  // 02 Hair: a style from the library grid, a colour, an adjustment.
-  await page.getByTestId('step-hair').click();
+  // Hair: a style from the library grid, a colour, an adjustment.
+  await page.getByTestId('cat-hair').click();
   const styles = page.getByTestId('hair-styles');
   await page.getByTestId('hair-styles').getByTestId('library-search').fill('layered bob');
   await pick(styles, 'hair:starter:mara-bob');
@@ -88,13 +88,13 @@ test('M16: a full character built through the six creator steps only, then expor
   await thumbsReady(styles);
   await shot('step_02_hair');
 
-  // 03 Wardrobe: an outfit, then a hat from the garment grid.
-  await page.getByTestId('step-wardrobe').click();
+  // Clothes: an outfit, then a hat from the garment grid.
+  await page.getByTestId('cat-clothes').click();
   const outfits = page.getByTestId('wardrobe-outfits');
   await pick(outfits, 'outfit:utility-vest');
   await settled(page);
-  await page.getByTestId('wardrobe-slot-hat').click();
   const garments = page.getByTestId('wardrobe-garments');
+  await garments.getByTestId('library-filter').selectOption('hat');
   const hat = garments.getByTestId('library-card').first();
   const hatId = (await hat.getAttribute('data-entry'))!.replace(/^garment:/, '');
   await hat.locator('.library-thumb').click();
@@ -104,39 +104,41 @@ test('M16: a full character built through the six creator steps only, then expor
   await thumbsReady(garments);
   await shot('step_03_wardrobe');
 
-  // 04 Appearance: skin, eye colour, makeup and details.
-  await page.getByTestId('step-appearance').click();
+  // Skin, Eyes and Makeup: skin, eye colour, makeup and details.
+  await page.getByTestId('cat-skin').click();
   const skins = page.getByTestId('appearance-skins');
   await skins.getByTestId('library-search').fill('young caucasian female');
   await pick(skins, 'skin:mh:skins/young_caucasian_female');
-  const eye = page.getByTestId('eye-colour');
-  const eyeValue = await eye.locator('option').nth(2).getAttribute('value');
-  await eye.selectOption(eyeValue!);
-  await page.getByTestId('appearance-lips-on').check();
   await page.getByTestId('appearance-freckles-on').check();
   await page.getByTestId('appearance-freckles-strength').fill('0.4');
   await page.getByTestId('appearance-darkCircles-on').check();
+  await thumbsReady(skins);
+  await shot('step_04_skin');
+  await page.getByTestId('cat-eyes').click();
+  const eye = page.getByTestId('eye-colour');
+  const eyeValue = await eye.locator('option').nth(2).getAttribute('value');
+  await eye.selectOption(eyeValue!);
+  await page.getByTestId('cat-makeup').click();
+  await page.getByTestId('appearance-lips-on').check();
   const afterAppearance = await doc(page);
   expect(afterAppearance.skin.base).toBe('mh:skins/young_caucasian_female');
   const kinds = afterAppearance.skin.layers.filter((l) => l.enabled).map((l) => l.kind);
   expect(kinds).toEqual(expect.arrayContaining(['lips', 'freckles', 'darkCircles']));
   expect(afterAppearance.skin.layers.find((l) => l.kind === 'freckles')?.opacity).toBeCloseTo(0.4, 2);
-  await thumbsReady(skins);
-  await shot('step_04_appearance');
+  await shot('step_04_makeup');
 
-  // 05 Look: the Hero profile and the Flashlight interior look.
-  await page.getByTestId('step-look').click();
+  // Look: the Hero profile and the Flashlight interior look.
+  await page.getByTestId('cat-look').click();
   await page.getByTestId('look-profile-hero').click();
   const looks = page.getByTestId('look-grid');
   await card(looks, 'look:interiorFlashlight').locator('.library-thumb').click();
   expect((await doc(page)).export.profile).toBe('hero');
-  expect((await ui(page)).railMode).toBe('controls');
   expect(await page.evaluate(() => (window as unknown as TestWindow).__ps2ccTest.useUi.getState().lighting)).toBe('interiorFlashlight');
   await thumbsReady(looks, 2);
   await shot('step_05_look');
 
-  // 06 Export: to the Unity project (in a browser the export message is downloaded).
-  await page.getByTestId('step-export').click();
+  // Export: to the Unity project (in a browser the export message is downloaded).
+  await page.getByTestId('cat-export').click();
   await expect(page.getByTestId('export-panel')).toBeVisible();
   const download = page.waitForEvent('download', { timeout: 300_000 });
   await page.getByTestId('export-unity').click();
@@ -151,7 +153,6 @@ test('M16: a full character built through the six creator steps only, then expor
   // Nothing but the creator was used.
   const state = await ui(page);
   expect(state.studio).toBeNull();
-  expect(state.selected).toBeNull();
   report.creator = { steps, meshes: header.meshes.map((m) => m.name), textures: header.textures.length, garments: afterWardrobe.garments.map((g) => g.asset), layers: kinds };
   writeReport();
 });
@@ -167,10 +168,10 @@ async function newCharacter(page: Page): Promise<void> {
 /** Answer the next prompt with `value`. */
 const answer = (page: Page, value: string) => page.once('dialog', (d) => void d.accept(value));
 
-test('M16 round trip: Hair Studio (open from 02 Hair, change the lengths, save, reuse on another character)', async ({ page }) => {
+test('M16 round trip: Hair Studio (open from Hair, change the lengths, save, reuse on another character)', async ({ page }) => {
   test.setTimeout(600_000);
   await bootCreator(page);
-  await page.getByTestId('step-hair').click();
+  await page.getByTestId('cat-hair').click();
   const styles = page.getByTestId('hair-styles');
   await styles.getByTestId('library-search').fill('bob');
   await pick(styles, 'hair:starter:bob');
@@ -189,9 +190,9 @@ test('M16 round trip: Hair Studio (open from 02 Hair, change the lengths, save, 
   await expect.poll(() => page.evaluate(() => (window as unknown as TestWindow).__ps2ccTest.core && localStorage.getItem('ps2cc:docs')?.includes('Studio bob'))).toBe(true);
   await page.getByTestId('hair-studio-done').click();
   expect((await ui(page)).studio).toBeNull();
-  // Reuse: a new character picks it in 02 Hair.
+  // Reuse: a new character picks it in Hair.
   await newCharacter(page);
-  await page.getByTestId('step-hair').click();
+  await page.getByTestId('cat-hair').click();
   const grid = page.getByTestId('hair-styles');
   await grid.getByTestId('library-search').fill('studio bob');
   await expect(card(grid, 'hair:user:hairstyles/Studio bob')).toBeVisible();
@@ -207,10 +208,10 @@ test('M16 round trip: Hair Studio (open from 02 Hair, change the lengths, save, 
   writeReport();
 });
 
-test('M16 round trip: Texture Studio (open from 04 Appearance, add layers, save as a skin, reuse on another character)', async ({ page }) => {
+test('M16 round trip: Texture Studio (open from Skin, add layers, save as a skin, reuse on another character)', async ({ page }) => {
   test.setTimeout(600_000);
   await bootCreator(page);
-  await page.getByTestId('step-appearance').click();
+  await page.getByTestId('cat-skin').click();
   await page.getByTestId('appearance-freckles-on').check();
   await page.getByTestId('open-texture-studio').click();
   const rail = page.getByTestId('studio-rail-texture');
@@ -228,9 +229,9 @@ test('M16 round trip: Texture Studio (open from 04 Appearance, add layers, save 
   const saved = await doc(page);
   expect(saved.skin.base).not.toMatch(/^mh:/);
   expect(saved.skin.layers.some((l) => l.kind === 'freckles' || l.kind === 'dirt')).toBe(false);
-  // Reuse: a new character picks the saved skin in 04 Appearance.
+  // Reuse: a new character picks the saved skin in Skin.
   await newCharacter(page);
-  await page.getByTestId('step-appearance').click();
+  await page.getByTestId('cat-skin').click();
   const skins = page.getByTestId('appearance-skins');
   await expect(card(skins, 'skin:user:skins/Freckled grimy skin')).toBeVisible();
   await pick(skins, 'skin:user:skins/Freckled grimy skin');
@@ -256,16 +257,18 @@ test('M16 round trip: Texture Studio (open from 04 Appearance, add layers, save 
   writeReport();
 });
 
-test('M16 round trip: Garment Studio (open from 03 Wardrobe, loosen, save, reuse on another character)', async ({ page }) => {
+test('M16 round trip: Garment Studio (open from Clothes, loosen, save, reuse on another character)', async ({ page }) => {
   test.setTimeout(600_000);
   await bootCreator(page);
-  await page.getByTestId('step-wardrobe').click();
-  await page.getByTestId('wardrobe-slot-top').click();
+  await page.getByTestId('cat-clothes').click();
   const garments = page.getByTestId('wardrobe-garments');
+  await garments.getByTestId('library-filter').selectOption('top');
   await garments.getByTestId('library-search').fill('basic tucked');
   await pick(garments, 'garment:mh:clothes/toigo_basic_tucked_t-shirt');
   await settled(page);
-  await page.getByTestId('worn-edit').first().click();
+  // The worn garment's row opens its settings, with Edit in Garment Studio.
+  await page.getByTestId('worn-open').first().click();
+  await page.getByTestId('open-garment-studio').click();
   await expect(page.getByTestId('studio-rail-garment')).toBeVisible();
   await expect(page.getByTestId('garment-studio')).toBeVisible();
   const faces = async () => Number((await page.getByTestId('garment-studio').locator('.hint').textContent())!.split(' ')[0]!.replace(/,/g, ''));
@@ -280,9 +283,9 @@ test('M16 round trip: Garment Studio (open from 03 Wardrobe, loosen, save, reuse
   const worn = (await doc(page)).garments.map((g) => g.asset);
   expect(worn[0]).toMatch(/^user:garment\//);
   expect((await ui(page)).studio).toBeNull();
-  // Reuse: a new character puts it on from 03 Wardrobe.
+  // Reuse: a new character puts it on from Clothes.
   await newCharacter(page);
-  await page.getByTestId('step-wardrobe').click();
+  await page.getByTestId('cat-clothes').click();
   const grid = page.getByTestId('wardrobe-garments');
   await grid.getByTestId('library-search').fill('loose tee');
   await pick(grid, `garment:${worn[0]}`);
@@ -321,12 +324,12 @@ async function photoPng(page: Page): Promise<Buffer> {
   return Buffer.from(b64, 'base64');
 }
 
-test('M16 round trip: Material Studio (from 03 Wardrobe: a library material adjusted, a photo made seamless; saved, reused on another character)', async ({ page }) => {
+test('M16 round trip: Material Studio (from Clothes: a library material adjusted, a photo made seamless; saved, reused on another character)', async ({ page }) => {
   test.setTimeout(600_000);
   await bootCreator(page);
-  await page.getByTestId('step-wardrobe').click();
-  await page.getByTestId('wardrobe-slot-top').click();
+  await page.getByTestId('cat-clothes').click();
   const garments = page.getByTestId('wardrobe-garments');
+  await garments.getByTestId('library-filter').selectOption('top');
   await garments.getByTestId('library-search').fill('basic tucked');
   await pick(garments, 'garment:mh:clothes/toigo_basic_tucked_t-shirt');
   await settled(page);
@@ -363,10 +366,10 @@ test('M16 round trip: Material Studio (from 03 Wardrobe: a library material adju
   await expect(page.getByTestId('material-studio')).toBeHidden({ timeout: 120_000 });
   expect((await doc(page)).garments[0]?.look?.zones[0]?.material).toBe('user:materials/Blue cloth');
 
-  // Reuse: a new character wears a top and picks Green denim in 03 Wardrobe.
+  // Reuse: a new character wears a top and picks Green denim in Clothes.
   await newCharacter(page);
-  await page.getByTestId('step-wardrobe').click();
-  await page.getByTestId('wardrobe-slot-top').click();
+  await page.getByTestId('cat-clothes').click();
+  await page.getByTestId('wardrobe-garments').getByTestId('library-filter').selectOption('top');
   await page.getByTestId('wardrobe-garments').getByTestId('library-search').fill('basic tucked');
   await pick(page.getByTestId('wardrobe-garments'), 'garment:mh:clothes/toigo_basic_tucked_t-shirt');
   const mats = page.getByTestId('wardrobe-materials');
@@ -381,13 +384,11 @@ test('M16 round trip: Material Studio (from 03 Wardrobe: a library material adju
   writeReport();
 });
 
-test('M16: library browser: look-matched thumbnails, favourites and tags that persist, search', async ({ page }) => {
+test('M16: library grids: look-matched thumbnails, favourites that persist, search and a plain filter', async ({ page }) => {
   test.setTimeout(600_000);
   await bootCreator(page);
-  await page.getByTestId('open-library').click();
-  await expect(page.getByTestId('library-browser')).toBeVisible();
-  await page.getByTestId('library-category-garments').click();
-  const grid = page.getByTestId('library-browser-grid');
+  await page.getByTestId('cat-clothes').click();
+  const grid = page.getByTestId('wardrobe-garments');
   await grid.getByTestId('library-search').fill('cargo');
   const entry = 'garment:ps2cc:clothes/cargo_trousers';
   await expect(card(grid, entry)).toBeVisible();
@@ -428,41 +429,46 @@ test('M16: library browser: look-matched thumbnails, favourites and tags that pe
   await page.screenshot({ path: resolve(OUT, 'ui_library_night.png') });
   await page.evaluate(() => (window as unknown as TestWindow).__ps2ccTest.useUi.getState().setView({ lighting: 'studio' as never }));
 
-  // Favourites and a tag, kept in the settings.
+  // A favourite, kept in the settings; the star shows favourites only.
   await card(grid, entry).getByTestId('library-star').click();
-  answer(page, 'Mara');
-  await card(grid, entry).getByTestId('library-tag-add').click();
   await grid.getByTestId('library-search').fill('');
   await grid.getByTestId('library-favourites').click();
   await expect(grid.getByTestId('library-card')).toHaveCount(1);
   await expect(card(grid, entry)).toBeVisible();
   await grid.getByTestId('library-favourites').click();
-  await grid.getByTestId('library-tag-mara').click();
-  await expect(grid.getByTestId('library-card')).toHaveCount(1);
+  // The filter: bottoms only.
+  await grid.getByTestId('library-filter').selectOption('bottom');
+  await expect(card(grid, entry)).toBeVisible();
+  const bottoms = await grid.getByTestId('library-card').count();
+  await grid.getByTestId('library-filter').selectOption('hat');
+  await expect(card(grid, entry)).toHaveCount(0);
+  expect(bottoms).toBeGreaterThan(0);
+  await grid.getByTestId('library-filter').selectOption('');
   await thumbsReady(grid);
   await page.screenshot({ path: resolve(OUT, 'ui_library_browser.png') });
-  // Search finds by tag words too.
-  await grid.getByTestId('library-tag-mara').click();
-  await grid.getByTestId('library-search').fill('mara');
-  await expect(card(grid, entry)).toBeVisible();
 
-  // After a reload the favourite and the tag are still there.
+  // After a reload the favourite is still there.
   await page.reload();
   await page.waitForFunction(() => Boolean((window as unknown as { __ps2cc?: unknown }).__ps2cc), undefined, { timeout: 120_000 });
-  await page.getByTestId('open-library').click();
-  await page.getByTestId('library-category-garments').click();
-  const after = page.getByTestId('library-browser-grid');
+  await page.getByTestId('cat-clothes').click();
+  const after = page.getByTestId('wardrobe-garments');
   await after.getByTestId('library-favourites').click();
   await expect(card(after, entry)).toBeVisible();
   await expect(card(after, entry).getByTestId('library-star')).toHaveAttribute('aria-pressed', 'true');
-  await expect(after.getByTestId('library-tag-mara')).toBeVisible();
-  // Every category lists entries.
+  // Every grid lists entries.
   const counts: Record<string, number> = {};
-  for (const c of ['bodies', 'hair', 'garments', 'outfits', 'skins', 'materials']) {
-    await page.getByTestId(`library-category-${c}`).click();
-    const g2 = page.getByTestId('library-browser-grid');
+  for (const [cat, id] of [
+    ['body', 'create-presets'],
+    ['hair', 'hair-styles'],
+    ['clothes', 'wardrobe-garments'],
+    ['clothes', 'wardrobe-outfits'],
+    ['skin', 'appearance-skins'],
+    ['clothes', 'wardrobe-materials'],
+  ] as const) {
+    await page.getByTestId(`cat-${cat}`).click();
+    const g2 = page.getByTestId(id);
     await expect(g2.getByTestId('library-card').first()).toBeVisible();
-    counts[c] = await g2.getByTestId('library-card').count();
+    counts[id] = await g2.getByTestId('library-card').count();
   }
   report.library = { thumbBrightness: { studio: studioThumb, night: nightThumb }, viewportBrightness: { studio: studioView, night: nightView }, entries: counts };
   writeReport();

@@ -283,3 +283,21 @@ Two fixes reported after the first release.
   - Older tests that check the mesh path (scene, blink and lashes, card brows) now ask for the meshes explicitly.
   - The three-photo test's stand-in photos are now rendered with the painted brows and lashes. Without the meshes they had shown faces with no brows or lashes, and one set's lips then read 4.2 texels off. Worst set now 2.9 texels (limit 4).
   - Full browser suite: 52 passed (one failure, fixed as above and rerun). The desktop test passes, and core 234, Go tests, typecheck and lint are clean.
+
+## 0.21.0: One place for each part (D-149)
+
+- **The editor.**
+  - The parts tree, the 01–06 step strip and the Library tab are gone. In their place, a rail of categories: Body, Face, Skin, Eyes, Brows, Lashes, Makeup, Mouth, Hair, Clothes, Look and Export, with Studio and Settings at its foot.
+  - Each category's panel has only that part's controls, common first and the rest folded away.
+  - Opening a category frames its part. Mouth opens the mouth as a preview, so the teeth and tongue show.
+  - Clicking a part in the viewport opens its category. A worn garment opens in place in Clothes.
+- **Library grids.**
+  - A search box, one plain filter (hair length or kind, garment slot, skin gender and age) and a favourites star. This replaces the tag chips, which used the catalog's tags, and those were often wrong.
+  - MakeHuman's assets have plain names, for example "afro01" is now "Afro" and "toigo_blunt_bob" is now "Blunt bob".
+  - Mesh hairstyles carry a Mesh badge.
+- **Sliders:** a region menu (or Favourite sliders), Symmetry, Every slider, Randomize.
+- **Tested:**
+  - `e2e/ui-layout.spec.ts`: every category opens its own panel and only one is selected. Eyes, Brows and Lashes each show only their part. The camera frames the part, and Mouth opens the jaw and closes it on leaving. It also checks the region menu and favourites, a worn garment's row (settings, hide, opened from a viewport click), the hair filter and names with no tag chips, and that the rail fits at 1280×720.
+  - The other specs now go through the categories.
+  - The M16 library test now checks the grids inside the panels: look-matched thumbnails, a favourite that survives a reload, and the filter.
+  - Full browser suite: 53 passed. The desktop test passes, and typecheck and lint are clean.

@@ -1,36 +1,49 @@
 /**
- * Library grid (Part 2 F20): entries of one or more categories as thumbnails
- * rendered under the viewport's look, with search, tags and favourites.
- * Clicking an entry picks it; "Edit" opens its Asset Studio.
+ * Library grid (Part 2 F20; D-149): entries of one or more categories as
+ * thumbnails rendered under the viewport's look. Above it, when asked: a
+ * search box, one plain filter (length, gender...) and a favourites star.
+ * Clicking an entry picks it; your own entries can be edited or deleted from
+ * the small buttons on their card.
  */
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { entryTags, libraryTags, searchLibrary, type LibraryCategory } from '@ps2cc/core';
+import { entryTags, searchLibrary, type LibraryCategory } from '@ps2cc/core';
 import { useStudio, useStudioVersion } from '../../state/hooks';
-import { libraryEntries, toggleFavourite, toggleTag, useLibrary, type CreatorEntry } from '../../state/library';
+import { libraryEntries, toggleFavourite, useLibrary, type CreatorEntry } from '../../state/library';
 import { useUi } from '../../state/ui';
 import { THUMB_LARGE, THUMB_SMALL } from '../../thumbs/stage';
 import { StarIcon } from '../icons';
 
+/** One choice of the grid's filter. */
+export interface LibraryFacet {
+  id: string;
+  label: string;
+  test: (e: CreatorEntry) => boolean;
+}
+
 export interface LibraryGridProps {
   categories: readonly LibraryCategory[];
-  /** Only entries this accepts (a Wardrobe slot). */
+  /** Only entries this accepts. */
   filter?: (e: CreatorEntry) => boolean;
   size?: 'small' | 'large';
-  /** Search, tags and the favourites switch above the grid. */
+  /** Search and the favourites star above the grid. */
   tools?: boolean;
-  /** Most entries shown before "Show all" (small grids). */
+  /** The filter menu's choices (besides "All"). */
+  facets?: readonly LibraryFacet[];
+  /** What the filter menu's "All" says. */
+  allLabel?: string;
+  /** Most entries shown before "Show all". */
   limit?: number;
   testId?: string;
   /** After an entry is picked. */
   onPicked?: (e: CreatorEntry) => void;
 }
 
-export function LibraryGrid({ categories, filter, size = 'small', tools = true, limit, testId, onPicked }: LibraryGridProps) {
+export function LibraryGrid({ categories, filter, size = 'small', tools = true, facets, allLabel = 'All', limit, testId, onPicked }: LibraryGridProps) {
   const studio = useStudio();
   const version = useStudioVersion();
   const lib = useLibrary();
   const [text, setText] = useState('');
-  const [tag, setTag] = useState<string | null>(null);
+  const [facet, setFacet] = useState('');
   const [favOnly, setFavOnly] = useState(false);
   const [all, setAll] = useState(false);
   const entries = useMemo(
@@ -39,40 +52,41 @@ export function LibraryGrid({ categories, filter, size = 'small', tools = true, 
     [studio, categories.join(','), filter, lib.version, version],
   );
   const favourites = useMemo(() => new Set(lib.favourites), [lib.favourites]);
-  const hits = useMemo(() => searchLibrary(entries, { text, tag, favouritesOnly: favOnly }, favourites, lib.tags), [entries, text, tag, favOnly, favourites, lib.tags]);
-  // The most used tags, and always the user's own and the one chosen.
-  const tags = useMemo(() => {
-    const mine = new Set(Object.values(lib.tags).flat());
-    const all = libraryTags(entries, lib.tags);
-    const top = all.slice(0, size === 'large' ? 24 : 8);
-    return [...all.filter((t) => mine.has(t.tag) || t.tag === tag), ...top.filter((t) => !mine.has(t.tag) && t.tag !== tag)];
-  }, [entries, lib.tags, size, tag]);
-  const shown = limit && !all && !text && !tag && !favOnly ? hits.slice(0, limit) : hits;
+  const hits = useMemo(() => {
+    const found = searchLibrary(entries, { text, tag: null, favouritesOnly: favOnly }, favourites, lib.tags);
+    const f = facets?.find((x) => x.id === facet);
+    return f ? found.filter(f.test) : found;
+  }, [entries, text, favOnly, favourites, lib.tags, facets, facet]);
+  const narrowed = Boolean(text || facet || favOnly);
+  const shown = limit && !all && !narrowed ? hits.slice(0, limit) : hits;
   const doc = studio.engine.doc;
   return (
     <div className={`library-grid-wrap ${size}`} data-testid={testId}>
       {tools && (
         <div className="library-tools">
-          <input className="search" type="search" placeholder="Search…" value={text} onChange={(e) => setText(e.target.value)} aria-label="Search the library" data-testid="library-search" />
-          <div className="toggle-row wrap">
-            <button className={favOnly ? 'chip active' : 'chip'} aria-pressed={favOnly} onClick={() => setFavOnly(!favOnly)} data-testid="library-favourites" title="Favourites only">
-              <StarIcon filled={favOnly} /> Favourites
-            </button>
-            {tags.map((t) => (
-              <button key={t.tag} className={tag === t.tag ? 'chip active' : 'chip'} aria-pressed={tag === t.tag} onClick={() => setTag(tag === t.tag ? null : t.tag)} data-testid={`library-tag-${t.tag.replace(/ /g, '-')}`}>
-                {t.tag}
-              </button>
-            ))}
-          </div>
+          <input className="search" type="search" placeholder="Search…" value={text} onChange={(e) => setText(e.target.value)} aria-label="Search" data-testid="library-search" />
+          {facets && facets.length > 0 && (
+            <select value={facet} onChange={(e) => setFacet(e.target.value)} aria-label="Filter" data-testid="library-filter">
+              <option value="">{allLabel}</option>
+              {facets.map((f) => (
+                <option key={f.id} value={f.id}>
+                  {f.label}
+                </option>
+              ))}
+            </select>
+          )}
+          <button className={favOnly ? 'icon fav-toggle on' : 'icon fav-toggle'} aria-pressed={favOnly} onClick={() => setFavOnly(!favOnly)} data-testid="library-favourites" title="Favourites only" aria-label="Favourites only">
+            <StarIcon filled={favOnly} />
+          </button>
         </div>
       )}
-      {shown.length === 0 && <p className="muted">{favOnly ? 'No favourites here yet: star an entry to add it.' : 'Nothing matches.'}</p>}
+      {shown.length === 0 && <p className="muted">{favOnly ? 'No favourites here yet: star one to add it.' : 'Nothing matches.'}</p>}
       <div className={`library-grid ${size}`} role="list">
         {shown.map((e) => (
           <LibraryCard key={e.id} entry={e} size={size} active={e.active(doc)} favourite={favourites.has(e.id)} tags={entryTags(e, lib.tags)} onPicked={onPicked} />
         ))}
       </div>
-      {limit && !all && shown.length < hits.length && (
+      {limit && !all && !narrowed && shown.length < hits.length && (
         <button className="link" onClick={() => setAll(true)} data-testid="library-show-all">
           Show all {hits.length}
         </button>
@@ -88,10 +102,6 @@ function LibraryCard({ entry, size, active, favourite, tags, onPicked }: { entry
     entry.apply();
     onPicked?.(entry);
   };
-  const addTag = () => {
-    const t = window.prompt(`Tag ${entry.name} (a tag it has is removed)`, '');
-    if (t) toggleTag(studio, entry.id, t);
-  };
   const remove = () => {
     if (!entry.remove || !window.confirm(`Delete ${entry.name} from your library?`)) return;
     entry.remove().then(
@@ -101,37 +111,32 @@ function LibraryCard({ entry, size, active, favourite, tags, onPicked }: { entry
   };
   return (
     <div className={active ? 'library-card active' : 'library-card'} role="listitem" data-testid="library-card" data-entry={entry.id} data-active={active}>
-      <button className="library-thumb" onClick={pick} title={`${entry.name}${tags.length ? ` (${tags.join(', ')})` : ''}`} aria-label={entry.name} aria-pressed={active}>
+      <button className="library-thumb" onClick={pick} title={entry.name} aria-label={entry.name} aria-pressed={active}>
         <Thumb entry={entry} size={size} />
+        {entry.badge && <span className="thumb-badge">{entry.badge}</span>}
       </button>
+      {(entry.edit || entry.remove) && (
+        <div className="card-actions-mini">
+          {entry.edit && (
+            <button onClick={() => entry.edit!()} data-testid="library-edit" title="Open it in the Asset Studio">
+              Edit
+            </button>
+          )}
+          {entry.remove && (
+            <button className="danger" onClick={remove} data-testid="library-delete" title="Delete it from your library">
+              Delete
+            </button>
+          )}
+        </div>
+      )}
       <div className="library-caption">
-        <span className="library-name" onClick={pick}>
+        <span className="library-name" onClick={pick} title={tags.length ? `${entry.name} (${tags.join(', ')})` : entry.name}>
           {entry.name}
         </span>
         <button className={favourite ? 'icon star on' : 'icon star'} onClick={() => toggleFavourite(studio, entry.id)} aria-label={favourite ? `Remove ${entry.name} from favourites` : `Add ${entry.name} to favourites`} aria-pressed={favourite} data-testid="library-star">
           <StarIcon filled={favourite} />
         </button>
       </div>
-      {size === 'large' && (
-        <div className="library-meta">
-          <span className="muted">{tags.join(' · ')}</span>
-          <div className="card-actions-mini">
-            {entry.edit && (
-              <button onClick={() => entry.edit!()} data-testid="library-edit" title="Open it in the Asset Studio">
-                Edit
-              </button>
-            )}
-            <button onClick={addTag} data-testid="library-tag-add" title="Add or remove one of your own tags">
-              Tag…
-            </button>
-            {entry.remove && (
-              <button className="danger" onClick={remove} data-testid="library-delete" title="Delete it from your library">
-                Delete
-              </button>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 }
