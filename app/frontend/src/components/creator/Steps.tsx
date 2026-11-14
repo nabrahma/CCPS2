@@ -64,7 +64,10 @@ function StudioButton({ label, testId, onClick, hint }: { label: string; testId:
 export function CreateStep() {
   const studio = useStudio();
   const ui = useUi();
-  const [sub, setSub] = useState<'body' | 'face'>('body');
+  // Body or face, one region, or the favourites: chosen here or in the parts tree.
+  const focus = ui.sliderFocus;
+  const sub = focus.sub;
+  const setSub = (s: 'body' | 'face') => ui.focusSliders({ sub: s });
   const savePreset = async () => {
     const name = window.prompt('Save these sliders as a preset named', studio.engine.doc.name)?.trim();
     if (!name) return;
@@ -78,6 +81,7 @@ export function CreateStep() {
   };
   return (
     <div className="slider-panel creator-step" data-testid="step-panel-create">
+      {!focus.group && !focus.favourites && (
       <Section title="Base" testId="create-base">
         <p className="hint">Start from a body preset, then shape it below.</p>
         <LibraryGrid categories={['bodies']} tools={false} testId="create-presets" />
@@ -85,15 +89,26 @@ export function CreateStep() {
           Save sliders as a preset…
         </button>
       </Section>
+      )}
       <div className="toggle-row" role="tablist" aria-label="Sliders">
         {(['body', 'face'] as const).map((t) => (
-          <button key={t} role="tab" aria-selected={sub === t} className={sub === t ? 'chip active' : 'chip'} onClick={() => setSub(t)} data-testid={`create-${t}`}>
+          <button key={t} role="tab" aria-selected={sub === t && !focus.favourites} className={sub === t && !focus.favourites ? 'chip active' : 'chip'} onClick={() => setSub(t)} data-testid={`create-${t}`}>
             {t === 'body' ? 'Body' : 'Face'}
           </button>
         ))}
+        {focus.group && (
+          <button className="chip active" onClick={() => setSub(sub)} title="Show every group" data-testid="create-group">
+            {focus.group} ×
+          </button>
+        )}
+        {focus.favourites && (
+          <button className="chip active" onClick={() => setSub(sub)} title="Show every slider" data-testid="create-favourites">
+            Favourites ×
+          </button>
+        )}
       </div>
-      <div role="tabpanel" aria-label={sub === 'body' ? 'Body' : 'Face'}>
-        <SliderPanel tab={sub} key={sub} />
+      <div role="tabpanel" aria-label={focus.favourites ? 'Favourite sliders' : sub === 'body' ? 'Body' : 'Face'}>
+        <SliderPanel tab={sub} group={focus.group} favourites={focus.favourites} key={`${sub}|${focus.group}|${focus.favourites}`} />
       </div>
     </div>
   );

@@ -30,7 +30,12 @@ type Settings struct {
 	Favourites []string `json:"favourites"`
 	// LibraryTags are the user's own tags on library entries (entry id to tags).
 	LibraryTags map[string][]string `json:"libraryTags"`
+	// RecentFiles are the character files last opened or saved, newest first (M18).
+	RecentFiles []string `json:"recentFiles"`
 }
+
+// MaxRecentFiles caps the recent character list.
+const MaxRecentFiles = 20
 
 // MaxFavourites caps the starred entries and the entries with user tags.
 const MaxFavourites = 2000
@@ -109,6 +114,13 @@ func (v *Settings) sanitise() {
 		v.AutosaveMinutes = d.AutosaveMinutes
 	}
 	v.Favourites = sanitiseIDs(v.Favourites, MaxFavourites)
+	var recent []string
+	for _, p := range sanitiseIDs(v.RecentFiles, 1000) {
+		if len(recent) < MaxRecentFiles && strings.HasSuffix(strings.ToLower(p), ".ps2char") {
+			recent = append(recent, p)
+		}
+	}
+	v.RecentFiles = recent
 	if len(v.LibraryTags) > 0 {
 		tags := map[string][]string{}
 		for id, list := range v.LibraryTags {

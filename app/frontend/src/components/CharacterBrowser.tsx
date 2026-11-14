@@ -76,8 +76,13 @@ export function CharacterBrowser({ onClose }: { onClose: () => void }) {
                 {c.thumb ? <img src={c.thumb} alt="" loading="lazy" /> : <span className="muted">no thumbnail</span>}
               </button>
               <figcaption>
-                <strong>{c.name}</strong>
+                <strong title={c.path}>{c.name}</strong>
                 <span className="muted">{new Date(c.modified).toLocaleString()}</span>
+                {c.external && (
+                  <span className="muted" title={c.path} data-testid="character-external">
+                    In {c.path.replace(/[\\/][^\\/]+$/, '')}
+                  </span>
+                )}
               </figcaption>
               <div className="card-actions">
                 <button onClick={() => void open(c)} disabled={busy !== null}>

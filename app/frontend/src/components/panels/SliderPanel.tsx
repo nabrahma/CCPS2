@@ -1,20 +1,29 @@
 import { useMemo, useRef } from 'react';
 import { randomizeCharacter, type SliderDef, type SliderTab } from '@ps2cc/core';
 import { useStudio, useStudioVersion } from '../../state/hooks';
+import { toggleFavourite, useLibrary } from '../../state/library';
 import { useUi } from '../../state/ui';
-import { LockIcon, ResetIcon, ShuffleIcon } from '../icons';
+import { HeartIcon, LockIcon, ResetIcon, ShuffleIcon } from '../icons';
 
-/** Body/Face slider panel (PRD F1): curated or all, search, symmetry, reset, lock, randomize. */
-export function SliderPanel({ tab }: { tab: SliderTab }) {
+/**
+ * Body/Face slider panel (PRD F1): curated or all, search, symmetry, reset,
+ * lock, favourite, randomize. `group` shows one group (the parts tree's
+ * regions); `favourites` shows the favourite sliders of both tabs.
+ */
+export function SliderPanel({ tab, group = null, favourites = false }: { tab: SliderTab; group?: string | null; favourites?: boolean }) {
   const studio = useStudio();
   useStudioVersion();
   const ui = useUi();
+  const favs = useLibrary((s) => s.favourites);
   const sliders = useMemo(() => {
-    const list = studio.assets.sliders.search(ui.search, ui.curated).filter((s) => s.tab === tab);
+    const liked = new Set(favs.filter((f) => f.startsWith('slider:')).map((f) => f.slice('slider:'.length)));
+    const list = studio.assets.sliders
+      .search(ui.search, ui.curated && !favourites)
+      .filter((s) => (favourites ? liked.has(s.id) : s.tab === tab && (!group || s.group === group)));
     // When symmetry is on, show only the left side of paired modifiers (the right one follows).
     if (!ui.symmetry) return list;
     return list.filter((s) => !(s.symmetricOpposite && studio.assets.modifiers.byName.get(s.id)?.symmetrySide === 'r'));
-  }, [studio, ui.search, ui.curated, ui.symmetry, tab]);
+  }, [studio, ui.search, ui.curated, ui.symmetry, tab, group, favourites, favs]);
   const groups = useMemo(() => {
     const m = new Map<string, SliderDef[]>();
     for (const s of sliders) {
@@ -63,7 +72,9 @@ export function SliderPanel({ tab }: { tab: SliderTab }) {
           </button>
         </div>
       </div>
-      {groups.length === 0 && <p className="muted">No sliders match “{ui.search}”.</p>}
+      {groups.length === 0 && (
+        <p className="muted">{favourites && !ui.search ? 'No favourite sliders yet: click the heart on a slider to add it here.' : `No sliders match “${ui.search}”.`}</p>
+      )}
       {groups.map(([group, list]) => (
         <details key={group} open className="slider-group">
           <summary>
@@ -98,6 +109,7 @@ function SliderRow({ def }: { def: SliderDef }) {
   const set = (v: number, merge: boolean) =>
     studio.engine.setValue(def.id, v, { mergeKey: merge ? `slider:${def.id}` : undefined, symmetry: ui.symmetry });
   const locked = ui.locks.has(def.id);
+  const liked = useLibrary((s) => s.favourites.includes(`slider:${def.id}`));
   const changed = Math.abs(value - def.defaultValue) > 1e-6;
   return (
     <div className={changed ? 'slider-row changed' : 'slider-row'} title={def.description || def.id}>
@@ -135,6 +147,16 @@ function SliderRow({ def }: { def: SliderDef }) {
       </button>
       <button className={locked ? 'icon locked' : 'icon'} title={locked ? 'Unlock for randomize' : 'Lock for randomize'} onClick={() => ui.toggleLock(def.id)}>
         <LockIcon />
+      </button>
+      <button
+        className={liked ? 'icon liked' : 'icon'}
+        title={liked ? 'Remove from favourite sliders' : 'Add to favourite sliders'}
+        aria-label={liked ? `Remove ${def.label} from favourites` : `Add ${def.label} to favourites`}
+        aria-pressed={liked}
+        onClick={() => toggleFavourite(studio, `slider:${def.id}`)}
+        data-testid="slider-favourite"
+      >
+        <HeartIcon filled={liked} />
       </button>
     </div>
   );

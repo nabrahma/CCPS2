@@ -9,6 +9,9 @@ export type BackgroundId = 'preset' | 'black' | 'grey' | 'image';
 /** The Character Creator's six steps (Part 2 F20). */
 export type TabId = 'create' | 'hair' | 'wardrobe' | 'appearance' | 'look' | 'export';
 
+/** The right dock's tabs (M18): the parts tree and controls, the library, the Asset Studio, settings. */
+export type DockTab = 'modify' | 'library' | 'studio' | 'settings';
+
 /** The Asset Studio's editors (Part 2 F20). */
 export type StudioKind = 'hair' | 'texture' | 'garment' | 'material';
 
@@ -59,7 +62,6 @@ export interface UiState {
   selected: string | null;
   /** What the right column shows. */
   railMode: 'controls' | 'inspect';
-  sidebarCollapsed: boolean;
   shading: ShadingMode;
   wireOverlay: boolean;
   lighting: LightingPresetId;
@@ -78,9 +80,18 @@ export interface UiState {
   assetStudio: AssetStudioState | null;
   openStudio(v: AssetStudioState): void;
   closeStudio(): void;
-  /** The library browser, open on a category (Part 2 F20). */
+  /** The library browser's category; null closes it (back to Modify). */
   library: { category: LibraryCategory } | null;
   setLibrary(v: { category: LibraryCategory } | null): void;
+  /** The right dock's open tab (M18). */
+  dockTab: DockTab;
+  setDockTab(v: DockTab): void;
+  /** Parts hidden in the viewport (the parts tree's checkboxes); not saved, not exported. */
+  hiddenParts: string[];
+  toggleHidden(key: string): void;
+  /** 01 Create: body or face sliders, one slider group (the parts tree), or the favourite sliders. */
+  sliderFocus: { sub: 'body' | 'face'; group: string | null; favourites: boolean };
+  focusSliders(v: { sub: 'body' | 'face'; group?: string | null; favourites?: boolean }): void;
   /** Garment looks (Part 2 F18): what a click or drag on the selected garment does (null: nothing). */
   garmentTool: GarmentTool | null;
   setGarmentTool(v: GarmentTool | null): void;
@@ -98,12 +109,14 @@ export interface UiState {
   /** Character browser (File → Characters…, Ctrl+O). */
   browserOpen: boolean;
   setBrowserOpen(v: boolean): void;
+  /** File → Data folder (M18). */
+  dataFolderOpen: boolean;
+  setDataFolderOpen(v: boolean): void;
   /** Help → Credits. */
   creditsOpen: boolean;
   setCreditsOpen(v: boolean): void;
   setTab(tab: TabId): void;
   setRailMode(mode: 'controls' | 'inspect'): void;
-  toggleSidebar(): void;
   setCurated(v: boolean): void;
   setSymmetry(v: boolean): void;
   setSearch(v: string): void;
@@ -139,7 +152,6 @@ export const useUi = create<UiState>((set) => ({
   locks: new Set(),
   selected: null,
   railMode: 'controls',
-  sidebarCollapsed: false,
   shading: 'ps2',
   wireOverlay: false,
   lighting: 'studio',
@@ -154,15 +166,23 @@ export const useUi = create<UiState>((set) => ({
   assetStudio: null,
   openStudio: (v) =>
     set({
+      dockTab: 'studio',
       assetStudio: v,
       hairStudio: v.kind === 'hair',
       garmentStudio: v.kind === 'garment' ? v.target : null,
       garmentTool: null,
       railMode: 'controls',
     }),
-  closeStudio: () => set({ assetStudio: null, hairStudio: false, garmentStudio: null, garmentTool: null }),
+  closeStudio: () => set({ assetStudio: null, hairStudio: false, garmentStudio: null, garmentTool: null, dockTab: 'modify' }),
   library: null,
-  setLibrary: (library) => set({ library }),
+  setLibrary: (library) => set(library ? { library, dockTab: 'library' } : { library: null, dockTab: 'modify' }),
+  dockTab: 'modify',
+  setDockTab: (dockTab) => set((s) => ({ dockTab, library: dockTab === 'library' ? (s.library ?? { category: 'bodies' }) : s.library })),
+  hiddenParts: [],
+  toggleHidden: (key) => set((s) => ({ hiddenParts: s.hiddenParts.includes(key) ? s.hiddenParts.filter((k) => k !== key) : [...s.hiddenParts, key] })),
+  sliderFocus: { sub: 'body', group: null, favourites: false },
+  focusSliders: (v) =>
+    set({ ...(v.group ? { camera: v.sub === 'face' ? 'face' : 'full' } : {}), sliderFocus: { sub: v.sub, group: v.group ?? null, favourites: v.favourites ?? false }, tab: 'create', railMode: 'controls', dockTab: 'modify', assetStudio: null, hairStudio: false, garmentStudio: null, garmentTool: null }),
   garmentTool: null,
   setGarmentTool: (garmentTool) => set({ garmentTool }),
   garmentStudio: null,
@@ -170,8 +190,8 @@ export const useUi = create<UiState>((set) => ({
   setGarmentStudio: (garmentStudio) =>
     set(
       garmentStudio
-        ? { garmentStudio, assetStudio: { kind: 'garment', target: garmentStudio }, hairStudio: false, garmentTool: null, railMode: 'controls' }
-        : { garmentStudio: null, assetStudio: null, garmentTool: null },
+        ? { garmentStudio, assetStudio: { kind: 'garment', target: garmentStudio }, hairStudio: false, garmentTool: null, railMode: 'controls', dockTab: 'studio' }
+        : { garmentStudio: null, assetStudio: null, garmentTool: null, dockTab: 'modify' },
     ),
   background: 'preset',
   backgroundImage: null,
@@ -181,13 +201,14 @@ export const useUi = create<UiState>((set) => ({
   garmentImport: null,
   browserOpen: false,
   setBrowserOpen: (browserOpen) => set({ browserOpen }),
+  dataFolderOpen: false,
+  setDataFolderOpen: (dataFolderOpen) => set({ dataFolderOpen }),
   creditsOpen: false,
   setCreditsOpen: (creditsOpen) => set({ creditsOpen }),
   photo: null,
   // A creator step closes the Asset Studio.
-  setTab: (tab) => set({ tab, search: '', railMode: 'controls', assetStudio: null, hairStudio: false, garmentStudio: null, garmentTool: null }),
+  setTab: (tab) => set({ tab, search: '', railMode: 'controls', dockTab: 'modify', assetStudio: null, hairStudio: false, garmentStudio: null, garmentTool: null }),
   setRailMode: (railMode) => set({ railMode }),
-  toggleSidebar: () => set((s) => ({ sidebarCollapsed: !s.sidebarCollapsed })),
   setCurated: (curated) => set({ curated }),
   setSymmetry: (symmetry) => set({ symmetry }),
   setSearch: (search) => set({ search }),
@@ -199,7 +220,7 @@ export const useUi = create<UiState>((set) => ({
       return { locks };
     }),
   // Choosing a part opens its details; clearing the selection leaves the column alone.
-  select: (selected) => set((s) => ({ selected, railMode: selected ? 'inspect' : s.railMode })),
+  select: (selected) => set((s) => ({ selected, railMode: selected ? 'inspect' : s.railMode, dockTab: selected && !s.assetStudio ? 'modify' : s.dockTab })),
   setView: (patch) => set(patch),
   info: (message) => set((s) => ({ toasts: [...s.toasts, { id: ++toastId, kind: 'info', message }] })),
   error: (message, err) =>

@@ -13,7 +13,7 @@ import { GarmentLookEditor } from '../panels/GarmentLookEditor';
 import { HairPanel, TintRow } from '../panels/HairPanel';
 import { SkinPanel } from '../panels/SkinPanel';
 import { PainterLink } from '../PainterLink';
-import { STUDIOS } from '../Sidebar';
+import { STUDIOS } from '../workspace/steps';
 import { MaterialStudio } from './MaterialStudio';
 
 export function StudioRail() {

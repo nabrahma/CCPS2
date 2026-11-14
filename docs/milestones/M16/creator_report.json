@@ -1,6 +1,79 @@
 {
+  "creator": {
+    "steps": [
+      "step_01_create",
+      "step_02_hair",
+      "step_03_wardrobe",
+      "step_04_appearance",
+      "step_05_look",
+      "step_06_export"
+    ],
+    "meshes": [
+      "Untitled_Head",
+      "Untitled_Body",
+      "Untitled_Hair",
+      "Untitled_Garments",
+      "Untitled_Eyes"
+    ],
+    "textures": 5,
+    "garments": [
+      "ps2cc:clothes/rollneck_sweater",
+      "ps2cc:clothes/mara_utility_vest",
+      "ps2cc:clothes/cargo_trousers",
+      "mh:clothes/toigo_ankle_boots_female",
+      "ps2cc:clothes/wristbands",
+      "mh:clothes/aethelraed_unraed_cloche_hat"
+    ],
+    "layers": [
+      "scalpHair",
+      "occlusion",
+      "cavity",
+      "pores",
+      "mouth",
+      "lips",
+      "freckles",
+      "darkCircles"
+    ]
+  },
+  "hairStudio": {
+    "saved": "Studio bob",
+    "back": 0.32,
+    "front": 0.08
+  },
   "textureStudio": {
     "saved": "Freckled grimy skin",
     "meanDifferenceFromBase": 0.04281622194776348
+  },
+  "garmentStudio": {
+    "saved": "user:garment/Loose_tee_19b416b1",
+    "triangles": 1800
+  },
+  "materialStudio": {
+    "saved": [
+      "Green denim",
+      "Blue cloth"
+    ],
+    "photoSeam": {
+      "raw": 0.1053,
+      "seamless": 0
+    }
+  },
+  "library": {
+    "thumbBrightness": {
+      "studio": 0.17858192565358808,
+      "night": 0.19053687235284736
+    },
+    "viewportBrightness": {
+      "studio": 0.18436854713235243,
+      "night": 0.20615011892164276
+    },
+    "entries": {
+      "bodies": 5,
+      "hair": 49,
+      "garments": 121,
+      "outfits": 2,
+      "skins": 53,
+      "materials": 11
+    }
   }
 }

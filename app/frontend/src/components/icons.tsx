@@ -128,6 +128,61 @@ export const StarIcon = ({ filled }: { filled: boolean }) => (
   </Glyph>
 );
 
+export const NewIcon = () => (
+  <Glyph>
+    <path d="M3.5 1h6l3.5 3.5V15h-9.5zm1.3 1.3v11.4h6.9V5.3H8.7v-3zM7.4 7h1.2v1.9h1.9v1.2H8.6V12H7.4v-1.9H5.5V8.9h1.9z" />
+  </Glyph>
+);
+
+export const OpenIcon = () => (
+  <Glyph>
+    <path d="M1 3h5l1.4 1.5H15V14H1zm1.3 2.8v6.9h11.4V5.8z" />
+  </Glyph>
+);
+
+export const SaveIcon = () => (
+  <Glyph>
+    <path d="M2 2h9.6L14 4.4V14H2zm1.3 1.3v9.4h9.4V5L11 3.3H10v3H4.5v-3zm2.5 0v1.8h2.9V3.3zM5 9h6v3H5z" />
+  </Glyph>
+);
+
+export const UndoIcon = () => (
+  <Glyph>
+    <path d="M5.2 3.2 1.4 7l3.8 3.8.9-.9L3.9 7.6h5.6a3.2 3.2 0 0 1 0 6.4H7.6v1.3h1.9a4.5 4.5 0 0 0 0-9H3.9l2.2-2.3z" />
+  </Glyph>
+);
+
+export const RedoIcon = () => (
+  <Glyph>
+    <path d="m10.8 3.2 3.8 3.8-3.8 3.8-.9-.9 2.2-2.3H6.5a3.2 3.2 0 0 0 0 6.4h1.9v1.3H6.5a4.5 4.5 0 0 1 0-9h5.6L9.9 4.1z" />
+  </Glyph>
+);
+
+export const GearIcon = () => (
+  <Glyph>
+    <path fillRule="evenodd" d="M6.9 1h2.2l.4 1.9 1.1.5 1.6-1.1 1.6 1.6-1.1 1.6.5 1.1L15 6.9v2.2l-1.9.4-.5 1.1 1.1 1.6-1.6 1.6-1.6-1.1-1.1.5L9.1 15H6.9l-.4-1.9-1.1-.5-1.6 1.1-1.6-1.6 1.1-1.6-.5-1.1L1 9.1V6.9l1.9-.4.5-1.1-1.1-1.6 1.6-1.6 1.6 1.1 1.1-.5ZM8 5.6a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8Z" />
+  </Glyph>
+);
+
+export const EyeIcon = ({ off }: { off: boolean }) => (
+  <Glyph>
+    {off ? (
+      <path d="M2.3 1.4 14.6 13.7l-.9.9-2.2-2.2A7.4 7.4 0 0 1 8 13.3C4.6 13.3 2 10.6 1 8c.5-1.2 1.3-2.4 2.4-3.4L1.4 2.3zM4.3 5.5C3.5 6.2 2.9 7.1 2.5 8c.9 2 3 4 5.5 4 1 0 1.8-.3 2.6-.7L9.4 10.1a2.4 2.4 0 0 1-3.5-3.5zM8 2.7c3.4 0 6 2.7 7 5.3-.4 1-1 2-1.8 2.8l-.9-.9c.5-.6 1-1.2 1.2-1.9-.9-2-3-4-5.5-4-.6 0-1.1.1-1.6.3l-1-1A7 7 0 0 1 8 2.7z" />
+    ) : (
+      <path fillRule="evenodd" d="M8 2.7c3.4 0 6 2.7 7 5.3-1 2.6-3.6 5.3-7 5.3S2 10.6 1 8c1-2.6 3.6-5.3 7-5.3Zm0 1.3C5.5 4 3.4 6 2.5 8c.9 2 3 4 5.5 4s4.6-2 5.5-4c-.9-2-3-4-5.5-4Zm0 1.6a2.4 2.4 0 1 1 0 4.8 2.4 2.4 0 0 1 0-4.8Z" />
+    )}
+  </Glyph>
+);
+
+export const HeartIcon = ({ filled }: { filled: boolean }) => (
+  <Glyph>
+    <path
+      fillRule="evenodd"
+      d={filled ? 'M8 14.2 2 8.3A3.6 3.6 0 0 1 8 3.7a3.6 3.6 0 0 1 6 4.6z' : 'M8 14.2 2 8.3A3.6 3.6 0 0 1 8 3.7a3.6 3.6 0 0 1 6 4.6Zm0-1.8 5-5a2.3 2.3 0 0 0-4-2.4l-1 1.2-1-1.2a2.3 2.3 0 0 0-4 2.4Z'}
+    />
+  </Glyph>
+);
+
 export function BrandMark() {
   return (
     <svg className="brand-mark" width="28" height="14" viewBox="0 0 28 14" fill="none" stroke="currentColor" strokeWidth="1.3" role="img" aria-label="PS2CC">

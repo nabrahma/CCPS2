@@ -4,7 +4,7 @@ PS2CC is now two experiences in one app (PRD Part 2 F20). The **Character Creato
 
 ## The Character Creator
 
-The left rail lists six steps. Each shows the simple controls for one part of the character, and most offer an "Edit in … Studio" button for the rest.
+The six steps run along the bottom of the viewport, and the dock on the right shows the chosen step (M18: see [workspace.md](workspace.md)). The parts tree in the dock's Modify tab reaches the same controls part by part. Each shows the simple controls for one part of the character, and most offer an "Edit in … Studio" button for the rest.
 
 | Step | What you do there | Studio |
 | --- | --- | --- |
@@ -19,7 +19,7 @@ Picking anything is one undo step. The viewport toolbar still has every view opt
 
 ## The library
 
-Every grid in the creator is the library, and **Library** in the left rail opens all of it at once with large thumbnails (Ctrl+L). Its categories are bodies, hair, garments, outfits, skins and materials.
+Every grid in the creator is the library, and the dock's **Library** tab shows all of it at once with large thumbnails (Ctrl+L). Its categories are bodies, hair, garments, outfits, skins and materials.
 
 - **Thumbnails** show each asset on a stand-in of your character's sex and quality profile, under the look the viewport shows. Change the look and they render again. They render when they scroll into view and are kept until the look changes.
 - **Favourites:** star an entry. The Favourites switch shows only starred ones, and starred entries come first everywhere.
@@ -33,7 +33,7 @@ Two outfits ship with the app: the benchmark outfits, **Utility vest and roll-ne
 
 ## The Asset Studio
 
-Open a studio from a creator step, the Inspector, a library entry, or **Asset Studio** in the left rail. While a studio is open, the left rail lists the four studios and **‹ Creator** takes you back. The right column shows the studio's editor.
+Open a studio from a creator step, the Inspector, a library entry, or the dock's **Studio** tab. While a studio is open, the Studio tab lists the four studios, shows the open one's editor, and **‹ Creator** takes you back.
 
 ### Hair Studio
 

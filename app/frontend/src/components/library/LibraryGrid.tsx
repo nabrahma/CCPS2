@@ -115,17 +115,17 @@ function LibraryCard({ entry, size, active, favourite, tags, onPicked }: { entry
       {size === 'large' && (
         <div className="library-meta">
           <span className="muted">{tags.join(' · ')}</span>
-          <div className="button-row">
+          <div className="card-actions-mini">
             {entry.edit && (
               <button onClick={() => entry.edit!()} data-testid="library-edit" title="Open it in the Asset Studio">
-                Edit in Studio
+                Edit
               </button>
             )}
-            <button onClick={addTag} data-testid="library-tag-add">
+            <button onClick={addTag} data-testid="library-tag-add" title="Add or remove one of your own tags">
               Tag…
             </button>
             {entry.remove && (
-              <button className="danger" onClick={remove} data-testid="library-delete">
+              <button className="danger" onClick={remove} data-testid="library-delete" title="Delete it from your library">
                 Delete
               </button>
             )}

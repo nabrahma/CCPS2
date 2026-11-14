@@ -71,4 +71,3 @@ func TestFavouritesAndTags(t *testing.T) {
 		t.Fatalf("want %d favourites, got %d", MaxFavourites, len(got.Favourites))
 	}
 }
-

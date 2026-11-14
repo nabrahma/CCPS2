@@ -217,3 +217,40 @@ Also tested:
 - Thumbnails render one at a time in a hidden viewport, so the first screen of a grid takes a few seconds (under the tests' software renderer, up to a minute). They render again when the look changes.
 - Saving a skin bakes its layers into it.
 - Material Studio previews at 512 px and saves at 1024 px.
+
+## M17: Generative assist (not built)
+
+You decided against it (D-139): PS2CC ships no AI model. Part 2 ends at M16.
+
+## M18: Workspace and data folder (0.19.0)
+
+You asked for two things after Part 2: to keep your work in any folder without anything breaking, and a Character Creator-style interface, cleaner. Guide: `docs/workspace.md`. Decisions D-140 to D-143. Screenshots: `docs/milestones/UI/`.
+
+**Data folder and saving.**
+- Characters, the library and settings can move to any folder or drive (Settings → Data folder). Everything is copied and every copy checked (SHA-256) before the switch at the next start; the old folder is left as it was.
+- A folder that already holds PS2CC data is used as it is.
+- A data folder on a drive that is not connected falls back to the default with a message, so the app still starts.
+- Ctrl+S now saves over the file you opened or saved with Save as…, wherever it is. Before, it saved a second copy in the data folder.
+- The character browser lists characters kept elsewhere.
+
+**Workspace.**
+- A top bar, the viewport with a camera bar and the six creator steps along its bottom, a dock (Modify, Library, Studio, Settings) and a status bar with the budget.
+- Modify is a parts tree over the controls: choosing a body or face region shows only its sliders and turns the camera; skin, hair, eyes, brows, lashes, teeth, tongue and each garment open their controls, each with an eye that hides it in the viewport only. Favourite sliders (the heart on each slider) have their own row.
+- Theme: neutral dark greys, one blue accent, flat panels, no serif headline.
+
+Tested:
+- Go:
+  - planning a move (empty folder, busy folder, existing data, and refused targets);
+  - copying with checks, without the session files;
+  - the pointer file, and falling back when the folder is missing;
+  - saving over a file elsewhere, and listing it;
+  - a move that copies, rewrites recent files and leaves the old folder alone;
+  - PS2CC_HOME preventing a move.
+- Browser (`e2e/ui-layout.spec.ts`):
+  - steps and dock tabs;
+  - a region showing only its sliders;
+  - a hearted slider in Favourite sliders;
+  - a garment's row opening its details;
+  - its eye hiding it in the viewport while the character keeps it;
+  - the smallest window (1280×720) with nothing overflowing or overlapping.
+- Every older browser test runs on the new layout: the full browser suite passes (49 tests), and so does the desktop test against the real backend.

@@ -10,6 +10,7 @@ It needs no Blender, no Python and no network connection to run.
 
 ## What it does
 
+- **Workspace:** a Character Creator-style layout: a big viewport, a dock with a parts tree (body and face regions, skin, hair, eyes, each garment, with show/hide), favourite sliders, and a status bar with the budget. Save characters anywhere and move your data folder to any drive. See [docs/workspace.md](docs/workspace.md).
 - **Character Creator:** six steps (Create, Hair, Wardrobe, Appearance, Look, Export) with the simple controls, and a library of presets, hairstyles, garments, outfits, skins and materials shown as thumbnails under your look, with favourites, tags and search. The deep editors are in the **Asset Studio**: Hair, Texture, Garment and Material Studio, whose saved work joins the library. See [docs/creator-and-studio.md](docs/creator-and-studio.md).
 - **Body and face:** MakeHuman's morph system, with curated sliders, symmetry, locks, randomize, undo, and your own presets.
 - **Quality profiles:** Classic, Enhanced and Hero set every budget at once (12k to 30k triangles, 512 to 2048 textures), with bodies from 8k triangles to the full MakeHuman mesh and a live budget meter for triangles, texture memory, bones and blendshapes.
@@ -46,7 +47,7 @@ pnpm build
 .\app\build\bin\PS2CC.exe
 ```
 
-The compiled character assets come with the clone through Git LFS. `PS2CC.exe` looks for `assets/core` next to itself or in a parent folder; you can also set `PS2CC_ASSETS`. Your characters and library are stored in `Documents\PS2CC\`, and logs in `%LOCALAPPDATA%\PS2CC\logs\`.
+The compiled character assets come with the clone through Git LFS. `PS2CC.exe` looks for `assets/core` next to itself or in a parent folder; you can also set `PS2CC_ASSETS`. Your characters and library are stored in `Documents\PS2CC\` unless you move them (**Settings → Data folder**, see [docs/workspace.md](docs/workspace.md)), and logs in `%LOCALAPPDATA%\PS2CC\logs\`.
 
 If `mingw-w64` is not at `C:\mingw64`, set `PS2CC_CC` to its `gcc.exe`.
 
@@ -61,10 +62,10 @@ The character imports as a Humanoid prefab, ready for retargeted animation.
 
 ## Make your own garment
 
-1. **Wardrobe → Base body (OBJ)…** saves the body to model around (metres, Y up, facing +Z). Do not move, scale or rotate it.
+1. **03 Wardrobe → Your own garments → Base body (OBJ)…** saves the body to model around (metres, Y up, facing +Z). Do not move, scale or rotate it.
 2. Model the garment around it and unwrap it. Stay outside the skin; a few millimetres is enough.
 3. Export only the garment as OBJ, FBX or GLB (not compressed GLB).
-4. **Wardrobe → Import garment…**, or drop the file on the window. Its slot sets the triangle budget.
+4. **03 Wardrobe → Your own garments → Import garment…**, or drop the file on the window. Its slot sets the triangle budget.
 5. Drop a PNG on it to texture it. The Inspector exports a UV template to paint over.
 
 ## Development

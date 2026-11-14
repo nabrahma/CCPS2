@@ -40,6 +40,8 @@ type CharacterInfo struct {
 	// Thumb is the thumbnail's URL under the app's asset server
 	// (/characters/<name>/renders/thumb.png?v=<mtime>), empty when there is none.
 	Thumb string `json:"thumb,omitempty"`
+	// External: a recent character saved outside the data folder.
+	External bool `json:"external,omitempty"`
 }
 
 // header is the minimal part of a .ps2char the backend validates.
