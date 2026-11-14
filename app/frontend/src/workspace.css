@@ -680,3 +680,42 @@
 .card-actions-mini button:hover:not(:disabled) {
   border-color: var(--line-strong);
 }
+
+/* Painted eyebrows and eyelashes (D-146): an on/off row, then their settings full width. */
+.painted-part {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px 0 6px;
+  border-top: 1px solid var(--line);
+}
+
+.painted-part .painted-group {
+  margin: 2px 0 0 8px;
+}
+
+.painted-part .painted-group > summary {
+  cursor: pointer;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted, #9a9a9a);
+  padding: 3px 0;
+}
+
+.brow-brush canvas {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 320 / 128;
+  border-radius: 4px;
+  cursor: crosshair;
+  touch-action: none;
+  display: block;
+}
+
+.painted-part .button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}

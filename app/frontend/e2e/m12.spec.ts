@@ -290,7 +290,8 @@ test('fur trims and card brows grow on the garment and the brows, and export', a
   await setCharacter(page, { gender: 1, age: 0.5 }, { garments: [garment('mh:clothes/male_worksuit01', 'full', { fur: { enabled: true, edges: ['collar', 'cuffs'], length: 0.03, density: 160, lift: 0.6, colour: [0.82, 0.76, 0.64] } })] });
   await page.evaluate(async () => {
     const s = (window as unknown as TestWindow).__ps2cc;
-    s.engine.update('e2e brows', (d) => void (d.eyebrows = { ...d.eyebrows, cards: { count: 130, length: 0.009 } }));
+    // Card brows grow on MakeHuman's brow mesh (characters from before D-146 painted brows).
+    s.engine.update('e2e brows', (d) => void (d.eyebrows = { ...d.eyebrows, asset: 'mh:eyebrows/eyebrow001', cards: { count: 130, length: 0.009 } }));
     await s.settled();
   });
   const parts = await page.evaluate(() => (window as unknown as TestWindow).__ps2cc.scene.parts.map((p) => ({ key: p.key, kind: p.kind, tris: p.triangleCount })));

@@ -82,8 +82,10 @@ async function photosOf(page: Page, set: PhotoSet): Promise<Record<'front' | 'le
   expect(skin, `no skin ${syn.skin}`).not.toBeNull();
   return page.evaluate(
     async ({ base, yaw }) => {
-      const s = (window as unknown as TestWindow).__ps2cc;
-      s.engine.update('photo skin', (d) => void (d.skin = { base: base!, layers: [], photo: null }));
+      const w = window as unknown as TestWindow;
+      const s = w.__ps2cc;
+      // A face as a photo shows it: with brows and lashes (painted since D-146, when the meshes went).
+      s.engine.update('photo skin', (d) => void (d.skin = { base: base!, layers: [w.__ps2ccTest.core.newLayer('brows'), w.__ps2ccTest.core.newLayer('lashes')], photo: null }));
       await s.settled();
       const out: Record<string, string> = {};
       for (const [k, y] of [['front', 0], ['left', yaw], ['right', -yaw]] as const) {
@@ -408,7 +410,7 @@ test('M14 review images: head texture, eyes, mouth, brows, scanned face, UI', as
     const s = w.__ps2cc;
     s.engine.update('painted brows', (d) => {
       d.eyebrows = { ...d.eyebrows, asset: null };
-      d.skin.layers.push(w.__ps2ccTest.core.newLayer('brows'));
+      if (!d.skin.layers.some((l) => l.kind === 'brows')) d.skin.layers.push(w.__ps2ccTest.core.newLayer('brows'));
     });
     await s.settled();
   });

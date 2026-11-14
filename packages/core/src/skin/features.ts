@@ -19,6 +19,8 @@ export interface Opening {
   /** Half extents of the opening in x and y (metres). */
   halfWidth: number;
   halfHeight: number;
+  /** The rim (the face island's seam with the opening's island), in order round the centre. */
+  rim?: Vec3[];
 }
 
 export interface FaceFeatures {
@@ -62,7 +64,9 @@ export function faceFeatures(base: BaseMesh, layout: SkinLayout, positions: Arra
         c[k] = c[k]! + x / seam.length;
       }
     }
-    return { centre: c, halfWidth: (hi[0] - lo[0]) / 2, halfHeight: (hi[1] - lo[1]) / 2 } satisfies Opening;
+    const rim = seam.map((v): Vec3 => [positions[v * 3]!, positions[v * 3 + 1]!, positions[v * 3 + 2]!]);
+    rim.sort((a, b) => Math.atan2(a[1] - c[1], a[0] - c[0]) - Math.atan2(b[1] - c[1], b[0] - c[0]));
+    return { centre: c, halfWidth: (hi[0] - lo[0]) / 2, halfHeight: (hi[1] - lo[1]) / 2, rim } satisfies Opening;
   });
   const mouth = openings.reduce((a, b) => (Math.abs(a.centre[0]) < Math.abs(b.centre[0]) ? a : b));
   const eyes = openings.filter((o) => o !== mouth).sort((a, b) => b.centre[0] - a.centre[0]) as [Opening, Opening];

@@ -92,6 +92,9 @@ export function PartsTree() {
         {faceParts.map((p) => (
           <PartRow key={p.key} part={p} label={partName(p)} active={controls && ui.tab === 'appearance' && ui.selected === p.key} onSelect={() => appearancePart(p.key)} />
         ))}
+        {/* Painted brows and lashes are in the skin, not parts: their rows open their settings. */}
+        {!parts.some((p) => p.key === 'eyebrows') && <Row depth={1} label="Eyebrows" onSelect={() => ui.setTab('appearance')} testId="tree-painted-brows" />}
+        {!parts.some((p) => p.key === 'eyelashes') && <Row depth={1} label="Eyelashes" onSelect={() => ui.setTab('appearance')} testId="tree-painted-lashes" />}
       </Group>
       <Group id="cloth" label={`Cloth (${garments.filter((g) => g.kind === 'garment').length})`} open={open.cloth ?? false} onToggle={toggle} active={controls && ui.tab === 'wardrobe'} onSelect={() => ui.setTab('wardrobe')} testId="tree-cloth">
         {garments.length === 0 && <Row depth={1} label="Nothing worn: pick garments in 03 Wardrobe" muted onSelect={() => ui.setTab('wardrobe')} />}

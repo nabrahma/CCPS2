@@ -1,8 +1,9 @@
 /**
  * Procedural skin layers (PRD F6): dark circles, eye bags, stubble, lips,
  * eyeliner and eyeshadow, blush, freckles, dirt, bruises and sweat; and the
- * mouth interior's darkening towards the throat and painted eyebrows, the
- * era-typical alternative to brow geometry (Part 2 F19).
+ * mouth interior's darkening towards the throat, and painted eyebrows and
+ * eyelashes, the era-typical alternative to brow and lash geometry (Part 2
+ * F19; D-146).
  *
  * Each layer is a function of the neutral surface (position and normal per
  * texel, from SkinLayout.surfaceMap) and the facial features measured on the
@@ -17,6 +18,8 @@ import { createImage, dilateRgb, type RgbaImage } from './image';
 import { colorParam, numParam } from './layers';
 import type { SurfaceMap } from './layout';
 import { fbm, hash3, smoothstep, spots, valueNoise } from './noise';
+import { browCoverage, browShape, browStrokes, lashStrokes, rimProfile, rimRadius } from './painted-hair';
+import { StrokeField } from './strokes';
 
 export interface ProceduralContext {
   map: SurfaceMap;
@@ -35,14 +38,19 @@ type Shade = (p: Vec3, n: Vec3, out: { a: number; rgb: [number, number, number] 
 export function generateLayer(layer: SkinLayer, ctx: ProceduralContext): RgbaImage {
   const shade = shaderFor(layer, ctx);
   const { map } = ctx;
-  const img = createImage(map.size, map.size);
+  // A windowed map (the brows and lashes, drawn finer around the eyes) fills a window-sized
+  // image that goes into a full-size one at the end.
+  const win = map.window;
+  const width = win ? win.width : map.size;
+  const height = win ? win.height : map.size;
+  const img = createImage(width, height);
   if (!isProcedural(layer.kind)) throw new Error(`layer kind ${layer.kind} is not procedural`);
   // The pores' region map has no colour of its own (only its alpha is used).
   const base: [number, number, number] = layer.kind === 'pores' ? [128, 128, 128] : colorParam(layer, 'color');
   const p: Vec3 = [0, 0, 0];
   const n: Vec3 = [0, 0, 0];
   const out: { a: number; rgb: [number, number, number] | null } = { a: 0, rgb: null };
-  const total = map.size * map.size;
+  const total = width * height;
   for (let t = 0; t < total; t++) {
     if (!map.coverage[t]) continue;
     p[0] = map.position[t * 3]!;
@@ -72,7 +80,15 @@ export function generateLayer(layer: SkinLayer, ctx: ProceduralContext): RgbaIma
     img.data[t * 4 + 1] = base[1];
     img.data[t * 4 + 2] = base[2];
   }
-  return img;
+  if (!win) return img;
+  const full = createImage(map.size, map.size);
+  for (let t = 0; t < map.size * map.size; t++) {
+    full.data[t * 4] = base[0];
+    full.data[t * 4 + 1] = base[1];
+    full.data[t * 4 + 2] = base[2];
+  }
+  for (let y = 0; y < height; y++) full.data.set(img.data.subarray(y * width * 4, (y + 1) * width * 4), ((win.y0 + y) * map.size + win.x0) * 4);
+  return full;
 }
 
 /** Texels the layers' colour and coverage reach past the island edges. */
@@ -85,6 +101,27 @@ export function isProcedural(kind: SkinLayer['kind']): boolean {
 
 function gauss(dx: number, dy: number, dz: number, rx: number, ry: number, rz: number): number {
   return Math.exp(-((dx * dx) / (rx * rx) + (dy * dy) / (ry * ry) + (dz * dz) / (rz * rz)));
+}
+
+/**
+ * Typical distance between neighbouring texels of a map on the surface (metres): what a hair
+ * stroke is filtered over.
+ */
+function texelSize(map: SurfaceMap): number {
+  const w = map.window ? map.window.width : map.size;
+  const h = map.window ? map.window.height : map.size;
+  const d: number[] = [];
+  for (let y = 0; y < h - 1 && d.length < 4000; y += 3) {
+    for (let x = 0; x < w - 1 && d.length < 4000; x += 3) {
+      const t = y * w + x;
+      if (!map.coverage[t] || !map.coverage[t + 1] || map.island[t] !== map.island[t + 1]) continue;
+      const u = t + 1;
+      d.push(Math.hypot(map.position[t * 3]! - map.position[u * 3]!, map.position[t * 3 + 1]! - map.position[u * 3 + 1]!, map.position[t * 3 + 2]! - map.position[u * 3 + 2]!));
+    }
+  }
+  if (d.length === 0) return 0.0005;
+  d.sort((x, y) => x - y);
+  return d[d.length >> 1]!;
 }
 
 /** Facing the camera (front of the head), soft. */
@@ -266,34 +303,82 @@ function shaderFor(layer: SkinLayer, ctx: ProceduralContext): Shade {
       };
     }
     case 'brows': {
-      // Shaped on MakeHuman's eyebrow001 over the neutral eyes: in units of the eye opening's half
-      // width (s, along, outwards positive) and half height (height above the eye centre).
-      const thick = numParam(layer, 'thickness');
-      const arch = numParam(layer, 'arch');
-      const density = numParam(layer, 'density');
+      // Hair by hair, with a soft fill under it (painted-hair.ts; D-148).
+      const shape = browShape(layer);
+      const fill = numParam(layer, 'fill');
+      const texel = texelSize(ctx.map);
+      const fields = ([0, 1] as const).map((i) => new StrokeField(browStrokes(layer, shape, f.eyes[i], i, k), texel, 0.003 * k));
       return (p, n, o) => {
         let a = 0;
-        for (const e of [eyeL, eyeR]) {
-          const side = Math.sign(e.centre[0]);
-          const s = ((p[0] - e.centre[0]) / e.halfWidth) * side;
-          if (s < -2.6 || s > 2.9 || Math.abs(p[2] - e.centre[2] - 0.006 * k) > 0.02 * k) continue;
-          const h = (p[1] - e.centre[1]) / e.halfHeight;
-          const bend = s < 0.4 ? 0.22 * (s - 0.4) ** 2 : 0.55 * (s - 0.4) ** 2;
-          const centre = 8.9 - arch * bend + (1 - arch) * 0.3 * (s - 0.4);
-          const half = Math.max(0.25, (1.35 - 0.2 * (s + 2)) * thick);
-          const across = Math.abs(h - centre) / half;
-          const shape = (1 - smoothstep(0.55, 1.15, across)) * smoothstep(-2.25, -1.85, s) * (1 - smoothstep(1.9, 2.5, s));
-          if (shape <= 0) continue;
-          // Hair strokes: inner hairs point up, the rest lean outwards along the brow.
-          const lean = 0.25 + 1.05 * smoothstep(-1.8, 0.6, s);
-          const cx = (p[0] - e.centre[0]) * side;
-          const cy = p[1] - e.centre[1];
-          const along = cx * Math.sin(lean) + cy * Math.cos(lean);
-          const acrossHair = cx * Math.cos(lean) - cy * Math.sin(lean);
-          // Strokes about a texel across at the layer's 1024 px (D-036), several long.
-          const strand = valueNoise(acrossHair / (0.0009 * k), along / (0.005 * k), side, seed + 41);
-          const hair = smoothstep(0.42, 0.78, strand);
-          a = Math.max(a, shape * (1 - 0.6 * density + 0.6 * density * hair) * (0.8 + 0.2 * (1 - across)));
+        for (let i = 0; i < 2; i++) {
+          const e = f.eyes[i]!;
+          const sign = Math.sign(e.centre[0]) || 1;
+          const W = e.halfWidth;
+          const X = (p[0] - e.centre[0]) * sign;
+          const Y = p[1] - e.centre[1];
+          const s = X / W;
+          const h = Y / W;
+          if (s < -3.2 || s > 3.5 || h < 0 || h > 3.5) continue;
+          // The brow wraps round the side of the head: its tail is about 2 cm behind the eye.
+          if (p[2] < e.centre[2] - 0.03 * k || p[2] > e.centre[2] + 0.02 * k) continue;
+          const cover = browCoverage(shape, i as 0 | 1, s, h);
+          // A soft, slightly uneven tone carries the shape, as brow powder or the era's painted brows.
+          const patch = 0.78 + 0.22 * valueNoise(X / (0.003 * k), Y / (0.003 * k), i * 5 + 1, shape.seed + 47);
+          const tone = fill * 0.95 * smoothstep(0.05, 0.8, cover) * patch;
+          const hair = fields[i]!.coverage(X, Y);
+          a = Math.max(a, 1 - (1 - tone) * (1 - hair));
+        }
+        o.a = a * front(n);
+      };
+    }
+    case 'lashes': {
+      // A lash line along each lid, a fringe of lashes from the eye's real rim (heaviest at the
+      // outer corner, clumped if asked), a smoky shadow and lower lashes (painted-hair.ts; D-148).
+      const lower = numParam(layer, 'lower');
+      const thickness = numParam(layer, 'thickness');
+      const smudge = numParam(layer, 'smudge');
+      const outer = numParam(layer, 'outer');
+      const density = numParam(layer, 'density');
+      const texel = texelSize(ctx.map);
+      const rims = [rimProfile(eyeL), rimProfile(eyeR)];
+      const fields = [0, 1].map((i) => new StrokeField(lashStrokes(layer, f.eyes[i as 0 | 1], rims[i]!, k), texel, 0.003 * k));
+      return (p, n, o) => {
+        let a = 0;
+        for (let i = 0; i < 2; i++) {
+          const e = i === 0 ? eyeL : eyeR;
+          const sign = Math.sign(e.centre[0]) || 1;
+          const hw = e.halfWidth;
+          const vx = p[0] - e.centre[0];
+          const vy = p[1] - e.centre[1];
+          if (Math.abs(vx) > 2.2 * hw || Math.abs(vy) > 1.6 * hw || Math.abs(p[2] - e.centre[2]) > 0.02 * k) continue;
+          const th = Math.atan2(vy, vx);
+          const rimR = rimRadius(rims[i]!, th);
+          const d = Math.hypot(vx, vy) - rimR; // metres outside the rim
+          const s = (vx / hw) * sign; // -1 inner corner, +1 outer
+          const upper = vy > 0;
+          // Along the lid: none at the inner corner, fullest towards the outer corner.
+          const lid = upper
+            ? smoothstep(-1.05, -0.6, s) * (0.6 + 0.4 * smoothstep(-0.3, 0.8, s)) * (1 - smoothstep(1.05, 1.3, s))
+            : smoothstep(-0.7, -0.2, s) * (1 - smoothstep(0.9, 1.15, s));
+          // The lash line: dark at the roots, on the lid just outside the rim (the eye hides the rim
+          // itself), widest at the outer corner of the upper lid.
+          let line = 0;
+          if (thickness > 0 && d > -0.0008 * k && d < 0.004 * k) {
+            const width = upper ? 0.0006 * k * thickness * (1 + 0.7 * smoothstep(0.2, 1, s)) : 0.0007 * k * Math.max(0.3, thickness);
+            const g = Math.exp(-(((d - (upper ? 0.6 : 0.2) * width) / width) ** 2));
+            line = upper ? 0.95 * lid * g : lower * 0.4 * lid * g;
+          }
+          // Smoky shadow round the lash line, reaching further at the outer corner.
+          let smoke = 0;
+          if (smudge > 0) {
+            const reach = 0.0028 * k * (1 + 0.6 * outer * smoothstep(0.2, 1, s));
+            const wide = smoothstep(-1.1, -0.5, s) * (1 - smoothstep(1.2, 1.7, s));
+            smoke = smudge * (upper ? 0.55 : 0.35) * wide * Math.exp(-((Math.max(0, d) / reach) ** 2)) * smoothstep(-0.0004 * k, 0.0002 * k, d);
+          }
+          // The lashes' mass near their roots, seen from the front as a soft dark band over the line.
+          const mass = upper && d > -0.0003 * k ? 0.35 * density * lid * Math.exp(-(((d - 0.0008 * k) / (0.0011 * k)) ** 2)) : 0;
+          const hair = fields[i]!.coverage(vx * sign, vy);
+          a = Math.max(a, 1 - (1 - line) * (1 - smoke) * (1 - mass) * (1 - hair));
         }
         o.a = a * front(n);
       };

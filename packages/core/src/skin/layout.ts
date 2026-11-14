@@ -35,6 +35,11 @@ export interface LayoutTriangle {
 /** Per-texel surface attributes rasterised in UV space. */
 export interface SurfaceMap {
   size: number;
+  /**
+   * Only this rectangle of the size x size texture (texels, rows top first); the arrays
+   * below then hold width x height texels. Absent: the whole texture.
+   */
+  window?: TexelWindow;
   /** 1 where a body triangle covers the texel centre. */
   coverage: Uint8Array;
   /** Island id per texel (-1 outside). */
@@ -43,6 +48,14 @@ export interface SurfaceMap {
   position: Float32Array;
   /** Interpolated, normalised normal (xyz per texel). */
   normal: Float32Array;
+}
+
+/** A rectangle of texels (rows top first). */
+export interface TexelWindow {
+  x0: number;
+  y0: number;
+  width: number;
+  height: number;
 }
 
 const HAND_BONE = /^(hand|thumb|index|middle|ring|pinky)_/;
@@ -195,16 +208,35 @@ export class SkinLayout {
    * the neutral mesh for procedural layers (they stay put when the body
    * morphs) and with the current mesh for photo projection.
    */
-  surfaceMap(size: number, positions: ArrayLike<number>, normals: ArrayLike<number>, pred?: (island: UvIsland) => boolean): SurfaceMap {
-    const n = size * size;
+  surfaceMap(size: number, positions: ArrayLike<number>, normals: ArrayLike<number>, pred?: (island: UvIsland) => boolean, window?: TexelWindow): SurfaceMap {
+    const w = window ? window.width : size;
+    const n = w * (window ? window.height : size);
     const map: SurfaceMap = {
       size,
+      ...(window ? { window } : {}),
       coverage: new Uint8Array(n),
       island: new Int16Array(n).fill(-1),
       position: new Float32Array(n * 3),
       normal: new Float32Array(n * 3),
     };
-    this.rasterize(size, this.trianglesOf(pred), (texel, tri, b0, b1, b2) => {
+    let tris = this.trianglesOf(pred);
+    if (window) {
+      // Only triangles that reach into the window.
+      const uv = this.base.uvs;
+      tris = tris.filter((t) => {
+        const xs = t.uvs.map((i) => uv[i * 2]! * size);
+        const ys = t.uvs.map((i) => (1 - uv[i * 2 + 1]!) * size);
+        return Math.max(...xs) >= window.x0 && Math.min(...xs) <= window.x0 + window.width && Math.max(...ys) >= window.y0 && Math.min(...ys) <= window.y0 + window.height;
+      });
+    }
+    this.rasterize(size, tris, (global, tri, b0, b1, b2) => {
+      let texel = global;
+      if (window) {
+        const x = (global % size) - window.x0;
+        const y = Math.floor(global / size) - window.y0;
+        if (x < 0 || y < 0 || x >= window.width || y >= window.height) return;
+        texel = y * w + x;
+      }
       if (map.coverage[texel]) return;
       map.coverage[texel] = 1;
       map.island[texel] = this.faceIsland[tri.face]!;

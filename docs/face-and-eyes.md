@@ -23,7 +23,40 @@ The **Face** tab's **Eye colour** list offers an iris library of 12 colours (dar
 
 With Classic (per-vertex) lighting a catch-light is painted into the texture. Per-pixel lighting draws a real highlight instead.
 
-Eyelashes have soft alpha edges (the two-pass alpha of D-109). Brows can be the eyebrow mesh, card brows (M12), or the new **Painted eyebrows** skin layer, the era's usual choice, with thickness, arch and hair density.
+## Eyebrows and eyelashes (0.20.0)
+
+Brows and lashes are painted on the skin, as the era's games did them. There is no brow or lash geometry, so nothing shows as a cut-out strip up close (D-146). They are in **04 Appearance**, under Eyes & brows:
+
+- **Eyebrows:** they sit where MakeHuman's eyebrow mesh did, and are drawn hair by hair over a soft fill. The hairs grow the way real brows do (D-148):
+  - upright at the inner end;
+  - in the body, the lower rows lean up and out and the upper rows lie down and out, so the two meet along the middle;
+  - flat along the tail.
+- **Eyelashes:** they grow from the eye's real rim. The upper lid gets a lash line and a fringe of curved lashes, heaviest at the outer corner. The lower lid gets fewer, shorter lashes.
+
+Both have the same controls:
+
+- **Preset:** a starting point. Brows: Natural, Soft and full, Groomed arch, Straight, Thin and pencilled, Bushy, or Sparse and fair. Lashes: Natural, Full and smoky, Winged, Long and clumped, or Sparse. A preset sets the shape and hair settings and keeps your colour.
+- **Colour** and **Opacity.**
+- **Settings in groups:**
+  - Brow *Shape*: thickness, arch height and position, height, inner start, tail length and drop, taper, edge softness and a soft inner end.
+  - Brow *Hair*: density, fill (powder), hair length and thickness, brushed up, and unruly.
+  - Lashes: length, density, flare outwards, outer corner volume, clumping, lash line and smoky shadow for the upper lid, then lower lashes and their length.
+- **New hairs:** grows the same shape with different hairs.
+- **The brow brush:** a front view of both brows and eyes, for drawing the outline by hand. *Add* grows brow where you paint and *Erase* thins it; both follow a real brow's hair flow. *Both brows* mirrors each stroke, so turn it off to make the two brows differ. Each stroke is one undo step, and *Clear* removes the painting. The painting is saved with the character.
+
+To get the dark, smoky faces of the era's horror games, combine:
+
+- the Soft and full brows in a near-black colour;
+- Full and smoky lashes;
+- the Eyeliner / eyeshadow and Dark circles skin layers.
+
+![A dark, smoky look](milestones/Face/look_smoky_eye.png)
+
+Both are drawn at the skin composite's full 2048 px around the eyes, not at the 1024 px of the other painted layers. At 1024 px a brow is only about 30 by 5 texels. They move with the face in expressions and go into the exported head texture like any skin layer.
+
+A character saved with MakeHuman's brow or lash mesh keeps it. 04 Appearance then offers **Use painted**, which removes the mesh and turns the painted layer on, in one undo step. Card brows (M12) still load on such characters, but new characters don't get them.
+
+![Painted brows and lashes](milestones/Face/painted_front.png)
 
 ## Mouth
 

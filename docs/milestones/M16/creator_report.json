@@ -30,6 +30,8 @@
       "cavity",
       "pores",
       "mouth",
+      "brows",
+      "lashes",
       "lips",
       "freckles",
       "darkCircles"
@@ -42,10 +44,10 @@
   },
   "textureStudio": {
     "saved": "Freckled grimy skin",
-    "meanDifferenceFromBase": 0.04281622194776348
+    "meanDifferenceFromBase": 0.04311427696078431
   },
   "garmentStudio": {
-    "saved": "user:garment/Loose_tee_19b416b1",
+    "saved": "user:garment/Loose_tee_cbc18e04",
     "triangles": 1800
   },
   "materialStudio": {
@@ -60,12 +62,12 @@
   },
   "library": {
     "thumbBrightness": {
-      "studio": 0.17858192565358808,
-      "night": 0.19053687235284736
+      "studio": 0.1785699522766818,
+      "night": 0.19054348468400217
     },
     "viewportBrightness": {
-      "studio": 0.18436854713235243,
-      "night": 0.20615011892164276
+      "studio": 0.18430641904411718,
+      "night": 0.20611146274517206
     },
     "entries": {
       "bodies": 5,
