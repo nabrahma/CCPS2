@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { BUILTIN_PRESETS, applyPreset, parsePresetFile, presetFromCharacter, type Preset } from '@ps2cc/core';
 import { backend } from '../backend';
 import { runSliderSweep } from '../perf';
@@ -18,6 +18,24 @@ export function AppMenus() {
   useStudioVersion();
   const ui = useUi();
   const [menu, setMenu] = useState<MenuId>(null);
+  const navRef = useRef<HTMLElement>(null);
+  // An open menu stays open until an item is chosen, you click elsewhere or press Esc,
+  // as in a desktop app: moving the mouse off it on the way to an item must not close it.
+  useEffect(() => {
+    if (!menu) return;
+    const onDown = (e: PointerEvent) => {
+      if (!navRef.current?.contains(e.target as Node)) setMenu(null);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMenu(null);
+    };
+    document.addEventListener('pointerdown', onDown, true);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('pointerdown', onDown, true);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [menu]);
   const engine = studio.engine;
   const run = (fn: () => unknown | Promise<unknown>, failMsg: string) => () => {
     setMenu(null);
@@ -63,7 +81,7 @@ export function AppMenus() {
   };
 
   return (
-    <nav className="menus" onMouseLeave={() => setMenu(null)}>
+    <nav className="menus" ref={navRef}>
       <Menu id="file" label="File" open={menu} setOpen={setMenu}>
         <button onClick={run(() => confirmDiscard() && studio.newCharacter(), 'New failed')}>New character</button>
         <button onClick={run(() => ui.setBrowserOpen(true), 'Could not open the character browser')} data-testid="menu-characters">

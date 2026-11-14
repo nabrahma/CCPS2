@@ -169,6 +169,7 @@ function StudioTab() {
 
 function SettingsTab() {
   const studio = useStudio();
+  useStudioVersion();
   const ui = useUi();
   const measure = async () => {
     const r = await runSliderSweep(studio);
@@ -190,6 +191,13 @@ function SettingsTab() {
           <label className="check">
             <input type="checkbox" checked={ui.wireOverlay} onChange={(e) => ui.setView({ wireOverlay: e.target.checked })} /> Wireframe overlay (W)
           </label>
+        </section>
+        <section className="settings-section">
+          <h3>Baking</h3>
+          <label className="check">
+            <input type="checkbox" checked={studio.autoBake} onChange={(e) => studio.setAutoBake(e.target.checked)} data-testid="settings-auto-bake" /> Bake automatically after each change
+          </label>
+          <p className="muted">Off: bake with Bake in the status bar or in Export. An export with a bake option on always bakes first.</p>
         </section>
         <section className="settings-section">
           <h3>Help</h3>

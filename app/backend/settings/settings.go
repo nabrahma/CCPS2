@@ -32,6 +32,8 @@ type Settings struct {
 	LibraryTags map[string][]string `json:"libraryTags"`
 	// RecentFiles are the character files last opened or saved, newest first (M18).
 	RecentFiles []string `json:"recentFiles"`
+	// AutoBake bakes occlusion after each change; off, the user starts bakes (M18.1).
+	AutoBake bool `json:"autoBake"`
 }
 
 // MaxRecentFiles caps the recent character list.
