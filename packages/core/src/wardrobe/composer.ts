@@ -115,6 +115,11 @@ export class GarmentLookComposer {
     return p;
   }
 
+  /** Drop a material's cached tile (a user material saved again under the same id). */
+  forgetMaterial(id: string): void {
+    this.mats.delete(id);
+  }
+
   /** The garment's texture at `size`, dressed by `look` over its own texture `base` (a path or library URL). */
   async compose(assetId: string, look: GarmentLook, base: string | null, size: number, load: ImageLoader): Promise<RgbaImage> {
     const ids = [...new Set(look.zones.map((z) => z.material).filter((m): m is string => !!m))];

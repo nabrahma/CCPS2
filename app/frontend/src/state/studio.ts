@@ -36,10 +36,22 @@ import {
   type ProxyMeta,
   type RawGarmentMesh,
   type ReferenceBody,
+  type RgbaImage,
+  editMeshFromProxy,
+  bodySurfaceAt,
+  garmentTexture,
+  materialFile,
+  outfitFromCharacter,
+  userMaterial,
+  type ConvertedMaterial,
+  type MaterialAdjust,
+  type MaterialKind,
 } from '@ps2cc/core';
 import { BakeCancelled, resolveAssetUrl, Viewport, type BakedMap } from '@ps2cc/viewport';
 import { backend, isDesktop, libraryUrl, type AppInfo, type GarmentFile, type Settings } from '../backend';
 import { decodeImage, imageToPng } from '../images';
+import { ThumbnailStage } from '../thumbs/stage';
+import { loadUserMaterials, refreshUserLibrary, useLibrary } from './library';
 import { useUi } from './ui';
 
 type Listener = () => void;
@@ -129,6 +141,8 @@ export class Studio {
     const assets = await CoreAssets.load(new FetchAssetSource(info.coreAssetsUrl), onProgress);
     onProgress('your garments');
     await Studio.loadUserGarments(info, assets);
+    onProgress('your materials');
+    await loadUserMaterials(info, assets);
     onProgress('character');
     const engine = new CharacterEngine(assets, defaultCharacter('Untitled'));
     // The scene decodes images itself for photo projection (the photo and the base skin for colour matching).
@@ -354,13 +368,14 @@ export class Studio {
   async saveStudioGarment(
     edit: EditMesh,
     editedOn: BodySurface,
-    options: { name: string; slot: ImportSlot; texture: string | null; defaults?: GarmentDefaults },
+    options: { name: string; slot: ImportSlot; texture: string | null; textureImage?: RgbaImage; defaults?: GarmentDefaults },
   ): Promise<ImportedGarment> {
     this.garmentBody ??= referenceBody(this.assets);
     const onRef = moveToBody(edit, editedOn, bodySurface(this.garmentBody));
     const garment = await importGarment(editMeshToRaw(onRef), { name: options.name, slot: options.slot, body: this.garmentBody });
-    const original = options.texture ? await decodeImage(resolveAssetUrl(this.info.coreAssetsUrl, options.texture)).catch(() => null) : null;
-    const tex = remapTexture(original, edit, 1024);
+    const original = options.textureImage ?? null;
+    const fromFile = !original && options.texture ? await decodeImage(resolveAssetUrl(this.info.coreAssetsUrl, options.texture)).catch(() => null) : null;
+    const tex = remapTexture(original ?? fromFile, edit, 1024);
     const stem = garment.meta.binary.replace(/\.bin$/, '');
     const item = await backend.importFile('garment-textures', new File([await imageToPng(tex)], `${stem}.png`, { type: 'image/png' }));
     garment.meta.material = { diffuseColor: [0.8, 0.8, 0.8], transparent: false, backfaceCull: false, opacity: 1, diffuseTexture: libraryUrl(this.info, item.file), textureSize: [tex.width, tex.height] };
@@ -370,6 +385,68 @@ export class Studio {
     this.assets.addUserProxy(garmentEntry(garment.meta, saved.file), () => Promise.resolve(garment.proxy));
     this.bump();
     return garment;
+  }
+
+  /**
+   * Texture Studio on a garment (Part 2 F20): save the garment as it looks now
+   * (its look, paint and tint composed into one texture) as a new library
+   * garment with the same shape, and wear it in place of the original.
+   */
+  async saveTexturedGarment(partKey: string, name: string): Promise<ImportedGarment> {
+    const garment = this.engine.doc.garments.find((g) => `garment:${g.slot}:${g.asset}` === partKey);
+    const part = this.scene.parts.find((p) => p.key === partKey);
+    if (!garment || !part) throw new Error('that garment is not worn');
+    await this.settled();
+    const proxy = await this.assets.proxy(garment.asset);
+    const positions = this.engine.positions.slice();
+    const edit = editMeshFromProxy(proxy, { positions } as ReferenceBody);
+    const texture = await garmentTexture(part, 1024, (url) => decodeImage(resolveAssetUrl(this.info.coreAssetsUrl, url)));
+    const body = bodySurfaceAt(this.assets, positions);
+    const saved = await this.saveStudioGarment(edit, body, { name, slot: garment.slot, texture: null, textureImage: texture });
+    this.engine.update('Save garment texture', (d) => {
+      const i = d.garments.findIndex((g) => g.asset === garment.asset);
+      if (i >= 0) d.garments[i] = { slot: garment.slot, asset: saved.meta.id, tint: { color: [1, 1, 1], brightness: 1 }, dirt: 0, hideBody: garment.hideBody, ...(garment.fur ? { fur: garment.fur } : {}) };
+    });
+    return saved;
+  }
+
+  /** Texture Studio on the skin: save the composited skin (base and every layer) as a library skin. Returns its URL. */
+  async saveSkinTexture(name: string): Promise<string> {
+    const vp = this.viewport;
+    if (!vp) throw new Error('the viewport is not ready');
+    await this.settled();
+    const img = vp.skinComposite();
+    if (!img) throw new Error('the skin has no layers to save');
+    const item = await backend.importFile('skins', new File([await imageToPng(img)], `${name.replace(/[^\w -]/g, '_') || 'skin'}.png`, { type: 'image/png' }));
+    await refreshUserLibrary(this);
+    return libraryUrl(this.info, item.file);
+  }
+
+  /** Material Studio: save a converted material to the library. Returns its id (a material of the same name is replaced). */
+  async saveMaterial(name: string, kind: MaterialKind, tileMetres: number, converted: ConvertedMaterial, from: string | null, adjust: MaterialAdjust): Promise<string> {
+    const file = materialFile(name, kind, tileMetres, converted, 'diffuse.png', from, adjust);
+    const item = await backend.saveMaterial(name, JSON.stringify(file, null, 2), await imageToPng(converted.diffuse));
+    const doc = JSON.parse(await backend.readLibraryDocument(item.file)) as { material: { diffuse: string } };
+    const diffuse = libraryUrl(this.info, `materials/${doc.material.diffuse}`);
+    this.scene.garmentLooks.forgetMaterial(item.id);
+    this.thumbnails.forget(`material:${item.id}`);
+    this.assets.addUserMaterial(userMaterial({ ...file.material, diffuse: doc.material.diffuse }, item.id, diffuse));
+    useLibrary.setState((st) => ({ version: st.version + 1 }));
+    this.bump();
+    return item.id;
+  }
+
+  /** Save what the character wears as an outfit. */
+  async saveOutfit(name: string): Promise<void> {
+    await backend.saveOutfit(name, JSON.stringify(outfitFromCharacter(this.engine.doc, name), null, 2));
+    await refreshUserLibrary(this);
+  }
+
+  private stage: ThumbnailStage | null = null;
+
+  /** Look-matched library thumbnails (Part 2 F20), made on first use. */
+  get thumbnails(): ThumbnailStage {
+    return (this.stage ??= new ThumbnailStage(this));
   }
 
   /** Take a garment off the character and out of the library. */

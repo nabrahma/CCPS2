@@ -174,6 +174,7 @@ test('painting the hairline changes the hair, in one undo step', async ({ page }
   await start(page);
   await setCharacter(page, {}, {});
   await page.getByRole('tab', { name: 'Hair', exact: true }).click();
+  await page.getByTestId('open-hair-studio').click();
   await page.getByRole('tab', { name: 'Card hair' }).click();
   await page.locator('#hairline').selectOption('painted');
   const canvas = page.getByTestId('hairline-paint');
@@ -221,7 +222,8 @@ test('fit face shape to photo lowers the landmark error', async ({ page }) => {
   const url = await page.evaluate(async () => URL.createObjectURL(await (window as unknown as TestWindow).__ps2cc.viewport!.screenshot(768, 960)));
 
   await setCharacter(page, { gender: 1, age: 0.5 }, { hair: bald, garments: [], modifiers: {}, skin: { base: 'mh:skins/young_caucasian_male', layers: [], photo: null } });
-  await page.getByRole('tab', { name: 'Skin' }).click();
+  await page.getByTestId('step-appearance').click();
+  await page.getByTestId('open-texture-studio').click();
   await page.evaluate(async (u) => {
     await (window as unknown as TestWindow).__ps2ccTest.placePhoto((window as unknown as TestWindow).__ps2cc, u);
   }, url);

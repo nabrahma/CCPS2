@@ -101,6 +101,33 @@ export const ResetIcon = ({ size = 12 }: { size?: number }) => (
 );
 
 /** The PS2CC mark: three nested rings, like a disc seen at an angle. */
+export const LookIcon = () => (
+  <Glyph>
+    <path d="M8 4.2a3.8 3.8 0 1 1 0 7.6 3.8 3.8 0 0 1 0-7.6ZM7.3 0h1.4v2.6H7.3zm0 13.4h1.4V16H7.3zM0 7.3h2.6v1.4H0zm13.4 0H16v1.4h-2.6zM2.1 3.1l1-1 1.8 1.8-1 1zm9 9 1-1 1.8 1.8-1 1zM2.1 12.9l1.8-1.8 1 1-1.8 1.8zm9-9 1.8-1.8 1 1-1.8 1.8z" />
+  </Glyph>
+);
+
+export const LibraryIcon = () => (
+  <Glyph>
+    <path d="M1.5 1.5h5.5v5.5H1.5zm7.5 0h5.5v5.5H9zM1.5 9h5.5v5.5H1.5zM9 9h5.5v5.5H9z" />
+  </Glyph>
+);
+
+export const StudioIcon = () => (
+  <Glyph>
+    <path d="M13.8 1.2a1.3 1.3 0 0 1 1 2.2L8.6 9.6 6.4 7.4l6.2-6.2a1.3 1.3 0 0 1 1.2 0ZM5.6 8.4l2 2c-.2 2.4-2 4.1-4.6 4.4L1 15l.4-1.6c.7-.5 1-1.2 1-2.2 0-1.6 1.5-2.8 3.2-2.8Z" />
+  </Glyph>
+);
+
+export const StarIcon = ({ filled }: { filled: boolean }) => (
+  <Glyph>
+    <path
+      fillRule="evenodd"
+      d={filled ? 'M8 1l2.1 4.5 4.9.6-3.6 3.4.9 4.9L8 12l-4.3 2.4.9-4.9L1 6.1l4.9-.6z' : 'M8 1l2.1 4.5 4.9.6-3.6 3.4.9 4.9L8 12l-4.3 2.4.9-4.9L1 6.1l4.9-.6Zm0 2.9L6.8 6.6l-2.9.4 2.1 2-.5 2.9L8 10.5l2.5 1.4-.5-2.9 2.1-2-2.9-.4Z'}
+    />
+  </Glyph>
+);
+
 export function BrandMark() {
   return (
     <svg className="brand-mark" width="28" height="14" viewBox="0 0 28 14" fill="none" stroke="currentColor" strokeWidth="1.3" role="img" aria-label="PS2CC">

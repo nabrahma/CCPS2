@@ -34,15 +34,21 @@ export function Inspector() {
               <p>
                 Skin: <strong>{doc.skin.base.replace('mh:skins/', '')}</strong>
               </p>
-              <button onClick={() => ui.setTab('skin')}>Change skin…</button>
+              <button onClick={() => ui.setTab('appearance')}>Change skin…</button>
+              <button onClick={() => ui.openStudio({ kind: 'texture', target: 'skin' })}>Edit in Texture Studio…</button>
               <button onClick={() => ui.setTab('export')}>Body mesh tier…</button>
             </>
           )}
           {part.kind === 'garment' && <GarmentInspector partKey={part.key} />}
-          {part.kind === 'hair' && <button onClick={() => ui.setTab('hair')}>Edit hair…</button>}
+          {part.kind === 'hair' && (
+            <>
+              <button onClick={() => ui.setTab('hair')}>Change hair…</button>
+              <button onClick={() => ui.openStudio({ kind: 'hair', target: null })}>Edit in Hair Studio…</button>
+            </>
+          )}
           {(part.kind === 'garment' || part.kind === 'hair') && <UvTemplateButton part={part} />}
           {(part.kind === 'eyes' || part.kind === 'eyebrows' || part.kind === 'eyelashes') && (
-            <button onClick={() => ui.setTab('face')}>Edit in Face tab…</button>
+            <button onClick={() => ui.setTab('appearance')}>Edit in Appearance…</button>
           )}
         </div>
       )}
@@ -129,6 +135,9 @@ function GarmentInspector({ partKey }: { partKey: string }) {
       )}
       <button onClick={() => useUi.getState().setGarmentStudio(partKey)} data-testid="open-garment-studio" title="Reshape the garment, crop it, add a collar, cuffs or pockets, and save it as a new garment">
         Edit in Garment Studio
+      </button>
+      <button onClick={() => useUi.getState().openStudio({ kind: 'texture', target: partKey })} data-testid="open-texture-studio-garment" title="Its materials, seams, decals and paint, saved as a new garment">
+        Edit in Texture Studio
       </button>
       <GarmentLookEditor garment={garment} partKey={partKey} />
       <PainterLink target={`garment:${garment.slot}`} label="The garment" />

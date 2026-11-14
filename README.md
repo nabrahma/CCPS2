@@ -10,10 +10,11 @@ It needs no Blender, no Python and no network connection to run.
 
 ## What it does
 
+- **Character Creator:** six steps (Create, Hair, Wardrobe, Appearance, Look, Export) with the simple controls, and a library of presets, hairstyles, garments, outfits, skins and materials shown as thumbnails under your look, with favourites, tags and search. The deep editors are in the **Asset Studio**: Hair, Texture, Garment and Material Studio, whose saved work joins the library. See [docs/creator-and-studio.md](docs/creator-and-studio.md).
 - **Body and face:** MakeHuman's morph system, with curated sliders, symmetry, locks, randomize, undo, and your own presets.
 - **Quality profiles:** Classic, Enhanced and Hero set every budget at once (12k to 30k triangles, 512 to 2048 textures), with bodies from 8k triangles to the full MakeHuman mesh and a live budget meter for triangles, texture memory, bones and blendshapes.
 - **Wardrobe:** CC0 garments reduced to PS2 budgets, which refit to every body shape and hide the skin underneath. Drop a PNG on a garment to retexture it.
-- **Materials:** dress garments in a library of CC0 leathers, denims, knits and other cloth, converted to the era's single diffuse. Seams, stitches and folds are drawn automatically, and you can add zips, buttons, buckles, straps and pockets.
+- **Materials:** dress garments in a library of CC0 leathers, denims, knits and other cloth, converted to the era's single diffuse, or make your own from a photo in Material Studio. Seams, stitches and folds are drawn automatically, and you can add zips, buttons, buckles, straps and pockets.
 - **Garment Studio:** reshape a garment, crop it, roll its sleeves, grow a collar or cuffs, add pockets, and save it as a new garment that fits every body. See [docs/materials-and-wardrobe.md](docs/materials-and-wardrobe.md).
 - **Your own garments:** export the base body, model around it, then import OBJ, FBX or GLB. PS2CC binds, weights and decimates it for you.
 - **Card hair:** three layers: short hair painted on the scalp, wide locks for the mass, and soft-edged detail cards. Any colour from strand atlases rendered in 3D. Comb the guides in Hair Studio with Blender-style brushes, draw the parting, and shape locks. The same cards grow fur trims on garments and card eyebrows. Or use MakeHuman hair meshes. See [docs/hair-v2.md](docs/hair-v2.md) and [docs/hair-system.md](docs/hair-system.md).

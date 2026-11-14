@@ -12,7 +12,9 @@ import { RightRail } from './components/RightRail';
 import { Sidebar } from './components/Sidebar';
 import { Toasts } from './components/Toasts';
 import { ViewportPanel } from './components/ViewportPanel';
+import { LibraryBrowser } from './components/library/LibraryBrowser';
 import { useShortcuts } from './shortcuts';
+import { loadLibraryPrefs, refreshUserLibrary } from './state/library';
 import { StudioContext } from './state/hooks';
 import { Studio } from './state/studio';
 import { useUi } from './state/ui';
@@ -34,6 +36,8 @@ export function App() {
         const settings = await backend.settings();
         useUi.setState({ curated: settings.curatedView, symmetry: settings.symmetry });
         s.settings = settings;
+        loadLibraryPrefs(settings);
+        void refreshUserLibrary(s);
         if (new URLSearchParams(window.location.search).has('e2e') || navigator.webdriver) {
           // Under test automation the GPU is SwiftShader (a CPU): tests start bakes themselves (studio.runBake) at small sizes,
           // and exports, which must bake, bake 128 px maps with 8 rays unless a test asks for more.
@@ -104,6 +108,7 @@ function Shell() {
       {browserOpen && <CharacterBrowser onClose={() => setBrowserOpen(false)} />}
       {creditsOpen && <CreditsDialog onClose={() => setCreditsOpen(false)} />}
       <AtlasEditor />
+      <LibraryBrowser />
       <GarmentImportDialog />
     </div>
   );

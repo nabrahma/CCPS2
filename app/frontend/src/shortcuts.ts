@@ -31,6 +31,9 @@ export function useShortcuts(): void {
       } else if (ctrl && e.key.toLowerCase() === 'o') {
         e.preventDefault();
         ui.setBrowserOpen(true);
+      } else if (ctrl && e.key.toLowerCase() === 'l') {
+        e.preventDefault();
+        ui.setLibrary(ui.library ? null : { category: 'bodies' });
       } else if (ctrl && e.key.toLowerCase() === 'e') {
         e.preventDefault();
         ui.setTab('export');
@@ -47,9 +50,8 @@ export function useShortcuts(): void {
         const on = !ui.post.lowRes;
         ui.setView({ post: on ? { ...PS2_POST } : { ...DEFAULT_POST } });
       } else if (e.key.toLowerCase() === 'r') {
-        const tab = ui.tab === 'face' ? 'face' : ui.tab === 'body' ? 'body' : undefined;
         studio.engine.replaceDoc(
-          randomizeCharacter(studio.engine.doc, studio.assets.sliders, { seed: (Math.random() * 2 ** 31) | 0, tab, locked: ui.locks }),
+          randomizeCharacter(studio.engine.doc, studio.assets.sliders, { seed: (Math.random() * 2 ** 31) | 0, locked: ui.locks }),
           'Randomize',
         );
       } else if (e.key === 'Tab') {

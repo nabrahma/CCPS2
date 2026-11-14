@@ -39,8 +39,11 @@ test('card hair in the UI: pick a style, drop an atlas PNG, edit and use it', as
   await setCharacter(page, { gender: 0, age: 0.55 }, {
     garments: [{ slot: 'top', asset: 'mh:clothes/skalldyrssuppe_tube_top_funky_colors', tint: { color: [1, 1, 1], brightness: 1 }, dirt: 0, hideBody: true }],
   });
-  await page.getByRole('tab', { name: 'Hair' }).click();
+  // The hair type and style settings are in Hair Studio (Part 2 F20); its groom brushes stay off here.
+  await page.getByRole('tab', { name: 'Hair', exact: true }).click();
+  await page.getByTestId('open-hair-studio').click();
   await page.getByRole('tab', { name: 'Card hair' }).click();
+  await page.getByTestId('hair-groom-toggle').click();
   await expect(page.getByTestId('hair-budget')).toContainText('triangles');
   await page.getByLabel('Style').selectOption('starter:bob');
   await expect(page.getByLabel('Style')).toContainText('Bob');

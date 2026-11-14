@@ -22,16 +22,16 @@ test('navigation, right column and headline', async ({ page }) => {
   // Sections open in the right column, one active at a time.
   await page.getByRole('tab', { name: 'Hair', exact: true }).click();
   await expect(page.getByRole('tab', { name: 'Hair', exact: true })).toHaveAttribute('aria-selected', 'true');
-  await expect(page.getByRole('tab', { name: 'Body' })).toHaveAttribute('aria-selected', 'false');
+  await expect(page.getByRole('tab', { name: 'Create' })).toHaveAttribute('aria-selected', 'false');
   await expect(page.getByRole('tabpanel', { name: 'Hair' })).toBeVisible();
 
   // Inspect and back: the section's panel is kept.
   await page.getByRole('tab', { name: 'Wardrobe' }).click();
-  await page.getByPlaceholder('Filter garments…').fill('worksuit');
+  await page.getByTestId('wardrobe-garments').getByTestId('library-search').fill('worksuit');
   await page.getByRole('button', { name: 'Inspect' }).click();
   await expect(page.getByText('Click any part of the character')).toBeVisible();
   await page.getByRole('button', { name: 'Controls' }).click();
-  await expect(page.getByPlaceholder('Filter garments…')).toHaveValue('worksuit');
+  await expect(page.getByTestId('wardrobe-garments').getByTestId('library-search')).toHaveValue('worksuit');
 
   // Choosing a worn garment opens its details; choosing a section returns.
   await setCharacter(page, {}, { garments: [garment('mh:clothes/male_worksuit01', 'full')] });
@@ -40,7 +40,7 @@ test('navigation, right column and headline', async ({ page }) => {
   await shot(page, 'inspector');
   await page.getByRole('tab', { name: 'Wardrobe' }).click();
   await expect(page.locator('.inspector')).toHaveCount(0);
-  await page.getByPlaceholder('Filter garments…').fill('');
+  await page.getByTestId('wardrobe-garments').getByTestId('library-search').fill('');
   await shot(page, 'wardrobe');
 
   // The orange button goes to Export.
@@ -57,8 +57,8 @@ test('navigation, right column and headline', async ({ page }) => {
   // Collapsing the sidebar leaves icons, and they still work.
   await page.getByRole('button', { name: 'Collapse sidebar' }).click();
   await expect(page.getByTestId('budget')).toBeHidden();
-  await page.getByRole('tab', { name: 'Face' }).click();
-  await expect(page.getByRole('tabpanel', { name: 'Face' })).toBeVisible();
+  await page.getByRole('tab', { name: 'Create' }).click();
+  await expect(page.getByRole('tabpanel', { name: 'Create' })).toBeVisible();
   await shot(page, 'collapsed');
   await page.getByRole('button', { name: 'Expand sidebar' }).click();
   await expect(page.getByTestId('budget')).toBeVisible();

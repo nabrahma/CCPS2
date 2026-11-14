@@ -24,6 +24,7 @@ import {
 import { HairlinePainter } from './HairlinePainter';
 import { backend, libraryUrl, type LibraryItem } from '../../backend';
 import { useStudio, useStudioVersion } from '../../state/hooks';
+import { refreshUserLibrary } from '../../state/library';
 import { useUi } from '../../state/ui';
 
 type Mode = 'none' | 'mesh' | 'cards';
@@ -148,6 +149,7 @@ function CardHair() {
     try {
       const item = await backend.saveHairstyle(name, JSON.stringify(hairStyleFile({ ...style, name }), null, 2));
       setSaved(await backend.listLibrary('hairstyles'));
+      await refreshUserLibrary(studio);
       ui.info(`Saved ${item.name}.ps2hair`);
     } catch (err) {
       ui.error('Could not save the hairstyle', err);
@@ -205,8 +207,8 @@ function CardHair() {
           New seed ({style.seed})
         </button>
         <button onClick={() => void saveStyle()}>Save style…</button>
-        <button onClick={() => ui.setView({ hairStudio: true })} data-testid="open-hair-studio" title="Comb the guides, draw the parting, shape locks">
-          Open Hair Studio
+        <button className={ui.hairStudio ? 'active' : ''} aria-pressed={ui.hairStudio} onClick={() => ui.setView({ hairStudio: !ui.hairStudio })} data-testid="hair-groom-toggle" title="The groom brushes over the viewport: comb the guides, draw the parting, shape locks">
+          Groom brushes
         </button>
       </div>
 

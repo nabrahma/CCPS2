@@ -3,6 +3,8 @@ package settings
 import (
 	"os"
 	"path/filepath"
+	"strconv"
+	"strings"
 	"testing"
 )
 
@@ -41,3 +43,32 @@ func TestSettingsDefaultsAndSanitise(t *testing.T) {
 		t.Fatalf("round trip: %+v", got)
 	}
 }
+
+// Library browser favourites and tags (Part 2 F20) are kept, checked and capped.
+func TestFavouritesAndTags(t *testing.T) {
+	s := NewStore(filepath.Join(t.TempDir(), "settings.json"))
+	v, _ := s.Load()
+	v.Favourites = []string{"garment:a", "garment:a", "", "hair:starter:bob"}
+	v.LibraryTags = map[string][]string{"garment:a": {"mara", " ", "this tag is far too long to keep"}, "": {"x"}, "skin:b": {}}
+	if err := s.Save(v); err != nil {
+		t.Fatal(err)
+	}
+	got, _ := s.Load()
+	if len(got.Favourites) != 2 || got.Favourites[0] != "garment:a" || got.Favourites[1] != "hair:starter:bob" {
+		t.Fatalf("favourites %v", got.Favourites)
+	}
+	if len(got.LibraryTags) != 1 || len(got.LibraryTags["garment:a"]) != 1 || got.LibraryTags["garment:a"][0] != "mara" {
+		t.Fatalf("tags %v", got.LibraryTags)
+	}
+	many := make([]string, MaxFavourites+50)
+	for i := range many {
+		many[i] = "e" + strings.Repeat("x", i%7) + string(rune('a'+i%26)) + strconv.Itoa(i)
+	}
+	v.Favourites = many
+	_ = s.Save(v)
+	got, _ = s.Load()
+	if len(got.Favourites) != MaxFavourites {
+		t.Fatalf("want %d favourites, got %d", MaxFavourites, len(got.Favourites))
+	}
+}
+

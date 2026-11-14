@@ -5,3 +5,4 @@ export * from './folds';
 export * from './decals';
 export * from './compose';
 export * from './studio';
+export * from './user-material';

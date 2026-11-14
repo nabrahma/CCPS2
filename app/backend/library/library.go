@@ -182,6 +182,9 @@ func (l *Library) List(kind string) ([]Item, error) {
 		if err != nil || st.IsDir() || strings.HasSuffix(f, AtlasSuffix) || strings.HasSuffix(f, ".bin") || strings.HasSuffix(f, ".tmp") {
 			continue // sidecars and garment data belong to their entry
 		}
+		if kind == "materials" && !strings.HasSuffix(f, MaterialExt) {
+			continue // a material's diffuse belongs to its document
+		}
 		stem := strings.TrimSuffix(filepath.Base(f), filepath.Ext(f))
 		item := Item{ID: "user:" + kind + "/" + stem, Kind: kind, Name: stem, File: kind + "/" + filepath.Base(f), Imported: st.ModTime().UTC().Format(time.RFC3339)}
 		if _, err := os.Stat(filepath.Join(l.Root, kind, ".thumbs", stem+".png")); err == nil {
@@ -207,6 +210,9 @@ func (l *Library) Delete(rel string) error {
 	_ = os.Remove(filepath.Join(filepath.Dir(p), stem+AtlasSuffix))
 	if strings.HasSuffix(p, ".json") {
 		_ = os.Remove(filepath.Join(filepath.Dir(p), stem+".bin")) // a garment's data
+	}
+	if strings.HasSuffix(p, MaterialExt) {
+		_ = os.Remove(filepath.Join(filepath.Dir(p), stem+MaterialDiffuseSuffix)) // a material's diffuse
 	}
 	return nil
 }

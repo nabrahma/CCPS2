@@ -4,23 +4,23 @@
   "photos": [
     {
       "photo": "synthetic_1_african_female",
-      "worstTexels": 1.342,
+      "worstTexels": 1.818,
       "errors": {
-        "rightEyeOuter": 0.4430456081904818,
-        "rightEyeInner": 0.7736804837641754,
-        "rightEyeTop": 1.341881504752417,
-        "rightEyeBottom": 0.37281132584133175,
-        "leftEyeInner": 0.4943623758557282,
-        "leftEyeOuter": 0.7736797438440762,
-        "leftEyeTop": 0.8878387764378143,
-        "leftEyeBottom": 0.23823395034204137,
-        "mouthRight": 0.5980873346886262,
-        "mouthLeft": 0.6188106996720816,
-        "upperLip": 0.4489171467507458,
-        "lowerLip": 0.41061800637373796
+        "rightEyeOuter": 1.2841817782228502,
+        "rightEyeInner": 0.5462579961181627,
+        "rightEyeTop": 1.8182041384154635,
+        "rightEyeBottom": 1.0526457070927975,
+        "leftEyeInner": 0.6588070188746739,
+        "leftEyeOuter": 0.5896184345587321,
+        "leftEyeTop": 0.9687809748589357,
+        "leftEyeBottom": 0.16491488569138096,
+        "mouthRight": 1.2855631789811883,
+        "mouthLeft": 0.7549576220675814,
+        "upperLip": 0.5596476302321403,
+        "lowerLip": 0.9956644181498107
       },
-      "yaw": -0.40806774233007503,
-      "pitch": 2.6042861412368263,
+      "yaw": 2.712477280369054,
+      "pitch": 5.1266076193086025,
       "warnings": []
     },
     {

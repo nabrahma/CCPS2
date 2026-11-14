@@ -106,7 +106,8 @@ test('Texture Studio: skin and garment painted in Material Painter come back', a
     });
 
     // ------------------------------------------------------------ 1. skin
-    await page.getByRole('tab', { name: 'Skin', exact: true }).click();
+    await page.getByTestId('step-appearance').click();
+    await page.getByTestId('open-texture-studio').click();
     await page.getByTestId('paint-open-skin').click();
     await expect(page.getByTestId('paint-open-skin')).toHaveText('Paint again in Material Painter', { timeout: 180_000 });
     const session = join(home, 'paint', 'MP_Test', 'skin');

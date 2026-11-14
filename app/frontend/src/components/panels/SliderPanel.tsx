@@ -3,7 +3,6 @@ import { randomizeCharacter, type SliderDef, type SliderTab } from '@ps2cc/core'
 import { useStudio, useStudioVersion } from '../../state/hooks';
 import { useUi } from '../../state/ui';
 import { LockIcon, ResetIcon, ShuffleIcon } from '../icons';
-import { FacePartsSection } from './FacePartsSection';
 
 /** Body/Face slider panel (PRD F1): curated or all, search, symmetry, reset, lock, randomize. */
 export function SliderPanel({ tab }: { tab: SliderTab }) {
@@ -85,7 +84,6 @@ export function SliderPanel({ tab }: { tab: SliderTab }) {
           ))}
         </details>
       ))}
-      {tab === 'face' && <FacePartsSection />}
     </div>
   );
 }

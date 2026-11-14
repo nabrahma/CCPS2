@@ -50,15 +50,16 @@ test('UI smoke: sliders, undo, tabs and budget', async ({ page }) => {
   await expect.poll(value).toBeCloseTo(0.9, 2);
   await page.keyboard.press('Control+z');
   await expect.poll(value).toBeCloseTo(0.5, 2);
-  for (const tab of ['Face', 'Skin', 'Hair', 'Wardrobe', 'Expressions', 'Export', 'Body']) {
+  for (const tab of ['Hair', 'Wardrobe', 'Appearance', 'Look', 'Export', 'Create']) {
     await page.getByRole('tab', { name: tab }).click();
   }
   await page.getByRole('tab', { name: 'Wardrobe' }).click();
+  await page.getByTestId('wardrobe-garments').getByTestId('library-search').fill('casualsuit01');
   const before = await page.evaluate(() => (window as unknown as { __ps2cc: Hook }).__ps2cc.scene.budget().total);
   await page.getByRole('button', { name: /male casualsuit01/i }).first().click();
   await expect
     .poll(() => page.evaluate(() => (window as unknown as { __ps2cc: Hook }).__ps2cc.scene.budget().total))
     .not.toBe(before);
-  await page.getByRole('tab', { name: 'Body' }).click();
+  await page.getByRole('tab', { name: 'Create' }).click();
   await page.screenshot({ path: join(OUT, 'ui_overview.png') });
 });

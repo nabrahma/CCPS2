@@ -35,7 +35,7 @@ export function DropTarget({ children }: { children: ReactNode }) {
     }
     if (item.kind === 'photos') {
       // PRD F7: find the face and project it onto the head.
-      ui.setTab('skin');
+      ui.openStudio({ kind: 'texture', target: 'skin' });
       void placePhoto(studio, url);
       return;
     }
@@ -48,7 +48,7 @@ export function DropTarget({ children }: { children: ReactNode }) {
     }
     if (item.kind === 'overlays') {
       studio.engine.update('Add image overlay', (d) => void d.skin.layers.push(newLayer('image', { image: url })));
-      ui.setTab('skin');
+      ui.openStudio({ kind: 'texture', target: 'skin' });
       ui.info(`Added ${item.name} as a skin overlay`);
       return;
     }

@@ -1,20 +1,21 @@
 import { useUi } from '../state/ui';
 import { InspectIcon, SlidersIcon } from './icons';
+import { AppearanceStep, CreateStep, ExportStep, HairStep, LookStep, WardrobeStep } from './creator/Steps';
 import { Inspector } from './Inspector';
-import { ExportPanel } from './panels/ExportPanel';
-import { ExpressionsPanel } from './panels/ExpressionsPanel';
-import { HairPanel } from './panels/HairPanel';
-import { SkinPanel } from './panels/SkinPanel';
-import { SliderPanel } from './panels/SliderPanel';
-import { WardrobePanel } from './panels/WardrobePanel';
 import { TABS } from './Sidebar';
+import { StudioRail } from './studio/StudioRail';
 
-/** The right column: the current section's controls, or details of the part clicked in the viewport. */
+/**
+ * The right column: the creator step's controls, or details of the part
+ * clicked in the viewport; in the Asset Studio, the open studio's editor.
+ */
 export function RightRail() {
   const tab = useUi((s) => s.tab);
   const mode = useUi((s) => s.railMode);
   const setMode = useUi((s) => s.setRailMode);
-  const label = TABS.find((t) => t.id === tab)?.label ?? '';
+  const inStudio = useUi((s) => s.assetStudio !== null);
+  const step = TABS.find((t) => t.id === tab);
+  const label = step?.label ?? '';
   return (
     <aside className="rail">
       <div className="rail-switch">
@@ -27,17 +28,19 @@ export function RightRail() {
       </div>
       <section className="rail-card">
         {mode === 'inspect' && <Inspector />}
+        {inStudio && mode === 'controls' && <StudioRail />}
         {/* Kept mounted while inspecting, so filters and open sections survive the switch. */}
-        <div className="rail-section" hidden={mode !== 'controls'}>
-          <p className="card-label">{label}</p>
+        <div className="rail-section" hidden={mode !== 'controls' || inStudio}>
+          <p className="card-label">
+            {step?.step} {label}
+          </p>
           <div className="panel" role="tabpanel" aria-label={label}>
-            {tab === 'body' && <SliderPanel tab="body" />}
-            {tab === 'face' && <SliderPanel tab="face" />}
-            {tab === 'skin' && <SkinPanel />}
-            {tab === 'hair' && <HairPanel />}
-            {tab === 'wardrobe' && <WardrobePanel />}
-            {tab === 'expressions' && <ExpressionsPanel />}
-            {tab === 'export' && <ExportPanel />}
+            {tab === 'create' && <CreateStep />}
+            {tab === 'hair' && <HairStep />}
+            {tab === 'wardrobe' && <WardrobeStep />}
+            {tab === 'appearance' && <AppearanceStep />}
+            {tab === 'look' && <LookStep />}
+            {tab === 'export' && <ExportStep />}
           </div>
         </div>
       </section>

@@ -1,12 +1,28 @@
 /** UI-only state (no character data): tabs, view options, selection, toasts. */
 import { create } from 'zustand';
-import type { AtlasRegion, DecalKind, LightingModel, Look, PhotoCheck, ShadowMode } from '@ps2cc/core';
+import type { AtlasRegion, DecalKind, LibraryCategory, LightingModel, Look, PhotoCheck, ShadowMode } from '@ps2cc/core';
 import type { GarmentFile } from '../backend';
 import { DEFAULT_POST, type CameraPresetId, type LightingPresetId, type PostSettings, type ShadingMode } from '@ps2cc/viewport';
 
 export type BackgroundId = 'preset' | 'black' | 'grey' | 'image';
 
-export type TabId = 'body' | 'face' | 'skin' | 'hair' | 'wardrobe' | 'expressions' | 'export';
+/** The Character Creator's six steps (Part 2 F20). */
+export type TabId = 'create' | 'hair' | 'wardrobe' | 'appearance' | 'look' | 'export';
+
+/** The Asset Studio's editors (Part 2 F20). */
+export type StudioKind = 'hair' | 'texture' | 'garment' | 'material';
+
+/**
+ * An open Asset Studio. `target`: the garment's part key (Garment Studio, or
+ * Texture Studio on a garment), 'skin' (Texture Studio on the skin), the
+ * material it starts from (Material Studio), null for Hair Studio.
+ */
+export interface AssetStudioState {
+  kind: StudioKind;
+  target: string | null;
+  /** Material Studio: the garment zone the material is previewed on and goes to on Save. */
+  zone?: { partKey: string; zone: number } | null;
+}
 
 /** An open atlas editor (PRD F5 step 1): the image, its library file (for atlas.json) and starting regions. */
 export interface AtlasEditorRequest {
@@ -56,8 +72,15 @@ export interface UiState {
   camera: CameraPresetId;
   turntable: boolean;
   poseTest: boolean;
-  /** Hair Studio (PRD F15): grooming brushes over the viewport. */
+  /** Hair Studio (PRD F15): grooming brushes over the viewport (on while the Asset Studio shows Hair Studio). */
   hairStudio: boolean;
+  /** The Asset Studio, when one of its editors is open (Part 2 F20). */
+  assetStudio: AssetStudioState | null;
+  openStudio(v: AssetStudioState): void;
+  closeStudio(): void;
+  /** The library browser, open on a category (Part 2 F20). */
+  library: { category: LibraryCategory } | null;
+  setLibrary(v: { category: LibraryCategory } | null): void;
   /** Garment looks (Part 2 F18): what a click or drag on the selected garment does (null: nothing). */
   garmentTool: GarmentTool | null;
   setGarmentTool(v: GarmentTool | null): void;
@@ -109,7 +132,7 @@ export type GarmentTool =
 let toastId = 0;
 
 export const useUi = create<UiState>((set) => ({
-  tab: 'body',
+  tab: 'create',
   curated: true,
   symmetry: true,
   search: '',
@@ -128,10 +151,28 @@ export const useUi = create<UiState>((set) => ({
   turntable: false,
   poseTest: false,
   hairStudio: false,
+  assetStudio: null,
+  openStudio: (v) =>
+    set({
+      assetStudio: v,
+      hairStudio: v.kind === 'hair',
+      garmentStudio: v.kind === 'garment' ? v.target : null,
+      garmentTool: null,
+      railMode: 'controls',
+    }),
+  closeStudio: () => set({ assetStudio: null, hairStudio: false, garmentStudio: null, garmentTool: null }),
+  library: null,
+  setLibrary: (library) => set({ library }),
   garmentTool: null,
   setGarmentTool: (garmentTool) => set({ garmentTool }),
   garmentStudio: null,
-  setGarmentStudio: (garmentStudio) => set({ garmentStudio, garmentTool: null }),
+  // Garment Studio is one of the Asset Studio's editors: opening it opens the studio, closing it closes the studio.
+  setGarmentStudio: (garmentStudio) =>
+    set(
+      garmentStudio
+        ? { garmentStudio, assetStudio: { kind: 'garment', target: garmentStudio }, hairStudio: false, garmentTool: null, railMode: 'controls' }
+        : { garmentStudio: null, assetStudio: null, garmentTool: null },
+    ),
   background: 'preset',
   backgroundImage: null,
   toasts: [],
@@ -143,7 +184,8 @@ export const useUi = create<UiState>((set) => ({
   creditsOpen: false,
   setCreditsOpen: (creditsOpen) => set({ creditsOpen }),
   photo: null,
-  setTab: (tab) => set({ tab, search: '', railMode: 'controls' }),
+  // A creator step closes the Asset Studio.
+  setTab: (tab) => set({ tab, search: '', railMode: 'controls', assetStudio: null, hairStudio: false, garmentStudio: null, garmentTool: null }),
   setRailMode: (railMode) => set({ railMode }),
   toggleSidebar: () => set((s) => ({ sidebarCollapsed: !s.sidebarCollapsed })),
   setCurated: (curated) => set({ curated }),

@@ -93,7 +93,8 @@ async function exportDigest(page: Page): Promise<{ glb: string; message: string 
 
 /** Move a body slider with the keyboard, like a user (marks the character as changed). */
 async function nudgeSlider(page: Page, index: number, presses: number): Promise<void> {
-  await page.getByRole('tab', { name: 'Body' }).click();
+  await page.getByRole('tab', { name: 'Create' }).click();
+  await page.getByTestId('create-body').click();
   const slider = page.locator('.slider-row input[type="range"]').nth(index);
   await slider.focus();
   for (let i = 0; i < presses; i++) await slider.press('ArrowRight');
