@@ -53,6 +53,9 @@ export interface Settings {
   qualityProfile: QualityProfileId;
   /** Material Painter's executable chosen by the user ('' finds it in the usual install folders; D-115). */
   materialPainter?: string;
+  /** Library browser (Part 2 F20): starred entries, and the user's own tags per entry. */
+  favourites?: string[];
+  libraryTags?: Record<string, string[]>;
 }
 
 /** Where Material Painter is (Texture Studio, D-115). */
@@ -107,6 +110,8 @@ interface GoApp {
   LoadAtlas(imageFile: string): Promise<string>;
   SaveHairstyle(name: string, styleJson: string): Promise<LibraryItem>;
   SavePreset(name: string, presetJson: string): Promise<LibraryItem>;
+  SaveOutfit(name: string, outfitJson: string): Promise<LibraryItem>;
+  SaveMaterial(name: string, materialJson: string, diffuseBase64: string): Promise<LibraryItem>;
   ReadLibraryDocument(file: string): Promise<string>;
   PickGarmentFile(): Promise<string>;
   ReadGarment(path: string): Promise<GarmentFile>;
@@ -236,19 +241,22 @@ export const backend = {
   async importFile(kind: string, file: File): Promise<LibraryItem> {
     const g = go();
     if (g) return g.ImportBytes(kind, file.name, await blobToBase64(file));
-    // Browser mode: keep the file in memory only.
+    // Browser mode: keep the file in memory only (listed until the page reloads).
     const url = URL.createObjectURL(file);
-    return { id: `user:${kind}/${file.name}`, kind, name: file.name, file: url, thumb: url, width: 0, height: 0, hasAlpha: true };
+    const stem = file.name.replace(/\.[^.]+$/, '');
+    const item = { id: `user:${kind}/${stem}`, kind, name: file.name, file: url, thumb: url, width: 0, height: 0, hasAlpha: true };
+    browserImports.set(kind, [item, ...(browserImports.get(kind) ?? []).filter((x) => x.id !== item.id)]);
+    return item;
   },
   async listLibrary(kind: string): Promise<LibraryItem[]> {
     const g = go();
     if (g) return (await g.ListLibrary(kind)) ?? [];
-    if (kind === 'hairstyles' || kind === 'presets') {
-      return Object.keys(browserDocs()).filter((k) => k.startsWith(`${kind}/`)).map((file) => ({
-        id: `user:${file}`, kind, name: file.slice(kind.length + 1).replace(/\.ps2(hair|preset)$/, ''), file, thumb: '', width: 0, height: 0, hasAlpha: false,
+    if (kind === 'hairstyles' || kind === 'presets' || kind === 'outfits' || kind === 'materials') {
+      return Object.keys(browserDocs()).filter((k) => k.startsWith(`${kind}/`) && (kind !== 'materials' || browserFiles.has(k.replace(/\.ps2mat$/, '_diffuse.png')))).map((file) => ({
+        id: `user:${file.replace(/\.ps2\w+$/, '')}`, kind, name: file.slice(kind.length + 1).replace(/\.ps2(hair|preset|outfit|mat)$/, ''), file, thumb: '', width: 0, height: 0, hasAlpha: false,
       }));
     }
-    return [];
+    return browserImports.get(kind) ?? [];
   },
   /** Save a hair card atlas beside its library image (atlas.json, PRD F5). Browser mode keeps it in localStorage. */
   async saveAtlas(imageFile: string, atlasJson: string): Promise<string> {
@@ -275,6 +283,31 @@ export const backend = {
     const file = `presets/${name.replace(/[^\w -]/g, '_')}.ps2preset`;
     putBrowserDoc(file, presetJson);
     return { id: `user:${file}`, kind: 'presets', name, file, thumb: '', width: 0, height: 0, hasAlpha: false };
+  },
+  async saveOutfit(name: string, outfitJson: string): Promise<LibraryItem> {
+    const g = go();
+    if (g) return g.SaveOutfit(name, outfitJson);
+    const file = `outfits/${safeName(name)}.ps2outfit`;
+    putBrowserDoc(file, outfitJson);
+    return { id: `user:${file.replace(/\.ps2outfit$/, '')}`, kind: 'outfits', name, file, thumb: '', width: 0, height: 0, hasAlpha: false };
+  },
+  /**
+   * Save a Material Studio material: the document, and its era diffuse as a
+   * PNG beside it (the backend points the document's `diffuse` at it). Browser
+   * mode keeps the image in memory until the page reloads.
+   */
+  async saveMaterial(name: string, materialJson: string, diffuse: Blob): Promise<LibraryItem> {
+    const g = go();
+    if (g) return g.SaveMaterial(name, materialJson, await blobToBase64(diffuse));
+    const stem = safeName(name);
+    const file = `materials/${stem}.ps2mat`;
+    const doc = JSON.parse(materialJson) as { material: { diffuse: string } };
+    doc.material.diffuse = `${stem}_diffuse.png`;
+    const old = browserFiles.get(`materials/${stem}_diffuse.png`);
+    if (old) URL.revokeObjectURL(old);
+    browserFiles.set(`materials/${stem}_diffuse.png`, URL.createObjectURL(diffuse));
+    putBrowserDoc(file, JSON.stringify(doc));
+    return { id: `user:materials/${stem}`, kind: 'materials', name: stem, file, thumb: `materials/${stem}_diffuse.png`, width: 0, height: 0, hasAlpha: false };
   },
   async readLibraryDocument(file: string): Promise<string> {
     const g = go();
@@ -386,9 +419,22 @@ export const backend = {
   },
 };
 
+/** Browser mode: images imported since the page loaded, by library kind. */
+const browserImports = new Map<string, LibraryItem[]>();
+
+/** Browser mode: library files kept in memory (Material Studio diffuses), by library-relative path. */
+const browserFiles = new Map<string, string>();
+
+/** The library's file-name rule (paths.SafeName in the backend). */
+function safeName(name: string): string {
+  return name.trim().replace(/[^\w -]/g, '_').replace(/^[ .]+|[ .]+$/g, '') || 'untitled';
+}
+
 /** URL for a library-relative file. */
 export function libraryUrl(info: AppInfo, rel: string): string {
   if (/^(blob:|data:|https?:)/.test(rel)) return rel;
+  const kept = browserFiles.get(rel);
+  if (kept) return kept;
   return `${info.libraryUrl}/${rel.split('/').map(encodeURIComponent).join('/')}`;
 }
 

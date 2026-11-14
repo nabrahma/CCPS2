@@ -207,6 +207,19 @@ export class CoreAssets {
     this.userProxies.set(info.id, load);
   }
 
+  /** Add a Material Studio material to the library (replaces one with the same id). */
+  addUserMaterial(m: CatalogMaterial): void {
+    this.removeUserMaterial(m.id);
+    (this.catalog.materials ??= []).push(m);
+  }
+
+  removeUserMaterial(id: string): void {
+    const list = this.catalog.materials;
+    if (!list || !id.startsWith('user:')) return;
+    const i = list.findIndex((m) => m.id === id);
+    if (i >= 0) list.splice(i, 1);
+  }
+
   removeUserProxy(id: string): void {
     if (!this.userProxies.delete(id)) return;
     const i = this.catalog.proxies.findIndex((p) => p.id === id);

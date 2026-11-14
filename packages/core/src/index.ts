@@ -32,6 +32,8 @@ export * from './eyes/eye-texture';
 export * from './wardrobe';
 export * from './character/sliders';
 export * from './character/presets';
+export * from './character/outfit';
+export * from './library/browse';
 export * from './credits';
 export * from './export/limits';
 export * from './character/randomize';

@@ -943,6 +943,7 @@ export class Viewport {
           return null;
         });
       this.gradientTextures.set(key, p);
+      this.track(p);
       // A colour slider drag makes many; keep the last few.
       while (this.gradientTextures.size > 6) {
         const oldest = this.gradientTextures.keys().next().value!;
@@ -1036,8 +1037,26 @@ export class Viewport {
           return null;
         });
       this.textures.set(path, p);
+      this.track(p);
     }
     return p;
+  }
+
+  private readonly pending = new Set<Promise<unknown>>();
+
+  private track(p: Promise<unknown>): void {
+    this.pending.add(p);
+    void p.finally(() => this.pending.delete(p));
+  }
+
+  /**
+   * Resolves once every texture asked for so far (files, generated hair, eye
+   * and garment-look textures) is loaded and on its part, and the skin is
+   * composited: renders made right after a change wait for it.
+   */
+  async texturesSettled(): Promise<void> {
+    while (this.pending.size) await Promise.allSettled([...this.pending]);
+    await this.skinPending;
   }
 
   private disposeObject(obj: PartObject): void {

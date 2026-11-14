@@ -494,6 +494,20 @@ function concat(name: string, role: MaterialRole, parts: ExportMesh[], material:
   return out;
 }
 
+/**
+ * A garment part's texture as the export makes it: its look composed at `size`
+ * (or its own texture), with its tint and grime baked in (Texture Studio saves
+ * a garment this way, Part 2 F20).
+ */
+export async function garmentTexture(p: ScenePart, size: number, loadImage: (url: string) => Promise<RgbaImage>): Promise<RgbaImage> {
+  const tex = p.material.wardrobe
+    ? await p.material.wardrobe.compose(size, loadImage)
+    : p.material.texture
+      ? await loadImage(p.material.texture)
+      : createImage(4, 4, [255, 255, 255, 255]);
+  return dirt(tint(tex, p.material.tint), p.material.dirt);
+}
+
 /** Multiply RGB by the tint colour and brightness (sRGB values, as the viewport shows them). */
 function tint(img: RgbaImage, t: Tint): RgbaImage {
   const [r, g, b] = t.color;

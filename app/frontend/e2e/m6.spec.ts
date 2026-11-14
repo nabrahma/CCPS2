@@ -343,7 +343,9 @@ test('photo projection: eyes and mouth within 4 texels at 1024 px on 5 photos', 
 test('Skin panel: add a layer, drop a face photo, frontal-pose warning', async ({ page }) => {
   await start(page);
   await setCharacter(page, { gender: 1 }, { hair: bald, garments: [], skin: { base: 'mh:skins/young_caucasian_male', layers: [], photo: null } });
-  await page.getByRole('tab', { name: /skin/i }).click();
+  // The skin's layer stack and photos are in Texture Studio (Part 2 F20).
+  await page.getByTestId('step-appearance').click();
+  await page.getByTestId('open-texture-studio').click();
   await page.getByLabel('Add', { exact: true }).selectOption('stubble');
   await page.getByTestId('skin-add-layer').click();
   await expect(page.getByTestId('skin-layers').locator('li')).toHaveCount(1);

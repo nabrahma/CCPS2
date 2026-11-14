@@ -54,7 +54,9 @@ test('Expressions panel: preview sliders, bake list, export with blendshapes', a
   await boot(page);
   await waitForTestHooks(page);
   await setCharacter(page, { gender: 1, age: 0.5 }, { name: 'Expr Test', hair: bald, garments: [] });
-  await page.getByRole('tab', { name: /express/i }).click();
+  // Expressions are baked at export: 06 Export, Expressions (Part 2 F20).
+  await page.getByTestId('step-export').click();
+  await page.getByTestId('export-expressions').locator(':scope > summary').click();
   await expect(page.getByTestId('expressions-panel')).toBeVisible();
   await expect(page.getByTestId('budget-blendshapes')).toHaveText('Blendshapes 15');
   await setCamera(page, 'face');

@@ -370,7 +370,7 @@ export function HairStudio({ canvas }: { canvas: HTMLCanvasElement | null }) {
             )}
           </>
         )}
-        <button onClick={() => ui.setView({ hairStudio: false })} data-testid="hair-studio-done">
+        <button onClick={() => ui.closeStudio()} data-testid="hair-studio-done" title="Close Hair Studio and go back to the Character Creator">
           Done
         </button>
       </div>

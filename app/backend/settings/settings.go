@@ -26,7 +26,17 @@ type Settings struct {
 	QualityProfile string `json:"qualityProfile"`
 	// MaterialPainter is the Material Painter executable chosen by the user ("" finds it in the usual install folders; D-115).
 	MaterialPainter string `json:"materialPainter"`
+	// Favourites are the library entries starred in the library browser (Part 2 F20).
+	Favourites []string `json:"favourites"`
+	// LibraryTags are the user's own tags on library entries (entry id to tags).
+	LibraryTags map[string][]string `json:"libraryTags"`
 }
+
+// MaxFavourites caps the starred entries and the entries with user tags.
+const MaxFavourites = 2000
+
+// MaxTagsPerEntry caps the user's tags on one entry.
+const MaxTagsPerEntry = 12
 
 // Defaults follow the PRD (12k target / 15k max, 1024 textures, 2 min autosave).
 func Defaults() Settings {
@@ -98,6 +108,39 @@ func (v *Settings) sanitise() {
 	if v.AutosaveMinutes < 1 || v.AutosaveMinutes > 60 {
 		v.AutosaveMinutes = d.AutosaveMinutes
 	}
+	v.Favourites = sanitiseIDs(v.Favourites, MaxFavourites)
+	if len(v.LibraryTags) > 0 {
+		tags := map[string][]string{}
+		for id, list := range v.LibraryTags {
+			if len(tags) >= MaxFavourites || id == "" || len(id) > 300 {
+				continue
+			}
+			var clean []string
+			for _, t := range list {
+				if t = strings.TrimSpace(t); t != "" && len(t) <= 24 && len(clean) < MaxTagsPerEntry {
+					clean = append(clean, t)
+				}
+			}
+			if len(clean) > 0 {
+				tags[id] = clean
+			}
+		}
+		v.LibraryTags = tags
+	}
+}
+
+// sanitiseIDs keeps unique, non-empty ids of at most 300 bytes, at most max of them.
+func sanitiseIDs(ids []string, max int) []string {
+	seen := map[string]bool{}
+	out := []string{}
+	for _, id := range ids {
+		if id == "" || len(id) > 300 || seen[id] || len(out) >= max {
+			continue
+		}
+		seen[id] = true
+		out = append(out, id)
+	}
+	return out
 }
 
 // CheckUnityProject reports whether dir is a Unity project (an Assets folder

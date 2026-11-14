@@ -37,7 +37,8 @@ export interface CatalogMaterial {
   gloss: number;
   /** Mean colour of the era diffuse, 0..1 sRGB (for swatches and flat fallbacks). */
   swatch: [number, number, number];
-  source: { site: 'Poly Haven' | 'ambientCG'; asset: string; url: string; licence: 'CC0-1.0'; author: string };
+  /** Where it comes from: a CC0 site for the library, 'user' for Material Studio's (never shipped with the app). */
+  source: { site: 'Poly Haven' | 'ambientCG'; asset: string; url: string; licence: 'CC0-1.0'; author: string } | { site: 'user'; asset: string; url: ''; licence: 'user'; author: '' };
 }
 
 export interface EraLight {

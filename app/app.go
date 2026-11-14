@@ -54,7 +54,7 @@ type AppInfo struct {
 	Pid int `json:"pid"`
 }
 
-const appVersion = "0.17.0"
+const appVersion = "0.18.0"
 
 func newApp(layout *paths.Layout, log *logging.Logger) *App {
 	return &App{
@@ -429,6 +429,28 @@ func (a *App) SaveHairstyle(name, styleJSON string) (*library.Item, error) {
 	return item, err
 }
 
+// SaveOutfit stores a .ps2outfit document in the library (Part 2 F20).
+func (a *App) SaveOutfit(name, outfitJSON string) (*library.Item, error) {
+	item, err := a.lib.SaveOutfit(name, []byte(outfitJSON))
+	if err == nil {
+		a.log.Infof("outfit saved %s", item.File)
+	}
+	return item, err
+}
+
+// SaveMaterial stores a Material Studio material: its .ps2mat document and its era diffuse (PNG, base64).
+func (a *App) SaveMaterial(name, materialJSON, diffuseBase64 string) (*library.Item, error) {
+	png, err := base64.StdEncoding.DecodeString(diffuseBase64)
+	if err != nil {
+		return nil, fmt.Errorf("invalid image data: %w", err)
+	}
+	item, err := a.lib.SaveMaterial(name, []byte(materialJSON), png)
+	if err == nil {
+		a.log.Infof("material saved %s", item.File)
+	}
+	return item, err
+}
+
 // SavePreset stores a .ps2preset document in the library.
 func (a *App) SavePreset(name, presetJSON string) (*library.Item, error) {
 	item, err := a.lib.SavePreset(name, []byte(presetJSON))
@@ -438,7 +460,7 @@ func (a *App) SavePreset(name, presetJSON string) (*library.Item, error) {
 	return item, err
 }
 
-// ReadLibraryDocument returns a .ps2hair, .ps2preset or atlas document from the library.
+// ReadLibraryDocument returns a .ps2hair, .ps2preset, .ps2mat, .ps2outfit or atlas document from the library.
 func (a *App) ReadLibraryDocument(file string) (string, error) {
 	data, err := a.lib.ReadDocument(file)
 	return string(data), err

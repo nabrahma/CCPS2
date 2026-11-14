@@ -184,3 +184,36 @@ Also tested:
 - Garment Studio has its own Undo; saving is one undo step in the app.
 - Cropped hems follow the garment's triangles, so they are a little jagged on coarse garments.
 - MakeHuman's fisherman sweater leaves a small gap under each arm where skin shows. The roll-neck, the vest and the jacket are made from it and keep the gap.
+
+## M16: Creator experience (0.18.0, Part 2)
+
+Overview: `docs/creator-and-studio.md`. Decisions D-132 to D-138. Review images: `docs/milestones/M16/`.
+
+What M16 adds:
+- the Character Creator: six steps in the left rail (01 Create, 02 Hair, 03 Wardrobe, 04 Appearance, 05 Look, 06 Export), each with the simple controls;
+- the Asset Studio: Hair, Texture, Garment and Material Studio, opened with "Edit in … Studio" from the steps, the Inspector or the library. What a studio saves joins the library;
+- Material Studio (new): materials from a library material or your own images, made seamless, adjusted and saved to the library;
+- Texture Studio saves skins and textured garments;
+- outfits: two built in (the benchmark outfits), and your own saved from 03 Wardrobe;
+- the library browser: large thumbnails rendered under the current look, with favourites, tags and search.
+
+| Acceptance (Part 2 M16) | State | Evidence |
+| --- | --- | --- |
+| An end-to-end test builds a full character through the six creator steps only | Passing | `e2e/m16.spec.ts`: a body preset and two sliders, a hairstyle with colour and length, an outfit and a hat, skin, eye colour, lips, freckles and dark circles, the Hero profile and the Flashlight interior look, then Export to Unity. The Inspector and the Asset Studio are never opened. Screenshots `ui_step_0*.png` |
+| Each studio round trip (open, edit, save, reuse in another character) passes an end-to-end test | Passing | `e2e/m16.spec.ts`, one test per studio, each opened from a creator step and its result reused by a new character: Hair Studio (lengths changed, saved as a style, picked in 02 Hair); Texture Studio (layers added, saved as a skin, picked in 04 Appearance); Garment Studio (loosened, saved as a garment, worn from 03 Wardrobe); Material Studio (denim turned green and resized, and a photo made seamless, both saved; the green denim dresses another character's T-shirt). `ui_*_studio*.png` |
+| You rebuild Mara from presets in under 15 minutes (timed by you) | Needs your time | The presets: Adult female body, Layered bob (Mara) and Blonde in 02 Hair, the Utility vest and roll-neck outfit, young caucasian female skin with freckles, dark circles and grime, Enhanced or Hero, Interior flashlight |
+
+Also tested:
+- the library browser: a thumbnail changes with the look the same way the viewport does; favourites and your tags survive a reload; search finds by name and tag; every category lists entries (5 bodies, 49 hairstyles, 121 garments, 2 outfits, 53 skins, 11 materials);
+- Material Studio's seam measure: a photo that does not tile scores 0.105, made seamless 0;
+- in Node (`test/m16.test.ts`): outfits saved, read with checks and put on; the converter from a photo alone or with maps (with flat maps it matches the library converter within one level); the seamless blend; the `.ps2mat` format; library search, tags and favourites;
+- in Go: saving, listing and deleting materials (the document and its diffuse together) and outfits, and the favourites and tags in settings.
+
+**Test runs:** lint and typecheck; unit tests (core 231, viewport 3, tools 25); Go tests; the full browser suite, 49 tests: 47 passed on the first run, and the two that failed (an import's name lost its file extension in the browser build; a test selector matched nested sections) pass after their fixes; the desktop test.
+
+**Changed for you:** Part 1's seven tabs are gone. Body and face sliders are in 01 Create, the skin's full layer stack and photos are in Texture Studio, every hair setting is in Hair Studio, and the expressions to bake are in 06 Export. The older browser tests now go through the new steps.
+
+**Known limits.**
+- Thumbnails render one at a time in a hidden viewport, so the first screen of a grid takes a few seconds (under the tests' software renderer, up to a minute). They render again when the look changes.
+- Saving a skin bakes its layers into it.
+- Material Studio previews at 512 px and saves at 1024 px.

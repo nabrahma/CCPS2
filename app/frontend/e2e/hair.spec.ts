@@ -64,7 +64,9 @@ test('hair panel: card texture picker, groom and card build controls', async ({ 
   await boot(page);
   await waitForTestHooks(page);
   await wear(page, 'long-centre-part', 'brown', true);
+  // Every hair setting is in Hair Studio (Part 2 F20).
   await page.getByRole('tab', { name: 'Hair', exact: true }).click();
+  await page.getByTestId('open-hair-studio').click();
   const doc = () => page.evaluate(() => (window as unknown as TestWindow).__ps2cc.engine.doc.hair);
   const hairPositions = () =>
     page.evaluate(async () => {
