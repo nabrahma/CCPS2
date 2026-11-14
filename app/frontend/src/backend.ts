@@ -77,6 +77,8 @@ export interface Settings {
   /** Library browser (Part 2 F20): starred entries, and the user's own tags per entry. */
   favourites?: string[];
   libraryTags?: Record<string, string[]>;
+  /** Bake after each change (off: the user bakes; M18.1). */
+  autoBake?: boolean;
 }
 
 /** Where Material Painter is (Texture Studio, D-115). */

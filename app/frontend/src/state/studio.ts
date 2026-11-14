@@ -107,11 +107,16 @@ export class Studio {
   private baked: { signature: string; maps: Map<string, BakedMap> } | null = null;
   private bakeRun: { signature: string; cancel: boolean; done: Promise<void> } | null = null;
   private bakeTimer: number | null = null;
-  /** Bake in the background after changes (off in e2e runs, which bake on request). */
-  autoBake = true;
+  /**
+   * Bake in the background after changes. Off unless chosen in Settings: the
+   * bake is the user's to start (Bake in the status bar), and an export with a
+   * bake option bakes first. Always off in e2e runs, which bake on request.
+   */
+  autoBake = false;
   /** Override the bake settings (tests bake small maps). */
   bakeOverride: Partial<BakeSettings> | null = null;
-  bakeStatus: { state: 'off' | 'waiting' | 'baking' | 'done' | 'failed'; progress: number; ms: number; timings: Record<string, number> } = {
+  /** `stale`: a bake option is on and the character changed since the last bake (or was never baked). */
+  bakeStatus: { state: 'off' | 'waiting' | 'stale' | 'baking' | 'done' | 'failed'; progress: number; ms: number; timings: Record<string, number> } = {
     state: 'off',
     progress: 0,
     ms: 0,
@@ -231,15 +236,47 @@ export class Studio {
     return { ...DEFAULT_BAKE, size: Math.min(1024, Math.max(512, ex.bodyTexture)), ...(this.bakeOverride ?? {}) };
   }
 
-  /** Rebake shortly after the character stops changing (bakes run in the background, F16). */
+  /** The character changed: rebake shortly after it stops changing if auto-bake is on (F16), else mark the bake out of date. */
   scheduleBake(delayMs = 800): void {
-    if (!this.autoBake) return;
+    if (!this.autoBake) {
+      this.refreshBakeState();
+      return;
+    }
     if (this.bakeTimer !== null) window.clearTimeout(this.bakeTimer);
     this.bakeTimer = window.setTimeout(() => {
       this.bakeTimer = null;
       void this.runBake();
     }, delayMs);
     if (this.wantsBake() && this.bakeStatus.state !== 'baking') this.setBakeStatus({ state: 'waiting', progress: 0 });
+  }
+
+  /** Manual baking: whether the shown bake still matches the character. Starts no bake. */
+  private refreshBakeState(): void {
+    if (this.bakeRun) return; // the run's end calls this again
+    if (!this.wantsBake()) {
+      // A bake option was turned off: take the baked maps away (cheap, no bake).
+      if (this.baked || this.bakeStatus.state !== 'off') void this.runBake();
+      return;
+    }
+    const current = this.baked?.signature === bakeSignature(this.scene, this.bakeSettings());
+    const state = current ? 'done' : this.bakeStatus.state === 'failed' ? 'failed' : 'stale';
+    if (state !== this.bakeStatus.state) this.setBakeStatus({ state, progress: current ? 1 : 0 });
+  }
+
+  /** Whether the viewport shows a bake (possibly an out-of-date one). */
+  get hasBake(): boolean {
+    return this.baked !== null;
+  }
+
+  /** Auto-bake on or off, kept in settings. */
+  setAutoBake(on: boolean): void {
+    this.autoBake = on;
+    if (this.settings) {
+      this.settings = { ...this.settings, autoBake: on };
+      backend.saveSettings(this.settings).catch((err: unknown) => backend.log('warn', `saving settings failed: ${String(err)}`));
+    }
+    if (on) this.scheduleBake(0);
+    this.bump();
   }
 
   private wantsBake(): boolean {
@@ -315,7 +352,11 @@ export class Studio {
         this.setBakeStatus({ state: 'failed', progress: 0 });
         backend.log('warn', `bake failed: ${String(err)}`);
       } finally {
-        if (this.bakeRun === run) this.bakeRun = null;
+        if (this.bakeRun === run) {
+          this.bakeRun = null;
+          // Changed while baking? (Auto-bake has already queued the next bake.)
+          if (!this.autoBake) this.refreshBakeState();
+        }
       }
     })();
     this.bakeRun = run;

@@ -308,10 +308,15 @@ function RenderTools() {
   );
 }
 
-/** The bake engine's state (F16): waiting, progress, or how long the last bake took. */
+/**
+ * The bake engine's state (F16): out of date, progress, or how long the last
+ * bake took, and a Bake button. Baking starts only from here, from Export, or
+ * after each change if auto-bake is on in Settings.
+ */
 export function BakeStatus() {
   const studio = useStudio();
   useStudioVersion();
+  const ui = useUi();
   const s = studio.bakeStatus;
   if (s.state === 'off') return null;
   const text =
@@ -319,12 +324,24 @@ export function BakeStatus() {
       ? `Baking ${Math.round(s.progress * 100)}%`
       : s.state === 'waiting'
         ? 'Bake waiting'
-        : s.state === 'failed'
-          ? 'Bake failed'
-          : `Baked in ${(s.ms / 1000).toFixed(1)} s`;
+        : s.state === 'stale'
+          ? studio.hasBake
+            ? 'Bake out of date'
+            : 'Not baked'
+          : s.state === 'failed'
+            ? 'Bake failed'
+            : `Baked in ${(s.ms / 1000).toFixed(1)} s`;
+  const canBake = s.state === 'stale' || s.state === 'failed';
   return (
-    <span className={`bake-status bake-${s.state}`} data-testid="bake-status" title="Occlusion, cavity and thickness from the whole character (Export → bake options)">
-      {text}
+    <span className="bake-wrap">
+      <span className={`bake-status bake-${s.state}`} data-testid="bake-status" title="Occlusion, cavity and thickness from the whole character (Export → bake options)">
+        {text}
+      </span>
+      {canBake && (
+        <button className="bake-now" onClick={() => void studio.runBake().catch((err: unknown) => ui.error('Bake failed', err))} data-testid="bake-now" title="Bake occlusion, cavity and thickness now">
+          Bake
+        </button>
+      )}
     </span>
   );
 }

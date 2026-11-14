@@ -37,7 +37,7 @@ A GPU ray tracer inside the app. For the body and each garment it bakes four map
 - **Thickness**: for translucency later.
 - **Light**: Classic's baked sky and key light.
 
-Bakes rerun about a second after the character stops changing. The status shows under the viewport ("Baking 40%", "Baked in 3.2 s"). Export waits for the current bake.
+You choose when to bake (D-144). The status bar shows "Not baked" or "Bake out of date" after a change, with a **Bake** button; **Export → Bake now** does the same. While baking it shows "Baking 40%", then "Baked in 3.2 s". An export with a bake option on bakes first if the bake is out of date. To bake about a second after every change instead, turn on **Settings → Baking → Bake automatically after each change**.
 
 The body's maps arrive as skin layers (Skin → Baked occlusion, Baked cavity, Baked light), so their strength, contrast and mask are yours to change. Garments get theirs multiplied into their texture at export.
 

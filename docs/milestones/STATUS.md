@@ -254,3 +254,14 @@ Tested:
   - its eye hiding it in the viewport while the character keeps it;
   - the smallest window (1280×720) with nothing overflowing or overlapping.
 - Every older browser test runs on the new layout: the full browser suite passes (49 tests), and so does the desktop test against the real backend.
+
+## 0.19.1: Baking on request, menus that stay open
+
+Two fixes reported after the first release.
+
+- **Baking is your choice (D-144).** A change marks the bake out of date ("Not baked", "Bake out of date") and no longer starts a bake. **Bake** in the status bar, or **Export → Bake now**, bakes. An export with a bake option on still bakes first. Baking after every change is a setting, off by default: **Settings → Baking**.
+- **Menus stay open (D-145).** The menu bar used to close when the mouse left it, and the gap between a menu's button and its list made that happen on the way to an item. Menus now close when you choose an item, click elsewhere or press Esc.
+- **Tested:**
+  - two new browser tests in `e2e/ui-layout.spec.ts`. The menu test moves through the gap and over the viewport, then chooses New character. The bake test checks that nothing bakes after a change until Bake or Bake now is clicked, and that the auto-bake setting is saved;
+  - the workspace, bake, export, round-trip and smoke tests pass (13 tests), and so does the desktop test;
+  - Go tests, typecheck and lint pass.

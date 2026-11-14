@@ -16,8 +16,9 @@ The layout follows Character Creator's: a large viewport with one dock beside it
   - **Modify:** the parts tree, and under it the controls of whatever is chosen there or in the step strip.
   - **Library:** every preset, hairstyle, garment, outfit, skin and material, as thumbnails under the current look (Ctrl+L).
   - **Studio:** the Asset Studio (Hair, Texture, Garment and Material Studio), with **‹ Creator** to go back.
-  - **Settings:** the data folder, slider preferences and help.
-- **Status bar:** the triangle budget against the profile's target, triangles by part, texture memory, bones, blendshapes, the bake and the frame rate.
+  - **Settings:** the data folder, slider preferences, auto-bake and help.
+- **Status bar:** the triangle budget against the profile's target, triangles by part, texture memory, bones, blendshapes, the bake and the frame rate. When the bake is out of date, **Bake** bakes it; nothing bakes by itself unless you turn on **Settings → Baking → Bake automatically after each change**.
+- **Menus** open on a click and stay open until you choose an item, click elsewhere or press Esc. With one open, pointing at another menu's name opens that one.
 
 ### The parts tree
 

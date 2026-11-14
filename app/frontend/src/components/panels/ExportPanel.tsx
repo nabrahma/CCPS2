@@ -218,6 +218,14 @@ export function ExportPanel() {
             })
           } /> Bake sky and key light shadowing into the textures
       </label>
+      {(ex.bakeAO || ex.bakeLight) && (
+        <div className="button-row">
+          <button onClick={() => void studio.runBake().catch((err: unknown) => ui.error('Bake failed', err))} disabled={studio.bakeStatus.state === 'baking' || studio.bakeStatus.state === 'done'} data-testid="export-bake-now">
+            {studio.bakeStatus.state === 'baking' ? `Baking ${Math.round(studio.bakeStatus.progress * 100)}%` : studio.bakeStatus.state === 'done' ? 'Baked' : 'Bake now'}
+          </button>
+          <span className="muted">Bakes when you click, and before an export.</span>
+        </div>
+      )}
       <label className="check">
         <input type="checkbox" checked={ex.tPose} onChange={(e) => set('T-pose export', (x) => void (x.tPose = e.target.checked))} /> Export in T-pose
         (arms straight out; default is MakeHuman's A-pose)

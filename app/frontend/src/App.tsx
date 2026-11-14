@@ -37,6 +37,7 @@ export function App() {
         const settings = await backend.settings();
         useUi.setState({ curated: settings.curatedView, symmetry: settings.symmetry });
         s.settings = settings;
+        s.autoBake = settings.autoBake === true;
         loadLibraryPrefs(settings);
         // A data folder on a drive that is not connected: the app runs on the default one and says so.
         void backend.dataFolder().then((f) => f.fallback && useUi.getState().error(`${f.fallback[0]!.toUpperCase()}${f.fallback.slice(1)}. Reconnect it and restart, or choose another in File → Data folder.`));
