@@ -9,7 +9,7 @@ import { MACROVAR_TO_KEY } from '../morph/modifiers';
 import { Morpher } from '../morph/morpher';
 import { fitSkeleton, type FittedSkeleton } from '../skeleton/rig';
 import { UndoStack } from '../undo';
-import { cloneCharacter, defaultCharacter, type CharacterDoc } from './doc';
+import { cloneCharacter, defaultCharacter, sanitiseGarmentEdits, type CharacterDoc } from './doc';
 import { ADULT_MIN_AGE } from './sliders';
 import { completeStyle } from '../hair/style';
 
@@ -176,6 +176,7 @@ export class CharacterEngine {
   /** Load a document without recording history (open file, new character). */
   load(doc: CharacterDoc): void {
     this._doc = sanitise(cloneCharacter(doc));
+    this.assets.syncGarmentEdits(this._doc.garmentEdits);
     this._interacting = false;
     this.history.clear();
     this.morpher.rebuild(this.weights());
@@ -240,6 +241,7 @@ export class CharacterEngine {
       JSON.stringify(next.macros) !== JSON.stringify(this._doc.macros) ||
       JSON.stringify(next.modifiers) !== JSON.stringify(this._doc.modifiers);
     this._doc = next;
+    this.assets.syncGarmentEdits(next.garmentEdits);
     if (geometryChanged) {
       this._interacting = dragging;
       const t0 = now();
@@ -278,6 +280,10 @@ function sanitise(doc: CharacterDoc): CharacterDoc {
   normaliseEthnic(doc.macros);
   // A card style from before the groom existed (or set by hand) gets the settings it lacks.
   if (doc.hair.mode === 'cards' && doc.hair.style) doc.hair.style = completeStyle(doc.hair.style);
+  // Garment edits no worn garment uses any more (taken off, edited again) are not kept.
+  const edits = sanitiseGarmentEdits(doc.garmentEdits, doc.garments);
+  if (edits) doc.garmentEdits = edits;
+  else delete doc.garmentEdits;
   return doc;
 }
 

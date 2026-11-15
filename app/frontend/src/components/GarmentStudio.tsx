@@ -8,11 +8,13 @@
  *   collar, roll neck, band or cuff out of an open edge, add a patch pocket,
  *   loosen or tighten the whole garment.
  *
- * Edits happen on the character's own body; saving moves the garment onto the
- * reference body and imports it like a garment modelled around it (M10), so
- * it fits every body. Each stroke or tool use is one step of the studio's own
- * undo; saving adds the new garment to the Wardrobe and puts it on in place of
- * the original.
+ * Edits happen on the character's own body. Done (or leaving the studio any
+ * other way) applies them to this character only (D-151): the garment is moved
+ * onto the reference body and bound like a garment modelled around it (M10),
+ * so it fits every body, and kept inside the character as one undo step. No
+ * new garment is made; Cancel throws the edits away. Save as new garment is
+ * the second way: a library garment to wear on other characters too. Each
+ * stroke or tool use is one step of the studio's own undo.
  */
 import { useEffect, useRef, useState } from 'react';
 import {
@@ -73,7 +75,12 @@ interface Session {
   history: EditMesh[];
   body: BodySurface;
   joint: (name: string) => Vec3;
+  /** Faces when the studio opened: a different count means the garment was cut or grew new parts. */
+  startFaces: number;
 }
+
+/** True when the edit changed the garment's pieces (a cut, a collar, a pocket), not only moved its cloth. */
+const reshaped = (s: Session) => s.mesh.faceVerts.length !== s.startFaces || s.mesh.uvRoom;
 
 export function GarmentStudio({ canvas, partKey }: { canvas: HTMLCanvasElement | null; partKey: string }) {
   const studio = useStudio();
@@ -93,6 +100,8 @@ export function GarmentStudio({ canvas, partKey }: { canvas: HTMLCanvasElement |
   const [slot, setSlot] = useState<ImportSlot>((garment?.slot as ImportSlot) ?? 'top');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  /** Set once the edits were applied, saved or cancelled: leaving the studio then does nothing more. */
+  const handled = useRef(false);
 
   const show = () => {
     const s = session.current;
@@ -109,8 +118,10 @@ export function GarmentStudio({ canvas, partKey }: { canvas: HTMLCanvasElement |
       if (!alive) return;
       const positions = studio.engine.positions.slice();
       const sk = studio.engine.skeleton;
+      const mesh = editMeshFromProxy(proxy, { positions } as ReferenceBody);
       session.current = {
-        mesh: editMeshFromProxy(proxy, { positions } as ReferenceBody),
+        mesh,
+        startFaces: mesh.faceVerts.length,
         history: [],
         body: bodySurfaceAt(studio.engine.assets, positions),
         joint: (n) => {
@@ -127,6 +138,15 @@ export function GarmentStudio({ canvas, partKey }: { canvas: HTMLCanvasElement |
     });
     return () => {
       alive = false;
+      // Leaving the studio (Back, another category) keeps the edits, like Done: apply them to this character.
+      const s = session.current;
+      if (s && s.history.length > 0 && !handled.current) {
+        handled.current = true;
+        void studio.applyStudioGarment(partKey, s.mesh, s.body, reshaped(s)).then(
+          () => useUi.getState().info('Garment edit applied to this character'),
+          (err: unknown) => useUi.getState().error('Could not apply the garment edit', err),
+        );
+      }
       vp.setBrushMode(false);
       studio.scene.showBodyUnder(null);
       vp.setStudioMesh(partKey, null);
@@ -277,6 +297,31 @@ export function GarmentStudio({ canvas, partKey }: { canvas: HTMLCanvasElement |
     show();
     redraw((n) => n + 1);
   };
+  const done = async () => {
+    if (!s) return;
+    if (s.history.length === 0) {
+      handled.current = true;
+      ui.setGarmentStudio(null);
+      return;
+    }
+    setSaving(true);
+    setError(null);
+    try {
+      handled.current = true;
+      const key = await studio.applyStudioGarment(partKey, s.mesh, s.body, reshaped(s));
+      ui.setGarmentStudio(null);
+      ui.select(key);
+    } catch (err) {
+      handled.current = false;
+      setError(err instanceof Error ? err.message : String(err));
+    } finally {
+      setSaving(false);
+    }
+  };
+  const cancel = () => {
+    handled.current = true;
+    ui.setGarmentStudio(null);
+  };
   const save = async () => {
     if (!s) return;
     setSaving(true);
@@ -286,6 +331,7 @@ export function GarmentStudio({ canvas, partKey }: { canvas: HTMLCanvasElement |
       // The look carries over without its pieces, painted zones and decals: the new garment's pieces are its own.
       const look = old.look ? { ...structuredClone(old.look), zones: [{ ...old.look.zones[0]!, islands: 'rest' as const }], mask: null, decals: [] } : undefined;
       const texture = old.texture ?? (await studio.engine.assets.proxy(old.asset)).meta.material?.diffuseTexture ?? null;
+      handled.current = true;
       const g = await studio.saveStudioGarment(s.mesh, s.body, { name: name.trim() || 'Edited garment', slot, texture, defaults: { ...(look ? { look } : {}), ...(old.fur ? { fur: old.fur } : {}) } });
       studio.engine.update('Wear the edited garment', (d) => {
         const i = d.garments.findIndex((x) => x.asset === old.asset);
@@ -297,6 +343,7 @@ export function GarmentStudio({ canvas, partKey }: { canvas: HTMLCanvasElement |
       ui.setGarmentStudio(null);
       ui.select(`garment:${slot}:${g.meta.id}`);
     } catch (err) {
+      handled.current = false;
       setError(err instanceof Error ? err.message : String(err));
     } finally {
       setSaving(false);
@@ -312,8 +359,11 @@ export function GarmentStudio({ canvas, partKey }: { canvas: HTMLCanvasElement |
         <button onClick={undo} disabled={!s || s.history.length === 0} data-testid="garment-studio-undo">
           Undo
         </button>
-        <button onClick={() => ui.setGarmentStudio(null)} data-testid="garment-studio-cancel">
-          Close without saving
+        <button onClick={cancel} disabled={saving} data-testid="garment-studio-cancel" title="Close and throw away these edits">
+          Cancel
+        </button>
+        <button className="primary" onClick={() => void done()} disabled={!s || saving} data-testid="garment-studio-done" title="Apply the edits to this garment on this character (saved with the character; Ctrl+Z undoes it)">
+          {saving ? 'Applying…' : 'Done'}
         </button>
       </div>
       <div className="hs-row tools" role="toolbar" aria-label="Garment tools">
@@ -370,7 +420,8 @@ export function GarmentStudio({ canvas, partKey }: { canvas: HTMLCanvasElement |
           <input type="checkbox" checked={symmetry} onChange={(e) => setSymmetry(e.target.checked)} data-testid="garment-symmetry" /> X symmetry
         </label>
       </div>
-      <div className="hs-row">
+      <div className="hs-row save-copy">
+        <span className="hint">Or keep it for other characters too:</span>
         <label>
           Name <input value={name} onChange={(e) => setName(e.target.value)} data-testid="garment-studio-name" />
         </label>

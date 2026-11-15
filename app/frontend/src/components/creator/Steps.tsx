@@ -266,7 +266,8 @@ export function ClothesPanel() {
         {worn.length === 0 && <p className="muted">Nothing yet: pick an outfit or garments below.</p>}
         {worn.map((g) => {
           const key = `garment:${g.slot}:${g.asset}`;
-          const name = studio.assets.hasProxy(g.asset) ? garmentName(g.asset, studio.assets.proxyInfo(g.asset).name) : 'Missing garment';
+          const info = studio.assets.hasProxy(g.asset) ? studio.assets.proxyInfo(g.asset) : null;
+          const name = info ? `${garmentName(info.base ?? g.asset, info.name)}${info.base ? ' (edited)' : ''}` : 'Missing garment';
           const open = ui.selected === key;
           return (
             <div className={open ? 'worn-item-wrap open' : 'worn-item-wrap'} key={g.asset} data-testid="worn-garment" data-part={key}>

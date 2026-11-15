@@ -1,10 +1,10 @@
 {
  "generated": "app/frontend/e2e/m11-bake.spec.ts",
  "gpu": "SwiftShader (CPU)",
- "ms": 16936.5,
+ "ms": 20235.200000000186,
  "timings": {
-  "body": 10068,
-  "garment:top:mh:clothes/namuhekam_male_polo_shirt": 6757
+  "body": 11711,
+  "garment:top:mh:clothes/namuhekam_male_polo_shirt": 8415
  },
  "settings": {
   "size": 256,

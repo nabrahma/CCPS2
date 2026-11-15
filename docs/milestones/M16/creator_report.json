@@ -47,8 +47,12 @@
     "saved": "Freckled grimy skin",
     "meanDifferenceFromBase": 0.04311427696078431
   },
+  "garmentEdit": {
+    "base": "mh:clothes/toigo_basic_tucked_t-shirt",
+    "characterBytes": 196310
+  },
   "garmentStudio": {
-    "saved": "user:garment/Loose_tee_8dca4798",
+    "saved": "user:garment/Loose_tee_ab780210",
     "triangles": 1800
   },
   "materialStudio": {

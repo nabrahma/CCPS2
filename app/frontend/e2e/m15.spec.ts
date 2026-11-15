@@ -186,7 +186,7 @@ test('M15: Garment Studio round trip: crop, pocket and collar, save, wear, reuse
   await page.evaluate(() => (window as unknown as TestWindow).__ps2cc.viewport!.setCameraPreset('full' as never));
   await page.getByTestId('open-garment-studio').click();
   await expect(page.getByTestId('garment-studio')).toBeVisible();
-  const faces = async () => Number((await page.getByTestId('garment-studio').locator('.hint').textContent())!.split(' ')[0]!.replace(/,/g, ''));
+  const faces = async () => Number((await page.getByTestId('garment-studio').locator('.hint').first().textContent())!.split(' ')[0]!.replace(/,/g, ''));
   await expect.poll(faces).toBeGreaterThan(100);
   const before = await faces();
   // Points on the garment, from the camera.

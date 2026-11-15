@@ -20,6 +20,9 @@ import {
   editMeshToRaw,
   moveToBody,
   remapTexture,
+  EDIT_PREFIX,
+  garmentEditFrom,
+  newId,
   type EditMesh,
   type GarmentDefaults,
   type BodySurface,
@@ -74,6 +77,16 @@ function decodeGarment(f: GarmentFile): RawGarmentMesh {
 }
 
 /** The Wardrobe entry of an imported garment. */
+/** A PNG as a data URL (a texture kept inside the character, D-151). */
+function blobToDataUrl(blob: Blob): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(String(r.result));
+    r.onerror = () => reject(r.error ?? new Error('could not read the image'));
+    r.readAsDataURL(blob);
+  });
+}
+
 function garmentEntry(meta: ProxyMeta, file: string): CatalogProxy {
   return {
     id: meta.id,
@@ -426,6 +439,50 @@ export class Studio {
     this.assets.addUserProxy(garmentEntry(garment.meta, saved.file), () => Promise.resolve(garment.proxy));
     this.bump();
     return garment;
+  }
+
+  /**
+   * Garment Studio's main way (D-151): the edited garment replaces the worn
+   * one on this character only. It is bound to the reference body like a
+   * saved garment, so it fits every body shape, but it is kept inside the
+   * character (one undo step, saved with the character), not in the library.
+   * `reshaped` is false when only vertices moved: the garment keeps its
+   * texture, paint and look as they are. Returns the garment's new part key.
+   */
+  async applyStudioGarment(partKey: string, edit: EditMesh, editedOn: BodySurface, reshaped: boolean): Promise<string> {
+    const worn = this.engine.doc.garments.find((g) => `garment:${g.slot}:${g.asset}` === partKey);
+    if (!worn) throw new Error('that garment is not worn any more');
+    const info = this.assets.proxyInfo(worn.asset);
+    const current = await this.assets.proxy(worn.asset);
+    this.garmentBody ??= referenceBody(this.assets);
+    const onRef = moveToBody(edit, editedOn, bodySurface(this.garmentBody));
+    const garment = await importGarment(editMeshToRaw(onRef), { name: info.name, slot: worn.slot as ImportSlot, body: this.garmentBody });
+    let material = current.meta.material ? structuredClone(current.meta.material) : null;
+    if (edit.uvRoom) {
+      // New parts took room in the UVs: the texture is remapped and kept with the edit.
+      const src = this.assets.textureFor(worn.texture ?? material?.diffuseTexture ?? null);
+      const image = src ? await decodeImage(resolveAssetUrl(this.info.coreAssetsUrl, src)).catch(() => null) : null;
+      const tex = remapTexture(image, edit, 1024);
+      material = { ...(material ?? { diffuseColor: [0.8, 0.8, 0.8], transparent: false, backfaceCull: false, opacity: 1 }), diffuseTexture: await blobToDataUrl(await imageToPng(tex)), textureSize: [tex.width, tex.height] };
+    }
+    garment.meta.material = material;
+    const id = `${EDIT_PREFIX}${newId()}`;
+    const entry = garmentEditFrom(id, info.base ?? worn.asset, garment, info.name);
+    this.engine.update('Edit garment', (d) => {
+      const i = d.garments.findIndex((g) => g.asset === worn.asset);
+      if (i < 0) return;
+      const g = d.garments[i]!;
+      const next = { ...g, asset: id };
+      if (edit.uvRoom) {
+        next.texture = null;
+        next.paint = null;
+      }
+      // A cut or a new part changes the garment's pieces: its look keeps its materials, not its picked pieces or decals.
+      if (reshaped && g.look) next.look = { ...g.look, zones: [{ ...g.look.zones[0]!, islands: 'rest' as const }], mask: null, decals: [] };
+      d.garments[i] = next;
+      d.garmentEdits = { ...(d.garmentEdits ?? {}), [id]: entry };
+    });
+    return `garment:${worn.slot}:${id}`;
   }
 
   /**

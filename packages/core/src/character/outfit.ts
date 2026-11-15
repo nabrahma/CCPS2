@@ -53,6 +53,9 @@ export function outfitFromCharacter(doc: Readonly<CharacterDoc>, label: string):
   const garments = doc.garments.map((g) => {
     const copy = structuredClone(g) as GarmentSlot;
     delete copy.paint;
+    // A Garment Studio edit belongs to this character (D-151): the outfit wears the library garment it came from.
+    const edit = doc.garmentEdits?.[g.asset];
+    if (edit) copy.asset = edit.base;
     return copy;
   });
   return { format: 'ps2cc.outfit/1', outfit: { label: label.slice(0, 64), garments } };

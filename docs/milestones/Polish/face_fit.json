@@ -1,7 +1,7 @@
 {
-  "errorBeforePercent": 8.5,
-  "errorAfterPercent": 7.4,
-  "eyes": 0.09317886519454854,
-  "nose": 0.6,
+  "errorBeforePercent": 4.9,
+  "errorAfterPercent": 3,
+  "eyes": 0.5,
+  "nose": 0.44044735845335015,
   "undo": "Fit face to photo"
 }

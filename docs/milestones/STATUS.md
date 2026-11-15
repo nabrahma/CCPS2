@@ -317,3 +317,17 @@ Two fixes reported after the first release.
   - Every new item was rendered on the default character and looked at; 41 accessories again at full body; the 14 old items whose decimation changed were rendered too.
   - Core: 237 passed. `pokethrough.test.ts` keeps its 200 bodies on the M4 packs and wears each of the 384 added garments on further bodies; six known fit issues are listed in TODO_ART. `m15.test.ts` checks seams on every garment that is not clustered and has cloth.
   - Asset tools: 25 passed. Full browser suite: 52 passed, and M7 (export) failed on teeth left at full resolution by a partial rebuild; after rebuilding them it passes.
+
+## 0.23.0: Garment edits stay with the character (D-151)
+
+- **Garment Studio:** **Done** applies the edits to the garment on this character only. Leaving the studio any other way applies them too, and **Cancel** discards them.
+  - The edited garment is bound to the reference body like a saved one, so it fits every body shape. It is stored in the character file (`garmentEdits`), not in the library: no new garment on disk.
+  - It is one undo step. It is saved with the character and lost if the character is not saved.
+  - Clothes lists it as "(edited)". **Save as new garment** stays as the second way.
+  - The body faces it hides are worked out again from its new shape: the bandeau bikini slip's gaps (`M15/garment_edit_gap_before.png`) are gone after one edit (`garment_edit_gap_after.png`).
+- **Texture Studio:** its save is labelled **Save a copy (optional)** and is closed by default. Its changes were always on the character as you make them.
+- **Under the hood:** the engine registers the character's edits with the asset store whenever the document changes. Undo snapshots share the stored edits, an edit no garment wears is dropped, and an outfit saved from the character wears the library garment.
+- **Tested:**
+  - Core: `garment-edit.test.ts`, 6 tests: decode, wear and fit, shared by undo copies, dropped when taken off, save and load, outfits.
+  - Browser: the new M16 test (Done applies with no new library garment, fits another body, undo and redo, save and load, leaving applies and keeps one edit, Cancel discards), and the Garment and Texture Studio round trips.
+  - Full runs: core 243 passed, browser suite 54 passed (one M15 locator fixed for the new hint and rerun), desktop test passed.

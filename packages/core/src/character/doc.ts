@@ -124,6 +124,19 @@ export interface GarmentSlot {
   look?: GarmentLook | null;
 }
 
+/**
+ * A garment reshaped in Garment Studio for this character only (D-151): the
+ * garment bound to the reference body like an imported one, as a proxy
+ * container (JSON header and base64 binary). Worn by its id ("edit:…").
+ * Never changed once made: a new edit replaces it.
+ */
+export interface GarmentEdit {
+  /** The library garment it was made from (name, licence and credits come from it). */
+  base: string;
+  meta: Record<string, unknown>;
+  bin: string;
+}
+
 export interface HairSpec {
   mode: 'none' | 'mesh' | 'cards';
   /** mode 'mesh': MHCLO hair asset id. */
@@ -199,6 +212,8 @@ export interface CharacterDoc {
   /** Part 2 F19: the tongue (with the teeth, at most 600 triangles). */
   tongue?: AssetRef;
   garments: GarmentSlot[];
+  /** Garment Studio edits worn by this character, by id (D-151). */
+  garmentEdits?: Record<string, GarmentEdit>;
   hair: HairSpec;
   expressionsToBake: string[];
   export: ExportSettings;
@@ -356,6 +371,7 @@ export function parseCharacter(json: unknown): CharacterDoc {
           return out;
         })
       : [],
+    garmentEdits: sanitiseGarmentEdits(raw.garmentEdits, Array.isArray(raw.garments) ? raw.garments : []),
     hair: sanitiseHair({ ...base.hair, ...(raw.hair ?? {}) }),
     eyebrows: raw.eyebrows?.cards ? { ...raw.eyebrows, cards: sanitiseCardBrows(raw.eyebrows.cards) } : (raw.eyebrows ?? base.eyebrows),
     eyes: raw.eyes ? { ...raw.eyes, look: raw.eyes.look ? sanitiseEyeLook(raw.eyes.look) : null } : base.eyes,
@@ -394,5 +410,22 @@ export function serializeCharacter(doc: CharacterDoc): string {
 }
 
 export function cloneCharacter(doc: CharacterDoc): CharacterDoc {
-  return structuredClone(doc);
+  // Garment edits are large and never change once made: copies (and undo steps) share them.
+  const { garmentEdits, ...rest } = doc;
+  const out = structuredClone(rest) as CharacterDoc;
+  if (garmentEdits) out.garmentEdits = { ...garmentEdits };
+  return out;
+}
+
+/** Keep only well-formed garment edits that a worn garment uses. */
+export function sanitiseGarmentEdits(raw: unknown, garments: readonly GarmentSlot[]): Record<string, GarmentEdit> | undefined {
+  if (!raw || typeof raw !== 'object') return undefined;
+  const worn = new Set(garments.map((g) => g?.asset));
+  const out: Record<string, GarmentEdit> = {};
+  for (const [id, e] of Object.entries(raw as Record<string, unknown>)) {
+    const v = e as Partial<GarmentEdit> | null;
+    if (!worn.has(id) || !v || typeof v.base !== 'string' || typeof v.bin !== 'string' || !v.meta || typeof v.meta !== 'object') continue;
+    out[id] = v as GarmentEdit;
+  }
+  return Object.keys(out).length ? out : undefined;
 }

@@ -290,7 +290,8 @@ export function libraryEntries(studio: Studio, category: LibraryCategory): Creat
     }
     case 'garments':
       return assets.catalog.proxies
-        .filter((p) => p.category === 'clothes')
+        // A character's own Garment Studio edits (D-151) are worn, not listed.
+        .filter((p) => p.category === 'clothes' && !p.base)
         .map((p) => {
           const slot = (p.slot ?? 'accessory') as GarmentSlotName;
           const user = p.tags.includes('user');

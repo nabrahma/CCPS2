@@ -46,7 +46,11 @@ The viewport and the export compose the same texture. Everything is measured on 
 - **Pocket:** a patch pocket where you click.
 - **Loosen all / Tighten all:** to wear one garment over another.
 
-The cloth is kept at least 1.5 mm off the skin after every change. **Save as new garment** adds the garment to the Wardrobe and puts it on in place of the original. Saving moves it onto the default body and imports it like a garment modelled around it (binding, weights, decimation, hidden faces), so it fits every body shape. On 50 random bodies no vertex of the five outfit garments below goes inside the skin (the limit is 2 mm); without the collider the same garments go 4.4 mm deep.
+The cloth is kept at least 1.5 mm off the skin after every change.
+
+**Done** (or leaving the studio) applies the edits to this character only (D-151): no new garment is made. The edit is kept inside the character file. The body faces the garment hides are worked out again from its new shape. **Cancel** discards the edits. **Save as new garment** is the second way: it adds the garment to the Wardrobe and puts it on in place of the original.
+
+Either way the garment is moved onto the default body and imports it like a garment modelled around it (binding, weights, decimation, hidden faces), so it fits every body shape. On 50 random bodies no vertex of the five outfit garments below goes inside the skin (the limit is 2 mm); without the collider the same garments go 4.4 mm deep.
 
 ## The benchmark outfits
 
@@ -66,7 +70,8 @@ Mara and Cole wear them on the benchmark board. Cole's tall boots are now ankle 
 
 - **Gloss** is still one value per surface. All garments export as one merged material, so leather does not shine more than cotton yet.
 - **Decals** are drawn on the piece of cloth under their point. A zip that crosses a seam stops at it.
-- **Garment Studio** edits are undone in the studio (Undo), not in the app's history. Saving is one undo step.
+- **Garment Studio** edits are undone in the studio (Undo), not in the app's history. Done (or saving) is one undo step.
+- A garment edited in Garment Studio and kept in the character is saved in an outfit as the library garment it was made from.
 - **Crop edges** follow the garment's triangles, so a cropped hem on a coarse garment is a little jagged.
 - **Kitbashed parts** get their own room in the texture: the garment's original pieces are scaled to 80% of it.
 - **Under the arms:** MakeHuman's fisherman sweater leaves a small gap where skin shows. The roll-neck, the vest and the jacket are made from it and keep the gap.

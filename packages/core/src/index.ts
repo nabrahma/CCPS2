@@ -18,6 +18,7 @@ export * from './proxy/collision';
 export * from './proxy/coverage';
 export * from './proxy/decimate';
 export * from './proxy/garment-import';
+export * from './proxy/garment-edit';
 export * from './proxy/uv-template';
 export * from './hair';
 export * from './skin';

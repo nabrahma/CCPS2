@@ -157,6 +157,12 @@ test('M16: a full character built through the category panels only, then exporte
   writeReport();
 });
 
+/** Open a worn garment's row (a click toggles it, and Done already opens the edited garment's). */
+async function openRow(row: Locator): Promise<void> {
+  const button = row.getByTestId('worn-open');
+  if ((await button.getAttribute('aria-expanded')) !== 'true') await button.click();
+}
+
 /** A new character through the sidebar's New button (confirming the discard). */
 async function newCharacter(page: Page): Promise<void> {
   page.once('dialog', (d) => void d.accept());
@@ -223,6 +229,8 @@ test('M16 round trip: Texture Studio (open from Skin, add layers, save as a skin
   const layers = (await doc(page)).skin.layers.map((l) => l.kind);
   expect(layers).toEqual(expect.arrayContaining(['freckles', 'dirt']));
   await page.screenshot({ path: resolve(OUT, 'ui_texture_studio.png') });
+  // The changes are already on the character; a copy for other characters is the optional second way.
+  await rail.getByText('Save a copy (optional)').click();
   await page.getByTestId('texture-save-name').fill('Freckled grimy skin');
   await page.getByTestId('texture-save').click();
   await expect(rail).toBeHidden({ timeout: 120_000 });
@@ -257,6 +265,101 @@ test('M16 round trip: Texture Studio (open from Skin, add layers, save as a skin
   writeReport();
 });
 
+test('Garment Studio edits stay with the character: Done applies them, no new garment, undo, save and load, leaving applies, Cancel discards (D-151)', async ({ page }) => {
+  test.setTimeout(600_000);
+  await bootCreator(page);
+  await page.getByTestId('cat-clothes').click();
+  const garments = page.getByTestId('wardrobe-garments');
+  await garments.getByTestId('library-filter').selectOption('top');
+  await garments.getByTestId('library-search').fill('basic tucked');
+  const base = 'mh:clothes/toigo_basic_tucked_t-shirt';
+  await pick(garments, `garment:${base}`);
+  await settled(page);
+  const libraryGarments = () =>
+    page.evaluate(() => (window as unknown as TestWindow).__ps2cc.engine.assets.catalog.proxies.filter((p) => p.category === 'clothes' && p.tags.includes('user')).length);
+  const before = await libraryGarments();
+  const edits = async () => Object.keys((await doc(page)).garmentEdits ?? {});
+  const fitted = () =>
+    page.evaluate(async () => {
+      const s = (window as unknown as TestWindow).__ps2cc;
+      await s.settled();
+      const g = s.scene.parts.find((x) => x.kind === 'garment');
+      return { asset: g?.assetId ?? null, triangles: g?.triangleCount ?? 0, finite: g ? g.positions.every(Number.isFinite) : false };
+    });
+
+  // Done: the edit replaces the garment on this character, as one undo step; nothing new in the library.
+  await page.getByTestId('worn-open').first().click();
+  await page.getByTestId('open-garment-studio').click();
+  await expect(page.getByTestId('garment-studio')).toBeVisible();
+  await page.getByTestId('garment-loosen').click();
+  await page.getByTestId('garment-studio-done').click();
+  await expect(page.getByTestId('garment-studio')).toBeHidden({ timeout: 180_000 });
+  let d = await doc(page);
+  const first = d.garments[0]!.asset;
+  expect(first).toMatch(/^edit:/);
+  expect(d.garmentEdits?.[first]?.base).toBe(base);
+  expect(await libraryGarments()).toBe(before);
+  await expect(garments.locator(`[data-entry="garment:${first}"]`)).toHaveCount(0);
+  await expect(page.locator(`[data-part="garment:${d.garments[0]!.slot}:${first}"]`)).toContainText('(edited)');
+  expect(await fitted()).toMatchObject({ asset: first, finite: true });
+  expect((await fitted()).triangles).toBeGreaterThan(100);
+  // It fits another body shape like any garment.
+  await page.evaluate(async () => {
+    const s = (window as unknown as TestWindow).__ps2cc;
+    s.engine.update('Heavier', (x) => void (x.macros.weight = 0.9));
+    await s.settled();
+  });
+  expect((await fitted()).finite).toBe(true);
+
+  // Undo and redo, like any change.
+  await page.evaluate(() => (window as unknown as TestWindow).__ps2cc.engine.undo());
+  await page.evaluate(() => (window as unknown as TestWindow).__ps2cc.engine.undo());
+  d = await doc(page);
+  expect(d.garments[0]!.asset).toBe(base);
+  expect(d.garmentEdits).toBeUndefined();
+  await page.evaluate(() => (window as unknown as TestWindow).__ps2cc.engine.redo());
+  expect((await doc(page)).garments[0]!.asset).toBe(first);
+
+  // Saved with the character: a save and load brings the edit back.
+  const reloaded = await page.evaluate(async () => {
+    const s = (window as unknown as TestWindow).__ps2cc;
+    const core = (window as unknown as TestWindow).__ps2ccTest.core;
+    const text = core.serializeCharacter(s.engine.doc);
+    s.engine.load(core.parseCharacter(JSON.parse(text)));
+    await s.settled();
+    return { bytes: text.length, asset: s.engine.doc.garments[0]?.asset ?? null };
+  });
+  expect(reloaded.asset).toBe(first);
+  expect(await fitted()).toMatchObject({ asset: first, finite: true });
+
+  // Leaving the studio another way keeps the edits too; the old edit is not kept.
+  const slot = (await doc(page)).garments[0]!.slot;
+  await page.getByTestId('cat-clothes').click();
+  await openRow(page.locator(`[data-part="garment:${slot}:${first}"]`));
+  await page.getByTestId('open-garment-studio').click();
+  await expect(page.getByTestId('garment-studio')).toBeVisible();
+  await page.getByTestId('garment-loosen').click();
+  await page.getByTestId('cat-body').click();
+  await expect.poll(async () => (await doc(page)).garments[0]!.asset, { timeout: 180_000 }).not.toBe(first);
+  const second = (await doc(page)).garments[0]!.asset;
+  expect(second).toMatch(/^edit:/);
+  expect(await edits()).toEqual([second]);
+  expect((await doc(page)).garmentEdits?.[second]?.base).toBe(base);
+
+  // Cancel throws the edits away.
+  await page.getByTestId('cat-clothes').click();
+  await openRow(page.locator(`[data-part="garment:${slot}:${second}"]`));
+  await page.getByTestId('open-garment-studio').click();
+  await page.getByTestId('garment-loosen').click();
+  await page.getByTestId('garment-studio-cancel').click();
+  await expect(page.getByTestId('garment-studio')).toBeHidden();
+  await settled(page);
+  expect((await doc(page)).garments[0]!.asset).toBe(second);
+  expect(await libraryGarments()).toBe(before);
+  report.garmentEdit = { base, characterBytes: reloaded.bytes };
+  writeReport();
+});
+
 test('M16 round trip: Garment Studio (open from Clothes, loosen, save, reuse on another character)', async ({ page }) => {
   test.setTimeout(600_000);
   await bootCreator(page);
@@ -271,7 +374,7 @@ test('M16 round trip: Garment Studio (open from Clothes, loosen, save, reuse on 
   await page.getByTestId('open-garment-studio').click();
   await expect(page.getByTestId('studio-rail-garment')).toBeVisible();
   await expect(page.getByTestId('garment-studio')).toBeVisible();
-  const faces = async () => Number((await page.getByTestId('garment-studio').locator('.hint').textContent())!.split(' ')[0]!.replace(/,/g, ''));
+  const faces = async () => Number((await page.getByTestId('garment-studio').locator('.hint').first().textContent())!.split(' ')[0]!.replace(/,/g, ''));
   await expect.poll(faces).toBeGreaterThan(100);
   // Edit: loosen it twice (no pointer work needed), then save under a new name.
   await page.getByTestId('garment-loosen').click();

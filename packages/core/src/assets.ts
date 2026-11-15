@@ -18,6 +18,8 @@ import { FaceRig } from './expression/facerig';
 import { FacePoseUnits } from './expression/poseunits';
 import { EXPRESSION_MAP, validateExpressionMap } from './expression/map';
 import type { LicenceManifest } from './credits';
+import type { GarmentEdit } from './character/doc';
+import { editTriangleCount, proxyFromEdit } from './proxy/garment-edit';
 import type { CatalogMaterial } from './wardrobe/material';
 
 export interface FaceAssets {
@@ -48,6 +50,8 @@ export interface CatalogProxy {
   pack?: string;
   /** Its author, as the asset pack credits them. */
   author?: string;
+  /** A Garment Studio edit kept in the character (D-151): the library garment it was made from. */
+  base?: string;
   /** Garments made in Garment Studio (Part 2 F18): look, fur and tint applied when put on. */
   defaults?: GarmentDefaults;
 }
@@ -206,6 +210,35 @@ export class CoreAssets {
       p.catch(() => this.proxyCache.delete(file));
     }
     return p;
+  }
+
+  /**
+   * Register the character's own Garment Studio edits (D-151) so they load like
+   * library garments. Their name, slot, licence and credits are the base garment's.
+   */
+  syncGarmentEdits(edits: Readonly<Record<string, GarmentEdit>> | undefined): void {
+    for (const [id, edit] of Object.entries(edits ?? {})) {
+      if (this.userProxies.has(id)) continue;
+      const base = this.catalog.proxies.find((p) => p.id === edit.base);
+      const meta = edit.meta as { name?: string; slot?: string };
+      this.addUserProxy(
+        {
+          id,
+          category: 'clothes',
+          name: base?.name ?? meta.name ?? 'Edited garment',
+          file: `${id}.json`,
+          triangles: editTriangleCount(edit),
+          hiddenFaces: 'computed',
+          slot: base?.slot ?? meta.slot ?? 'accessory',
+          tags: ['edited'],
+          licence: base?.licence ?? 'CC0-1.0',
+          ...(base?.pack ? { pack: base.pack } : {}),
+          ...(base?.author ? { author: base.author } : {}),
+          base: edit.base,
+        },
+        () => Promise.resolve(proxyFromEdit(edit)),
+      );
+    }
   }
 
   /** Add an imported garment to the catalog (replaces an entry with the same id). */

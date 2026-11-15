@@ -48,12 +48,16 @@ Hair Studio has every hairstyle setting: type (bald, hair meshes, card hair), st
 
 Texture Studio paints the skin or a worn garment; choose which at the top.
 
+Every change in Texture Studio is on the character as you make it and is saved with it. **Save a copy (optional)** is only for using the result on other characters too:
+
 - **The skin:** every layer with its settings, face photos (front and sides), painting in Material Painter, and your own painted layers. **Save as new skin** saves the skin as it looks now, base and layers together, to your skins in Skin, and switches to it.
 - **A garment:** tint, grime, the garment's materials, seams, folds and decals, and Material Painter. **Save as new garment** saves the garment as it looks now, in one texture, as a new Wardrobe garment with the same shape, and wears it.
 
 ### Garment Studio
 
-This is M15's Garment Studio, now inside the Asset Studio: brushes and kitbash tools over the viewport, and the garment to edit chosen in the right column. **Save as new garment** adds the garment to Clothes.
+This is M15's Garment Studio, now inside the Asset Studio: brushes and kitbash tools over the viewport, and the garment to edit chosen in the right column.
+
+**Done** applies the edits to that garment on this character only (D-151), so it does not add a garment to Clothes. Leaving the studio any other way (‹ Back, another category) applies them too, and **Cancel** throws them away. The edit is one step of the app's undo. It is saved inside the character file and is lost if the character is not saved, like any other change. The garment is listed as "(edited)" in Clothes. **Save as new garment** is the second way, for a garment to wear on other characters too: it adds the garment to Clothes.
 
 ### Material Studio
 

@@ -103,12 +103,13 @@ function TextureStudioPanel() {
     <>
       <TextureTarget />
       {garment ? <GarmentTexture partKey={target} /> : <SkinPanel />}
-      <details className="hair-section" open>
-        <summary>Save</summary>
+      <details className="hair-section">
+        <summary>Save a copy (optional)</summary>
         <p className="hint">
+          Your changes are already on this character and are saved with it. A copy is only for using them on other characters too.{' '}
           {garment
-            ? 'Saves the garment as it looks now (materials, seams, decals, paint, tint and grime in one texture) as a new garment in the Wardrobe, and wears it.'
-            : 'Saves the skin as it looks now (the base and every layer) as a new skin in Skin, and switches to it.'}
+            ? 'It saves the garment as it looks now (materials, seams, decals, paint, tint and grime in one texture) as a new garment in the Wardrobe, and wears it.'
+            : 'It saves the skin as it looks now (the base and every layer) as a new skin in Skin, and switches to it.'}
         </p>
         <div className="picker-row">
           <label htmlFor="texture-save-name">Name</label>
