@@ -16,6 +16,10 @@ These parts follow the logic of the projects below closely, which is why PS2CC u
 
 | Work | Author | Used in |
 | --- | --- | --- |
+| [Anny](https://github.com/naver/anny) (Apache-2.0) | NAVER LABS Europe | The population sampler and the parity check follow its phenotype blending and shape distributions (`packages/core/src/population`, `tools/asset-compiler/ps2cc_assets/anny.py`). Its population calibration is shipped as `assets/core/population/calibration.json` under Apache-2.0: Anny, Copyright (C) 2025 NAVER Corporation. Its SMPL-X topology is never fetched or used. |
+| [GarmentCode](https://github.com/maria-korosteleva/GarmentCode) (MIT) | Maria Korosteleva | Its body-measurement keys are produced by `packages/core/src/anthro` (`garmentCodeBody`). Its bundled SMPL-derived bodies are not used. |
+| fdlibm | Sun Microsystems | The polynomial kernels of `packages/core/src/math/dmath.ts` (freely usable with this notice: "Developed at SunPro, a Sun Microsystems, Inc. business. Permission to use, copy, modify, and distribute this software is freely granted, provided that this notice is preserved."). |
+| Cheng, "Generating Beta Variates with Nonintegral Shape Parameters", CACM 1978 | R. C. H. Cheng | `packages/core/src/math/distributions.ts` |
 | *Geometry nodes - hair cards from curves* (a Blender file) | Daniel Bystedt | The card hair system follows its method: `packages/core/src/hair` ([docs/hair-system.md](docs/hair-system.md)). No content of the file is included in this repository or in PS2CC. Its hair node groups build on Blender's bundled hair nodes (GPL). |
 
 Unmodified MakeHuman code is run at development time to generate test fixtures (`tools/asset-compiler/golden`). It is downloaded and not included in this repository.

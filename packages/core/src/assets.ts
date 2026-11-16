@@ -21,6 +21,9 @@ import type { LicenceManifest } from './credits';
 import type { GarmentEdit } from './character/doc';
 import { editTriangleCount, proxyFromEdit } from './proxy/garment-edit';
 import type { CatalogMaterial } from './wardrobe/material';
+import { validateLandmarks, type LandmarkFile } from './anthro/landmarks';
+import { Anthropometer } from './anthro/measure';
+import { validateCalibration, type PopulationCalibration } from './population/sampler';
 
 export interface FaceAssets {
   rig: FaceRig;
@@ -112,7 +115,16 @@ export class CoreAssets {
     readonly rig: RigDefinition,
     readonly weights: RigWeights,
     readonly catalog: Catalog,
+    /** Body landmarks for measurements (PRD Part 3, F24). */
+    readonly bodyLandmarks: LandmarkFile,
+    /** Population calibration for realistic random bodies (PRD Part 3, F23). */
+    readonly population: PopulationCalibration,
   ) {}
+
+  /** Measurements of body shapes (built on first use, shared). */
+  get anthro(): Anthropometer {
+    return Anthropometer.of(this.base, this.bodyLandmarks);
+  }
 
   static async load(source: AssetSource, onProgress?: (step: string) => void): Promise<CoreAssets> {
     onProgress?.('base mesh');
@@ -127,7 +139,10 @@ export class CoreAssets {
     const weights = await RigWeights.load(source, rig, base.vertexCount);
     onProgress?.('catalog');
     const catalog = await readJson<Catalog>(source, 'catalog.json');
-    return new CoreAssets(source, base, targets, modifiers, sliders, rig, weights, catalog);
+    onProgress?.('measurements');
+    const bodyLandmarks = validateLandmarks(await readJson<LandmarkFile>(source, 'anthro/landmarks.json'), base.bodyVertexCount);
+    const population = validateCalibration(await readJson<PopulationCalibration>(source, 'population/calibration.json'));
+    return new CoreAssets(source, base, targets, modifiers, sliders, rig, weights, catalog, bodyLandmarks, population);
   }
 
   private readonly heads = new Map<BodyMeshId, Promise<HeadLayout>>();

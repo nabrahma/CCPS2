@@ -60,7 +60,7 @@ class LicenseCollector:
             del self.rows[r]
         out = {
             "format": "ps2cc.licenses/1",
-            "policy": "Art and data: only CC0-1.0, CC-BY-4.0 and CC-BY-3.0 (with attribution). Bundled runtime software: Apache-2.0 with its notice (vendor/).",
+            "policy": "Art and data: only CC0-1.0, CC-BY-4.0 and CC-BY-3.0 (with attribution). Bundled runtime software (vendor/) and the population calibration from Anny (population/): Apache-2.0 with their notices.",
             "files": [self.rows[k] for k in sorted(self.rows)],
         }
         (ASSETS_CORE / "LICENSES.json").write_text(json.dumps(out, indent=1) + "\n", encoding="utf-8")

@@ -1,7 +1,18 @@
 {
  "format": "ps2cc.licenses/1",
- "policy": "Art and data: only CC0-1.0, CC-BY-4.0 and CC-BY-3.0 (with attribution). Bundled runtime software: Apache-2.0 with its notice (vendor/).",
+ "policy": "Art and data: only CC0-1.0, CC-BY-4.0 and CC-BY-3.0 (with attribution). Bundled runtime software (vendor/) and the population calibration from Anny (population/): Apache-2.0 with their notices.",
  "files": [
+  {
+   "file": "anthro/landmarks.json",
+   "asset": "mh:anthro/landmarks",
+   "licence": "CC0-1.0",
+   "author": "MakeHuman team / Data Collection AB",
+   "sourceUrl": "https://github.com/makehumancommunity/makehuman",
+   "upstream": "makehuman",
+   "attributionRequired": false,
+   "sha256": "c93de72a9cbae8f122a32dece7f4a20bb19af52cdb265417913f2a84c79894d2",
+   "bytes": 7743
+  },
   {
    "file": "basemesh/hm08.bin",
    "asset": "mh:basemesh/hm08",
@@ -791,8 +802,19 @@
    "sourceUrl": "https://github.com/makehumancommunity/makehuman",
    "upstream": "makehuman",
    "attributionRequired": false,
-   "sha256": "bffe26213fff1804eaa7da04a856373bb3cf92b932f50e2fd291368cf14e17a4",
-   "bytes": 87544
+   "sha256": "e33d6ccc4b9f9529bda3e9b2fa2bacc1a1130676dcb3f40542d716433a6af16c",
+   "bytes": 99691
+  },
+  {
+   "file": "population/calibration.json",
+   "asset": "anny:shape_calibration",
+   "licence": "Apache-2.0",
+   "author": "NAVER Corp. (Anny)",
+   "sourceUrl": "https://github.com/naver/anny",
+   "upstream": "anny",
+   "attributionRequired": true,
+   "sha256": "1fae016ed38dab22eff2624d5631fa8310b8906d762aa884d884a6f42a8a90f3",
+   "bytes": 4770
   },
   {
    "file": "proxies/clothes/aethelraed_flapper_dress.bin",
@@ -27565,8 +27587,8 @@
    "sourceUrl": "https://github.com/makehumancommunity/makehuman",
    "upstream": "makehuman",
    "attributionRequired": false,
-   "sha256": "aa92f5a04e6ce71e43e000dfa0ef2c16e7d220a59c9f89f8c281a8682b1bba45",
-   "bytes": 48232320
+   "sha256": "84452271552761ab041c84c4925585a053fbf5487d097d63af269a9251c096e4",
+   "bytes": 48881948
   },
   {
    "file": "targets/targets.json",
@@ -27576,8 +27598,8 @@
    "sourceUrl": "https://github.com/makehumancommunity/makehuman",
    "upstream": "makehuman",
    "attributionRequired": false,
-   "sha256": "d7171cf32e03f7fb34e97eacaeb4244e6082cdf215c0faa3adc7dfce22c7fd49",
-   "bytes": 292132
+   "sha256": "b7360c97c09f8ad8a61cfa03d733d2616c6a85b3a4c0f2e2c477e6a6984718eb",
+   "bytes": 308151
   },
   {
    "file": "textures/clothes/aethelraed_flapper_dress.jpg",

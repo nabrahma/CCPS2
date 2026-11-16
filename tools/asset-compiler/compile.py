@@ -1,7 +1,7 @@
 """PS2CC asset compiler entry point.
 
 Usage:  python -I tools/asset-compiler/compile.py <stage> [...]
-Stages: fetch, core (base mesh + targets + modifiers + rigs + face pose units), rigs, expressions, proxies, vendor (MediaPipe), licenses, golden, golden-expressions, all
+Stages: fetch, core (base mesh + targets + modifiers + rigs + face pose units), rigs, expressions, population (Anny calibration), anthro (body landmarks), proxies, vendor (MediaPipe), licenses, golden, golden-expressions, golden-anny, all
 """
 
 from __future__ import annotations
@@ -12,7 +12,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from ps2cc_assets import basemesh, expressions, fetch, modifiers, proxies, rig, targets, vendor  # noqa: E402
+from ps2cc_assets import anny, anthro, basemesh, expressions, fetch, modifiers, proxies, rig, targets, vendor  # noqa: E402
 from ps2cc_assets.binfmt import write_json  # noqa: E402
 from ps2cc_assets.licenses import LicenseCollector  # noqa: E402
 from ps2cc_assets.paths import ASSETS_CORE  # noqa: E402
@@ -27,6 +27,17 @@ def stage_core(lic: LicenseCollector) -> None:
     lic.add_data(targets.run(files)["files"], "mh:targets", "makehuman")
     stage_rigs(lic)
     stage_expressions(lic)
+    stage_population(lic)
+    stage_anthro(lic)
+
+
+def stage_anthro(lic: LicenseCollector) -> None:
+    lic.add_data(anthro.run()["files"], "mh:anthro/landmarks", "makehuman")
+
+
+def stage_population(lic: LicenseCollector) -> None:
+    for f in anny.calibration()["files"]:
+        lic.add(f, "anny:shape_calibration", "Apache-2.0", "NAVER Corp. (Anny)", "https://github.com/naver/anny", "anny")
 
 
 def stage_rigs(lic: LicenseCollector) -> None:
@@ -67,6 +78,10 @@ def main(argv: list[str]) -> int:
             stage_rigs(lic)
         elif stage == "expressions":
             stage_expressions(lic)
+        elif stage == "population":
+            stage_population(lic)
+        elif stage == "anthro":
+            stage_anthro(lic)
         elif stage == "proxies":
             proxies.run(lic)
         elif stage == "vendor":
@@ -77,6 +92,9 @@ def main(argv: list[str]) -> int:
             from golden import generate
 
             generate.run()
+            continue
+        elif stage == "golden-anny":
+            anny.parity()
             continue
         elif stage == "golden-expressions":
             from golden import generate

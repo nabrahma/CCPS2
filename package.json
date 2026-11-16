@@ -28,6 +28,7 @@
     "test:installer": "node scripts/test-installer.mjs",
     "golden": "python -I tools/asset-compiler/compile.py golden",
     "golden:expressions": "python -I tools/asset-compiler/compile.py golden-expressions",
+    "golden:anny": "python -I tools/asset-compiler/compile.py golden-anny",
     "lint": "eslint .",
     "typecheck": "pnpm -r --if-present run typecheck",
     "test": "pnpm -r --if-present run test",

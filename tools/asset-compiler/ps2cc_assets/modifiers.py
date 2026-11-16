@@ -27,6 +27,10 @@ def load_modifier_files() -> list[dict]:
         desc = json.loads(desc_path.read_text(encoding="utf-8")) if desc_path.exists() else {}
         sliders = json.loads((d / f"{name}_sliders.json").read_text(encoding="utf-8"), object_pairs_hook=OrderedDict)
         out.append({"file": name, "data": data, "descriptions": desc, "sliders": sliders})
+    # PRD Part 3 F23: sliders for MakeHuman targets no MakeHuman slider uses (asymmetry, feet, lower legs).
+    from .anny import extras_modifier_file
+
+    out.append(extras_modifier_file())
     return out
 
 

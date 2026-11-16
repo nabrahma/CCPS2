@@ -39,6 +39,7 @@ export const STUDIOS: { id: StudioKind; label: string; hint: string }[] = [
   { id: 'texture', label: 'Texture Studio', hint: 'Skin layers, photos, painting; save skins and garment textures' },
   { id: 'garment', label: 'Garment Studio', hint: 'Reshape and kitbash garments' },
   { id: 'material', label: 'Material Studio', hint: 'Make materials from library materials or your images' },
+  { id: 'crowd', label: 'Crowd Studio', hint: 'Many believable people from one seed, for NPCs' },
 ];
 
 /** Open an Asset Studio editor with the target it needs (the selected or first worn garment, the skin, a material). */
@@ -53,7 +54,7 @@ export function openStudioOf(studio: Studio, kind: StudioKind): void {
   }
   ui.openStudio({
     kind,
-    target: kind === 'hair' ? null : kind === 'garment' ? garment : kind === 'texture' ? 'skin' : (studio.assets.catalog.materials?.[0]?.id ?? null),
+    target: kind === 'hair' || kind === 'crowd' ? null : kind === 'garment' ? garment : kind === 'texture' ? 'skin' : (studio.assets.catalog.materials?.[0]?.id ?? null),
     zone: kind === 'material' && garment ? { partKey: garment, zone: 0 } : null,
   });
 }

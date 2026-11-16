@@ -1,5 +1,5 @@
 import { useMemo, useRef } from 'react';
-import { randomizeCharacter, type SliderDef, type SliderTab } from '@ps2cc/core';
+import { randomizeCharacter, randomizeRealistic, type SliderDef, type SliderTab } from '@ps2cc/core';
 import { useStudio, useStudioVersion } from '../../state/hooks';
 import { toggleFavourite, useLibrary } from '../../state/library';
 import { useUi } from '../../state/ui';
@@ -50,6 +50,18 @@ export function SliderPanel({ tab }: { tab: SliderTab }) {
       group ? `Randomize ${group}` : `Randomize ${tab}`,
     );
 
+  // Realistic random (PRD Part 3, F23): a person drawn from the population, not a flat spread of every slider.
+  const realistic = () => {
+    const seed = (Math.random() * 2 ** 31) | 0;
+    const r = randomizeRealistic(studio.engine.doc, studio.assets.sliders, studio.assets, studio.assets.anthro, studio.assets.population, { seed, tab, locked: ui.locks });
+    studio.engine.update(tab === 'body' ? 'Realistic random body' : 'Realistic random face', (d) => {
+      d.macros = r.doc.macros;
+      d.modifiers = r.doc.modifiers;
+      if (tab === 'body') delete d.measurementTargets;
+    });
+    if (r.person) ui.info(`${r.person.sex === 'male' ? 'Man' : 'Woman'}, ${Math.round(r.person.years)} years, ${Math.round(r.person.statureCm)} cm`);
+  };
+
   return (
     <div className="slider-panel">
       <div className="panel-tools">
@@ -85,6 +97,14 @@ export function SliderPanel({ tab }: { tab: SliderTab }) {
             <input type="checkbox" checked={!ui.curated} onChange={(e) => ui.setCurated(!e.target.checked)} data-testid="sliders-all" /> Every slider
           </label>
           <span className="tb-spacer" />
+          <button
+            className="chip"
+            onClick={realistic}
+            title={tab === 'body' ? 'A realistic person: age, build and height drawn as they are spread in real people. Locked sliders stay.' : 'A believable face: small changes around the average, with a little left/right difference. Locked sliders stay.'}
+            data-testid={`realistic-${tab}`}
+          >
+            <ShuffleIcon /> Realistic
+          </button>
           <button className="chip" onClick={() => randomize(group ?? undefined)} title="Randomize within safe ranges (R)">
             <ShuffleIcon /> Randomize
           </button>

@@ -13,6 +13,7 @@ import { newLayer, sanitiseSkin } from '../skin/layers';
 import { DEFAULT_EYE_LOOK, sanitiseEyeLook, type EyeLook } from '../eyes/eye-texture';
 import { sanitiseLook, type GarmentLook } from '../wardrobe/look';
 import { DEFAULT_MACROS, normaliseEthnic, type MacroValues } from '../morph/macros';
+import { MEASURE_BY_ID, type MeasureId } from '../anthro/definitions';
 import {
   DEFAULT_PROFILE,
   profileSettings,
@@ -217,6 +218,12 @@ export interface CharacterDoc {
   hair: HairSpec;
   expressionsToBake: string[];
   export: ExportSettings;
+  /**
+   * Measurements the user typed for this character (PRD Part 3, F24), in cm
+   * and kg. Kept so the Body tab shows them again; the body itself is the
+   * ordinary slider values the solve produced.
+   */
+  measurementTargets?: Partial<Record<MeasureId, number>>;
 }
 
 export const NEUTRAL_TINT: Tint = Object.freeze({ color: [1, 1, 1], brightness: 1 }) as Tint;
@@ -353,9 +360,11 @@ export function parseCharacter(json: unknown): CharacterDoc {
       modifiers[k] = v;
     }
   }
+  const { measurementTargets: rawTargets, ...rest } = raw as CharacterDoc;
+  const targets = sanitiseMeasurementTargets(rawTargets);
   return {
     ...base,
-    ...(raw as CharacterDoc),
+    ...(rest as CharacterDoc),
     schema: CHARACTER_SCHEMA,
     id: typeof raw.id === 'string' && raw.id ? raw.id : base.id,
     name: typeof raw.name === 'string' ? raw.name : base.name,
@@ -381,7 +390,20 @@ export function parseCharacter(json: unknown): CharacterDoc {
     // Old documents (no profile) keep the settings they were made with (LEGACY_EXPORT).
     export: sanitiseExport(raw.export, base.export),
     expressionsToBake: Array.isArray(raw.expressionsToBake) ? raw.expressionsToBake : base.expressionsToBake,
+    // No field at all without targets, so documents from before Part 3 load and save exactly as they were.
+    ...(targets ? { measurementTargets: targets } : {}),
   };
+}
+
+/** Keeps only solvable measurements with sensible values; no field at all when there are none. */
+export function sanitiseMeasurementTargets(raw: unknown): Partial<Record<MeasureId, number>> | undefined {
+  if (typeof raw !== 'object' || raw === null) return undefined;
+  const out: Partial<Record<MeasureId, number>> = {};
+  for (const [k, v] of Object.entries(raw as Record<string, unknown>)) {
+    const def = MEASURE_BY_ID.get(k as MeasureId);
+    if (def?.target && isNum(v) && v > 0 && v < 400) out[def.id] = v;
+  }
+  return Object.keys(out).length > 0 ? out : undefined;
 }
 
 function sanitiseHair(h: HairSpec): HairSpec {

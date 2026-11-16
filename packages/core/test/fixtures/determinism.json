@@ -1,0 +1,12 @@
+{
+ "format": "ps2cc.determinism/1",
+ "hashes": {
+  "dmath": "e8253d346d7ce5da8b9cb1a393119580b15ae32de9371d09a6a34fd69c695708",
+  "distributions": "26eeb83b7f9dbaeb88464df47bb8687b3782d5e3cb91933f211a651281a728c1",
+  "bodies": "feb5438725be61f22e7da12e02988ff53179f17722ed4e888b435ef7784965c3",
+  "measurements": "0c55e48ee62bdd08810671dd30e8df0c52a844033c407e630e921e1f93c3b9b2",
+  "measurementSolve": "bd761e966c37c8cbcfb04ba61924ad482f01f0c7b162e2b1f32ce3de6c98133b",
+  "population": "ad6807496c756c17b94ef7cbf20c84150174460b20da77d096616addb0dbcebe",
+  "crowd": "c0ea9d11a78121ff1d5dffe72af7f65c850de943095d741c420dea61027caa5d"
+ }
+}

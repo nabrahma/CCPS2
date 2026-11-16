@@ -42,6 +42,44 @@ export default tseslint.config(
     },
   },
   {
+    // PRD Part 3, 0.2: generators give byte-identical output in every JavaScript engine. Transcendental
+    // functions come from core/math/dmath, randomness from the seeded Rng, and nothing reads the clock.
+    files: ['packages/core/src/{anthro,face,sculpt,garment,population,photo}/**/*.ts', 'packages/core/src/math/{distributions,linalg}.ts', 'packages/core/src/determinism.ts'],
+    rules: {
+      'no-restricted-properties': [
+        'error',
+        { object: 'Math', property: 'sin', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Math', property: 'cos', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Math', property: 'tan', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Math', property: 'asin', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Math', property: 'acos', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Math', property: 'atan', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Math', property: 'atan2', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Math', property: 'exp', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Math', property: 'expm1', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Math', property: 'log', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Math', property: 'log2', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Math', property: 'log10', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Math', property: 'log1p', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Math', property: 'pow', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Math', property: 'cbrt', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Math', property: 'sinh', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Math', property: 'cosh', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Math', property: 'tanh', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Math', property: 'hypot', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Math', property: 'random', message: 'Generators must be bit-identical in every engine: use core/math/dmath (PRD Part 3, 0.2).' },
+        { object: 'Date', property: 'now', message: 'Generators must not read the clock (PRD Part 3, 0.2).' },
+        { object: 'performance', property: 'now', message: 'Generators must not read the clock (PRD Part 3, 0.2).' },
+      ],
+      'no-restricted-syntax': [
+        'error',
+        { selector: "BinaryExpression[operator='**']", message: 'x ** y is not correctly rounded in every engine: multiply, or use dmath.pow (PRD Part 3, 0.2).' },
+        { selector: "AssignmentExpression[operator='**=']", message: 'x **= y is not correctly rounded in every engine: multiply, or use dmath.pow (PRD Part 3, 0.2).' },
+        { selector: "NewExpression[callee.name='Date']", message: 'Generators must not read the clock (PRD Part 3, 0.2).' },
+      ],
+    },
+  },
+  {
     files: ['app/frontend/src/**/*.{ts,tsx}'],
     plugins: { 'react-hooks': reactHooks },
     rules: {

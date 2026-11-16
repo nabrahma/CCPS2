@@ -19,7 +19,11 @@ suite('modifier set', () => {
   });
 
   it('loads every MakeHuman modifier with resolvable targets', () => {
-    expect(assets.modifiers.list.length).toBe(291);
+    // MakeHuman's 291, plus 42 for MakeHuman targets it has no slider for (PRD Part 3, F23):
+    // 31 left/right asymmetry pairs, 10 foot and lower-leg sliders and the triangular chin.
+    expect(assets.modifiers.list.length).toBe(333);
+    expect(assets.modifiers.list.filter((m) => m.file === 'extras').length).toBe(42);
+    expect(assets.modifiers.list.filter((m) => m.groupName === 'asym').length).toBe(31);
     for (const m of assets.modifiers.list) {
       expect(m.targets.length, m.fullName).toBeGreaterThan(0);
     }

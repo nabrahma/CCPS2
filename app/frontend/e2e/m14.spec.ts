@@ -88,11 +88,17 @@ async function photosOf(page: Page, set: PhotoSet): Promise<Record<'front' | 'le
       s.engine.update('photo skin', (d) => void (d.skin = { base: base!, layers: [w.__ps2ccTest.core.newLayer('brows'), w.__ps2ccTest.core.newLayer('lashes')], photo: null }));
       await s.settled();
       const out: Record<string, string> = {};
-      for (const [k, y] of [['front', 0], ['left', yaw], ['right', -yaw]] as const) {
-        s.viewport!.setCameraFrame({ targetHeight: 0.925, span: 0.17, yaw: y, pitch: 0 });
-        s.viewport!.refresh();
-        await new Promise((r) => setTimeout(r, 400));
-        out[k] = URL.createObjectURL(await s.viewport!.screenshot(768, 960));
+      // Twice: the first pass lets anything still loading for these views (textures, the painted brows) arrive,
+      // so the photos do not depend on how fast the app started.
+      for (const pass of [0, 1]) {
+        for (const [k, y] of [['front', 0], ['left', yaw], ['right', -yaw]] as const) {
+          s.viewport!.setCameraFrame({ targetHeight: 0.925, span: 0.17, yaw: y, pitch: 0 });
+          s.viewport!.refresh();
+          await new Promise((r) => setTimeout(r, 400));
+          await s.settled();
+          const shot = await s.viewport!.screenshot(768, 960);
+          if (pass === 1) out[k] = URL.createObjectURL(shot);
+        }
       }
       return out as Record<'front' | 'left' | 'right', string>;
     },

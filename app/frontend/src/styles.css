@@ -1676,3 +1676,68 @@ code {
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-control);
 }
+
+/* Body measurements (PRD Part 3, F24) */
+.measurements .measure-readout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  font-size: 12px;
+  margin: 2px 0 6px;
+}
+.measurements .measure-readout em {
+  font-style: normal;
+  color: var(--muted);
+}
+.measurements .measure-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto 72px;
+  gap: 2px 8px;
+  align-items: center;
+  font-size: 12px;
+  padding: 1px 0;
+}
+.measurements .measure-row.plain {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+.measurements .measure-row .now {
+  color: var(--muted);
+  text-align: right;
+}
+.measurements .measure-row input {
+  width: 72px;
+}
+.measurements .measure-row.miss input {
+  border-color: var(--warn);
+}
+.measurements .measure-row .miss-note {
+  grid-column: 1 / -1;
+  color: var(--warn);
+}
+.measurements .measure-group h4 {
+  margin: 8px 0 2px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Crowd Studio (PRD Part 3, F23) */
+.crowd-studio .crowd-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 280px;
+  overflow: auto;
+  margin: 6px 0;
+}
+.crowd-studio .crowd-member {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  text-align: left;
+  background: none;
+  border-color: var(--line);
+  font-size: 12px;
+}
+.crowd-studio .crowd-member.active {
+  border-color: #cfcfcf;
+}

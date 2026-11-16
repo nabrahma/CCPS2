@@ -1,4 +1,9 @@
 {
+  "anny": {
+    "sha256": "699546e9824dba63ede502b21fe17b834fcb6d4ede10a56e685b198d1380ece7",
+    "size": 47736861,
+    "url": "https://codeload.github.com/naver/anny/tar.gz/8f35dc2df1c4062fd2fae86734f9705de50c0c2b"
+  },
   "bodyparts01": {
     "sha256": "518efd209dbd7a4c9722cf00f7fd47fd077cf1bbd7ddc37cb83741e0041d25be",
     "size": 829685,
@@ -68,6 +73,11 @@
     "sha256": "b7b5eb97cfb930d93e8c067885801443bcab2dcbbe6c2c2cfff7ad87992077e8",
     "size": 3493692,
     "url": "https://files.makehumancommunity.org/asset_packs/eyelashes01/eyelashes01_cc0.zip"
+  },
+  "garmentcode": {
+    "sha256": "7f07f95f9b170042e13b3d0468da8b5662afe44e5a67a1a141bfe3c545a81117",
+    "size": 28221947,
+    "url": "https://codeload.github.com/maria-korosteleva/GarmentCode/tar.gz/d449629979028123a5c4dc9e732a2ec19b7fce31"
   },
   "glasses01": {
     "sha256": "f215c58e09e31b7ee568c814067cb47704cee6da1f6fc01cffb8e9fca37bafdd",

@@ -13,7 +13,7 @@ export type TabId = 'body' | 'face' | 'skin' | 'eyes' | 'brows' | 'lashes' | 'ma
 export type DockTab = 'modify' | 'studio' | 'settings';
 
 /** The Asset Studio's editors (Part 2 F20). */
-export type StudioKind = 'hair' | 'texture' | 'garment' | 'material';
+export type StudioKind = 'hair' | 'texture' | 'garment' | 'material' | 'crowd';
 
 /**
  * An open Asset Studio. `target`: the garment's part key (Garment Studio, or
@@ -56,6 +56,9 @@ export interface Toast {
 export interface UiState {
   tab: TabId;
   curated: boolean;
+  /** Body measurements in inches instead of centimetres (PRD Part 3, F24); kept between sessions. */
+  inches: boolean;
+  setInches(v: boolean): void;
   symmetry: boolean;
   search: string;
   locks: Set<string>;
@@ -139,9 +142,28 @@ export type GarmentTool =
 
 let toastId = 0;
 
+const UNITS_KEY = 'ps2cc.units';
+
+function storedInches(): boolean {
+  try {
+    return localStorage.getItem(UNITS_KEY) === 'in';
+  } catch {
+    return false;
+  }
+}
+
 export const useUi = create<UiState>((set) => ({
   tab: 'body',
   curated: true,
+  inches: storedInches(),
+  setInches: (inches) => {
+    try {
+      localStorage.setItem(UNITS_KEY, inches ? 'in' : 'cm');
+    } catch {
+      // No storage (private mode): the choice lasts for this session only.
+    }
+    set({ inches });
+  },
   symmetry: true,
   search: '',
   locks: new Set(),

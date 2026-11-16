@@ -41,6 +41,7 @@ import { VisibilityToggle } from '../workspace/Dock';
 import { garmentName, plain } from '../../state/names';
 import { TintRow } from '../panels/HairPanel';
 import { SliderPanel } from '../panels/SliderPanel';
+import { MeasurementsPanel } from '../panels/MeasurementsPanel';
 
 function Section({ title, children, open = true, testId }: { title: string; children: ReactNode; open?: boolean; testId?: string }) {
   return (
@@ -82,6 +83,9 @@ export function BodyPanel() {
         <button className="link" onClick={() => void savePreset()} data-testid="create-save-preset">
           Save these sliders as a preset…
         </button>
+      </Section>
+      <Section title="Measurements" testId="body-measurements">
+        <MeasurementsPanel />
       </Section>
       <SliderPanel tab="body" />
     </div>

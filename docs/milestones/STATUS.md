@@ -218,7 +218,7 @@ Also tested:
 - Saving a skin bakes its layers into it.
 - Material Studio previews at 512 px and saves at 1024 px.
 
-## M17: Generative assist (not built)
+## M17: Generative assist (cancelled)
 
 You decided against it (D-139): PS2CC ships no AI model. Part 2 ends at M16.
 
@@ -331,3 +331,23 @@ Two fixes reported after the first release.
   - Core: `garment-edit.test.ts`, 6 tests: decode, wear and fit, shared by undo copies, dropped when taken off, save and load, outfits.
   - Browser: the new M16 test (Done applies with no new library garment, fits another body, undo and redo, save and load, leaving applies and keeps one edit, Cancel discards), and the Garment and Texture Studio round trips.
   - Full runs: core 243 passed, browser suite 54 passed (one M15 locator fixed for the new hint and rerun), desktop test passed.
+
+## M19: Body control (0.24.0, Part 3)
+
+- **Measurements** (Body tab): height, weight, BMI, chest, waist and hips at a glance; every measurement under All measurements; centimetres or inches, kept between sessions.
+  - Taken as a tape measure would: circumferences bridge hollows, chest and hips level with the floor, lengths along the skin where a tailor's tape goes (D-155).
+  - Default body: 165.9 cm, 54.1 kg, chest 88.5, waist 72.4, hips 90.9 cm.
+- **Set measurements, then Fit body.** Type any of 18 measurements; the fit moves ordinary sliders (D-156), in about half a second, as one undo step. Targets the body cannot reach are marked in red with the closest value. The typed targets are saved with the character.
+- **Realistic** (Body and Face): a person drawn from real-population statistics, adults 18 to 80, men 177 cm and women 161 cm on average (D-154). On the Face tab it varies the face a little around the average and adds a small left/right difference. Locked sliders stay.
+- **Asymmetry sliders**: 31 left/right pairs for the face and body, plus foot, lower-leg and chin sliders, all MakeHuman targets that had no slider (D-153).
+- **Crowd Studio** (Asset Studio): many different people from one seed, with hair and outfits from the library and a matching stock skin; preview one, save all, or save and export all (D-158).
+- **Anny parity**: the engine gives Anny's bodies within 13 micrometres on 50 sets, all of it target storage (D-152).
+- **Determinism**: engine-independent maths, seeded distributions and a lint rule; the generators' hashes are the same in Node and Chromium (D-157).
+- **Tested:**
+  - `anny-parity.test.ts`: 50 sets, same base mesh, every blend shape packed, weights equal to the macro maths where they can be.
+  - `population.test.ts`: 10,000 adults pass a KS test against each Beta (p 0.95, 0.35, 0.10, 0.92), none under 18, ages uniform, heights match the drawn statures; realistic random keeps locks and stays adult; crowds are reproducible and independent of their size and pools.
+  - `anthro.test.ts`: the default body; hull never longer than the skin; on 200 random bodies height within 2 mm of the vertex extent (0.0 mm) and every ring one closed loop; the solve reaches 178/102/84 cm, keeps gender and age, reports impossible targets; 500 feasible targets reached, 95th percentile 0.003 cm in 25 iterations.
+  - `dmath.test.ts`, `determinism.test.ts` and `e2e/determinism.spec.ts`: the maths against Math, the distributions by KS tests, and the same hashes in Node and the browser.
+  - Full runs: core 277 passed; browser suite 57 of 58 passed at first, and the desktop test passed. The three-photo test (M14) failed on one face, 5.2 texels: its stand-in photos were rendered while something was still loading, and a new import changed the app's load timing. It now renders each set twice and keeps the second, and gives its earlier numbers again (worst 2.45 texels, limit 4).
+  - `e2e/m19.spec.ts`: measurements and units, Fit body with undo, redo, save and load, out-of-reach targets, realistic bodies and faces with a lock, the asymmetry sliders, and Crowd Studio. Screenshots in `M19/`.
+

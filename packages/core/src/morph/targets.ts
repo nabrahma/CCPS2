@@ -26,12 +26,12 @@ export class TargetStore {
   readonly byPath: ReadonlyMap<string, number>;
   readonly byGroup: ReadonlyMap<string, readonly number[]>;
   private readonly indices: Uint16Array;
-  private readonly deltas: Int16Array;
+  private readonly deltas16: Int16Array;
 
   constructor(container: Container<TargetsMeta>) {
     this.entries = container.meta.targets;
     this.indices = container.get('indices', 'u16');
-    this.deltas = container.get('deltas', 'i16');
+    this.deltas16 = container.get('deltas', 'i16');
     const byPath = new Map<string, number>();
     const byGroup = new Map<string, number[]>();
     this.entries.forEach((t, i) => {
@@ -77,7 +77,7 @@ export class TargetStore {
     const t = this.entries[target]!;
     const s = t.scale * weight;
     const idx = this.indices;
-    const d = this.deltas;
+    const d = this.deltas16;
     const end = t.offset + t.count;
     for (let i = t.offset; i < end; i++) {
       const v = idx[i]! * 3;
@@ -86,6 +86,12 @@ export class TargetStore {
       out[v + 1] = out[v + 1]! + d[j + 1]! * s;
       out[v + 2] = out[v + 2]! + d[j + 2]! * s;
     }
+  }
+
+  /** Quantised xyz deltas of a target, 3 per vertex of `vertices(target)` (a view, do not modify): metres = value * entries[target].scale. */
+  deltas(target: number): Int16Array {
+    const t = this.entries[target]!;
+    return this.deltas16.subarray(t.offset * 3, (t.offset + t.count) * 3);
   }
 
   /** Vertex indices touched by a target (a view, do not modify). */

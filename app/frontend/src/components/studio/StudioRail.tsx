@@ -15,6 +15,7 @@ import { SkinPanel } from '../panels/SkinPanel';
 import { PainterLink } from '../PainterLink';
 import { STUDIOS } from '../workspace/steps';
 import { MaterialStudio } from './MaterialStudio';
+import { CrowdStudio } from './CrowdStudio';
 
 export function StudioRail() {
   const ui = useUi();
@@ -30,6 +31,7 @@ export function StudioRail() {
         {s.kind === 'texture' && <TextureStudioPanel />}
         {s.kind === 'garment' && <GarmentStudioPanel />}
         {s.kind === 'material' && <MaterialStudio key={`${s.target}|${s.zone?.partKey ?? ''}`} />}
+        {s.kind === 'crowd' && <CrowdStudio />}
       </div>
     </div>
   );
