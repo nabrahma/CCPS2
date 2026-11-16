@@ -54,7 +54,7 @@ type AppInfo struct {
 	Pid int `json:"pid"`
 }
 
-const appVersion = "0.24.0"
+const appVersion = "0.25.0"
 
 func newApp(layout *paths.Layout, log *logging.Logger) *App {
 	return &App{
@@ -476,7 +476,16 @@ func (a *App) SavePreset(name, presetJSON string) (*library.Item, error) {
 	return item, err
 }
 
-// ReadLibraryDocument returns a .ps2hair, .ps2preset, .ps2mat, .ps2outfit or atlas document from the library.
+// SaveTarget stores a sculpt saved as a slider (.ps2target, PRD Part 3 F27) in the library.
+func (a *App) SaveTarget(name, targetJSON string) (*library.Item, error) {
+	item, err := a.lib.SaveTarget(name, []byte(targetJSON))
+	if err == nil {
+		a.log.Infof("slider saved %s", item.File)
+	}
+	return item, err
+}
+
+// ReadLibraryDocument returns a .ps2hair, .ps2preset, .ps2mat, .ps2outfit, .ps2target or atlas document from the library.
 func (a *App) ReadLibraryDocument(file string) (string, error) {
 	data, err := a.lib.ReadDocument(file)
 	return string(data), err

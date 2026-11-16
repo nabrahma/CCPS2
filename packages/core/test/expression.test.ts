@@ -9,7 +9,7 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { FaceRig, skinDeltas } from '../src/expression/facerig';
 import { EXPRESSION_MAP, validateExpressionMap } from '../src/expression/map';
-import { DEFAULT_EXPRESSIONS } from '../src/character/doc';
+import { CLASSIC_EXPRESSIONS, DEFAULT_EXPRESSIONS } from '../src/character/doc';
 import { GOLDEN_DIR, assetsAvailable, loadAssets, readFloat32, readJsonFile } from './helpers';
 
 interface ExprGolden {
@@ -89,11 +89,11 @@ suite('golden: face pose units on the default rig', () => {
 });
 
 describe('expression map', () => {
-  it('covers the PRD default set with valid pose units', async () => {
+  it('is valid, makes the 52 ARKit units and every name exported before 0.25.0', () => {
     const names = EXPRESSION_MAP.expressions.map((e) => e.name);
+    expect(DEFAULT_EXPRESSIONS.length).toBe(52);
     for (const n of DEFAULT_EXPRESSIONS) expect(names).toContain(n);
-    if (!assetsAvailable) return;
-    const { units } = await (await loadAssets()).faceAssets();
-    expect(validateExpressionMap(EXPRESSION_MAP, units)).toEqual([]);
+    for (const n of CLASSIC_EXPRESSIONS) expect(names).toContain(n);
+    expect(validateExpressionMap(EXPRESSION_MAP)).toEqual([]);
   });
 });

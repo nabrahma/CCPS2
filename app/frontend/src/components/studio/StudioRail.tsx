@@ -16,9 +16,11 @@ import { PainterLink } from '../PainterLink';
 import { STUDIOS } from '../workspace/steps';
 import { MaterialStudio } from './MaterialStudio';
 import { CrowdStudio } from './CrowdStudio';
+import { SculptStudio } from './SculptStudio';
 
 export function StudioRail() {
   const ui = useUi();
+  const studio = useStudio();
   const s = ui.assetStudio!;
   const info = STUDIOS.find((x) => x.id === s.kind)!;
   return (
@@ -32,6 +34,7 @@ export function StudioRail() {
         {s.kind === 'garment' && <GarmentStudioPanel />}
         {s.kind === 'material' && <MaterialStudio key={`${s.target}|${s.zone?.partKey ?? ''}`} />}
         {s.kind === 'crowd' && <CrowdStudio />}
+        {s.kind === 'sculpt' && <SculptStudio canvas={studio.viewport?.canvas ?? null} />}
       </div>
     </div>
   );

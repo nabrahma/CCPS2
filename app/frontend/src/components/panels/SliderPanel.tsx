@@ -1,7 +1,8 @@
 import { useMemo, useRef } from 'react';
 import { randomizeCharacter, randomizeRealistic, type SliderDef, type SliderTab } from '@ps2cc/core';
 import { useStudio, useStudioVersion } from '../../state/hooks';
-import { toggleFavourite, useLibrary } from '../../state/library';
+import { refreshUserLibrary, toggleFavourite, useLibrary } from '../../state/library';
+import { backend } from '../../backend';
 import { useUi } from '../../state/ui';
 import { HeartIcon, LockIcon, ResetIcon, ShuffleIcon } from '../icons';
 
@@ -113,6 +114,7 @@ export function SliderPanel({ tab }: { tab: SliderTab }) {
       {groups.length === 0 && (
         <p className="muted">{favourites && !ui.search ? 'No favourite sliders yet: click the heart on a slider to add it here.' : `No sliders match “${ui.search}”.`}</p>
       )}
+      <UserSliders tab={tab} />
       {groups.map(([group, list]) => (
         <details key={group} open className="slider-group">
           <summary>
@@ -134,6 +136,71 @@ export function SliderPanel({ tab }: { tab: SliderTab }) {
         </details>
       ))}
     </div>
+  );
+}
+
+/** Sliders made from sculpts (PRD Part 3, F27): library .ps2target files, -1..1, on any character. */
+function UserSliders({ tab }: { tab: SliderTab }) {
+  const studio = useStudio();
+  useStudioVersion();
+  const ui = useUi();
+  const list = studio.assets.userTargetList.filter((t) => t.tab === tab && (!ui.search || t.name.toLowerCase().includes(ui.search.toLowerCase())));
+  if (list.length === 0) return null;
+  const values = studio.engine.doc.userTargets ?? {};
+  const set = (id: string, v: number, merge: boolean) =>
+    studio.engine.update(
+      'Your slider',
+      (d) => {
+        const next = { ...(d.userTargets ?? {}) };
+        if (Math.abs(v) < 1e-4) delete next[id];
+        else next[id] = v;
+        if (Object.keys(next).length) d.userTargets = next;
+        else delete d.userTargets;
+      },
+      merge ? `user-slider:${id}` : undefined,
+    );
+  const remove = async (id: string, file: string | undefined, name: string) => {
+    if (!file || !window.confirm(`Delete the slider "${name}" from the library? Characters using it lose its shape.`)) return;
+    try {
+      await backend.deleteLibraryItem(file);
+      await refreshUserLibrary(studio);
+      if (values[id] !== undefined) set(id, 0, false);
+    } catch (err) {
+      ui.error('Could not delete the slider', err);
+    }
+  };
+  return (
+    <details open className="slider-group" data-testid={`user-sliders-${tab}`}>
+      <summary>
+        <span>Your sliders</span>
+      </summary>
+      {list.map((t) => {
+        const v = values[t.id] ?? 0;
+        return (
+          <div key={t.id} className={v !== 0 ? 'slider-row changed' : 'slider-row'} title={`Made in Sculpt Studio (${t.id})`}>
+            <label htmlFor={t.id}>{t.name}</label>
+            <input
+              id={t.id}
+              type="range"
+              min={-1}
+              max={1}
+              step={0.001}
+              value={v}
+              onChange={(e) => set(t.id, Number(e.target.value), true)}
+              onPointerUp={() => studio.engine.endInteraction()}
+              data-testid="user-slider"
+            />
+            <input className="num" type="number" min={-1} max={1} step={0.01} value={Number(v.toFixed(3))} onChange={(e) => Number.isFinite(Number(e.target.value)) && set(t.id, Math.min(1, Math.max(-1, Number(e.target.value))), false)} aria-label={`${t.name} value`} />
+            <button className="icon" title="Reset to 0" disabled={v === 0} onClick={() => set(t.id, 0, false)}>
+              <ResetIcon />
+            </button>
+            <button className="icon" title="Delete this slider from the library" onClick={() => void remove(t.id, t.file, t.name)}>
+              ×
+            </button>
+          </div>
+        );
+      })}
+    </details>
   );
 }
 

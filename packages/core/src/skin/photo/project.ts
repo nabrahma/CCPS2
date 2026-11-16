@@ -77,6 +77,12 @@ export interface ProjectInput {
   baseSkin?: RgbaImage | null;
   /** Feather width as a fraction of the face width (default 0.12). */
   feather?: number;
+  /**
+   * Face-skin mask of the photo (PRD Part 3, F33), same orientation, any size:
+   * red 255 where the photo shows face skin. Hair, background and accessories
+   * project nothing, so the base skin shows there.
+   */
+  mask?: RgbaImage | null;
 }
 
 export interface ProjectResult {
@@ -98,7 +104,7 @@ export function projectPhoto(input: ProjectInput): ProjectResult {
   const used = new Set<string>();
   for (let i = 0; i < LANDMARK_COUNT; i++) {
     const p = landmarkPoint(table, i, positions);
-    if (!p || i * 3 + 1 >= landmarks.length) continue;
+    if (!p || i * 3 + 1 >= landmarks.length || !Number.isFinite(landmarks[i * 3]!) || !Number.isFinite(landmarks[i * 3 + 1]!)) continue;
     const key = `${Math.round(p[0] * 1e4)},${Math.round(p[1] * 1e4)}`;
     if (used.has(key)) continue;
     used.add(key);
@@ -148,7 +154,11 @@ export function projectPhoto(input: ProjectInput): ProjectResult {
     if (facing <= 0 || !depth.visible(x, y, z)) continue;
     if (!warp.map(x, y, q)) continue;
     const edge = smoothstep(0, feather, warp.distanceToHull(x, y));
-    const w = facing * edge;
+    let w = facing * edge;
+    if (w > 0 && input.mask) {
+      sampleBilinear(input.mask, q[0]! / photo.width, q[1]! / photo.height, tmp);
+      w *= tmp[0]! / 255;
+    }
     if (w <= 0) continue;
     sampleBilinear(photo, q[0]! / photo.width, q[1]! / photo.height, tmp);
     weight[t] = w;

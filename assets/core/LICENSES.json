@@ -36,6 +36,28 @@
    "bytes": 69089
   },
   {
+   "file": "basemesh/hm08_mirror.bin",
+   "asset": "mh:basemesh/hm08_mirror",
+   "licence": "CC0-1.0",
+   "author": "MakeHuman team / Data Collection AB",
+   "sourceUrl": "https://github.com/makehumancommunity/makehuman",
+   "upstream": "makehuman",
+   "attributionRequired": false,
+   "sha256": "c31c2da7167ed514895f85a75e7160c1666fececc868f38a31247a6af054b6c3",
+   "bytes": 76632
+  },
+  {
+   "file": "basemesh/hm08_mirror.json",
+   "asset": "mh:basemesh/hm08_mirror",
+   "licence": "CC0-1.0",
+   "author": "MakeHuman team / Data Collection AB",
+   "sourceUrl": "https://github.com/makehumancommunity/makehuman",
+   "upstream": "makehuman",
+   "attributionRequired": false,
+   "sha256": "e3b6edc6ca7442293add867e68e06db009ece0396e30661d38ef765f1e77b94a",
+   "bytes": 370
+  },
+  {
    "file": "bodymesh/ps2_body_10k.bin",
    "asset": "ps2cc:bodymesh/ps2_body_10k",
    "licence": "CC0-1.0",
@@ -188,6 +210,28 @@
    "attributionRequired": false,
    "sha256": "2263e56c678666239c3f44423fefb124e96ea72391d4a95ec565fb9b4676d47c",
    "bytes": 44848
+  },
+  {
+   "file": "expressions/faceunits.bin",
+   "asset": "anny:faceunits01",
+   "licence": "CC0-1.0",
+   "author": "Mika Suominen (faceunits01)",
+   "sourceUrl": "https://github.com/naver/anny/tree/main/src/anny/data/faceunits01",
+   "upstream": "anny",
+   "attributionRequired": false,
+   "sha256": "fb6b2bf5da94fbe47d81227a68e59c66d37976abf2c8a123eaacb99f1730631a",
+   "bytes": 418804
+  },
+  {
+   "file": "expressions/faceunits.json",
+   "asset": "anny:faceunits01",
+   "licence": "CC0-1.0",
+   "author": "Mika Suominen (faceunits01)",
+   "sourceUrl": "https://github.com/naver/anny/tree/main/src/anny/data/faceunits01",
+   "upstream": "anny",
+   "attributionRequired": false,
+   "sha256": "2ca0d9dd2aee6aa2f228a2c9ba21620ad975ac5d0a14dda25724b79857eb4792",
+   "bytes": 8223
   },
   {
    "file": "looks/flashlight.ps2look",
@@ -802,8 +846,8 @@
    "sourceUrl": "https://github.com/makehumancommunity/makehuman",
    "upstream": "makehuman",
    "attributionRequired": false,
-   "sha256": "e33d6ccc4b9f9529bda3e9b2fa2bacc1a1130676dcb3f40542d716433a6af16c",
-   "bytes": 99691
+   "sha256": "dd045e5780e41f679d606610bb5a5e7d367598d52d7caa1b1e30a31496a067e8",
+   "bytes": 95878
   },
   {
    "file": "population/calibration.json",
@@ -27598,8 +27642,8 @@
    "sourceUrl": "https://github.com/makehumancommunity/makehuman",
    "upstream": "makehuman",
    "attributionRequired": false,
-   "sha256": "b7360c97c09f8ad8a61cfa03d733d2616c6a85b3a4c0f2e2c477e6a6984718eb",
-   "bytes": 308151
+   "sha256": "73787e19ae0600b92c63dba81db579c0d0fb60ac51d8059d7e703dc2cabcdf25",
+   "bytes": 295153
   },
   {
    "file": "textures/clothes/aethelraed_flapper_dress.jpg",
@@ -35353,8 +35397,8 @@
    "sourceUrl": "https://developers.google.com/edge/mediapipe/solutions/vision/face_landmarker",
    "upstream": "ps2cc",
    "attributionRequired": true,
-   "sha256": "8438c57d7b5f5aa0504ca28f5f07ca4a5f10655804dd00ffc34fe94a6dd33c77",
-   "bytes": 344
+   "sha256": "7aef8290cb2792778f95825b7c57f5118a5166d352142763dec40718ff88cf78",
+   "bytes": 417
   },
   {
    "file": "vendor/mediapipe/face_landmarker.task",
@@ -35366,6 +35410,17 @@
    "attributionRequired": true,
    "sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff",
    "bytes": 3758596
+  },
+  {
+   "file": "vendor/mediapipe/selfie_multiclass_256x256.tflite",
+   "asset": "vendor:mediapipe/face_landmarker",
+   "licence": "Apache-2.0",
+   "author": "Google LLC",
+   "sourceUrl": "https://developers.google.com/edge/mediapipe/solutions/vision/face_landmarker",
+   "upstream": "mediapipe_selfie_multiclass",
+   "attributionRequired": true,
+   "sha256": "c6748b1253a99067ef71f7e26ca71096cd449baefa8f101900ea23016507e0e0",
+   "bytes": 16371837
   },
   {
    "file": "vendor/mediapipe/wasm/vision_wasm_internal.js",

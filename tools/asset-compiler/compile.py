@@ -1,7 +1,7 @@
 """PS2CC asset compiler entry point.
 
 Usage:  python -I tools/asset-compiler/compile.py <stage> [...]
-Stages: fetch, core (base mesh + targets + modifiers + rigs + face pose units), rigs, expressions, population (Anny calibration), anthro (body landmarks), proxies, vendor (MediaPipe), licenses, golden, golden-expressions, golden-anny, all
+Stages: fetch, core (base mesh + targets + modifiers + rigs + face pose units), rigs, expressions, population (Anny calibration), anthro (body landmarks), faceunits (ARKit face units, mirror table), proxies, vendor (MediaPipe), licenses, golden, golden-expressions, golden-anny, all
 """
 
 from __future__ import annotations
@@ -12,7 +12,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from ps2cc_assets import anny, anthro, basemesh, expressions, fetch, modifiers, proxies, rig, targets, vendor  # noqa: E402
+from ps2cc_assets import anny, anthro, basemesh, expressions, faceunits, fetch, modifiers, proxies, rig, targets, vendor  # noqa: E402
 from ps2cc_assets.binfmt import write_json  # noqa: E402
 from ps2cc_assets.licenses import LicenseCollector  # noqa: E402
 from ps2cc_assets.paths import ASSETS_CORE  # noqa: E402
@@ -47,6 +47,14 @@ def stage_rigs(lic: LicenseCollector) -> None:
 
 def stage_expressions(lic: LicenseCollector) -> None:
     lic.add_data(expressions.convert_face_poseunits(), "mh:poseunits/face", "makehuman")
+    stage_faceunits(lic)
+
+
+def stage_faceunits(lic: LicenseCollector) -> None:
+    files, mirror = faceunits.build_mirror()
+    lic.add_data(files, "mh:basemesh/hm08_mirror", "makehuman")
+    for f in faceunits.build_faceunits(mirror):
+        lic.add(f, "anny:faceunits01", "CC0-1.0", "Mika Suominen (faceunits01)", "https://github.com/naver/anny/tree/main/src/anny/data/faceunits01", "anny")
 
 
 def restore_rows(lic: LicenseCollector) -> None:
@@ -82,6 +90,8 @@ def main(argv: list[str]) -> int:
             stage_population(lic)
         elif stage == "anthro":
             stage_anthro(lic)
+        elif stage == "faceunits":
+            stage_faceunits(lic)
         elif stage == "proxies":
             proxies.run(lic)
         elif stage == "vendor":

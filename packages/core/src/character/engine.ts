@@ -12,6 +12,7 @@ import { UndoStack } from '../undo';
 import { cloneCharacter, defaultCharacter, sanitiseGarmentEdits, type CharacterDoc } from './doc';
 import { ADULT_MIN_AGE } from './sliders';
 import { completeStyle } from '../hair/style';
+import { decodeSculpt, helperBinding, withHelpers, type SculptData } from '../sculpt/layer';
 
 export type ChangeKind = 'geometry' | 'doc' | 'history';
 export type ChangeListener = (kind: ChangeKind) => void;
@@ -35,6 +36,9 @@ export class CharacterEngine {
   readonly history = new UndoStack<CharacterDoc>(cloneCharacter, 500);
   /** Duration of the last morph update in ms (performance logging, PRD F1). */
   lastUpdateMs = 0;
+  /** A sculpt stroke in progress (shown instead of the document's sculpt until it is committed). */
+  private liveSculpt: Float32Array | null = null;
+  private overlayKey: { sculpt: SculptData | undefined; users: string; live: Float32Array | null } | null = null;
 
   constructor(
     readonly assets: CoreAssets,
@@ -44,6 +48,7 @@ export class CharacterEngine {
     this.morpher = new Morpher(assets.base, assets.targets);
     this._normals = new Float32Array(assets.base.vertexCount * 3);
     this.morpher.rebuild(this.weights());
+    this.refreshOverlay(this._doc);
     this._geometryVersion++;
   }
 
@@ -179,11 +184,61 @@ export class CharacterEngine {
     this.assets.syncGarmentEdits(this._doc.garmentEdits);
     this._interacting = false;
     this.history.clear();
+    this.liveSculpt = null;
     this.morpher.rebuild(this.weights());
+    this.refreshOverlay(this._doc);
     this._geometryVersion++;
     this.emit('geometry');
     this.emit('doc');
     this.emit('history');
+  }
+
+  /**
+   * Show a sculpt stroke in progress (PRD Part 3, F27): `layer` (xyz per body
+   * vertex) replaces the document's sculpt until the stroke is committed with
+   * update(); null goes back to the document's. Not an undo step.
+   */
+  previewSculpt(layer: Float32Array | null): void {
+    this.liveSculpt = layer;
+    this._interacting = layer !== null;
+    this.refreshOverlay(this._doc, true);
+    this._geometryVersion++;
+    this.emit('geometry');
+  }
+
+  /** The user's sliders (library .ps2target) were read again: show the character with them. */
+  userTargetsChanged(): void {
+    this.refreshOverlay(this._doc, true);
+    this._geometryVersion++;
+    this.emit('geometry');
+  }
+
+  /** The sculpt layer as shown now (a stroke in progress, or the document's), dense over the body vertices. */
+  sculptLayer(): Float32Array {
+    if (this.liveSculpt) return Float32Array.from(this.liveSculpt);
+    const n = this.assets.base.bodyVertexCount;
+    return this._doc.sculpt ? decodeSculpt(this._doc.sculpt, n) : new Float32Array(n * 3);
+  }
+
+  /** Recompute what is added after the targets: the sculpt and the user targets. */
+  private refreshOverlay(doc: CharacterDoc, force = false): void {
+    const users = JSON.stringify(doc.userTargets ?? {});
+    const key = this.overlayKey;
+    if (!force && key && key.sculpt === doc.sculpt && key.users === users && key.live === this.liveSculpt) return;
+    this.overlayKey = { sculpt: doc.sculpt, users, live: this.liveSculpt };
+    const n = this.assets.base.bodyVertexCount;
+    let out: Float32Array | null = null;
+    if (this.liveSculpt) out = Float32Array.from(this.liveSculpt);
+    else if (doc.sculpt) out = decodeSculpt(doc.sculpt, n);
+    for (const [id, value] of Object.entries(doc.userTargets ?? {})) {
+      const d = this.assets.userTargetDeltas(id);
+      if (!d || value === 0) continue;
+      out ??= new Float32Array(n * 3);
+      for (let i = 0; i < out.length; i++) out[i] = out[i]! + d[i]! * value;
+    }
+    // The helper geometry (joint cubes, eyes, teeth) follows the skin, so the skeleton and the eyes follow a sculpt.
+    if (out) out = withHelpers(out, helperBinding(this.assets.base), this.assets.base.vertexCount);
+    this.morpher.setOverlay(out);
   }
 
   /** End of an interactive drag: seal the undo step and recompute exactly. */
@@ -204,6 +259,7 @@ export class CharacterEngine {
     const target = doc ? sanitise(cloneCharacter(doc as CharacterDoc)) : this._doc;
     this._interacting = false;
     this.morpher.rebuild(this.weights(target));
+    this.refreshOverlay(target);
     this._geometryVersion++;
     this.emit('geometry');
   }
@@ -239,13 +295,16 @@ export class CharacterEngine {
   private apply(next: CharacterDoc, dragging = false): void {
     const geometryChanged =
       JSON.stringify(next.macros) !== JSON.stringify(this._doc.macros) ||
-      JSON.stringify(next.modifiers) !== JSON.stringify(this._doc.modifiers);
+      JSON.stringify(next.modifiers) !== JSON.stringify(this._doc.modifiers) ||
+      next.sculpt !== this._doc.sculpt ||
+      JSON.stringify(next.userTargets ?? {}) !== JSON.stringify(this._doc.userTargets ?? {});
     this._doc = next;
     this.assets.syncGarmentEdits(next.garmentEdits);
     if (geometryChanged) {
       this._interacting = dragging;
       const t0 = now();
       this.morpher.setWeights(this.weights());
+      this.refreshOverlay(next);
       this.lastUpdateMs = now() - t0;
       this._geometryVersion++;
       this.emit('geometry');

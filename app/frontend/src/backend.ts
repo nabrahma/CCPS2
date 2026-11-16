@@ -141,6 +141,7 @@ interface GoApp {
   SaveHairstyle(name: string, styleJson: string): Promise<LibraryItem>;
   SavePreset(name: string, presetJson: string): Promise<LibraryItem>;
   SaveOutfit(name: string, outfitJson: string): Promise<LibraryItem>;
+  SaveTarget(name: string, targetJson: string): Promise<LibraryItem>;
   SaveMaterial(name: string, materialJson: string, diffuseBase64: string): Promise<LibraryItem>;
   ReadLibraryDocument(file: string): Promise<string>;
   PickGarmentFile(): Promise<string>;
@@ -312,9 +313,9 @@ export const backend = {
   async listLibrary(kind: string): Promise<LibraryItem[]> {
     const g = go();
     if (g) return (await g.ListLibrary(kind)) ?? [];
-    if (kind === 'hairstyles' || kind === 'presets' || kind === 'outfits' || kind === 'materials') {
+    if (kind === 'hairstyles' || kind === 'presets' || kind === 'outfits' || kind === 'materials' || kind === 'targets') {
       return Object.keys(browserDocs()).filter((k) => k.startsWith(`${kind}/`) && (kind !== 'materials' || browserFiles.has(k.replace(/\.ps2mat$/, '_diffuse.png')))).map((file) => ({
-        id: `user:${file.replace(/\.ps2\w+$/, '')}`, kind, name: file.slice(kind.length + 1).replace(/\.ps2(hair|preset|outfit|mat)$/, ''), file, thumb: '', width: 0, height: 0, hasAlpha: false,
+        id: `user:${file.replace(/\.ps2\w+$/, '')}`, kind, name: file.slice(kind.length + 1).replace(/\.ps2(hair|preset|outfit|mat|target)$/, ''), file, thumb: '', width: 0, height: 0, hasAlpha: false,
       }));
     }
     return browserImports.get(kind) ?? [];
@@ -351,6 +352,14 @@ export const backend = {
     const file = `outfits/${safeName(name)}.ps2outfit`;
     putBrowserDoc(file, outfitJson);
     return { id: `user:${file.replace(/\.ps2outfit$/, '')}`, kind: 'outfits', name, file, thumb: '', width: 0, height: 0, hasAlpha: false };
+  },
+  /** Save a sculpt as a slider (.ps2target, PRD Part 3 F27). */
+  async saveTarget(name: string, targetJson: string): Promise<LibraryItem> {
+    const g = go();
+    if (g) return g.SaveTarget(name, targetJson);
+    const file = `targets/${safeName(name)}.ps2target`;
+    putBrowserDoc(file, targetJson);
+    return { id: `user:${file.replace(/\.ps2target$/, '')}`, kind: 'targets', name, file, thumb: '', width: 0, height: 0, hasAlpha: false };
   },
   /**
    * Save a Material Studio material: the document, and its era diffuse as a

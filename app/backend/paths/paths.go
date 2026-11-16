@@ -29,7 +29,7 @@ type Layout struct {
 }
 
 // LibraryKinds are the library sub-folders from PRD 4.4.
-var LibraryKinds = []string{"skins", "overlays", "garments", "garment-textures", "hair-atlases", "hairstyles", "photos", "presets", "backgrounds", "materials", "outfits"}
+var LibraryKinds = []string{"skins", "overlays", "garments", "garment-textures", "hair-atlases", "hairstyles", "photos", "presets", "backgrounds", "materials", "outfits", "targets"}
 
 // Resolve finds the folders and creates the user ones if missing.
 func Resolve() (*Layout, error) {

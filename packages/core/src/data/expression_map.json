@@ -1,21 +1,976 @@
 {
-  "format": "ps2cc.expressionmap/1",
-  "note": "PRD F8: each exported blendshape is a blend of MakeHuman face pose units (assets/core/expressions/face_poseunits.json), applied in the listed order with the listed weights, as a .mhpose file would. 'L' and 'R' are the character's own left and right (MakeHuman's .L bones, +x). Mappings that need an artist's review are listed in TODO_ART.md. 'calibrate' (blinks): the weight of that unit is raised per character, from 1 in 'step' increments up to 'max', until the eyelids close (packages/core/src/expression/blink.ts).",
-  "expressions": [
-    { "name": "blink_L", "label": "Blink left", "group": "eyes", "units": [["LeftUpperLidClosed", 1.0], ["LeftLowerLidUp", 0.3]], "calibrate": { "unit": "LeftUpperLidClosed", "eye": "L", "max": 1.45, "step": 0.05 } },
-    { "name": "blink_R", "label": "Blink right", "group": "eyes", "units": [["RightUpperLidClosed", 1.0], ["RightLowerLidUp", 0.3]], "calibrate": { "unit": "RightUpperLidClosed", "eye": "R", "max": 1.45, "step": 0.05 } },
-    { "name": "squint", "label": "Squint", "group": "eyes", "units": [["LeftLowerLidUp", 1.0], ["RightLowerLidUp", 1.0], ["LeftCheekUp", 0.4], ["RightCheekUp", 0.4]] },
-    { "name": "browsUp", "label": "Brows up", "group": "brows", "units": [["LeftInnerBrowUp", 1.0], ["RightInnerBrowUp", 1.0], ["LeftOuterBrowUp", 1.0], ["RightOuterBrowUp", 1.0]] },
-    { "name": "browsDown", "label": "Brows down", "group": "brows", "units": [["LeftBrowDown", 1.0], ["RightBrowDown", 1.0]] },
-    { "name": "jawOpen", "label": "Jaw open", "group": "mouth", "units": [["JawDrop", 1.0]] },
-    { "name": "smile", "label": "Smile", "group": "mouth", "units": [["MouthLeftPullUp", 1.0], ["MouthRightPullUp", 1.0], ["LeftCheekUp", 0.5], ["RightCheekUp", 0.5]] },
-    { "name": "frown", "label": "Frown", "group": "mouth", "units": [["MouthLeftPullDown", 1.0], ["MouthRightPullDown", 1.0]] },
-    { "name": "AA", "label": "Viseme AA (father)", "group": "visemes", "units": [["JawDrop", 0.7], ["UpperLipUp", 0.2]] },
-    { "name": "EE", "label": "Viseme EE (see)", "group": "visemes", "units": [["JawDrop", 0.2], ["MouthLeftPullSide", 0.6], ["MouthRightPullSide", 0.6]] },
-    { "name": "IH", "label": "Viseme IH (sit)", "group": "visemes", "units": [["JawDrop", 0.35], ["MouthLeftPullSide", 0.3], ["MouthRightPullSide", 0.3]] },
-    { "name": "OH", "label": "Viseme OH (go)", "group": "visemes", "units": [["JawDrop", 0.5], ["LipsKiss", 0.5]] },
-    { "name": "OU", "label": "Viseme OU (you)", "group": "visemes", "units": [["JawDrop", 0.15], ["LipsKiss", 1.0]] },
-    { "name": "FV", "label": "Viseme FV (five)", "group": "visemes", "units": [["JawDrop", 0.1], ["lowerLipBackward", 0.8], ["lowerLipUp", 0.4]] },
-    { "name": "MBP", "label": "Viseme MBP (map)", "group": "visemes", "units": [["lowerLipUp", 0.6], ["UpperLipBackward", 0.3]] }
-  ]
+ "format": "ps2cc.expressionmap/2",
+ "note": "PRD Part 3, F25: every exported blendshape is a fixed recipe of the 52 ARKit face units (assets/core/expressions/faceunits; faceunits01 by Mika Suominen, CC0). The 52 are exported under their ARKit names; visemes are recipes; 'classic' are the names PS2CC exported before 0.25.0, kept so existing Unity projects keep working (jawOpen and the visemes keep their names too). Left and Right are the character's own sides (+x is left). 'calibrate' (blinks): the unit's weight is raised per character, from 1 in 'step' increments up to 'max', until the eyelids close (expression/blink.ts). 'presets' are preview poses on the face units.",
+ "expressions": [
+  {
+   "name": "browDownLeft",
+   "label": "Brow down, left",
+   "group": "brows",
+   "units": [
+    [
+     "browDownLeft",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "browDownRight",
+   "label": "Brow down, right",
+   "group": "brows",
+   "units": [
+    [
+     "browDownRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "browInnerUp",
+   "label": "Inner brows up",
+   "group": "brows",
+   "units": [
+    [
+     "browInnerUp",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "browOuterUpLeft",
+   "label": "Outer brow up, left",
+   "group": "brows",
+   "units": [
+    [
+     "browOuterUpLeft",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "browOuterUpRight",
+   "label": "Outer brow up, right",
+   "group": "brows",
+   "units": [
+    [
+     "browOuterUpRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "cheekPuff",
+   "label": "Cheeks puff",
+   "group": "cheeks",
+   "units": [
+    [
+     "cheekPuff",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "cheekSquintLeft",
+   "label": "Cheek squint, left",
+   "group": "cheeks",
+   "units": [
+    [
+     "cheekSquintLeft",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "cheekSquintRight",
+   "label": "Cheek squint, right",
+   "group": "cheeks",
+   "units": [
+    [
+     "cheekSquintRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "eyeBlinkLeft",
+   "label": "Blink, left",
+   "group": "eyes",
+   "units": [
+    [
+     "eyeBlinkLeft",
+     1.0
+    ]
+   ],
+   "calibrate": {
+    "unit": "eyeBlinkLeft",
+    "eye": "L",
+    "max": 1.45,
+    "step": 0.05
+   }
+  },
+  {
+   "name": "eyeBlinkRight",
+   "label": "Blink, right",
+   "group": "eyes",
+   "units": [
+    [
+     "eyeBlinkRight",
+     1.0
+    ]
+   ],
+   "calibrate": {
+    "unit": "eyeBlinkRight",
+    "eye": "R",
+    "max": 1.45,
+    "step": 0.05
+   }
+  },
+  {
+   "name": "eyeLookDownLeft",
+   "label": "Look down, left",
+   "group": "eyes",
+   "units": [
+    [
+     "eyeLookDownLeft",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "eyeLookDownRight",
+   "label": "Look down, right",
+   "group": "eyes",
+   "units": [
+    [
+     "eyeLookDownRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "eyeLookInLeft",
+   "label": "Look in, left",
+   "group": "eyes",
+   "units": [
+    [
+     "eyeLookInLeft",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "eyeLookInRight",
+   "label": "Look in, right",
+   "group": "eyes",
+   "units": [
+    [
+     "eyeLookInRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "eyeLookOutLeft",
+   "label": "Look out, left",
+   "group": "eyes",
+   "units": [
+    [
+     "eyeLookOutLeft",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "eyeLookOutRight",
+   "label": "Look out, right",
+   "group": "eyes",
+   "units": [
+    [
+     "eyeLookOutRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "eyeLookUpLeft",
+   "label": "Look up, left",
+   "group": "eyes",
+   "units": [
+    [
+     "eyeLookUpLeft",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "eyeLookUpRight",
+   "label": "Look up, right",
+   "group": "eyes",
+   "units": [
+    [
+     "eyeLookUpRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "eyeSquintLeft",
+   "label": "Eye squint, left",
+   "group": "eyes",
+   "units": [
+    [
+     "eyeSquintLeft",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "eyeSquintRight",
+   "label": "Eye squint, right",
+   "group": "eyes",
+   "units": [
+    [
+     "eyeSquintRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "eyeWideLeft",
+   "label": "Eye wide, left",
+   "group": "eyes",
+   "units": [
+    [
+     "eyeWideLeft",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "eyeWideRight",
+   "label": "Eye wide, right",
+   "group": "eyes",
+   "units": [
+    [
+     "eyeWideRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "jawForward",
+   "label": "Jaw forward",
+   "group": "jaw",
+   "units": [
+    [
+     "jawForward",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "jawLeft",
+   "label": "Jaw left",
+   "group": "jaw",
+   "units": [
+    [
+     "jawLeft",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "jawOpen",
+   "label": "Jaw open",
+   "group": "jaw",
+   "units": [
+    [
+     "jawOpen",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "jawRight",
+   "label": "Jaw right",
+   "group": "jaw",
+   "units": [
+    [
+     "jawRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthClose",
+   "label": "Lips closed (jaw open)",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthClose",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthDimpleLeft",
+   "label": "Dimple, left",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthDimpleLeft",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthDimpleRight",
+   "label": "Dimple, right",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthDimpleRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthFrownLeft",
+   "label": "Frown, left",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthFrownLeft",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthFrownRight",
+   "label": "Frown, right",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthFrownRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthFunnel",
+   "label": "Funnel",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthFunnel",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthLeft",
+   "label": "Mouth left",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthLeft",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthLowerDownLeft",
+   "label": "Lower lip down, left",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthLowerDownLeft",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthLowerDownRight",
+   "label": "Lower lip down, right",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthLowerDownRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthPressLeft",
+   "label": "Lips press, left",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthPressLeft",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthPressRight",
+   "label": "Lips press, right",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthPressRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthPucker",
+   "label": "Pucker",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthPucker",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthRight",
+   "label": "Mouth right",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthRollLower",
+   "label": "Roll lower lip",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthRollLower",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthRollUpper",
+   "label": "Roll upper lip",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthRollUpper",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthShrugLower",
+   "label": "Shrug lower lip",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthShrugLower",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthShrugUpper",
+   "label": "Shrug upper lip",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthShrugUpper",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthSmileLeft",
+   "label": "Smile, left",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthSmileLeft",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthSmileRight",
+   "label": "Smile, right",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthSmileRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthStretchLeft",
+   "label": "Stretch, left",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthStretchLeft",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthStretchRight",
+   "label": "Stretch, right",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthStretchRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthUpperUpLeft",
+   "label": "Upper lip up, left",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthUpperUpLeft",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "mouthUpperUpRight",
+   "label": "Upper lip up, right",
+   "group": "mouth",
+   "units": [
+    [
+     "mouthUpperUpRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "noseSneerLeft",
+   "label": "Sneer, left",
+   "group": "cheeks",
+   "units": [
+    [
+     "noseSneerLeft",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "noseSneerRight",
+   "label": "Sneer, right",
+   "group": "cheeks",
+   "units": [
+    [
+     "noseSneerRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "tongueOut",
+   "label": "Tongue out",
+   "group": "tongue",
+   "units": [
+    [
+     "tongueOut",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "AA",
+   "label": "Viseme AA (father)",
+   "group": "visemes",
+   "units": [
+    [
+     "jawOpen",
+     0.55
+    ],
+    [
+     "mouthStretchLeft",
+     0.15
+    ],
+    [
+     "mouthStretchRight",
+     0.15
+    ],
+    [
+     "mouthLowerDownLeft",
+     0.2
+    ],
+    [
+     "mouthLowerDownRight",
+     0.2
+    ]
+   ]
+  },
+  {
+   "name": "EE",
+   "label": "Viseme EE (see)",
+   "group": "visemes",
+   "units": [
+    [
+     "jawOpen",
+     0.15
+    ],
+    [
+     "mouthStretchLeft",
+     0.45
+    ],
+    [
+     "mouthStretchRight",
+     0.45
+    ],
+    [
+     "mouthSmileLeft",
+     0.2
+    ],
+    [
+     "mouthSmileRight",
+     0.2
+    ]
+   ]
+  },
+  {
+   "name": "IH",
+   "label": "Viseme IH (sit)",
+   "group": "visemes",
+   "units": [
+    [
+     "jawOpen",
+     0.3
+    ],
+    [
+     "mouthStretchLeft",
+     0.25
+    ],
+    [
+     "mouthStretchRight",
+     0.25
+    ],
+    [
+     "mouthLowerDownLeft",
+     0.1
+    ],
+    [
+     "mouthLowerDownRight",
+     0.1
+    ]
+   ]
+  },
+  {
+   "name": "OH",
+   "label": "Viseme OH (go)",
+   "group": "visemes",
+   "units": [
+    [
+     "jawOpen",
+     0.4
+    ],
+    [
+     "mouthFunnel",
+     0.6
+    ],
+    [
+     "mouthPucker",
+     0.2
+    ]
+   ]
+  },
+  {
+   "name": "OU",
+   "label": "Viseme OU (you)",
+   "group": "visemes",
+   "units": [
+    [
+     "jawOpen",
+     0.12
+    ],
+    [
+     "mouthPucker",
+     0.85
+    ],
+    [
+     "mouthFunnel",
+     0.3
+    ]
+   ]
+  },
+  {
+   "name": "FV",
+   "label": "Viseme FV (five)",
+   "group": "visemes",
+   "units": [
+    [
+     "jawOpen",
+     0.08
+    ],
+    [
+     "mouthRollLower",
+     0.6
+    ],
+    [
+     "mouthUpperUpLeft",
+     0.2
+    ],
+    [
+     "mouthUpperUpRight",
+     0.2
+    ]
+   ]
+  },
+  {
+   "name": "MBP",
+   "label": "Viseme MBP (map)",
+   "group": "visemes",
+   "units": [
+    [
+     "mouthPressLeft",
+     0.5
+    ],
+    [
+     "mouthPressRight",
+     0.5
+    ],
+    [
+     "mouthRollUpper",
+     0.2
+    ],
+    [
+     "mouthRollLower",
+     0.2
+    ]
+   ]
+  },
+  {
+   "name": "blink_L",
+   "label": "Blink left",
+   "group": "classic",
+   "units": [
+    [
+     "eyeBlinkLeft",
+     1.0
+    ]
+   ],
+   "calibrate": {
+    "unit": "eyeBlinkLeft",
+    "eye": "L",
+    "max": 1.45,
+    "step": 0.05
+   }
+  },
+  {
+   "name": "blink_R",
+   "label": "Blink right",
+   "group": "classic",
+   "units": [
+    [
+     "eyeBlinkRight",
+     1.0
+    ]
+   ],
+   "calibrate": {
+    "unit": "eyeBlinkRight",
+    "eye": "R",
+    "max": 1.45,
+    "step": 0.05
+   }
+  },
+  {
+   "name": "squint",
+   "label": "Squint",
+   "group": "classic",
+   "units": [
+    [
+     "eyeSquintLeft",
+     1.0
+    ],
+    [
+     "eyeSquintRight",
+     1.0
+    ],
+    [
+     "cheekSquintLeft",
+     0.4
+    ],
+    [
+     "cheekSquintRight",
+     0.4
+    ]
+   ]
+  },
+  {
+   "name": "browsUp",
+   "label": "Brows up",
+   "group": "classic",
+   "units": [
+    [
+     "browInnerUp",
+     1.0
+    ],
+    [
+     "browOuterUpLeft",
+     1.0
+    ],
+    [
+     "browOuterUpRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "browsDown",
+   "label": "Brows down",
+   "group": "classic",
+   "units": [
+    [
+     "browDownLeft",
+     1.0
+    ],
+    [
+     "browDownRight",
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "smile",
+   "label": "Smile",
+   "group": "classic",
+   "units": [
+    [
+     "mouthSmileLeft",
+     1.0
+    ],
+    [
+     "mouthSmileRight",
+     1.0
+    ],
+    [
+     "cheekSquintLeft",
+     0.3
+    ],
+    [
+     "cheekSquintRight",
+     0.3
+    ]
+   ]
+  },
+  {
+   "name": "frown",
+   "label": "Frown",
+   "group": "classic",
+   "units": [
+    [
+     "mouthFrownLeft",
+     1.0
+    ],
+    [
+     "mouthFrownRight",
+     1.0
+    ]
+   ]
+  }
+ ],
+ "presets": [
+  {
+   "name": "smile",
+   "label": "Smile",
+   "weights": {
+    "mouthSmileLeft": 0.8,
+    "mouthSmileRight": 0.8,
+    "cheekSquintLeft": 0.5,
+    "cheekSquintRight": 0.5,
+    "eyeSquintLeft": 0.2,
+    "eyeSquintRight": 0.2,
+    "jawOpen": 0.05
+   }
+  },
+  {
+   "name": "surprise",
+   "label": "Surprise",
+   "weights": {
+    "browInnerUp": 0.9,
+    "browOuterUpLeft": 0.8,
+    "browOuterUpRight": 0.8,
+    "eyeWideLeft": 0.8,
+    "eyeWideRight": 0.8,
+    "jawOpen": 0.35
+   }
+  },
+  {
+   "name": "fear",
+   "label": "Fear",
+   "weights": {
+    "browInnerUp": 0.9,
+    "browOuterUpLeft": 0.3,
+    "browOuterUpRight": 0.3,
+    "eyeWideLeft": 0.9,
+    "eyeWideRight": 0.9,
+    "mouthStretchLeft": 0.6,
+    "mouthStretchRight": 0.6,
+    "jawOpen": 0.2
+   }
+  },
+  {
+   "name": "disgust",
+   "label": "Disgust",
+   "weights": {
+    "noseSneerLeft": 0.8,
+    "noseSneerRight": 0.8,
+    "mouthUpperUpLeft": 0.6,
+    "mouthUpperUpRight": 0.6,
+    "browDownLeft": 0.4,
+    "browDownRight": 0.4,
+    "mouthFrownLeft": 0.3,
+    "mouthFrownRight": 0.3,
+    "cheekSquintLeft": 0.3,
+    "cheekSquintRight": 0.3
+   }
+  },
+  {
+   "name": "pain",
+   "label": "Pain",
+   "weights": {
+    "browDownLeft": 0.6,
+    "browDownRight": 0.6,
+    "browInnerUp": 0.4,
+    "eyeSquintLeft": 0.7,
+    "eyeSquintRight": 0.7,
+    "cheekSquintLeft": 0.5,
+    "cheekSquintRight": 0.5,
+    "mouthStretchLeft": 0.5,
+    "mouthStretchRight": 0.5,
+    "noseSneerLeft": 0.3,
+    "noseSneerRight": 0.3,
+    "eyeBlinkLeft": 0.3,
+    "eyeBlinkRight": 0.3
+   }
+  },
+  {
+   "name": "scream",
+   "label": "Scream",
+   "weights": {
+    "jawOpen": 0.8,
+    "browInnerUp": 0.7,
+    "eyeWideLeft": 0.6,
+    "eyeWideRight": 0.6,
+    "mouthStretchLeft": 0.6,
+    "mouthStretchRight": 0.6,
+    "mouthLowerDownLeft": 0.5,
+    "mouthLowerDownRight": 0.5,
+    "mouthUpperUpLeft": 0.4,
+    "mouthUpperUpRight": 0.4
+   }
+  }
+ ]
 }

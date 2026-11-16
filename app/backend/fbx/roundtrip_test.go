@@ -235,9 +235,9 @@ func TestExportedCharacters(t *testing.T) {
 			for _, m := range s.Meshes {
 				tris += m.TriangleCount()
 				shapes += len(m.Shapes)
-				// M8: the head carries the full default expression set (15 blendshapes).
-				if strings.HasSuffix(m.Name, "_Head") && len(m.Shapes) != 15 {
-					t.Errorf("%s: %d blendshapes, want the 15 defaults", m.Name, len(m.Shapes))
+				// PRD Part 3 F25: the head carries the 52 ARKit face units except tongueOut, which moves only the tongue.
+				if strings.HasSuffix(m.Name, "_Head") && len(m.Shapes) != 51 {
+					t.Errorf("%s: %d blendshapes, want the 51 ARKit units that move the head", m.Name, len(m.Shapes))
 				}
 			}
 			t.Logf("%s: %d bones, %d meshes, %d triangles, %d blendshapes, %d bytes", s.Name, len(s.Bones), len(s.Meshes), tris, shapes, len(out))

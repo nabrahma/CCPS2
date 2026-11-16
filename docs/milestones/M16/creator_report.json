@@ -49,10 +49,10 @@
   },
   "garmentEdit": {
     "base": "mh:clothes/toigo_basic_tucked_t-shirt",
-    "characterBytes": 196310
+    "characterBytes": 197232
   },
   "garmentStudio": {
-    "saved": "user:garment/Loose_tee_ff9f1c68",
+    "saved": "user:garment/Loose_tee_a351f630",
     "triangles": 1800
   },
   "materialStudio": {

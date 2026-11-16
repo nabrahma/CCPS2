@@ -1741,3 +1741,70 @@ code {
 .crowd-studio .crowd-member.active {
   border-color: #cfcfcf;
 }
+
+/* Rows of chips that must wrap in the narrow panel (Sculpt Studio brushes, expression poses). */
+.sculpt-studio .tools,
+.expr-presets {
+  flex-wrap: wrap;
+  row-gap: 6px;
+}
+.sculpt-studio .picker-row .num {
+  min-width: 52px;
+  text-align: right;
+}
+
+
+/* Face points by hand (PRD Part 3, F33) */
+.modal.point-editor {
+  max-width: 960px;
+}
+.point-stage {
+  position: relative;
+  margin: 8px auto;
+  background: #111;
+  user-select: none;
+}
+.point-stage img,
+.point-stage svg {
+  position: absolute;
+  inset: 0;
+}
+.point-stage svg {
+  cursor: move;
+  touch-action: none;
+}
+.point-stage .point-line {
+  fill: none;
+  stroke: rgba(80, 200, 255, 0.8);
+  stroke-width: 1.2;
+  pointer-events: none;
+}
+.point-stage .point {
+  fill: #ffd84d;
+  stroke: #000;
+  stroke-width: 1;
+  cursor: grab;
+}
+.point-stage .point.active {
+  fill: #ff5a3c;
+}
+.photo-mask-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.mask-thumb {
+  height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+.swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  margin-right: 4px;
+  vertical-align: -2px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}

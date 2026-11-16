@@ -8,6 +8,12 @@ import {
   checkPhoto,
   faceFeatures,
   fitFaceToPhoto,
+  photoLandmarks,
+  DEFAULT_HAIR_COLOUR,
+  layerKind,
+  newLayer,
+  sampleBilinear,
+  toneBetween,
   headTexture,
   regionGuide,
   renderUvTemplate,
@@ -18,6 +24,7 @@ import { resolveAssetUrl, type FrontView } from '@ps2cc/viewport';
 import { backend } from './backend';
 import { canvasToPng, decodeImage, imageToCanvas, imageToPng, loadImageElement } from './images';
 import { detectLandmarks } from './photo/landmarker';
+import { segmentPhoto, type Segmentation } from './photo/segmenter';
 import type { Studio } from './state/studio';
 import { useUi } from './state/ui';
 
@@ -32,9 +39,11 @@ export async function applyPhoto(studio: Studio, url: string, cancelled: () => b
   const img = await loadImageElement(url);
   const found = await detectLandmarks(studio.info.coreAssetsUrl, img);
   if (cancelled()) return null;
-  if (!found) throw new Error('No face was found in the photo. Use a front-facing photo with the whole face visible.');
+  if (!found) throw new NoFaceFound(url);
   const pixels = await decodeImage(url);
   const check = checkPhoto(pixels, found.points, found.matrix ? anglesFromMatrix(found.matrix) : undefined);
+  if (cancelled()) return null;
+  const seg = await segment(studio, img, pixels);
   if (cancelled()) return null;
   studio.engine.update('Face photo', (d) => {
     d.skin.photo = {
@@ -44,9 +53,112 @@ export async function applyPhoto(studio: Studio, url: string, cancelled: () => b
       landmarks: found.points.map((x) => Math.round(x * 1e6) / 1e6),
       width: found.width,
       height: found.height,
+      ...segmentFields(seg, d.skin.photo?.useMask),
     };
   });
   return check;
+}
+
+/** MediaPipe found no face: the photo can still be used with face points placed by hand (PRD Part 3, F33). */
+export class NoFaceFound extends Error {
+  constructor(readonly url: string) {
+    super('No face was found in the photo. Place the face points by hand, or use a front-facing photo with the whole face visible.');
+  }
+}
+
+/** Segment a photo; a failure only loses the mask (the photo still projects as before). */
+async function segment(studio: Studio, img: HTMLImageElement, pixels: RgbaImage): Promise<Segmentation | null> {
+  try {
+    return await segmentPhoto(studio.info.coreAssetsUrl, img, pixels);
+  } catch (err) {
+    backend.log('warn', `photo segmentation failed: ${String(err)}`);
+    return null;
+  }
+}
+
+function segmentFields(seg: Segmentation | null, useMask: boolean | undefined) {
+  if (!seg) return {};
+  const picked: { hair?: [number, number, number]; skin?: [number, number, number] } = {};
+  if (seg.hair) picked.hair = seg.hair;
+  if (seg.skin) picked.skin = seg.skin;
+  return { mask: seg.mask, useMask: useMask ?? true, picked };
+}
+
+/**
+ * Use 68 face points placed by hand (PRD Part 3, F33) for the front photo:
+ * x, y per point, 0..1 of the photo, y down.
+ */
+export async function applyManualPoints(studio: Studio, url: string, points: number[]): Promise<void> {
+  const img = await loadImageElement(url);
+  const pixels = await decodeImage(url);
+  const seg = await segment(studio, img, pixels);
+  const landmarks: number[] = [];
+  for (let k = 0; k < points.length / 2; k++) landmarks.push(Math.round(points[k * 2]! * 1e6) / 1e6, Math.round(points[k * 2 + 1]! * 1e6) / 1e6, 0);
+  studio.engine.update('Face points by hand', (d) => {
+    const old = d.skin.photo?.image === url ? d.skin.photo : null;
+    d.skin.photo = {
+      image: url,
+      strength: old?.strength ?? 1,
+      colourMatch: old?.colourMatch ?? true,
+      landmarks,
+      landmarkSet: 'ibug68',
+      width: img.naturalWidth,
+      height: img.naturalHeight,
+      ...(old?.sides ? { sides: old.sides } : {}),
+      ...segmentFields(seg, old?.useMask),
+    };
+  });
+  await studio.settled();
+}
+
+/**
+ * Use the colours picked from the photo (PRD Part 3, F33): the hair's median
+ * colour as the card hair's base colour, and the face skin's median colour as
+ * a tone tint that takes the whole skin there. One undo step; both stay
+ * editable.
+ */
+export async function applyPhotoColours(studio: Studio): Promise<{ hair: boolean; skin: boolean }> {
+  const picked = studio.engine.doc.skin.photo?.picked;
+  if (!picked) throw new Error('This photo has no picked colours: place it again to find them.');
+  let tone: { hue: number; saturation: number; value: number } | null = null;
+  const skin = picked.skin;
+  if (skin) {
+    // The base skin's colour over the face, before any layer.
+    const base = studio.scene.baseSkinTexture();
+    if (base) {
+      const img = await decodeImage(resolveAssetUrl(studio.info.coreAssetsUrl, base));
+      const size = 256;
+      const masks = studio.assets.skinComposer.layout.regionMasks(size);
+      const tmp = [0, 0, 0, 0];
+      const rgb: number[][] = [[], [], []];
+      for (let t = 0; t < size * size; t++) {
+        if (masks.data[t * 4]! < 250) continue;
+        // Texel rows run up the UV square, as in the projection.
+        sampleBilinear(img, ((t % size) + 0.5) / size, 1 - (Math.floor(t / size) + 0.5) / size, tmp);
+        for (let k = 0; k < 3; k++) rgb[k]!.push(tmp[k]!);
+      }
+      if (rgb[0]!.length > 100) {
+        const med = rgb.map((c) => c.sort((a, b) => a - b)[Math.floor(c.length / 2)]!) as [number, number, number];
+        tone = toneBetween(med, skin);
+      }
+    }
+  }
+  const hair = picked.hair;
+  studio.engine.update('Colours from photo', (d) => {
+    if (hair) d.hair.colour = { ...(d.hair.colour ?? DEFAULT_HAIR_COLOUR), base: [hair[0] / 255, hair[1] / 255, hair[2] / 255] };
+    if (tone) {
+      let layer = d.skin.layers.find((l) => l.kind === 'tone');
+      if (!layer) {
+        layer = newLayer('tone');
+        d.skin.layers.unshift(layer);
+      }
+      layer.enabled = true;
+      layer.opacity = layerKind('tone').opacity;
+      layer.params = { ...layer.params, hue: tone.hue, saturation: tone.saturation, value: tone.value };
+    }
+  });
+  await studio.settled();
+  return { hair: Boolean(hair), skin: tone !== null };
 }
 
 /**
@@ -60,11 +172,12 @@ export async function applySidePhoto(studio: Studio, side: 'left' | 'right', url
   const img = await loadImageElement(url);
   const found = await detectLandmarks(studio.info.coreAssetsUrl, img);
   if (!found) throw new Error('No face was found in the side photo. Use a three-quarter view (about 45 degrees) with both eyes visible.');
+  const seg = await segment(studio, img, await decodeImage(url));
   studio.engine.update(`${side === 'left' ? 'Left' : 'Right'} side photo`, (d) => {
     if (!d.skin.photo) return;
     d.skin.photo.sides = {
       ...(d.skin.photo.sides ?? {}),
-      [side]: { image: url, landmarks: found.points.map((x) => Math.round(x * 1e6) / 1e6), width: found.width, height: found.height },
+      [side]: { image: url, landmarks: found.points.map((x) => Math.round(x * 1e6) / 1e6), width: found.width, height: found.height, ...(seg ? { mask: seg.mask } : {}) },
     };
   });
   await studio.settled();
@@ -90,7 +203,9 @@ export async function placePhoto(studio: Studio, url: string): Promise<void> {
   } catch (err) {
     if (stale()) return;
     useUi.getState().setPhoto(null);
-    useUi.getState().error('Could not use the photo', err);
+    // No face found: offer to place the points by hand.
+    if (err instanceof NoFaceFound) useUi.getState().openPointEditor({ image: url, reason: 'no-face' });
+    else useUi.getState().error('Could not use the photo', err);
   }
 }
 
@@ -118,7 +233,7 @@ export async function fitFaceShape(studio: Studio): Promise<{ before: number; af
     macros: engine.doc.macros,
     modifiers: engine.doc.modifiers,
     table,
-    landmarks: photo.landmarks,
+    landmarks: photoLandmarks(photo)!,
     width: photo.width,
     height: photo.height,
   });

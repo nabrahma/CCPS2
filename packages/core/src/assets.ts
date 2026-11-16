@@ -1,5 +1,5 @@
 /** Loads the compiled core assets the engine needs at startup. */
-import { readJson, type AssetSource } from './io/source';
+import { readContainer, readJson, type AssetSource } from './io/source';
 import { headLayoutFrom, headLayoutPath, headMeshOf, type HeadLayout, type HeadLayoutFile } from './skin/headpack';
 import { BaseMesh } from './mesh/basemesh';
 import { ModifierSet } from './morph/modifiers';
@@ -17,6 +17,7 @@ import type { StrandPreset } from './hair/strand-atlas';
 import { FaceRig } from './expression/facerig';
 import { FacePoseUnits } from './expression/poseunits';
 import { EXPRESSION_MAP, validateExpressionMap } from './expression/map';
+import { FaceUnitStore } from './expression/faceunits';
 import type { LicenceManifest } from './credits';
 import type { GarmentEdit } from './character/doc';
 import { editTriangleCount, proxyFromEdit } from './proxy/garment-edit';
@@ -24,6 +25,7 @@ import type { CatalogMaterial } from './wardrobe/material';
 import { validateLandmarks, type LandmarkFile } from './anthro/landmarks';
 import { Anthropometer } from './anthro/measure';
 import { validateCalibration, type PopulationCalibration } from './population/sampler';
+import { decodeSculpt, type UserTarget } from './sculpt/layer';
 
 export interface FaceAssets {
   rig: FaceRig;
@@ -121,6 +123,34 @@ export class CoreAssets {
     readonly population: PopulationCalibration,
   ) {}
 
+  private userTargets = new Map<string, { target: UserTarget; dense: Float32Array | null }>();
+
+  /** A slider made from a sculpt (library .ps2target, PRD Part 3 F27): register it (again, after it was saved). */
+  registerUserTarget(target: UserTarget): void {
+    this.userTargets.set(target.id, { target, dense: null });
+  }
+
+  /** Forget the user's targets (before the library is read again). */
+  clearUserTargets(): void {
+    this.userTargets.clear();
+  }
+
+  get userTargetList(): UserTarget[] {
+    return [...this.userTargets.values()].map((t) => t.target);
+  }
+
+  hasUserTarget(id: string): boolean {
+    return this.userTargets.has(id);
+  }
+
+  /** A user target's deltas, dense over the body vertices (decoded once), or null if it is not in the library. */
+  userTargetDeltas(id: string): Float32Array | null {
+    const t = this.userTargets.get(id);
+    if (!t) return null;
+    t.dense ??= decodeSculpt(t.target.data, this.base.bodyVertexCount);
+    return t.dense;
+  }
+
   /** Measurements of body shapes (built on first use, shared). */
   get anthro(): Anthropometer {
     return Anthropometer.of(this.base, this.bodyLandmarks);
@@ -167,21 +197,42 @@ export class CoreAssets {
 
   private composer: SkinComposer | null = null;
   private face: Promise<FaceAssets> | null = null;
+  private units: Promise<FaceUnitStore> | null = null;
+  private mirrorTable: Promise<Uint32Array> | null = null;
 
   /**
-   * MakeHuman's default rig, its weights and the face pose units, for baking
-   * expression blendshapes (PRD F8). Loaded on first use.
+   * MakeHuman's default rig, its weights and the face pose units (PRD F8).
+   * Expressions are baked from the ARKit face units since Part 3 (faceUnits());
+   * the rig stays for MakeHuman parity tests and the skin composer. Loaded on first use.
    */
   faceAssets(): Promise<FaceAssets> {
     this.face ??= (async () => {
       const rig = await RigDefinition.load(this.source, 'default');
       const weights = await RigWeights.load(this.source, rig, this.base.vertexCount);
       const units = await FacePoseUnits.load(this.source);
-      const problems = validateExpressionMap(EXPRESSION_MAP, units);
-      if (problems.length) throw new Error(`expression_map.json: ${problems.join('; ')}`);
       return { rig: new FaceRig(rig, weights.sparse), units };
     })();
     return this.face;
+  }
+
+  /** The 52 ARKit face units the expression blendshapes are made of (PRD Part 3, F25). Loaded on first use. */
+  faceUnits(): Promise<FaceUnitStore> {
+    this.units ??= (async () => {
+      const problems = validateExpressionMap(EXPRESSION_MAP);
+      if (problems.length) throw new Error(`expression_map.json: ${problems.join('; ')}`);
+      return FaceUnitStore.load(this.source);
+    })();
+    return this.units;
+  }
+
+  /** For every hm08 vertex, the vertex at its mirror image across x = 0 (one-to-one). Loaded on first use. */
+  mirror(): Promise<Uint32Array> {
+    this.mirrorTable ??= readContainer(this.source, 'basemesh/hm08_mirror').then((c) => {
+      const m = c.get('mirror', 'u32');
+      if (m.length !== this.base.vertexCount) throw new Error('hm08 mirror table has the wrong size');
+      return m;
+    });
+    return this.mirrorTable;
   }
   private landmarks: Promise<LandmarkTable | null> | null = null;
 

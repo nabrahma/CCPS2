@@ -14,7 +14,10 @@
  *    (UV seams, the head/body split) move together, no edge stretches like a
  *    tear, and the lower teeth follow the jaw. MakeHuman's JawDrop folds a few
  *    small triangles at the lips on its own full mesh too; folds are reported
- *    and must stay at the lips (within 12 mm of the mouth opening) and small.
+ *    and must stay at the lips (within 20 mm of the mouth opening) and small.
+ *    The ARKit jawOpen (PRD Part 3, F25) rolls the lower lip, which on the
+ *    female 10k tier turns a few lip-front triangles 17 mm from the opening
+ *    vertices (which sit inside the mouth); the chin is 30 mm or more away.
  * Figures go to docs/milestones/M8/expression_report.json.
  */
 import { mkdirSync, writeFileSync } from 'node:fs';
@@ -178,8 +181,13 @@ describe.skipIf(!assetsAvailable)('expression blendshapes (M8 acceptance)', () =
     const byRole = (r: string) => ex.meshes.find((m) => m.role === r)!;
     const head = byRole('head');
     const eyes = byRole('eyes');
-    for (const n of DEFAULT_EXPRESSIONS) expect(head.shapes.map((s) => s.name), `head ${n}`).toContain(n);
-    for (const n of ['blink_L', 'blink_R', 'browsUp', 'browsDown', 'jawOpen']) expect(eyes.shapes.map((s) => s.name), `eyes ${n}`).toContain(n);
+    // Every ARKit unit moves the head, except tongueOut, which moves only the tongue (in the eyes atlas).
+    for (const n of DEFAULT_EXPRESSIONS) {
+      if (n === 'tongueOut') continue;
+      expect(head.shapes.map((s) => s.name), `head ${n}`).toContain(n);
+    }
+    // Lashes and teeth follow the lids and the jaw, the eyeballs follow the eye-look units.
+    for (const n of ['eyeBlinkLeft', 'eyeBlinkRight', 'browDownLeft', 'jawOpen', 'eyeLookUpLeft', 'tongueOut']) expect(eyes.shapes.map((s) => s.name), `eyes ${n}`).toContain(n);
     // Every listed shape really moves its mesh, and indices are sorted and in range.
     for (const m of ex.meshes) {
       for (const s of m.shapes) {
@@ -295,7 +303,7 @@ describe.skipIf(!assetsAvailable)('expression blendshapes (M8 acceptance)', () =
         },
       });
       expect(seam, `${label}: seam`).toBeLessThan(1e-6);
-      expect(folds.farthest, `${label}: folds only at the lips (within 12 mm of the mouth opening)`).toBeLessThan(0.012);
+      expect(folds.farthest, `${label}: folds only at the lips (within 20 mm of the mouth opening)`).toBeLessThan(0.02);
       expect(folds.area, `${label}: folded area`).toBeLessThan(1e-4);
       expect(worstStretch, `${label}: edge stretch`).toBeLessThan(4);
       expect(chinDrop, `${label}: chin drop`).toBeGreaterThan(0.01);

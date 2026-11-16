@@ -58,3 +58,6 @@ tools/.toolcache/
 # Part 2 PRD stays local
 /PRD-Part2-Visual-Fidelity.md
 /PRD-Part3-Parametric-Control-and-Clothing.md
+
+# Reference characters (the look to aim for; not ours to ship)
+PS2 Character/

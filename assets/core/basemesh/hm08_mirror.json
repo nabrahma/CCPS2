@@ -1,0 +1,15 @@
+{
+ "format": "ps2cc.mirror/1",
+ "note": "For every hm08 vertex, the vertex at its mirror image across x = 0 (nearest mirrored vertex on the base mesh); one-to-one.",
+ "maxDistanceM": 0.0,
+ "disagreesWithMpfb": 0,
+ "binary": "hm08_mirror.bin",
+ "byteLength": 76632,
+ "buffers": {
+  "mirror": {
+   "offset": 0,
+   "dtype": "u32",
+   "count": 19158
+  }
+ }
+}

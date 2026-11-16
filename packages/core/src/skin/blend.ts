@@ -157,3 +157,22 @@ export function compositeReference(base: RgbaImage, layers: readonly CompositeLa
   }
   return { width: size, height: size, data: acc };
 }
+
+/**
+ * The tone-tint layer settings (hue shift in degrees, saturation and value
+ * factors) that turn `from` into `to` (sRGB 0..255), clamped to the layer's
+ * ranges: used to match the body's skin to the colour picked from a face
+ * photo (PRD Part 3, F33).
+ */
+export function toneBetween(from: [number, number, number], to: [number, number, number]): HsvAdjust {
+  const [h0, s0, v0] = rgbToHsv(from[0] / 255, from[1] / 255, from[2] / 255);
+  const [h1, s1, v1] = rgbToHsv(to[0] / 255, to[1] / 255, to[2] / 255);
+  let dh = (h1 - h0) * 360;
+  dh -= Math.round(dh / 360) * 360;
+  const clamp = (x: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, x));
+  return {
+    hue: Math.round(clamp(dh, -45, 45)),
+    saturation: +clamp(s0 > 1e-3 ? s1 / s0 : 1, 0, 2).toFixed(2),
+    value: +clamp(v0 > 1e-3 ? v1 / v0 : 1, 0.5, 1.5).toFixed(2),
+  };
+}

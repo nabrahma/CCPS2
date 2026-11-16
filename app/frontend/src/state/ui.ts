@@ -13,7 +13,7 @@ export type TabId = 'body' | 'face' | 'skin' | 'eyes' | 'brows' | 'lashes' | 'ma
 export type DockTab = 'modify' | 'studio' | 'settings';
 
 /** The Asset Studio's editors (Part 2 F20). */
-export type StudioKind = 'hair' | 'texture' | 'garment' | 'material' | 'crowd';
+export type StudioKind = 'hair' | 'texture' | 'garment' | 'material' | 'sculpt' | 'crowd';
 
 /**
  * An open Asset Studio. `target`: the garment's part key (Garment Studio, or
@@ -105,6 +105,9 @@ export interface UiState {
   atlasEditor: AtlasEditorRequest | null;
   garmentImport: GarmentImportRequest | null;
   photo: PhotoStatus | null;
+  /** The 68-point face editor (PRD Part 3, F33), for a photo where no face was found or to correct the points. */
+  pointEditor: { image: string; reason: 'no-face' | 'correct' } | null;
+  openPointEditor(v: { image: string; reason: 'no-face' | 'correct' } | null): void;
   /** Character browser (File → Characters…, Ctrl+O). */
   browserOpen: boolean;
   setBrowserOpen(v: boolean): void;
@@ -212,6 +215,8 @@ export const useUi = create<UiState>((set) => ({
   dropDialog: null,
   atlasEditor: null,
   garmentImport: null,
+  pointEditor: null,
+  openPointEditor: (pointEditor) => set({ pointEditor }),
   browserOpen: false,
   setBrowserOpen: (browserOpen) => set({ browserOpen }),
   dataFolderOpen: false,

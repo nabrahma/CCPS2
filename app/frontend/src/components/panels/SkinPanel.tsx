@@ -1,7 +1,7 @@
 import { useEffect, useId, useMemo, useState, type ReactNode } from 'react';
 import { BLEND_MODES, LAYER_KINDS, layerKind, layerParam, newLayer, PAINTED_LAYER_PREFIX, type BlendMode, type LayerKind, type RegionMask, type SkinLayer } from '@ps2cc/core';
 import { backend, libraryUrl, type LibraryItem } from '../../backend';
-import { applySidePhoto, cancelPhoto, exportRegionGuide, exportSkinTextures, exportSkinUvTemplate, fitFaceShape, placePhoto } from '../../skin';
+import { applyPhotoColours, applySidePhoto, cancelPhoto, exportRegionGuide, exportSkinTextures, exportSkinUvTemplate, fitFaceShape, placePhoto } from '../../skin';
 import { useStudio, useStudioVersion } from '../../state/hooks';
 import { useUi } from '../../state/ui';
 import { PainterLink } from '../PainterLink';
@@ -185,6 +185,35 @@ function PhotoSection() {
             <input type="checkbox" checked={photo.colourMatch} onChange={(e) => edit('Photo colour match', (p) => void (p.colourMatch = e.target.checked))} />
             Match colour to the skin
           </label>
+          {photo.mask && (
+            <div className="photo-mask-row">
+              <label className="check-row" title="Project only the face skin the photo shows: hair, background and glasses are left to the base skin">
+                <input type="checkbox" checked={photo.useMask !== false} onChange={(e) => edit('Photo face mask', (p) => void (p.useMask = e.target.checked))} data-testid="photo-use-mask" />
+                Leave hair and background out
+              </label>
+              <img className="mask-thumb" src={photo.mask} alt="Face skin found in the photo (white)" title="Face skin found in the photo (white)" />
+            </div>
+          )}
+          <div className="button-row">
+            {photo.picked && (photo.picked.hair || photo.picked.skin) && (
+              <button
+                title="Hair colour and skin tone from the photo (both stay editable)"
+                onClick={() =>
+                  void applyPhotoColours(studio)
+                    .then((r) => ui.info(`Used the photo's ${[r.hair ? 'hair colour' : '', r.skin ? 'skin tone' : ''].filter(Boolean).join(' and ')}`))
+                    .catch((err: unknown) => ui.error('Could not use the photo colours', err))
+                }
+                data-testid="photo-colours"
+              >
+                {photo.picked.hair && <span className="swatch" style={{ background: `rgb(${photo.picked.hair.join(',')})` }} />}
+                {photo.picked.skin && <span className="swatch" style={{ background: `rgb(${photo.picked.skin.join(',')})` }} />}
+                Use photo colours
+              </button>
+            )}
+            <button onClick={() => ui.openPointEditor({ image: photo.image, reason: 'correct' })} title="Check or move the face points by hand" data-testid="photo-points">
+              Face points…
+            </button>
+          </div>
           <SidePhotos />
         </>
       )}

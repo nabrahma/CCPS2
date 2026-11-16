@@ -16,6 +16,7 @@ export * from './math/linalg';
 export * from './math/distributions';
 export * from './anthro';
 export * from './population';
+export * from './sculpt';
 export * from './skeleton/rig';
 export * from './skeleton/weights';
 export * from './proxy/proxy';

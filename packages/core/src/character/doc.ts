@@ -14,6 +14,8 @@ import { DEFAULT_EYE_LOOK, sanitiseEyeLook, type EyeLook } from '../eyes/eye-tex
 import { sanitiseLook, type GarmentLook } from '../wardrobe/look';
 import { DEFAULT_MACROS, normaliseEthnic, type MacroValues } from '../morph/macros';
 import { MEASURE_BY_ID, type MeasureId } from '../anthro/definitions';
+import { ARKIT_UNITS } from '../expression/faceunits';
+import { sanitiseSculpt, sanitiseUserTargets, type SculptData } from '../sculpt/layer';
 import {
   DEFAULT_PROFILE,
   profileSettings,
@@ -90,6 +92,16 @@ export interface PhotoSpec {
   /** Photo size in pixels when the landmarks were found. */
   width?: number;
   height?: number;
+  /**
+   * 'ibug68': the landmarks are 68 points placed by hand (x, y, 0 each; PRD
+   * Part 3, F33) instead of MediaPipe's 478.
+   */
+  landmarkSet?: 'mediapipe' | 'ibug68';
+  /** Face-skin mask from the segmenter (PRD Part 3, F33): a PNG data URL, red on face skin. Used when `useMask` is not false. */
+  mask?: string;
+  useMask?: boolean;
+  /** Colours picked from the photo's hair and face skin (sRGB 0..255), kept so they can be applied again. */
+  picked?: { hair?: [number, number, number]; skin?: [number, number, number] };
   /** Part 2 F19: side photos (three-quarter views work best), blended with the front one for full-head coverage. */
   sides?: { left?: SidePhoto | null; right?: SidePhoto | null };
 }
@@ -100,6 +112,8 @@ export interface SidePhoto {
   landmarks: number[];
   width: number;
   height: number;
+  landmarkSet?: 'mediapipe' | 'ibug68';
+  mask?: string;
 }
 
 export interface SkinStack {
@@ -224,11 +238,23 @@ export interface CharacterDoc {
    * ordinary slider values the solve produced.
    */
   measurementTargets?: Partial<Record<MeasureId, number>>;
+  /** Sculpted displacement of the body (PRD Part 3, F27), added after every slider. Never changed in place: replaced. */
+  sculpt?: SculptData;
+  /** Sliders made from sculpts (library .ps2target files) and their values, -1..1. */
+  userTargets?: Record<string, number>;
 }
 
 export const NEUTRAL_TINT: Tint = Object.freeze({ color: [1, 1, 1], brightness: 1 }) as Tint;
 
-export const DEFAULT_EXPRESSIONS = [
+/**
+ * The blendshapes a new character exports (PRD Part 3, F25): the 52 ARKit face
+ * units under their ARKit names. Documents from before 0.25.0 keep their own
+ * list (CLASSIC_EXPRESSIONS), which the expression map still makes.
+ */
+export const DEFAULT_EXPRESSIONS: string[] = [...ARKIT_UNITS];
+
+/** The blendshapes characters exported before 0.25.0. */
+export const CLASSIC_EXPRESSIONS = [
   'blink_L',
   'blink_R',
   'jawOpen',
@@ -360,8 +386,10 @@ export function parseCharacter(json: unknown): CharacterDoc {
       modifiers[k] = v;
     }
   }
-  const { measurementTargets: rawTargets, ...rest } = raw as CharacterDoc;
+  const { measurementTargets: rawTargets, sculpt: rawSculpt, userTargets: rawUser, ...rest } = raw as CharacterDoc;
   const targets = sanitiseMeasurementTargets(rawTargets);
+  const sculpt = sanitiseSculpt(rawSculpt);
+  const userTargets = sanitiseUserTargets(rawUser);
   return {
     ...base,
     ...(rest as CharacterDoc),
@@ -392,6 +420,8 @@ export function parseCharacter(json: unknown): CharacterDoc {
     expressionsToBake: Array.isArray(raw.expressionsToBake) ? raw.expressionsToBake : base.expressionsToBake,
     // No field at all without targets, so documents from before Part 3 load and save exactly as they were.
     ...(targets ? { measurementTargets: targets } : {}),
+    ...(sculpt ? { sculpt } : {}),
+    ...(userTargets ? { userTargets } : {}),
   };
 }
 
@@ -432,10 +462,11 @@ export function serializeCharacter(doc: CharacterDoc): string {
 }
 
 export function cloneCharacter(doc: CharacterDoc): CharacterDoc {
-  // Garment edits are large and never change once made: copies (and undo steps) share them.
-  const { garmentEdits, ...rest } = doc;
+  // Garment edits and the sculpt are large and never change once made: copies (and undo steps) share them.
+  const { garmentEdits, sculpt, ...rest } = doc;
   const out = structuredClone(rest) as CharacterDoc;
   if (garmentEdits) out.garmentEdits = { ...garmentEdits };
+  if (sculpt) out.sculpt = sculpt;
   return out;
 }
 

@@ -87,7 +87,9 @@ test('export the test characters', async ({ page }) => {
         const { core } = w.__ps2ccTest;
         s.engine.update('layers', (d) => {
           // The test characters keep the settings they were made with before quality profiles (Part 2 F13).
-          d.export = { ...d.export, ...core.LEGACY_EXPORT };
+          // Hair v2 card styles fill their whole hair budget (3,500): 3,200 keeps the long styles, with the
+          // teeth and tongue, inside the 12k budget.
+          d.export = { ...d.export, ...core.LEGACY_EXPORT, hairBudget: 3200 };
           d.skin.layers = (layers ?? []).map((k) => core.newLayer(k as never));
         });
         await s.settled();

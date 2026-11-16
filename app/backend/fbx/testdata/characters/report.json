@@ -5,10 +5,10 @@
     "meshes": [
       "head:5456",
       "body:2544",
-      "eyes:732"
+      "eyes:713"
     ],
-    "triangles": 8732,
-    "budget": 8732,
+    "triangles": 8713,
+    "budget": 8713,
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []
@@ -19,11 +19,11 @@
     "meshes": [
       "head:5456",
       "body:2544",
-      "hair:1740",
-      "eyes:732"
+      "hair:2078",
+      "eyes:713"
     ],
-    "triangles": 10472,
-    "budget": 10472,
+    "triangles": 10791,
+    "budget": 10791,
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []
@@ -34,12 +34,12 @@
     "meshes": [
       "head:5456",
       "body:1938",
-      "hair:842",
+      "hair:814",
       "garments:2500",
-      "eyes:732"
+      "eyes:713"
     ],
-    "triangles": 11468,
-    "budget": 11468,
+    "triangles": 11421,
+    "budget": 11421,
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []
@@ -51,10 +51,10 @@
       "head:5452",
       "body:2253",
       "garments:3399",
-      "eyes:732"
+      "eyes:713"
     ],
-    "triangles": 11836,
-    "budget": 11836,
+    "triangles": 11817,
+    "budget": 11817,
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []
@@ -66,10 +66,10 @@
       "head:5456",
       "body:1852",
       "garments:2500",
-      "eyes:732"
+      "eyes:713"
     ],
-    "triangles": 10540,
-    "budget": 10540,
+    "triangles": 10521,
+    "budget": 10521,
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []
@@ -80,12 +80,12 @@
     "meshes": [
       "head:5456",
       "body:1852",
-      "hair:652",
+      "hair:642",
       "garments:2500",
-      "eyes:732"
+      "eyes:713"
     ],
-    "triangles": 11192,
-    "budget": 11192,
+    "triangles": 11163,
+    "budget": 11163,
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []
@@ -96,11 +96,11 @@
     "meshes": [
       "head:5456",
       "body:2544",
-      "hair:2008",
-      "eyes:732"
+      "hair:3184",
+      "eyes:713"
     ],
-    "triangles": 10740,
-    "budget": 10740,
+    "triangles": 11897,
+    "budget": 11897,
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []
@@ -111,10 +111,10 @@
     "meshes": [
       "head:5853",
       "body:4147",
-      "eyes:732"
+      "eyes:713"
     ],
-    "triangles": 10732,
-    "budget": 10732,
+    "triangles": 10713,
+    "budget": 10713,
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []
@@ -125,12 +125,12 @@
     "meshes": [
       "head:5456",
       "body:1938",
-      "hair:652",
+      "hair:642",
       "garments:2500",
-      "eyes:732"
+      "eyes:713"
     ],
-    "triangles": 11278,
-    "budget": 11278,
+    "triangles": 11249,
+    "budget": 11249,
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []
@@ -142,10 +142,10 @@
       "head:5456",
       "body:2544",
       "hair:2248",
-      "eyes:732"
+      "eyes:713"
     ],
-    "triangles": 10980,
-    "budget": 10980,
+    "triangles": 10961,
+    "budget": 10961,
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []
@@ -157,10 +157,10 @@
       "head:5456",
       "body:2532",
       "garments:1800",
-      "eyes:732"
+      "eyes:713"
     ],
-    "triangles": 10520,
-    "budget": 10520,
+    "triangles": 10501,
+    "budget": 10501,
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []
@@ -172,10 +172,10 @@
       "head:5456",
       "body:2372",
       "garments:1600",
-      "eyes:732"
+      "eyes:713"
     ],
-    "triangles": 10160,
-    "budget": 10160,
+    "triangles": 10141,
+    "budget": 10141,
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []
@@ -187,10 +187,10 @@
       "head:5456",
       "body:2540",
       "garments:1600",
-      "eyes:732"
+      "eyes:713"
     ],
-    "triangles": 10328,
-    "budget": 10328,
+    "triangles": 10309,
+    "budget": 10309,
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []

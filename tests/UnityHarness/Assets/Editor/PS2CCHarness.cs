@@ -309,9 +309,8 @@ namespace PS2CC.Tests
             return worst;
         }
 
-        /// <summary>The PRD F8 default blendshape set.</summary>
-        static readonly string[] DefaultBlendshapes =
-            { "blink_L", "blink_R", "jawOpen", "smile", "frown", "browsUp", "browsDown", "squint", "AA", "EE", "IH", "OH", "OU", "FV", "MBP" };
+        /// <summary>The default blendshape set (PRD Part 3, F25): the 52 ARKit face units.</summary>
+        static readonly string[] DefaultBlendshapes = PS2CC.PS2Expressions.ARKit;
 
         /// <summary>
         /// Expressions (PRD M8): the default blendshapes are on the head and on every mesh the
@@ -328,8 +327,13 @@ namespace PS2CC.Tests
             SkinnedMeshRenderer head = renderers.FirstOrDefault(r => sidecar.MeshNamed(r.name)?.role == "head");
             SkinnedMeshRenderer eyes = renderers.FirstOrDefault(r => sidecar.MeshNamed(r.name)?.role == "eyes");
             if (head == null) return;
-            foreach (string n in names)
+            // Every shape the sidecar lists for the head is on it (tongueOut moves only the tongue, in the eyes atlas).
+            MeshInfo headInfo = sidecar.MeshNamed(head.name);
+            foreach (string n in headInfo?.blendshapes ?? names)
                 if (head.sharedMesh.GetBlendShapeIndex(n) < 0) c.errors.Add($"head: blendshape {n} missing");
+            int onSomeMesh = names.Count(n => renderers.Any(r => r.sharedMesh != null && r.sharedMesh.GetBlendShapeIndex(n) >= 0));
+            c.expressionsInfo.Add($"{onSomeMesh} of {names.Length} blendshapes present in Unity");
+            if (onSomeMesh != names.Length) c.errors.Add($"only {onSomeMesh} of {names.Length} blendshapes are on a mesh in Unity");
 
             var face = go.GetComponent<PS2CC.PS2Expressions>();
             if (face == null) c.errors.Add("prefab has no PS2Expressions component");
@@ -352,7 +356,7 @@ namespace PS2CC.Tests
                 UnityEngine.Object.DestroyImmediate(posed);
                 return m;
             }
-            foreach (var (shape, mesh, min) in new[] { ("blink_L", head, 0.004f), ("blink_R", head, 0.004f), ("jawOpen", head, 0.01f), ("blink_L", eyes, 0.002f), ("jawOpen", eyes, 0.0f) })
+            foreach (var (shape, mesh, min) in new[] { ("eyeBlinkLeft", head, 0.004f), ("eyeBlinkRight", head, 0.004f), ("jawOpen", head, 0.01f), ("jawOpen", eyes, 0.0f), ("tongueOut", eyes, 0.01f), ("eyeLookUpLeft", eyes, 0.001f) })
             {
                 if (mesh == null) continue;
                 float m = Moved(mesh, shape);
@@ -369,11 +373,12 @@ namespace PS2CC.Tests
             var shots = new (string label, string[] shapes)[]
             {
                 ("neutral", new string[0]),
-                ("blink", new[] { "blink_L", "blink_R" }),
+                ("blink", new[] { "eyeBlinkLeft", "eyeBlinkRight" }),
                 ("jawOpen", new[] { "jawOpen" }),
-                ("smile", new[] { "smile" }),
-                ("browsUp", new[] { "browsUp" }),
-                ("OU", new[] { "OU" }),
+                ("smile", new[] { "mouthSmileLeft", "mouthSmileRight" }),
+                ("browsUp", new[] { "browInnerUp", "browOuterUpLeft", "browOuterUpRight" }),
+                ("pucker", new[] { "mouthPucker" }),
+                ("tongueOut", new[] { "jawOpen", "tongueOut" }),
             };
             foreach (var (label, shapes) in shots)
             {
@@ -392,7 +397,7 @@ namespace PS2CC.Tests
             Vector3 eye = new Vector3(eyesCentre.x - 0.032f, eyesCentre.y - 0.008f, front - 0.012f);
             Vector3 from = eye + new Vector3(-0.07f, 0.01f, 0.2f);
             bool NoHair(SkinnedMeshRenderer r) => sidecar.MeshNamed(r.name)?.role != "hair";
-            foreach (string sh in new[] { "blink_L", "blink_R" }) face?.Set(sh, 1f);
+            foreach (string sh in new[] { "eyeBlinkLeft", "eyeBlinkRight" }) face?.Set(sh, 1f);
             Screenshot(go, $"Reports/{sidecar.name}_eye_closed.png", from, eye, 20f, 512, 384, NoHair);
             face?.ResetAll();
             Screenshot(go, $"Reports/{sidecar.name}_eye_open.png", from, eye, 20f, 512, 384, NoHair);

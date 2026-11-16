@@ -16,6 +16,8 @@ export class Morpher {
   private dirtyMax = -Infinity;
   /** Number of target applications in the last update (for perf logging). */
   lastTouchedTargets = 0;
+  /** Added after the targets (the sculpt layer and user targets, PRD Part 3 F27); null when there is none. */
+  private overlay: Float32Array | null = null;
 
   constructor(
     private readonly base: BaseMesh,
@@ -68,11 +70,25 @@ export class Morpher {
     this.dirtyMax = Math.max(this.dirtyMax, hi);
   }
 
+  /** Set what is added after the targets (xyz per vertex, or fewer: the first vertices); null for nothing. */
+  setOverlay(overlay: Float32Array | null): void {
+    if (overlay === null && this.overlay === null) return;
+    this.overlay = overlay;
+    this.dirtyMin = 0;
+    this.dirtyMax = this.base.vertexCount - 1;
+    this.flush();
+  }
+
   private flush(): void {
     if (this.dirtyMax < this.dirtyMin) return;
     const a = this.dirtyMin * 3;
     const b = (this.dirtyMax + 1) * 3;
-    for (let i = a; i < b; i++) this.positions[i] = this.accum[i]!;
+    const o = this.overlay;
+    if (o) {
+      const end = Math.min(b, o.length);
+      for (let i = a; i < end; i++) this.positions[i] = this.accum[i]! + o[i]!;
+      for (let i = Math.max(a, end); i < b; i++) this.positions[i] = this.accum[i]!;
+    } else for (let i = a; i < b; i++) this.positions[i] = this.accum[i]!;
     this.dirtyMin = Infinity;
     this.dirtyMax = -Infinity;
   }

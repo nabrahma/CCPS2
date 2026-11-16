@@ -19,3 +19,4 @@ export * from './photo/project';
 export * from './photo/multiview';
 export * from './guide';
 export * from './photo/fit';
+export * from './photo/manual';

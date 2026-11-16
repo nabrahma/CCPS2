@@ -21,6 +21,7 @@ import { DEFAULT_MACROS, type MacroValues } from './morph/macros';
 import { generateCrowd } from './population/crowd';
 import { samplePerson } from './population/sampler';
 import { Rng } from './random';
+import { EXPRESSION_MAP } from './expression/map';
 
 function hashFloats(values: ArrayLike<number>): string {
   return new Sha256().updateArray(Float64Array.from(values as ArrayLike<number>)).hex();
@@ -71,7 +72,7 @@ function seededMacros(rng: Rng): MacroValues {
 }
 
 /** Every generator's hash, by name. Takes a few seconds. */
-export function generatorHashes(assets: CoreAssets): Record<string, string> {
+export async function generatorHashes(assets: CoreAssets): Promise<Record<string, string>> {
   const out: Record<string, string> = {};
   out.dmath = dmathHash();
   out.distributions = distributionsHash();
@@ -121,5 +122,12 @@ export function generatorHashes(assets: CoreAssets): Record<string, string> {
   text.updateText(serializeCharacter(randomizeRealistic(template, assets.sliders, assets, assets.anthro, assets.population, { seed: 7 }).doc));
   for (const member of generateCrowd(assets.sliders, assets, assets.anthro, assets.population, { seed: 99, count: 4 })) text.updateText(serializeCharacter(member.doc));
   out.crowd = text.hex();
+
+  // F25: every expression recipe as a blend of the face units, and the mirror table.
+  const units = await assets.faceUnits();
+  const shapes = new Sha256();
+  for (const e of EXPRESSION_MAP.expressions) shapes.updateArray(units.blend(e.units, assets.base.vertexCount));
+  shapes.updateArray(await assets.mirror());
+  out.faceUnits = shapes.hex();
   return out;
 }

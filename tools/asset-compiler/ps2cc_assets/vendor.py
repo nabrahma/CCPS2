@@ -30,13 +30,19 @@ def run(lic: LicenseCollector) -> None:
     model = source_dir("mediapipe_face_landmarker") / "face_landmarker.task"
     shutil.copyfile(model, OUT / "face_landmarker.task")
     files.append(("vendor/mediapipe/face_landmarker.task", "mediapipe_face_landmarker"))
+    # PRD Part 3, F33: the Selfie Multiclass segmenter (hair, face skin, background ...).
+    seg = source_dir("mediapipe_selfie_multiclass") / "selfie_multiclass_256x256.tflite"
+    if seg.stat().st_size > 50 * 1024 * 1024:
+        raise RuntimeError("the segmenter is over the 50 MB limit for bundled models (PRD Part 3, 0.1)")
+    shutil.copyfile(seg, OUT / "selfie_multiclass_256x256.tflite")
+    files.append(("vendor/mediapipe/selfie_multiclass_256x256.tflite", "mediapipe_selfie_multiclass"))
     for name in WASM_FILES:
         shutil.copyfile(PACKAGE / "wasm" / name, OUT / "wasm" / name)
         files.append((f"vendor/mediapipe/wasm/{name}", "npm:@mediapipe/tasks-vision@" + pkg["version"]))
     notice = (
-        "MediaPipe Tasks Vision (Face Landmarker)\n"
+        "MediaPipe Tasks Vision (Face Landmarker, Image Segmenter)\n"
         f"WASM runtime: npm @mediapipe/tasks-vision {pkg['version']}\n"
-        "Model: face_landmarker.task (float16, version 1)\n"
+        "Models: face_landmarker.task (float16, version 1); selfie_multiclass_256x256.tflite (float32, version 1)\n"
         "Copyright Google LLC. Licensed under the Apache License, Version 2.0:\n"
         "https://www.apache.org/licenses/LICENSE-2.0\n"
         f"Source: {HOMEPAGE}\n"

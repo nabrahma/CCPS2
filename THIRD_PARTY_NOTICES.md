@@ -18,6 +18,7 @@ These parts follow the logic of the projects below closely, which is why PS2CC u
 | --- | --- | --- |
 | [Anny](https://github.com/naver/anny) (Apache-2.0) | NAVER LABS Europe | The population sampler and the parity check follow its phenotype blending and shape distributions (`packages/core/src/population`, `tools/asset-compiler/ps2cc_assets/anny.py`). Its population calibration is shipped as `assets/core/population/calibration.json` under Apache-2.0: Anny, Copyright (C) 2025 NAVER Corporation. Its SMPL-X topology is never fetched or used. |
 | [GarmentCode](https://github.com/maria-korosteleva/GarmentCode) (MIT) | Maria Korosteleva | Its body-measurement keys are produced by `packages/core/src/anthro` (`garmentCodeBody`). Its bundled SMPL-derived bodies are not used. |
+| faceunits01 (CC0-1.0) | Mika Suominen | The 52 ARKit face units every expression blendshape is made of (`assets/core/expressions/faceunits`), from Anny's repository. CC0 asks for no credit; it is given anyway. |
 | fdlibm | Sun Microsystems | The polynomial kernels of `packages/core/src/math/dmath.ts` (freely usable with this notice: "Developed at SunPro, a Sun Microsystems, Inc. business. Permission to use, copy, modify, and distribute this software is freely granted, provided that this notice is preserved."). |
 | Cheng, "Generating Beta Variates with Nonintegral Shape Parameters", CACM 1978 | R. C. H. Cheng | `packages/core/src/math/distributions.ts` |
 | *Geometry nodes - hair cards from curves* (a Blender file) | Daniel Bystedt | The card hair system follows its method: `packages/core/src/hair` ([docs/hair-system.md](docs/hair-system.md)). No content of the file is included in this repository or in PS2CC. Its hair node groups build on Blender's bundled hair nodes (GPL). |
@@ -39,7 +40,7 @@ The scanned-face base skin, `assets/core/textures/skins/ps2cc_scan_lee.jpg`, is 
 | Project | Licence | Where |
 | --- | --- | --- |
 | [ufbx](https://github.com/ufbx/ufbx) | MIT or public domain | `app/backend/fbx/ufbx` (with its `LICENSE`) |
-| [MediaPipe Tasks Vision](https://github.com/google-ai-edge/mediapipe) | Apache-2.0 | `assets/core/vendor/mediapipe` (with its `NOTICE.txt`) |
+| [MediaPipe Tasks Vision](https://github.com/google-ai-edge/mediapipe) (Face Landmarker, Selfie Multiclass segmenter) | Apache-2.0 | `assets/core/vendor/mediapipe` (with its `NOTICE.txt`) |
 | [meshoptimizer](https://github.com/zeux/meshoptimizer) | MIT | npm dependency, in the app bundle |
 | [Three.js](https://github.com/mrdoob/three.js) | MIT | npm dependency, in the app bundle |
 | [React](https://github.com/facebook/react) | MIT | npm dependency, in the app bundle |

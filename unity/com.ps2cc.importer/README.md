@@ -17,12 +17,13 @@ PS2CC writes `Assets/PS2CC/<Name>/` with `<Name>.fbx`, `<Name>.ps2cc.json`, `Tex
 - **Textures:** max size from the sidecar, bilinear, mipmaps, high-quality compression, alpha as transparency for hair, eyes, brows and lashes.
 - **Materials** in `Materials/`, one per material group, using the PS2 shaders below.
 - **Prefab** `<Name>.prefab` with an `Animator` (Humanoid avatar) and a `PS2CharacterInfo` component (budgets and the settings the character was made with).
-- **Expressions:** the exported blendshapes (`blink_L`, `blink_R`, `jawOpen`, `smile`, `frown`, `browsUp`, `browsDown`, `squint` and the visemes `AA`, `EE`, `IH`, `OH`, `OU`, `FV`, `MBP`) are on the head and on every mesh they move: the eyes atlas (brows, lashes, teeth) and the hair. The prefab gets a `PS2Expressions` component to set one by name on all of them at once:
+- **Expressions:** characters export the 52 ARKit face units under their ARKit names (`eyeBlinkLeft`, `jawOpen`, `mouthSmileLeft`, `tongueOut` and the rest; `PS2Expressions.ARKit` lists them), so ARKit face capture and lip-sync tools drive them without remapping. Visemes (`AA`, `EE`, `IH`, `OH`, `OU`, `FV`, `MBP`) and the names exported before PS2CC 0.25.0 (`blink_L`, `blink_R`, `smile`, `frown`, `browsUp`, `browsDown`, `squint`) are extra shapes, there when chosen at export. Each shape is on the head and on every mesh it moves: the eyes atlas (eyes, lashes, teeth, tongue), garments and hair. The prefab gets a `PS2Expressions` component to set one by name on all of them at once (names match without regard to case):
 
   ```csharp
   var face = GetComponent<PS2CC.PS2Expressions>();
-  face.Set("blink_L", 1f);   // 0..1
+  face.Set("eyeBlinkLeft", 1f);   // 0..1
   face.Set("jawOpen", 0.4f);
+  face.SetMany(arkitFrame);       // e.g. a face-capture frame: name -> 0..1
   face.ResetAll();
   ```
 

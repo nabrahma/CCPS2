@@ -15,7 +15,7 @@ test('Part 3 generators give the same hashes in the browser as in Node', async (
   test.setTimeout(300_000);
   await boot(page);
   await waitForTestHooks(page);
-  const hashes = await page.evaluate(() => {
+  const hashes = await page.evaluate(async () => {
     const w = window as unknown as TestWindow;
     return w.__ps2ccTest.core.generatorHashes(w.__ps2cc.engine.assets);
   });

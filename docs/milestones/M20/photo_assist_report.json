@@ -1,0 +1,33 @@
+{
+  "fringe": {
+    "segmentation": {
+      "faceShare": 0.24149305555555556,
+      "hairShare": 0.3279269748263889,
+      "hair": [
+        6,
+        5,
+        5
+      ],
+      "skin": [
+        227,
+        173,
+        144
+      ]
+    },
+    "baseline": {
+      "dark": 79,
+      "texels": 65958,
+      "faceShare": 0
+    },
+    "masked": {
+      "dark": 51,
+      "texels": 46694,
+      "faceShare": 0
+    },
+    "unmasked": {
+      "dark": 15131,
+      "texels": 63793,
+      "faceShare": 0
+    }
+  }
+}

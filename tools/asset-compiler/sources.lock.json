@@ -309,6 +309,11 @@
     "size": 3758596,
     "url": "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task"
   },
+  "mediapipe_selfie_multiclass": {
+    "sha256": "c6748b1253a99067ef71f7e26ca71096cd449baefa8f101900ea23016507e0e0",
+    "size": 16371837,
+    "url": "https://storage.googleapis.com/mediapipe-models/image_segmenter/selfie_multiclass_256x256/float32/1/selfie_multiclass_256x256.tflite"
+  },
   "mpfb2": {
     "sha256": "aef0a8860e1a0bf0dac68a61ab5384f8a466cafdfd8ab1dcf9de904b77cd33cd",
     "size": 44629660,

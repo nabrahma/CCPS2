@@ -9,7 +9,7 @@ const SOFTWARE: { name: string; licence: string; note?: string }[] = [
   { name: 'Blender io_scene_fbx', licence: 'GPL-2.0-or-later', note: 'the FBX writer is ported from it' },
   { name: 'MPFB', licence: 'GPL-3.0', note: 'rig and weight formats' },
   { name: 'Hair cards from curves, by Daniel Bystedt', licence: 'method only', note: 'the card hair system follows this Blender setup' },
-  { name: 'MediaPipe Tasks Vision', licence: 'Apache-2.0', note: 'face landmarks' },
+  { name: 'MediaPipe Tasks Vision', licence: 'Apache-2.0', note: 'face landmarks, face and hair segmentation' },
   { name: 'ufbx', licence: 'MIT or public domain' },
   { name: 'meshoptimizer', licence: 'MIT' },
   { name: 'Three.js', licence: 'MIT' },
@@ -47,8 +47,8 @@ export function CreditsDialog({ onClose }: { onClose: () => void }) {
           <div className="credits-body">
             <h3>Assets that require credit</h3>
             <ul className="credits-list" data-testid="credits-attribution">
-              {credits.attribution.map((e) => (
-                <Entry key={`${e.author}|${e.source}|${e.licence}`} entry={e} />
+              {credits.attribution.map((e, i) => (
+                <Entry key={`${i}|${e.author}|${e.source}`} entry={e} />
               ))}
             </ul>
             <h3>Software</h3>
@@ -62,8 +62,8 @@ export function CreditsDialog({ onClose }: { onClose: () => void }) {
             </ul>
             <h3>Character data (CC0, credited with thanks)</h3>
             <ul className="credits-list">
-              {credits.courtesy.map((e) => (
-                <Entry key={`${e.author}|${e.source}|${e.licence}`} entry={e} />
+              {credits.courtesy.map((e, i) => (
+                <Entry key={`${i}|${e.author}|${e.source}`} entry={e} />
               ))}
             </ul>
             <p className="muted">

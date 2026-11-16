@@ -1,0 +1,53 @@
+{
+  "fringe": {
+    "segmentation": {
+      "faceShare": 0.24149305555555556,
+      "hairShare": 0.3279269748263889,
+      "hair": [
+        6,
+        5,
+        5
+      ],
+      "skin": [
+        227,
+        173,
+        144
+      ]
+    },
+    "baseline": {
+      "dark": 79,
+      "texels": 65958,
+      "faceShare": 0
+    },
+    "masked": {
+      "dark": 51,
+      "texels": 46694,
+      "faceShare": 0
+    },
+    "unmasked": {
+      "dark": 15131,
+      "texels": 63793,
+      "faceShare": 0
+    }
+  },
+  "manual": {
+    "errors": {
+      "rightEyeOuter": 1.0873120992714438,
+      "rightEyeInner": 0.9603859379196886,
+      "rightEyeTop": 1.0616413933060118,
+      "rightEyeBottom": 2.5733633718841076,
+      "leftEyeInner": 1.107578940238237,
+      "leftEyeOuter": 1.3316183945963376,
+      "leftEyeTop": 2.3264389205045157,
+      "leftEyeBottom": 2.8698338006665254,
+      "mouthRight": 1.5027600224336366,
+      "mouthLeft": 1.4997677521960022,
+      "upperLip": 0.4221599900830148,
+      "lowerLip": 1.0988585938570252
+    },
+    "worstTexels": 2.8698338006665254
+  },
+  "fullLandmarks": {
+    "worstTexels": 1.1663242021197613
+  }
+}

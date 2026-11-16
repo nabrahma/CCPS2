@@ -32,7 +32,7 @@ describe('SHA-256', () => {
 suite('determinism (PRD Part 3, 0.2)', () => {
   it('every generator gives its golden hash', async () => {
     const assets = await loadAssets();
-    const hashes = generatorHashes(assets);
+    const hashes = await generatorHashes(assets);
     if (process.env.PS2CC_UPDATE_HASHES || !existsSync(GOLDEN)) {
       writeFileSync(GOLDEN, JSON.stringify({ format: 'ps2cc.determinism/1', hashes }, null, 1) + '\n');
       console.warn('[determinism] wrote', GOLDEN);
@@ -40,6 +40,6 @@ suite('determinism (PRD Part 3, 0.2)', () => {
     const golden = readJsonFile<{ hashes: Record<string, string> }>(GOLDEN).hashes;
     expect(hashes).toEqual(golden);
     // And again in the same process: nothing depends on what ran before.
-    expect(generatorHashes(assets)).toEqual(golden);
+    expect(await generatorHashes(assets)).toEqual(golden);
   }, 300_000);
 });

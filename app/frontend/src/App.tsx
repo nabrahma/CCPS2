@@ -1,3 +1,4 @@
+import { PointEditor } from './components/PointEditor';
 import { Component, useEffect, useState, type ReactNode } from 'react';
 import type { CharacterDoc } from '@ps2cc/core';
 import { backend } from './backend';
@@ -115,6 +116,7 @@ function Shell() {
       {creditsOpen && <CreditsDialog onClose={() => setCreditsOpen(false)} />}
       <AtlasEditor />
       <DataFolderDialog />
+      <PointEditor />
       <GarmentImportDialog />
     </div>
   );

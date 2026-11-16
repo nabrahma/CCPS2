@@ -116,6 +116,33 @@ func TestPreset(t *testing.T) {
 	}
 }
 
+func TestTarget(t *testing.T) {
+	lib := &Library{Root: t.TempDir()}
+	doc := []byte(`{"format":"ps2cc.target/1","name":"Longer nose","tab":"face","mesh":"hm08","sculpt":{"vertices":"AAAAAA==","deltas":"AAAAAAAAAAAAAAAA"}}`)
+	item, err := lib.SaveTarget("Longer nose", doc)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if item.File != "targets/Longer nose.ps2target" || item.ID != "user:targets/Longer nose" {
+		t.Fatalf("item %+v", item)
+	}
+	got, err := lib.ReadDocument(item.File)
+	if err != nil || string(got) != string(doc) {
+		t.Fatalf("round trip %q %v", got, err)
+	}
+	items, err := lib.List("targets")
+	if err != nil || len(items) != 1 {
+		t.Fatalf("list %v %v", items, err)
+	}
+	if _, err := lib.SaveTarget("x", []byte(`{"format":"ps2cc.preset/1"}`)); err == nil {
+		t.Fatal("wrong format must be rejected")
+	}
+	big := append([]byte(`{"format":"ps2cc.target/1","pad":"`), make([]byte, MaxDocumentBytes)...)
+	if _, err := lib.SaveTarget("big", big); err == nil {
+		t.Fatal("a document over 1 MB must be rejected")
+	}
+}
+
 func TestSaveGarmentStoresDocumentAndData(t *testing.T) {
 	lib := &Library{Root: t.TempDir()}
 	bin := []byte{1, 2, 3, 4}

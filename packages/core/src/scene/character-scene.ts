@@ -8,8 +8,7 @@ import { wantsScalpLayer, type CharacterDoc, type GarmentSlot, type SidePhoto, t
 import { hashSeed } from '../random';
 import type { CharacterEngine } from '../character/engine';
 import { computeQuadNormals, computeTriangleNormals } from '../mesh/normals';
-import type { FaceAssets } from '../assets';
-import { FaceRig, normaliseWeights, skinDeltas } from '../expression/facerig';
+import type { FaceUnitStore } from '../expression/faceunits';
 import { expressionDef, type ExpressionDef } from '../expression/map';
 import { closureSteps, eyeVisibility, eyeballOf } from '../expression/blink';
 import { addDelta, difference, transferBound } from '../expression/transfer';
@@ -24,12 +23,13 @@ import { boundaryLoops, browRoots, buildSurfaceCards, classifyLoop, furRoots, lo
 import { HairGenerator, type GeneratedHair } from '../hair/generate';
 import { BodySurface, GarmentCollider } from '../proxy/collision';
 import type { ProxyAsset } from '../proxy/proxy';
-import { buildInfluences, selectInfluences, type InfluenceTable, type SparseWeights } from '../skeleton/weights';
+import { buildInfluences, selectInfluences, type InfluenceTable } from '../skeleton/weights';
 import { buildRenderTopology, gather3, type RenderTopology } from './render-mesh';
 import type { ResolvedSkin } from '../skin/compose';
 import type { RgbaImage } from '../skin/image';
 import { projectPhoto, type LandmarkTable } from '../skin/photo/project';
 import { projectPhotos, type PhotoView } from '../skin/photo/multiview';
+import { photoLandmarks } from '../skin/photo/manual';
 import { splitBody } from '../skin/headsplit';
 import type { EyeLook } from '../eyes/eye-texture';
 import type { HeadLayout } from '../skin/headpack';
@@ -99,6 +99,9 @@ export interface SceneOptions {
 interface PhotoState {
   spec: string;
   photo: RgbaImage;
+  /** The front photo's landmarks as 478 MediaPipe landmarks (hand-placed ones expanded), and its face-skin mask. */
+  landmarks: number[];
+  mask: RgbaImage | null;
   baseSkin: RgbaImage | null;
   /** Side photos (Part 2 F19), with their landmarks. */
   sides: PhotoView[];
@@ -204,11 +207,9 @@ export class CharacterScene {
   /** The body's baked map from the bake engine (F16), for the baked skin layers. */
   private bakedBody: { image: RgbaImage; key: string } | null = null;
 
-  private face: FaceAssets | null = null;
+  private units: FaceUnitStore | null = null;
   /** Baked shapes per expression name, for the current geometry and parts. */
   private shapeCache = new Map<string, Map<string, PartShape>>();
-  /** Default-rig weights per proxy part (eyes, brows, lashes, teeth). */
-  private faceWeightCache = new Map<string, SparseWeights>();
   private previewWeights: Record<string, number> = {};
   /** Calibrated weight of a blink's closing unit, per expression (see expression/blink.ts). */
   private calibration = new Map<string, { version: number; weight: number; visibleRays: number }>();
@@ -454,7 +455,6 @@ export class CharacterScene {
     this.syncCardHair(doc, cardHair === null ? null : JSON.stringify(cardHair));
     this.syncSurfaceCards(doc);
     for (const k of [...this.influenceCache.keys()]) if (k !== 'body' && k !== 'hair' && !this.proxies.has(k) && !this.surfaceCards.has(k)) this.influenceCache.delete(k);
-    for (const k of [...this.faceWeightCache.keys()]) if (!this.proxies.has(k)) this.faceWeightCache.delete(k);
     this.shapeCache.clear();
     this.syncedFor = signature;
     this.lastGeometryVersion = -1;
@@ -522,20 +522,25 @@ export class CharacterScene {
     if (p && p.landmarks && load) {
       const base = this.baseSkinTexture(doc);
       const sides = [p.sides?.left ?? null, p.sides?.right ?? null].filter((x): x is SidePhoto => x !== null);
-      const spec = JSON.stringify([p.image, p.landmarks, p.colourMatch, base, sides]);
+      const useMask = p.useMask !== false;
+      const spec = JSON.stringify([p.image, p.landmarks, p.landmarkSet, p.colourMatch, base, sides, useMask ? p.mask : null]);
       if (this.photo?.spec !== spec) {
         const table = await this.engine.assets.landmarkTable();
         if (!table) throw new Error('the face landmark table is missing from assets/core (run pnpm build:landmarks)');
-        const [photo, baseSkin, ...sidePhotos] = await Promise.all([
+        const [photo, baseSkin, mask, ...rest] = await Promise.all([
           load(p.image),
           p.colourMatch && base ? load(base) : Promise.resolve(null),
+          useMask && p.mask ? load(p.mask) : Promise.resolve(null),
           ...sides.map((s) => load(s.image)),
+          ...sides.map((s) => (useMask && s.mask ? load(s.mask) : Promise.resolve(null))),
         ]);
         this.photo = {
           spec,
           photo: photo!,
+          landmarks: photoLandmarks(p)!,
+          mask,
           baseSkin,
-          sides: sides.map((s, i) => ({ photo: sidePhotos[i]!, landmarks: s.landmarks })),
+          sides: sides.map((s, i) => ({ photo: rest[i]!, landmarks: photoLandmarks(s)!, mask: rest[sides.length + i] ?? null })),
           table,
           layer: null,
           key: (this.photo?.key ?? 0) + 1,
@@ -557,7 +562,7 @@ export class CharacterScene {
    */
   private reprojectPhoto(force: boolean): boolean {
     const ph = this.photo;
-    const lm = this.engine.doc.skin.photo?.landmarks;
+    const lm = ph?.landmarks;
     if (!ph || !lm) return false;
     const pos = this.engine.positions;
     const verts = ph.table.vertices.filter((v) => v >= 0);
@@ -575,7 +580,7 @@ export class CharacterScene {
           table: ph.table,
           positions: pos,
           normals: this.engine.normals,
-          views: [{ photo: ph.photo, landmarks: lm }, ...ph.sides],
+          views: [{ photo: ph.photo, landmarks: lm, mask: ph.mask }, ...ph.sides],
           baseSkin: ph.baseSkin,
         })
       : projectPhoto({
@@ -585,6 +590,7 @@ export class CharacterScene {
           normals: this.engine.normals,
           photo: ph.photo,
           landmarks: lm,
+          mask: ph.mask,
           baseSkin: ph.baseSkin,
         });
     ph.layer = result.image;
@@ -725,62 +731,35 @@ export class CharacterScene {
 
   // ------------------------------------------------------------ expressions (PRD F8)
 
-  /** Load the face rig and pose units (once). Needed before expressionShapes(). */
+  /** Load the face units (once). Needed before expressionShapes(). */
   async prepareExpressions(): Promise<void> {
-    this.face ??= await this.engine.assets.faceAssets();
+    this.units ??= await this.engine.assets.faceUnits();
   }
 
   get expressionsReady(): boolean {
-    return this.face !== null;
+    return this.units !== null;
   }
 
   /**
-   * A blendshape baked for the current character: the default rig posed with
-   * the expression's pose units, as deltas per render vertex of every part
-   * (parts it does not move get zero deltas). Null until prepareExpressions()
-   * has finished, or when the map has no such expression.
+   * A blendshape baked for the current character (PRD Part 3, F25): the
+   * expression's face units added up on hm08, as deltas per render vertex of
+   * every part (parts it does not move get zero deltas). Every part follows
+   * the base mesh through its binding: the face units move the helper
+   * geometry too, so eyes, lashes, teeth and tongue go with the lids and the
+   * jaw. Null until prepareExpressions() has finished, or when the map has no
+   * such expression.
    */
   expressionShapes(name: string): Map<string, PartShape> | null {
     const cached = this.shapeCache.get(name);
     if (cached) return cached;
-    const face = this.face;
+    const units = this.units;
     const def = expressionDef(name);
-    if (!face || !def) return null;
+    if (!units || !def) return null;
     const engine = this.engine;
     const base = engine.positions;
-    const rig = face.rig;
-    const skin = rig.skinMatrices(rig.heads(base), face.units.blend(this.unitsFor(def, face)));
-    const moving = FaceRig.moving(skin);
-    const delta = skinDeltas(base, rig.weights, skin, moving);
     const b = engine.assets.base;
-    // Below the eyes, smooth out any fold the rig makes (expression/untangle.ts); the lids are left alone.
-    this.untangle ??= untangleMesh(b.faceVerts, b.facesWhere((g) => g === 'body'), b.vertexCount);
-    const eyeY = this.eyeHeight(base);
-    // Together with the body tier's own, larger triangles (in base vertex ids, so UV seams stay shut).
-    // The lips part on purpose: the tier's mouth and eye openings and the ring around them keep their deltas.
-    let mesh = this.untangle;
-    let keep: Uint8Array | null = null;
-    if (this.body?.mesh) {
-      if (this.tierUntangle?.indices !== this.body.part.indices) {
-        const tierMesh = this.body.mesh;
-        const map = tierMesh.sourceVertex;
-        const idx = this.body.part.indices;
-        const tier = untangleMeshFromTriangles(Uint32Array.from(idx, (i) => map[i]!), b.vertexCount);
-        const merged = mergeUntangleMeshes(this.untangle, tier);
-        const opening = tierMesh.meta.regions.indexOf('opening');
-        const fixed = new Uint8Array(b.vertexCount);
-        for (let i = 0; i < map.length; i++) if (tierMesh.vertexRegion[i] === opening) fixed[map[i]!] = 1;
-        const ring = fixed.slice();
-        for (let v = 0; v < b.vertexCount; v++) {
-          if (!fixed[v]) continue;
-          for (let k = merged.start[v]!; k < merged.start[v + 1]!; k++) ring[merged.next[k]!] = 1;
-        }
-        this.tierUntangle = { indices: idx, mesh: merged, keep: ring };
-      }
-      mesh = this.tierUntangle.mesh;
-      keep = this.tierUntangle.keep;
-    }
-    untangleDeltas(base, delta, mesh, (v) => v < b.bodyVertexCount && !keep?.[v] && base[v * 3 + 1]! < eyeY - 0.03, 80);
+    const delta = units.blend(this.unitsFor(def, units), b.vertexCount);
+    this.untangleBelowEyes(base, delta);
     const baseNormals = difference(computeQuadNormals(addDelta(base, delta), b.faceVerts, b.vertexCount), engine.normals);
     const out = new Map<string, PartShape>();
 
@@ -791,20 +770,7 @@ export class CharacterScene {
     }
     for (const [key, pp] of this.proxies) {
       const proxy = pp.proxy;
-      let d: Float32Array;
-      if (pp.part.kind === 'garment' || pp.part.kind === 'hair') {
-        // Loose parts follow the skin point they are bound to.
-        d = transferBound(delta, proxy.refVerts, proxy.refWeights);
-      } else {
-        // Eyes, brows, lashes and teeth are skinned to the face rig, as MakeHuman poses proxies
-        // (weights through the MHCLO binding), so lashes turn with the eyelid.
-        let w = this.faceWeightCache.get(key);
-        if (!w) {
-          w = normaliseWeights(proxy.transferWeights(rig.weights), 0);
-          this.faceWeightCache.set(key, w);
-        }
-        d = skinDeltas(pp.fitted, w, skin, moving);
-      }
+      const d = transferBound(delta, proxy.refVerts, proxy.refWeights);
       const nd = difference(computeTriangleNormals(addDelta(pp.fitted, d), pp.topo.sourceIndices, proxy.vertexCount), pp.smooth);
       const n = pp.topo.sourceVertex.length;
       out.set(key, {
@@ -833,6 +799,42 @@ export class CharacterScene {
   private untangle: UntangleMesh | null = null;
   private tierUntangle: { indices: Uint32Array; mesh: UntangleMesh; keep: Uint8Array } | null = null;
 
+  /**
+   * Below the eyes, smooth out any fold a large shape (jawOpen) makes on the
+   * body tier's coarser triangles (expression/untangle.ts); the lids are left
+   * alone. Base mesh and tier triangles together, in base vertex ids so UV
+   * seams stay shut; the lips part on purpose, so the tier's mouth and eye
+   * openings and the ring around them keep their deltas.
+   */
+  private untangleBelowEyes(base: Float32Array, delta: Float32Array): void {
+    const b = this.engine.assets.base;
+    this.untangle ??= untangleMesh(b.faceVerts, b.facesWhere((g) => g === 'body'), b.vertexCount);
+    const eyeY = this.eyeHeight(base);
+    let mesh = this.untangle;
+    let keep: Uint8Array | null = null;
+    if (this.body?.mesh) {
+      if (this.tierUntangle?.indices !== this.body.part.indices) {
+        const tierMesh = this.body.mesh;
+        const map = tierMesh.sourceVertex;
+        const idx = this.body.part.indices;
+        const tier = untangleMeshFromTriangles(Uint32Array.from(idx, (i) => map[i]!), b.vertexCount);
+        const merged = mergeUntangleMeshes(this.untangle, tier);
+        const opening = tierMesh.meta.regions.indexOf('opening');
+        const fixed = new Uint8Array(b.vertexCount);
+        for (let i = 0; i < map.length; i++) if (tierMesh.vertexRegion[i] === opening) fixed[map[i]!] = 1;
+        const ring = fixed.slice();
+        for (let v = 0; v < b.vertexCount; v++) {
+          if (!fixed[v]) continue;
+          for (let k = merged.start[v]!; k < merged.start[v + 1]!; k++) ring[merged.next[k]!] = 1;
+        }
+        this.tierUntangle = { indices: idx, mesh: merged, keep: ring };
+      }
+      mesh = this.tierUntangle.mesh;
+      keep = this.tierUntangle.keep;
+    }
+    untangleDeltas(base, delta, mesh, (v) => v < b.bodyVertexCount && !keep?.[v] && base[v * 3 + 1]! < eyeY - 0.03, 80);
+  }
+
   /** Height of the eyes (the left eye joint) on the morphed base mesh. */
   private eyeHeight(base: Float32Array): number {
     const verts = this.engine.assets.base.vertexGroup('joint-l-eye');
@@ -847,35 +849,36 @@ export class CharacterScene {
    * for expressions without calibration.
    */
   expressionCalibration(name: string): { weight: number; visibleRays: number } | null {
-    const c = this.calibration.get(name);
+    const unit = expressionDef(name)?.calibrate?.unit;
+    const c = unit ? this.calibration.get(unit) : undefined;
     return c ? { weight: c.weight, visibleRays: c.visibleRays } : null;
   }
 
-  /** The expression's pose-unit blend, with a blink's closing unit calibrated to this character. */
-  private unitsFor(def: ExpressionDef, face: FaceAssets): [string, number][] {
+  /** The expression's face units, with a blink's closing unit calibrated to this character. */
+  private unitsFor(def: ExpressionDef, units: FaceUnitStore): [string, number][] {
     const cal = def.calibrate;
     const eyesPart = this.proxies.get('eyes');
     if (!cal || !this.body || !eyesPart) return def.units;
     const scaled = (w: number): [string, number][] => def.units.map(([u, x]) => [u, u === cal.unit ? x * w : x]);
     const version = this.engine.geometryVersion;
-    const prev = this.calibration.get(def.name);
+    // The calibration is per closing unit, so blink_L and eyeBlinkLeft share it.
+    const key = cal.unit;
+    const prev = this.calibration.get(key);
     // During a slider drag keep the last weight; calibrate again once the shape settles.
     if (prev && (prev.version === version || this.engine.interacting)) return scaled(prev.weight);
-    const eyes = eyesPart.part;
-    const ball = eyeballOf(eyes.positions, eyes.indices, cal.eye === 'L' ? 1 : -1);
-    if (!ball) return def.units;
-    const body = this.body.part;
-    const base = this.engine.positions;
-    const rig = face.rig;
-    const heads = rig.heads(base);
-    const map = this.bodySourceVertices!;
+    const b = this.engine.assets.base;
     const steps = closureSteps(cal.max, cal.step);
     let chosen = steps[steps.length - 1]!;
     let visibleRays = -1;
+    const body = this.body.part;
+    const map = this.bodySourceVertices!;
     const posed = new Float32Array(body.positions.length);
+    const eyeFitted = eyesPart.part.positions;
+    // The eyeball moves only with the eye-look units; a blink leaves it where it is.
+    const ball = eyeballOf(eyeFitted, eyesPart.part.indices, cal.eye === 'L' ? 1 : -1);
+    if (!ball) return def.units;
     for (const w of steps) {
-      const skin = rig.skinMatrices(heads, face.units.blend(scaled(w)));
-      const delta = skinDeltas(base, rig.weights, skin, FaceRig.moving(skin));
+      const delta = units.blend(scaled(w), b.vertexCount);
       for (let i = 0; i < map.length; i++) {
         const s = map[i]! * 3;
         posed[i * 3] = body.positions[i * 3]! + delta[s]!;
@@ -883,13 +886,13 @@ export class CharacterScene {
         posed[i * 3 + 2] = body.positions[i * 3 + 2]! + delta[s + 2]!;
       }
       // The whole body occludes (grazing rays can be blocked by the nose or brow).
-      visibleRays = eyeVisibility(posed, body.indices, eyes.positions, ball).visible;
+      visibleRays = eyeVisibility(posed, body.indices, eyeFitted, ball).visible;
       if (visibleRays === 0) {
         chosen = w;
         break;
       }
     }
-    this.calibration.set(def.name, { version, weight: chosen, visibleRays });
+    this.calibration.set(key, { version, weight: chosen, visibleRays });
     return scaled(chosen);
   }
 

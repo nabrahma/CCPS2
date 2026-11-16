@@ -39,6 +39,7 @@ import {
   type Outfit,
   type Preset,
   type UserTags,
+  parseUserTargetFile,
 } from '@ps2cc/core';
 import { backend, libraryUrl, type AppInfo, type LibraryItem } from '../backend';
 import type { ThumbSubject } from '../thumbs/stage';
@@ -96,12 +97,17 @@ async function readDocs<T>(kind: string, parse: (raw: unknown) => T): Promise<{ 
 /** Read the user's hairstyles, presets, outfits and skins (again, after one is saved). */
 export async function refreshUserLibrary(studio: Studio): Promise<void> {
   const known = (id: string) => studio.assets.modifiers.byName.has(id);
-  const [hairstyles, presets, outfits, skins] = await Promise.all([
+  const [hairstyles, presets, outfits, skins, targets] = await Promise.all([
     readDocs('hairstyles', parseHairStyleFile),
     readDocs('presets', (raw) => parsePresetFile(raw, known)),
     readDocs('outfits', (raw) => parseOutfitFile(raw, (a) => studio.assets.hasProxy(a))),
     backend.listLibrary('skins').catch(() => [] as LibraryItem[]),
+    readDocs('targets', parseUserTargetFile),
   ]);
+  // Sliders made from sculpts (PRD Part 3, F27).
+  studio.assets.clearUserTargets();
+  for (const t of targets) studio.assets.registerUserTarget({ id: t.item.id, name: t.value.name, tab: t.value.tab, data: t.value.sculpt, file: t.item.file });
+  studio.engine.userTargetsChanged();
   useLibrary.setState((s) => ({
     hairstyles: hairstyles.map((h) => ({ item: h.item, style: h.value })),
     presets: presets.map((p) => ({ item: p.item, preset: p.value })),

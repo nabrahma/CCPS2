@@ -33,8 +33,10 @@ import { PiecewiseAffine } from './warp';
 
 export interface PhotoView {
   photo: RgbaImage;
-  /** MediaPipe landmarks of the photo: normalised x, y, z per landmark. */
+  /** MediaPipe landmarks of the photo: normalised x, y, z per landmark (NaN where not placed). */
   landmarks: ArrayLike<number>;
+  /** Face-skin mask of the photo (PRD Part 3, F33): red 255 on face skin; the rest projects nothing. */
+  mask?: RgbaImage | null;
 }
 
 export interface MultiProjectInput {
@@ -143,6 +145,7 @@ interface PreparedView {
   depth: { visible(p: Vec3): boolean };
   faceWidth: number;
   photo: RgbaImage;
+  mask: RgbaImage | null;
 }
 
 function prepare(input: MultiProjectInput, view: PhotoView): PreparedView | null {
@@ -154,7 +157,7 @@ function prepare(input: MultiProjectInput, view: PhotoView): PreparedView | null
   for (let i = 0; i < LANDMARK_COUNT; i++) {
     const p = landmarkPoint(table, i, positions);
     const n = landmarkNormal(table, i, normals);
-    if (!p || !n || i * 3 + 1 >= landmarks.length) continue;
+    if (!p || !n || i * 3 + 1 >= landmarks.length || !Number.isFinite(landmarks[i * 3]!) || !Number.isFinite(landmarks[i * 3 + 1]!)) continue;
     pts.push(p);
     nrm.push(n);
     px.push([landmarks[i * 3]! * photo.width, (1 - landmarks[i * 3 + 1]!) * photo.height]);
@@ -213,6 +216,7 @@ function prepare(input: MultiProjectInput, view: PhotoView): PreparedView | null
     depth,
     faceWidth: maxX - minX,
     photo,
+    mask: view.mask ?? null,
   };
 }
 
@@ -326,7 +330,11 @@ export function projectPhotos(input: MultiProjectInput): MultiProjectResult {
       if (u < 0 || u > 1 || vv < 0 || vv > 1) continue;
       const border = smoothstep(0, 0.02, Math.min(u, 1 - u, vv, 1 - vv));
       // Coverage: whether this photo sees the texel well; the blend weight then favours the squarest view.
-      const cov = smoothstep(0.1, 0.4, facing) * hull * border;
+      let cov = smoothstep(0.1, 0.4, facing) * hull * border;
+      if (cov > 0 && v.mask) {
+        sampleBilinear(v.mask, u, vv, tmp);
+        cov *= tmp[0]! / 255;
+      }
       if (cov <= 0) continue;
       sampleBilinear(v.photo, u, vv, tmp);
       coverage[k]![t] = cov;

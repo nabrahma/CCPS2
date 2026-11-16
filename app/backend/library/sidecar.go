@@ -38,6 +38,9 @@ const MaterialDiffuseSuffix = "_diffuse.png"
 // OutfitExt is the extension of saved outfits (Part 2 F20).
 const OutfitExt = ".ps2outfit"
 
+// TargetExt is the extension of sculpts saved as sliders (PRD Part 3, F27).
+const TargetExt = ".ps2target"
+
 // MaxMaterialSide is the largest diffuse a material may save.
 const MaxMaterialSide = 4096
 
@@ -146,6 +149,11 @@ func (l *Library) SaveOutfit(name string, data []byte) (*Item, error) {
 	return l.saveDocument("outfits", OutfitExt, []string{"ps2cc.outfit/1"}, "outfit", name, data)
 }
 
+// SaveTarget stores a .ps2target document (a sculpt saved as a slider) under targets/ and returns its item.
+func (l *Library) SaveTarget(name string, data []byte) (*Item, error) {
+	return l.saveDocument("targets", TargetExt, []string{"ps2cc.target/1"}, "slider", name, data)
+}
+
 // SaveMaterial stores a Material Studio material: its era diffuse (a PNG) as
 // materials/<stem>_diffuse.png, a thumbnail, then the document as
 // materials/<stem>.ps2mat with its "diffuse" field pointing at the PNG. The
@@ -232,7 +240,7 @@ func (l *Library) saveDocument(kind, ext string, formats []string, noun, name st
 // ReadDocument returns a JSON document stored in the library (a .ps2hair, .ps2preset, .ps2mat, .ps2outfit or atlas sidecar).
 func (l *Library) ReadDocument(rel string) ([]byte, error) {
 	ok := false
-	for _, ext := range []string{HairstyleExt, PresetExt, AtlasSuffix, MaterialExt, OutfitExt} {
+	for _, ext := range []string{HairstyleExt, PresetExt, AtlasSuffix, MaterialExt, OutfitExt, TargetExt} {
 		ok = ok || strings.HasSuffix(rel, ext)
 	}
 	if !ok {

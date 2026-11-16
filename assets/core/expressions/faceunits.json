@@ -1,0 +1,386 @@
+{
+ "format": "ps2cc.faceunits/1",
+ "units": "m",
+ "source": "faceunits01 by Mika Suominen (CC0-1.0), from Anny (naver/anny data/faceunits01); made exactly symmetric",
+ "largestMirrorDifferenceBeforeM": 0.002199999988079071,
+ "faceUnits": [
+  {
+   "name": "browDownLeft",
+   "offset": 0,
+   "count": 581,
+   "scale": 1.8311105276313212e-07,
+   "maxM": 0.00599999986588955
+  },
+  {
+   "name": "browDownRight",
+   "offset": 581,
+   "count": 581,
+   "scale": 1.8311105276313212e-07,
+   "maxM": 0.00599999986588955
+  },
+  {
+   "name": "browInnerUp",
+   "offset": 1162,
+   "count": 615,
+   "scale": 1.5869625254946627e-07,
+   "maxM": 0.005200000107288361
+  },
+  {
+   "name": "browOuterUpLeft",
+   "offset": 1777,
+   "count": 361,
+   "scale": 2.0447401858250696e-07,
+   "maxM": 0.006700000166893006
+  },
+  {
+   "name": "browOuterUpRight",
+   "offset": 2138,
+   "count": 361,
+   "scale": 2.0447401858250696e-07,
+   "maxM": 0.006700000166893006
+  },
+  {
+   "name": "cheekPuff",
+   "offset": 2499,
+   "count": 2090,
+   "scale": 4.181035630859483e-07,
+   "maxM": 0.013699999451637268
+  },
+  {
+   "name": "cheekSquintLeft",
+   "offset": 4589,
+   "count": 732,
+   "scale": 2.716147390658918e-07,
+   "maxM": 0.008900000154972077
+  },
+  {
+   "name": "cheekSquintRight",
+   "offset": 5321,
+   "count": 732,
+   "scale": 2.716147390658918e-07,
+   "maxM": 0.008900000154972077
+  },
+  {
+   "name": "eyeBlinkLeft",
+   "offset": 6053,
+   "count": 783,
+   "scale": 4.7303690051604634e-07,
+   "maxM": 0.01550000011920929
+  },
+  {
+   "name": "eyeBlinkRight",
+   "offset": 6836,
+   "count": 783,
+   "scale": 4.7303690051604634e-07,
+   "maxM": 0.01550000011920929
+  },
+  {
+   "name": "eyeLookDownLeft",
+   "offset": 7619,
+   "count": 557,
+   "scale": 1.2817773807109555e-07,
+   "maxM": 0.004199999943375588
+  },
+  {
+   "name": "eyeLookDownRight",
+   "offset": 8176,
+   "count": 557,
+   "scale": 1.2817773807109555e-07,
+   "maxM": 0.004199999943375588
+  },
+  {
+   "name": "eyeLookInLeft",
+   "offset": 8733,
+   "count": 533,
+   "scale": 1.7700734986745797e-07,
+   "maxM": 0.005799999833106995
+  },
+  {
+   "name": "eyeLookInRight",
+   "offset": 9266,
+   "count": 533,
+   "scale": 1.7700734986745797e-07,
+   "maxM": 0.005799999833106995
+  },
+  {
+   "name": "eyeLookOutLeft",
+   "offset": 9799,
+   "count": 533,
+   "scale": 1.7090365834081454e-07,
+   "maxM": 0.00560000017285347
+  },
+  {
+   "name": "eyeLookOutRight",
+   "offset": 10332,
+   "count": 533,
+   "scale": 1.7090365834081454e-07,
+   "maxM": 0.00560000017285347
+  },
+  {
+   "name": "eyeLookUpLeft",
+   "offset": 10865,
+   "count": 905,
+   "scale": 8.545182917040727e-08,
+   "maxM": 0.002800000086426735
+  },
+  {
+   "name": "eyeLookUpRight",
+   "offset": 11770,
+   "count": 905,
+   "scale": 8.545182917040727e-08,
+   "maxM": 0.002800000086426735
+  },
+  {
+   "name": "eyeSquintLeft",
+   "offset": 12675,
+   "count": 456,
+   "scale": 1.0681478362075142e-07,
+   "maxM": 0.0035000000149011615
+  },
+  {
+   "name": "eyeSquintRight",
+   "offset": 13131,
+   "count": 456,
+   "scale": 1.0681478362075142e-07,
+   "maxM": 0.0035000000149011615
+  },
+  {
+   "name": "eyeWideLeft",
+   "offset": 13587,
+   "count": 469,
+   "scale": 1.1902218941209969e-07,
+   "maxM": 0.0039000000804662706
+  },
+  {
+   "name": "eyeWideRight",
+   "offset": 14056,
+   "count": 469,
+   "scale": 1.1902218941209969e-07,
+   "maxM": 0.0039000000804662706
+  },
+  {
+   "name": "jawForward",
+   "offset": 14525,
+   "count": 2205,
+   "scale": 2.594073332745435e-07,
+   "maxM": 0.008500000089406967
+  },
+  {
+   "name": "jawLeft",
+   "offset": 16730,
+   "count": 2112,
+   "scale": 2.075258757148594e-07,
+   "maxM": 0.006800000369548798
+  },
+  {
+   "name": "jawOpen",
+   "offset": 18842,
+   "count": 2543,
+   "scale": 1.0467848590191083e-06,
+   "maxM": 0.034299999475479126
+  },
+  {
+   "name": "jawRight",
+   "offset": 21385,
+   "count": 2112,
+   "scale": 2.075258757148594e-07,
+   "maxM": 0.006800000369548798
+  },
+  {
+   "name": "mouthClose",
+   "offset": 23497,
+   "count": 1972,
+   "scale": 8.423108404366016e-07,
+   "maxM": 0.027599999308586122
+  },
+  {
+   "name": "mouthDimpleLeft",
+   "offset": 25469,
+   "count": 983,
+   "scale": 1.7090365834081454e-07,
+   "maxM": 0.00560000017285347
+  },
+  {
+   "name": "mouthDimpleRight",
+   "offset": 26452,
+   "count": 983,
+   "scale": 1.7090365834081454e-07,
+   "maxM": 0.00560000017285347
+  },
+  {
+   "name": "mouthFrownLeft",
+   "offset": 27435,
+   "count": 841,
+   "scale": 1.983703043178021e-07,
+   "maxM": 0.006499999761581421
+  },
+  {
+   "name": "mouthFrownRight",
+   "offset": 28276,
+   "count": 841,
+   "scale": 1.983703043178021e-07,
+   "maxM": 0.006499999761581421
+  },
+  {
+   "name": "mouthFunnel",
+   "offset": 29117,
+   "count": 1737,
+   "scale": 3.0213324217523177e-07,
+   "maxM": 0.00989999994635582
+  },
+  {
+   "name": "mouthLeft",
+   "offset": 30854,
+   "count": 1854,
+   "scale": 2.6245919040689595e-07,
+   "maxM": 0.00860000029206276
+  },
+  {
+   "name": "mouthLowerDownLeft",
+   "offset": 32708,
+   "count": 350,
+   "scale": 1.4648884675811797e-07,
+   "maxM": 0.004800000041723252
+  },
+  {
+   "name": "mouthLowerDownRight",
+   "offset": 33058,
+   "count": 350,
+   "scale": 1.4648884675811797e-07,
+   "maxM": 0.004800000041723252
+  },
+  {
+   "name": "mouthPressLeft",
+   "offset": 33408,
+   "count": 1143,
+   "scale": 2.014221614501545e-07,
+   "maxM": 0.006599999964237213
+  },
+  {
+   "name": "mouthPressRight",
+   "offset": 34551,
+   "count": 1143,
+   "scale": 2.014221614501545e-07,
+   "maxM": 0.006599999964237213
+  },
+  {
+   "name": "mouthPucker",
+   "offset": 35694,
+   "count": 1729,
+   "scale": 2.6551102480118693e-07,
+   "maxM": 0.008699999749660492
+  },
+  {
+   "name": "mouthRight",
+   "offset": 37423,
+   "count": 1854,
+   "scale": 2.6245919040689595e-07,
+   "maxM": 0.00860000029206276
+  },
+  {
+   "name": "mouthRollLower",
+   "offset": 39277,
+   "count": 742,
+   "scale": 1.8616290989548454e-07,
+   "maxM": 0.006100000068545342
+  },
+  {
+   "name": "mouthRollUpper",
+   "offset": 40019,
+   "count": 934,
+   "scale": 2.9297769351623595e-07,
+   "maxM": 0.009600000083446504
+  },
+  {
+   "name": "mouthShrugLower",
+   "offset": 40953,
+   "count": 362,
+   "scale": 1.7090365834081454e-07,
+   "maxM": 0.00560000017285347
+  },
+  {
+   "name": "mouthShrugUpper",
+   "offset": 41315,
+   "count": 837,
+   "scale": 1.6174809831278797e-07,
+   "maxM": 0.0052999999374151235
+  },
+  {
+   "name": "mouthSmileLeft",
+   "offset": 42152,
+   "count": 1699,
+   "scale": 4.425183746686449e-07,
+   "maxM": 0.014499999582767487
+  },
+  {
+   "name": "mouthSmileRight",
+   "offset": 43851,
+   "count": 1699,
+   "scale": 4.425183746686449e-07,
+   "maxM": 0.014499999582767487
+  },
+  {
+   "name": "mouthStretchLeft",
+   "offset": 45550,
+   "count": 1274,
+   "scale": 1.8616290989548454e-07,
+   "maxM": 0.006100000068545342
+  },
+  {
+   "name": "mouthStretchRight",
+   "offset": 46824,
+   "count": 1274,
+   "scale": 1.8616290989548454e-07,
+   "maxM": 0.006100000068545342
+  },
+  {
+   "name": "mouthUpperUpLeft",
+   "offset": 48098,
+   "count": 868,
+   "scale": 1.678518012084621e-07,
+   "maxM": 0.005499999970197678
+  },
+  {
+   "name": "mouthUpperUpRight",
+   "offset": 48966,
+   "count": 868,
+   "scale": 1.678518012084621e-07,
+   "maxM": 0.005499999970197678
+  },
+  {
+   "name": "noseSneerLeft",
+   "offset": 49834,
+   "count": 1145,
+   "scale": 1.220740351754214e-07,
+   "maxM": 0.003999999910593033
+  },
+  {
+   "name": "noseSneerRight",
+   "offset": 50979,
+   "count": 1145,
+   "scale": 1.220740351754214e-07,
+   "maxM": 0.003999999910593033
+  },
+  {
+   "name": "tongueOut",
+   "offset": 52124,
+   "count": 226,
+   "scale": 8.301035028594376e-07,
+   "maxM": 0.027200001478195193
+  }
+ ],
+ "binary": "faceunits.bin",
+ "byteLength": 418804,
+ "buffers": {
+  "indices": {
+   "offset": 0,
+   "dtype": "u16",
+   "count": 52350
+  },
+  "deltas": {
+   "offset": 104704,
+   "dtype": "i16",
+   "count": 157050
+  }
+ }
+}

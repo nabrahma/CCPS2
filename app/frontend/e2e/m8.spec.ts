@@ -58,23 +58,23 @@ test('Expressions panel: preview sliders, bake list, export with blendshapes', a
   await page.getByTestId('cat-export').click();
   await page.getByTestId('export-expressions').locator(':scope > summary').click();
   await expect(page.getByTestId('expressions-panel')).toBeVisible();
-  await expect(page.getByTestId('budget-blendshapes')).toHaveText('Blendshapes 15');
+  await expect(page.getByTestId('budget-blendshapes')).toHaveText('Blendshapes 52');
   await setCamera(page, 'face');
   await page.waitForTimeout(500);
   const neutral = await viewportPng(page, 480, 600);
 
   // Blink preview through the slider: the viewport changes, the document does not.
   const before = await page.evaluate(() => JSON.stringify((window as unknown as TestWindow).__ps2cc.engine.doc));
-  await page.getByTestId('expr-slider-blink_L').fill('1');
-  // The weight is recorded at once; the shapes apply once the face rig has loaded.
+  await page.getByTestId('expr-slider-eyeBlinkLeft').fill('1');
+  // The weight is recorded at once; the shapes apply once the face units have loaded.
   await expect.poll(() => page.evaluate(() => (window as unknown as TestWindow).__ps2cc.scene.parts.some((p) => p.preview)), { timeout: 60_000 }).toBe(true);
-  expect(await page.evaluate(() => (window as unknown as TestWindow).__ps2cc.scene.expressionPreview.blink_L)).toBe(1);
+  expect(await page.evaluate(() => (window as unknown as TestWindow).__ps2cc.scene.expressionPreview.eyeBlinkLeft)).toBe(1);
   const blink = await viewportPng(page, 480, 600);
   const changed = await changedPixels(page, neutral, blink);
-  console.log(`blink_L preview changed ${changed} pixels`);
+  console.log(`eyeBlinkLeft preview changed ${changed} pixels`);
   expect(changed).toBeGreaterThan(150);
   expect(await page.evaluate(() => JSON.stringify((window as unknown as TestWindow).__ps2cc.engine.doc))).toBe(before);
-  await page.getByTestId('expr-slider-blink_R').fill('1');
+  await page.getByTestId('expr-slider-eyeBlinkRight').fill('1');
   await page.waitForTimeout(300);
   await page.screenshot({ path: join(OUT, 'ui_expressions_panel.png') });
 
@@ -84,8 +84,8 @@ test('Expressions panel: preview sliders, bake list, export with blendshapes', a
   expect(await changedPixels(page, neutral, await viewportPng(page, 480, 600))).toBeLessThan(20);
 
   // The bake list: unticking a shape drops it from the document, the budget bar and the export.
-  await page.getByTestId('expr-bake-MBP').uncheck();
-  await expect(page.getByTestId('budget-blendshapes')).toHaveText('Blendshapes 14');
+  await page.getByTestId('expr-bake-jawForward').uncheck();
+  await expect(page.getByTestId('budget-blendshapes')).toHaveText('Blendshapes 51');
   const ex = await page.evaluate(async () => {
     const w = window as unknown as TestWindow;
     const { scene } = await w.__ps2ccTest.prepareExport(w.__ps2cc, { glb: true, tPose: false }, '2026-11-08 12:00:00:000');
@@ -95,13 +95,17 @@ test('Expressions panel: preview sliders, bake list, export with blendshapes', a
     };
   });
   const head = ex.meshes.find((m) => m.role === 'head')!;
-  expect(head.shapes).toHaveLength(14);
-  expect(head.shapes).not.toContain('MBP');
-  expect(ex.sidecar).toEqual(head.shapes);
+  // 51 baked; tongueOut moves only the tongue, which is in the eyes atlas.
+  expect(head.shapes).toHaveLength(50);
+  expect(head.shapes).not.toContain('jawForward');
+  expect(ex.sidecar).toHaveLength(51);
+  expect(ex.sidecar).toEqual(expect.arrayContaining(head.shapes));
   const eyes = ex.meshes.find((m) => m.role === 'eyes')!;
-  expect(eyes.shapes).toEqual(expect.arrayContaining(['blink_L', 'blink_R', 'browsUp']));
-  await page.getByTestId('expr-bake-MBP').check();
-  await expect(page.getByTestId('budget-blendshapes')).toHaveText('Blendshapes 15');
+  // Painted brows and lashes (D-146) leave eyeballs, teeth and tongue in the eyes atlas: they follow the eye-look units and the jaw.
+  expect(eyes.shapes).toEqual(expect.arrayContaining(['eyeLookUpLeft', 'eyeLookInRight', 'jawOpen', 'tongueOut']));
+  expect(eyes.shapes).not.toContain('eyeBlinkLeft');
+  await page.getByTestId('expr-bake-jawForward').check();
+  await expect(page.getByTestId('budget-blendshapes')).toHaveText('Blendshapes 52');
 });
 
 test('review: every blendshape rendered in the viewport', async ({ page }) => {
@@ -119,17 +123,18 @@ test('review: every blendshape rendered in the viewport', async ({ page }) => {
     const sheet = await page.evaluate(async () => {
       const w = window as unknown as TestWindow;
       const s = w.__ps2cc;
-      const names = ['neutral', ...w.__ps2ccTest.core.EXPRESSION_MAP.expressions.map((e) => e.name)];
-      const W = 240;
-      const H = 300;
-      const cols = 4;
+      const map = w.__ps2ccTest.core.EXPRESSION_MAP;
+      const names = ['neutral', ...map.expressions.map((e) => e.name), ...map.presets.map((p) => `pose:${p.name}`)];
+      const W = 200;
+      const H = 250;
+      const cols = 8;
       const rows = Math.ceil(names.length / cols);
       const canvas = new OffscreenCanvas(cols * W, rows * (H + 22));
       const g = canvas.getContext('2d')!;
       g.fillStyle = '#202024';
       g.fillRect(0, 0, canvas.width, canvas.height);
       for (const [i, n] of names.entries()) {
-        await s.scene.setExpressionPreview(n === 'neutral' ? {} : { [n]: 1 });
+        await s.scene.setExpressionPreview(n === 'neutral' ? {} : n.startsWith('pose:') ? (w.__ps2ccTest.core.presetWeights(n.slice(5)) ?? {}) : { [n]: 1 });
         s.viewport!.refresh();
         await s.settled();
         const blob = await s.viewport!.screenshot(W, H);
@@ -138,7 +143,7 @@ test('review: every blendshape rendered in the viewport', async ({ page }) => {
         const y = Math.floor(i / cols) * (H + 22);
         g.drawImage(img, x, y);
         g.fillStyle = '#e8e8e8';
-        g.font = '15px sans-serif';
+        g.font = '13px sans-serif';
         const cal = s.scene.expressionCalibration(n);
         g.fillText(cal ? `${n} (lid x${cal.weight.toFixed(2)})` : n, x + 8, y + H + 16);
       }

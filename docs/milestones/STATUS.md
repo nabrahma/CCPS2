@@ -351,3 +351,33 @@ Two fixes reported after the first release.
   - Full runs: core 277 passed; browser suite 57 of 58 passed at first, and the desktop test passed. The three-photo test (M14) failed on one face, 5.2 texels: its stand-in photos were rendered while something was still loading, and a new import changed the app's load timing. It now renders each set twice and keeps the second, and gives its earlier numbers again (worst 2.45 texels, limit 4).
   - `e2e/m19.spec.ts`: measurements and units, Fit body with undo, redo, save and load, out-of-reach targets, realistic bodies and faces with a lock, the asymmetry sliders, and Crowd Studio. Screenshots in `M19/`.
 
+## M20: Face control (0.25.0, Part 3)
+
+Built without the GNM face model: its weights could not be checked for commercial use (gate G0, D-159). The measured face space, Make plausible and the photo shape fit to GNM wait for it.
+
+- **The 52 ARKit face units** are the expression blendshapes now (D-160), exported under their ARKit names, so Unity's face capture and lip-sync tools drive them as they are.
+  - They come from faceunits01 (Mika Suominen, CC0, from Anny), made exactly symmetric when the app is built.
+  - Visemes are fixed mixes of the units. The names exported before (blink_L, smile, ...) still work.
+  - Eyes, lashes, teeth, tongue, clothes and hair follow them. Blinks close fully on every test body.
+  - Export → Expressions groups the units by brows, eyes, cheeks, jaw, mouth and tongue. It previews six poses (smile, surprise, fear, disgust, pain, scream) and shows the memory cost (about 1.8 MB in Unity for the 52).
+  - `PS2Expressions` in Unity knows the ARKit names and applies a whole capture frame.
+- **Sculpt Studio** (D-161): Grab, Smooth, Inflate, Pinch, Flatten, Crease and Mask on the body itself.
+  - Strokes only reach what faces you, mirror with X symmetry, and are one undo step each.
+  - The sculpt is saved in the character. Clothes, hair, the eyes and the skeleton follow it.
+  - **Save as slider** puts it under Your sliders (−1 to 1) for every character.
+- **Photo assist** (D-162), in Texture Studio:
+  - MediaPipe's segmenter keeps hair, background and glasses out of the projected face.
+  - **Use photo colours** sets the hair colour and a matching skin tone.
+  - **Face points…** places the 68 points by hand, and opens by itself when no face is found.
+- **Tested:**
+  - `faceunits.test.ts`: all 52; the mirror table one-to-one; every left/right pair and centre unit mirrors within 0.5 mm; the recipes; the shapes reach the eyes, lashes, teeth and tongue.
+  - `expression-scene.test.ts` (M8, on face units): every blink closes fully at weight 1 on nine characters. jawOpen tears nothing; its few folds stay on the lips. The lip margin is 20 mm instead of 12 (D-160).
+  - `sculpt.test.ts`: storage and round trip, sliders under it, undo, the skeleton and garments follow, brushes facing the viewer only, symmetry, the mask, a slider on another character.
+  - Determinism: the face units are hashed in Node and Chromium too.
+  - `e2e/m8.spec.ts`, `e2e/m20.spec.ts`: the expressions panel, poses and memory cost, Sculpt Studio strokes with undo and symmetry, save as slider and reuse.
+  - `e2e/m20-photo.spec.ts`, the photo assist checks:
+    - A dark fringe puts 15,417 dark texels on the face without the mask, 51 with it, against 182 for the same face with no fringe.
+    - 68 hand-placed points keep eyes and mouth within 2.87 texels at 1024 (limit 4; full landmarks 1.17).
+    - Photo colours are one undo step, and the point editor opens and places the face.
+  - Unity harness: all 13 test characters import with 52 of 52 blendshapes present, tongue and eyes moving, within their 12k budget (D-163). Go round trip: 51 shapes on every head.
+

@@ -13,8 +13,8 @@
  *  - Hidden body faces removed; unused vertices stripped.
  *  - The head gets its own texture (D-034); tints, brightness, dirt and brow
  *    density are baked into the textures.
- *  - Expression blendshapes (PRD F8) baked from the default rig's face pose
- *    units, on every mesh they move (sparse: vertices that move over 1 um).
+ *  - Expression blendshapes made of the 52 ARKit face units (PRD Part 3, F25),
+ *    on every mesh they move (sparse: vertices that move over 1 um).
  */
 import type { CharacterDoc, Tint } from '../character/doc';
 import type { Mat3, Mat4, Vec3 } from '../math/mat4';
@@ -342,7 +342,7 @@ export async function buildExportScene(scene: CharacterScene, opts: ExportOption
       byPart: { body: budget.body, head: budget.head, hair: budget.hair, garments: budget.garments, eyesAndBrows: budget.eyesAndBrows },
     },
     blendshapes: shapeNames.filter((n) => meshes.some((m) => m.shapes.some((s) => s.name === n))),
-    expressionMap: 'expression_map.json (MakeHuman face pose units on the default rig)',
+    expressionMap: 'expression_map.json (ARKit face units, faceunits01 by Mika Suominen)',
     source: {
       characterId: doc.id,
       bodyMesh: doc.bodyMesh,

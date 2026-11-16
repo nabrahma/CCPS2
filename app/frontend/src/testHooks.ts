@@ -6,13 +6,14 @@ import * as core from '@ps2cc/core';
 import { canvasToPng, decodeImage, imageToCanvas, imageToPng } from './images';
 import { detectLandmarks } from './photo/landmarker';
 import { renderScanViews } from './photo/scan-render';
-import { applyPhoto, applySidePhoto, currentHeadSkin, currentSkin, faceView, placePhoto } from './skin';
+import { applyManualPoints, applyPhoto, applyPhotoColours, applySidePhoto, currentHeadSkin, currentSkin, faceView, placePhoto } from './skin';
+import { segmentPhoto } from './photo/segmenter';
 import { prepareExport } from './export/exportCharacter';
 import { buildGlb } from './export/glb';
 import { useUi } from './state/ui';
 import { runSliderSweep } from './perf';
 import { renderMaterialPair } from './testing/material-check';
 
-export const testHooks = { runSliderSweep, core, detectLandmarks, imageToCanvas, imageToPng, canvasToPng, decodeImage, faceView, applyPhoto, placePhoto, currentSkin, currentHeadSkin, applySidePhoto, renderScanViews, prepareExport, buildGlb, useUi, renderMaterialPair };
+export const testHooks = { runSliderSweep, core, detectLandmarks, segmentPhoto, applyManualPoints, applyPhotoColours, imageToCanvas, imageToPng, canvasToPng, decodeImage, faceView, applyPhoto, placePhoto, currentSkin, currentHeadSkin, applySidePhoto, renderScanViews, prepareExport, buildGlb, useUi, renderMaterialPair };
 
 export type TestHooks = typeof testHooks;

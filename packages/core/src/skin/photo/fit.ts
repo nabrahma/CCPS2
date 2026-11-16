@@ -71,7 +71,10 @@ export function fitFaceToPhoto(input: FaceFitInput): FaceFitResult {
 
   // Landmarks present on both sides. y is flipped so both frames have the same handedness.
   const used: number[] = [];
-  for (let i = 0; i < LANDMARK_COUNT; i++) if (i * 3 + 1 < landmarks.length && landmarkPoint(table, i, assets.base.positions)) used.push(i);
+  for (let i = 0; i < LANDMARK_COUNT; i++) {
+    if (i * 3 + 1 >= landmarks.length || !Number.isFinite(landmarks[i * 3]!) || !Number.isFinite(landmarks[i * 3 + 1]!)) continue;
+    if (landmarkPoint(table, i, assets.base.positions)) used.push(i);
+  }
   if (used.length < 3) throw new Error('the photo has no usable landmarks');
   const weights = used.map((i) => (FACE_OVAL.has(i) ? OVAL_WEIGHT : 1));
   const target = new Float64Array(used.length * 2);

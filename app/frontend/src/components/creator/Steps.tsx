@@ -88,6 +88,7 @@ export function BodyPanel() {
         <MeasurementsPanel />
       </Section>
       <SliderPanel tab="body" />
+      <StudioButton label="Sculpt the body…" testId="open-sculpt-body" hint="Brushes on the body itself, in Sculpt Studio" onClick={() => useUi.getState().openStudio({ kind: 'sculpt', target: null })} />
     </div>
   );
 }
@@ -96,6 +97,15 @@ export function FacePanel() {
   return (
     <div className="creator-step" data-testid="step-panel-face">
       <SliderPanel tab="face" />
+      <StudioButton
+        label="Sculpt the face…"
+        testId="open-sculpt-face"
+        hint="Brushes on the face itself, for likeness work, in Sculpt Studio"
+        onClick={() => {
+          useUi.getState().openStudio({ kind: 'sculpt', target: null });
+          useUi.getState().setView({ camera: 'face' });
+        }}
+      />
     </div>
   );
 }
