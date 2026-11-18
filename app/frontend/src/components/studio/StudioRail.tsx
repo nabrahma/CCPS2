@@ -16,6 +16,7 @@ import { PainterLink } from '../PainterLink';
 import { STUDIOS } from '../workspace/steps';
 import { MaterialStudio } from './MaterialStudio';
 import { CrowdStudio } from './CrowdStudio';
+import { GarmentDesigner } from './GarmentDesigner';
 import { SculptStudio } from './SculptStudio';
 
 export function StudioRail() {
@@ -34,6 +35,7 @@ export function StudioRail() {
         {s.kind === 'garment' && <GarmentStudioPanel />}
         {s.kind === 'material' && <MaterialStudio key={`${s.target}|${s.zone?.partKey ?? ''}`} />}
         {s.kind === 'crowd' && <CrowdStudio />}
+        {s.kind === 'designer' && <GarmentDesigner key={s.target ?? 'new'} />}
         {s.kind === 'sculpt' && <SculptStudio canvas={studio.viewport?.canvas ?? null} />}
       </div>
     </div>

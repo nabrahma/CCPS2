@@ -16,6 +16,9 @@ import {
   baseBodyObj,
   FetchAssetSource,
   importGarment,
+  generateShellGarment,
+  type ShellGarment,
+  type GarmentSlotName,
   bodySurface,
   editMeshToRaw,
   moveToBody,
@@ -54,7 +57,7 @@ import { BakeCancelled, resolveAssetUrl, Viewport, type BakedMap } from '@ps2cc/
 import { backend, isDesktop, libraryUrl, type AppInfo, type GarmentFile, type Settings } from '../backend';
 import { decodeImage, imageToPng } from '../images';
 import { ThumbnailStage } from '../thumbs/stage';
-import { loadUserMaterials, refreshUserLibrary, useLibrary } from './library';
+import { garmentToWear, loadUserMaterials, refreshUserLibrary, useLibrary } from './library';
 import { useUi } from './ui';
 
 type Listener = () => void;
@@ -87,7 +90,7 @@ function blobToDataUrl(blob: Blob): Promise<string> {
   });
 }
 
-function garmentEntry(meta: ProxyMeta, file: string): CatalogProxy {
+export function garmentEntry(meta: ProxyMeta, file: string): CatalogProxy {
   return {
     id: meta.id,
     category: 'clothes',
@@ -399,6 +402,89 @@ export class Studio {
   /** The baked map of a part (rows top first), if the current bake has one. */
   bakedImage(partKey: string): BakedMap['image'] | null {
     return this.baked?.maps.get(partKey)?.image ?? null;
+  }
+
+  // ------------------------------------------------------------ Garment Designer (PRD Part 3, F32)
+
+  private designSeq = 0;
+  private designPreview: string | null = null;
+
+  /**
+   * Generate a shell garment (template and parameters) and wear it as the
+   * Designer's preview, in place of `replacing` (the garment being designed
+   * over) or of the last preview. One undo step for a whole design session.
+   */
+  async previewDesign(templateId: string, params: Record<string, number>, replacing: string | null): Promise<ShellGarment> {
+    const g = await generateShellGarment(this.assets, templateId, params);
+    const id = `preview:designer/${++this.designSeq}`;
+    g.garment.meta.id = id;
+    g.garment.meta.tags = ['preview'];
+    this.assets.addUserProxy(garmentEntry(g.garment.meta, `designer/${id}`), () => Promise.resolve(g.garment.proxy));
+    const previous = this.designPreview;
+    this.designPreview = id;
+    const slot = g.template.slot as GarmentSlotName;
+    this.engine.update(
+      'Design a garment',
+      (d) => {
+        const at = d.garments.findIndex((x) => x.asset === previous || x.asset === replacing);
+        const wear = garmentToWear(this, id, slot);
+        if (at >= 0) d.garments[at] = { ...wear, tint: d.garments[at]!.tint, ...(d.garments[at]!.look && d.garments[at]!.asset === previous ? { look: d.garments[at]!.look } : {}) };
+        else d.garments.push(wear);
+      },
+      'designer',
+    );
+    if (previous) this.assets.removeUserProxy(previous);
+    return g;
+  }
+
+  /** Take the preview off (Cancel), putting back what it replaced. */
+  endDesign(restore: { slot: GarmentSlotName; asset: string } | null): void {
+    const preview = this.designPreview;
+    this.designPreview = null;
+    if (!preview) return;
+    this.engine.update('Close Garment Designer', (d) => {
+      const at = d.garments.findIndex((x) => x.asset === preview);
+      if (at < 0) return;
+      if (restore && this.assets.hasProxy(restore.asset)) d.garments[at] = garmentToWear(this, restore.asset, restore.slot);
+      else d.garments.splice(at, 1);
+    });
+    this.assets.removeUserProxy(preview);
+  }
+
+  /**
+   * Save the design (Garment Designer, F32): as a library garment, or kept on
+   * this character only (D-151), wearing it in place of the preview. The
+   * garment records its template and parameters, so it can be opened in the
+   * Designer again and generated on any body.
+   */
+  async saveDesign(templateId: string, params: Record<string, number>, name: string, where: 'library' | 'character'): Promise<string> {
+    const g = await generateShellGarment(this.assets, templateId, params, name);
+    const slot = g.template.slot as GarmentSlotName;
+    let id: string;
+    let entry: ReturnType<typeof garmentEditFrom> | null = null;
+    if (where === 'library') {
+      const item = await backend.saveGarment(JSON.stringify(g.garment.meta), g.garment.bin);
+      this.assets.addUserProxy(garmentEntry(g.garment.meta, item.file), () => Promise.resolve(g.garment.proxy));
+      id = g.garment.meta.id;
+    } else {
+      id = `${EDIT_PREFIX}${newId()}`;
+      entry = garmentEditFrom(id, `shell:${templateId}`, g.garment, name);
+      // Known to the assets before the character wears it (the engine registers edits as it commits).
+      this.assets.syncGarmentEdits({ [id]: entry });
+    }
+    const preview = this.designPreview;
+    this.designPreview = null;
+    const kept = entry;
+    this.engine.update(where === 'library' ? 'Save designed garment' : 'Keep designed garment', (d) => {
+      if (kept) d.garmentEdits = { ...(d.garmentEdits ?? {}), [id]: kept };
+      const at = d.garments.findIndex((x) => x.asset === preview);
+      const wear = garmentToWear(this, id, slot);
+      if (at >= 0) d.garments[at] = { ...wear, tint: d.garments[at]!.tint, ...(d.garments[at]!.look ? { look: d.garments[at]!.look } : {}) };
+      else d.garments.push(wear);
+    });
+    if (preview) this.assets.removeUserProxy(preview);
+    this.bump();
+    return id;
   }
 
   // ------------------------------------------------------------ custom garments (PRD F4)

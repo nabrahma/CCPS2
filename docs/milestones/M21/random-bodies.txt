@@ -1,0 +1,161 @@
+4265 of 4400 garments on 200 random bodies pass every check (96.9%)
+(socks, work boots and sneakers checked again on the 200 after their rings were fixed in place up to the ankle: 600 of 600.)
+
+tshirt: 181/200 bodies
+longsleeve: 199/200 bodies
+rollneck: 190/200 bodies
+tank: 182/200 bodies
+utilityvest: 200/200 bodies
+leggings: 194/200 bodies
+straighttrousers: 183/200 bodies
+flaredtrousers: 177/200 bodies
+cargotrousers: 183/200 bodies
+shorts: 180/200 bodies
+gloves: 200/200 bodies
+socks: 200/200 bodies
+workboots: 200/200 bodies
+sneakers: 200/200 bodies
+beanie: 200/200 bodies
+cap: 200/200 bodies
+hood: 200/200 bodies
+belt: 200/200 bodies
+wristband: 200/200 bodies
+holster: 200/200 bodies
+strap: 200/200 bodies
+satchel: 198/200 bodies
+
+rollneck on random body 3: a silhouette corner turns 60 degrees
+tshirt on random body 4: show-through 27%
+tank on random body 4: show-through 29%
+rollneck on random body 5: rim 4.4 mm
+straighttrousers on random body 11: show-through 26%
+flaredtrousers on random body 11: show-through 27%
+shorts on random body 11: show-through 25%
+shorts on random body 12: a silhouette corner turns 63 degrees
+tshirt on random body 14: rim 4.0 mm
+shorts on random body 15: a silhouette corner turns 61 degrees
+straighttrousers on random body 27: show-through 25%
+flaredtrousers on random body 27: show-through 26%
+cargotrousers on random body 33: a silhouette corner turns 62 degrees
+straighttrousers on random body 35: show-through 26%
+flaredtrousers on random body 35: show-through 28%
+cargotrousers on random body 35: a silhouette corner turns 60 degrees
+shorts on random body 35: show-through 26%
+cargotrousers on random body 36: a silhouette corner turns 61 degrees
+tank on random body 38: show-through 25%
+rollneck on random body 39: a silhouette corner turns 61 degrees
+leggings on random body 39: a silhouette corner turns 65 degrees
+flaredtrousers on random body 39: show-through 26%
+leggings on random body 46: a silhouette corner turns 62 degrees
+flaredtrousers on random body 46: a silhouette corner turns 62 degrees
+straighttrousers on random body 47: a silhouette corner turns 66 degrees
+cargotrousers on random body 47: a silhouette corner turns 64 degrees
+shorts on random body 47: a silhouette corner turns 61 degrees
+tank on random body 54: show-through 26%
+tshirt on random body 57: rim 4.2 mm
+flaredtrousers on random body 60: a silhouette corner turns 63 degrees
+cargotrousers on random body 60: a silhouette corner turns 63 degrees
+shorts on random body 60: a silhouette corner turns 62 degrees
+straighttrousers on random body 61: a silhouette corner turns 60 degrees
+leggings on random body 62: a silhouette corner turns 62 degrees
+flaredtrousers on random body 62: a silhouette corner turns 61 degrees
+satchel on random body 62: 6.4 mm inside the body
+straighttrousers on random body 67: show-through 26%
+flaredtrousers on random body 67: show-through 27%
+shorts on random body 67: show-through 26%
+cargotrousers on random body 68: a silhouette corner turns 61 degrees
+straighttrousers on random body 70: a silhouette corner turns 61 degrees
+cargotrousers on random body 70: a silhouette corner turns 69 degrees
+shorts on random body 70: a silhouette corner turns 66 degrees
+leggings on random body 72: a silhouette corner turns 60 degrees
+tshirt on random body 74: rim 4.4 mm
+flaredtrousers on random body 77: show-through 25%
+cargotrousers on random body 77: a silhouette corner turns 61 degrees
+tshirt on random body 78: a silhouette corner turns 62 degrees
+rollneck on random body 78: a silhouette corner turns 61 degrees
+flaredtrousers on random body 78: a silhouette corner turns 60 degrees
+tshirt on random body 83: a silhouette corner turns 62 degrees
+rollneck on random body 83: a silhouette corner turns 61 degrees
+tank on random body 83: a silhouette corner turns 63 degrees
+tank on random body 84: show-through 26%
+straighttrousers on random body 84: a silhouette corner turns 67 degrees
+shorts on random body 84: a silhouette corner turns 62 degrees
+cargotrousers on random body 85: a silhouette corner turns 64 degrees
+tank on random body 86: show-through 27%
+tank on random body 87: show-through 26%
+straighttrousers on random body 88: show-through 25%
+straighttrousers on random body 88: a silhouette corner turns 63 degrees
+flaredtrousers on random body 88: show-through 25%
+cargotrousers on random body 88: a silhouette corner turns 65 degrees
+shorts on random body 88: a silhouette corner turns 64 degrees
+tank on random body 91: show-through 26%
+tank on random body 92: show-through 25%
+tank on random body 94: show-through 25%
+cargotrousers on random body 97: a silhouette corner turns 64 degrees
+flaredtrousers on random body 99: show-through 26%
+straighttrousers on random body 101: show-through 26%
+flaredtrousers on random body 101: show-through 27%
+shorts on random body 101: show-through 26%
+tshirt on random body 102: rim 3.7 mm
+tshirt on random body 108: rim 2.7 mm
+cargotrousers on random body 109: a silhouette corner turns 62 degrees
+cargotrousers on random body 113: a silhouette corner turns 63 degrees
+shorts on random body 113: a silhouette corner turns 65 degrees
+tshirt on random body 116: rim 3.8 mm
+flaredtrousers on random body 126: a silhouette corner turns 64 degrees
+tshirt on random body 130: show-through 27%
+tank on random body 130: show-through 28%
+leggings on random body 136: a silhouette corner turns 62 degrees
+rollneck on random body 138: a silhouette corner turns 60 degrees
+shorts on random body 138: a silhouette corner turns 62 degrees
+longsleeve on random body 139: a silhouette corner turns 61 degrees
+rollneck on random body 139: a silhouette corner turns 63 degrees
+tank on random body 139: a silhouette corner turns 61 degrees
+flaredtrousers on random body 139: a silhouette corner turns 69 degrees
+tank on random body 140: show-through 25%
+cargotrousers on random body 143: a silhouette corner turns 63 degrees
+tshirt on random body 145: a silhouette corner turns 62 degrees
+rollneck on random body 145: a silhouette corner turns 61 degrees
+tshirt on random body 146: rim 4.2 mm
+flaredtrousers on random body 147: show-through 27%
+leggings on random body 148: a silhouette corner turns 60 degrees
+satchel on random body 148: 2.9 mm inside the body
+straighttrousers on random body 151: a silhouette corner turns 62 degrees
+flaredtrousers on random body 153: show-through 26%
+tshirt on random body 165: show-through 27%
+tank on random body 165: show-through 33%
+shorts on random body 165: a silhouette corner turns 61 degrees
+tshirt on random body 169: rim 4.3 mm
+straighttrousers on random body 169: show-through 29%
+flaredtrousers on random body 169: show-through 30%
+shorts on random body 169: show-through 27%
+tank on random body 173: show-through 28%
+straighttrousers on random body 173: a silhouette corner turns 73 degrees
+flaredtrousers on random body 173: a silhouette corner turns 65 degrees
+cargotrousers on random body 173: a silhouette corner turns 70 degrees
+shorts on random body 173: a silhouette corner turns 71 degrees
+straighttrousers on random body 178: a silhouette corner turns 61 degrees
+flaredtrousers on random body 178: a silhouette corner turns 63 degrees
+cargotrousers on random body 178: a silhouette corner turns 66 degrees
+shorts on random body 178: a silhouette corner turns 64 degrees
+tshirt on random body 179: rim 3.6 mm
+tshirt on random body 183: a silhouette corner turns 63 degrees
+rollneck on random body 183: a silhouette corner turns 60 degrees
+tank on random body 183: a silhouette corner turns 65 degrees
+straighttrousers on random body 183: show-through 26%
+flaredtrousers on random body 183: show-through 27%
+shorts on random body 183: show-through 25%
+tank on random body 184: show-through 31%
+shorts on random body 184: a silhouette corner turns 66 degrees
+tshirt on random body 185: rim 3.5 mm
+tshirt on random body 188: rim 4.2 mm
+straighttrousers on random body 188: show-through 28%
+flaredtrousers on random body 188: show-through 29%
+shorts on random body 188: show-through 27%
+tshirt on random body 197: a silhouette corner turns 62 degrees
+rollneck on random body 197: a silhouette corner turns 61 degrees
+tank on random body 199: show-through 28%
+tank on random body 199: a silhouette corner turns 60 degrees
+straighttrousers on random body 199: a silhouette corner turns 67 degrees
+flaredtrousers on random body 199: a silhouette corner turns 62 degrees
+cargotrousers on random body 199: a silhouette corner turns 65 degrees

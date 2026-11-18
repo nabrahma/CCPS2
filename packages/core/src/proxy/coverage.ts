@@ -33,11 +33,14 @@ export interface CoverageInput {
   garmentUvs: ArrayLike<number>;
   /** Alpha 0..1 at a UV (v up); omitted = fully opaque. */
   alphaAt?: (u: number, v: number) => number;
+  /** How far over the skin cloth still hides it (default MAX_GAP; generated boots stand well off the toes). */
+  maxGap?: number;
 }
 
 /** hm08 vertices hidden under the garment, sorted ascending. */
 export function computeCoveredVertices(input: CoverageInput): Uint32Array {
   const { bodyPositions: P, bodyNormals: N, bodyQuads: Q, garmentUvs: UV, alphaAt } = input;
+  const maxGap = input.maxGap ?? MAX_GAP;
   const bvh = new TriangleBVH(input.garmentPositions, input.garmentIndices);
   const I = input.garmentIndices;
   const opaque = alphaAt
@@ -85,7 +88,7 @@ export function computeCoveredVertices(input: CoverageInput): Uint32Array {
         const a = ((r - 1) / 6) * Math.PI * 2;
         for (let k = 0; k < 3; k++) dir[k] = cos * n[k]! + sin * (Math.cos(a) * t1[k]! + Math.sin(a) * t2[k]!);
       }
-      all = bvh.raycast(origin, dir, 0, MAX_GAP + START_UNDER_SKIN, opaque) !== null;
+      all = bvh.raycast(origin, dir, 0, maxGap + START_UNDER_SKIN, opaque) !== null;
     }
     if (all) covered.add(v);
   }

@@ -13,7 +13,7 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "test": "vitest run",
+    "test": "vitest run --exclude test/m21.test.ts && vitest run test/m21.test.ts",
     "test:watch": "vitest"
   },
   "dependencies": {

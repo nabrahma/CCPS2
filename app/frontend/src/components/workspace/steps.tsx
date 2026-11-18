@@ -38,6 +38,7 @@ export const STUDIOS: { id: StudioKind; label: string; hint: string }[] = [
   { id: 'hair', label: 'Hair Studio', hint: 'Groom, shape and save hairstyles' },
   { id: 'texture', label: 'Texture Studio', hint: 'Skin layers, photos, painting; save skins and garment textures' },
   { id: 'garment', label: 'Garment Studio', hint: 'Reshape and kitbash garments' },
+  { id: 'designer', label: 'Garment Designer', hint: 'New garments and accessories from templates: tops, trousers, boots, gloves, hats, belts, straps' },
   { id: 'material', label: 'Material Studio', hint: 'Make materials from library materials or your images' },
   { id: 'sculpt', label: 'Sculpt Studio', hint: 'Brushes on the body and face; save a sculpt as a slider' },
   { id: 'crowd', label: 'Crowd Studio', hint: 'Many believable people from one seed, for NPCs' },
@@ -55,7 +56,14 @@ export function openStudioOf(studio: Studio, kind: StudioKind): void {
   }
   ui.openStudio({
     kind,
-    target: kind === 'hair' || kind === 'crowd' || kind === 'sculpt' ? null : kind === 'garment' ? garment : kind === 'texture' ? 'skin' : (studio.assets.catalog.materials?.[0]?.id ?? null),
+    target:
+      kind === 'hair' || kind === 'crowd' || kind === 'sculpt' || kind === 'designer'
+        ? null
+        : kind === 'garment'
+          ? garment
+          : kind === 'texture'
+            ? 'skin'
+            : (studio.assets.catalog.materials?.[0]?.id ?? null),
     zone: kind === 'material' && garment ? { partKey: garment, zone: 0 } : null,
   });
 }

@@ -5,7 +5,7 @@
  * them in Node and `e2e/determinism.spec.ts` in the browser engine the app
  * uses. The two must match: same inputs, byte-identical outputs.
  *
- * Each milestone adds its generators here.
+ * Each milestone adds its generators here (M21: the shell garment templates).
  */
 import type { CoreAssets } from './assets';
 import { MEASURE_IDS, type MeasureId } from './anthro/definitions';
@@ -22,6 +22,8 @@ import { generateCrowd } from './population/crowd';
 import { samplePerson } from './population/sampler';
 import { Rng } from './random';
 import { EXPRESSION_MAP } from './expression/map';
+import { buildTemplate } from './garment/shell/generate';
+import { SHELL_TEMPLATES } from './garment/shell/templates';
 
 function hashFloats(values: ArrayLike<number>): string {
   return new Sha256().updateArray(Float64Array.from(values as ArrayLike<number>)).hex();
@@ -129,5 +131,12 @@ export async function generatorHashes(assets: CoreAssets): Promise<Record<string
   for (const e of EXPRESSION_MAP.expressions) shapes.updateArray(units.blend(e.units, assets.base.vertexCount));
   shapes.updateArray(await assets.mirror());
   out.faceUnits = shapes.hex();
+
+  // F28: every shell template on the reference body (positions, triangles, UVs), default parameters.
+  for (const t of SHELL_TEMPLATES) {
+    const { build } = await buildTemplate(assets, t.id);
+    const h = new Sha256().updateArray(Float64Array.from(build.mesh.pos)).updateArray(Uint32Array.from(build.mesh.tris));
+    out[`shell:${t.id}`] = h.updateArray(Float64Array.from(build.uv.uvs)).hex();
+  }
   return out;
 }

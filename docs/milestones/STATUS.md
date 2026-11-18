@@ -381,3 +381,37 @@ Built without the GNM face model: its weights could not be checked for commercia
     - Photo colours are one undo step, and the point editor opens and places the face.
   - Unity harness: all 13 test characters import with 52 of 52 blendshapes present, tongue and eyes moving, within their 12k budget (D-163). Go round trip: 51 shapes on every head.
 
+
+## M21: Shell garments and accessories (0.26.0, Part 3)
+
+22 templates generated from parameters, worn by any character, and a Garment Designer to make them. See `docs/garment-generators.md`.
+
+- **Templates:**
+  - Tops: T-shirt, long-sleeve, roll-neck, tank, utility vest.
+  - Bottoms: leggings, straight, flared and cargo trousers, shorts.
+  - Hands and feet: gloves, socks, work boots, sneakers.
+  - Headwear: beanie, cap, hood.
+  - Accessories: belt, wristband, holster band, strap, satchel.
+- **The look** follows the user's reference characters: rims that step out at every hem, trouser legs that hang straight, tops that stand off the back and hang plumb, chunky soles, mitt gloves with a thumb.
+- **Per-body generation** (D-164): each character gets the garment generated on its own body with the same topology, so it fits that shape. During a drag it follows its binding.
+- **Garment Designer** (Asset Studio, Shell tab):
+  - Pick a template, then set the parameter panel built from its schema, or press a seeded Random design.
+  - The live preview is worn by the character.
+  - Round hem handles in the viewport drag hems, rise, sleeves, sock and boot height and glove cuffs.
+  - Save to Wardrobe, or Keep on this character (D-151).
+  - A generated garment in Clothes has **Edit in Garment Designer**.
+  - The region painter is not in yet. The Pattern tab comes with M22 and M23.
+- **Tested:**
+  - `m21.test.ts`, every template:
+    - within its slot budget, manifold, consistent winding, no self-intersections;
+    - rims at least 5 mm, seams found, the same bytes when generated again;
+    - the generator under 200 ms (median 82 ms, slowest 156 ms; binding for the library adds 9–83 ms; D-170).
+  - The default male and female pass every 5.0 check (ease, show-through, silhouette, rims) with no poke-through.
+  - 200 random bodies:
+    - the same topology on every body;
+    - 4,265 of 4,400 garments (96.9%) pass every check, and 13 templates pass on all 200 (footwear checked again after its last change: 600 of 600);
+    - still failing: 73 silhouette corners of 61–70° (trousers, shorts, roll-neck, mostly at the seat's centre line on heavy bodies), 48 show-through ratios of 25–30%, 12 T-shirt rims under 4.5 mm, 2 satchel pokes (D-168, `docs/milestones/M21/random-bodies.txt`).
+  - Determinism: every template's mesh and UVs hashed in Node and Chromium.
+  - `e2e/m21.spec.ts`: the preview, templates, parameters, Random design with a seed, a hem handle dragged in the viewport, Save to Wardrobe (template and parameters recorded), opening it again, Keep on this character.
+  - Unity harness: 23 test characters, ten of them dressed only in generated garments. All import as Humanoid with 52 blendshapes, within 12k triangles, feet on the ground. The Go FBX round trip passes on all 23.
+  - Core 291 tests, e2e 63, desktop, Go, lint and typecheck pass.

@@ -304,6 +304,306 @@
             "errors": []
         },
         {
+            "name": "Shell Cap",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 11725,
+            "budget": 12000,
+            "height": 1.417014241218567,
+            "feetY": -1.1920928955078125e-7,
+            "facesPlusZ": true,
+            "maxPoseStretch": 5.05017614364624,
+            "restSkinningError": 4.893761342827929e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Shell Cap_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Shell Cap_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Shell Cap_Head/jawOpen: moves up to 38.4 mm",
+                "Shell Cap_Eyes/jawOpen: moves up to 30.1 mm",
+                "Shell Cap_Eyes/tongueOut: moves up to 27.4 mm",
+                "Shell Cap_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Shell Cap_Body: y 0.000..1.244, rest skinning error 0.00 mm",
+                "Shell Cap_Eyes: y 1.216..1.322, rest skinning error 0.00 mm",
+                "Shell Cap_Garments: y 0.057..1.417, rest skinning error 0.00 mm",
+                "Shell Cap_Head: y 1.203..1.392, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Shell Cargo",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 11682,
+            "budget": 12000,
+            "height": 1.7272650003433228,
+            "feetY": -0.0009012222290039063,
+            "facesPlusZ": true,
+            "maxPoseStretch": 4.26980447769165,
+            "restSkinningError": 4.0425837255497754e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Shell Cargo_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Shell Cargo_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Shell Cargo_Head/jawOpen: moves up to 38.4 mm",
+                "Shell Cargo_Eyes/jawOpen: moves up to 30.1 mm",
+                "Shell Cargo_Eyes/tongueOut: moves up to 27.4 mm",
+                "Shell Cargo_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Shell Cargo_Body: y 0.005..1.544, rest skinning error 0.00 mm",
+                "Shell Cargo_Eyes: y 1.514..1.632, rest skinning error 0.00 mm",
+                "Shell Cargo_Garments: y -0.001..1.490, rest skinning error 0.00 mm",
+                "Shell Cargo_Head: y 1.496..1.726, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Shell Gear",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 11738,
+            "budget": 12000,
+            "height": 1.6694941520690918,
+            "feetY": -2.384185791015625e-7,
+            "facesPlusZ": true,
+            "maxPoseStretch": 4.235999584197998,
+            "restSkinningError": 5.160972591511381e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Shell Gear_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Shell Gear_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Shell Gear_Head/jawOpen: moves up to 38.4 mm",
+                "Shell Gear_Eyes/jawOpen: moves up to 30.1 mm",
+                "Shell Gear_Eyes/tongueOut: moves up to 27.4 mm",
+                "Shell Gear_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Shell Gear_Body: y 0.000..1.491, rest skinning error 0.00 mm",
+                "Shell Gear_Eyes: y 1.461..1.576, rest skinning error 0.00 mm",
+                "Shell Gear_Garments: y 0.057..1.439, rest skinning error 0.00 mm",
+                "Shell Gear_Head: y 1.445..1.669, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Shell Gloves",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 10615,
+            "budget": 12000,
+            "height": 1.5855062007904053,
+            "feetY": 0.0,
+            "facesPlusZ": true,
+            "maxPoseStretch": 3.297332525253296,
+            "restSkinningError": 2.682209014892578e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Shell Gloves_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Shell Gloves_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Shell Gloves_Head/jawOpen: moves up to 38.4 mm",
+                "Shell Gloves_Eyes/jawOpen: moves up to 30.1 mm",
+                "Shell Gloves_Eyes/tongueOut: moves up to 27.4 mm",
+                "Shell Gloves_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Shell Gloves_Body: y 0.000..1.421, rest skinning error 0.00 mm",
+                "Shell Gloves_Eyes: y 1.391..1.496, rest skinning error 0.00 mm",
+                "Shell Gloves_Garments: y 0.121..1.395, rest skinning error 0.00 mm",
+                "Shell Gloves_Head: y 1.379..1.586, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Shell Hood",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 11592,
+            "budget": 12000,
+            "height": 1.9069700241088867,
+            "feetY": 0.0,
+            "facesPlusZ": true,
+            "maxPoseStretch": 4.702783584594727,
+            "restSkinningError": 4.138269673603645e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Shell Hood_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Shell Hood_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Shell Hood_Head/jawOpen: moves up to 38.4 mm",
+                "Shell Hood_Eyes/jawOpen: moves up to 30.1 mm",
+                "Shell Hood_Eyes/tongueOut: moves up to 27.4 mm",
+                "Shell Hood_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Shell Hood_Body: y 0.000..1.693, rest skinning error 0.00 mm",
+                "Shell Hood_Eyes: y 1.660..1.776, rest skinning error 0.00 mm",
+                "Shell Hood_Garments: y 0.057..1.907, rest skinning error 0.00 mm",
+                "Shell Hood_Head: y 1.647..1.862, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Shell Shorts",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 11219,
+            "budget": 12000,
+            "height": 1.4364259243011475,
+            "feetY": -0.0024533867835998535,
+            "facesPlusZ": true,
+            "maxPoseStretch": 3.790365695953369,
+            "restSkinningError": 3.715778689183935e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Shell Shorts_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Shell Shorts_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Shell Shorts_Head/jawOpen: moves up to 38.4 mm",
+                "Shell Shorts_Eyes/jawOpen: moves up to 30.1 mm",
+                "Shell Shorts_Eyes/tongueOut: moves up to 27.4 mm",
+                "Shell Shorts_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Shell Shorts_Body: y 0.004..1.278, rest skinning error 0.00 mm",
+                "Shell Shorts_Eyes: y 1.248..1.348, rest skinning error 0.00 mm",
+                "Shell Shorts_Garments: y -0.002..1.212, rest skinning error 0.00 mm",
+                "Shell Shorts_Head: y 1.240..1.434, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Shell Sweater",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 11090,
+            "budget": 12000,
+            "height": 1.5353329181671143,
+            "feetY": -5.960464477539063e-8,
+            "facesPlusZ": true,
+            "maxPoseStretch": 3.2391164302825928,
+            "restSkinningError": 3.8327516449498944e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Shell Sweater_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Shell Sweater_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Shell Sweater_Head/jawOpen: moves up to 38.4 mm",
+                "Shell Sweater_Eyes/jawOpen: moves up to 30.1 mm",
+                "Shell Sweater_Eyes/tongueOut: moves up to 27.4 mm",
+                "Shell Sweater_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Shell Sweater_Body: y 0.000..1.374, rest skinning error 0.00 mm",
+                "Shell Sweater_Eyes: y 1.344..1.447, rest skinning error 0.00 mm",
+                "Shell Sweater_Garments: y 0.116..1.347, rest skinning error 0.00 mm",
+                "Shell Sweater_Head: y 1.334..1.535, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Shell Tee",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 11118,
+            "budget": 12000,
+            "height": 1.7292535305023193,
+            "feetY": -5.960464477539063e-8,
+            "facesPlusZ": true,
+            "maxPoseStretch": 4.229996681213379,
+            "restSkinningError": 3.934725043563958e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Shell Tee_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Shell Tee_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Shell Tee_Head/jawOpen: moves up to 38.4 mm",
+                "Shell Tee_Eyes/jawOpen: moves up to 30.1 mm",
+                "Shell Tee_Eyes/tongueOut: moves up to 27.4 mm",
+                "Shell Tee_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Shell Tee_Body: y 0.000..1.548, rest skinning error 0.00 mm",
+                "Shell Tee_Eyes: y 1.518..1.635, rest skinning error 0.00 mm",
+                "Shell Tee_Garments: y 0.057..1.481, rest skinning error 0.00 mm",
+                "Shell Tee_Head: y 1.500..1.729, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Shell Vest",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 11641,
+            "budget": 12000,
+            "height": 1.609821081161499,
+            "feetY": -5.960464477539063e-8,
+            "facesPlusZ": true,
+            "maxPoseStretch": 3.910417318344116,
+            "restSkinningError": 5.044433919465519e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Shell Vest_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Shell Vest_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Shell Vest_Head/jawOpen: moves up to 38.4 mm",
+                "Shell Vest_Eyes/jawOpen: moves up to 30.1 mm",
+                "Shell Vest_Eyes/tongueOut: moves up to 27.4 mm",
+                "Shell Vest_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Shell Vest_Body: y 0.000..1.434, rest skinning error 0.00 mm",
+                "Shell Vest_Eyes: y 1.405..1.518, rest skinning error 0.00 mm",
+                "Shell Vest_Garments: y 0.874..1.389, rest skinning error 0.00 mm",
+                "Shell Vest_Head: y 1.390..1.610, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Shell Winter",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 11849,
+            "budget": 12000,
+            "height": 1.7300822734832764,
+            "feetY": -5.960464477539063e-8,
+            "facesPlusZ": true,
+            "maxPoseStretch": 4.445714950561523,
+            "restSkinningError": 4.933724540023832e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Shell Winter_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Shell Winter_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Shell Winter_Head/jawOpen: moves up to 38.4 mm",
+                "Shell Winter_Eyes/jawOpen: moves up to 30.1 mm",
+                "Shell Winter_Eyes/tongueOut: moves up to 27.4 mm",
+                "Shell Winter_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Shell Winter_Body: y 0.000..1.534, rest skinning error 0.00 mm",
+                "Shell Winter_Eyes: y 1.501..1.620, rest skinning error 0.00 mm",
+                "Shell Winter_Garments: y 0.055..1.730, rest skinning error 0.00 mm",
+                "Shell Winter_Head: y 1.484..1.686, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
             "name": "Short",
             "avatarValid": true,
             "avatarHuman": true,

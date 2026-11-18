@@ -365,7 +365,7 @@ function fileStem(name: string): string {
  * Turn a mesh read from a file into a garment asset: check it sits on the body,
  * weld, decimate to the slot's budget, bind, and compute the hidden body faces.
  */
-export async function importGarment(raw: RawGarmentMesh, options: { name: string; slot: ImportSlot; body: ReferenceBody }): Promise<ImportedGarment> {
+export async function importGarment(raw: RawGarmentMesh, options: { name: string; slot: ImportSlot; body: ReferenceBody; coverageGap?: number }): Promise<ImportedGarment> {
   const { name, slot, body } = options;
   if (raw.faceVerts.length === 0 || raw.positions.length === 0) throw new GarmentImportError('This file has no mesh faces.');
   const aligned = alignToBody(raw.positions, body);
@@ -385,6 +385,7 @@ export async function importGarment(raw: RawGarmentMesh, options: { name: string
     garmentPositions: gather3(d.restPositions, topo.sourceVertex, new Float32Array(topo.sourceVertex.length * 3)),
     garmentIndices: topo.indices,
     garmentUvs: topo.uvs,
+    maxGap: options.coverageGap,
   });
 
   const b = new ContainerBuilder();

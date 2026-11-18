@@ -13,7 +13,7 @@ export type TabId = 'body' | 'face' | 'skin' | 'eyes' | 'brows' | 'lashes' | 'ma
 export type DockTab = 'modify' | 'studio' | 'settings';
 
 /** The Asset Studio's editors (Part 2 F20). */
-export type StudioKind = 'hair' | 'texture' | 'garment' | 'material' | 'sculpt' | 'crowd';
+export type StudioKind = 'hair' | 'texture' | 'garment' | 'designer' | 'material' | 'sculpt' | 'crowd';
 
 /**
  * An open Asset Studio. `target`: the garment's part key (Garment Studio, or

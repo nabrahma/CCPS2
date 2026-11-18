@@ -1808,3 +1808,23 @@ code {
   vertical-align: -2px;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
+
+/* Garment Designer (PRD Part 3, F32): hem handles over the viewport. */
+.hem-handles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.hem-handle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: var(--accent, #4a8bff);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+  cursor: ns-resize;
+  pointer-events: auto;
+}

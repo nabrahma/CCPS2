@@ -22,6 +22,8 @@ import { HairBinding } from '../hair/binding';
 import { boundaryLoops, browRoots, buildSurfaceCards, classifyLoop, furRoots, loopLength, type CardBrows, type FurTrim } from '../hair/surface-cards';
 import { HairGenerator, type GeneratedHair } from '../hair/generate';
 import { BodySurface, GarmentCollider } from '../proxy/collision';
+import { SHELL_SOURCE_TIER, shellBody, shellBodyAt, type ShellBody, type ShellTier } from '../garment/shell/body';
+import { prepareShellReplay, replayShell, type ShellReplay } from '../garment/shell/generate';
 import type { ProxyAsset } from '../proxy/proxy';
 import { buildInfluences, selectInfluences, type InfluenceTable } from '../skeleton/weights';
 import { buildRenderTopology, gather3, type RenderTopology } from './render-mesh';
@@ -177,6 +179,8 @@ interface ProxyPart {
   smooth: Float32Array;
   /** Garments only: keeps the cloth outside the visible skin. */
   collider: GarmentCollider | null;
+  /** Generated shell garments (PRD Part 3, F28): generated again on this character's body when the shape settles. */
+  shell: ShellReplay | null;
 }
 
 const NEUTRAL: Tint = { color: [1, 1, 1], brightness: 1 };
@@ -441,6 +445,8 @@ export class CharacterScene {
         triangleCount: topo.indices.length / 3,
       };
       this.influenceCache.delete(w.key);
+      const shell = w.kind === 'garment' ? await prepareShellReplay(this.engine.assets, proxy).catch(() => null) : null;
+      if (shell) await this.shellBase(shell.template.tier ?? SHELL_SOURCE_TIER);
       this.proxies.set(w.key, {
         part,
         proxy,
@@ -448,6 +454,7 @@ export class CharacterScene {
         fitted: new Float32Array(proxy.vertexCount * 3),
         smooth: new Float32Array(proxy.vertexCount * 3),
         collider: null,
+        shell,
       });
     }
     this.applyHiddenBody(doc);
@@ -461,6 +468,25 @@ export class CharacterScene {
     this.update();
     this.skinSynced = null;
     await this.syncSkin(doc);
+  }
+
+  /** Shell bodies of the reference character, per tier (loaded when a generated garment is first worn). */
+  private shellBases = new Map<ShellTier, ShellBody>();
+  /** This character's shell body, per tier, for the geometry version it was made for. */
+  private shellNow = new Map<ShellTier, { version: number; body: ShellBody }>();
+
+  private async shellBase(tier: ShellTier): Promise<void> {
+    if (!this.shellBases.has(tier)) this.shellBases.set(tier, await shellBody(this.engine.assets, tier));
+  }
+
+  private shellBodyNow(tier: ShellTier): ShellBody | null {
+    const base = this.shellBases.get(tier);
+    if (!base) return null;
+    const cached = this.shellNow.get(tier);
+    if (cached && cached.version === this.engine.geometryVersion) return cached.body;
+    const body = shellBodyAt(base, this.engine.positions.slice(), this.engine.skeleton);
+    this.shellNow.set(tier, { version: this.engine.geometryVersion, body });
+    return body;
   }
 
   /** Refit all parts to the engine's current geometry (call on every geometry change). */
@@ -482,10 +508,27 @@ export class CharacterScene {
       p.version++;
     }
     for (const pp of this.proxies.values()) pp.proxy.fit(base, pp.fitted);
+    // Generated garments: made again for this body's own shape once it settles (their binding fits during a drag).
+    if (!this.engine.interacting) {
+      for (const pp of this.proxies.values()) {
+        if (!pp.shell) continue;
+        const body = this.shellBodyNow(pp.shell.template.tier ?? SHELL_SOURCE_TIER);
+        try {
+          if (body) replayShell(body, pp.shell, pp.fitted);
+        } catch {
+          // A body the topology cannot be replayed on: the garment keeps its binding fit from here on.
+          pp.shell = null;
+          pp.proxy.fit(base, pp.fitted);
+        }
+      }
+    }
     // Re-anchor garments once the shape settles; during a drag the old anchors follow the body.
     if (this.anchoredFor !== this.engine.geometryVersion && (!this.engine.interacting || this.anchoredFor === -1)) this.anchorGarments();
     for (const pp of this.proxies.values()) {
-      if (pp.collider && this.body) pp.collider.resolve(pp.fitted, this.body.part.positions, this.body.part.normals);
+      // A generated garment made for this body keeps clear of the skin itself (and its soles sit inside the feet
+      // on purpose): the collider is for garments fitted by their binding, including generated ones during a drag.
+      const generated = pp.shell !== null && !this.engine.interacting;
+      if (pp.collider && this.body && !generated) pp.collider.resolve(pp.fitted, this.body.part.positions, this.body.part.normals);
       computeTriangleNormals(pp.fitted, pp.topo.sourceIndices, pp.proxy.vertexCount, pp.smooth);
       gather3(pp.fitted, pp.topo.sourceVertex, pp.part.positions);
       gather3(pp.smooth, pp.topo.sourceVertex, pp.part.normals);

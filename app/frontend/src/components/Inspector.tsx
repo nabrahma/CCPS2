@@ -36,6 +36,9 @@ export function GarmentInspector({ partKey }: { partKey: string }) {
   const select = useUi((s) => s.select);
   const garment = studio.engine.doc.garments.find((g) => `garment:${g.slot}:${g.asset}` === partKey);
   if (!garment) return null;
+  // Made in Garment Designer (a library garment, or one kept on this character): it opens there again.
+  const info = studio.assets.hasProxy(garment.asset) ? studio.assets.proxyInfo(garment.asset) : null;
+  const generated = (info?.tags ?? []).includes('generated') || (studio.engine.doc.garmentEdits?.[garment.asset]?.base ?? '').startsWith('shell:');
   const edit = (label: string, fn: (g: GarmentSlot) => void, merge?: string) =>
     studio.engine.update(
       label,
@@ -85,6 +88,11 @@ export function GarmentInspector({ partKey }: { partKey: string }) {
       <button onClick={() => useUi.getState().openStudio({ kind: 'texture', target: partKey })} data-testid="open-texture-studio-garment" title="Its materials, seams, decals and paint, saved as a new garment">
         Edit in Texture Studio
       </button>
+      {generated && (
+        <button onClick={() => useUi.getState().openStudio({ kind: 'designer', target: partKey })} data-testid="open-garment-designer" title="Its template and parameters: change them and save it again">
+          Edit in Garment Designer
+        </button>
+      )}
       <GarmentLookEditor garment={garment} partKey={partKey} />
       <PainterLink target={`garment:${garment.slot}`} label="The garment" />
       {garment.paint && (

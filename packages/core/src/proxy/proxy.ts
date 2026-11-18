@@ -51,6 +51,17 @@ export interface ProxyMeta extends ContainerMeta {
   hiddenFaces?: 'makehuman' | 'computed' | 'none';
   /** Garments made in Garment Studio: how they are dressed when put on. */
   defaults?: GarmentDefaults;
+  /** Generated garments (PRD Part 3): what made it, so it can be made again or edited in Garment Designer. */
+  generator?: GeneratorInfo;
+}
+
+/** How a generated garment was made: its generator, template and parameters. */
+export interface GeneratorInfo {
+  kind: 'shell';
+  template: string;
+  params: Record<string, number>;
+  /** Generator version: the same version and parameters give the same garment. */
+  version: number;
 }
 
 const WEIGHT_THRESHOLD = 1e-4;

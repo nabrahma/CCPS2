@@ -194,5 +194,155 @@
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []
+  },
+  {
+    "file": "14_Shell_Tee.ps2exp",
+    "name": "Shell Tee",
+    "meshes": [
+      "head:5456",
+      "body:2139",
+      "garments:2810",
+      "eyes:713"
+    ],
+    "triangles": 11118,
+    "budget": 11118,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "15_Shell_Sweater.ps2exp",
+    "name": "Shell Sweater",
+    "meshes": [
+      "head:5456",
+      "body:2000",
+      "garments:2921",
+      "eyes:713"
+    ],
+    "triangles": 11090,
+    "budget": 11090,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "16_Shell_Vest.ps2exp",
+    "name": "Shell Vest",
+    "meshes": [
+      "head:5456",
+      "body:2278",
+      "garments:3194",
+      "eyes:713"
+    ],
+    "triangles": 11641,
+    "budget": 11641,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "17_Shell_Cargo.ps2exp",
+    "name": "Shell Cargo",
+    "meshes": [
+      "head:5456",
+      "body:1895",
+      "garments:3618",
+      "eyes:713"
+    ],
+    "triangles": 11682,
+    "budget": 11682,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "18_Shell_Shorts.ps2exp",
+    "name": "Shell Shorts",
+    "meshes": [
+      "head:5456",
+      "body:2075",
+      "garments:2975",
+      "eyes:713"
+    ],
+    "triangles": 11219,
+    "budget": 11219,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "19_Shell_Winter.ps2exp",
+    "name": "Shell Winter",
+    "meshes": [
+      "head:5335",
+      "body:2060",
+      "garments:3741",
+      "eyes:713"
+    ],
+    "triangles": 11849,
+    "budget": 11849,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "20_Shell_Hood.ps2exp",
+    "name": "Shell Hood",
+    "meshes": [
+      "head:5228",
+      "body:2146",
+      "garments:3505",
+      "eyes:713"
+    ],
+    "triangles": 11592,
+    "budget": 11592,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "21_Shell_Cap.ps2exp",
+    "name": "Shell Cap",
+    "meshes": [
+      "head:5400",
+      "body:2139",
+      "garments:3473",
+      "eyes:713"
+    ],
+    "triangles": 11725,
+    "budget": 11725,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "22_Shell_Gloves.ps2exp",
+    "name": "Shell Gloves",
+    "meshes": [
+      "head:5456",
+      "body:865",
+      "garments:3581",
+      "eyes:713"
+    ],
+    "triangles": 10615,
+    "budget": 10615,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "23_Shell_Gear.ps2exp",
+    "name": "Shell Gear",
+    "meshes": [
+      "head:5456",
+      "body:2139",
+      "garments:3430",
+      "eyes:713"
+    ],
+    "triangles": 11738,
+    "budget": 11738,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
   }
 ]

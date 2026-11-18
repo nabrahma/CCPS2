@@ -34,6 +34,16 @@ export interface SimplifyResult {
 
 export async function simplifyRenderMesh(input: SimplifyInput): Promise<SimplifyResult> {
   await MeshoptSimplifier.ready;
+  return simplifyRenderMeshSync(input);
+}
+
+/** Wait until the simplifier can run synchronously. */
+export async function simplifierReady(): Promise<void> {
+  await MeshoptSimplifier.ready;
+}
+
+/** `simplifyRenderMesh` without the wait: `simplifierReady()` must have resolved. */
+export function simplifyRenderMeshSync(input: SimplifyInput): SimplifyResult {
   const n = input.positions.length / 3;
   const uvW = input.uvWeight ?? 0.5;
   const nW = input.normalWeight ?? 0.35;

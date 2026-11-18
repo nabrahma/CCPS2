@@ -5,6 +5,7 @@
  * (GPU skin composite, PNG textures, GLB checked with glTF-Validator) and its
  * export message is saved to app/backend/fbx/testdata/characters/, which the
  * Go round-trip test reads and `ps2cc-export` turns into export folders.
+ * Ten more (PRD Part 3, M21) wear only garments made in Garment Designer.
  * Run with `pnpm export:testchars`.
  */
 import { mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
@@ -31,6 +32,8 @@ interface TestChar {
   tPose?: boolean;
   /** M10 fixtures to import and wear: [file, slot]. */
   imported?: [string, string][];
+  /** M21: shell garments made in Garment Designer and worn: [template, parameters]. */
+  shell?: [string, Record<string, number>][];
 }
 
 // All within the default 12k triangle budget (the Unity harness checks it). Every entry sets its body tier.
@@ -49,6 +52,17 @@ const CHARS: TestChar[] = [
   { name: 'Custom Shirt', macros: { gender: 1, age: 0.5, muscle: 0.7, weight: 0.7 }, extra: { ...body8, hair: bald, garments: [] }, imported: [['test_shirt', 'top']] },
   { name: 'Custom Trousers', macros: { gender: 0, age: 0.6, weight: 0.8, height: 0.3 }, extra: { ...body8, hair: bald, garments: [] }, imported: [['test_trousers', 'bottom']] },
   { name: 'Custom Skirt', macros: { gender: 0, age: 0.4, height: 0.7 }, extra: { ...body8, hair: bald, garments: [] }, imported: [['test_skirt', 'bottom']] },
+  // M21: dressed only in shell garments (within the 12k budget with the 8k body).
+  { name: 'Shell Tee', macros: { gender: 1, age: 0.5 }, extra: { ...body8, hair: bald, garments: [] }, shell: [['tshirt', {}], ['straighttrousers', {}]] },
+  { name: 'Shell Sweater', macros: { gender: 0, age: 0.45 }, extra: { ...body8, hair: bald, garments: [] }, shell: [['rollneck', {}], ['leggings', {}]] },
+  { name: 'Shell Vest', macros: { gender: 1, age: 0.4, muscle: 0.8 }, extra: { ...body8, hair: bald, garments: [] }, shell: [['longsleeve', {}], ['utilityvest', {}]] },
+  { name: 'Shell Cargo', macros: { gender: 1, age: 0.55, weight: 0.9, muscle: 0.3 }, extra: { ...body8, hair: bald, garments: [] }, shell: [['tank', {}], ['cargotrousers', {}], ['workboots', {}]] },
+  { name: 'Shell Shorts', macros: { gender: 0, age: 0.35, muscle: 0.8, weight: 0.3 }, extra: { ...body8, hair: bald, garments: [] }, shell: [['tank', {}], ['shorts', {}], ['sneakers', {}]] },
+  { name: 'Shell Winter', macros: { gender: 1, age: 0.7, weight: 0.6 }, extra: { ...body8, hair: bald, garments: [] }, shell: [['longsleeve', {}], ['flaredtrousers', {}], ['beanie', {}]] },
+  { name: 'Shell Hood', macros: { gender: 0, age: 0.5, height: 0.7 }, extra: { ...body8, hair: bald, garments: [] }, shell: [['hood', {}], ['tshirt', {}], ['flaredtrousers', {}]] },
+  { name: 'Shell Cap', macros: { gender: 1, age: 0.3, height: 0.3 }, extra: { ...body8, hair: bald, garments: [] }, shell: [['cap', {}], ['tshirt', {}], ['straighttrousers', {}]] },
+  { name: 'Shell Gloves', macros: { gender: 0, age: 0.6, weight: 0.7 }, extra: { ...body8, hair: bald, garments: [] }, shell: [['gloves', {}], ['rollneck', {}], ['leggings', {}]] },
+  { name: 'Shell Gear', macros: { gender: 1, age: 0.45, muscle: 0.6 }, extra: { ...body8, hair: bald, garments: [] }, shell: [['tshirt', {}], ['straighttrousers', {}], ['belt', {}], ['strap', {}]] },
 ];
 
 test('export the test characters', async ({ page }) => {
@@ -70,6 +84,16 @@ test('export the test characters', async ({ page }) => {
           await s.settled();
         },
         { file: fixtureGarment(fixture), slot },
+      );
+    }
+    for (const [template, params] of c.shell ?? []) {
+      await page.evaluate(
+        async ({ template, params }) => {
+          const s = (window as unknown as TestWindow).__ps2cc;
+          await s.saveDesign(template, params, template, 'library');
+          await s.settled();
+        },
+        { template, params },
       );
     }
     if (c.hairStyle) {

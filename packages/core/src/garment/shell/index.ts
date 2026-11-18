@@ -1,0 +1,14 @@
+export * from './accessories';
+export * from './body';
+export * from './boots';
+export * from './build';
+export * from './cut';
+export * from './features';
+export * from './finish';
+export * from './landmarks';
+export * from './loft';
+export * from './mesh';
+export * from './shape';
+export * from './templates';
+export * from './uv';
+export type { Vec3 } from './vec';

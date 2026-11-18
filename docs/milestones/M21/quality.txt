@@ -1,0 +1,23 @@
+Worst over the default male and female and 200 random bodies:
+tshirt: ease >= 21.4 mm (class 8.0), under half 1.3%, show-through 27%, turn 26/63 deg (95%/max), rim 2.7 mm, poke 0.00 mm
+longsleeve: ease >= 19.1 mm (class 8.0), under half 2.0%, show-through 23%, turn 25/61 deg (95%/max), rim 6.9 mm, poke 0.00 mm
+rollneck: ease >= 24.0 mm (class 15.0), under half 3.7%, show-through 23%, turn 25/63 deg (95%/max), rim 4.4 mm, poke 0.00 mm
+tank: ease >= 23.2 mm (class 8.0), under half 1.0%, show-through 33%, turn 28/65 deg (95%/max), rim 6.8 mm, poke 0.00 mm
+utilityvest: ease >= 33.7 mm (class 25.0), under half 2.8%, show-through 23%, turn 26/29 deg (95%/max), rim 6.7 mm, poke 0.00 mm
+leggings: ease >= 8.1 mm (class 1.5), under half 0.0%, show-through 0%, turn 35/65 deg (95%/max), rim 8.3 mm, poke 0.00 mm
+straighttrousers: ease >= 35.7 mm (class 10.0), under half 1.7%, show-through 29%, turn 33/73 deg (95%/max), rim 8.3 mm, poke 0.00 mm
+flaredtrousers: ease >= 37.6 mm (class 8.0), under half 1.8%, show-through 30%, turn 34/69 deg (95%/max), rim 8.7 mm, poke 0.00 mm
+cargotrousers: ease >= 38.4 mm (class 10.0), under half 1.1%, show-through 25%, turn 34/70 deg (95%/max), rim 9.2 mm, poke 0.00 mm
+shorts: ease >= 16.3 mm (class 10.0), under half 4.4%, show-through 27%, turn 31/71 deg (95%/max), rim 8.4 mm, poke 0.00 mm
+gloves: ease >= 11.9 mm (class 3.0), under half 0.4%, show-through 0%, turn 0/0 deg (95%/max), rim 35.4 mm, poke 0.00 mm
+socks: ease >= 6.5 mm (class 1.2), under half 0.0%, show-through 0%, turn 0/0 deg (95%/max), rim 25.9 mm, poke 0.00 mm
+workboots: ease >= 15.5 mm (class 6.0), under half 0.0%, show-through 0%, turn 0/0 deg (95%/max), rim 57.4 mm, poke 0.00 mm
+sneakers: ease >= 14.9 mm (class 6.0), under half 0.0%, show-through 0%, turn 0/0 deg (95%/max), rim 35.7 mm, poke 0.00 mm
+beanie: ease >= 15.1 mm (class 4.0), under half 0.0%, show-through 0%, turn 0/0 deg (95%/max), rim 12.7 mm, poke 0.00 mm
+cap: ease >= 7.8 mm (class 4.0), under half 0.0%, show-through 0%, turn 0/0 deg (95%/max), rim 6.5 mm, poke 0.17 mm
+hood: ease >= 31.7 mm (class 4.0), under half 0.0%, show-through 0%, turn 0/0 deg (95%/max), rim 8.8 mm, poke 0.00 mm
+belt: ease >= Infinity mm (class 0.0), under half 0.0%, show-through 0%, turn 0/0 deg (95%/max), rim - mm, poke 0.00 mm
+wristband: ease >= Infinity mm (class 0.0), under half 0.0%, show-through 0%, turn 0/0 deg (95%/max), rim - mm, poke 0.00 mm
+holster: ease >= Infinity mm (class 0.0), under half 0.0%, show-through 0%, turn 0/0 deg (95%/max), rim - mm, poke 0.00 mm
+strap: ease >= Infinity mm (class 0.0), under half 0.0%, show-through 0%, turn 0/0 deg (95%/max), rim - mm, poke 0.00 mm
+satchel: ease >= Infinity mm (class 0.0), under half 0.0%, show-through 0%, turn 0/0 deg (95%/max), rim - mm, poke 6.41 mm
