@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="146.93cm" height="121.07cm" viewBox="0 0 146.93 121.07" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+<title>Shirt / T-shirt, made to Untitled</title>
+<rect x="0" y="0" width="146.93" height="121.07" fill="#ffffff"/>
+<text x="6" y="5" font-size="3" font-weight="600" fill="#222">Shirt / T-shirt, made to Untitled</text>
+<g class="panel" data-panel="left_ftorso">
+<path d="M9 66.07 L34.66 66.07 L35.66 64.07 L35.66 33.04 L34.75 31.04 L34.26 31.02 L33.85 30.99 L33.47 30.93 L33.12 30.87 L32.8 30.79 L32.51 30.7 L32.24 30.6 L31.99 30.49 L31.76 30.36 L31.55 30.23 L31.35 30.09 L31.16 29.93 L30.98 29.76 L30.81 29.57 L30.64 29.37 L30.48 29.14 L30.33 28.9 L30.18 28.63 L30.03 28.34 L29.89 28.03 L29.75 27.69 L29.63 27.33 L29.5 26.95 L29.38 26.55 L29.27 26.12 L29.17 25.68 L29.06 25.21 L28.97 24.72 L28.88 24.21 L28.79 23.69 L28.7 23.14 L28.62 22.58 L28.54 21.99 L28.47 21.39 L28.39 20.78 L28.31 20.14 L28.24 19.49 L28.16 18.82 L28.08 18.14 L28 17.44 L27.92 16.73 L26.32 16.04 L21.6 14.08 L19.22 15.19 L19.27 15.64 L19.29 16.06 L19.29 16.47 L19.28 16.88 L19.26 17.3 L19.22 17.71 L19.16 18.12 L19.08 18.52 L18.99 18.93 L18.88 19.32 L18.75 19.72 L18.61 20.11 L18.46 20.49 L18.29 20.87 L18.1 21.24 L17.9 21.6 L17.69 21.95 L17.46 22.3 L17.21 22.63 L16.96 22.96 L16.69 23.27 L16.41 23.57 L16.12 23.87 L15.81 24.15 L15.5 24.41 L15.17 24.67 L14.83 24.91 L14.49 25.14 L14.13 25.35 L13.77 25.55 L13.4 25.73 L13.02 25.9 L12.64 26.06 L12.25 26.19 L11.86 26.32 L11.46 26.42 L11.05 26.51 L10.65 26.59 L10.24 26.65 L9.83 26.69 L9.41 26.71 L8.96 26.72 L8 28.72 L8 64.07 Z" fill="none" stroke="#666" stroke-width="0.12" stroke-dasharray="0.8 0.5"/>
+<path d="M9 64.07 L34.66 64.07 L34.66 33.04 C27.29 32.88 27.08 26.75 25.94 16.96 L21.21 15 A12.3 12.3 0 0 1 9 28.72 L9 64.07 Z" fill="#f3e3e7" stroke="#333" stroke-width="0.2"/>
+<polyline points="34.66,64.07 34.66,33.04" fill="none" stroke="#30638e" stroke-width="0.45" stroke-linecap="round"/>
+<text x="34.66" y="48.55" font-size="1.8" fill="#30638e" text-anchor="middle" dominant-baseline="middle" stroke="#fff" stroke-width="0.35" paint-order="stroke">4</text>
+<polyline points="25.94,16.96 21.21,15" fill="none" stroke="#edae49" stroke-width="0.45" stroke-linecap="round"/>
+<text x="23.57" y="15.98" font-size="1.8" fill="#edae49" text-anchor="middle" dominant-baseline="middle" stroke="#fff" stroke-width="0.35" paint-order="stroke">3</text>
+<polyline points="9,28.72 9,64.07" fill="none" stroke="#6a4c93" stroke-width="0.45" stroke-linecap="round"/>
+<text x="9" y="46.39" font-size="1.8" fill="#6a4c93" text-anchor="middle" dominant-baseline="middle" stroke="#fff" stroke-width="0.35" paint-order="stroke">5</text>
+<text x="21.83" y="39.53" font-size="2.4" font-weight="600" fill="#111" text-anchor="middle">left_ftorso</text>
+<text x="21.83" y="42.53" font-size="1.8" fill="#444" text-anchor="middle">25.66 × 49.07 cm</text>
+</g>
+<g class="panel" data-panel="right_ftorso">
+<path d="M73.33 64.07 L73.33 28.72 L72.37 26.72 L71.91 26.71 L71.5 26.69 L71.09 26.65 L70.68 26.59 L70.27 26.51 L69.87 26.42 L69.47 26.32 L69.08 26.19 L68.69 26.06 L68.3 25.9 L67.93 25.73 L67.56 25.55 L67.19 25.35 L66.84 25.14 L66.49 24.91 L66.16 24.67 L65.83 24.41 L65.52 24.15 L65.21 23.87 L64.92 23.57 L64.64 23.27 L64.37 22.96 L64.11 22.63 L63.87 22.3 L63.64 21.95 L63.43 21.6 L63.23 21.24 L63.04 20.87 L62.87 20.49 L62.71 20.11 L62.57 19.72 L62.45 19.32 L62.34 18.93 L62.25 18.52 L62.17 18.12 L62.11 17.71 L62.07 17.3 L62.04 16.88 L62.03 16.47 L62.04 16.06 L62.06 15.64 L62.11 15.19 L59.73 14.08 L55.01 16.04 L53.41 16.73 L53.32 17.44 L53.24 18.14 L53.17 18.82 L53.09 19.49 L53.01 20.14 L52.94 20.78 L52.86 21.39 L52.78 21.99 L52.71 22.58 L52.62 23.14 L52.54 23.69 L52.45 24.21 L52.36 24.72 L52.26 25.21 L52.16 25.68 L52.06 26.12 L51.94 26.55 L51.83 26.95 L51.7 27.33 L51.57 27.69 L51.44 28.03 L51.3 28.34 L51.15 28.63 L51 28.9 L50.85 29.14 L50.69 29.37 L50.52 29.57 L50.35 29.76 L50.17 29.93 L49.98 30.09 L49.78 30.23 L49.57 30.36 L49.34 30.49 L49.09 30.6 L48.82 30.7 L48.53 30.79 L48.2 30.87 L47.85 30.93 L47.47 30.99 L47.06 31.02 L46.58 31.04 L45.66 33.04 L45.66 64.07 L46.66 66.07 L72.33 66.07 Z" fill="none" stroke="#666" stroke-width="0.12" stroke-dasharray="0.8 0.5"/>
+<path d="M72.33 64.07 L72.33 28.72 A12.3 12.3 0 0 1 60.12 15 L55.39 16.96 C54.24 26.75 54.04 32.88 46.66 33.04 L46.66 64.07 L72.33 64.07 Z" fill="#f3e3e7" stroke="#333" stroke-width="0.2"/>
+<polyline points="72.33,64.07 72.33,28.72" fill="none" stroke="#6a4c93" stroke-width="0.45" stroke-linecap="round"/>
+<text x="72.33" y="46.39" font-size="1.8" fill="#6a4c93" text-anchor="middle" dominant-baseline="middle" stroke="#fff" stroke-width="0.35" paint-order="stroke">5</text>
+<polyline points="60.12,15 55.39,16.96" fill="none" stroke="#d1495b" stroke-width="0.45" stroke-linecap="round"/>
+<text x="57.75" y="15.98" font-size="1.8" fill="#d1495b" text-anchor="middle" dominant-baseline="middle" stroke="#fff" stroke-width="0.35" paint-order="stroke">1</text>
+<polyline points="46.66,33.04 46.66,64.07" fill="none" stroke="#00798c" stroke-width="0.45" stroke-linecap="round"/>
+<text x="46.66" y="48.55" font-size="1.8" fill="#00798c" text-anchor="middle" dominant-baseline="middle" stroke="#fff" stroke-width="0.35" paint-order="stroke">2</text>
+<text x="59.5" y="39.53" font-size="2.4" font-weight="600" fill="#111" text-anchor="middle">right_ftorso</text>
+<text x="59.5" y="42.53" font-size="1.8" fill="#444" text-anchor="middle">25.66 × 49.07 cm</text>
+</g>
+<g class="panel" data-panel="left_btorso">
+<path d="M83.33 63.97 L83.33 18.57 L84.31 16.57 L84.78 16.57 L85.23 16.55 L85.68 16.53 L86.13 16.49 L86.58 16.45 L87.03 16.39 L87.48 16.33 L87.93 16.25 L88.37 16.17 L88.81 16.08 L89.26 15.97 L89.69 15.86 L90.13 15.74 L90.56 15.61 L90.99 15.47 L91.42 15.32 L91.84 15.16 L92.26 14.99 L92.68 14.81 L93.09 14.62 L93.49 14.43 L93.9 14.22 L94.3 14.01 L94.69 13.79 L95.08 13.55 L95.48 13.3 L96.92 14.08 L101.65 16.04 L103.24 17.25 L103.14 17.96 L103.03 18.66 L102.93 19.33 L102.84 19.99 L102.74 20.63 L102.66 21.26 L102.57 21.86 L102.5 22.45 L102.43 23.01 L102.37 23.56 L102.32 24.09 L102.28 24.6 L102.25 25.08 L102.23 25.55 L102.23 25.99 L102.23 26.41 L102.25 26.81 L102.28 27.19 L102.32 27.54 L102.38 27.86 L102.44 28.17 L102.52 28.45 L102.61 28.71 L102.71 28.94 L102.82 29.16 L102.94 29.37 L103.07 29.56 L103.21 29.74 L103.37 29.91 L103.56 30.08 L103.77 30.24 L104 30.4 L104.27 30.55 L104.57 30.7 L104.9 30.85 L105.27 30.99 L105.73 31.13 L106.13 33.04 L106.13 63.97 L105.13 65.97 L84.33 65.97 Z" fill="none" stroke="#666" stroke-width="0.12" stroke-dasharray="0.8 0.5"/>
+<path d="M84.33 63.97 L84.33 18.57 A22.67 22.67 0 0 0 96.54 15 L101.26 16.96 C99.98 25.77 98.73 31.18 105.13 33.04 L105.13 63.97 L84.33 63.97 Z" fill="#f3e3e7" stroke="#333" stroke-width="0.2"/>
+<polyline points="84.33,63.97 84.33,18.57" fill="none" stroke="#1b998b" stroke-width="0.45" stroke-linecap="round"/>
+<text x="84.33" y="41.27" font-size="1.8" fill="#1b998b" text-anchor="middle" dominant-baseline="middle" stroke="#fff" stroke-width="0.35" paint-order="stroke">6</text>
+<polyline points="96.54,15 101.26,16.96" fill="none" stroke="#edae49" stroke-width="0.45" stroke-linecap="round"/>
+<text x="98.9" y="15.98" font-size="1.8" fill="#edae49" text-anchor="middle" dominant-baseline="middle" stroke="#fff" stroke-width="0.35" paint-order="stroke">3</text>
+<polyline points="105.13,33.04 105.13,63.97" fill="none" stroke="#30638e" stroke-width="0.45" stroke-linecap="round"/>
+<text x="105.13" y="48.51" font-size="1.8" fill="#30638e" text-anchor="middle" dominant-baseline="middle" stroke="#fff" stroke-width="0.35" paint-order="stroke">4</text>
+<text x="94.73" y="39.49" font-size="2.4" font-weight="600" fill="#111" text-anchor="middle">left_btorso</text>
+<text x="94.73" y="42.49" font-size="1.8" fill="#444" text-anchor="middle">20.8 × 48.97 cm</text>
+</g>
+<g class="panel" data-panel="right_btorso">
+<path d="M137.93 65.97 L117.13 65.97 L116.13 63.97 L116.13 33.04 L116.53 31.13 L116.98 30.99 L117.36 30.85 L117.69 30.7 L117.99 30.55 L118.26 30.4 L118.49 30.24 L118.7 30.08 L118.88 29.91 L119.04 29.74 L119.19 29.56 L119.32 29.37 L119.44 29.16 L119.55 28.94 L119.65 28.71 L119.74 28.45 L119.81 28.17 L119.88 27.86 L119.93 27.54 L119.98 27.19 L120.01 26.81 L120.03 26.41 L120.03 25.99 L120.02 25.55 L120.01 25.08 L119.98 24.6 L119.94 24.09 L119.89 23.56 L119.83 23.01 L119.76 22.45 L119.68 21.86 L119.6 21.26 L119.51 20.63 L119.42 19.99 L119.32 19.33 L119.22 18.66 L119.12 17.96 L119.02 17.25 L120.61 16.04 L125.33 14.08 L126.78 13.3 L127.18 13.55 L127.57 13.79 L127.96 14.01 L128.36 14.22 L128.76 14.43 L129.17 14.62 L129.58 14.81 L130 14.99 L130.42 15.16 L130.84 15.32 L131.27 15.47 L131.7 15.61 L132.13 15.74 L132.56 15.86 L133 15.97 L133.44 16.08 L133.88 16.17 L134.33 16.25 L134.78 16.33 L135.22 16.39 L135.67 16.45 L136.12 16.49 L136.57 16.53 L137.02 16.55 L137.48 16.57 L137.95 16.57 L138.93 18.57 L138.93 63.97 Z" fill="none" stroke="#666" stroke-width="0.12" stroke-dasharray="0.8 0.5"/>
+<path d="M137.93 63.97 L117.13 63.97 L117.13 33.04 C123.53 31.18 122.28 25.77 120.99 16.96 L125.72 15 A22.67 22.67 0 0 0 137.93 18.57 L137.93 63.97 Z" fill="#f3e3e7" stroke="#333" stroke-width="0.2"/>
+<polyline points="117.13,63.97 117.13,33.04" fill="none" stroke="#00798c" stroke-width="0.45" stroke-linecap="round"/>
+<text x="117.13" y="48.51" font-size="1.8" fill="#00798c" text-anchor="middle" dominant-baseline="middle" stroke="#fff" stroke-width="0.35" paint-order="stroke">2</text>
+<polyline points="120.99,16.96 125.72,15" fill="none" stroke="#d1495b" stroke-width="0.45" stroke-linecap="round"/>
+<text x="123.36" y="15.98" font-size="1.8" fill="#d1495b" text-anchor="middle" dominant-baseline="middle" stroke="#fff" stroke-width="0.35" paint-order="stroke">1</text>
+<polyline points="137.93,18.57 137.93,63.97" fill="none" stroke="#1b998b" stroke-width="0.45" stroke-linecap="round"/>
+<text x="137.93" y="41.27" font-size="1.8" fill="#1b998b" text-anchor="middle" dominant-baseline="middle" stroke="#fff" stroke-width="0.35" paint-order="stroke">6</text>
+<text x="127.53" y="39.49" font-size="2.4" font-weight="600" fill="#111" text-anchor="middle">right_btorso</text>
+<text x="127.53" y="42.49" font-size="1.8" fill="#444" text-anchor="middle">20.8 × 48.97 cm</text>
+</g>
+<g class="legend"><line x1="6" y1="83.07" x2="16" y2="83.07" stroke="#111" stroke-width="0.4"/><text x="17" y="83.77" font-size="2" fill="#111">10 cm</text>
+<text x="30" y="83.77" font-size="1.8" fill="#444">Solid: seam line. Dashed: cutting line (1 cm seam allowance, 2 cm on hems and openings). Matching colours and numbers are sewn together.</text>
+<text x="6" y="88.07" font-size="1.7" fill="#555">arm_length 52.2</text>
+<text x="51" y="88.07" font-size="1.7" fill="#555">arm_pose_angle 52.2</text>
+<text x="96" y="88.07" font-size="1.7" fill="#555">armscye_depth 10.9</text>
+<text x="141" y="88.07" font-size="1.7" fill="#555">back_width 39.6</text>
+<text x="6" y="91.07" font-size="1.7" fill="#555">bum_points 11.8</text>
+<text x="51" y="91.07" font-size="1.7" fill="#555">bust 88.5</text>
+<text x="96" y="91.07" font-size="1.7" fill="#555">bust_line 24.6</text>
+<text x="141" y="91.07" font-size="1.7" fill="#555">bust_points 17.6</text>
+<text x="6" y="94.07" font-size="1.7" fill="#555">crotch_hip_diff 6.9</text>
+<text x="51" y="94.07" font-size="1.7" fill="#555">head_l 26.8</text>
+<text x="96" y="94.07" font-size="1.7" fill="#555">height 165.9</text>
+<text x="141" y="94.07" font-size="1.7" fill="#555">hip_back_width 46.4</text>
+<text x="6" y="97.07" font-size="1.7" fill="#555">hip_inclination 11.9</text>
+<text x="51" y="97.07" font-size="1.7" fill="#555">hips 90.9</text>
+<text x="96" y="97.07" font-size="1.7" fill="#555">hips_line 14.8</text>
+<text x="141" y="97.07" font-size="1.7" fill="#555">leg_circ 52.4</text>
+<text x="6" y="100.07" font-size="1.7" fill="#555">neck_w 22.6</text>
+<text x="51" y="100.07" font-size="1.7" fill="#555">shoulder_incl 22.6</text>
+<text x="96" y="100.07" font-size="1.7" fill="#555">shoulder_w 35.9</text>
+<text x="141" y="100.07" font-size="1.7" fill="#555">underbust 76.0</text>
+<text x="6" y="103.07" font-size="1.7" fill="#555">vert_bust_line 18.2</text>
+<text x="51" y="103.07" font-size="1.7" fill="#555">waist 72.4</text>
+<text x="96" y="103.07" font-size="1.7" fill="#555">waist_back_width 33.0</text>
+<text x="141" y="103.07" font-size="1.7" fill="#555">waist_line 37.8</text>
+<text x="6" y="106.07" font-size="1.7" fill="#555">waist_over_bust_line 44.9</text>
+<text x="51" y="106.07" font-size="1.7" fill="#555">wrist 13.6</text>
+</g></svg>

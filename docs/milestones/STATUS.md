@@ -415,3 +415,41 @@ Built without the GNM face model: its weights could not be checked for commercia
   - `e2e/m21.spec.ts`: the preview, templates, parameters, Random design with a seed, a hem handle dragged in the viewport, Save to Wardrobe (template and parameters recorded), opening it again, Keep on this character.
   - Unity harness: 23 test characters, ten of them dressed only in generated garments. All import as Humanoid with 52 blendshapes, within 12k triangles, feet on the ground. The Go FBX round trip passes on all 23.
   - Core 291 tests, e2e 63, desktop, Go, lint and typecheck pass.
+
+## M22: Pattern programs (0.27.0, Part 3)
+
+Sewing patterns written as code: GarmentCode ported to TypeScript, this project's own programs on top, made to each character's measurements. See `docs/garment-patterns.md`.
+
+- **The GarmentCode port** (D-171, D-172):
+  - pygarment's core: edges, panels, components, interfaces, stitching rules, operators, the design sampler;
+  - every garment program: fitted and loose shirts with sleeves, armholes, seven necklines and turtle, lapel and hood collars, trousers, seven kinds of skirt, waistbands, cuffs;
+  - the design schema kept with its ranges;
+  - the numerics underneath ported, not approximated: svgpathtools curves, QUADPACK (bit-identical to SciPy), SciPy rotations, BFGS and L-BFGS-B.
+- **This project's programs** (D-175): bomber / blouson jacket, coat, utility vest, hoodie, work shirt, and a cargo pocket component.
+  - One torso block whose seams match by construction.
+  - Plackets for open fronts, rib hem bands, back yokes.
+  - Pockets and flaps laid onto the garment as attachments.
+- **Measurements wiring:** every pattern is made to the character's own F24 measurements (GarmentCode's 26 body keys).
+- **Garment Designer, Pattern tab:**
+  - pick a program, change the parameter panel (built from the schema) or press Random design (seeded);
+  - the pattern is drawn flat over the viewport: panels at true size, stitch pairs numbered in matching colours, sizes in cm, the measurements used;
+  - Export SVG (with seam allowances and labels) and Save .ps2pattern.
+  - Draping, the 3D panel preview and saving to the Wardrobe come with M23.
+- **Tested:**
+  - Oracle parity (`garment-pattern-oracle.test.ts`, D-173):
+    - The pinned GarmentCode builds 200 sampled designs per program on 12 of our measured bodies, on three OpenBLAS kernels.
+    - GarmentCode does not reproduce itself on 52 fitted shirts, 82 shirts, 5 trousers and 43 whole garments of 200 each, because of its noise-driven sleeve and hood curve fit (up to 1.3 cm).
+    - On the stable designs the port fails exactly where GarmentCode fails and has no structural difference.
+    - 2,415 of 2,418 match within 1e-6 relative (99.88%). The other 3 differ only in a sleeve or hood curve (up to 0.16 cm). The PRD's 1e-6 on every design is therefore not met for those 3, nor for the designs GarmentCode itself cannot reproduce.
+  - Numerics (`garment-pattern-numerics.test.ts`): curves, quadrature, rotations and the optimisers' paths against svgpathtools and SciPy.
+  - Validation on 500 random designs per program (`m22.test.ts` with `PS2CC_M22_DESIGNS=500`, `docs/milestones/M22/validation.txt`, D-174):
+    - this project's five programs, trousers, five of the six skirts and the straight waistband: 500/500;
+    - GarmentCode's shirts (41-43% valid) and panelled skirt on a straight waistband (86%) keep GarmentCode's eased seams, which are up to 9% apart and left for the cloth to absorb;
+    - its fitted waistband folds over on bodies whose waist is wider than their hips (92%).
+    - Every program is structurally sound on every design.
+  - `.ps2pattern`: every program's default and a random design rebuild byte-identically.
+  - SVG: every panel and stitch labelled; `e2e/m22.spec.ts` opens the exported SVG in the browser and finds the panel labels.
+  - Determinism: every program's default and a seeded random design hashed in Node and Chromium.
+  - `e2e/m22.spec.ts`: the Pattern tab, parameters, Random design, every program, the pattern view, both exports.
+  - Core 301 tests, Go, desktop, lint and typecheck pass.
+  - e2e: 63 of 64 passed in the full run. The failure was `m20-photo.spec.ts` (hand-placed face points), which is intermittent: it failed twice and passed three times, with identical numbers on M21's code and on M22's (worst 2.9 texels when it passes). Its stand-in photo is rendered from the viewport, and that render looks sensitive to load. Nothing in M22 is on its path.

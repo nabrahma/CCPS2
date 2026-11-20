@@ -20,12 +20,12 @@
       "faceShare": 0
     },
     "masked": {
-      "dark": 51,
-      "texels": 46694,
+      "dark": 50,
+      "texels": 46693,
       "faceShare": 0
     },
     "unmasked": {
-      "dark": 15131,
+      "dark": 15130,
       "texels": 63793,
       "faceShare": 0
     }

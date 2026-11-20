@@ -59,3 +59,4 @@ export { CLASS_MIN_EASE, type GarmentClass, type ShellBuild } from './garment/sh
 export { buildTemplate, generateShellGarment, SHELL_GENERATOR_VERSION, type ShellGarment } from './garment/shell/generate';
 export { shellBody, type ShellBody, type ShellTier } from './garment/shell/body';
 export { landmarks as shellLandmarks, type Landmarks as ShellLandmarks } from './garment/shell/landmarks';
+export { buildProgram, patternPrograms, patternProgram, programDefaultDesign, randomProgramDesign, validateBuilt, patternSvg, designLeaves, getLeaf, makePs2Pattern, serializePs2Pattern, parsePs2Pattern, rebuildPs2Pattern, PATTERN_GENERATOR_VERSION, type PatternProgram, type BuiltPattern, type PatternIssue, type PatternSpec, type Ps2Pattern, type DesignLeaf } from './garment/pattern';

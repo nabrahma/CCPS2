@@ -30,6 +30,23 @@
   "shell:wristband": "61c7c92be90fe8ed191bc6602eec10770d362f4e7f8e1f098fd2f34acb67a46f",
   "shell:holster": "7f38902b1168aac2b5116215ec0cb53190685ffbda2f893c04f3fd2794813c0a",
   "shell:strap": "b2a26bedee498c43786af0da02916dc79ca70c8bd3cac31cf4e2d98e53465915",
-  "shell:satchel": "3fe51130d58aa8f8f0cde112d84d5124f52f70380e2812d50053e219ae6ad336"
+  "shell:satchel": "3fe51130d58aa8f8f0cde112d84d5124f52f70380e2812d50053e219ae6ad336",
+  "pattern:FittedShirt": "bd185befd9a371080173756205b2af7c7cf6000b78cfb19623266af592a23054",
+  "pattern:Shirt": "50a0b7fff299157c7806dd63e04a4bdd3412b1ca1c9b0f960cfea7002b3f1f1c",
+  "pattern:Pants": "147daf73c25152f19afb22a98df25647a8b8ddcd99770cd5f5cbd6ecc8118ff6",
+  "pattern:SkirtCircle": "882af5934c2fb6effdc5f30cf4ab228b3a114464e024466792c7f061455ae9ac",
+  "pattern:AsymmSkirtCircle": "5a72b048f060de54dc0463f739b78252ab0e56ebe1420efad5d6be93548e09d6",
+  "pattern:GodetSkirt": "aa5cfb40943bffeb0f9eab1ed563d407bd5db88c455bdf8b889a385b92d72a72",
+  "pattern:Skirt2": "eeeb45fa082bb2665daf07b25680926e9a8fdbbe087102e31ae393af7243a364",
+  "pattern:SkirtManyPanels": "efbd0caaf4175f1889680b38fdc0264d8874822f85854aa544ad263b2f8e098d",
+  "pattern:PencilSkirt": "914f13c9486f99cff5517171f54c69d2159831ac984822ec030aad472e8c5ea8",
+  "pattern:SkirtLevels": "f5a67e28174610044a6624c1ae18ababbce6d08b22691704e19d03052654feb1",
+  "pattern:StraightWB": "1fec530b99d94c6f700d0c4b0f58548d8b6a7f8699227f04bc5e9541c2b59fc5",
+  "pattern:FittedWB": "977dc322d204a1ac2a88f703297f697830ee15464f97f3083332e2dcce072b77",
+  "pattern:Bomber": "cbef21cf3562ddb9ce959f72c95fecc8bb87a938e9a874433c9ff2441b4fdae0",
+  "pattern:Coat": "0566812e8af267e7fef0146891fe47fd484ec648a90ca17132ef80bba8bf0a85",
+  "pattern:UtilityVest": "461fac5473acc408456b6d0b0b7f94bee7ff3342e2540d8287fedfd62d52972e",
+  "pattern:Hoodie": "477b9fc663b09f71cbfaf22fd989efa2f251844dcfe1376bbd88f529396f4cfc",
+  "pattern:WorkShirt": "8e5b5f20de5505ce7134918eafbf1127800df0c4512c11f349b8973a9506875c"
  }
 }

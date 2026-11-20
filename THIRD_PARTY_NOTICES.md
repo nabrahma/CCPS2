@@ -17,7 +17,8 @@ These parts follow the logic of the projects below closely, which is why PS2CC u
 | Work | Author | Used in |
 | --- | --- | --- |
 | [Anny](https://github.com/naver/anny) (Apache-2.0) | NAVER LABS Europe | The population sampler and the parity check follow its phenotype blending and shape distributions (`packages/core/src/population`, `tools/asset-compiler/ps2cc_assets/anny.py`). Its population calibration is shipped as `assets/core/population/calibration.json` under Apache-2.0: Anny, Copyright (C) 2025 NAVER Corporation. Its SMPL-X topology is never fetched or used. |
-| [GarmentCode](https://github.com/maria-korosteleva/GarmentCode) (MIT) | Maria Korosteleva | Its body-measurement keys are produced by `packages/core/src/anthro` (`garmentCodeBody`). Its bundled SMPL-derived bodies are not used. |
+| [GarmentCode](https://github.com/maria-korosteleva/GarmentCode) (MIT) | Maria Korosteleva | `packages/core/src/garment/pattern` is a TypeScript port of its pygarment library and garment programs (commit `d4496299`), and `packages/core/src/garment/pattern/data/default-design.json` is its design-parameter schema (`assets/design_params/default.yaml`) as JSON. Its body-measurement keys are produced by `packages/core/src/anthro` (`garmentCodeBody`). Its bundled SMPL-derived bodies are not used. Licence text below. |
+| [svgpathtools](https://github.com/mathandy/svgpathtools) (MIT), [SciPy](https://scipy.org) (BSD-3-Clause), QUADPACK (public domain), MINPACK-2 | Andy Port; the SciPy developers; Piessens, de Doncker-Kapenga, Ueberhuber and Kahaner; Moré and Thuente | The curve, rotation, quadrature and optimisation routines GarmentCode calls are ported in `packages/core/src/garment/pattern/num` (curves, `Rotation`, `dqagse`, BFGS, DCSRCH). L-BFGS-B is implemented from Byrd, Lu, Nocedal and Zhu (1995) and Morales and Nocedal (2011). The Python packages themselves are used at build time only, as the test oracle, and are not shipped. |
 | faceunits01 (CC0-1.0) | Mika Suominen | The 52 ARKit face units every expression blendshape is made of (`assets/core/expressions/faceunits`), from Anny's repository. CC0 asks for no credit; it is given anyway. |
 | fdlibm | Sun Microsystems | The polynomial kernels of `packages/core/src/math/dmath.ts` (freely usable with this notice: "Developed at SunPro, a Sun Microsystems, Inc. business. Permission to use, copy, modify, and distribute this software is freely granted, provided that this notice is preserved."). |
 | Cheng, "Generating Beta Variates with Nonintegral Shape Parameters", CACM 1978 | R. C. H. Cheng | `packages/core/src/math/distributions.ts` |
@@ -54,3 +55,29 @@ The scanned-face base skin, `assets/core/textures/skins/ps2cc_scan_lee.jpg`, is 
 | [Material Painter](https://github.com/alla2001/material-painter) | GPL-3.0-or-later | Texture Studio (M13, D-115). The user installs it; PS2CC starts it and talks to its local agent-control server. No Material Painter code or assets are in this repository or in PS2CC. |
 
 Build-time tools (NSIS, mingw-w64, Playwright and others) are listed in [TOOLCHAIN.md](TOOLCHAIN.md) and are not distributed with PS2CC.
+
+## GarmentCode licence
+
+```text
+MIT License
+
+Copyright (c) 2024 Maria Korosteleva
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

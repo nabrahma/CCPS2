@@ -54,7 +54,7 @@ type AppInfo struct {
 	Pid int `json:"pid"`
 }
 
-const appVersion = "0.26.0"
+const appVersion = "0.27.0"
 
 func newApp(layout *paths.Layout, log *logging.Logger) *App {
 	return &App{
@@ -257,6 +257,44 @@ func (a *App) SaveLookAs(suggestedName, lookJSON string) (string, error) {
 		return "", err
 	}
 	a.log.Infof("look saved %s", p)
+	return p, nil
+}
+
+// SavePatternAs asks where to save a sewing pattern, as an SVG drawing ("svg") or a .ps2pattern file
+// ("ps2pattern", the program, design and measurements it rebuilds from), and writes it. Returns the path, or ""
+// if the dialog was cancelled.
+func (a *App) SavePatternAs(suggestedName, ext, text string) (string, error) {
+	var filter runtime.FileFilter
+	switch ext {
+	case "svg":
+		if !strings.Contains(text, "<svg") {
+			return "", errors.New("the pattern drawing is not an SVG")
+		}
+		filter = runtime.FileFilter{DisplayName: "Sewing pattern drawing (*.svg)", Pattern: "*.svg"}
+	case "ps2pattern":
+		if !json.Valid([]byte(text)) {
+			return "", errors.New("the pattern is not valid JSON")
+		}
+		filter = runtime.FileFilter{DisplayName: "PS2CC pattern (*.ps2pattern)", Pattern: "*.ps2pattern"}
+	default:
+		return "", fmt.Errorf("unknown pattern file type %q", ext)
+	}
+	p, err := runtime.SaveFileDialog(a.ctx, runtime.SaveDialogOptions{
+		Title:            "Save pattern",
+		DefaultDirectory: a.layout.Root,
+		DefaultFilename:  paths.SafeName(strings.TrimSuffix(suggestedName, "."+ext)) + "." + ext,
+		Filters:          []runtime.FileFilter{filter},
+	})
+	if err != nil || p == "" {
+		return "", err
+	}
+	if !strings.EqualFold(filepath.Ext(p), "."+ext) {
+		p += "." + ext
+	}
+	if err := os.WriteFile(p, []byte(text), 0o644); err != nil {
+		return "", err
+	}
+	a.log.Infof("pattern saved %s", p)
 	return p, nil
 }
 

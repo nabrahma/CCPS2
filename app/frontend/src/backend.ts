@@ -131,6 +131,7 @@ interface GoApp {
   SaveTexture(name: string, file: string, pngBase64: string): Promise<string>;
   SaveImageAs(suggestedName: string, pngBase64: string): Promise<string>;
   SaveLookAs(suggestedName: string, lookJson: string): Promise<string>;
+  SavePatternAs(suggestedName: string, ext: string, text: string): Promise<string>;
   PickAndImport(kind: string): Promise<LibraryItem[] | null>;
   ImportPath(kind: string, path: string): Promise<LibraryItem>;
   ImportBytes(kind: string, fileName: string, base64: string): Promise<LibraryItem>;
@@ -285,6 +286,12 @@ export const backend = {
     const g = go();
     if (!g) return download(png, suggestedName);
     return g.SaveImageAs(suggestedName, await blobToBase64(png));
+  },
+  /** Ask where to save a pattern drawing (svg) or a .ps2pattern. Returns the path, or '' if cancelled. */
+  async savePatternAs(suggestedName: string, ext: 'svg' | 'ps2pattern', text: string): Promise<string> {
+    const g = go();
+    if (!g) return download(new Blob([text], { type: ext === 'svg' ? 'image/svg+xml' : 'application/json' }), `${suggestedName}.${ext}`);
+    return g.SavePatternAs(suggestedName, ext, text);
   },
   /** Ask where to save a .ps2look. Returns the path, or '' if cancelled. */
   async saveLookAs(suggestedName: string, lookJson: string): Promise<string> {

@@ -5,10 +5,10 @@
  * them in Node and `e2e/determinism.spec.ts` in the browser engine the app
  * uses. The two must match: same inputs, byte-identical outputs.
  *
- * Each milestone adds its generators here (M21: the shell garment templates).
+ * Each milestone adds its generators here (M21: the shell garment templates; M22: the pattern programs).
  */
 import type { CoreAssets } from './assets';
-import { MEASURE_IDS, type MeasureId } from './anthro/definitions';
+import { garmentCodeBody, MEASURE_IDS, type MeasureId } from './anthro/definitions';
 import { BodyEvaluator } from './anthro/evaluator';
 import { solveMeasurements } from './anthro/solve';
 import { serializeCharacter } from './character/doc';
@@ -20,7 +20,8 @@ import { Sha256 } from './math/sha256';
 import { DEFAULT_MACROS, type MacroValues } from './morph/macros';
 import { generateCrowd } from './population/crowd';
 import { samplePerson } from './population/sampler';
-import { Rng } from './random';
+import { hashSeed, Rng } from './random';
+import { buildProgram, canonicalJSON, patternPrograms, programDefaultDesign, randomProgramDesign } from './garment/pattern';
 import { EXPRESSION_MAP } from './expression/map';
 import { buildTemplate } from './garment/shell/generate';
 import { SHELL_TEMPLATES } from './garment/shell/templates';
@@ -137,6 +138,17 @@ export async function generatorHashes(assets: CoreAssets): Promise<Record<string
     const { build } = await buildTemplate(assets, t.id);
     const h = new Sha256().updateArray(Float64Array.from(build.mesh.pos)).updateArray(Uint32Array.from(build.mesh.tris));
     out[`shell:${t.id}`] = h.updateArray(Float64Array.from(build.uv.uvs)).hex();
+  }
+
+  // F29: every pattern program on the default body's GarmentCode measurements: its default design and one
+  // seeded random design (canonical pattern bytes).
+  const gcBody = garmentCodeBody(assets.anthro.measure(evaluator.evaluate(DEFAULT_MACROS)));
+  for (const p of patternPrograms()) {
+    const h = new Sha256();
+    h.updateText(canonicalJSON(buildProgram(p.id, programDefaultDesign(p.id), gcBody).spec));
+    const { design } = randomProgramDesign(p.id, new Rng(hashSeed(p.id)), gcBody, 20);
+    h.updateText(canonicalJSON(buildProgram(p.id, design, gcBody).spec));
+    out[`pattern:${p.id}`] = h.hex();
   }
   return out;
 }

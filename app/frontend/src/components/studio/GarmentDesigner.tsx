@@ -1,5 +1,5 @@
 /**
- * Garment Designer (PRD Part 3, F32), the Shell tab: a template (tops,
+ * Garment Designer (PRD Part 3, F32). The Pattern tab is PatternDesigner.tsx. The Shell tab: a template (tops,
  * bottoms, hands and feet, headwear, accessories), its parameters as
  * sliders, switches and choices, and a live preview worn by the character
  * (generated on the reference body, fitted to this character as every
@@ -12,6 +12,7 @@ import { createPortal } from 'react-dom';
 import { resolveParams, SHELL_TEMPLATES, type ParamDef, type ShellCategory, type ShellParams } from '@ps2cc/core';
 import { useStudio, useStudioVersion } from '../../state/hooks';
 import { useUi } from '../../state/ui';
+import { PatternDesigner } from './PatternDesigner';
 
 const CATEGORY_LABEL: Record<ShellCategory, string> = {
   tops: 'Tops',
@@ -137,7 +138,25 @@ function pickLoop(centres: [number, number, number][], how: HandleDef['loop']): 
   return centres.reduce((best, c) => (score(c) > score(best) ? c : best));
 }
 
+/** The Garment Designer: the Shell tab (generated shells) and the Pattern tab (sewing-pattern programs). */
 export function GarmentDesigner() {
+  const [tab, setTab] = useState<'shell' | 'pattern'>('shell');
+  return (
+    <div className="garment-designer" data-testid="garment-designer">
+      <div className="studio-switch" role="tablist" aria-label="Garment Designer">
+        <button role="tab" aria-selected={tab === 'shell'} className={tab === 'shell' ? 'active' : ''} onClick={() => setTab('shell')} data-testid="designer-tab-shell">
+          Shell
+        </button>
+        <button role="tab" aria-selected={tab === 'pattern'} className={tab === 'pattern' ? 'active' : ''} onClick={() => setTab('pattern')} data-testid="designer-tab-pattern" title="Sewing patterns made to this character's measurements">
+          Pattern
+        </button>
+      </div>
+      {tab === 'shell' ? <ShellDesigner /> : <PatternDesigner />}
+    </div>
+  );
+}
+
+function ShellDesigner() {
   const studio = useStudio();
   useStudioVersion();
   const ui = useUi();
@@ -236,15 +255,7 @@ export function GarmentDesigner() {
   }, []);
 
   return (
-    <div className="garment-designer" data-testid="garment-designer">
-      <div className="studio-switch" role="tablist" aria-label="Garment Designer">
-        <button role="tab" aria-selected className="active">
-          Shell
-        </button>
-        <button role="tab" aria-selected={false} disabled title="Sewn and draped garments come with the pattern generator">
-          Pattern
-        </button>
-      </div>
+    <div className="shell-designer" data-testid="shell-designer">
       <div className="picker-row">
         <label htmlFor="designer-template">Template</label>
         <select id="designer-template" value={templateId} onChange={(e) => pickTemplate(e.target.value)} data-testid="designer-template">

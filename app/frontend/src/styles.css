@@ -1828,3 +1828,45 @@ code {
   cursor: ns-resize;
   pointer-events: auto;
 }
+
+/* Garment Designer, Pattern tab (PRD Part 3, F32): the flat pattern over the viewport, parameter groups. */
+.pattern-view {
+  position: absolute;
+  inset: 8px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.pattern-view-tools {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: #f2f2f4;
+  border-bottom: 1px solid #ddd;
+}
+.pattern-view-tools .chip {
+  color: #222;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+.pattern-view-sheet {
+  flex: 1;
+  overflow: auto;
+}
+.pattern-view-sheet svg {
+  display: block;
+  height: auto;
+}
+.param-group {
+  margin: 4px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.param-group > summary {
+  cursor: pointer;
+  padding: 4px 0;
+  font-weight: 600;
+}

@@ -1,0 +1,26 @@
+2415 of 2418 stable designs match GarmentCode within 1e-6 relative (99.88%)
+
+FittedShirt: 146/148 stable designs match within 1e-6; 52 designs differ in GarmentCode itself between BLAS kernels (up to 0.686 cm): the port matches 0 of them within 1e-6, worst Infinity cm
+Shirt: 118/118 stable designs match within 1e-6; 82 designs differ in GarmentCode itself between BLAS kernels (up to 1.268 cm): the port matches 1 of them within 1e-6, worst Infinity cm
+Pants: 195/195 stable designs match within 1e-6; 5 designs differ in GarmentCode itself between BLAS kernels (up to 0.000 cm): the port matches 5 of them within 1e-6, worst 0.000 cm
+SkirtCircle: 200/200 stable designs match within 1e-6
+AsymmSkirtCircle: 200/200 stable designs match within 1e-6
+GodetSkirt: 200/200 stable designs match within 1e-6
+Skirt2: 200/200 stable designs match within 1e-6
+SkirtManyPanels: 200/200 stable designs match within 1e-6
+PencilSkirt: 200/200 stable designs match within 1e-6
+SkirtLevels: 200/200 stable designs match within 1e-6
+StraightWB: 200/200 stable designs match within 1e-6
+FittedWB: 200/200 stable designs match within 1e-6
+MetaGarment: 156/157 stable designs match within 1e-6; 43 designs differ in GarmentCode itself between BLAS kernels (up to 0.684 cm): the port matches 1 of them within 1e-6, worst Infinity cm
+
+FittedShirt 27 (sampled_0, unstable in GarmentCode): left_ftorso has 13/13 vertices/edges vs 12/12
+FittedShirt 122 (female): deviation 1.19e-1 cm at left_sleeve_f edge 1 curvature
+FittedShirt 134 (female): deviation 1.59e-1 cm at left_sleeve_f edge 2 curvature
+FittedShirt 157 (male, unstable in GarmentCode): left_ftorso has 12/12 vertices/edges vs 13/13
+Shirt 99 (sampled_0, unstable in GarmentCode): left_ftorso has 6/6 vertices/edges vs 7/7
+Shirt 121 (male, unstable in GarmentCode): left_ftorso has 7/7 vertices/edges vs 8/8
+Shirt 193 (male, unstable in GarmentCode): left_ftorso has 6/6 vertices/edges vs 7/7
+MetaGarment 53 (sampled_2): deviation 2.40e-1 cm at left_hood edge 3 curvature
+MetaGarment 73 (male, unstable in GarmentCode): right_ftorso has 6/6 vertices/edges vs 7/7
+MetaGarment 198 (sampled_3, unstable in GarmentCode): right_ftorso has 7/7 vertices/edges vs 6/6
