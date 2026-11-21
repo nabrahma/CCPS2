@@ -28,6 +28,8 @@ export interface ProxyMaterial {
   opacity: number;
   diffuseTexture?: string;
   textureSize?: [number, number];
+  /** Pattern garments: folds and occlusion baked from the drape (greyscale), multiplied into every look. */
+  foldTexture?: string;
 }
 
 export interface ProxyMeta extends ContainerMeta {
@@ -57,11 +59,15 @@ export interface ProxyMeta extends ContainerMeta {
 
 /** How a generated garment was made: its generator, template and parameters. */
 export interface GeneratorInfo {
-  kind: 'shell';
+  kind: 'shell' | 'pattern';
+  /** Shell template, or pattern program id. */
   template: string;
+  /** Shell parameters (empty for pattern garments). */
   params: Record<string, number>;
   /** Generator version: the same version and parameters give the same garment. */
   version: number;
+  /** Pattern garments (F29-F31): the design, the body measurements it was made to and the detail profile. */
+  pattern?: { design: unknown; body: Record<string, number>; profile: string };
 }
 
 const WEIGHT_THRESHOLD = 1e-4;

@@ -5,7 +5,8 @@
  * them in Node and `e2e/determinism.spec.ts` in the browser engine the app
  * uses. The two must match: same inputs, byte-identical outputs.
  *
- * Each milestone adds its generators here (M21: the shell garment templates; M22: the pattern programs).
+ * Each milestone adds its generators here (M21: the shell garment templates; M22: the pattern programs; M23:
+ * drapes and the garments built from them).
  */
 import type { CoreAssets } from './assets';
 import { garmentCodeBody, MEASURE_IDS, type MeasureId } from './anthro/definitions';
@@ -25,6 +26,8 @@ import { buildProgram, canonicalJSON, patternPrograms, programDefaultDesign, ran
 import { EXPRESSION_MAP } from './expression/map';
 import { buildTemplate } from './garment/shell/generate';
 import { SHELL_TEMPLATES } from './garment/shell/templates';
+import { shellBody } from './garment/shell/body';
+import { drapeProgram } from './garment/build/generate';
 
 function hashFloats(values: ArrayLike<number>): string {
   return new Sha256().updateArray(Float64Array.from(values as ArrayLike<number>)).hex();
@@ -150,5 +153,18 @@ export async function generatorHashes(assets: CoreAssets): Promise<Record<string
     h.updateText(canonicalJSON(buildProgram(p.id, design, gcBody).spec));
     out[`pattern:${p.id}`] = h.hex();
   }
+
+  // F30, F31: draped on the reference body and built into a PS2 garment (the drape's positions, the coarse
+  // garment's positions, triangles and UVs, the fold bake).
+  const ref = await shellBody(assets);
+  for (const id of DRAPE_HASHED) {
+    const m = drapeProgram({ program: id, design: programDefaultDesign(id), measurements: gcBody, body: ref, bodyPositions: ref.hm08 })!;
+    const h = new Sha256().updateArray(m.drape.positions).updateArray(Float64Array.from(m.coarse.mesh.pos)).updateArray(Uint32Array.from(m.coarse.mesh.tris));
+    h.updateArray(m.coarse.raw.uvs).updateArray(new Uint8Array(m.folds.image.data.buffer, m.folds.image.data.byteOffset, m.folds.image.data.byteLength));
+    out[`drape:${id}`] = h.hex();
+  }
   return out;
 }
+
+/** Programs whose drape is hashed (a jacket with sleeves, collar, bands and pockets; a skirt). */
+export const DRAPE_HASHED = ['Bomber', 'SkirtCircle'];

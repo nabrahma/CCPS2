@@ -1251,6 +1251,30 @@ export class Viewport {
   // ------------------------------------------------------------ Garment Studio (Part 2 F18)
 
   private studioMesh: { partKey: string; mesh: THREE.Mesh } | null = null;
+  private previewMesh: THREE.Mesh | null = null;
+
+  /**
+   * A mesh shown over the character (engine space): Garment Designer's placed pattern panels, one colour per
+   * vertex, both sides shaded. Null takes it away.
+   */
+  setPreviewMesh(mesh: { positions: Float32Array; indices: Uint32Array; colors: Float32Array } | null): void {
+    if (this.previewMesh) {
+      this.root.remove(this.previewMesh);
+      this.previewMesh.geometry.dispose();
+      (this.previewMesh.material as THREE.Material).dispose();
+      this.previewMesh = null;
+    }
+    if (mesh) {
+      const g = new THREE.BufferGeometry();
+      g.setAttribute('position', new THREE.BufferAttribute(mesh.positions, 3));
+      g.setAttribute('color', new THREE.BufferAttribute(mesh.colors, 3));
+      g.setIndex(new THREE.BufferAttribute(mesh.indices, 1));
+      g.computeVertexNormals();
+      this.previewMesh = new THREE.Mesh(g, new THREE.MeshMatcapMaterial({ vertexColors: true, side: THREE.DoubleSide }));
+      this.root.add(this.previewMesh);
+    }
+    this.refresh();
+  }
 
   /**
    * Show a garment being edited in Garment Studio in place of its part (engine

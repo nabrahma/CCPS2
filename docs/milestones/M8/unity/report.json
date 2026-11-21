@@ -304,6 +304,306 @@
             "errors": []
         },
         {
+            "name": "Pattern Bomber Skirt",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 10669,
+            "budget": 12000,
+            "height": 1.4820942878723145,
+            "feetY": -1.7881393432617188e-7,
+            "facesPlusZ": true,
+            "maxPoseStretch": 7.3566670417785645,
+            "restSkinningError": 3.9818806385483185e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Pattern Bomber Skirt_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Pattern Bomber Skirt_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Pattern Bomber Skirt_Head/jawOpen: moves up to 38.4 mm",
+                "Pattern Bomber Skirt_Eyes/jawOpen: moves up to 30.1 mm",
+                "Pattern Bomber Skirt_Eyes/tongueOut: moves up to 27.4 mm",
+                "Pattern Bomber Skirt_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Pattern Bomber Skirt_Body: y 0.000..1.323, rest skinning error 0.00 mm",
+                "Pattern Bomber Skirt_Eyes: y 1.294..1.395, rest skinning error 0.00 mm",
+                "Pattern Bomber Skirt_Garments: y 0.491..1.278, rest skinning error 0.00 mm",
+                "Pattern Bomber Skirt_Head: y 1.285..1.482, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Pattern Bomber",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 11321,
+            "budget": 12000,
+            "height": 1.7292535305023193,
+            "feetY": -5.960464477539063e-8,
+            "facesPlusZ": true,
+            "maxPoseStretch": 7.832709789276123,
+            "restSkinningError": 3.966340784700151e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Pattern Bomber_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Pattern Bomber_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Pattern Bomber_Head/jawOpen: moves up to 38.4 mm",
+                "Pattern Bomber_Eyes/jawOpen: moves up to 30.1 mm",
+                "Pattern Bomber_Eyes/tongueOut: moves up to 27.4 mm",
+                "Pattern Bomber_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Pattern Bomber_Body: y 0.000..1.548, rest skinning error 0.00 mm",
+                "Pattern Bomber_Eyes: y 1.518..1.635, rest skinning error 0.00 mm",
+                "Pattern Bomber_Garments: y 0.585..1.498, rest skinning error 0.00 mm",
+                "Pattern Bomber_Head: y 1.500..1.729, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Pattern Coat",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 11417,
+            "budget": 12000,
+            "height": 1.715480089187622,
+            "feetY": -5.960464477539063e-8,
+            "facesPlusZ": true,
+            "maxPoseStretch": 7.946592807769775,
+            "restSkinningError": 4.933724540023832e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Pattern Coat_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Pattern Coat_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Pattern Coat_Head/jawOpen: moves up to 38.4 mm",
+                "Pattern Coat_Eyes/jawOpen: moves up to 30.1 mm",
+                "Pattern Coat_Eyes/tongueOut: moves up to 27.4 mm",
+                "Pattern Coat_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Pattern Coat_Body: y 0.000..1.534, rest skinning error 0.00 mm",
+                "Pattern Coat_Eyes: y 1.501..1.620, rest skinning error 0.00 mm",
+                "Pattern Coat_Garments: y 0.474..1.513, rest skinning error 0.00 mm",
+                "Pattern Coat_Head: y 1.484..1.715, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Pattern Heavy Hoodie",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 10876,
+            "budget": 12000,
+            "height": 1.7333457469940186,
+            "feetY": -1.7881393432617188e-7,
+            "facesPlusZ": true,
+            "maxPoseStretch": 9.928838729858398,
+            "restSkinningError": 4.851466428590356e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Pattern Heavy Hoodie_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Pattern Heavy Hoodie_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Pattern Heavy Hoodie_Head/jawOpen: moves up to 38.4 mm",
+                "Pattern Heavy Hoodie_Eyes/jawOpen: moves up to 30.1 mm",
+                "Pattern Heavy Hoodie_Eyes/tongueOut: moves up to 27.4 mm",
+                "Pattern Heavy Hoodie_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Pattern Heavy Hoodie_Body: y 0.000..1.543, rest skinning error 0.00 mm",
+                "Pattern Heavy Hoodie_Eyes: y 1.515..1.632, rest skinning error 0.00 mm",
+                "Pattern Heavy Hoodie_Garments: y 0.572..1.733, rest skinning error 0.00 mm",
+                "Pattern Heavy Hoodie_Head: y 1.496..1.723, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Pattern Hoodie",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 10766,
+            "budget": 12000,
+            "height": 1.4339724779129028,
+            "feetY": 0.0,
+            "facesPlusZ": true,
+            "maxPoseStretch": 7.172313213348389,
+            "restSkinningError": 3.705868039105553e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Pattern Hoodie_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Pattern Hoodie_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Pattern Hoodie_Head/jawOpen: moves up to 38.4 mm",
+                "Pattern Hoodie_Eyes/jawOpen: moves up to 30.1 mm",
+                "Pattern Hoodie_Eyes/tongueOut: moves up to 27.4 mm",
+                "Pattern Hoodie_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Pattern Hoodie_Body: y 0.000..1.278, rest skinning error 0.00 mm",
+                "Pattern Hoodie_Eyes: y 1.248..1.348, rest skinning error 0.00 mm",
+                "Pattern Hoodie_Garments: y 0.502..1.209, rest skinning error 0.00 mm",
+                "Pattern Hoodie_Head: y 1.240..1.434, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Pattern Long Shirt",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 11394,
+            "budget": 12000,
+            "height": 1.9713959693908691,
+            "feetY": -2.980232238769531e-7,
+            "facesPlusZ": true,
+            "maxPoseStretch": 6.999274730682373,
+            "restSkinningError": 3.842650926344504e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Pattern Long Shirt_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Pattern Long Shirt_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Pattern Long Shirt_Head/jawOpen: moves up to 38.4 mm",
+                "Pattern Long Shirt_Eyes/jawOpen: moves up to 30.1 mm",
+                "Pattern Long Shirt_Eyes/tongueOut: moves up to 27.4 mm",
+                "Pattern Long Shirt_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Pattern Long Shirt_Body: y 0.000..1.770, rest skinning error 0.00 mm",
+                "Pattern Long Shirt_Eyes: y 1.737..1.865, rest skinning error 0.00 mm",
+                "Pattern Long Shirt_Garments: y 0.747..1.701, rest skinning error 0.00 mm",
+                "Pattern Long Shirt_Head: y 1.719..1.971, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Pattern Shirt Skirt",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 10509,
+            "budget": 12000,
+            "height": 1.877577781677246,
+            "feetY": 0.0,
+            "facesPlusZ": true,
+            "maxPoseStretch": 10.701272964477539,
+            "restSkinningError": 4.1471366785117425e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Pattern Shirt Skirt_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Pattern Shirt Skirt_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Pattern Shirt Skirt_Head/jawOpen: moves up to 38.4 mm",
+                "Pattern Shirt Skirt_Eyes/jawOpen: moves up to 30.1 mm",
+                "Pattern Shirt Skirt_Eyes/tongueOut: moves up to 27.4 mm",
+                "Pattern Shirt Skirt_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Pattern Shirt Skirt_Body: y 0.000..1.693, rest skinning error 0.00 mm",
+                "Pattern Shirt Skirt_Eyes: y 1.660..1.776, rest skinning error 0.00 mm",
+                "Pattern Shirt Skirt_Garments: y 0.607..1.599, rest skinning error 0.00 mm",
+                "Pattern Shirt Skirt_Head: y 1.647..1.878, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Pattern Tiered",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 9684,
+            "budget": 12000,
+            "height": 1.4339724779129028,
+            "feetY": 0.0,
+            "facesPlusZ": true,
+            "maxPoseStretch": 10.896525382995605,
+            "restSkinningError": 3.6286698446019727e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Pattern Tiered_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Pattern Tiered_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Pattern Tiered_Head/jawOpen: moves up to 38.4 mm",
+                "Pattern Tiered_Eyes/jawOpen: moves up to 30.1 mm",
+                "Pattern Tiered_Eyes/tongueOut: moves up to 27.4 mm",
+                "Pattern Tiered_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Pattern Tiered_Body: y 0.000..1.278, rest skinning error 0.00 mm",
+                "Pattern Tiered_Eyes: y 1.248..1.348, rest skinning error 0.00 mm",
+                "Pattern Tiered_Garments: y 0.392..1.198, rest skinning error 0.00 mm",
+                "Pattern Tiered_Head: y 1.240..1.434, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Pattern Vest",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 10688,
+            "budget": 12000,
+            "height": 1.5353329181671143,
+            "feetY": -5.960464477539063e-8,
+            "facesPlusZ": true,
+            "maxPoseStretch": 5.9600396156311035,
+            "restSkinningError": 3.8201937968551647e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Pattern Vest_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Pattern Vest_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Pattern Vest_Head/jawOpen: moves up to 38.4 mm",
+                "Pattern Vest_Eyes/jawOpen: moves up to 30.1 mm",
+                "Pattern Vest_Eyes/tongueOut: moves up to 27.4 mm",
+                "Pattern Vest_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Pattern Vest_Body: y 0.000..1.374, rest skinning error 0.00 mm",
+                "Pattern Vest_Eyes: y 1.344..1.447, rest skinning error 0.00 mm",
+                "Pattern Vest_Garments: y 0.529..1.301, rest skinning error 0.00 mm",
+                "Pattern Vest_Head: y 1.334..1.535, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
+            "name": "Pattern Work Shirt",
+            "avatarValid": true,
+            "avatarHuman": true,
+            "renderers": 4,
+            "triangles": 10945,
+            "budget": 12000,
+            "height": 1.7222667932510376,
+            "feetY": -1.1920928955078125e-7,
+            "facesPlusZ": true,
+            "maxPoseStretch": 5.323788166046143,
+            "restSkinningError": 6.06433331995504e-7,
+            "blendshapes": 52,
+            "expressionsInfo": [
+                "52 of 52 blendshapes present in Unity",
+                "Pattern Work Shirt_Head/eyeBlinkLeft: moves up to 12.6 mm",
+                "Pattern Work Shirt_Head/eyeBlinkRight: moves up to 12.6 mm",
+                "Pattern Work Shirt_Head/jawOpen: moves up to 38.4 mm",
+                "Pattern Work Shirt_Eyes/jawOpen: moves up to 30.1 mm",
+                "Pattern Work Shirt_Eyes/tongueOut: moves up to 27.4 mm",
+                "Pattern Work Shirt_Eyes/eyeLookUpLeft: moves up to 2.9 mm"
+            ],
+            "renderersInfo": [
+                "Pattern Work Shirt_Body: y 0.000..1.541, rest skinning error 0.00 mm",
+                "Pattern Work Shirt_Eyes: y 1.510..1.627, rest skinning error 0.00 mm",
+                "Pattern Work Shirt_Garments: y 0.587..1.481, rest skinning error 0.00 mm",
+                "Pattern Work Shirt_Head: y 1.492..1.722, rest skinning error 0.00 mm"
+            ],
+            "errors": []
+        },
+        {
             "name": "Shell Cap",
             "avatarValid": true,
             "avatarHuman": true,

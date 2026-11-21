@@ -120,11 +120,16 @@ export class GarmentLookComposer {
     this.mats.delete(id);
   }
 
-  /** The garment's texture at `size`, dressed by `look` over its own texture `base` (a path or library URL). */
-  async compose(assetId: string, look: GarmentLook, base: string | null, size: number, load: ImageLoader): Promise<RgbaImage> {
+  /** The garment's texture at `size`, dressed by `look` over its own texture `base` (a path or library URL), with its baked folds (pattern garments). */
+  async compose(assetId: string, look: GarmentLook, base: string | null, size: number, load: ImageLoader, folds: string | null = null): Promise<RgbaImage> {
     const ids = [...new Set(look.zones.map((z) => z.material).filter((m): m is string => !!m))];
-    const [canvas, baseImg, ...mats] = await Promise.all([this.canvas(assetId, size), base ? load(base) : Promise.resolve(null), ...ids.map((id) => this.material(id, load))]);
-    const byId = new Map(ids.map((id, i) => [id, mats[i] ?? null]));
-    return composeGarment(canvas, look, { base: baseImg, material: (id) => byId.get(id) ?? null });
+    const [canvas, baseImg, foldImg, ...mats] = await Promise.all([
+      this.canvas(assetId, size),
+      base ? load(base) : Promise.resolve(null),
+      folds ? load(folds).catch(() => null) : Promise.resolve(null),
+      ...ids.map((id) => this.material(id, load)),
+    ]);
+    const byId = new Map(ids.map((id, i) => [id, (mats[i] as MaterialSource | null) ?? null]));
+    return composeGarment(canvas, look, { base: baseImg, material: (id) => byId.get(id) ?? null, shading: foldImg });
   }
 }

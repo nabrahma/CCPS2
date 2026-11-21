@@ -384,14 +384,14 @@ export class CharacterScene {
   }
 
   /** A garment's material with its look attached (or without, when it has none). */
-  private dressed(m: PartMaterial, w: WantedProxy): PartMaterial {
+  private dressed(m: PartMaterial, w: WantedProxy, folds: string | null = null): PartMaterial {
     const look = w.look;
     if (!look || w.kind !== 'garment') return { ...m, wardrobe: null };
     const base = m.texture;
     const assetId = w.assetId;
     return {
       ...m,
-      wardrobe: { key: `${assetId}|${base ?? ''}|${JSON.stringify(look)}`, compose: (size, load) => this.garmentLooks.compose(assetId, look, base, size, load) },
+      wardrobe: { key: `${assetId}|${base ?? ''}|${folds ?? ''}|${JSON.stringify(look)}`, compose: (size, load) => this.garmentLooks.compose(assetId, look, base, size, load, folds) },
     };
   }
 
@@ -424,7 +424,7 @@ export class CharacterScene {
     for (const w of wanted) {
       const existing = this.proxies.get(w.key);
       if (existing && existing.proxy.id === w.assetId) {
-        existing.part.material = this.dressed({ ...w.material, texture: w.material.texture ?? existing.proxy.meta.material?.diffuseTexture ?? null }, w);
+        existing.part.material = this.dressed({ ...w.material, texture: w.material.texture ?? existing.proxy.meta.material?.diffuseTexture ?? null }, w, existing.proxy.meta.material?.foldTexture ?? null);
         continue;
       }
       const proxy = await this.engine.assets.proxy(w.assetId);
@@ -436,7 +436,7 @@ export class CharacterScene {
         assetId: w.assetId,
         label: proxy.meta.name,
         zDepth: proxy.meta.zDepth,
-        material: this.dressed({ ...w.material, texture: w.material.texture ?? proxy.meta.material?.diffuseTexture ?? null }, w),
+        material: this.dressed({ ...w.material, texture: w.material.texture ?? proxy.meta.material?.diffuseTexture ?? null }, w, proxy.meta.material?.foldTexture ?? null),
         uvs: topo.uvs,
         indices: topo.indices,
         positions: new Float32Array(n * 3),

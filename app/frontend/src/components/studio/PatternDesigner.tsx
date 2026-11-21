@@ -4,11 +4,12 @@
  * built to the current character's measurements, shown flat over the viewport: panels at true size, stitch
  * pairs in matching colours, sizes in cm and the measurements used. Random design draws within the program's
  * ranges (the same seed, the same design). Export saves the drawing (SVG) or the .ps2pattern it rebuilds from.
- * Draping and wearing the pattern come with the drape solver (M23).
+ * The 3D view shows the panels placed around the body; Drape sews and settles them on this character (F30) and
+ * builds the game garment (F31), worn as a preview until it is saved to the Wardrobe or kept on the character.
  */
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { buildProgram, designLeaves, garmentCodeBody, makePs2Pattern, patternPrograms, patternSvg, programDefaultDesign, randomProgramDesign, Rng, serializePs2Pattern, validateBuilt, type BuiltPattern, type DesignLeaf, type PatternIssue } from '@ps2cc/core';
+import { buildProgram, designLeaves, garmentCodeBody, makePs2Pattern, patternPrograms, patternSvg, placedPanels, programDefaultDesign, randomProgramDesign, Rng, serializePs2Pattern, validateBuilt, type BuiltPattern, type DesignLeaf, type DetailProfile, type PatternGarment, type PatternIssue } from '@ps2cc/core';
 import { backend } from '../../backend';
 import { useStudio, useStudioVersion } from '../../state/hooks';
 import { useUi } from '../../state/ui';
@@ -50,20 +51,52 @@ function setLeaf(design: Design, path: string[], v: unknown): Design {
   return out;
 }
 
-export function PatternDesigner() {
+/** A worn pattern garment opened from the Wardrobe: what it replaces, and how it was made. */
+export interface OpenedPattern {
+  slot: string;
+  asset: string;
+  program: string;
+  design: Design;
+  name: string;
+  profile: DetailProfile;
+}
+
+const PANEL_COLOURS: [number, number, number][] = [
+  [0.82, 0.29, 0.36],
+  [0.0, 0.47, 0.55],
+  [0.93, 0.68, 0.29],
+  [0.19, 0.39, 0.56],
+  [0.42, 0.3, 0.58],
+  [0.11, 0.6, 0.54],
+  [0.89, 0.39, 0.08],
+  [0.54, 0.35, 0.27],
+  [0.36, 0.58, 0.43],
+  [0.75, 0.32, 0.6],
+];
+
+type View = '2d' | '3d' | 'off';
+
+export function PatternDesigner({ opened = null }: { opened?: OpenedPattern | null }) {
   const studio = useStudio();
   const version = useStudioVersion();
   const ui = useUi();
   const programs = useMemo(() => patternPrograms(), []);
-  const [programId, setProgramId] = useState('Bomber');
+  const [programId, setProgramId] = useState(opened?.program ?? 'Bomber');
   const program = programs.find((p) => p.id === programId)!;
-  const [design, setDesign] = useState<Design>(() => programDefaultDesign('Bomber'));
+  const [design, setDesign] = useState<Design>(() => (opened ? structuredClone(opened.design) : programDefaultDesign('Bomber')));
   const [seed, setSeed] = useState(() => (Math.random() * 1e6) | 0);
   const [built, setBuilt] = useState<{ b: BuiltPattern; issues: PatternIssue[]; ms: number } | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [showPattern, setShowPattern] = useState(true);
+  const [view, setView] = useState<View>('2d');
+  const [profile, setProfile] = useState<DetailProfile>(opened?.profile ?? 'classic');
+  const [name, setName] = useState(opened?.name ?? program.label);
+  const [draping, setDraping] = useState<{ progress: number; stage: string } | null>(null);
+  const [draped, setDraped] = useState<{ pg: PatternGarment; key: string; ms: number } | null>(null);
+  const abort = useRef<AbortController | null>(null);
+  const saved = useRef(false);
   // GarmentCode's measurement keys for this character, from the F24 measurements.
   const body = useMemo(() => garmentCodeBody(studio.assets.anthro.measure(studio.engine.positions)), [studio, version, studio.engine.geometryVersion]); // eslint-disable-line react-hooks/exhaustive-deps
+  const designKey = JSON.stringify([programId, design, profile]);
 
   useEffect(() => {
     let live = true;
@@ -86,9 +119,51 @@ export function PatternDesigner() {
     };
   }, [programId, design, body]);
 
+  // The 3D view before draping: the panels placed around the body, as the drape starts from.
+  const showPlaced = view === '3d' && !!built && !error && (!draped || draped.key !== designKey);
+  useEffect(() => {
+    const vp = studio.viewport;
+    if (!vp) return;
+    if (!showPlaced || !built) {
+      vp.setPreviewMesh(null);
+      return;
+    }
+    let live = true;
+    void studio.patternBody().then((shell) => {
+      if (!live) return;
+      const p = placedPanels(built.b, shell);
+      const colors = new Float32Array(p.positions.length);
+      for (let t = 0; t < p.triPanel.length; t++) {
+        const c = PANEL_COLOURS[p.triPanel[t]! % PANEL_COLOURS.length]!;
+        for (let k = 0; k < 3; k++) colors.set(c, p.tris[t * 3 + k]! * 3);
+      }
+      vp.setPreviewMesh({ positions: Float32Array.from(p.positions), indices: p.tris, colors });
+    });
+    return () => {
+      live = false;
+    };
+  }, [showPlaced, built, studio, version]);
+
+  // The drape's body (and its distance field, about a second to build) made ready while the design is chosen.
+  useEffect(() => {
+    const t = setTimeout(() => void studio.warmPatternBody(), 500);
+    return () => clearTimeout(t);
+  }, [studio, studio.engine.geometryVersion]);
+
+  // Leaving: no placed panels, and an unsaved drape comes off (putting back what it replaced).
+  useEffect(
+    () => () => {
+      abort.current?.abort();
+      studio.viewport?.setPreviewMesh(null);
+      if (!saved.current) studio.endPatternPreview(opened ? { slot: opened.slot as never, asset: opened.asset } : null);
+    },
+    [studio, opened],
+  );
+
   const pick = (id: string) => {
     setProgramId(id);
     setDesign(programDefaultDesign(id));
+    setName(programs.find((p) => p.id === id)?.label ?? id);
   };
 
   const leaves = useMemo(() => {
@@ -118,11 +193,47 @@ export function PatternDesigner() {
     if (p) ui.info(`Saved ${p}`);
   };
 
+  const drape = async () => {
+    abort.current?.abort();
+    const ctl = new AbortController();
+    abort.current = ctl;
+    setDraping({ progress: 0, stage: 'Sewing' });
+    const key = designKey;
+    const t0 = performance.now();
+    try {
+      const pg = await studio.drapePatternDesign(programId, design, { profile, signal: ctl.signal, onProgress: (f, stage) => setDraping({ progress: f, stage }) });
+      if (!pg || ctl.signal.aborted) return;
+      await studio.previewPatternGarment(pg, opened?.asset ?? null);
+      setDraped({ pg, key, ms: performance.now() - t0 });
+      if (view === '2d') setView('off');
+    } catch (err) {
+      ui.error(`The drape failed: ${err instanceof Error ? err.message : String(err)}`);
+    } finally {
+      if (abort.current === ctl) {
+        abort.current = null;
+        setDraping(null);
+      }
+    }
+  };
+
+  const save = async (where: 'library' | 'character') => {
+    if (!draped) return;
+    saved.current = true;
+    await studio.savePatternGarment(draped.pg, name.trim() || program.label, where, opened?.asset ?? null);
+    ui.info(where === 'library' ? `Saved ${name} to the Wardrobe` : `Kept ${name} on this character`);
+    useUi.getState().closeStudio?.();
+  };
+
+  const stale = !!draped && draped.key !== designKey;
   const status = error
     ? `This design does not build: ${error}`
     : built
       ? `${Object.keys(built.b.spec.panels).length} panels, ${built.b.spec.stitches.length} stitches, built in ${Math.round(built.ms)} ms. ${built.issues.length ? `${built.issues.length} check${built.issues.length > 1 ? 's' : ''} not met: ${built.issues[0]!.detail}` : 'Every pattern check passes.'}`
       : 'Building…';
+  const dm = draped?.pg.drape.metrics;
+  const drapeStatus = draped
+    ? `Draped in ${(draped.ms / 1000).toFixed(1)} s (${draped.pg.drape.fine.particles} particles, ${draped.pg.drape.simTime.toFixed(1)} s simulated): seams within ${(dm!.seamGap * 1000).toFixed(1)} mm, woven cloth stretched ${(dm!.wovenStrainMean * 100).toFixed(1)}% on average; ${draped.pg.coarse.report.triangles} triangles at ${draped.pg.coarse.report.edgeCm.toFixed(1)} cm.${stale ? ' The design has changed since: drape again to see it.' : ''}`
+    : null;
 
   return (
     <div className="pattern-designer" data-testid="pattern-designer">
@@ -171,9 +282,60 @@ export function PatternDesigner() {
       <p className="hint" data-testid="pattern-status">
         {status}
       </p>
-      <label className="check">
-        <input type="checkbox" checked={showPattern} onChange={(e) => setShowPattern(e.target.checked)} data-testid="pattern-show" /> Show the pattern over the viewport
-      </label>
+      <div className="studio-switch" role="tablist" aria-label="Pattern view">
+        {(
+          [
+            ['2d', '2D pattern'],
+            ['3d', '3D'],
+            ['off', 'Character'],
+          ] as [View, string][]
+        ).map(([v, label]) => (
+          <button key={v} role="tab" aria-selected={view === v} className={view === v ? 'active' : ''} onClick={() => setView(v)} data-testid={`pattern-view-${v}`}>
+            {label}
+          </button>
+        ))}
+      </div>
+      <p className="hint">{view === '3d' ? (draped && !stale ? 'The draped garment, worn.' : 'The panels placed around the body, as the drape starts from them.') : view === '2d' ? 'Panels at true size; stitches in matching colours.' : 'The character as dressed now.'}</p>
+      <div className="picker-row">
+        <label htmlFor="pattern-profile">Detail</label>
+        <select id="pattern-profile" value={profile} onChange={(e) => setProfile(e.target.value as DetailProfile)} data-testid="pattern-profile" title="The game mesh's edge length (it grows when the garment would not fit its slot's triangle budget)">
+          <option value="classic">Classic (4 cm)</option>
+          <option value="enhanced">Enhanced (3 cm)</option>
+          <option value="hero">Hero (2 cm)</option>
+        </select>
+      </div>
+      <div className="tool-line">
+        {draping ? (
+          <>
+            <progress max={1} value={draping.progress} data-testid="pattern-drape-progress" />
+            <span className="muted">{draping.stage}</span>
+            <button onClick={() => abort.current?.abort()} data-testid="pattern-drape-cancel">
+              Cancel
+            </button>
+          </>
+        ) : (
+          <button className="primary" onClick={() => void drape()} disabled={!built || !!error} data-testid="pattern-drape" title="Sew the panels and let them settle on this character (a few seconds), then build the game garment">
+            Drape
+          </button>
+        )}
+      </div>
+      {drapeStatus && (
+        <p className="hint" data-testid="pattern-drape-status">
+          {drapeStatus}
+        </p>
+      )}
+      <div className="picker-row">
+        <label htmlFor="pattern-name">Name</label>
+        <input id="pattern-name" value={name} onChange={(e) => setName(e.target.value)} data-testid="pattern-name" />
+      </div>
+      <div className="tool-line">
+        <button onClick={() => void save('library')} disabled={!draped || stale || !!draping} data-testid="pattern-save-library" title="A library garment: any character can wear it (it fits them by its binding)">
+          Save to Wardrobe
+        </button>
+        <button onClick={() => void save('character')} disabled={!draped || stale || !!draping} data-testid="pattern-save-character" title="Kept on this character only">
+          Keep on this character
+        </button>
+      </div>
       <div className="tool-line">
         <button onClick={() => void exportSvg()} disabled={!built || !!error} data-testid="pattern-export-svg" title="The flat pattern with seam allowances, stitch marks and labels, at true size">
           Export SVG
@@ -182,8 +344,7 @@ export function PatternDesigner() {
           Save .ps2pattern
         </button>
       </div>
-      <p className="hint">Draping the pattern on the character and saving it to the Wardrobe come with the cloth solver (M23).</p>
-      {showPattern && svg && <PatternView svg={svg} />}
+      {view === '2d' && svg && <PatternView svg={svg} />}
     </div>
   );
 }

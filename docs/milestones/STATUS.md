@@ -453,3 +453,38 @@ Sewing patterns written as code: GarmentCode ported to TypeScript, this project'
   - `e2e/m22.spec.ts`: the Pattern tab, parameters, Random design, every program, the pattern view, both exports.
   - Core 301 tests, Go, desktop, lint and typecheck pass.
   - e2e: 63 of 64 passed in the full run. The failure was `m20-photo.spec.ts` (hand-placed face points), which is intermittent: it failed twice and passed three times, with identical numbers on M21's code and on M22's (worst 2.9 texels when it passes). Its stand-in photo is rendered from the viewport, and that render looks sensitive to load. Nothing in M22 is on its path.
+
+## M23: Drape and garment asset (0.28.0, Part 3)
+
+Sewing patterns sewn and draped on the character by a cloth solver, then turned into PS2 garments. See `docs/garment-patterns.md`.
+
+- **The drape solver** (F30, D-176, D-177):
+  - XPBD with Small Steps: 20 substeps a frame, one pass each; stretch, area, dihedral bending, seams, body contacts with friction;
+  - panels start wrapped round their body part, anchored at the neck (tops) or the waist (trousers, skirts); small panels laid against what they are sewn to;
+  - sewing first (0.3 s, no gravity or friction), then closed seams welded so the garment settles as one sheet; trousers and skirts held at the waist;
+  - contacts from a signed distance field of the body; a final pass against the exact body;
+  - 1.5 cm cloth, at most 8,000 particles; cloth presets for every M15 material kind;
+  - the same bytes in Node and Chromium (drape hashes).
+- **Pattern to PS2 garment** (F31, D-179):
+  - coarse remesh at Classic 4 cm / Enhanced 3 cm / Hero 2 cm, longer where the slot budget needs it;
+  - seams welded (open only at hems and openings), pushed out to the garment class's ease (5.0), smoothed, rims on every edge, pockets and flaps on top;
+  - UVs are the pattern in centimetres at one texel density;
+  - folds baked from the fine drape into a fold texture multiplied into every look;
+  - bound to the reference body like any garment (Bind); **Re-drape on this body** in Clothes drapes it again on another character (D-181).
+- **Garment Designer, Pattern tab:** 2D pattern, 3D (placed panels, then the drape) and Character views; Drape with progress and Cancel (on the main thread in frame slices, D-180); the draped garment worn as a preview with its numbers; Save to Wardrobe or Keep on this character; a worn pattern garment opens back in this tab.
+- **Fixed on the way:** the Shell tab could leave its live preview on the character when the Designer was closed or switched tabs while it was still generating.
+- **Tested:**
+  - Solver unit tests (`garment-drape-solver.test.ts`): a pinned sheet's energy (motion, height, bending) falls every frame for 8 s as it settles, in cotton, denim, jersey and leather; a cylinder skirt sewn round a cylinder body never goes inside it; triangulation keeps every boundary edge; both sides of a stitch sampled alike.
+  - Acceptance (`scripts/m23-accept.mjs`, 50 designs per program, the default and seeded random ones, on Mara and Cole: 1,700 drapes, `docs/milestones/M23/drape.txt`, D-178):
+    - 1,408 of 1,700 (83%) pass every check (seam gaps under 1 mm, no penetration over 1 mm, woven stretch along the threads under 3% on average, watertight, texel density within 5%, folds in the bake);
+    - this project's programs: coat and utility vest 100/100, hoodie 92, bomber 90, work shirt 84;
+    - GarmentCode's: fitted waistband 100, many-panel and asymmetric skirts 97 and 95, straight waistband 93, shirts 86-92, circle skirt 90, two-panel skirt 82, godet skirt 65, trousers 55, pencil skirt 51, tiered skirt 36;
+    - what fails: woven stretch over 3% on GarmentCode designs with little or no ease (trousers, pencil and tiered skirts, which its own simulator drapes in stretchier cloth); seams that stay open on some random designs (seen on sleeve seams, godets and ruffled tiers); some tiered, godet and circle skirts that end with points inside the body (up to 5 cm); plain skirts that hang without folds (the fold check);
+    - the PRD's thresholds are therefore not met on every design.
+  - Drape time: in the app the default bomber (5,210 particles) takes 8.3 s from Drape to the worn garment. In the acceptance run, with 15 drapes running at once: median 4.2 s, 95th percentile 9.2 s, largest 14.3 s.
+  - The coarse garments: watertight except at hems and openings, and manifold, on all 1,700; texel density within 5% across panels on all but 2 (one pair of trousers at 15%, one work shirt at 8%; each island is scaled to its finished surface).
+  - Determinism: the bomber's and the circle skirt's drapes and garments hashed in Node and Chromium.
+  - `e2e/m23.spec.ts`: placed panels, Drape cancelled and run, Save to Wardrobe (program, design and fold texture recorded), opening it again on the Pattern tab, Re-drape on a heavier body.
+  - Core 322 tests, Go, desktop, lint and typecheck pass.
+  - e2e: 64 of 65 passed in the full run; the failure was the intermittent `m20-photo.spec.ts` (see M22), which passed when run again.
+  - Unity harness: 33 test characters, ten of them dressed only in pattern garments draped on their own bodies; all import as Humanoid with 52 blendshapes within 12k triangles (`docs/milestones/M23/unity/`).

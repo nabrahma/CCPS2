@@ -1,32 +1,32 @@
 {
   "fringe": {
     "segmentation": {
-      "faceShare": 0.24149305555555556,
-      "hairShare": 0.3279269748263889,
+      "faceShare": 0.2418307834201389,
+      "hairShare": 0.33841417100694443,
       "hair": [
         6,
         5,
         5
       ],
       "skin": [
-        227,
-        173,
-        144
+        229,
+        174,
+        146
       ]
     },
     "baseline": {
-      "dark": 79,
-      "texels": 65958,
+      "dark": 182,
+      "texels": 68847,
       "faceShare": 0
     },
     "masked": {
-      "dark": 50,
-      "texels": 46693,
+      "dark": 51,
+      "texels": 51998,
       "faceShare": 0
     },
     "unmasked": {
-      "dark": 15130,
-      "texels": 63793,
+      "dark": 15417,
+      "texels": 68929,
       "faceShare": 0
     }
   }

@@ -344,5 +344,155 @@
     "glbErrors": 0,
     "glbWarnings": 0,
     "glbMessages": []
+  },
+  {
+    "file": "24_Pattern_Bomber.ps2exp",
+    "name": "Pattern Bomber",
+    "meshes": [
+      "head:5456",
+      "body:2432",
+      "garments:2720",
+      "eyes:713"
+    ],
+    "triangles": 11321,
+    "budget": 11321,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "25_Pattern_Hoodie.ps2exp",
+    "name": "Pattern Hoodie",
+    "meshes": [
+      "head:5456",
+      "body:2423",
+      "garments:2174",
+      "eyes:713"
+    ],
+    "triangles": 10766,
+    "budget": 10766,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "26_Pattern_Work_Shirt.ps2exp",
+    "name": "Pattern Work Shirt",
+    "meshes": [
+      "head:5456",
+      "body:2356",
+      "garments:2420",
+      "eyes:713"
+    ],
+    "triangles": 10945,
+    "budget": 10945,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "27_Pattern_Vest.ps2exp",
+    "name": "Pattern Vest",
+    "meshes": [
+      "head:5456",
+      "body:2477",
+      "garments:2042",
+      "eyes:713"
+    ],
+    "triangles": 10688,
+    "budget": 10688,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "28_Pattern_Coat.ps2exp",
+    "name": "Pattern Coat",
+    "meshes": [
+      "head:5456",
+      "body:2478",
+      "garments:2770",
+      "eyes:713"
+    ],
+    "triangles": 11417,
+    "budget": 11417,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "29_Pattern_Shirt_Skirt.ps2exp",
+    "name": "Pattern Shirt Skirt",
+    "meshes": [
+      "head:5456",
+      "body:2476",
+      "garments:1864",
+      "eyes:713"
+    ],
+    "triangles": 10509,
+    "budget": 10509,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "30_Pattern_Tiered.ps2exp",
+    "name": "Pattern Tiered",
+    "meshes": [
+      "head:5456",
+      "body:2376",
+      "garments:1139",
+      "eyes:713"
+    ],
+    "triangles": 9684,
+    "budget": 9684,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "31_Pattern_Heavy_Hoodie.ps2exp",
+    "name": "Pattern Heavy Hoodie",
+    "meshes": [
+      "head:5197",
+      "body:2382",
+      "garments:2584",
+      "eyes:713"
+    ],
+    "triangles": 10876,
+    "budget": 10876,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "32_Pattern_Bomber_Skirt.ps2exp",
+    "name": "Pattern Bomber Skirt",
+    "meshes": [
+      "head:5456",
+      "body:2419",
+      "garments:2081",
+      "eyes:713"
+    ],
+    "triangles": 10669,
+    "budget": 10669,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
+  },
+  {
+    "file": "33_Pattern_Long_Shirt.ps2exp",
+    "name": "Pattern Long Shirt",
+    "meshes": [
+      "head:5456",
+      "body:2421",
+      "garments:2804",
+      "eyes:713"
+    ],
+    "triangles": 11394,
+    "budget": 11394,
+    "glbErrors": 0,
+    "glbWarnings": 0,
+    "glbMessages": []
   }
 ]

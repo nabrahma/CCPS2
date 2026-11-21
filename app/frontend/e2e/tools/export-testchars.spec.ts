@@ -5,7 +5,8 @@
  * (GPU skin composite, PNG textures, GLB checked with glTF-Validator) and its
  * export message is saved to app/backend/fbx/testdata/characters/, which the
  * Go round-trip test reads and `ps2cc-export` turns into export folders.
- * Ten more (PRD Part 3, M21) wear only garments made in Garment Designer.
+ * Ten more (PRD Part 3, M21) wear only shell garments made in Garment Designer, and ten (M23) only pattern
+ * garments draped on their own bodies.
  * Run with `pnpm export:testchars`.
  */
 import { mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
@@ -34,6 +35,8 @@ interface TestChar {
   imported?: [string, string][];
   /** M21: shell garments made in Garment Designer and worn: [template, parameters]. */
   shell?: [string, Record<string, number>][];
+  /** M23: pattern garments draped on the character in Garment Designer and worn: [program, design values by path]. */
+  pattern?: [string, Record<string, unknown>][];
 }
 
 // All within the default 12k triangle budget (the Unity harness checks it). Every entry sets its body tier.
@@ -63,10 +66,22 @@ const CHARS: TestChar[] = [
   { name: 'Shell Cap', macros: { gender: 1, age: 0.3, height: 0.3 }, extra: { ...body8, hair: bald, garments: [] }, shell: [['cap', {}], ['tshirt', {}], ['straighttrousers', {}]] },
   { name: 'Shell Gloves', macros: { gender: 0, age: 0.6, weight: 0.7 }, extra: { ...body8, hair: bald, garments: [] }, shell: [['gloves', {}], ['rollneck', {}], ['leggings', {}]] },
   { name: 'Shell Gear', macros: { gender: 1, age: 0.45, muscle: 0.6 }, extra: { ...body8, hair: bald, garments: [] }, shell: [['tshirt', {}], ['straighttrousers', {}], ['belt', {}], ['strap', {}]] },
+  // M23: dressed only in pattern garments, draped on each character's own body (one top or outer layer and one
+  // bottom: within the 12k budget with the 8k body).
+  { name: 'Pattern Bomber', macros: { gender: 1, age: 0.5 }, extra: { ...body8, hair: bald, garments: [] }, pattern: [['Bomber', {}], ['Pants', {}]] },
+  { name: 'Pattern Hoodie', macros: { gender: 0, age: 0.35 }, extra: { ...body8, hair: bald, garments: [] }, pattern: [['Hoodie', {}], ['SkirtCircle', {}]] },
+  { name: 'Pattern Work Shirt', macros: { gender: 1, age: 0.6, muscle: 0.7, weight: 0.6 }, extra: { ...body8, hair: bald, garments: [] }, pattern: [['WorkShirt', {}], ['Pants', {}]] },
+  { name: 'Pattern Vest', macros: { gender: 0, age: 0.45, muscle: 0.6 }, extra: { ...body8, hair: bald, garments: [] }, pattern: [['UtilityVest', {}], ['Pants', {}]] },
+  { name: 'Pattern Coat', macros: { gender: 1, age: 0.7, weight: 0.4 }, extra: { ...body8, hair: bald, garments: [] }, pattern: [['Coat', {}], ['Pants', {}]] },
+  { name: 'Pattern Shirt Skirt', macros: { gender: 0, age: 0.5, height: 0.7 }, extra: { ...body8, hair: bald, garments: [] }, pattern: [['Shirt', {}], ['PencilSkirt', {}]] },
+  { name: 'Pattern Tiered', macros: { gender: 0, age: 0.3, weight: 0.3 }, extra: { ...body8, hair: bald, garments: [] }, pattern: [['FittedShirt', {}], ['SkirtLevels', {}]] },
+  { name: 'Pattern Heavy Hoodie', macros: { gender: 1, age: 0.55, weight: 0.95, muscle: 0.2 }, extra: { ...body8, hair: bald, garments: [] }, pattern: [['Hoodie', {}], ['Pants', {}]] },
+  { name: 'Pattern Bomber Skirt', macros: { gender: 0, age: 0.4, muscle: 0.8 }, extra: { ...body8, hair: bald, garments: [] }, pattern: [['Bomber', { 'bomber.length': 1.15 }], ['GodetSkirt', {}]] },
+  { name: 'Pattern Long Shirt', macros: { gender: 1, age: 0.3, height: 0.9 }, extra: { ...body8, hair: bald, garments: [] }, pattern: [['WorkShirt', { 'work-shirt.length': 1.6 }], ['SkirtManyPanels', {}]] },
 ];
 
 test('export the test characters', async ({ page }) => {
-  test.setTimeout(900_000);
+  test.setTimeout(2_400_000);
   await boot(page);
   await waitForTestHooks(page);
   rmSync(OUT, { recursive: true, force: true });
@@ -94,6 +109,25 @@ test('export the test characters', async ({ page }) => {
           await s.settled();
         },
         { template, params },
+      );
+    }
+    for (const [program, values] of c.pattern ?? []) {
+      await page.evaluate(
+        async ({ program, values }) => {
+          const w = window as unknown as TestWindow;
+          const s = w.__ps2cc;
+          const design = w.__ps2ccTest.core.programDefaultDesign(program) as Record<string, unknown>;
+          for (const [path, v] of Object.entries(values)) {
+            let n = design as Record<string, unknown>;
+            for (const k of path.split('.')) n = n[k] as Record<string, unknown>;
+            n.v = v;
+          }
+          const pg = await s.drapePatternDesign(program, design);
+          if (!pg) throw new Error(`${program} did not drape`);
+          await s.savePatternGarment(pg, program, 'library');
+          await s.settled();
+        },
+        { program, values },
       );
     }
     if (c.hairStyle) {

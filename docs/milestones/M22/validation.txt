@@ -1,33 +1,33 @@
-500 random designs per program (GarmentCode's sampling), 12 measured bodies
+40 random designs per program (GarmentCode's sampling), 12 measured bodies
 
-FittedShirt (garmentcode): 214/500 valid, 3.1 draws per design; length-mismatch 286
+FittedShirt (garmentcode): 16/40 valid, 3.0 draws per design; length-mismatch 24
   design 0 (neutral): length-mismatch: seam from right_ftorso#2 to right_btorso#10: 4.44 cm vs 4.61 cm (3.7%)
   design 0 (neutral): length-mismatch: seam from right_ftorso#7 to right_btorso#7: 22.55 cm vs 22.17 cm (1.7%)
   design 0 (neutral): length-mismatch: seam from left_ftorso#9 to left_btorso#2: 4.44 cm vs 4.61 cm (3.7%)
-Shirt (garmentcode): 203/500 valid, 1.9 draws per design; length-mismatch 297
+Shirt (garmentcode): 14/40 valid, 1.6 draws per design; length-mismatch 26
   design 2 (female): length-mismatch: seam from right_ftorso#2 to right_btorso#3: 4.19 cm vs 4.99 cm (19.3%)
   design 2 (female): length-mismatch: seam from right_ftorso#4 to right_btorso#1: 35.21 cm vs 34.30 cm (2.6%)
   design 2 (female): length-mismatch: seam from left_ftorso#3 to left_btorso#3: 4.19 cm vs 4.99 cm (19.3%)
-Pants (garmentcode): 500/500 valid, 1.0 draws per design
-SkirtCircle (garmentcode): 500/500 valid, 3.1 draws per design
-AsymmSkirtCircle (garmentcode): 500/500 valid, 3.5 draws per design
-GodetSkirt (garmentcode): 500/500 valid, 1.9 draws per design
-Skirt2 (garmentcode): 500/500 valid, 3.1 draws per design
-SkirtManyPanels (garmentcode): 430/500 valid, 3.1 draws per design; length-mismatch 70
+Pants (garmentcode): 40/40 valid, 1.1 draws per design
+SkirtCircle (garmentcode): 40/40 valid, 2.8 draws per design
+AsymmSkirtCircle (garmentcode): 40/40 valid, 3.2 draws per design
+GodetSkirt (garmentcode): 40/40 valid, 1.9 draws per design
+Skirt2 (garmentcode): 40/40 valid, 2.8 draws per design
+SkirtManyPanels (garmentcode): 35/40 valid, 2.6 draws per design; length-mismatch 5
   design 8 (sampled_5): length-mismatch: seam from wb_front#0 to skirt_panel_0#2: 64.07 cm vs 66.00 cm (3.0%)
   design 10 (sampled_7): length-mismatch: seam from wb_front#0 to skirt_panel_0#2: 93.56 cm vs 96.01 cm (2.6%)
   design 11 (sampled_8): length-mismatch: seam from wb_front#0 to skirt_panel_0#2: 112.85 cm vs 115.78 cm (2.6%)
-PencilSkirt (garmentcode): 500/500 valid, 1.0 draws per design
-SkirtLevels (garmentcode): 500/500 valid, 2.2 draws per design
-StraightWB (garmentcode): 500/500 valid, 1.0 draws per design
-FittedWB (garmentcode): 458/500 valid, 9.3 draws per design; self-intersection 42
+PencilSkirt (garmentcode): 40/40 valid, 1.0 draws per design
+SkirtLevels (garmentcode): 40/40 valid, 2.0 draws per design
+StraightWB (garmentcode): 40/40 valid, 1.0 draws per design
+FittedWB (garmentcode): 37/40 valid, 8.4 draws per design; self-intersection 3
   design 5 (sampled_2): self-intersection: a panel crosses itself
   design 17 (sampled_2): self-intersection: a panel crosses itself
   design 29 (sampled_2): self-intersection: a panel crosses itself
-Bomber (ps2cc): 500/500 valid, 1.4 draws per design
-Coat (ps2cc): 500/500 valid, 1.7 draws per design
-UtilityVest (ps2cc): 500/500 valid, 1.3 draws per design
-Hoodie (ps2cc): 500/500 valid, 1.3 draws per design
-WorkShirt (ps2cc): 500/500 valid, 1.3 draws per design
+Bomber (ps2cc): 40/40 valid, 1.3 draws per design
+Coat (ps2cc): 40/40 valid, 1.7 draws per design
+UtilityVest (ps2cc): 40/40 valid, 1.4 draws per design
+Hoodie (ps2cc): 40/40 valid, 1.3 draws per design
+WorkShirt (ps2cc): 40/40 valid, 1.2 draws per design
 
 

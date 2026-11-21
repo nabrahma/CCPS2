@@ -97,6 +97,42 @@ requires:
 At the time of writing, 2,415 of 2,418 stable designs match. The other three differ only in a sleeve or hood
 curve.
 
+## Drape and garment asset (F30, F31)
+
+`packages/core/src/garment/drape/` (the solver) and `packages/core/src/garment/build/` (pattern to PS2 garment).
+
+| Part | What it is |
+| --- | --- |
+| `triangulate.ts`, `discretise.ts` | Each panel triangulated in 2D (constrained Delaunay, hexagonal lattice inside) at 1.5 cm; both sides of every stitch sampled alike, so seam points pair up. |
+| `place.ts` | Where panels start: wrapped round their body part 3 cm out, anchored at the side neck point (tops) or the waist (trousers, skirts); small panels laid against the panel they are sewn to (D-177). |
+| `xpbd.ts`, `sdf.ts`, `collide.ts` | The XPBD solver (Small Steps), the body's signed distance field and the colliders (D-176). |
+| `drape.ts` | The drape: sew (0.3 s, no gravity or friction), weld closed seams, settle (to 2 s, on to 4 s while moving), polish, measure. `drapeSteps` yields after every frame. |
+| `materials.ts` | Cloth presets per M15 material kind: density, stretch, area and bending compliance, friction. |
+| `build/coarse.ts` | The game mesh: coarse remesh at the profile's edge (within the slot budget), lifted from the drape, seams welded, outward, pushed to the class's ease, rims, attachments, pattern UVs (D-179). |
+| `build/folds.ts` | The fold bake into the garment's UV layout. |
+| `build/generate.ts` | Program, design and body to a bound library garment; what each program makes (slot, class, cloth, look). |
+
+How a drape goes:
+
+1. **Sew.** Seam constraints stiffen over 0.3 s from very soft to rigid. No gravity and no friction yet, and heavy damping, so the panels slide into place over the body.
+2. **Weld.** Once every seam is within 1 mm (or 0.5 s later), sewn points within 1 cm become one particle; the rest are tried again every 15 frames, and once more after the polish.
+3. **Settle.** Gravity, friction from the cloth, light damping, until 2 s; on to 4 s while anything moves faster than 1 mm/s. Trousers and skirts are held at the waist (a floor under their top edge's points).
+4. **Polish.** 40 static passes over stretched edges, seams and contacts against the exact body, then every particle cleared by the 2 mm thickness.
+
+Contacts: the body's distance field gives a plane per particle per frame (looked up again when a particle moves far within a frame); the field's normal turns smoothly through creases, where the nearest triangle's would flip.
+
+Then the garment (F31): the coarse mesh at Classic 4 cm, Enhanced 3 cm or Hero 2 cm (longer when the slot's budget needs it), every coarse point where the same pattern point went in the drape, seams welded, pushed out to the class's minimum ease (5.0), 5 smoothing passes, rims, pockets and flaps on top, UVs from the pattern, and the fold bake (occlusion and fold light from the fine drape) as the garment's fold texture, multiplied into whatever look it wears. It is then moved to the reference body and bound like any garment: every character wears it by its binding, and **Re-drape on this body** (Clothes) drapes it again on another character.
+
+### In the Garment Designer (Pattern tab)
+
+- **2D pattern**, **3D** (the panels placed around the body, or the draped garment), **Character**.
+- **Drape**: a few seconds, with progress and Cancel; the result is worn as a preview with its numbers (time, seams, stretch, triangles).
+- **Save to Wardrobe** or **Keep on this character**; the garment records its program, design, measurements and detail profile. Opened again from Clothes, it comes back to this tab.
+
+### Measuring a drape
+
+`test/m23.test.ts` (D-178): seam gap after welding under 1 mm; no particle deeper than 1 mm in the body; woven cloth's stretch along its threads, area-weighted mean under 3%; the coarse garment open only at hems and openings; texel density within 5% across panels; a fold bake with a shade deviation over 0.015. `node scripts/m23-accept.mjs` runs 50 designs of every program on Mara and Cole (`docs/milestones/M23/drape.txt`).
+
 ## `.ps2pattern`
 
 Canonical JSON (sorted keys, shortest round-trip numbers):
@@ -116,3 +152,6 @@ Canonical JSON (sorted keys, shortest round-trip numbers):
 | `test/garment-pattern-oracle.test.ts` | GarmentCode parity, 200 designs per program (`docs/milestones/M22/oracle.txt`) |
 | `test/m22.test.ts` | Validation on random designs: 40 per program by default, 500 with `PS2CC_M22_DESIGNS=500` (`validation.txt`). Also the `.ps2pattern` byte-identical rebuild and SVG labels |
 | `app/frontend/e2e/m22.spec.ts` | The Pattern tab, Random design, the pattern view, and the exported SVG opened in the browser |
+| `test/garment-drape-solver.test.ts` | The solver: a pinned sheet's energy falls every frame as it settles, a cylinder skirt stays outside a cylinder body; triangulation and seam sampling |
+| `test/m23.test.ts`, `scripts/m23-accept.mjs` | Drapes and garments of every program on the benchmark bodies (`docs/milestones/M23/drape.txt`) |
+| `app/frontend/e2e/m23.spec.ts` | Placed panels, Drape with progress and Cancel, Save to Wardrobe, opening again, Re-drape |

@@ -38,7 +38,8 @@ export function GarmentInspector({ partKey }: { partKey: string }) {
   if (!garment) return null;
   // Made in Garment Designer (a library garment, or one kept on this character): it opens there again.
   const info = studio.assets.hasProxy(garment.asset) ? studio.assets.proxyInfo(garment.asset) : null;
-  const generated = (info?.tags ?? []).includes('generated') || (studio.engine.doc.garmentEdits?.[garment.asset]?.base ?? '').startsWith('shell:');
+  const generated = (info?.tags ?? []).includes('generated') || /^(shell|pattern):/.test(studio.engine.doc.garmentEdits?.[garment.asset]?.base ?? '');
+  const pattern = (info?.tags ?? []).includes('pattern') || (studio.engine.doc.garmentEdits?.[garment.asset]?.base ?? '').startsWith('pattern:');
   const edit = (label: string, fn: (g: GarmentSlot) => void, merge?: string) =>
     studio.engine.update(
       label,
@@ -93,6 +94,7 @@ export function GarmentInspector({ partKey }: { partKey: string }) {
           Edit in Garment Designer
         </button>
       )}
+      {pattern && <RedrapeButton asset={garment.asset} />}
       <GarmentLookEditor garment={garment} partKey={partKey} />
       <PainterLink target={`garment:${garment.slot}`} label="The garment" />
       {garment.paint && (
@@ -110,5 +112,29 @@ export function GarmentInspector({ partKey }: { partKey: string }) {
         Remove garment
       </button>
     </div>
+  );
+}
+
+/** Re-drape on this body (PRD Part 3, F31 step 8): a pattern garment draped again with this character's measurements. */
+function RedrapeButton({ asset }: { asset: string }) {
+  const studio = useStudio();
+  const [busy, setBusy] = useState<number | null>(null);
+  const run = async () => {
+    setBusy(0);
+    try {
+      const id = await studio.redrapeGarment(asset, { onProgress: (f) => setBusy(f) });
+      if (id) useUi.getState().info('Draped again on this body and kept on this character');
+    } catch (err) {
+      useUi.getState().error('The drape failed', err);
+    } finally {
+      setBusy(null);
+    }
+  };
+  return busy !== null ? (
+    <progress max={1} value={busy} data-testid="redrape-progress" />
+  ) : (
+    <button onClick={() => void run()} data-testid="redrape" title="Drape the pattern again with this character's own measurements (a few seconds); the garment is kept on this character">
+      Re-drape on this body
+    </button>
   );
 }

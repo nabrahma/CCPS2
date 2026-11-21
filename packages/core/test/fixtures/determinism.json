@@ -47,6 +47,8 @@
   "pattern:Coat": "0566812e8af267e7fef0146891fe47fd484ec648a90ca17132ef80bba8bf0a85",
   "pattern:UtilityVest": "461fac5473acc408456b6d0b0b7f94bee7ff3342e2540d8287fedfd62d52972e",
   "pattern:Hoodie": "477b9fc663b09f71cbfaf22fd989efa2f251844dcfe1376bbd88f529396f4cfc",
-  "pattern:WorkShirt": "8e5b5f20de5505ce7134918eafbf1127800df0c4512c11f349b8973a9506875c"
+  "pattern:WorkShirt": "8e5b5f20de5505ce7134918eafbf1127800df0c4512c11f349b8973a9506875c",
+  "drape:Bomber": "d27620f3bbddb9eb4614f6a697bb430a5e87b26d13a4347e1aa83dc50e147eb0",
+  "drape:SkirtCircle": "6f337d917d52e32ffeaea8b8fd1d8042be753c1e8513cda74974055e209a915d"
  }
 }

@@ -52,6 +52,15 @@ import {
   type ConvertedMaterial,
   type MaterialAdjust,
   type MaterialKind,
+  bindPatternGarment,
+  bodySdf,
+  drapeProgramSteps,
+  garmentCodeBody,
+  shellBody,
+  shellBodyAt,
+  type DetailProfile,
+  type PatternGarment,
+  type ShellBody,
 } from '@ps2cc/core';
 import { BakeCancelled, resolveAssetUrl, Viewport, type BakedMap } from '@ps2cc/viewport';
 import { backend, isDesktop, libraryUrl, type AppInfo, type GarmentFile, type Settings } from '../backend';
@@ -408,6 +417,8 @@ export class Studio {
 
   private designSeq = 0;
   private designPreview: string | null = null;
+  /** Counts Designer sessions ended: a preview still generating when its session ends is not worn. */
+  private designSession = 0;
 
   /**
    * Generate a shell garment (template and parameters) and wear it as the
@@ -415,7 +426,10 @@ export class Studio {
    * over) or of the last preview. One undo step for a whole design session.
    */
   async previewDesign(templateId: string, params: Record<string, number>, replacing: string | null): Promise<ShellGarment> {
+    const session = this.designSession;
     const g = await generateShellGarment(this.assets, templateId, params);
+    // The Designer closed (or switched to the Pattern tab) while this was generated: nothing to wear.
+    if (session !== this.designSession) return g;
     const id = `preview:designer/${++this.designSeq}`;
     g.garment.meta.id = id;
     g.garment.meta.tags = ['preview'];
@@ -439,6 +453,7 @@ export class Studio {
 
   /** Take the preview off (Cancel), putting back what it replaced. */
   endDesign(restore: { slot: GarmentSlotName; asset: string } | null): void {
+    this.designSession++;
     const preview = this.designPreview;
     this.designPreview = null;
     if (!preview) return;
@@ -485,6 +500,156 @@ export class Studio {
     if (preview) this.assets.removeUserProxy(preview);
     this.bump();
     return id;
+  }
+
+  // ------------------------------------------------------------ pattern garments (PRD Part 3, F30-F32)
+
+  private patternBodyCache: { version: number; body: ShellBody } | null = null;
+  private patternPreview: string | null = null;
+  private patternSeq = 0;
+
+  /** The current character's body as the drape collides with it (cached until the shape changes). */
+  async patternBody(): Promise<ShellBody> {
+    const v = this.engine.geometryVersion;
+    if (this.patternBodyCache?.version === v) return this.patternBodyCache.body;
+    const base = await shellBody(this.assets);
+    const body = shellBodyAt(base, this.engine.positions.slice(), this.engine.skeleton);
+    this.patternBodyCache = { version: v, body };
+    return body;
+  }
+
+  /** Build the drape's body and its distance field ahead of Drape (the Pattern tab opening). */
+  async warmPatternBody(): Promise<void> {
+    bodySdf(await this.patternBody());
+  }
+
+  /** GarmentCode's measurement keys for this character (F24). */
+  patternMeasurements(): Record<string, number> {
+    return garmentCodeBody(this.assets.anthro.measure(this.engine.positions));
+  }
+
+  /**
+   * Drape a design on this character (F30) and build the garment (F31), a frame at a time so the app stays
+   * live: `onProgress` gets 0..1, `signal` cancels (resolves null). The result is bound like any garment.
+   */
+  async drapePatternDesign(program: string, design: unknown, opts: { profile?: DetailProfile; onProgress?: (f: number, info: string) => void; signal?: AbortSignal } = {}): Promise<PatternGarment | null> {
+    const body = await this.patternBody();
+    const measurements = this.patternMeasurements();
+    const input = { program, design: structuredClone(design) as never, measurements, body, bodyPositions: this.engine.positions.slice(), profile: opts.profile, clock: () => performance.now() };
+    const steps = drapeProgramSteps(input);
+    let slice = performance.now();
+    for (;;) {
+      const r = steps.next();
+      if (r.done) {
+        if (!r.value) return null;
+        opts.onProgress?.(1, 'Binding the garment');
+        await new Promise((res) => setTimeout(res, 0));
+        return bindPatternGarment(this.assets, r.value, input);
+      }
+      if (opts.signal?.aborted) return null;
+      // Slices of 120 ms: the app paints and takes input between them, the drape gets most of the time.
+      if (performance.now() - slice > 120) {
+        opts.onProgress?.(r.value.progress, r.value.stage);
+        await new Promise((res) => setTimeout(res, 0));
+        slice = performance.now();
+      }
+    }
+  }
+
+  /** The fold bake as a PNG data URL, set as the garment's fold texture. */
+  private async withFoldTexture(pg: PatternGarment, url?: string): Promise<void> {
+    const fold = url ?? (await blobToDataUrl(await imageToPng(pg.folds.image)));
+    pg.garment.meta.material = { diffuseColor: [0.8, 0.8, 0.8], transparent: false, backfaceCull: false, opacity: 1, foldTexture: fold };
+  }
+
+  /** Wear a draped design as the Designer's preview (in place of the last preview, or of `replacing`). */
+  async previewPatternGarment(pg: PatternGarment, replacing: string | null): Promise<void> {
+    await this.withFoldTexture(pg);
+    const id = `preview:pattern/${++this.patternSeq}`;
+    pg.garment.meta.id = id;
+    pg.garment.meta.tags = ['preview'];
+    this.assets.addUserProxy(garmentEntry(pg.garment.meta, `pattern/${id}`), () => Promise.resolve(pg.garment.proxy));
+    const previous = this.patternPreview;
+    this.patternPreview = id;
+    const slot = pg.asset.slot as GarmentSlotName;
+    this.engine.update(
+      'Drape a pattern',
+      (d) => {
+        const at = d.garments.findIndex((x) => x.asset === previous || x.asset === replacing);
+        const wear = { ...garmentToWear(this, id, slot), look: structuredClone(pg.garment.meta.defaults?.look) };
+        if (at >= 0) d.garments[at] = { ...wear, tint: d.garments[at]!.tint };
+        else d.garments.push(wear);
+      },
+      'designer',
+    );
+    if (previous) this.assets.removeUserProxy(previous);
+  }
+
+  /** Take the pattern preview off, putting back what it replaced. */
+  endPatternPreview(restore: { slot: GarmentSlotName; asset: string } | null): void {
+    const preview = this.patternPreview;
+    this.patternPreview = null;
+    if (!preview) return;
+    this.engine.update('Close Garment Designer', (d) => {
+      const at = d.garments.findIndex((x) => x.asset === preview);
+      if (at < 0) return;
+      if (restore && this.assets.hasProxy(restore.asset)) d.garments[at] = garmentToWear(this, restore.asset, restore.slot);
+      else d.garments.splice(at, 1);
+    });
+    this.assets.removeUserProxy(preview);
+  }
+
+  /**
+   * Save a draped design (F32): a library garment (its fold texture saved with it), or kept on this character
+   * only (D-151), worn in place of the preview. The garment records its program, design and measurements,
+   * so it opens in the Designer again and can be draped again on another body.
+   */
+  async savePatternGarment(pg: PatternGarment, name: string, where: 'library' | 'character', replacing: string | null = null): Promise<string> {
+    pg.garment.meta.name = name;
+    const slot = pg.asset.slot as GarmentSlotName;
+    let id: string;
+    let entry: ReturnType<typeof garmentEditFrom> | null = null;
+    pg.garment.meta.id = `user:garment/${newId()}`;
+    pg.garment.meta.tags = ['generated', 'pattern', pg.asset.category];
+    if (where === 'library') {
+      const item = await backend.importFile('garment-textures', new File([await imageToPng(pg.folds.image)], `${pg.garment.meta.binary.replace(/\.bin$/, '')}_folds.png`, { type: 'image/png' }));
+      await this.withFoldTexture(pg, libraryUrl(this.info, item.file));
+      const saved = await backend.saveGarment(JSON.stringify(pg.garment.meta), pg.garment.bin);
+      this.assets.addUserProxy(garmentEntry(pg.garment.meta, saved.file), () => Promise.resolve(pg.garment.proxy));
+      id = pg.garment.meta.id;
+    } else {
+      await this.withFoldTexture(pg);
+      id = `${EDIT_PREFIX}${newId()}`;
+      entry = garmentEditFrom(id, `pattern:${pg.garment.meta.generator?.template ?? 'pattern'}`, pg.garment, name);
+      this.assets.syncGarmentEdits({ [id]: entry });
+    }
+    const preview = this.patternPreview;
+    this.patternPreview = null;
+    const kept = entry;
+    const look = structuredClone(pg.garment.meta.defaults?.look);
+    this.engine.update(where === 'library' ? 'Save draped garment' : 'Keep draped garment', (d) => {
+      if (kept) d.garmentEdits = { ...(d.garmentEdits ?? {}), [id]: kept };
+      const at = d.garments.findIndex((x) => x.asset === preview || (replacing !== null && x.asset === replacing));
+      const wear = { ...garmentToWear(this, id, slot), look };
+      if (at >= 0) d.garments[at] = { ...wear, tint: d.garments[at]!.tint, ...(d.garments[at]!.look && d.garments[at]!.asset === preview ? { look: d.garments[at]!.look } : {}) };
+      else d.garments.push(wear);
+    });
+    if (preview) this.assets.removeUserProxy(preview);
+    this.bump();
+    return id;
+  }
+
+  /**
+   * Re-drape on this body (F31 step 8): a worn pattern garment draped again with this character's own
+   * measurements and kept on this character, in place of the bound one.
+   */
+  async redrapeGarment(asset: string, opts: { onProgress?: (f: number, info: string) => void; signal?: AbortSignal } = {}): Promise<string | null> {
+    const proxy = await this.assets.proxy(asset);
+    const gen = proxy.meta.generator;
+    if (gen?.kind !== 'pattern' || !gen.pattern) return null;
+    const pg = await this.drapePatternDesign(gen.template, gen.pattern.design, { profile: gen.pattern.profile as DetailProfile, ...opts });
+    if (!pg) return null;
+    return this.savePatternGarment(pg, proxy.meta.name, 'character', asset);
   }
 
   // ------------------------------------------------------------ custom garments (PRD F4)

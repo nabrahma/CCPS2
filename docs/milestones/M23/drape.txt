@@ -1,0 +1,54 @@
+M23 drape acceptance: 50 designs per program (the default and seeded random designs) on Mara and Cole; 1700 drapes.
+Per program: drapes passing every check; worst seam gap and penetration (mm); woven stretch along the threads (mean of the per-drape means, worst mean, worst 95th percentile, %); worst texel spread (%); lowest fold deviation; triangles (max); drape time (median / max, s).
+
+FittedShirt: 86/100 pass; gap 0.24, pen 0.00; stretch 2.27 / 12.80 / 36.8; texel 0.0; folds 0.024; tris 1750; drape 2.0 / 8.4
+    14 x woven strain #%
+Shirt: 92/100 pass; gap 73.73, pen 0.00; stretch 1.57 / 4.47 / 14.2; texel 0.0; folds 0.021; tris 1798; drape 3.5 / 11.8
+    3 x seam gap # mm
+    6 x woven strain #%
+Pants: 55/100 pass; gap 79.77, pen 0.00; stretch 5.42 / 38.68 / 117.3; texel 14.9; folds 0.055; tris 1588; drape 4.1 / 8.8
+    44 x woven strain #%
+    1 x texel spread #%
+    4 x seam gap # mm
+SkirtCircle: 90/100 pass; gap 224.30, pen 47.01; stretch 1.52 / 6.07 / 32.9; texel 0.0; folds 0.015; tris 1597; drape 4.0 / 12.1
+    6 x woven strain #%
+    7 x seam gap # mm
+    1 x penetration # mm
+AsymmSkirtCircle: 95/100 pass; gap 199.79, pen 0.00; stretch 1.36 / 8.89 / 13.7; texel 0.0; folds 0.008; tris 1596; drape 3.6 / 11.7
+    3 x fold deviation #
+    2 x seam gap # mm
+    2 x woven strain #%
+GodetSkirt: 65/100 pass; gap 97.86, pen 8.69; stretch 2.50 / 12.77 / 32.3; texel 0.0; folds 0.020; tris 1599; drape 5.8 / 11.1
+    24 x seam gap # mm
+    16 x woven strain #%
+    2 x penetration # mm
+Skirt2: 82/100 pass; gap 96.13, pen 0.00; stretch 1.85 / 4.70 / 20.1; texel 0.0; folds 0.010; tris 1596; drape 3.2 / 11.3
+    5 x woven strain #%
+    9 x seam gap # mm
+    4 x fold deviation #
+SkirtManyPanels: 97/100 pass; gap 0.00, pen 0.00; stretch 1.71 / 3.51 / 17.4; texel 0.0; folds 0.016; tris 1599; drape 1.8 / 11.9
+    3 x woven strain #%
+PencilSkirt: 51/100 pass; gap 44.85, pen 0.00; stretch 2.75 / 8.94 / 20.9; texel 0.0; folds 0.010; tris 1595; drape 4.0 / 8.4
+    32 x woven strain #%
+    17 x fold deviation #
+    5 x seam gap # mm
+SkirtLevels: 36/100 pass; gap 226.49, pen 49.27; stretch 5.94 / 17.32 / 75.7; texel 0.0; folds 0.017; tris 1599; drape 5.6 / 14.3
+    39 x seam gap # mm
+    62 x woven strain #%
+    26 x penetration # mm
+StraightWB: 93/100 pass; gap 0.00, pen 0.00; stretch 1.39 / 3.32 / 10.2; texel 0.0; folds 0.003; tris 468; drape 0.1 / 1.4
+    6 x fold deviation #
+    4 x woven strain #%
+FittedWB: 100/100 pass; gap 0.00, pen 0.00; stretch 1.40 / 2.67 / 7.7; texel 0.0; folds 0.012; tris 497; drape 0.1 / 1.4
+Bomber: 90/100 pass; gap 66.59, pen 0.00; stretch 1.74 / 2.98 / 11.7; texel 0.0; folds 0.078; tris 2200; drape 5.8 / 11.4
+    10 x seam gap # mm
+Coat: 100/100 pass; gap 0.00, pen 0.00; stretch 1.87 / 2.93 / 11.3; texel 0.0; folds 0.083; tris 2192; drape 6.5 / 10.8
+UtilityVest: 100/100 pass; gap 0.00, pen 0.00; stretch 1.48 / 1.97 / 9.3; texel 0.0; folds 0.036; tris 1980; drape 3.3 / 6.8
+Hoodie: 92/100 pass; gap 56.33, pen 0.00; stretch 0.00 / 0.00 / 0.0; texel 0.0; folds 0.105; tris 1800; drape 6.6 / 9.2
+    8 x seam gap # mm
+WorkShirt: 84/100 pass; gap 77.81, pen 0.00; stretch 1.91 / 5.45 / 21.4; texel 8.4; folds 0.072; tris 1652; drape 5.0 / 10.7
+    8 x seam gap # mm
+    9 x woven strain #%
+    1 x texel spread #%
+
+Total: 1408/1700 drapes pass every check. Drape time: median 4.2 s, 95th percentile 9.2 s, max 14.3 s (target 10 s), with 15 drapes running at once.

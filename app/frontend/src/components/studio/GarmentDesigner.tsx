@@ -9,10 +9,10 @@
  */
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { resolveParams, SHELL_TEMPLATES, type ParamDef, type ShellCategory, type ShellParams } from '@ps2cc/core';
+import { resolveParams, SHELL_TEMPLATES, type DetailProfile, type ParamDef, type ShellCategory, type ShellParams } from '@ps2cc/core';
 import { useStudio, useStudioVersion } from '../../state/hooks';
 import { useUi } from '../../state/ui';
-import { PatternDesigner } from './PatternDesigner';
+import { PatternDesigner, type OpenedPattern } from './PatternDesigner';
 
 const CATEGORY_LABEL: Record<ShellCategory, string> = {
   tops: 'Tops',
@@ -140,7 +140,34 @@ function pickLoop(centres: [number, number, number][], how: HandleDef['loop']): 
 
 /** The Garment Designer: the Shell tab (generated shells) and the Pattern tab (sewing-pattern programs). */
 export function GarmentDesigner() {
+  const studio = useStudio();
+  const target = useUi((u) => u.assetStudio?.target ?? null);
   const [tab, setTab] = useState<'shell' | 'pattern'>('shell');
+  // A worn pattern garment opened from the Wardrobe opens on the Pattern tab, with its program and design.
+  const [opened, setOpened] = useState<OpenedPattern | null>(null);
+  // Which tab a worn garment opens on is known only once its file is read: neither tab starts before (the
+  // Shell tab would put on a preview of its own).
+  const [checked, setChecked] = useState(!target?.startsWith('garment:'));
+  useEffect(() => {
+    let live = true;
+    void (async () => {
+      const worn = target?.startsWith('garment:') ? studio.engine.doc.garments.find((g) => `garment:${g.slot}:${g.asset}` === target) : undefined;
+      if (!worn || !studio.assets.hasProxy(worn.asset)) {
+        if (live) setChecked(true);
+        return;
+      }
+      const proxy = await studio.assets.proxy(worn.asset);
+      const gen = proxy.meta.generator;
+      if (live && gen?.kind === 'pattern' && gen.pattern) {
+        setOpened({ slot: worn.slot, asset: worn.asset, program: gen.template, design: gen.pattern.design, name: proxy.meta.name, profile: (gen.pattern.profile as DetailProfile) ?? 'classic' });
+        setTab('pattern');
+      }
+      if (live) setChecked(true);
+    })();
+    return () => {
+      live = false;
+    };
+  }, [target, studio]);
   return (
     <div className="garment-designer" data-testid="garment-designer">
       <div className="studio-switch" role="tablist" aria-label="Garment Designer">
@@ -151,7 +178,7 @@ export function GarmentDesigner() {
           Pattern
         </button>
       </div>
-      {tab === 'shell' ? <ShellDesigner /> : <PatternDesigner />}
+      {!checked ? null : tab === 'shell' ? <ShellDesigner /> : <PatternDesigner key={opened?.asset ?? 'new'} opened={opened} />}
     </div>
   );
 }

@@ -59,4 +59,9 @@ export { CLASS_MIN_EASE, type GarmentClass, type ShellBuild } from './garment/sh
 export { buildTemplate, generateShellGarment, SHELL_GENERATOR_VERSION, type ShellGarment } from './garment/shell/generate';
 export { shellBody, type ShellBody, type ShellTier } from './garment/shell/body';
 export { landmarks as shellLandmarks, type Landmarks as ShellLandmarks } from './garment/shell/landmarks';
-export { buildProgram, patternPrograms, patternProgram, programDefaultDesign, randomProgramDesign, validateBuilt, patternSvg, designLeaves, getLeaf, makePs2Pattern, serializePs2Pattern, parsePs2Pattern, rebuildPs2Pattern, PATTERN_GENERATOR_VERSION, type PatternProgram, type BuiltPattern, type PatternIssue, type PatternSpec, type Ps2Pattern, type DesignLeaf } from './garment/pattern';
+export { buildProgram, patternPrograms, patternProgram, programDefaultDesign, randomProgramDesign, validateBuilt, patternSvg, designLeaves, getLeaf, withValues, makePs2Pattern, serializePs2Pattern, parsePs2Pattern, rebuildPs2Pattern, PATTERN_GENERATOR_VERSION, type PatternProgram, type BuiltPattern, type PatternIssue, type PatternSpec, type Ps2Pattern, type DesignLeaf } from './garment/pattern';
+export { bodySdf, drapePattern, drapeSteps, placedPanels, type DrapeOptions, type DrapeResult, type DrapeMetrics, type DrapeProgress } from './garment/drape/drape';
+export { CLOTH_PRESETS, type ClothKind } from './garment/drape/materials';
+export { drapeProgram, drapeProgramSteps, bindPatternGarment, generatePatternGarment, programAsset, programLook, clothOf, PROGRAM_ASSETS, DRAPE_GENERATOR_VERSION, type PatternGarment, type PatternMesh, type PatternGarmentInput, type ProgramAsset } from './garment/build/generate';
+export { PROFILE_EDGE, type DetailProfile, type CoarseGarment } from './garment/build/coarse';
+export { shellBodyAt } from './garment/shell/body';

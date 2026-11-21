@@ -94,6 +94,8 @@ export interface ComposeSources {
   /** The garment's own texture (zones with no material), or null for plain white. */
   base: RgbaImage | null;
   material: (id: string) => MaterialSource | null;
+  /** Pattern garments: folds and occlusion baked from the drape (greyscale, garment UVs), multiplied in last. */
+  shading?: RgbaImage | null;
 }
 
 const clamp01 = (x: number) => Math.min(1, Math.max(0, x));
@@ -272,6 +274,12 @@ export function composeGarment(canvas: GarmentCanvas, look: GarmentLook, src: Co
       pt[1] = P[i * 3 + 1]!;
       pt[2] = P[i * 3 + 2]!;
       k = foldShade(pt, canvas.gapOfTriangle[tri]!, canvas.frames, fold);
+    }
+    if (src.shading) {
+      const x = i % size;
+      const y = (i - x) / size;
+      sampleBilinear(src.shading, (x + 0.5) / size, 1 - (y + 0.5) / size, pt);
+      k *= pt[0]! / 255;
     }
     for (let c = 0; c < 3; c++) out.data[i * 4 + c] = Math.round(255 * clamp01(col[i * 3 + c]! * k));
   }

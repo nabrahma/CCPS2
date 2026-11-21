@@ -53,8 +53,10 @@ async function garmentReference(studio: Studio, slot: string): Promise<RgbaImage
   // From the document's look even when paint hides it in the scene: the paint was made over it.
   if (g?.look) {
     const base = studio.info.coreAssetsUrl;
-    const own = g.texture ?? (await studio.engine.assets.proxy(g.asset)).meta.material?.diffuseTexture ?? null;
-    return studio.scene.garmentLooks.compose(g.asset, g.look, own ? studio.engine.assets.textureFor(own) : null, 1024, (p) => decodeImage(resolveAssetUrl(base, p)));
+    const material = (await studio.engine.assets.proxy(g.asset)).meta.material;
+    const own = g.texture ?? material?.diffuseTexture ?? null;
+    const folds = material?.foldTexture ?? null;
+    return studio.scene.garmentLooks.compose(g.asset, g.look, own ? studio.engine.assets.textureFor(own) : null, 1024, (p) => decodeImage(resolveAssetUrl(base, p)), folds);
   }
   return studio.viewport!.texturePixels(await garmentTexture(studio, slot));
 }
